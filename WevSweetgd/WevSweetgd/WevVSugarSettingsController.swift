@@ -272,7 +272,7 @@ final class WevVSugarSettingsController: UIViewController {
     }
 
     @objc private func openPrivacySugarText() {
-        openSugarText(title: "Privacy Policy", body: "WevV keeps this donut tasting experience local for demo data. Your tasting choices, saved shops, stamps, and challenge joins stay in the app sandbox for a private preview.")
+        openSugarText(title: "Privacy Policy", body: privacySugarText())
     }
 
     @objc private func openSugarListText() {
@@ -285,13 +285,80 @@ final class WevVSugarSettingsController: UIViewController {
     }
 
     @objc private func openTermsSugarText() {
-        openSugarText(title: "Terms of Service", body: "Use WevV for friendly donut discovery, shop collections, check-ins, tasting notes, and challenge participation. Keep content respectful and report unsafe behavior.")
+        openSugarText(title: "Terms of Service", body: termsSugarText())
     }
 
     private func openSugarText(title: String, body: String) {
         let controller = WevVSugarPlainTextController(titleText: title, bodyText: body)
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
+    }
+
+    private func privacySugarText() -> String {
+        """
+        Effective date: July 27, 2026
+
+        WevV: Community, Voice Sweety is a donut-themed app for discovering shops, saving favorite places, sharing tasting moments, joining themed rooms, checking in, and participating in flavor challenges.
+
+        Information We Use
+        We may use the account details you enter, such as email address, display name, password credential, profile image choice, saved shops, check-in history, challenge activity, room participation state, tasting notes, post content, relationship status, reports, blocks, and local app preferences. Camera, photo, and microphone permissions are requested only when a related feature needs them. Permission choices can be changed in iOS Settings.
+
+        Local Storage
+        This version uses local app storage to simulate a complete app experience. Your account state, saved shops, posts, challenge joins, and profile details are stored in the app sandbox on this device unless a future version clearly adds an online service.
+
+        How We Use Information
+        We use information to keep you signed in, refresh your donut profile, show saved shops and posts, support check-ins, process challenge participation, maintain relationship states, and provide safety tools such as report and block.
+
+        User Content and Safety
+        Donut posts, profile text, reviews, room lines, and challenge entries must be respectful and lawful. Reported or blocked content may be hidden locally and may be reviewed if online moderation is added. Content involving harassment, hate, threats, explicit sexual material, private information, scams, impersonation, illegal activity, or harm to others is not allowed.
+
+        Sharing
+        We do not sell personal information. We do not share local demo data with advertisers. Information may be disclosed only if required by law, needed to protect users, or necessary to operate a future service that is clearly described.
+
+        Children and Eligibility
+        WevV is not directed to children under 13. If your region requires a higher age or guardian consent for social features, you must follow that rule before creating an account.
+
+        Retention and Deletion
+        Logging out clears only the current signed-in state. Deleting an account removes the local profile data controlled by this app on the device. Some content may remain if it has already been copied outside the app by the user.
+
+        Contact
+        For privacy questions, data requests, or safety concerns, contact wevvuser@gmail.com.
+        """
+    }
+
+    private func termsSugarText() -> String {
+        """
+        Effective date: July 27, 2026
+
+        Welcome to WevV: Community, Voice Sweety. These Terms govern your use of WevV, a donut-themed space for shop discovery, tasting posts, check-ins, themed rooms, saved shop collections, and flavor challenges.
+
+        Eligibility
+        You may use WevV only if you are at least 13 years old, or older if your region requires a higher age for social app participation. You must be legally allowed to create an account and take part in the app where you live.
+
+        Account Rules
+        Provide accurate account information and keep your password secure. You are responsible for activity under your account. The fixed test account is intended only for review and development testing.
+
+        Community Conduct
+        Keep WevV cheerful, respectful, and safe. Do not upload, write, or distribute harassment, hate, threats, bullying, nudity, sexually explicit material, scams, spam, impersonation, private information, illegal content, dangerous instructions, or content that infringes another person’s rights.
+
+        Donut Content
+        You keep ownership of your tasting notes, photos, reviews, profile text, and challenge entries. By posting content, you allow WevV to display it inside the app experience so features such as feeds, profiles, saved shops, challenges, and room activity can work.
+
+        Reports, Blocks, and Moderation
+        WevV includes report and block tools to help protect users. Reported content and accounts may be reviewed, hidden, removed, limited, or terminated. We may act against severe violations immediately and may restrict repeated violations without prior notice.
+
+        Challenge and Shop Features
+        Shop recommendations, check-ins, saved shops, room activity, and challenge participation are simulated with local data in this version. They are provided for app experience and review purposes, not as guaranteed real-world availability, scheduling, or shop endorsement.
+
+        Safety and Legal Compliance
+        You agree to follow all applicable laws. Do not use WevV to coordinate harm, collect private data, evade moderation, or interfere with app security.
+
+        Changes
+        We may update these Terms to reflect feature, safety, or legal changes. Continued use after an update means you accept the updated Terms.
+
+        Contact
+        Questions about these Terms or user safety may be sent to wevvuser@gmail.com.
+        """
     }
 
     private func showTinySugarHint(_ text: String) {

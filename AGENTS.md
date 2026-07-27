@@ -11,14 +11,14 @@
 ## ⚙️ 1. App 基础信息 (App Identity)
 * **App ID：
 * **App 标题：WevV: Community, Voice Sweety
-* **App 副标题：Guess Songs
+* **App 副标题：
 * **蓝湖设计链接： https://lanhuapp.com/web/#/item/project/stage?pid=93e0920a-c90b-4296-a890-82dc987984cb&tid=8c379c32-0bd6-44ae-ab3b-cfb09ffccdbf
 
 
 * **App Store 描述：
 Donut lovers have a special kind of energy—WevV brings that vibe into a cheerful community filled with colorful treats, shop discoveries, and easy conversation. Browse donut posts, join themed voice chats, and share tasting moments with people who enjoy every glaze, filling, and crumb.
 Save favorite donut shops to your personal collection, check in during each visit, and keep track of new places you want to try. You can also join donut events built around local shop visits, seasonal menus, tasting challenges, and limited-edition flavors.
-Post your own donut moments through short videos, photos, and tasting notes, then explore community updates shaped by everyday sweetness and creativity. Stay connected through direct messages and enjoy a relaxed social space built around donut discoveries, shared experiences, and fun conversations.
+Post your own donut moments through photos, and tasting notes, then explore community updates shaped by everyday sweetness and creativity. Stay connected through direct messages and enjoy a relaxed social space built around donut discoveries, shared experiences, and fun conversations.
 ---
 
 

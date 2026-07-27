@@ -29,6 +29,9 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
     private var gateMode = WevVFrostingGateMode.welcome
     private var hasAgreedEula = false
     private var bottomInset: NSLayoutConstraint?
+    private weak var welcomeAgreementToggle: UIButton?
+    private weak var welcomeStartButton: UIButton?
+    private weak var welcomeSignInButton: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +105,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
         let startButton = makeActionButton("Get Started")
         startButton.addTarget(self, action: #selector(openSignUpLayer), for: .touchUpInside)
+        welcomeStartButton = startButton
 
         let signInButton = UIButton(type: .system)
         signInButton.translatesAutoresizingMaskIntoConstraints = false
@@ -113,8 +117,10 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         signInButton.layer.borderWidth = 1
         signInButton.layer.borderColor = lineTone.cgColor
         signInButton.addTarget(self, action: #selector(openSignInLayer), for: .touchUpInside)
+        welcomeSignInButton = signInButton
 
         let agreement = makeAgreementRow()
+        refreshWelcomeAgreementControls()
 
         contentView.addSubview(welcomeBackdrop)
         contentView.addSubview(eulaButton)
@@ -338,7 +344,9 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         toggle.translatesAutoresizingMaskIntoConstraints = false
         toggle.setImage(UIImage.init(named: "Ellipseunpick"), for: .normal)
         toggle.setImage(UIImage.init(named: "Ellipseunpicknone"), for: .selected)
+        toggle.isSelected = hasAgreedEula
         toggle.addTarget(self, action: #selector(toggleEulaAgreement), for: .touchUpInside)
+        welcomeAgreementToggle = toggle
 //        refreshAgreementButton(toggle)
 
         let textStack = UIStackView()
@@ -630,14 +638,34 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
         let title = makeGateLabel("EULA", size: 20, weight: .heavy, color: inkTone)
         title.textAlignment = .center
+
+        let eulaScroll = UIScrollView()
+        eulaScroll.translatesAutoresizingMaskIntoConstraints = false
+        eulaScroll.alwaysBounceVertical = true
+        eulaScroll.showsVerticalScrollIndicator = true
+
+        let eulaContent = UIView()
+        eulaContent.translatesAutoresizingMaskIntoConstraints = false
+
         let body = makeGateLabel(eulaText(), size: 13, weight: .regular, color: mutedTone)
         body.numberOfLines = 0
-        body.textAlignment = .center
+        body.textAlignment = .left
+
+        let cancel = UIButton(type: .system)
+        cancel.translatesAutoresizingMaskIntoConstraints = false
+        cancel.setTitle("Cancel", for: .normal)
+        cancel.setTitleColor(.white, for: .normal)
+        cancel.titleLabel?.font = .systemFont(ofSize: 15, weight: .heavy)
+        cancel.backgroundColor = UIColor(red: 0.78, green: 0.78, blue: 0.8, alpha: 1)
+        cancel.layer.cornerRadius = 21
+        cancel.addAction(UIAction { [weak shade] _ in
+            shade?.removeFromSuperview()
+        }, for: .touchUpInside)
+
         let agree = makeActionButton("Agree")
         agree.addAction(UIAction { [weak self, weak shade] _ in
             guard let self else { return }
-            self.hasAgreedEula = true
-            self.frostingDefaults.set(true, forKey: self.agreementKey)
+            self.setEulaAgreement(true)
             shade?.removeFromSuperview()
             if autoAgree {
                 self.renderGateMode(self.gateMode)
@@ -645,7 +673,10 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         }, for: .touchUpInside)
 
         panel.addSubview(title)
-        panel.addSubview(body)
+        panel.addSubview(eulaScroll)
+        eulaScroll.addSubview(eulaContent)
+        eulaContent.addSubview(body)
+        panel.addSubview(cancel)
         panel.addSubview(agree)
 
         NSLayoutConstraint.activate([
@@ -655,23 +686,46 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
             shade.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             panel.centerXAnchor.constraint(equalTo: shade.centerXAnchor),
             panel.centerYAnchor.constraint(equalTo: shade.centerYAnchor),
-            panel.widthAnchor.constraint(equalTo: shade.widthAnchor, multiplier: 0.76),
+            panel.widthAnchor.constraint(equalTo: shade.widthAnchor, multiplier: 0.82),
+            panel.heightAnchor.constraint(lessThanOrEqualTo: shade.safeAreaLayoutGuide.heightAnchor, multiplier: 0.72),
             title.topAnchor.constraint(equalTo: panel.topAnchor, constant: 24),
             title.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 20),
             title.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -20),
-            body.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 14),
-            body.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 22),
-            body.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -22),
-            agree.topAnchor.constraint(equalTo: body.bottomAnchor, constant: 20),
-            agree.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 24),
+            eulaScroll.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 14),
+            eulaScroll.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 22),
+            eulaScroll.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -22),
+            eulaScroll.heightAnchor.constraint(equalTo: shade.safeAreaLayoutGuide.heightAnchor, multiplier: 0.38),
+            eulaContent.topAnchor.constraint(equalTo: eulaScroll.contentLayoutGuide.topAnchor),
+            eulaContent.leadingAnchor.constraint(equalTo: eulaScroll.contentLayoutGuide.leadingAnchor),
+            eulaContent.trailingAnchor.constraint(equalTo: eulaScroll.contentLayoutGuide.trailingAnchor),
+            eulaContent.bottomAnchor.constraint(equalTo: eulaScroll.contentLayoutGuide.bottomAnchor),
+            eulaContent.widthAnchor.constraint(equalTo: eulaScroll.frameLayoutGuide.widthAnchor),
+            body.topAnchor.constraint(equalTo: eulaContent.topAnchor),
+            body.leadingAnchor.constraint(equalTo: eulaContent.leadingAnchor),
+            body.trailingAnchor.constraint(equalTo: eulaContent.trailingAnchor),
+            body.bottomAnchor.constraint(equalTo: eulaContent.bottomAnchor),
+            cancel.topAnchor.constraint(equalTo: eulaScroll.bottomAnchor, constant: 20),
+            cancel.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 24),
+            cancel.trailingAnchor.constraint(equalTo: panel.centerXAnchor, constant: -8),
+            cancel.heightAnchor.constraint(equalToConstant: 42),
+            agree.leadingAnchor.constraint(equalTo: panel.centerXAnchor, constant: 8),
             agree.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -24),
-            agree.heightAnchor.constraint(equalToConstant: 48),
+            agree.centerYAnchor.constraint(equalTo: cancel.centerYAnchor),
+            agree.heightAnchor.constraint(equalTo: cancel.heightAnchor),
             agree.bottomAnchor.constraint(equalTo: panel.bottomAnchor, constant: -24)
         ])
     }
 
     private func eulaText() -> String {
-        "WevV is for friendly donut discovery, shop collections, tasting notes, and local challenge participation. Users must be legally allowed to create an account in their region and must follow respectful conduct rules. Unsafe, misleading, harassing, explicit, or illegal content may be removed. Reports and blocks help keep the tasting space safe. Repeated violations may lead to account restriction."
+        """
+        WevV is a donut discovery space for shop collections, tasting notes, check-ins, themed rooms, and local flavor challenges.
+
+        You may create an account only if you are old enough and legally allowed to use social apps in your region. You are responsible for truthful account details and for following local rules that apply to your identity, content, and participation.
+
+        Keep every donut post, profile, room line, review, and challenge respectful. Do not post harassment, hate, threats, nudity, sexual material, scams, spam, impersonation, private information, illegal activity, or content that may harm others.
+
+        WevV provides report and block tools. Reported content or accounts may be reviewed, hidden, removed, restricted, or terminated. Serious or repeated violations can lead to loss of posting, room, challenge, profile, or account access without prior notice.
+        """
     }
 
     private func showCreamHint(_ text: String) {
@@ -727,9 +781,23 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
     }
 
     @objc private func toggleEulaAgreement(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        frostingDefaults.set(hasAgreedEula, forKey: agreementKey)
+        setEulaAgreement(!sender.isSelected)
 //        refreshAgreementButton(sender)
+    }
+
+    private func setEulaAgreement(_ isAgreed: Bool) {
+        hasAgreedEula = isAgreed
+        frostingDefaults.set(isAgreed, forKey: agreementKey)
+        refreshWelcomeAgreementControls()
+    }
+
+    private func refreshWelcomeAgreementControls() {
+        welcomeAgreementToggle?.isSelected = hasAgreedEula
+        welcomeStartButton?.isEnabled = true
+        welcomeSignInButton?.isEnabled = true
+        welcomeStartButton?.alpha = hasAgreedEula ? 1 : 0.48
+        welcomeSignInButton?.alpha = hasAgreedEula ? 1 : 0.58
+        welcomeSignInButton?.layer.borderColor = (hasAgreedEula ? lineTone : UIColor(red: 0.86, green: 0.78, blue: 0.83, alpha: 1)).cgColor
     }
 
     @objc private func openEulaButton() {
@@ -739,7 +807,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
     @objc private func openTermsText() {
         let controller = WevVSugarPlainTextController(
             titleText: "Terms of Use",
-            bodyText: "Use WevV for friendly donut discovery, shop collections, check-ins, tasting notes, and challenge participation. Keep every post respectful, avoid unsafe content, and use report or block tools when needed."
+            bodyText: termsText()
         )
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
@@ -748,17 +816,92 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
     @objc private func openPrivacyText() {
         let controller = WevVSugarPlainTextController(
             titleText: "Privacy Policy",
-            bodyText: "WevV stores this demo account state, saved shops, tasting notes, and challenge activity locally on this device. The app uses those records only to refresh the donut experience."
+            bodyText: privacyText()
         )
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
 
+    private func privacyText() -> String {
+        """
+        Effective date: July 27, 2026
+
+        WevV: Community, Voice Sweety is a donut-themed app for discovering shops, saving favorite places, sharing tasting moments, joining themed rooms, checking in, and participating in flavor challenges.
+
+        Information We Use
+        We may use the account details you enter, such as email address, display name, password credential, profile image choice, saved shops, check-in history, challenge activity, room participation state, tasting notes, post content, relationship status, reports, blocks, and local app preferences. Camera, photo, and microphone permissions are requested only when a related feature needs them. Permission choices can be changed in iOS Settings.
+
+        Local Storage
+        This version uses local app storage to simulate a complete app experience. Your account state, saved shops, posts, challenge joins, and profile details are stored in the app sandbox on this device unless a future version clearly adds an online service.
+
+        How We Use Information
+        We use information to keep you signed in, refresh your donut profile, show saved shops and posts, support check-ins, process challenge participation, maintain relationship states, and provide safety tools such as report and block.
+
+        User Content and Safety
+        Donut posts, profile text, reviews, room lines, and challenge entries must be respectful and lawful. Reported or blocked content may be hidden locally and may be reviewed if online moderation is added. Content involving harassment, hate, threats, explicit sexual material, private information, scams, impersonation, illegal activity, or harm to others is not allowed.
+
+        Sharing
+        We do not sell personal information. We do not share local demo data with advertisers. Information may be disclosed only if required by law, needed to protect users, or necessary to operate a future service that is clearly described.
+
+        Children and Eligibility
+        WevV is not directed to children under 13. If your region requires a higher age or guardian consent for social features, you must follow that rule before creating an account.
+
+        Retention and Deletion
+        Logging out clears only the current signed-in state. Deleting an account removes the local profile data controlled by this app on the device. Some content may remain if it has already been copied outside the app by the user.
+
+        Contact
+        For privacy questions, data requests, or safety concerns, contact wevvuser@gmail.com.
+        """
+    }
+
+    private func termsText() -> String {
+        """
+        Effective date: July 27, 2026
+
+        Welcome to WevV: Community, Voice Sweety. These Terms govern your use of WevV, a donut-themed space for shop discovery, tasting posts, check-ins, themed rooms, saved shop collections, and flavor challenges.
+
+        Eligibility
+        You may use WevV only if you are at least 13 years old, or older if your region requires a higher age for social app participation. You must be legally allowed to create an account and take part in the app where you live.
+
+        Account Rules
+        Provide accurate account information and keep your password secure. You are responsible for activity under your account. The fixed test account is intended only for review and development testing.
+
+        Community Conduct
+        Keep WevV cheerful, respectful, and safe. Do not upload, write, or distribute harassment, hate, threats, bullying, nudity, sexually explicit material, scams, spam, impersonation, private information, illegal content, dangerous instructions, or content that infringes another person’s rights.
+
+        Donut Content
+        You keep ownership of your tasting notes, photos, reviews, profile text, and challenge entries. By posting content, you allow WevV to display it inside the app experience so features such as feeds, profiles, saved shops, challenges, and room activity can work.
+
+        Reports, Blocks, and Moderation
+        WevV includes report and block tools to help protect users. Reported content and accounts may be reviewed, hidden, removed, limited, or terminated. We may act against severe violations immediately and may restrict repeated violations without prior notice.
+
+        Challenge and Shop Features
+        Shop recommendations, check-ins, saved shops, room activity, and challenge participation are simulated with local data in this version. They are provided for app experience and review purposes, not as guaranteed real-world availability, scheduling, or shop endorsement.
+
+        Safety and Legal Compliance
+        You agree to follow all applicable laws. Do not use WevV to coordinate harm, collect private data, evade moderation, or interfere with app security.
+
+        Changes
+        We may update these Terms to reflect feature, safety, or legal changes. Continued use after an update means you accept the updated Terms.
+
+        Contact
+        Questions about these Terms or user safety may be sent to wevvuser@gmail.com.
+        """
+    }
+
     @objc private func openSignInLayer() {
+        guard hasAgreedEula else {
+            showCreamHint("Please agree to EULA first")
+            return
+        }
         renderGateMode(.signIn)
     }
 
     @objc private func openSignUpLayer() {
+        guard hasAgreedEula else {
+            showCreamHint("Please agree to EULA first")
+            return
+        }
         renderGateMode(.signUp)
     }
 
