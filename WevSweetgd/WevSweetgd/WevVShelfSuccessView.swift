@@ -1,73 +1,85 @@
 import UIKit
 
 final class WevVShelfSuccessView: UIControl {
-    private let card = UIView()
-    private let okButton = WevVGlazePillButton(title: "Ok")
+    private let pastryCard = UIView()
+    private let okButton = WevVGlazePillButton(title: "OKkA".wevVPastryCrumbBloomRestored)
 
     var onCreamClose: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor.black.withAlphaComponent(0.48)
+        backgroundColor = UIColor(red: 0.12, green: 0.06, blue: 0.12, alpha: 0.5)
         addTarget(self, action: #selector(closeCreamLayer), for: .touchUpInside)
 
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = UIColor(red: 1, green: 0.55, blue: 0.82, alpha: 1)
-        card.layer.cornerRadius = 22
-        card.layer.shadowColor = UIColor.black.cgColor
-        card.layer.shadowOpacity = 0.22
-        card.layer.shadowRadius = 18
-        card.layer.shadowOffset = CGSize(width: 0, height: 10)
-        addSubview(card)
+        pastryCard.translatesAutoresizingMaskIntoConstraints = false
+        pastryCard.backgroundColor = WevVGlazePromptStyler.creamTone
+        pastryCard.layer.cornerRadius = 26
+        pastryCard.layer.shadowColor = UIColor(red: 0.56, green: 0.05, blue: 0.28, alpha: 1).cgColor
+        pastryCard.layer.shadowOpacity = 0.24
+        pastryCard.layer.shadowRadius = 24
+        pastryCard.layer.shadowOffset = CGSize(width: 0, height: 12)
+        addSubview(pastryCard)
 
-        let mark = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
+        let mark = UIView()
         mark.translatesAutoresizingMaskIntoConstraints = false
-        mark.tintColor = UIColor(red: 0.53, green: 0.28, blue: 1, alpha: 1)
-        mark.contentMode = .scaleAspectFit
+        mark.backgroundColor = WevVGlazePromptStyler.pinkTone
+        mark.layer.cornerRadius = 36
+        mark.layer.borderWidth = 12
+        mark.layer.borderColor = UIColor(red: 1, green: 0.76, blue: 0.91, alpha: 1).cgColor
 
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Saved Successfully"
-        title.font = .systemFont(ofSize: 17, weight: .heavy)
-        title.textColor = .black
-        title.textAlignment = .center
+        let check = UIImageView(image: UIImage(systemName: "checkmark"))
+        check.translatesAutoresizingMaskIntoConstraints = false
+        check.tintColor = .white
+        check.contentMode = .scaleAspectFit
+        mark.addSubview(check)
 
-        let note = UILabel()
-        note.translatesAutoresizingMaskIntoConstraints = false
-        note.text = "Added to your favorites. You can find it anytime in your collection."
-        note.font = .systemFont(ofSize: 13, weight: .semibold)
-        note.textColor = .black
-        note.textAlignment = .center
-        note.numberOfLines = 0
+        let glazeTitle = UILabel()
+        glazeTitle.translatesAutoresizingMaskIntoConstraints = false
+        glazeTitle.text = "SJaZvZend? ~SeuccccJeasus.fPujlzl=yF".wevVPastryCrumbBloomRestored
+        glazeTitle.font = .systemFont(ofSize: 17, weight: .heavy)
+        glazeTitle.textColor = WevVGlazePromptStyler.inkTone
+        glazeTitle.textAlignment = .center
+
+        let crumbNote = UILabel()
+        crumbNote.translatesAutoresizingMaskIntoConstraints = false
+        crumbNote.text = "AKd^dvexd# otLo: zy;ofuDrH NfwamvRozrAi^tUe/sb.U RYaoMuA jc:aBnK YfgiAnzdk Ui!tP qaanoyEtbiUmkey Oi=nl QyyoduWrN =c+oBlUlhewcHt?i,oqnN.W".wevVPastryCrumbBloomRestored
+        crumbNote.font = .systemFont(ofSize: 13, weight: .semibold)
+        crumbNote.textColor = WevVGlazePromptStyler.mutedTone
+        crumbNote.textAlignment = .center
+        crumbNote.numberOfLines = 0
 
         okButton.addTarget(self, action: #selector(closeCreamLayer), for: .touchUpInside)
 
-        card.addSubview(mark)
-        card.addSubview(title)
-        card.addSubview(note)
-        card.addSubview(okButton)
+        pastryCard.addSubview(mark)
+        pastryCard.addSubview(glazeTitle)
+        pastryCard.addSubview(crumbNote)
+        pastryCard.addSubview(okButton)
 
         NSLayoutConstraint.activate([
-            card.centerXAnchor.constraint(equalTo: centerXAnchor),
-            card.centerYAnchor.constraint(equalTo: centerYAnchor),
-            card.widthAnchor.constraint(lessThanOrEqualToConstant: 236),
-            card.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.64),
-            mark.centerXAnchor.constraint(equalTo: card.centerXAnchor),
-            mark.topAnchor.constraint(equalTo: card.topAnchor, constant: -38),
-            mark.widthAnchor.constraint(equalToConstant: 82),
-            mark.heightAnchor.constraint(equalToConstant: 82),
-            title.topAnchor.constraint(equalTo: card.topAnchor, constant: 52),
-            title.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 18),
-            title.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -18),
-            note.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 14),
-            note.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 22),
-            note.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -22),
-            okButton.topAnchor.constraint(equalTo: note.bottomAnchor, constant: 20),
-            okButton.leadingAnchor.constraint(equalTo: card.leadingAnchor),
-            okButton.trailingAnchor.constraint(equalTo: card.trailingAnchor),
+            pastryCard.centerXAnchor.constraint(equalTo: centerXAnchor),
+            pastryCard.centerYAnchor.constraint(equalTo: centerYAnchor),
+            pastryCard.widthAnchor.constraint(lessThanOrEqualToConstant: 236),
+            pastryCard.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.64),
+            mark.centerXAnchor.constraint(equalTo: pastryCard.centerXAnchor),
+            mark.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: -38),
+            mark.widthAnchor.constraint(equalToConstant: 72),
+            mark.heightAnchor.constraint(equalToConstant: 72),
+            check.centerXAnchor.constraint(equalTo: mark.centerXAnchor),
+            check.centerYAnchor.constraint(equalTo: mark.centerYAnchor),
+            check.widthAnchor.constraint(equalToConstant: 32),
+            check.heightAnchor.constraint(equalToConstant: 32),
+            glazeTitle.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 52),
+            glazeTitle.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 18),
+            glazeTitle.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -18),
+            crumbNote.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 14),
+            crumbNote.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 22),
+            crumbNote.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -22),
+            okButton.topAnchor.constraint(equalTo: crumbNote.bottomAnchor, constant: 20),
+            okButton.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor),
+            okButton.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor),
             okButton.heightAnchor.constraint(equalToConstant: 50),
-            okButton.bottomAnchor.constraint(equalTo: card.bottomAnchor)
+            okButton.bottomAnchor.constraint(equalTo: pastryCard.bottomAnchor)
         ])
     }
 

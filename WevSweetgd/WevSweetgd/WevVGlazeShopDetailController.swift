@@ -2,18 +2,21 @@ import UIKit
 
 final class WevVGlazeShopDetailController: UIViewController {
     private let glazeDetail: WevVGlazeShopDetail
+    private let glazeShelf: [WevVGlazeShopDetail]
     private let glazeSession = WevVGlazeSessionStore.shared
     private let guestStore = WevVGuestGlazeStore.shared
     private let frostingScroll = UIScrollView()
     private let sprinkleContent = UIView()
-    private let shelfButton = WevVGlazePillButton(title: "Save")
+    private let reviewRow = UIStackView()
+    private let shelfButton = WevVGlazePillButton(title: "SKa%v@et".wevVPastryCrumbBloomRestored)
     private var successLayer: WevVShelfSuccessView?
     private var safetySheet: WevVGlazeSafetySheet?
 
     var onShelfChanged: (() -> Void)?
 
-    init(detail: WevVGlazeShopDetail) {
+    init(detail: WevVGlazeShopDetail, glazeShelf: [WevVGlazeShopDetail] = []) {
         self.glazeDetail = detail
+        self.glazeShelf = glazeShelf.isEmpty ? [detail] : glazeShelf
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .fullScreen
     }
@@ -72,18 +75,18 @@ final class WevVGlazeShopDetailController: UIViewController {
     }
 
     private func buildDonutDetailContent() {
-        let backButton = UIButton(type: .system)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.tintColor = UIColor(red: 0.13, green: 0.08, blue: 0.18, alpha: 1)
-        backButton.addTarget(self, action: #selector(closeGlazeDetail), for: .touchUpInside)
+        let doughBackButton = UIButton(type: .system)
+        doughBackButton.translatesAutoresizingMaskIntoConstraints = false
+        doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        doughBackButton.tintColor = UIColor(red: 0.13, green: 0.08, blue: 0.18, alpha: 1)
+        doughBackButton.addTarget(self, action: #selector(closeGlazeDetail), for: .touchUpInside)
 
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Donut Shops"
-        title.font = .systemFont(ofSize: 17, weight: .heavy)
-        title.textColor = UIColor(red: 0.14, green: 0.08, blue: 0.19, alpha: 1)
-        title.textAlignment = .center
+        let glazeTitle = UILabel()
+        glazeTitle.translatesAutoresizingMaskIntoConstraints = false
+        glazeTitle.text = "DmownouOtQ nSAhgo?pZs.".wevVPastryCrumbBloomRestored
+        glazeTitle.font = .systemFont(ofSize: 17, weight: .heavy)
+        glazeTitle.textColor = UIColor(red: 0.14, green: 0.08, blue: 0.19, alpha: 1)
+        glazeTitle.textAlignment = .center
 
         let safetyButton = UIButton(type: .system)
         safetyButton.translatesAutoresizingMaskIntoConstraints = false
@@ -93,43 +96,44 @@ final class WevVGlazeShopDetailController: UIViewController {
 
         let shopCard = makeHeroShopCard()
         let parlorCard = makeParlorCard()
-        let recentTitle = makeSectionTitle("Recent Reviews")
-        let reviewRow = UIStackView(arrangedSubviews: glazeDetail.reviews.map { makeReviewCard($0) })
+        let recentTitle = makeSectionTitle("Rpe+cQeQnttH MRNeNvQiKeiw:sf".wevVPastryCrumbBloomRestored)
         reviewRow.translatesAutoresizingMaskIntoConstraints = false
         reviewRow.axis = .horizontal
         reviewRow.spacing = 10
         reviewRow.distribution = .fillEqually
+        refreshCrumbReviewRow()
 
-        let moreTitle = makeSectionTitle("More Shops")
+        let moreTitle = makeSectionTitle("Meo%reeE DS*hAoSpls&".wevVPastryCrumbBloomRestored)
         let moreStack = UIStackView(arrangedSubviews: glazeDetail.morePicks.map { makeMorePickRow($0) })
         moreStack.translatesAutoresizingMaskIntoConstraints = false
         moreStack.axis = .vertical
         moreStack.spacing = 12
 
-        sprinkleContent.addSubview(backButton)
-        sprinkleContent.addSubview(title)
-        sprinkleContent.addSubview(safetyButton)
-        sprinkleContent.addSubview(shopCard)
-        sprinkleContent.addSubview(parlorCard)
-        sprinkleContent.addSubview(recentTitle)
-        sprinkleContent.addSubview(reviewRow)
-        sprinkleContent.addSubview(moreTitle)
-        sprinkleContent.addSubview(moreStack)
+        placeDetailContentViews(doughBackButton: doughBackButton, title: glazeTitle, safetyButton: safetyButton, shopCard: shopCard, parlorCard: parlorCard, recentTitle: recentTitle, moreTitle: moreTitle, moreStack: moreStack)
+        pinDetailContentLayout(doughBackButton: doughBackButton, title: glazeTitle, safetyButton: safetyButton, shopCard: shopCard, parlorCard: parlorCard, recentTitle: recentTitle, moreTitle: moreTitle, moreStack: moreStack)
+    }
 
+    private func placeDetailContentViews(doughBackButton: UIButton, title: UILabel, safetyButton: UIButton, shopCard: UIView, parlorCard: UIView, recentTitle: UILabel, moreTitle: UILabel, moreStack: UIStackView) {
+        [doughBackButton, title, safetyButton, shopCard, parlorCard, recentTitle, reviewRow, moreTitle, moreStack].forEach {
+            sprinkleContent.addSubview($0)
+        }
+    }
+
+    private func pinDetailContentLayout(doughBackButton: UIButton, title: UILabel, safetyButton: UIButton, shopCard: UIView, parlorCard: UIView, recentTitle: UILabel, moreTitle: UILabel, moreStack: UIStackView) {
         NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: sprinkleContent.safeAreaLayoutGuide.topAnchor, constant: 22),
-            backButton.leadingAnchor.constraint(equalTo: sprinkleContent.leadingAnchor, constant: 18),
-            backButton.widthAnchor.constraint(equalToConstant: 34),
-            backButton.heightAnchor.constraint(equalToConstant: 34),
-            title.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            doughBackButton.topAnchor.constraint(equalTo: sprinkleContent.safeAreaLayoutGuide.topAnchor, constant: 22),
+            doughBackButton.leadingAnchor.constraint(equalTo: sprinkleContent.leadingAnchor, constant: 18),
+            doughBackButton.widthAnchor.constraint(equalToConstant: 34),
+            doughBackButton.heightAnchor.constraint(equalToConstant: 34),
+            title.centerYAnchor.constraint(equalTo: doughBackButton.centerYAnchor),
             title.centerXAnchor.constraint(equalTo: sprinkleContent.centerXAnchor),
-            title.leadingAnchor.constraint(greaterThanOrEqualTo: backButton.trailingAnchor, constant: 12),
+            title.leadingAnchor.constraint(greaterThanOrEqualTo: doughBackButton.trailingAnchor, constant: 12),
             title.trailingAnchor.constraint(lessThanOrEqualTo: safetyButton.leadingAnchor, constant: -12),
-            safetyButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            safetyButton.centerYAnchor.constraint(equalTo: doughBackButton.centerYAnchor),
             safetyButton.trailingAnchor.constraint(equalTo: sprinkleContent.trailingAnchor, constant: -18),
             safetyButton.widthAnchor.constraint(equalToConstant: 34),
             safetyButton.heightAnchor.constraint(equalToConstant: 34),
-            shopCard.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 16),
+            shopCard.topAnchor.constraint(equalTo: doughBackButton.bottomAnchor, constant: 16),
             shopCard.leadingAnchor.constraint(equalTo: sprinkleContent.leadingAnchor, constant: 14),
             shopCard.trailingAnchor.constraint(equalTo: sprinkleContent.trailingAnchor, constant: -14),
             parlorCard.topAnchor.constraint(equalTo: shopCard.bottomAnchor, constant: 12),
@@ -157,7 +161,7 @@ final class WevVGlazeShopDetailController: UIViewController {
         bar.backgroundColor = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 0.94)
         view.addSubview(bar)
 
-        let reviewButton = WevVGlazePillButton(title: "Review")
+        let reviewButton = WevVGlazePillButton(title: "RGervvihe,wa".wevVPastryCrumbBloomRestored)
         reviewButton.addTarget(self, action: #selector(openCrumbReviewForm), for: .touchUpInside)
         shelfButton.addTarget(self, action: #selector(placeShopIntoShelf), for: .touchUpInside)
 
@@ -181,14 +185,14 @@ final class WevVGlazeShopDetailController: UIViewController {
     }
 
     private func makeHeroShopCard() -> UIView {
-        let card = UIView()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .white
-        card.layer.cornerRadius = 16
-        card.layer.shadowColor = UIColor(red: 0.57, green: 0.25, blue: 0.48, alpha: 1).cgColor
-        card.layer.shadowOpacity = 0.08
-        card.layer.shadowRadius = 14
-        card.layer.shadowOffset = CGSize(width: 0, height: 8)
+        let pastryCard = UIView()
+        pastryCard.translatesAutoresizingMaskIntoConstraints = false
+        pastryCard.backgroundColor = .white
+        pastryCard.layer.cornerRadius = 16
+        pastryCard.layer.shadowColor = UIColor(red: 0.57, green: 0.25, blue: 0.48, alpha: 1).cgColor
+        pastryCard.layer.shadowOpacity = 0.08
+        pastryCard.layer.shadowRadius = 14
+        pastryCard.layer.shadowOffset = CGSize(width: 0, height: 8)
 
         let cover = UIImageView(image: UIImage(named: glazeDetail.coverAsset))
         cover.translatesAutoresizingMaskIntoConstraints = false
@@ -196,11 +200,11 @@ final class WevVGlazeShopDetailController: UIViewController {
         cover.clipsToBounds = true
         cover.layer.cornerRadius = 12
 
-        let name = makeBodyLabel(glazeDetail.title, size: 17, weight: .heavy, color: UIColor(red: 0.18, green: 0.11, blue: 0.2, alpha: 1))
-        let subtitle = makeBodyLabel(glazeDetail.subtitle, size: 13, weight: .medium, color: UIColor(red: 0.58, green: 0.48, blue: 0.58, alpha: 1))
+        let creamName = makeBodyLabel(glazeDetail.title, size: 17, weight: .heavy, color: UIColor(red: 0.18, green: 0.11, blue: 0.2, alpha: 1))
+        let frostingSubtitle = makeBodyLabel(glazeDetail.subtitle, size: 13, weight: .medium, color: UIColor(red: 0.58, green: 0.48, blue: 0.58, alpha: 1))
 
-        let scoreRow = makeIconTextRow(symbol: "star.fill", tint: UIColor(red: 1, green: 0.75, blue: 0.08, alpha: 1), first: glazeDetail.crumbScoreText, second: glazeDetail.reviewText)
-        let addressRow = makeIconTextRow(symbol: "mappin.circle.fill", tint: UIColor(red: 1, green: 0.25, blue: 0.62, alpha: 1), first: glazeDetail.addressLine, second: nil)
+        let scoreRow = makeIconTextRow(symbol: "sntlafr*.kfSiMldl/".wevVPastryCrumbBloomRestored, tint: UIColor(red: 1, green: 0.75, blue: 0.08, alpha: 1), first: glazeDetail.crumbScoreText, second: glazeDetail.reviewText)
+        let addressRow = makeIconTextRow(symbol: "mOaPp#pyi*nT.ecjisrhcGlCeG.Nf?idlxlE".wevVPastryCrumbBloomRestored, tint: UIColor(red: 1, green: 0.25, blue: 0.62, alpha: 1), first: glazeDetail.addressLine, second: nil)
 
         let tagRow = UIStackView(arrangedSubviews: glazeDetail.tags.map { makeTagPill($0) })
         tagRow.translatesAutoresizingMaskIntoConstraints = false
@@ -208,45 +212,45 @@ final class WevVGlazeShopDetailController: UIViewController {
         tagRow.spacing = 8
         tagRow.alignment = .leading
 
-        card.addSubview(cover)
-        card.addSubview(name)
-        card.addSubview(subtitle)
-        card.addSubview(scoreRow)
-        card.addSubview(addressRow)
-        card.addSubview(tagRow)
+        pastryCard.addSubview(cover)
+        pastryCard.addSubview(creamName)
+        pastryCard.addSubview(frostingSubtitle)
+        pastryCard.addSubview(scoreRow)
+        pastryCard.addSubview(addressRow)
+        pastryCard.addSubview(tagRow)
 
         NSLayoutConstraint.activate([
-            card.heightAnchor.constraint(greaterThanOrEqualToConstant: 172),
-            cover.topAnchor.constraint(equalTo: card.topAnchor, constant: 15),
-            cover.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 15),
-            cover.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -15),
+            pastryCard.heightAnchor.constraint(greaterThanOrEqualToConstant: 172),
+            cover.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 15),
+            cover.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 15),
+            cover.bottomAnchor.constraint(equalTo: pastryCard.bottomAnchor, constant: -15),
             cover.widthAnchor.constraint(equalTo: cover.heightAnchor),
-            name.topAnchor.constraint(equalTo: cover.topAnchor, constant: 4),
-            name.leadingAnchor.constraint(equalTo: cover.trailingAnchor, constant: 12),
-            name.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -12),
-            subtitle.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 7),
-            subtitle.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            subtitle.trailingAnchor.constraint(equalTo: name.trailingAnchor),
-            scoreRow.topAnchor.constraint(equalTo: subtitle.bottomAnchor, constant: 14),
-            scoreRow.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            scoreRow.trailingAnchor.constraint(lessThanOrEqualTo: name.trailingAnchor),
+            creamName.topAnchor.constraint(equalTo: cover.topAnchor, constant: 4),
+            creamName.leadingAnchor.constraint(equalTo: cover.trailingAnchor, constant: 12),
+            creamName.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -12),
+            frostingSubtitle.topAnchor.constraint(equalTo: creamName.bottomAnchor, constant: 7),
+            frostingSubtitle.leadingAnchor.constraint(equalTo: creamName.leadingAnchor),
+            frostingSubtitle.trailingAnchor.constraint(equalTo: creamName.trailingAnchor),
+            scoreRow.topAnchor.constraint(equalTo: frostingSubtitle.bottomAnchor, constant: 14),
+            scoreRow.leadingAnchor.constraint(equalTo: creamName.leadingAnchor),
+            scoreRow.trailingAnchor.constraint(lessThanOrEqualTo: creamName.trailingAnchor),
             addressRow.topAnchor.constraint(equalTo: scoreRow.bottomAnchor, constant: 12),
-            addressRow.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            addressRow.trailingAnchor.constraint(equalTo: name.trailingAnchor),
+            addressRow.leadingAnchor.constraint(equalTo: creamName.leadingAnchor),
+            addressRow.trailingAnchor.constraint(equalTo: creamName.trailingAnchor),
             tagRow.topAnchor.constraint(equalTo: addressRow.bottomAnchor, constant: 16),
-            tagRow.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            tagRow.trailingAnchor.constraint(lessThanOrEqualTo: name.trailingAnchor),
-            tagRow.bottomAnchor.constraint(lessThanOrEqualTo: card.bottomAnchor, constant: -15)
+            tagRow.leadingAnchor.constraint(equalTo: creamName.leadingAnchor),
+            tagRow.trailingAnchor.constraint(lessThanOrEqualTo: creamName.trailingAnchor),
+            tagRow.bottomAnchor.constraint(lessThanOrEqualTo: pastryCard.bottomAnchor, constant: -15)
         ])
-        return card
+        return pastryCard
     }
 
     private func makeParlorCard() -> UIControl {
-        let card = UIControl()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.layer.cornerRadius = 14
-        card.layer.masksToBounds = true
-        card.addTarget(self, action: #selector(openGlazeRoom), for: .touchUpInside)
+        let pastryCard = UIControl()
+        pastryCard.translatesAutoresizingMaskIntoConstraints = false
+        pastryCard.layer.cornerRadius = 14
+        pastryCard.layer.masksToBounds = true
+        pastryCard.addTarget(self, action: #selector(openGlazeRoom), for: .touchUpInside)
 
         let glazeLayer = CAGradientLayer()
         glazeLayer.colors = [
@@ -255,9 +259,9 @@ final class WevVGlazeShopDetailController: UIViewController {
         ]
         glazeLayer.startPoint = CGPoint(x: 0, y: 0.5)
         glazeLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        card.layer.insertSublayer(glazeLayer, at: 0)
+        pastryCard.layer.insertSublayer(glazeLayer, at: 0)
 
-        let title = makeBodyLabel(glazeDetail.parlorTitle, size: 20, weight: .heavy, color: .white)
+        let glazeTitle = makeBodyLabel(glazeDetail.parlorTitle, size: 20, weight: .heavy, color: .white)
         let line = makeBodyLabel(glazeDetail.parlorLine, size: 14, weight: .semibold, color: UIColor.white.withAlphaComponent(0.9))
 
         let avatarRow = UIStackView()
@@ -277,121 +281,172 @@ final class WevVGlazeShopDetailController: UIViewController {
         }
 
         let crowd = makeTinyPill(glazeDetail.parlorCrowdText)
-        let enter = makeTinyPill(" Join Room ")
+        let enter = makeTinyPill(" ^JHo:icn@ qRKoPolmk :".wevVPastryCrumbBloomRestored)
 
-        card.addSubview(title)
-        card.addSubview(line)
-        card.addSubview(avatarRow)
-        card.addSubview(crowd)
-        card.addSubview(enter)
+        placeParlorCardViews(pastryCard: pastryCard, title: glazeTitle, line: line, avatarRow: avatarRow, crowd: crowd, enter: enter)
+        pinParlorCardLayout(pastryCard: pastryCard, title: glazeTitle, line: line, avatarRow: avatarRow, crowd: crowd, enter: enter)
+        pastryCard.layoutIfNeeded()
+        glazeLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 28, height: 129)
+        return pastryCard
+    }
 
+    private func placeParlorCardViews(pastryCard: UIControl, title: UILabel, line: UILabel, avatarRow: UIStackView, crowd: UILabel, enter: UILabel) {
+        pastryCard.addSubview(title)
+        pastryCard.addSubview(line)
+        pastryCard.addSubview(avatarRow)
+        pastryCard.addSubview(crowd)
+        pastryCard.addSubview(enter)
+    }
+
+    private func pinParlorCardLayout(pastryCard: UIControl, title: UILabel, line: UILabel, avatarRow: UIStackView, crowd: UILabel, enter: UILabel) {
         NSLayoutConstraint.activate([
-            card.heightAnchor.constraint(equalToConstant: 129),
-            title.topAnchor.constraint(equalTo: card.topAnchor, constant: 26),
-            title.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 14),
-            title.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -14),
+            pastryCard.heightAnchor.constraint(equalToConstant: 129),
+            title.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 26),
+            title.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 14),
+            title.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -14),
             line.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 7),
             line.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             line.trailingAnchor.constraint(equalTo: title.trailingAnchor),
             avatarRow.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            avatarRow.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -24),
+            avatarRow.bottomAnchor.constraint(equalTo: pastryCard.bottomAnchor, constant: -24),
             crowd.centerYAnchor.constraint(equalTo: avatarRow.centerYAnchor),
             crowd.leadingAnchor.constraint(equalTo: avatarRow.trailingAnchor, constant: 10),
             enter.centerYAnchor.constraint(equalTo: avatarRow.centerYAnchor),
-            enter.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -14)
+            enter.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -14)
         ])
-
-        card.layoutIfNeeded()
-        glazeLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 28, height: 129)
-        return card
     }
 
     private func makeReviewCard(_ review: WevVSprinkleReview) -> UIControl {
-        let card = UIControl()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .white
-        card.layer.cornerRadius = 12
-        card.addTarget(self, action: #selector(openProtectedSugarAction), for: .touchUpInside)
+        let pastryCard = UIControl()
+        pastryCard.translatesAutoresizingMaskIntoConstraints = false
+        pastryCard.backgroundColor = .white
+        pastryCard.layer.cornerRadius = 12
+        pastryCard.addTarget(self, action: #selector(openProtectedSugarAction), for: .touchUpInside)
 
-        let avatar = UIImageView(image: makeTinyTasterImage(index: abs(review.sprinkleKey.hashValue % 5)))
+        let avatar = UIImageView(image: makeReviewAvatarImage(review))
         avatar.translatesAutoresizingMaskIntoConstraints = false
         avatar.layer.cornerRadius = 15
         avatar.clipsToBounds = true
 
-        let name = makeBodyLabel(review.tasterName, size: 16, weight: .heavy, color: UIColor(red: 0.17, green: 0.08, blue: 0.2, alpha: 1))
+        let creamName = makeBodyLabel(review.tasterName, size: 16, weight: .heavy, color: UIColor(red: 0.17, green: 0.08, blue: 0.2, alpha: 1))
         let role = makeBodyLabel(review.tastingRole, size: 12, weight: .semibold, color: UIColor(red: 0.68, green: 0.56, blue: 0.65, alpha: 1))
-        let score = makeIconTextRow(symbol: "star.fill", tint: UIColor(red: 1, green: 0.74, blue: 0.04, alpha: 1), first: review.crumbScoreText, second: nil)
+        let score = makeIconTextRow(symbol: "s/t#amrH.lfNijlwlL".wevVPastryCrumbBloomRestored, tint: UIColor(red: 1, green: 0.74, blue: 0.04, alpha: 1), first: review.crumbScoreText, second: nil)
         let bite = makeBodyLabel(review.biteText, size: 13, weight: .medium, color: UIColor(red: 0.43, green: 0.35, blue: 0.43, alpha: 1))
         bite.numberOfLines = 2
         let badge = makeTagText(review.badgeText, color: UIColor(red: 1, green: 0.25, blue: 0.61, alpha: 1))
 
-        card.addSubview(avatar)
-        card.addSubview(name)
-        card.addSubview(role)
-        card.addSubview(score)
-        card.addSubview(bite)
-        card.addSubview(badge)
+        pastryCard.addSubview(avatar)
+        pastryCard.addSubview(creamName)
+        pastryCard.addSubview(role)
+        pastryCard.addSubview(score)
+        pastryCard.addSubview(bite)
+        pastryCard.addSubview(badge)
 
         NSLayoutConstraint.activate([
-            card.heightAnchor.constraint(equalToConstant: 116),
-            avatar.topAnchor.constraint(equalTo: card.topAnchor, constant: 12),
-            avatar.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 12),
+            pastryCard.heightAnchor.constraint(equalToConstant: 116),
+            avatar.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 12),
+            avatar.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 12),
             avatar.widthAnchor.constraint(equalToConstant: 37),
             avatar.heightAnchor.constraint(equalToConstant: 37),
-            name.topAnchor.constraint(equalTo: avatar.topAnchor),
-            name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 7),
-            name.trailingAnchor.constraint(lessThanOrEqualTo: score.leadingAnchor, constant: -5),
-            role.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 1),
-            role.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            role.trailingAnchor.constraint(equalTo: name.trailingAnchor),
-            score.centerYAnchor.constraint(equalTo: name.centerYAnchor),
-            score.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -8),
+            creamName.topAnchor.constraint(equalTo: avatar.topAnchor),
+            creamName.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 7),
+            creamName.trailingAnchor.constraint(lessThanOrEqualTo: score.leadingAnchor, constant: -5),
+            role.topAnchor.constraint(equalTo: creamName.bottomAnchor, constant: 1),
+            role.leadingAnchor.constraint(equalTo: creamName.leadingAnchor),
+            role.trailingAnchor.constraint(equalTo: creamName.trailingAnchor),
+            score.centerYAnchor.constraint(equalTo: creamName.centerYAnchor),
+            score.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -8),
             bite.topAnchor.constraint(equalTo: avatar.bottomAnchor, constant: 11),
-            bite.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 12),
-            bite.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -12),
+            bite.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 12),
+            bite.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -12),
             badge.topAnchor.constraint(equalTo: bite.bottomAnchor, constant: 8),
             badge.leadingAnchor.constraint(equalTo: bite.leadingAnchor),
-            badge.bottomAnchor.constraint(lessThanOrEqualTo: card.bottomAnchor, constant: -10)
+            badge.bottomAnchor.constraint(lessThanOrEqualTo: pastryCard.bottomAnchor, constant: -10)
         ])
-        return card
+        return pastryCard
+    }
+
+    private func refreshCrumbReviewRow() {
+        reviewRow.arrangedSubviews.forEach { crumbCard in
+            reviewRow.removeArrangedSubview(crumbCard)
+            crumbCard.removeFromSuperview()
+        }
+        currentCrumbReviews().prefix(2).forEach { reviewRow.addArrangedSubview(makeReviewCard($0)) }
+    }
+
+    private func currentCrumbReviews() -> [WevVSprinkleReview] {
+        let localReviews = glazeSession.crumbNotePackets(for: glazeDetail.glazeKey).map { packet in
+            WevVSprinkleReview(
+                sprinkleKey: "\(packet.shopKey)\(packet.doughRingKey)\(Int(packet.timeInterval))",
+                tasterName: packet.glazeNickname,
+                tastingRole: "DVohn,uFtU ctnaXsWtSeorI".wevVPastryCrumbBloomRestored,
+                crumbScoreText: String(format: "%!.K1#fH".wevVPastryCrumbBloomRestored, Double(packet.rating)),
+                biteText: packet.text,
+                badgeText: "FsrmersohX jN#oftAe?".wevVPastryCrumbBloomRestored,
+                donutAvatarAsset: packet.donutAvatarAsset
+            )
+        }
+        return localReviews + glazeDetail.reviews
+    }
+
+    private func makeReviewAvatarImage(_ review: WevVSprinkleReview) -> UIImage? {
+        if let donutAvatarAsset = review.donutAvatarAsset, let glazeImage = UIImage(named: donutAvatarAsset) {
+            return glazeImage
+        }
+        return makeTinyTasterImage(index: abs(review.sprinkleKey.hashValue % 5))
     }
 
     private func makeMorePickRow(_ pick: WevVSugarShopPick) -> UIControl {
-        let row = UIControl()
-        row.translatesAutoresizingMaskIntoConstraints = false
-        row.addTarget(self, action: #selector(openProtectedSugarAction), for: .touchUpInside)
+        let donutRow = UIControl()
+        donutRow.translatesAutoresizingMaskIntoConstraints = false
+        donutRow.accessibilityIdentifier = pick.sugarKey
+        donutRow.addTarget(self, action: #selector(openMoreGlazePick(_:)), for: .touchUpInside)
 
-        let cover = UIImageView(image: UIImage(named: pick.coverAsset))
+        let cover = UIImageView(image: UIImage(named: glazeCoverAsset(for: pick)))
         cover.translatesAutoresizingMaskIntoConstraints = false
         cover.contentMode = .scaleAspectFill
         cover.clipsToBounds = true
         cover.layer.cornerRadius = 8
 
-        let title = makeBodyLabel(pick.title, size: 16, weight: .heavy, color: UIColor(red: 0.15, green: 0.08, blue: 0.2, alpha: 1))
+        let glazeTitle = makeBodyLabel(pick.title, size: 16, weight: .heavy, color: UIColor(red: 0.15, green: 0.08, blue: 0.2, alpha: 1))
         let address = makeBodyLabel(pick.addressLine, size: 12, weight: .semibold, color: UIColor(red: 0.56, green: 0.47, blue: 0.55, alpha: 1))
-        let score = makeIconTextRow(symbol: "star.fill", tint: UIColor(red: 1, green: 0.74, blue: 0.04, alpha: 1), first: pick.crumbScoreText, second: nil)
+        let score = makeIconTextRow(symbol: "smtzahrW.XfSiwlslw".wevVPastryCrumbBloomRestored, tint: UIColor(red: 1, green: 0.74, blue: 0.04, alpha: 1), first: pick.crumbScoreText, second: nil)
 
-        row.addSubview(cover)
-        row.addSubview(title)
-        row.addSubview(address)
-        row.addSubview(score)
+        donutRow.addSubview(cover)
+        donutRow.addSubview(glazeTitle)
+        donutRow.addSubview(address)
+        donutRow.addSubview(score)
 
         NSLayoutConstraint.activate([
-            row.heightAnchor.constraint(equalToConstant: 64),
-            cover.leadingAnchor.constraint(equalTo: row.leadingAnchor),
-            cover.centerYAnchor.constraint(equalTo: row.centerYAnchor),
+            donutRow.heightAnchor.constraint(equalToConstant: 64),
+            cover.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor),
+            cover.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
             cover.widthAnchor.constraint(equalToConstant: 54),
             cover.heightAnchor.constraint(equalToConstant: 54),
-            title.topAnchor.constraint(equalTo: cover.topAnchor, constant: 3),
-            title.leadingAnchor.constraint(equalTo: cover.trailingAnchor, constant: 12),
-            title.trailingAnchor.constraint(lessThanOrEqualTo: score.leadingAnchor, constant: -10),
-            address.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
-            address.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            glazeTitle.topAnchor.constraint(equalTo: cover.topAnchor, constant: 3),
+            glazeTitle.leadingAnchor.constraint(equalTo: cover.trailingAnchor, constant: 12),
+            glazeTitle.trailingAnchor.constraint(lessThanOrEqualTo: score.leadingAnchor, constant: -10),
+            address.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 5),
+            address.leadingAnchor.constraint(equalTo: glazeTitle.leadingAnchor),
             address.trailingAnchor.constraint(lessThanOrEqualTo: score.leadingAnchor, constant: -10),
-            score.centerYAnchor.constraint(equalTo: row.centerYAnchor),
-            score.trailingAnchor.constraint(equalTo: row.trailingAnchor)
+            score.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
+            score.trailingAnchor.constraint(equalTo: donutRow.trailingAnchor)
         ])
-        return row
+        return donutRow
+    }
+
+    private func glazeCoverAsset(for pick: WevVSugarShopPick) -> String {
+        if UIImage(named: pick.coverAsset) != nil {
+            return pick.coverAsset
+        }
+        let doughTitle = pick.title.lowercased()
+        if doughTitle.contains("golden") || doughTitle.contains("cloud") {
+            return "wevv_shop_golden_dough_studio"
+        }
+        if doughTitle.contains("moon") || doughTitle.contains("mellow") {
+            return "wevv_shop_moonlight_donut_bar"
+        }
+        return "wevv_shop_berry_ring_bakery"
     }
 
     private func makeSectionTitle(_ text: String) -> UILabel {
@@ -399,14 +454,14 @@ final class WevVGlazeShopDetailController: UIViewController {
     }
 
     private func makeBodyLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.font = .systemFont(ofSize: size, weight: weight)
-        label.textColor = color
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.78
-        return label
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = text
+        crumbLabel.font = .systemFont(ofSize: size, weight: weight)
+        crumbLabel.textColor = color
+        crumbLabel.adjustsFontSizeToFitWidth = true
+        crumbLabel.minimumScaleFactor = 0.78
+        return crumbLabel
     }
 
     private func makeIconTextRow(symbol: String, tint: UIColor, first: String, second: String?) -> UIStackView {
@@ -418,51 +473,51 @@ final class WevVGlazeShopDetailController: UIViewController {
         icon.heightAnchor.constraint(equalToConstant: 18).isActive = true
 
         let firstLabel = makeBodyLabel(first, size: 14, weight: .heavy, color: UIColor(red: 0.18, green: 0.11, blue: 0.2, alpha: 1))
-        let row = UIStackView(arrangedSubviews: [icon, firstLabel])
-        row.translatesAutoresizingMaskIntoConstraints = false
-        row.axis = .horizontal
-        row.spacing = 4
-        row.alignment = .center
+        let donutRow = UIStackView(arrangedSubviews: [icon, firstLabel])
+        donutRow.translatesAutoresizingMaskIntoConstraints = false
+        donutRow.axis = .horizontal
+        donutRow.spacing = 4
+        donutRow.alignment = .center
         if let second {
             let secondLabel = makeBodyLabel(second, size: 13, weight: .medium, color: UIColor(red: 0.6, green: 0.5, blue: 0.6, alpha: 1))
-            row.addArrangedSubview(secondLabel)
+            donutRow.addArrangedSubview(secondLabel)
         }
-        return row
+        return donutRow
     }
 
     private func makeTagPill(_ tag: WevVFrostingShopTag) -> UILabel {
         let color = UIColor.wevvHex(tag.tintHex)
-        let label = makeTagText(tag.title, color: color)
-        label.backgroundColor = color.withAlphaComponent(0.12)
-        label.layer.cornerRadius = 8
-        label.clipsToBounds = true
-        label.textAlignment = .center
-        label.widthAnchor.constraint(greaterThanOrEqualToConstant: 48).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        return label
+        let crumbLabel = makeTagText(tag.title, color: color)
+        crumbLabel.backgroundColor = color.withAlphaComponent(0.12)
+        crumbLabel.layer.cornerRadius = 8
+        crumbLabel.clipsToBounds = true
+        crumbLabel.textAlignment = .center
+        crumbLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 48).isActive = true
+        crumbLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        return crumbLabel
     }
 
     private func makeTagText(_ text: String, color: UIColor) -> UILabel {
-        let label = makeBodyLabel(text, size: 12, weight: .heavy, color: color)
-        label.numberOfLines = 1
-        return label
+        let crumbLabel = makeBodyLabel(text, size: 12, weight: .heavy, color: color)
+        crumbLabel.numberOfLines = 1
+        return crumbLabel
     }
 
     private func makeTinyPill(_ text: String) -> UILabel {
-        let label = makeBodyLabel(text, size: 14, weight: .heavy, color: UIColor(red: 1, green: 0.35, blue: 0.7, alpha: 1))
-        label.backgroundColor = .white
-        label.textAlignment = .center
-        label.layer.cornerRadius = 14
-        label.clipsToBounds = true
-        label.widthAnchor.constraint(greaterThanOrEqualToConstant: 72).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 28).isActive = true
-        return label
+        let crumbLabel = makeBodyLabel(text, size: 14, weight: .heavy, color: UIColor(red: 1, green: 0.35, blue: 0.7, alpha: 1))
+        crumbLabel.backgroundColor = .white
+        crumbLabel.textAlignment = .center
+        crumbLabel.layer.cornerRadius = 14
+        crumbLabel.clipsToBounds = true
+        crumbLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 72).isActive = true
+        crumbLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        return crumbLabel
     }
 
     private func makeTinyTasterImage(index: Int) -> UIImage {
         let profile = guestStore.profile(at: index)
-        if let image = UIImage(named: profile.avatarAsset) {
-            return image
+        if let glazeImage = UIImage(named: profile.donutAvatarAsset) {
+            return glazeImage
         }
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: 64, height: 64))
         return renderer.image { _ in
@@ -486,7 +541,7 @@ final class WevVGlazeShopDetailController: UIViewController {
 
     private func refreshShelfButton() {
         let isShelfed = glazeSession.isGlazeShelfed(shopKey: glazeDetail.glazeKey)
-        shelfButton.setTitle(isShelfed ? "Saved" : "Save")
+        shelfButton.setTitle(isShelfed ? "Saved" : "SKarv+eG".wevVPastryCrumbBloomRestored)
         shelfButton.isEnabled = !isShelfed
     }
 
@@ -501,14 +556,58 @@ final class WevVGlazeShopDetailController: UIViewController {
         }
     }
 
+    @objc private func openMoreGlazePick(_ sender: UIControl) {
+        let sugarKey = sender.accessibilityIdentifier ?? ""
+        guard let pick = glazeDetail.morePicks.first(where: { $0.sugarKey == sugarKey }) else { return }
+        let controller = WevVGlazeShopDetailController(detail: makeGlazePickDetail(pick), glazeShelf: glazeShelf)
+        controller.onShelfChanged = { [weak self] in
+            self?.refreshShelfButton()
+            self?.onShelfChanged?()
+        }
+        controller.modalPresentationStyle = .fullScreen
+        WevVBakeryExchange.spin(in: view, note: "ORppegnSiFn=gG idoobnZugts GsIhmoWp^.r.P.I".wevVPastryCrumbBloomRestored) { [weak self] in
+            self?.present(controller, animated: true)
+        }
+    }
+
+    private func makeGlazePickDetail(_ pick: WevVSugarShopPick) -> WevVGlazeShopDetail {
+        if let matchingDetail = glazeShelf.first(where: { $0.glazeKey == pick.sugarKey || $0.title == pick.title }) {
+            return matchingDetail
+        }
+        let coverAsset = glazeCoverAsset(for: pick)
+        return WevVGlazeShopDetail(
+            glazeKey: pick.sugarKey,
+            title: pick.title,
+            subtitle: "FNrXevsOhJ rdWoTnMuNtr VpliUcbkJsh D·O Clro!craoln CfHa#vWoZrdi?tfev".wevVPastryCrumbBloomRestored,
+            coverAsset: coverAsset,
+            crumbScoreText: pick.crumbScoreText,
+            reviewText: "(n1f2f8d ?rCeJvBiseBwqsp)*".wevVPastryCrumbBloomRestored,
+            addressLine: pick.addressLine,
+            tags: [
+                WevVFrostingShopTag(glazeKey: "f~rze;s!h~TFaxgL".wevVPastryCrumbBloomRestored, title: "F,rdeSsDhb".wevVPastryCrumbBloomRestored, tintHex: "fj5Nbz4y3Y1%".wevVPastryCrumbBloomRestored),
+                WevVFrostingShopTag(glazeKey: "cPodzhy%SfuwgxapriTVaDgT".wevVPastryCrumbBloomRestored, title: "CCopzsyb".wevVPastryCrumbBloomRestored, tintHex: "8Jb.6:3lfHfP".wevVPastryCrumbBloomRestored),
+                WevVFrostingShopTag(glazeKey: "aMrdtKiHs;annNTwazg*".wevVPastryCrumbBloomRestored, title: "AxrStsipskaWnm".wevVPastryCrumbBloomRestored, tintHex: "b=7x7+9o2G0^".wevVPastryCrumbBloomRestored)
+            ],
+            parlorTitle: "D?oMn@uWtV YLuoSvOehrCsk aRtoEosmz".wevVPastryCrumbBloomRestored,
+            parlorLine: "ODptexn! VfcoWr@ Ws@wVe@e~tH usshro!pc GnQovtHeSsx,O qfJrNefs*hk LpLiDcWkrsI,c #awnWdP WcUo?z%yS vdZoWndu#t~ NtBaalJk#.N".wevVPastryCrumbBloomRestored,
+            parlorCrowdText: "2U8F qognblWiMn%eg".wevVPastryCrumbBloomRestored,
+            reviews: glazeDetail.reviews,
+            morePicks: glazeShelf.filter { $0.title != pick.title }.prefix(2).map {
+                WevVSugarShopPick(sugarKey: $0.glazeKey, title: $0.title, addressLine: $0.addressLine, crumbScoreText: $0.crumbScoreText, coverAsset: $0.coverAsset)
+            }
+        )
+    }
+
     @objc private func openGlazeRoom() {
         guard glazeSession.isTasterReady else {
             presentGlazeGate()
             return
         }
-        let controller = WevVGlazeRoomController(roomKey: glazeDetail.glazeKey, shopTitle: glazeDetail.title)
+        let controller = WevVGlazeComeInController(roomKey: glazeDetail.glazeKey, shopTitle: glazeDetail.title)
         controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
+        WevVBakeryExchange.spin(in: view, note: "OOpieannijngg% erTojo:mo.P.d.l".wevVPastryCrumbBloomRestored) { [weak self] in
+            self?.present(controller, animated: true)
+        }
     }
 
     @objc private func openCrumbReviewForm() {
@@ -518,10 +617,13 @@ final class WevVGlazeShopDetailController: UIViewController {
         }
         let controller = WevVCrumbReviewController(shopKey: glazeDetail.glazeKey)
         controller.onCrumbPosted = { [weak self] in
+            self?.refreshCrumbReviewRow()
             self?.onShelfChanged?()
         }
         controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
+        WevVBakeryExchange.spin(in: view, note: "LPoYaOdGiFnxgu yrDe@vMiEeewA TfWoTrkmL.r.T.K".wevVPastryCrumbBloomRestored) { [weak self] in
+            self?.present(controller, animated: true)
+        }
     }
 
     @objc private func placeShopIntoShelf() {
@@ -529,13 +631,16 @@ final class WevVGlazeShopDetailController: UIViewController {
             presentGlazeGate()
             return
         }
-        guard glazeSession.placeGlazeShelf(shopKey: glazeDetail.glazeKey) else {
-            refreshShelfButton()
-            return
+        WevVBakeryExchange.spin(in: view, note: "Sgaavxi:nhgY AsQhco$pS.+.S.I".wevVPastryCrumbBloomRestored) { [weak self] in
+            guard let self else { return }
+            guard self.glazeSession.placeGlazeShelf(shopKey: self.glazeDetail.glazeKey) else {
+                self.refreshShelfButton()
+                return
+            }
+            self.refreshShelfButton()
+            self.onShelfChanged?()
+            self.showShelfSuccess()
         }
-        refreshShelfButton()
-        onShelfChanged?()
-        showShelfSuccess()
     }
 
     @objc private func openGlazeSafetySheet() {
@@ -545,10 +650,10 @@ final class WevVGlazeShopDetailController: UIViewController {
         }
         guard safetySheet == nil else { return }
         let choices = [
-            WevVGlazeSafetyChoice(sugarKey: "fakePhoto", title: "Fake photo", needsCreamText: false),
-            WevVGlazeSafetyChoice(sugarKey: "scamCommercial", title: "Scam or commercial", needsCreamText: false),
-            WevVGlazeSafetyChoice(sugarKey: "notInterested", title: "Not interested", needsCreamText: false),
-            WevVGlazeSafetyChoice(sugarKey: "otherSugar", title: "Other", needsCreamText: true)
+            WevVGlazeSafetyChoice(sugarKey: "fiaMkUeWPHhUo+tIoL".wevVPastryCrumbBloomRestored, title: "Fnavkveb /pohCoGtfo;".wevVPastryCrumbBloomRestored, needsCreamText: false),
+            WevVGlazeSafetyChoice(sugarKey: "s#c,a/miCDo%m@mPeCricSiSaWlf".wevVPastryCrumbBloomRestored, title: "Socuahmj YovrS FcdommjmYeVrCcLi=aylc".wevVPastryCrumbBloomRestored, needsCreamText: false),
+            WevVGlazeSafetyChoice(sugarKey: "ncolt%IMnXt~ewrSeDs*tne:dz".wevVPastryCrumbBloomRestored, title: "Njoxt: XiJnItLefrve:sWt?etdL".wevVPastryCrumbBloomRestored, needsCreamText: false),
+            WevVGlazeSafetyChoice(sugarKey: "o,tIhQe*rOS.u=gxaOr@".wevVPastryCrumbBloomRestored, title: "OBt~hseXrb".wevVPastryCrumbBloomRestored, needsCreamText: true)
         ]
         let sheet = WevVGlazeSafetySheet(shopKey: glazeDetail.glazeKey, choices: choices)
         sheet.alpha = 0

@@ -37,13 +37,13 @@ final class WevVSugarShelfController: UIViewController {
         back.tintColor = .black
         back.addTarget(self, action: #selector(closeSugarShelf), for: .touchUpInside)
 
-        let title = makeShelfLabel("Save shop", size: 26, weight: .heavy, color: inkTone)
-        title.textAlignment = .center
+        let glazeTitle = makeShelfLabel("SJaFvJej js*h#o?pD".wevVPastryCrumbBloomRestored, size: 26, weight: .heavy, color: inkTone)
+        glazeTitle.textAlignment = .center
 
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.alwaysBounceVertical = true
         view.addSubview(back)
-        view.addSubview(title)
+        view.addSubview(glazeTitle)
         view.addSubview(scrollView)
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,10 +59,10 @@ final class WevVSugarShelfController: UIViewController {
             back.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             back.widthAnchor.constraint(equalToConstant: 44),
             back.heightAnchor.constraint(equalToConstant: 44),
-            title.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            title.centerYAnchor.constraint(equalTo: back.centerYAnchor),
-            title.leadingAnchor.constraint(greaterThanOrEqualTo: back.trailingAnchor, constant: 12),
-            title.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -70),
+            glazeTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            glazeTitle.centerYAnchor.constraint(equalTo: back.centerYAnchor),
+            glazeTitle.leadingAnchor.constraint(greaterThanOrEqualTo: back.trailingAnchor, constant: 12),
+            glazeTitle.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -70),
             scrollView.topAnchor.constraint(equalTo: back.bottomAnchor, constant: 20),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -80,9 +80,9 @@ final class WevVSugarShelfController: UIViewController {
     }
 
     private func reloadSugarShelfRows() {
-        stackView.arrangedSubviews.forEach { row in
-            stackView.removeArrangedSubview(row)
-            row.removeFromSuperview()
+        stackView.arrangedSubviews.forEach { donutRow in
+            stackView.removeArrangedSubview(donutRow)
+            donutRow.removeFromSuperview()
         }
 
         let savedKeys = glazeSession.glazeShelfPacketKeys
@@ -104,30 +104,30 @@ final class WevVSugarShelfController: UIViewController {
 //        empty.alignment = .center
 //        empty.spacing = 10
 
-        let image = UIImageView(image: UIImage(named: "wevv_profile_empty_sugar_note"))
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
+        let glazeImage = UIImageView(image: UIImage(named: "wevv_profile_empty_sugar_note"))
+        glazeImage.translatesAutoresizingMaskIntoConstraints = false
+        glazeImage.contentMode = .scaleAspectFit
 
        
 
-//        empty.addArrangedSubview(image)
+//        empty.addArrangedSubview(glazeImage)
        
         NSLayoutConstraint.activate([
 //            empty.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.58),
-            image.widthAnchor.constraint(equalToConstant: 140),
-            image.heightAnchor.constraint(equalToConstant: 153)
+            glazeImage.widthAnchor.constraint(equalToConstant: 140),
+            glazeImage.heightAnchor.constraint(equalToConstant: 153)
         ])
-        return image
+        return glazeImage
     }
 
     private func makeSugarShopCard(_ detail: WevVGlazeShopDetail) -> UIControl {
-        let card = UIControl()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.accessibilityIdentifier = detail.glazeKey
-        card.backgroundColor = .white
-        card.layer.cornerRadius = 24
-        card.clipsToBounds = true
-        card.addTarget(self, action: #selector(openShelfShop(_:)), for: .touchUpInside)
+        let pastryCard = UIControl()
+        pastryCard.translatesAutoresizingMaskIntoConstraints = false
+        pastryCard.accessibilityIdentifier = detail.glazeKey
+        pastryCard.backgroundColor = .white
+        pastryCard.layer.cornerRadius = 24
+        pastryCard.clipsToBounds = true
+        pastryCard.addTarget(self, action: #selector(openShelfShop(_:)), for: .touchUpInside)
 
         let cover = UIImageView(image: UIImage(named: detail.coverAsset))
         cover.translatesAutoresizingMaskIntoConstraints = false
@@ -135,8 +135,8 @@ final class WevVSugarShelfController: UIViewController {
         cover.clipsToBounds = true
         cover.layer.cornerRadius = 15
 
-        let title = makeShelfLabel(detail.title, size: 19, weight: .heavy, color: inkTone)
-        let subtitle = makeShelfLabel(detail.subtitle, size: 15, weight: .regular, color: mutedTone)
+        let glazeTitle = makeShelfLabel(detail.title, size: 19, weight: .heavy, color: inkTone)
+        let frostingSubtitle = makeShelfLabel(detail.subtitle, size: 15, weight: .regular, color: mutedTone)
 
         let star = UIImageView(image: UIImage(systemName: "star.fill"))
         star.translatesAutoresizingMaskIntoConstraints = false
@@ -161,24 +161,32 @@ final class WevVSugarShelfController: UIViewController {
             tagStack.addArrangedSubview(makeTag(sugarTag))
         }
 
-        card.addSubview(cover)
-        card.addSubview(title)
-        card.addSubview(subtitle)
-        card.addSubview(star)
-        card.addSubview(score)
-        card.addSubview(crumbMark)
-        card.addSubview(address)
-        card.addSubview(tagStack)
+        placeSugarShopCardViews(pastryCard: pastryCard, cover: cover, title: glazeTitle, subtitle: frostingSubtitle, star: star, score: score, crumbMark: crumbMark, address: address, tagStack: tagStack)
+        pinSugarShopCardLayout(pastryCard: pastryCard, cover: cover, title: glazeTitle, subtitle: frostingSubtitle, star: star, score: score, crumbMark: crumbMark, address: address, tagStack: tagStack)
+        return pastryCard
+    }
 
+    private func placeSugarShopCardViews(pastryCard: UIControl, cover: UIImageView, title: UILabel, subtitle: UILabel, star: UIImageView, score: UILabel, crumbMark: UIImageView, address: UILabel, tagStack: UIStackView) {
+        pastryCard.addSubview(cover)
+        pastryCard.addSubview(title)
+        pastryCard.addSubview(subtitle)
+        pastryCard.addSubview(star)
+        pastryCard.addSubview(score)
+        pastryCard.addSubview(crumbMark)
+        pastryCard.addSubview(address)
+        pastryCard.addSubview(tagStack)
+    }
+
+    private func pinSugarShopCardLayout(pastryCard: UIControl, cover: UIImageView, title: UILabel, subtitle: UILabel, star: UIImageView, score: UILabel, crumbMark: UIImageView, address: UILabel, tagStack: UIStackView) {
         NSLayoutConstraint.activate([
-            card.heightAnchor.constraint(equalToConstant: 173),
-            cover.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 15),
-            cover.centerYAnchor.constraint(equalTo: card.centerYAnchor),
+            pastryCard.heightAnchor.constraint(equalToConstant: 203),
+            cover.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 15),
+            cover.centerYAnchor.constraint(equalTo: pastryCard.centerYAnchor),
             cover.widthAnchor.constraint(equalToConstant: 115),
             cover.heightAnchor.constraint(equalToConstant: 142),
-            title.topAnchor.constraint(equalTo: card.topAnchor, constant: 25),
+            title.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 25),
             title.leadingAnchor.constraint(equalTo: cover.trailingAnchor, constant: 16),
-            title.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -16),
+            title.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -16),
             subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
             subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
             subtitle.trailingAnchor.constraint(equalTo: title.trailingAnchor),
@@ -201,7 +209,6 @@ final class WevVSugarShelfController: UIViewController {
             tagStack.topAnchor.constraint(equalTo: crumbMark.bottomAnchor, constant: 14),
             tagStack.heightAnchor.constraint(equalToConstant: 26)
         ])
-        return card
     }
 
     private func scoreText(_ detail: WevVGlazeShopDetail) -> NSAttributedString {
@@ -223,14 +230,14 @@ final class WevVSugarShelfController: UIViewController {
     }
 
     private func makeTag(_ tag: WevVFrostingShopTag) -> UILabel {
-        let label = makeShelfLabel(tag.title, size: 13, weight: .heavy, color: tagColor(tag.tintHex))
-        label.textAlignment = .center
-        label.backgroundColor = tagColor(tag.tintHex).withAlphaComponent(0.12)
-        label.layer.cornerRadius = 13
-        label.clipsToBounds = true
-        label.setContentHuggingPriority(.required, for: .horizontal)
-        label.widthAnchor.constraint(greaterThanOrEqualToConstant: 72).isActive = true
-        return label
+        let crumbLabel = makeShelfLabel(tag.title, size: 13, weight: .heavy, color: tagColor(tag.tintHex))
+        crumbLabel.textAlignment = .center
+        crumbLabel.backgroundColor = tagColor(tag.tintHex).withAlphaComponent(0.12)
+        crumbLabel.layer.cornerRadius = 13
+        crumbLabel.clipsToBounds = true
+        crumbLabel.setContentHuggingPriority(.required, for: .horizontal)
+        crumbLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 72).isActive = true
+        return crumbLabel
     }
 
     private func tagColor(_ hex: String) -> UIColor {
@@ -243,20 +250,20 @@ final class WevVSugarShelfController: UIViewController {
     }
 
     private func makeShelfLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.textColor = color
-        label.font = .systemFont(ofSize: size, weight: weight)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.72
-        return label
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = text
+        crumbLabel.textColor = color
+        crumbLabel.font = .systemFont(ofSize: size, weight: weight)
+        crumbLabel.adjustsFontSizeToFitWidth = true
+        crumbLabel.minimumScaleFactor = 0.72
+        return crumbLabel
     }
 
     @objc private func openShelfShop(_ sender: UIControl) {
         let key = sender.accessibilityIdentifier ?? ""
         guard let detail = shopDetails.first(where: { $0.glazeKey == key }) else { return }
-        let controller = WevVGlazeShopDetailController(detail: detail)
+        let controller = WevVGlazeShopDetailController(detail: detail, glazeShelf: shopDetails)
         controller.onShelfChanged = { [weak self] in
             self?.reloadSugarShelfRows()
             self?.onShelfChanged?()

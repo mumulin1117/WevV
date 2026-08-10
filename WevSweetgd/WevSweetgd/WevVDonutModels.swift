@@ -8,7 +8,7 @@ struct WevVGlazeShop {
 }
 
 struct WevVDailyCheckin {
-    let frostingKey: String
+    let doughRingKey: String
     let title: String
     let caption: String
     let cardAsset: String
@@ -33,7 +33,7 @@ struct WevVSprinkleChallenge {
 struct WevVGlazeAuthor {
     let glazeKey: String
     let name: String
-    let avatarAsset: String
+    let donutAvatarAsset: String
 }
 
 struct WevVSprinkleFeedItem {
@@ -47,9 +47,9 @@ struct WevVSprinkleFeedItem {
 }
 
 struct WevVCreamStat {
-    let followingCount: Int
-    let followerCount: Int
-    let shopShelfCount: Int
+    let glazeFollowCount: Int
+    let sprinkleFanCount: Int
+    let bakeryShelfCount: Int
     let vaultCount: Int
 }
 
@@ -59,13 +59,13 @@ struct WevVSugarPost {
     let note: String
 }
 
-struct WevVFrostingUser {
-    let frostingKey: String
+struct WevVCreamRingTaster {
+    let doughRingKey: String
     let email: String
-    let nickname: String
-    let avatarAsset: String
-    let creamStat: WevVCreamStat
-    let sugarPosts: [WevVSugarPost]
+    let glazeNickname: String
+    let donutAvatarAsset: String
+    let creamStats: WevVCreamStat
+    let sugarNotes: [WevVSugarPost]
 }
 
 enum WevVDonutMainSection: Int {

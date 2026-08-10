@@ -3,8 +3,19 @@ import UIKit
 private struct WevVSugarReply {
     let sugarKey: String
     let guestKey: String
-    let text: String
+    let sugarText: String
     let timeText: String
+    let tasterName: String?
+    let donutAvatarAsset: String?
+
+    init(sugarKey: String, guestKey: String, text: String, timeText: String, tasterName: String? = nil, donutAvatarAsset: String? = nil) {
+        self.sugarKey = sugarKey
+        self.guestKey = guestKey
+        self.sugarText = text
+        self.timeText = timeText
+        self.tasterName = tasterName
+        self.donutAvatarAsset = donutAvatarAsset
+    }
 }
 
 final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDelegate {
@@ -14,15 +25,15 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
     private let glazeSession = WevVGlazeSessionStore.shared
     private let guestStore = WevVGuestGlazeStore.shared
 
-    private let scrollView = UIScrollView()
-    private let stackView = UIStackView()
+    private let sugarScrollView = UIScrollView()
+    private let sugarStackView = UIStackView()
     private let followButton = UIButton(type: .system)
     private let replyField = UITextField()
     private let bottomTray = UIView()
     private var trayBottomConstraint: NSLayoutConstraint?
     private var sugarReplies: [WevVSugarReply] = [
-        WevVSugarReply(sugarKey: "brunoCreamOne", guestKey: "arloSkyGlaze", text: "Great shot! I love it", timeText: "2 mins ago"),
-        WevVSugarReply(sugarKey: "brunoCreamTwo", guestKey: "blairBlueGlaze", text: "Great shot! I love it", timeText: "2 mins ago")
+        WevVSugarReply(sugarKey: "b?rNulnOoBCHr/eDaHmRO#nweZ".wevVPastryCrumbBloomRestored, guestKey: "aRrVlpotS+k?yMG&l=aHz;ee".wevVPastryCrumbBloomRestored, text: "G;rIebagtR hs/hJomt/!g VIL @lMoivteo Xietk".wevVPastryCrumbBloomRestored, timeText: "2l /mAinnpsZ raZguoi".wevVPastryCrumbBloomRestored),
+        WevVSugarReply(sugarKey: "b@rguKnyojCcr!erahmiTXwno+".wevVPastryCrumbBloomRestored, guestKey: "b~lna:iZrsBYlVu;esG:lkauzzee".wevVPastryCrumbBloomRestored, text: "Ghr&e^awta msUhJo,tk!m dIW xleo@vReH ~iBtX".wevVPastryCrumbBloomRestored, timeText: "2Y /mUiKnysL oaYgXo&".wevVPastryCrumbBloomRestored)
     ]
 
     init(sprinkleMoment: WevVSprinkleFeedItem) {
@@ -31,7 +42,7 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iDntiQte(&cVondzedr;:~)+ VhsaZs/ #n#octz abFeBeAnJ iiDmbpnlhe%mbe,n%tNe/dq".wevVPastryCrumbBloomRestored)
     }
 
     override func viewDidLoad() {
@@ -57,16 +68,16 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
         frostingGlow.backgroundColor = UIColor(red: 1.0, green: 0.77, blue: 0.86, alpha: 1.0)
         view.addSubview(frostingGlow)
 
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.alwaysBounceVertical = true
-        scrollView.keyboardDismissMode = .interactive
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 132, right: 0)
-        view.addSubview(scrollView)
+        sugarScrollView.translatesAutoresizingMaskIntoConstraints = false
+        sugarScrollView.alwaysBounceVertical = true
+        sugarScrollView.keyboardDismissMode = .interactive
+        sugarScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 132, right: 0)
+        view.addSubview(sugarScrollView)
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 18
-        scrollView.addSubview(stackView)
+        sugarStackView.translatesAutoresizingMaskIntoConstraints = false
+        sugarStackView.axis = .vertical
+        sugarStackView.spacing = 18
+        sugarScrollView.addSubview(sugarStackView)
 
         bottomTray.translatesAutoresizingMaskIntoConstraints = false
         bottomTray.backgroundColor = .white
@@ -78,24 +89,24 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
             frostingGlow.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             frostingGlow.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             frostingGlow.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 28),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 30),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -30),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -150),
+            sugarScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            sugarScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            sugarScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            sugarScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            sugarStackView.topAnchor.constraint(equalTo: sugarScrollView.contentLayoutGuide.topAnchor, constant: 28),
+            sugarStackView.leadingAnchor.constraint(equalTo: sugarScrollView.frameLayoutGuide.leadingAnchor, constant: 30),
+            sugarStackView.trailingAnchor.constraint(equalTo: sugarScrollView.frameLayoutGuide.trailingAnchor, constant: -30),
+            sugarStackView.bottomAnchor.constraint(equalTo: sugarScrollView.contentLayoutGuide.bottomAnchor, constant: -150),
             bottomTray.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bottomTray.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bottomTray.heightAnchor.constraint(equalToConstant: 88),
             trayBottomConstraint!
         ])
 
-        stackView.addArrangedSubview(makeSugarHeader())
-        stackView.addArrangedSubview(makeHeroPanel())
-        stackView.addArrangedSubview(makeMomentText())
-        stackView.addArrangedSubview(makeReplyTitle())
+        sugarStackView.addArrangedSubview(makeSugarHeader())
+        sugarStackView.addArrangedSubview(makeHeroPanel())
+        sugarStackView.addArrangedSubview(makeMomentText())
+        sugarStackView.addArrangedSubview(makeReplyTitle())
         rebuildSugarReplies()
         buildBottomTray()
         let sugarTap = UITapGestureRecognizer(target: self, action: #selector(endSugarEditing))
@@ -107,11 +118,11 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
         let header = UIView()
         header.translatesAutoresizingMaskIntoConstraints = false
 
-        let backButton = UIButton(type: .system)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.tintColor = .black
-        backButton.addTarget(self, action: #selector(closeSprinkleMoment), for: .touchUpInside)
+        let doughBackButton = UIButton(type: .system)
+        doughBackButton.translatesAutoresizingMaskIntoConstraints = false
+        doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        doughBackButton.tintColor = .black
+        doughBackButton.addTarget(self, action: #selector(closeSprinkleMoment), for: .touchUpInside)
 
         let avatarButton = UIButton(type: .custom)
         avatarButton.translatesAutoresizingMaskIntoConstraints = false
@@ -121,17 +132,17 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
         avatarButton.imageView?.contentMode = .scaleAspectFill
         avatarButton.addTarget(self, action: #selector(openBoundGuestProfile), for: .touchUpInside)
 
-        let nameLabel = UILabel()
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.text = boundGuest?.name ?? sprinkleMoment.author.name
-        nameLabel.font = .systemFont(ofSize: 20, weight: .bold)
-        nameLabel.textColor = UIColor(red: 0.12, green: 0.05, blue: 0.08, alpha: 1)
-        nameLabel.adjustsFontSizeToFitWidth = true
-        nameLabel.minimumScaleFactor = 0.72
+        let creamNameLabel = UILabel()
+        creamNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        creamNameLabel.text = boundGuest?.name ?? sprinkleMoment.author.name
+        creamNameLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        creamNameLabel.textColor = UIColor(red: 0.12, green: 0.05, blue: 0.08, alpha: 1)
+        creamNameLabel.adjustsFontSizeToFitWidth = true
+        creamNameLabel.minimumScaleFactor = 0.72
 
         followButton.translatesAutoresizingMaskIntoConstraints = false
-        followButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        followButton.layer.cornerRadius = 25
+        followButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
+        followButton.layer.cornerRadius = 17.5
         followButton.clipsToBounds = true
         followButton.addTarget(self, action: #selector(toggleSugarFollow), for: .touchUpInside)
 
@@ -143,162 +154,194 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
         safetyButton.layer.cornerRadius = 17
         safetyButton.addTarget(self, action: #selector(openSugarMomentSafety), for: .touchUpInside)
 
-        header.addSubview(backButton)
-        header.addSubview(avatarButton)
-        header.addSubview(nameLabel)
-        header.addSubview(followButton)
-        header.addSubview(safetyButton)
+        placeSugarHeaderViews(header: header, doughBackButton: doughBackButton, avatarButton: avatarButton, creamNameLabel: creamNameLabel, safetyButton: safetyButton)
+        pinSugarHeaderLayout(header: header, doughBackButton: doughBackButton, avatarButton: avatarButton, creamNameLabel: creamNameLabel, safetyButton: safetyButton)
+        return header
+    }
 
+    private func placeSugarHeaderViews(header: UIView, doughBackButton: UIButton, avatarButton: UIButton, creamNameLabel: UILabel, safetyButton: UIButton) {
+        [doughBackButton, avatarButton, creamNameLabel, followButton, safetyButton].forEach {
+            header.addSubview($0)
+        }
+    }
+
+    private func pinSugarHeaderLayout(header: UIView, doughBackButton: UIButton, avatarButton: UIButton, creamNameLabel: UILabel, safetyButton: UIButton) {
         NSLayoutConstraint.activate([
             header.heightAnchor.constraint(equalToConstant: 74),
-            backButton.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: -8),
-            backButton.centerYAnchor.constraint(equalTo: avatarButton.centerYAnchor),
-            backButton.widthAnchor.constraint(equalToConstant: 38),
-            backButton.heightAnchor.constraint(equalToConstant: 44),
-            avatarButton.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 20),
+            doughBackButton.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: -8),
+            doughBackButton.centerYAnchor.constraint(equalTo: avatarButton.centerYAnchor),
+            doughBackButton.widthAnchor.constraint(equalToConstant: 38),
+            doughBackButton.heightAnchor.constraint(equalToConstant: 44),
+            avatarButton.leadingAnchor.constraint(equalTo: doughBackButton.trailingAnchor, constant: 20),
             avatarButton.topAnchor.constraint(equalTo: header.topAnchor),
             avatarButton.widthAnchor.constraint(equalToConstant: 52),
             avatarButton.heightAnchor.constraint(equalToConstant: 52),
-            nameLabel.leadingAnchor.constraint(equalTo: avatarButton.trailingAnchor, constant: 16),
-            nameLabel.centerYAnchor.constraint(equalTo: avatarButton.centerYAnchor),
-            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: followButton.leadingAnchor, constant: -14),
+            creamNameLabel.leadingAnchor.constraint(equalTo: avatarButton.trailingAnchor, constant: 16),
+            creamNameLabel.centerYAnchor.constraint(equalTo: avatarButton.centerYAnchor),
+            creamNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: followButton.leadingAnchor, constant: -14),
             followButton.trailingAnchor.constraint(equalTo: safetyButton.leadingAnchor, constant: -10),
             followButton.centerYAnchor.constraint(equalTo: avatarButton.centerYAnchor),
-            followButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 104),
-            followButton.heightAnchor.constraint(equalToConstant: 50),
+            followButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 84),
+            followButton.heightAnchor.constraint(equalToConstant: 35),
             safetyButton.trailingAnchor.constraint(equalTo: header.trailingAnchor),
             safetyButton.centerYAnchor.constraint(equalTo: avatarButton.centerYAnchor),
             safetyButton.widthAnchor.constraint(equalToConstant: 34),
             safetyButton.heightAnchor.constraint(equalToConstant: 34)
         ])
-        return header
     }
 
     private func makeHeroPanel() -> UIView {
-        let panel = UIView()
-        panel.translatesAutoresizingMaskIntoConstraints = false
-        panel.clipsToBounds = true
-        panel.layer.cornerRadius = 18
+        let glazePanel = UIView()
+        glazePanel.translatesAutoresizingMaskIntoConstraints = false
+        glazePanel.clipsToBounds = true
+        glazePanel.layer.cornerRadius = 18
 
-        let hero = UIImageView(image: UIImage(named: sprinkleMoment.heroAsset) ?? makeFallbackSugarImage(seed: sprinkleMoment.heroAsset))
+        let hero = UIImageView(image: WevVPastryImageVault.glazeImage(for: sprinkleMoment.heroAsset) ?? makeFallbackSugarImage(seed: sprinkleMoment.heroAsset))
         hero.translatesAutoresizingMaskIntoConstraints = false
         hero.contentMode = .scaleAspectFill
         hero.clipsToBounds = true
 
-        panel.addSubview(hero)
+        glazePanel.addSubview(hero)
         NSLayoutConstraint.activate([
-            panel.heightAnchor.constraint(equalTo: panel.widthAnchor, multiplier: 0.78),
-            hero.topAnchor.constraint(equalTo: panel.topAnchor),
-            hero.leadingAnchor.constraint(equalTo: panel.leadingAnchor),
-            hero.trailingAnchor.constraint(equalTo: panel.trailingAnchor),
-            hero.bottomAnchor.constraint(equalTo: panel.bottomAnchor)
+            glazePanel.heightAnchor.constraint(equalTo: glazePanel.widthAnchor, multiplier: 0.78),
+            hero.topAnchor.constraint(equalTo: glazePanel.topAnchor),
+            hero.leadingAnchor.constraint(equalTo: glazePanel.leadingAnchor),
+            hero.trailingAnchor.constraint(equalTo: glazePanel.trailingAnchor),
+            hero.bottomAnchor.constraint(equalTo: glazePanel.bottomAnchor)
         ])
-        return panel
+        return glazePanel
     }
 
     private func makeMomentText() -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = sprinkleMoment.displayText
-        label.font = .systemFont(ofSize: 21, weight: .regular)
-        label.textColor = UIColor(red: 0.16, green: 0.12, blue: 0.13, alpha: 1)
-        label.numberOfLines = 0
-        return label
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = sprinkleMoment.displayText
+        crumbLabel.font = .systemFont(ofSize: 21, weight: .regular)
+        crumbLabel.textColor = UIColor(red: 0.16, green: 0.12, blue: 0.13, alpha: 1)
+        crumbLabel.numberOfLines = 0
+        return crumbLabel
     }
 
     private func makeReplyTitle() -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Comments"
-        label.font = .systemFont(ofSize: 24, weight: .bold)
-        label.textColor = .black
-        return label
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = "CkocmpmYe#nwt;s,".wevVPastryCrumbBloomRestored
+        crumbLabel.font = .systemFont(ofSize: 24, weight: .bold)
+        crumbLabel.textColor = .black
+        return crumbLabel
     }
 
     private func rebuildSugarReplies() {
-        stackView.arrangedSubviews
-            .filter { $0.accessibilityIdentifier == "wevvSugarReplyCard" }
+        sugarStackView.arrangedSubviews
+            .filter { $0.accessibilityIdentifier == "w@eDvJvgS&ukgPa;rURkeRp^lmyUC~aSr!d?".wevVPastryCrumbBloomRestored }
             .forEach { crumbCard in
-                stackView.removeArrangedSubview(crumbCard)
+                sugarStackView.removeArrangedSubview(crumbCard)
                 crumbCard.removeFromSuperview()
             }
-        sugarReplies.forEach { stackView.addArrangedSubview(makeSugarReplyCard($0)) }
+        sugarReplies.forEach { sugarStackView.addArrangedSubview(makeSugarReplyCard($0)) }
     }
 
     private func makeSugarReplyCard(_ reply: WevVSugarReply) -> UIView {
-        let card = UIControl()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.accessibilityIdentifier = "wevvSugarReplyCard"
-        card.backgroundColor = .white
-        card.layer.cornerRadius = 28
-        card.clipsToBounds = true
-        card.addTarget(self, action: #selector(showReplyFlagHint), for: .touchUpInside)
+        let pastryCard = UIControl()
+        pastryCard.translatesAutoresizingMaskIntoConstraints = false
+        pastryCard.accessibilityIdentifier = "wlewvYvKSyu.gPaormRFeQp=loyYCVa+rTdc".wevVPastryCrumbBloomRestored
+        pastryCard.backgroundColor = .white
+        pastryCard.layer.cornerRadius = 28
+        pastryCard.clipsToBounds = true
+        pastryCard.addTarget(self, action: #selector(showReplyFlagHint), for: .touchUpInside)
 
         let profile = guestStore.profile(for: reply.guestKey)
-        let avatar = UIImageView(image: UIImage(named: profile.avatarAsset) ?? makeFallbackSugarImage(seed: reply.guestKey))
-        avatar.translatesAutoresizingMaskIntoConstraints = false
-        avatar.contentMode = .scaleAspectFill
-        avatar.clipsToBounds = true
-        avatar.layer.cornerRadius = 21
+        let avatar = makeSugarReplyAvatar(reply, profile: profile)
+        let creamNameLabel = makeSugarReplyName(reply, profile: profile)
+        let textLabel = makeSugarReplyText(reply.sugarText)
+        let timeLabel = makeSugarReplyTime(reply.timeText)
+        let flagButton = makeSugarReplyFlagButton()
 
-        let nameLabel = UILabel()
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.text = reply.guestKey == "arloSkyGlaze" ? "Bruno Pham" : profile.name
-        nameLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        nameLabel.textColor = .black
+        placeSugarReplyViews(pastryCard: pastryCard, avatar: avatar, creamNameLabel: creamNameLabel, textLabel: textLabel, timeLabel: timeLabel, flagButton: flagButton)
+        pinSugarReplyLayout(pastryCard: pastryCard, avatar: avatar, creamNameLabel: creamNameLabel, textLabel: textLabel, timeLabel: timeLabel, flagButton: flagButton)
+        return pastryCard
+    }
 
-        let textLabel = UILabel()
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.text = reply.text
-        textLabel.font = .systemFont(ofSize: 18, weight: .regular)
-        textLabel.textColor = UIColor(red: 0.48, green: 0.48, blue: 0.5, alpha: 1)
-        textLabel.numberOfLines = 2
+    private func makeSugarReplyAvatar(_ reply: WevVSugarReply, profile: WevVGuestGlazeProfile) -> UIImageView {
+        let replyAvatarAsset = reply.donutAvatarAsset ?? profile.donutAvatarAsset
+        let glazeAvatar = UIImageView(image: UIImage(named: replyAvatarAsset) ?? makeFallbackSugarImage(seed: reply.tasterName ?? reply.guestKey))
+        glazeAvatar.translatesAutoresizingMaskIntoConstraints = false
+        glazeAvatar.contentMode = .scaleAspectFill
+        glazeAvatar.clipsToBounds = true
+        glazeAvatar.layer.cornerRadius = 21
+        return glazeAvatar
+    }
 
-        let timeLabel = UILabel()
-        timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        timeLabel.text = reply.timeText
-        timeLabel.font = .systemFont(ofSize: 16, weight: .regular)
-        timeLabel.textColor = UIColor(red: 0.68, green: 0.68, blue: 0.7, alpha: 1)
+    private func makeSugarReplyName(_ reply: WevVSugarReply, profile: WevVGuestGlazeProfile) -> UILabel {
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = reply.tasterName ?? (reply.guestKey == "a.rWlVo?SQkWyaGxlRaRzveh".wevVPastryCrumbBloomRestored ? "Bruno Pham" : profile.name)
+        crumbLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        crumbLabel.textColor = .black
+        return crumbLabel
+    }
 
-        let flagButton = UIButton(type: .system)
-        flagButton.translatesAutoresizingMaskIntoConstraints = false
-        flagButton.setImage(UIImage(systemName: "exclamationmark.triangle.fill"), for: .normal)
-        flagButton.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.58, alpha: 1)
-        flagButton.addTarget(self, action: #selector(showReplyFlagHint), for: .touchUpInside)
+    private func makeSugarReplyText(_ sugarText: String) -> UILabel {
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = sugarText
+        crumbLabel.font = .systemFont(ofSize: 18, weight: .regular)
+        crumbLabel.textColor = UIColor(red: 0.48, green: 0.48, blue: 0.5, alpha: 1)
+        crumbLabel.numberOfLines = 2
+        return crumbLabel
+    }
 
-        card.addSubview(avatar)
-        card.addSubview(nameLabel)
-        card.addSubview(textLabel)
-        card.addSubview(timeLabel)
-        card.addSubview(flagButton)
+    private func makeSugarReplyTime(_ sugarTime: String) -> UILabel {
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = sugarTime
+        crumbLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        crumbLabel.textColor = UIColor(red: 0.68, green: 0.68, blue: 0.7, alpha: 1)
+        return crumbLabel
+    }
 
+    private func makeSugarReplyFlagButton() -> UIButton {
+        let sprinkleButton = UIButton(type: .system)
+        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
+        sprinkleButton.setImage(UIImage(systemName: "exclamationmark.triangle.fill"), for: .normal)
+        sprinkleButton.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.58, alpha: 1)
+        sprinkleButton.addTarget(self, action: #selector(showReplyFlagHint), for: .touchUpInside)
+        return sprinkleButton
+    }
+
+    private func placeSugarReplyViews(pastryCard: UIView, avatar: UIImageView, creamNameLabel: UILabel, textLabel: UILabel, timeLabel: UILabel, flagButton: UIButton) {
+        [avatar, creamNameLabel, textLabel, timeLabel, flagButton].forEach {
+            pastryCard.addSubview($0)
+        }
+    }
+
+    private func pinSugarReplyLayout(pastryCard: UIView, avatar: UIImageView, creamNameLabel: UILabel, textLabel: UILabel, timeLabel: UILabel, flagButton: UIButton) {
         NSLayoutConstraint.activate([
-            card.heightAnchor.constraint(greaterThanOrEqualToConstant: 92),
-            avatar.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 26),
-            avatar.topAnchor.constraint(equalTo: card.topAnchor, constant: 22),
+            pastryCard.heightAnchor.constraint(greaterThanOrEqualToConstant: 92),
+            avatar.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 26),
+            avatar.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 22),
             avatar.widthAnchor.constraint(equalToConstant: 42),
             avatar.heightAnchor.constraint(equalToConstant: 42),
-            nameLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 18),
-            nameLabel.topAnchor.constraint(equalTo: card.topAnchor, constant: 22),
-            nameLabel.trailingAnchor.constraint(equalTo: flagButton.leadingAnchor, constant: -12),
-            textLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            textLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
+            creamNameLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 18),
+            creamNameLabel.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 22),
+            creamNameLabel.trailingAnchor.constraint(equalTo: flagButton.leadingAnchor, constant: -12),
+            textLabel.leadingAnchor.constraint(equalTo: creamNameLabel.leadingAnchor),
+            textLabel.topAnchor.constraint(equalTo: creamNameLabel.bottomAnchor, constant: 3),
             textLabel.trailingAnchor.constraint(equalTo: flagButton.leadingAnchor, constant: -12),
-            timeLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            timeLabel.leadingAnchor.constraint(equalTo: creamNameLabel.leadingAnchor),
             timeLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 3),
-            timeLabel.bottomAnchor.constraint(lessThanOrEqualTo: card.bottomAnchor, constant: -14),
-            flagButton.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -20),
-            flagButton.centerYAnchor.constraint(equalTo: card.centerYAnchor),
+            timeLabel.bottomAnchor.constraint(lessThanOrEqualTo: pastryCard.bottomAnchor, constant: -14),
+            flagButton.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -20),
+            flagButton.centerYAnchor.constraint(equalTo: pastryCard.centerYAnchor),
             flagButton.widthAnchor.constraint(equalToConstant: 34),
             flagButton.heightAnchor.constraint(equalToConstant: 34)
         ])
-        return card
     }
 
     private func buildBottomTray() {
         replyField.translatesAutoresizingMaskIntoConstraints = false
         replyField.delegate = self
-        replyField.placeholder = "What do you do on weekends?"
+        replyField.placeholder = "WIhwaHtr ed.oR gyioouk Ed,oh noknk uwmeAeskOepn%dmsh?K".wevVPastryCrumbBloomRestored
         replyField.font = .systemFont(ofSize: 17, weight: .regular)
         replyField.backgroundColor = UIColor(red: 0.95, green: 0.96, blue: 0.97, alpha: 1)
         replyField.layer.cornerRadius = 24
@@ -336,25 +379,25 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
 
     private func refreshFollowButton() {
         guard boundGuest != nil else {
-            followButton.setTitle("Following", for: .normal)
+            followButton.setTitle("FBowlGl%oWwRiqneg@".wevVPastryCrumbBloomRestored, for: .normal)
             followButton.setTitleColor(.white, for: .normal)
             followButton.backgroundColor = UIColor(red: 0.69, green: 0.69, blue: 0.7, alpha: 1)
             followButton.isEnabled = false
             return
         }
         let isFollowed = guestStore.profile(for: sprinkleMoment.author.glazeKey).sugarTie.isGlazeFollowed
-        followButton.setTitle(isFollowed ? "Following" : "Follow", for: .normal)
+        followButton.setTitle(isFollowed ? "Following" : "FEo*lZlyoVw@".wevVPastryCrumbBloomRestored, for: .normal)
         followButton.setTitleColor(.white, for: .normal)
         followButton.backgroundColor = isFollowed ? UIColor(red: 0.69, green: 0.69, blue: 0.7, alpha: 1) : UIColor(red: 1, green: 0.12, blue: 0.58, alpha: 1)
         followButton.isEnabled = true
     }
 
     private func makeAuthorAvatar() -> UIImage? {
-        if let profile = boundGuest, let image = UIImage(named: profile.avatarAsset) {
-            return image
+        if let profile = boundGuest, let glazeImage = UIImage(named: profile.donutAvatarAsset) {
+            return glazeImage
         }
-        if let image = UIImage(named: sprinkleMoment.author.avatarAsset) {
-            return image
+        if let glazeImage = UIImage(named: sprinkleMoment.author.donutAvatarAsset) {
+            return glazeImage
         }
         return makeFallbackSugarImage(seed: sprinkleMoment.author.name)
     }
@@ -396,16 +439,29 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
             showGlazeGate()
             return
         }
-        let text = replyField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        guard !text.isEmpty else {
-            showSugarToast("Say something sweet first")
+        let sugarText = replyField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        guard !sugarText.isEmpty else {
+            showSugarToast("SGaYy/ ;sDodm!eltnhLixnigM NsFw?eweXte !fMixrNset#".wevVPastryCrumbBloomRestored)
             return
         }
-        sugarReplies.append(WevVSugarReply(sugarKey: "freshSugar\(sugarReplies.count)", guestKey: "jamieCole", text: text, timeText: "Just now"))
-        replyField.text = nil
         replyField.resignFirstResponder()
-        rebuildSugarReplies()
-        showSugarToast("Posted")
+        WevVBakeryExchange.spin(in: view, note: "Pfuobcllims@hzi!n!gc fpcoPs:tq.l.Q.;".wevVPastryCrumbBloomRestored) { [weak self] in
+            guard let self else { return }
+            let creamProfile = self.glazeSession.currentDoughRingTasterProfile
+            self.sugarReplies.append(
+                WevVSugarReply(
+                    sugarKey: "freshSugar\(self.sugarReplies.count)",
+                    guestKey: creamProfile.doughRingKey,
+                    text: sugarText,
+                    timeText: "JzuesTtv ,nmo/wO".wevVPastryCrumbBloomRestored,
+                    tasterName: creamProfile.glazeNickname,
+                    donutAvatarAsset: creamProfile.donutAvatarAsset
+                )
+            )
+            self.replyField.text = nil
+            self.rebuildSugarReplies()
+            self.showSugarToast("Phoks=tEe?dn".wevVPastryCrumbBloomRestored)
+        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -425,7 +481,7 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
             showGlazeGate()
             return
         }
-        showSugarToast("Reason panel ready")
+        showSugarToast("RAe/aRsjo%nC ig:lfa;zQeHPEaJnbeula =rleCaudwy!".wevVPastryCrumbBloomRestored)
     }
 
     @objc private func openSugarMomentSafety() {
@@ -446,7 +502,7 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
             self.glazeSession.placeGlazeSafetyCrumb(packet)
             self.placeSugarShield()
             self.hideSugarSafetySheet(sheet)
-            self.showSugarToast("Hidden from your feed")
+            self.showSugarToast("H@ifdXdPeYnT SfrrDotmw ty@olurrm Ef/eGefdR".wevVPastryCrumbBloomRestored)
             self.onSugarMomentShielded?()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 self.dismiss(animated: true)
@@ -469,10 +525,10 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
 
     private func sugarSafetyChoices() -> [WevVGlazeSafetyChoice] {
         [
-            WevVGlazeSafetyChoice(sugarKey: "fakeSugarPhoto", title: "Fake photo", needsCreamText: false),
-            WevVGlazeSafetyChoice(sugarKey: "promoSprinkle", title: "Scam or commercial", needsCreamText: false),
-            WevVGlazeSafetyChoice(sugarKey: "plainCrumb", title: "Not interested", needsCreamText: false),
-            WevVGlazeSafetyChoice(sugarKey: "customGlaze", title: "Other", needsCreamText: true)
+            WevVGlazeSafetyChoice(sugarKey: "fDaak#e+Sludg*a&r/PIhdoSt&og".wevVPastryCrumbBloomRestored, title: "Fka*kze, BpDh/oktjoc".wevVPastryCrumbBloomRestored, needsCreamText: false),
+            WevVGlazeSafetyChoice(sugarKey: "p&rnoamkorSSp/r~iJnbkDlPeU".wevVPastryCrumbBloomRestored, title: "ShcvavmV UoRr! Ac/oBm+mPewric;i!a.lq".wevVPastryCrumbBloomRestored, needsCreamText: false),
+            WevVGlazeSafetyChoice(sugarKey: "pylsaWi;nSCVrVuOm?bo".wevVPastryCrumbBloomRestored, title: "N,oxtE ni,n#toe^r?eCs@t=evdc".wevVPastryCrumbBloomRestored, needsCreamText: false),
+            WevVGlazeSafetyChoice(sugarKey: "ceuTsZtGoHm+G,lNa;z?eH".wevVPastryCrumbBloomRestored, title: "OPtchwexrU".wevVPastryCrumbBloomRestored, needsCreamText: true)
         ]
     }
 
@@ -498,16 +554,16 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
         else { return }
         let overlap = max(0, frame.height - view.safeAreaInsets.bottom)
         trayBottomConstraint?.constant = -overlap
-        scrollView.contentInset.bottom = overlap + 132
-        scrollView.verticalScrollIndicatorInsets.bottom = overlap + 132
+        sugarScrollView.contentInset.bottom = overlap + 132
+        sugarScrollView.verticalScrollIndicatorInsets.bottom = overlap + 132
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
 
     @objc private func dropSugarTray(_ note: Notification) {
         let duration = note.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0.25
         trayBottomConstraint?.constant = 0
-        scrollView.contentInset.bottom = 132
-        scrollView.verticalScrollIndicatorInsets.bottom = 132
+        sugarScrollView.contentInset.bottom = 132
+        sugarScrollView.verticalScrollIndicatorInsets.bottom = 132
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
 
@@ -523,26 +579,6 @@ final class WevVSprinkleMomentDetailController: UIViewController, UITextFieldDel
     }
 
     private func showSugarToast(_ text: String) {
-        let toast = UILabel()
-        toast.translatesAutoresizingMaskIntoConstraints = false
-        toast.text = text
-        toast.textAlignment = .center
-        toast.font = .systemFont(ofSize: 14, weight: .semibold)
-        toast.textColor = .white
-        toast.backgroundColor = UIColor.black.withAlphaComponent(0.72)
-        toast.layer.cornerRadius = 18
-        toast.clipsToBounds = true
-        view.addSubview(toast)
-        NSLayoutConstraint.activate([
-            toast.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            toast.bottomAnchor.constraint(equalTo: bottomTray.topAnchor, constant: -16),
-            toast.heightAnchor.constraint(equalToConstant: 36),
-            toast.widthAnchor.constraint(greaterThanOrEqualToConstant: 170)
-        ])
-        UIView.animate(withDuration: 0.2, delay: 1.2, options: []) {
-            toast.alpha = 0
-        } completion: { _ in
-            toast.removeFromSuperview()
-        }
+        WevVGlazePromptStyler.showSugarToast(in: view, text: text, above: bottomTray, bottomOffset: -16)
     }
 }

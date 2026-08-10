@@ -2,8 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>WevV needs microphone access when you choose a speaking seat.</string>
+	<key>FacebookAdvertiserIDCollectionEnabled
+</key>
+	<false/>
+	<key>FacebookAppID</key>
+	<string>1040735808655827</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
+	<key>FacebookClientToken</key>
+	<string>0a1a66a03ba98ea4ed48eb93201ad9e8</string>
+	<key>FacebookDisplayName</key>
+	<string>WevV</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D4E5D56954FBFC7E13A4ACD0 /* Pods_WevSweetgd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F96B81A145BF9D7F5F981F /* Pods_WevSweetgd.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		04CF1DD73011C45F00595192 /* WevSweetgd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WevSweetgd.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BFAA81FBE8B8E7EAC8605A2 /* Pods-WevSweetgd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WevSweetgd.debug.xcconfig"; path = "Target Support Files/Pods-WevSweetgd/Pods-WevSweetgd.debug.xcconfig"; sourceTree = "<group>"; };
+		A7F96B81A145BF9D7F5F981F /* Pods_WevSweetgd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WevSweetgd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAE47CCAF89107E7592A123D /* Pods-WevSweetgd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WevSweetgd.release.xcconfig"; path = "Target Support Files/Pods-WevSweetgd/Pods-WevSweetgd.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4E5D56954FBFC7E13A4ACD0 /* Pods_WevSweetgd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +55,8 @@
 			children = (
 				04CF1DD93011C45F00595192 /* WevSweetgd */,
 				04CF1DD83011C45F00595192 /* Products */,
+				95B2F2F07D2C73750B3E4AAA /* Pods */,
+				7A5D97CD43562414D5A26010 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +68,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7A5D97CD43562414D5A26010 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7F96B81A145BF9D7F5F981F /* Pods_WevSweetgd.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95B2F2F07D2C73750B3E4AAA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6BFAA81FBE8B8E7EAC8605A2 /* Pods-WevSweetgd.debug.xcconfig */,
+				BAE47CCAF89107E7592A123D /* Pods-WevSweetgd.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -65,9 +92,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04CF1DEA3011C46200595192 /* Build configuration list for PBXNativeTarget "WevSweetgd" */;
 			buildPhases = (
+				7DE6F0606445287C7770A975 /* [CP] Check Pods Manifest.lock */,
 				04CF1DD33011C45F00595192 /* Sources */,
 				04CF1DD43011C45F00595192 /* Frameworks */,
 				04CF1DD53011C45F00595192 /* Resources */,
+				3DD55DD1EDD0875D563BEBFF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,8 +106,6 @@
 				04CF1DD93011C45F00595192 /* WevSweetgd */,
 			);
 			name = WevSweetgd;
-			packageProductDependencies = (
-			);
 			productName = WevSweetgd;
 			productReference = 04CF1DD73011C45F00595192 /* WevSweetgd.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +154,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3DD55DD1EDD0875D563BEBFF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WevSweetgd/Pods-WevSweetgd-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WevSweetgd/Pods-WevSweetgd-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WevSweetgd/Pods-WevSweetgd-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DE6F0606445287C7770A975 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WevSweetgd-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04CF1DD33011C45F00595192 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,14 +213,19 @@
 /* Begin XCBuildConfiguration section */
 		04CF1DEB3011C46200595192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BFAA81FBE8B8E7EAC8605A2 /* Pods-WevSweetgd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WevSweetgd/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WevV;
+				INFOPLIST_KEY_NSCameraUsageDescription = "WevV needs camera access so you can take donut photos for posts and challenge covers.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "WevV needs microphone access when you choose a speaking seat.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "WevV needs photo library access so you can choose donut pictures for posts and challenge covers.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -159,8 +237,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sharecomsj.WevV.WevSweetgd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.donutva.wevv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -177,14 +256,19 @@
 		};
 		04CF1DEC3011C46200595192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAE47CCAF89107E7592A123D /* Pods-WevSweetgd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WevSweetgd/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WevV;
+				INFOPLIST_KEY_NSCameraUsageDescription = "WevV needs camera access so you can take donut photos for posts and challenge covers.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "WevV needs microphone access when you choose a speaking seat.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "WevV needs photo library access so you can choose donut pictures for posts and challenge covers.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -196,8 +280,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sharecomsj.WevV.WevSweetgd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.donutva.wevv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

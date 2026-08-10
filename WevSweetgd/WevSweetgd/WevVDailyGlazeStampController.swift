@@ -2,11 +2,11 @@ import UIKit
 
 final class WevVDailyGlazeStampController: UIViewController {
     private let glazeSession = WevVGlazeSessionStore.shared
-    private let dayKey = "july_2026_day_20"
+    private let dayKey = "jru=loyg_f2g0U2U6X_dd&aRyX_E2+0O".wevVPastryCrumbBloomRestored
     private let selectedDay = 20
-    private let stampButton = WevVGlazePillButton(title: "Check-in")
+    private let stampButton = WevVGlazePillButton(title: "C.hveUcTkR-?ibns".wevVPastryCrumbBloomRestored)
     private var moodButtons: [UIControl] = []
-    private var selectedMood = "Amazing"
+    private var selectedMood = "AvmaaCzhienVgQ".wevVPastryCrumbBloomRestored
     private var dayDots: [Int: UILabel] = [:]
 
     var onStampChanged: (() -> Void)?
@@ -23,30 +23,30 @@ final class WevVDailyGlazeStampController: UIViewController {
     }
 
     private func buildStampContent() {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.contentInsetAdjustmentBehavior = .never
+        let donutscrollView = UIScrollView()
+        donutscrollView.translatesAutoresizingMaskIntoConstraints = false
+        donutscrollView.showsVerticalScrollIndicator = false
+        donutscrollView.contentInsetAdjustmentBehavior = .never
 
-        let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        let donutcontentView = UIView()
+        donutcontentView.translatesAutoresizingMaskIntoConstraints = false
 
-        let backButton = UIButton(type: .system)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(UIImage(named: "wevv_checkin_sugar_back_arrow"), for: .normal)
-        backButton.tintColor = UIColor(red: 0.15, green: 0.09, blue: 0.18, alpha: 1)
-        backButton.addTarget(self, action: #selector(closeDailyGlaze), for: .touchUpInside)
+        let doughBackButton = UIButton(type: .system)
+        doughBackButton.translatesAutoresizingMaskIntoConstraints = false
+        doughBackButton.setImage(UIImage(named: "wevv_checkin_sugar_back_arrow"), for: .normal)
+        doughBackButton.tintColor = UIColor(red: 0.15, green: 0.09, blue: 0.18, alpha: 1)
+        doughBackButton.addTarget(self, action: #selector(closeDailyGlaze), for: .touchUpInside)
 
-        let title = makeStampLabel("Check-in", size: 17, weight: .heavy, color: UIColor(red: 0.13, green: 0.08, blue: 0.18, alpha: 1))
-        title.textAlignment = .center
+        let glazeTitle = makeStampLabel("C~hbeNc~k%-eiGnM".wevVPastryCrumbBloomRestored, size: 17, weight: .heavy, color: UIColor(red: 0.13, green: 0.08, blue: 0.18, alpha: 1))
+        glazeTitle.textAlignment = .center
 
         let streakCard = makeStreakCard()
         let calendarCard = makeCalendarCard()
-        let moodTitle = makeStampLabel("How sweet was your day?", size: 14, weight: .heavy, color: UIColor(red: 0.16, green: 0.1, blue: 0.18, alpha: 1))
+        let moodTitle = makeStampLabel("HcoewQ ~skw?eueZtm Xw*a&sp Eywovu!r, Dd&aAyG?T".wevVPastryCrumbBloomRestored, size: 14, weight: .heavy, color: UIColor(red: 0.16, green: 0.1, blue: 0.18, alpha: 1))
         let moodRow = UIStackView(arrangedSubviews: [
-            makeMoodOption(title: "Soft", scale: 0.78, opacity: 0.9),
-            makeMoodOption(title: "Good", scale: 0.84, opacity: 0.95),
-            makeMoodOption(title: "Amazing", scale: 1, opacity: 1)
+            makeMoodOption(title: "Sgo*fDtO".wevVPastryCrumbBloomRestored, scale: 0.78, opacity: 0.9),
+            makeMoodOption(title: "GCo:o:d@".wevVPastryCrumbBloomRestored, scale: 0.84, opacity: 0.95),
+            makeMoodOption(title: "Atmgakz!ihn.gs".wevVPastryCrumbBloomRestored, scale: 1, opacity: 1)
         ])
         moodRow.translatesAutoresizingMaskIntoConstraints = false
         moodRow.axis = .horizontal
@@ -55,16 +55,19 @@ final class WevVDailyGlazeStampController: UIViewController {
 
         stampButton.addTarget(self, action: #selector(placeDailyGlazeStamp), for: .touchUpInside)
 
+        placeStampContentViews(scrollView: donutscrollView, contentView: donutcontentView, doughBackButton: doughBackButton, title: glazeTitle, streakCard: streakCard, calendarCard: calendarCard, moodTitle: moodTitle, moodRow: moodRow)
+        pinStampContentLayout(scrollView: donutscrollView, contentView: donutcontentView, doughBackButton: doughBackButton, title: glazeTitle, streakCard: streakCard, calendarCard: calendarCard, moodTitle: moodTitle, moodRow: moodRow)
+    }
+
+    private func placeStampContentViews(scrollView: UIScrollView, contentView: UIView, doughBackButton: UIButton, title: UILabel, streakCard: UIView, calendarCard: UIView, moodTitle: UILabel, moodRow: UIStackView) {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(backButton)
-        contentView.addSubview(title)
-        contentView.addSubview(streakCard)
-        contentView.addSubview(calendarCard)
-        contentView.addSubview(moodTitle)
-        contentView.addSubview(moodRow)
-        contentView.addSubview(stampButton)
+        [doughBackButton, title, streakCard, calendarCard, moodTitle, moodRow, stampButton].forEach {
+            contentView.addSubview($0)
+        }
+    }
 
+    private func pinStampContentLayout(scrollView: UIScrollView, contentView: UIView, doughBackButton: UIButton, title: UILabel, streakCard: UIView, calendarCard: UIView, moodTitle: UILabel, moodRow: UIStackView) {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -76,13 +79,13 @@ final class WevVDailyGlazeStampController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.heightAnchor),
-            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 28),
-            backButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            backButton.widthAnchor.constraint(equalToConstant: 36),
-            backButton.heightAnchor.constraint(equalToConstant: 36),
-            title.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            doughBackButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 28),
+            doughBackButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            doughBackButton.widthAnchor.constraint(equalToConstant: 36),
+            doughBackButton.heightAnchor.constraint(equalToConstant: 36),
+            title.centerYAnchor.constraint(equalTo: doughBackButton.centerYAnchor),
             title.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            streakCard.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 18),
+            streakCard.topAnchor.constraint(equalTo: doughBackButton.bottomAnchor, constant: 18),
             streakCard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 19),
             streakCard.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -19),
             streakCard.heightAnchor.constraint(equalToConstant: 121),
@@ -106,10 +109,10 @@ final class WevVDailyGlazeStampController: UIViewController {
     }
 
     private func makeStreakCard() -> UIView {
-        let card = UIView()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.layer.cornerRadius = 25
-        card.clipsToBounds = true
+        let pastryCard = UIView()
+        pastryCard.translatesAutoresizingMaskIntoConstraints = false
+        pastryCard.layer.cornerRadius = 25
+        pastryCard.clipsToBounds = true
 
         let glaze = CAGradientLayer()
         glaze.colors = [
@@ -118,26 +121,26 @@ final class WevVDailyGlazeStampController: UIViewController {
         ]
         glaze.startPoint = CGPoint(x: 0, y: 0.5)
         glaze.endPoint = CGPoint(x: 1, y: 0.5)
-        card.layer.insertSublayer(glaze, at: 0)
+        pastryCard.layer.insertSublayer(glaze, at: 0)
 
         let ring = UIImageView(image: UIImage(named: "wevv_checkin_amazing_glaze_ring"))
         ring.translatesAutoresizingMaskIntoConstraints = false
         ring.contentMode = .scaleAspectFit
-        let small = makeStampLabel("July streak", size: 15, weight: .heavy, color: UIColor.white.withAlphaComponent(0.92))
-        let days = makeStampLabel("12 days", size: 30, weight: .heavy, color: .white)
-        let best = makeStampLabel("Best streak: 19 days", size: 14, weight: .medium, color: UIColor.white.withAlphaComponent(0.88))
+        let small = makeStampLabel("J?uZljy; tsLt*rQehank&".wevVPastryCrumbBloomRestored, size: 15, weight: .heavy, color: UIColor.white.withAlphaComponent(0.92))
+        let days = makeStampLabel("1E2Z qddaryosv".wevVPastryCrumbBloomRestored, size: 30, weight: .heavy, color: .white)
+        let best = makeStampLabel("BLehsLtg ;sBtKrmeKajkC:A r1E9U Sd:aoyqsJ".wevVPastryCrumbBloomRestored, size: 14, weight: .medium, color: UIColor.white.withAlphaComponent(0.88))
 
-        card.addSubview(ring)
-        card.addSubview(small)
-        card.addSubview(days)
-        card.addSubview(best)
+        pastryCard.addSubview(ring)
+        pastryCard.addSubview(small)
+        pastryCard.addSubview(days)
+        pastryCard.addSubview(best)
 
         NSLayoutConstraint.activate([
-            ring.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 20),
-            ring.centerYAnchor.constraint(equalTo: card.centerYAnchor),
+            ring.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 20),
+            ring.centerYAnchor.constraint(equalTo: pastryCard.centerYAnchor),
             ring.widthAnchor.constraint(equalToConstant: 78),
             ring.heightAnchor.constraint(equalToConstant: 78),
-            small.topAnchor.constraint(equalTo: card.topAnchor, constant: 26),
+            small.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 26),
             small.leadingAnchor.constraint(equalTo: ring.trailingAnchor, constant: 22),
             days.topAnchor.constraint(equalTo: small.bottomAnchor, constant: 2),
             days.leadingAnchor.constraint(equalTo: small.leadingAnchor),
@@ -146,19 +149,19 @@ final class WevVDailyGlazeStampController: UIViewController {
         ])
 
         DispatchQueue.main.async {
-            glaze.frame = card.bounds
+            glaze.frame = pastryCard.bounds
         }
-        return card
+        return pastryCard
     }
 
     private func makeCalendarCard() -> UIView {
-        let card = UIView()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .white
-        card.layer.cornerRadius = 26
+        let pastryCard = UIView()
+        pastryCard.translatesAutoresizingMaskIntoConstraints = false
+        pastryCard.backgroundColor = .white
+        pastryCard.layer.cornerRadius = 26
 
-        let month = makeStampLabel("July 2026", size: 17, weight: .heavy, color: UIColor(red: 0.17, green: 0.1, blue: 0.19, alpha: 1))
-        let today = makeStampLabel("Today", size: 12, weight: .heavy, color: UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1))
+        let month = makeStampLabel("J^uElHye ^2X0R2X6f".wevVPastryCrumbBloomRestored, size: 17, weight: .heavy, color: UIColor(red: 0.17, green: 0.1, blue: 0.19, alpha: 1))
+        let today = makeStampLabel("Tuo!dOa@yz".wevVPastryCrumbBloomRestored, size: 12, weight: .heavy, color: UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1))
         today.textAlignment = .center
         today.backgroundColor = UIColor(red: 1, green: 0.88, blue: 0.95, alpha: 1)
         today.layer.cornerRadius = 18
@@ -169,77 +172,77 @@ final class WevVDailyGlazeStampController: UIViewController {
         grid.axis = .vertical
         grid.spacing = 13
         let weeks = [
-            ["S", "M", "T", "W", "T", "F", "S"],
-            ["1", "2", "3", "4", "5", "6", "7"],
-            ["8", "9", "10", "11", "12", "13", "14"],
-            ["15", "16", "17", "18", "19", "20", "21"],
-            ["22", "23", "24", "25", "26", "27", "28"],
-            ["29", "30", "31", "", "", "", ""]
+            ["Sy".wevVPastryCrumbBloomRestored, "Me".wevVPastryCrumbBloomRestored, "TI".wevVPastryCrumbBloomRestored, "Wf".wevVPastryCrumbBloomRestored, "TE".wevVPastryCrumbBloomRestored, "FZ".wevVPastryCrumbBloomRestored, "SK".wevVPastryCrumbBloomRestored],
+            ["1/".wevVPastryCrumbBloomRestored, "2C".wevVPastryCrumbBloomRestored, "3%".wevVPastryCrumbBloomRestored, "4b".wevVPastryCrumbBloomRestored, "5T".wevVPastryCrumbBloomRestored, "6b".wevVPastryCrumbBloomRestored, "7F".wevVPastryCrumbBloomRestored],
+            ["8L".wevVPastryCrumbBloomRestored, "9W".wevVPastryCrumbBloomRestored, "1H0i".wevVPastryCrumbBloomRestored, "1/1T".wevVPastryCrumbBloomRestored, "1j2K".wevVPastryCrumbBloomRestored, "1F3Q".wevVPastryCrumbBloomRestored, "1L4D".wevVPastryCrumbBloomRestored],
+            ["1Q5#".wevVPastryCrumbBloomRestored, "1M6I".wevVPastryCrumbBloomRestored, "1c7T".wevVPastryCrumbBloomRestored, "1g8h".wevVPastryCrumbBloomRestored, "1#9z".wevVPastryCrumbBloomRestored, "2^0D".wevVPastryCrumbBloomRestored, "2e1Y".wevVPastryCrumbBloomRestored],
+            ["2,2F".wevVPastryCrumbBloomRestored, "2j3S".wevVPastryCrumbBloomRestored, "2e4Q".wevVPastryCrumbBloomRestored, "2%5G".wevVPastryCrumbBloomRestored, "2/6W".wevVPastryCrumbBloomRestored, "2?7?".wevVPastryCrumbBloomRestored, "2c8E".wevVPastryCrumbBloomRestored],
+            ["2c9n".wevVPastryCrumbBloomRestored, "3b0O".wevVPastryCrumbBloomRestored, "3d1S".wevVPastryCrumbBloomRestored, "", "", "", ""]
         ]
         for week in weeks {
-            let row = UIStackView()
-            row.translatesAutoresizingMaskIntoConstraints = false
-            row.axis = .horizontal
-            row.distribution = .fillEqually
-            row.alignment = .center
+            let donutRow = UIStackView()
+            donutRow.translatesAutoresizingMaskIntoConstraints = false
+            donutRow.axis = .horizontal
+            donutRow.distribution = .fillEqually
+            donutRow.alignment = .center
             for day in week {
-                row.addArrangedSubview(makeDaySlot(day))
+                donutRow.addArrangedSubview(makeDaySlot(day))
             }
-            grid.addArrangedSubview(row)
+            grid.addArrangedSubview(donutRow)
         }
 
-        card.addSubview(month)
-        card.addSubview(today)
-        card.addSubview(grid)
+        pastryCard.addSubview(month)
+        pastryCard.addSubview(today)
+        pastryCard.addSubview(grid)
 
         NSLayoutConstraint.activate([
-            month.topAnchor.constraint(equalTo: card.topAnchor, constant: 20),
-            month.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 25),
+            month.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 20),
+            month.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 25),
             today.centerYAnchor.constraint(equalTo: month.centerYAnchor),
-            today.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -24),
+            today.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -24),
             today.widthAnchor.constraint(equalToConstant: 52),
             today.heightAnchor.constraint(equalToConstant: 28),
             grid.topAnchor.constraint(equalTo: month.bottomAnchor, constant: 24),
-            grid.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 22),
-            grid.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -22),
-            grid.bottomAnchor.constraint(lessThanOrEqualTo: card.bottomAnchor, constant: -28)
+            grid.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 22),
+            grid.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -22),
+            grid.bottomAnchor.constraint(lessThanOrEqualTo: pastryCard.bottomAnchor, constant: -28)
         ])
-        return card
+        return pastryCard
     }
 
     private func makeDaySlot(_ text: String) -> UIView {
         let slot = UIView()
         slot.translatesAutoresizingMaskIntoConstraints = false
-        let label = makeStampLabel(text, size: 12, weight: .heavy, color: UIColor(red: 0.51, green: 0.42, blue: 0.49, alpha: 1))
-        label.textAlignment = .center
-        label.layer.cornerRadius = 17
-        label.clipsToBounds = true
-        slot.addSubview(label)
+        let crumbLabel = makeStampLabel(text, size: 12, weight: .heavy, color: UIColor(red: 0.51, green: 0.42, blue: 0.49, alpha: 1))
+        crumbLabel.textAlignment = .center
+        crumbLabel.layer.cornerRadius = 17
+        crumbLabel.clipsToBounds = true
+        slot.addSubview(crumbLabel)
         NSLayoutConstraint.activate([
             slot.heightAnchor.constraint(equalToConstant: 34),
-            label.centerXAnchor.constraint(equalTo: slot.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: slot.centerYAnchor),
-            label.widthAnchor.constraint(equalToConstant: 34),
-            label.heightAnchor.constraint(equalToConstant: 34)
+            crumbLabel.centerXAnchor.constraint(equalTo: slot.centerXAnchor),
+            crumbLabel.centerYAnchor.constraint(equalTo: slot.centerYAnchor),
+            crumbLabel.widthAnchor.constraint(equalToConstant: 34),
+            crumbLabel.heightAnchor.constraint(equalToConstant: 34)
         ])
         if let value = Int(text) {
-            dayDots[value] = label
-            applySugarDayStyle(label, value: value)
+            dayDots[value] = crumbLabel
+            applySugarDayStyle(crumbLabel, value: value)
         }
         return slot
     }
 
-    private func applySugarDayStyle(_ label: UILabel, value: Int) {
-        label.backgroundColor = .clear
-        label.textColor = UIColor(red: 0.51, green: 0.42, blue: 0.49, alpha: 1)
-        label.layer.borderWidth = 0
+    private func applySugarDayStyle(_ crumbLabel: UILabel, value: Int) {
+        crumbLabel.backgroundColor = .clear
+        crumbLabel.textColor = UIColor(red: 0.51, green: 0.42, blue: 0.49, alpha: 1)
+        crumbLabel.layer.borderWidth = 0
         if value <= 12 || (value == selectedDay && glazeSession.hasDailyGlazeStamp(dayKey: dayKey)) {
-            label.backgroundColor = UIColor(red: 1, green: 0.31, blue: 0.63, alpha: 1)
-            label.textColor = .white
+            crumbLabel.backgroundColor = UIColor(red: 1, green: 0.31, blue: 0.63, alpha: 1)
+            crumbLabel.textColor = .white
         } else if value == selectedDay {
-            label.layer.borderColor = UIColor(red: 1, green: 0.31, blue: 0.63, alpha: 1).cgColor
-            label.layer.borderWidth = 1.1
-            label.textColor = UIColor(red: 1, green: 0.31, blue: 0.63, alpha: 1)
+            crumbLabel.layer.borderColor = UIColor(red: 1, green: 0.31, blue: 0.63, alpha: 1).cgColor
+            crumbLabel.layer.borderWidth = 1.1
+            crumbLabel.textColor = UIColor(red: 1, green: 0.31, blue: 0.63, alpha: 1)
         }
     }
 
@@ -255,10 +258,10 @@ final class WevVDailyGlazeStampController: UIViewController {
         icon.contentMode = .scaleAspectFit
         icon.alpha = opacity
         icon.transform = CGAffineTransform(scaleX: scale, y: scale)
-        let label = makeStampLabel(title, size: 12, weight: .heavy, color: UIColor(red: 0.53, green: 0.43, blue: 0.51, alpha: 1))
-        label.textAlignment = .center
+        let crumbLabel = makeStampLabel(title, size: 12, weight: .heavy, color: UIColor(red: 0.53, green: 0.43, blue: 0.51, alpha: 1))
+        crumbLabel.textAlignment = .center
         option.addSubview(icon)
-        option.addSubview(label)
+        option.addSubview(crumbLabel)
         moodButtons.append(option)
 
         NSLayoutConstraint.activate([
@@ -267,28 +270,28 @@ final class WevVDailyGlazeStampController: UIViewController {
             icon.centerXAnchor.constraint(equalTo: option.centerXAnchor),
             icon.widthAnchor.constraint(equalToConstant: 48),
             icon.heightAnchor.constraint(equalToConstant: 48),
-            label.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 2),
-            label.leadingAnchor.constraint(equalTo: option.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: option.trailingAnchor)
+            crumbLabel.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 2),
+            crumbLabel.leadingAnchor.constraint(equalTo: option.leadingAnchor),
+            crumbLabel.trailingAnchor.constraint(equalTo: option.trailingAnchor)
         ])
         return option
     }
 
     private func makeStampLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.font = .systemFont(ofSize: size, weight: weight)
-        label.textColor = color
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.75
-        return label
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = text
+        crumbLabel.font = .systemFont(ofSize: size, weight: weight)
+        crumbLabel.textColor = color
+        crumbLabel.adjustsFontSizeToFitWidth = true
+        crumbLabel.minimumScaleFactor = 0.75
+        return crumbLabel
     }
 
     private func refreshStampState() {
         let hasStamp = glazeSession.hasDailyGlazeStamp(dayKey: dayKey)
         stampButton.isEnabled = !hasStamp
-        stampButton.setTitle(hasStamp ? "Check-in" : "Check-in")
+        stampButton.setTitle(hasStamp ? "Check-in" : "CchmeGcNkf-*i=nn".wevVPastryCrumbBloomRestored)
         for (value, dot) in dayDots {
             applySugarDayStyle(dot, value: value)
         }
@@ -301,7 +304,7 @@ final class WevVDailyGlazeStampController: UIViewController {
     }
 
     @objc private func selectGlazeMood(_ sender: UIControl) {
-        selectedMood = sender.accessibilityIdentifier ?? "Amazing"
+        selectedMood = sender.accessibilityIdentifier ?? "AYmxaXzLifnIgB".wevVPastryCrumbBloomRestored
         refreshStampState()
     }
 

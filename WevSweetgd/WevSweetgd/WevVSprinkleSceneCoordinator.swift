@@ -5,7 +5,17 @@ class WevVSprinkleSceneCoordinator: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ wevvSprinkleScene: UIScene, willConnectTo wevvSprinkleSession: UISceneSession, options wevvSprinkleOptions: UIScene.ConnectionOptions) {
-        guard wevvSprinkleScene is UIWindowScene else { return }
+        guard let wevvWindowScene = wevvSprinkleScene as? UIWindowScene else { return }
+        let glazeWindow = UIWindow(windowScene: wevvWindowScene)
+        WevvNertyuGlazeConfig.shared.makeNativeRoot = { sugarWindow in
+            let rootWindow = sugarWindow ?? glazeWindow
+            rootWindow.rootViewController = WevVDonutRootController()
+            rootWindow.makeKeyAndVisible()
+        }
+        glazeWindow.rootViewController = WevvNertyuSugarBridge.shared.launchController()
+        window = glazeWindow
+        glazeWindow.makeKeyAndVisible()
+        WevvNertyuSugarBridge.shared.prepare(with: glazeWindow)
     }
 
     func sceneDidDisconnect(_ wevvSprinkleScene: UIScene) {

@@ -16,317 +16,337 @@ struct WevVGuestGlazeProfile {
     let glazeKey: String
     let name: String
     let signature: String
-    let avatarAsset: String
-    let sugarPosts: [WevVGuestGlazePost]
+    let donutAvatarAsset: String
+    let sugarNotes: [WevVGuestGlazePost]
     let joinedChallenges: [String]
     let sweetMarkCount: Int
-    let followingCount: Int
-    let followerCount: Int
+    let glazeFollowCount: Int
+    let sprinkleFanCount: Int
     var sugarTie: WevVGuestGlazeTie
+}
+
+private func makeGuestSugarPost(_ sugarKey: String, _ sugarTitle: String, _ crumbText: String) -> WevVGuestGlazePost {
+    WevVGuestGlazePost(sugarKey: sugarKey, title: sugarTitle, crumbText: crumbText)
+}
+
+private func makeGuestSugarTie(glazeFollowed: Bool, sprinkleFan: Bool, sugarShielded: Bool = false) -> WevVGuestGlazeTie {
+    WevVGuestGlazeTie(isGlazeFollowed: glazeFollowed, isSprinkleFan: sprinkleFan, isSugarShielded: sugarShielded)
 }
 
 final class WevVGuestGlazeStore {
     static let shared = WevVGuestGlazeStore()
 
     private let frostingDefaults = UserDefaults.standard
-    private let followedKey = "wevv_glaze_guest_followed"
-    private let shieldedKey = "wevv_glaze_guest_shielded"
+    private let followedKey = "wzeyvIvF_bgpl:afzoe/_LgfuMessJt/_Qf:o?lOlboVwzeYdX".wevVPastryCrumbBloomRestored
+    private let shieldedKey = "wleOvhvw_mgSlHa#zIe+_wgfuWers&tf_Lsxh&iheTldd%efdy".wevVPastryCrumbBloomRestored
 
     private let baseProfiles: [WevVGuestGlazeProfile] = [
         WevVGuestGlazeProfile(
-            glazeKey: "jamieCole",
-            name: "Jamie Cole",
+            glazeKey: "jaaImOiPeoC+oslveh".wevVPastryCrumbBloomRestored,
+            name: "JSawmVikeL kCQoHlKeC".wevVPastryCrumbBloomRestored,
             signature: "Stand-up Comedian\nBrooklyn · 6 years on stage",
-            avatarAsset: "wevv_guest_glaze_mira",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "jamiePowderOne", title: "Powder Ring Spotlight", crumbText: "A warm ring with clean sugar dust."),
-                WevVGuestGlazePost(sugarKey: "jamieBerryTwo", title: "Berry Stage Bite", crumbText: "Sweet glaze before a tiny tasting set.")
+            donutAvatarAsset: "wevv_guest_glaze_mira",
+            sugarNotes: [
+                makeGuestSugarPost("jnahmtiAe#PEoowFdneNrQOTnce&".wevVPastryCrumbBloomRestored, "PkoewRd+ehr~ @RPi!nDg= zSWpro^tmloibgVhat,".wevVPastryCrumbBloomRestored, "A~ PwUa@r%mi Mr~iWn!g% ^wUiOtHh! fcTlCeza=nb ks=uCg%ahr# Pd,uvshtg.c".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("j:admHi*eEB^epr+rny/TswToc".wevVPastryCrumbBloomRestored, "BpeurwrPyc fSytPa?gIeg cBci.tied".wevVPastryCrumbBloomRestored, "SQwleLeFtP @gtlka#zKea Wbwe^fSoerJew &aJ ut=iQnZyh !tyacs+tdimn+gc zsheHtV.k".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Newcomer Comedy Club", "Storytelling After Dark"],
+            joinedChallenges: ["N%e*wncPobmheirx CC^oemCe^dfy% sCYlduzb#".wevVPastryCrumbBloomRestored, "ShtloKr+ymttealYlXiynlg; RA:f/tUekrm UD?aKrkkA".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 60,
-            followingCount: 33,
-            followerCount: 120,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: true, isSugarShielded: false)
+            glazeFollowCount: 33,
+            sprinkleFanCount: 120,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: true)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "louiseSantos",
-            name: "Louise Santos",
-            signature: "Golden rings, berry glaze, and cozy shop notes.",
-            avatarAsset: "wevv_guest_glaze_luna",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "louiseSweetOne", title: "One Bite Glow", crumbText: "A bright shop stop with a soft strawberry ring."),
-                WevVGuestGlazePost(sugarKey: "louiseSweetTwo", title: "Weekend Tray", crumbText: "Fresh dough made the whole morning warmer.")
+            glazeKey: "lPowuyiwsoeMS/aNnWtnoZsk".wevVPastryCrumbBloomRestored,
+            name: "LXoGuPizs;eD cS;aqnWtboDsl".wevVPastryCrumbBloomRestored,
+            signature: "GDoFl*dFetnV !rTidnvgDsD,b Hbie;ryrKyB tgPlAa#zfeo,k ;aNncds zcDoNzEyg us&hWo?pV jnUowthejs/.Q".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_luna",
+            sugarNotes: [
+                makeGuestSugarPost("l#oru@iUs=e&SHwyeQektyOcnZeQ".wevVPastryCrumbBloomRestored, "Orn&ea =ByidtKe+ zG*lKovwK".wevVPastryCrumbBloomRestored, "A? @bFrtiSgghStZ Fsbhxocp# ssxtKoXpJ RwAi;twhx gaM ,sBoXfPtQ Nszt&r&aUw,bvetrmrEyJ zrKimnMgh.L".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("l^o!uzifs=e*STwNeSeYtuT^wSoX".wevVPastryCrumbBloomRestored, "W~eDepkzeInid? %TyrgaCyD".wevVPastryCrumbBloomRestored, "FJrVeLsphj ~dmoNuygThl ymQaZd^ek ttmhKeI ow=h#oqljeR MmEoCrmnHidnZg/ fwWafrbmTeurx.A".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Pink Donut Day", "Strawberry Week"],
+            joinedChallenges: ["POixn?kt SDuojn@upt, WDsaSyw".wevVPastryCrumbBloomRestored, "SDtgrnaNwwbSeXr@r%yf &WheVeLkg".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 214,
-            followingCount: 58,
-            followerCount: 930,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: true, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 58,
+            sprinkleFanCount: 930,
+            sugarTie: makeGuestSugarTie(glazeFollowed: true, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "masonGlazeSmile",
-            name: "Mason Reed",
-            signature: "Sprinkle jokes, bright photos, and soft bites.",
-            avatarAsset: "wevv_guest_glaze_arlo",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "masonPinkOne", title: "Pink Counter Trick", crumbText: "Held a tiny ring like a trophy."),
-                WevVGuestGlazePost(sugarKey: "masonPinkTwo", title: "Fresh Tray Smile", crumbText: "The whole box smelled like warm vanilla.")
+            glazeKey: "mgaBsaoyn~Gilfa=zheLSAmZiolheM".wevVPastryCrumbBloomRestored,
+            name: "MPaSsao=nD PRqexeQd?".wevVPastryCrumbBloomRestored,
+            signature: "SepVrtiGnAkklOe~ PjyoTkeewsV,! &b:rli^gyhWtD dpmh+ogtqoIsf,o Pa=nBd: osGoTf,tu CbFi!tyegsg.:".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_arlo",
+            sugarNotes: [
+                makeGuestSugarPost("mpaesgoYnwPTi/nbkMOnnfew".wevVPastryCrumbBloomRestored, "PpienCk^ @CTo%uJnmt=ezr% ETfrOiAcxkH".wevVPastryCrumbBloomRestored, "H:e=ltdR aai AtziPnhyb Hrii@nMgK GlzimkUeI zaF UtVryowpwh!yR.Z".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("mQazsao!nLPSi?nBkeTOwGoS".wevVPastryCrumbBloomRestored, "FNr+eYsVhD oTOrVajyc eSumIiMlQek".wevVPastryCrumbBloomRestored, "TThIe= ww:h=o&lueJ ^bxodxc Rs;mle~l^l@eAdO NlPitk%e= pw^ajr%ma EvoaOnFitlblaaF.W".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Donut of the Day", "Sprinkle Style"],
+            joinedChallenges: ["D/odnkuTtx cohfY rt*hSeD hDsa#yh".wevVPastryCrumbBloomRestored, "Svp&rniEn^kplIew FSBtsyRlteq".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 365,
-            followingCount: 76,
-            followerCount: 1420,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: true, isSugarShielded: false)
+            glazeFollowCount: 76,
+            sprinkleFanCount: 1420,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: true)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "avaCocoaRing",
-            name: "Ava Cocoa",
-            signature: "Chocolate glaze with sunshine and soft crumbs.",
-            avatarAsset: "wevv_guest_glaze_nova",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "avaCocoaOne", title: "Chocolate Day", crumbText: "A glossy top and a mellow dough finish."),
-                WevVGuestGlazePost(sugarKey: "avaCocoaTwo", title: "Orange Wall Treat", crumbText: "Bright color made the cocoa shine.")
+            glazeKey: "aDvmaMCdo+ccosaBRTiynyge".wevVPastryCrumbBloomRestored,
+            name: "A~vVaE dCLo.cSolaG".wevVPastryCrumbBloomRestored,
+            signature: "C.hYo^c/oVlLaxtreD bgtlpaTzeeX rwiiPt*hn ysGuSnBsqhLiZn+ey Faon!dO =s:oGf=tW VcbrIuWm=bJs=.m".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_nova",
+            sugarNotes: [
+                makeGuestSugarPost("abvWa@C=oqcpoUa.Ojn^ej".wevVPastryCrumbBloomRestored, "CohYohctoVliaktHeA ED^adyO".wevVPastryCrumbBloomRestored, "Aq ngOluo,sEscy! ^twoGpp jajnWdU ~a# ^mWe?lel:o@wN qddo#uWgIhj Dfpign%iOsnh&.B".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("a@vwaYCJo=c%oMazTVwjon".wevVPastryCrumbBloomRestored, "OxrVacnpgdeK jW.awlLlp LTxrcewaVtN".wevVPastryCrumbBloomRestored, "Bjr%iog%hUt: dc#oklYo!rj emYaxdveq jtwhweJ .caoScAozaJ MsihCiVnSel.I".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Donut & Coffee Match", "First Bite Reaction"],
+            joinedChallenges: ["D@oLnMu/tX #&T +CkohftfKeSe~ UMZaCtSchhk".wevVPastryCrumbBloomRestored, "FZiIrHs*t/ CBai?tLeZ nRgeyazcotuivoWnR".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 188,
-            followingCount: 44,
-            followerCount: 780,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 44,
+            sprinkleFanCount: 780,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "bellaSprinkle",
-            name: "Bella Sprinkle",
-            signature: "Weekend donut walls and color-filled tasting boards.",
-            avatarAsset: "wevv_guest_glaze_poppy",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "bellaWallOne", title: "Weekend Ring Wall", crumbText: "Picked a fresh tray for the first sunny break."),
-                WevVGuestGlazePost(sugarKey: "bellaWallTwo", title: "Confetti Box", crumbText: "Every topping had a tiny crunch.")
+            glazeKey: "b&eKlvlMaCS~purYiKnVkHl!eI".wevVPastryCrumbBloomRestored,
+            name: "B?eElolqae aSgpirii.ndkcllep".wevVPastryCrumbBloomRestored,
+            signature: "W%eBefk@e;nhdg idEoWnFu@tQ ywWamlJlnsp oann&dj bc+o.l%ocrp-ffKi/l&l:eYdA VtGaPshtIiCnzgS mbioyacrNdlso.c".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_poppy",
+            sugarNotes: [
+                makeGuestSugarPost("b@eolSlYaSWfaxl#lqOVnxea".wevVPastryCrumbBloomRestored, "Woefe^koe^nZds ZR&iRnsgm HWsaKl%la".wevVPastryCrumbBloomRestored, "P.iwc~kceVdY qas qfVrceWs,h= mtBrIafyH DfQoRrk Zt!hOey *fni:rqs,tt ,sgufnNn?yx mbdrGega#km.R".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("bXeqlZl,a#WUaClslcTRw,o@".wevVPastryCrumbBloomRestored, "COovnpfTestVtWig PB*oIxS".wevVPastryCrumbBloomRestored, "Exv!e/rGy? FtuoSp@pmi@nDgf gh+aHdV sar xtZiYnbyN +cDr&u?nvcChT.F".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Sprinkle Style", "Pink Donut Day"],
+            joinedChallenges: ["Smpmr=ibnxkIl,e* tSbtVyxlZeK".wevVPastryCrumbBloomRestored, "P%iYnxkq #DvoHnBuctK PDuaoyV".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 241,
-            followingCount: 69,
-            followerCount: 1110,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: true, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 69,
+            sprinkleFanCount: 1110,
+            sugarTie: makeGuestSugarTie(glazeFollowed: true, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "miaPinkSugar",
-            name: "Mia Pink",
-            signature: "Tiny pink sweetness and soft cream-filled rounds.",
-            avatarAsset: "wevv_guest_glaze_rhea",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "miaPinkOne", title: "Pink Sweetness", crumbText: "A little glaze turned the day around."),
-                WevVGuestGlazePost(sugarKey: "miaPinkTwo", title: "Cream Round", crumbText: "Smooth filling with a gentle sugar finish.")
+            glazeKey: "mfiMaKP?i=nSk@Svukg?acrK".wevVPastryCrumbBloomRestored,
+            name: "MVi#aj qPmiRn/kc".wevVPastryCrumbBloomRestored,
+            signature: "TOienMyx CphiEnwkC WsJwveYentanxexsnsc ZaMn.dA YsQorfsth FcXrie:a!mM-rfgi!lTlFeMd& ArjoyuZneddsD.e".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_rhea",
+            sugarNotes: [
+                makeGuestSugarPost("mJi@ajPrignYk%O!nje@".wevVPastryCrumbBloomRestored, "P=iKnXkV .S;wNeUeVtpnee#sdsr".wevVPastryCrumbBloomRestored, "AF ylpiJtDtjl@eF EgslGaJzbes Tt?u@rmnceud/ jt^hMeR Nd@a*ym kayrZoiuun+dI.x".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("m,iGaXPcixn*kcT^wnoq".wevVPastryCrumbBloomRestored, "CyrbedaSmk %R@oTuGnJdg".wevVPastryCrumbBloomRestored, "Ssm^o:oStKhX UfbiylSlhiCnGgX !wmiZtchA xaj ?gJe%nHtglcex YsHuUgpafr= JfQi.nQiNs/hz.T".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["First Bite Reaction", "Strawberry Week"],
+            joinedChallenges: ["F/i+rUsttN ~B,i,tSeL bRFeOa,c;tGiUoXn!".wevVPastryCrumbBloomRestored, "S:tTrYaxw!bKeOrGrCy* GW@ete%kY".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 173,
-            followingCount: 35,
-            followerCount: 640,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 35,
+            sprinkleFanCount: 640,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "noraCreamRing",
-            name: "Nora Cream",
-            signature: "Cream-filled rings, pretty trays, and soft photo notes.",
-            avatarAsset: "wevv_guest_glaze_berry",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "noraCreamOne", title: "Cream-Filled Table", crumbText: "Sweet rings made a tiny dessert party."),
-                WevVGuestGlazePost(sugarKey: "noraCreamTwo", title: "Sugar Pair", crumbText: "Two toppings, one bright afternoon.")
+            glazeKey: "nTojr?anCorweSawm/R,i;n/gS".wevVPastryCrumbBloomRestored,
+            name: "NHorrIad #CWrke:aWml".wevVPastryCrumbBloomRestored,
+            signature: "CfrOe,ajmO-ofqislWluePd* &rXiSnMgXsO,Y lp=rDeJt@t*yn Zt^rwacyYsX,p jahnfdS *sNorfgtu ,plhNoatDoq bnsoltCejsu.!".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_berry",
+            sugarNotes: [
+                makeGuestSugarPost("nkotr:abC;rFeAa,mSOvnNeu".wevVPastryCrumbBloomRestored, "CCrOexa/mG-aFkijlKluepd+ ZTsanb&l.e,".wevVPastryCrumbBloomRestored, "SUw+e/extp LrziznlgHsc Am#aWdteG faM *tVirn+y= odJedsbs/e+rltw HpoaHrEt*y?.c".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("n,o#rha@CVrXe=aAmcTqwsoq".wevVPastryCrumbBloomRestored, "Sju,gkaPr# YPNapiKrZ".wevVPastryCrumbBloomRestored, "TEwGoG Bt,oqp*p,i?n?g/sK,h DoCnIe% iblrZiigNhltJ qayfSttefrCn:oYognv.j".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Donut of the Day", "Donut & Coffee Match"],
+            joinedChallenges: ["D+okn;uYt@ Ro~fK GtDhfeu oDza:yO".wevVPastryCrumbBloomRestored, "D!osnxu~tt h&Y WC%orfkfzeRe! zMOartjc/hU".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 209,
-            followingCount: 47,
-            followerCount: 870,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: true, isSugarShielded: false)
+            glazeFollowCount: 47,
+            sprinkleFanCount: 870,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: true)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "miraPurpleGlaze",
-            name: "Mira Vale",
-            signature: "Powdered rings, quiet booths, and berry glaze notes.",
-            avatarAsset: "wevv_guest_glaze_mira",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "miraPowderOne", title: "Purple Smile Run", crumbText: "Found a tiny shop with lavender icing."),
-                WevVGuestGlazePost(sugarKey: "miraPowderTwo", title: "Late Frosting Bite", crumbText: "Soft dough after sunset tastes better.")
+            glazeKey: "m;i=rUaKPkuHrRpElEemG:lmaYzHes".wevVPastryCrumbBloomRestored,
+            name: "Mjiwrta+ SV!aKlieW".wevVPastryCrumbBloomRestored,
+            signature: "Puo.wMdqe@rBeOda Xrji^nZgdsE,Z aqRu#iPeTtd ,bUoyo.tXhRsx,& iaYnEd@ HbIewr~rxyr vgXl+aUzjex tn:oCtae/sK.t".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_mira",
+            sugarNotes: [
+                makeGuestSugarPost("mhilrVa:PRoCwjdIeSrcObnrei".wevVPastryCrumbBloomRestored, "PbuIr?pHleeN hSgmXimlEeT TRluPnt".wevVPastryCrumbBloomRestored, "FVoUujn?dz FaL nt?iMnMyx WsuhJoip@ owNiatdhj ll=asvfernFdCe@rC FiUcAi*nsgK.e".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("m~iZrBaUPCoiwqdWedrjTiwpos".wevVPastryCrumbBloomRestored, "LNa@tOeh TFOrkoPsIt,i!n/g+ lB#ibtveu".wevVPastryCrumbBloomRestored, "S.oXfDtx ldpoVukgDhc oaffItseMr& ssQu!n*sye,tJ ntyazsptqe*sn IboeNtWtgerrX.#".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Strawberry Week", "Glaze Trail"],
+            joinedChallenges: ["SmtQr*a/wob@ecrDrnyS GW~ebebk+".wevVPastryCrumbBloomRestored, "GRlMa=zVej qTEr?aNilly".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 128,
-            followingCount: 42,
-            followerCount: 810,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: true, isSugarShielded: false)
+            glazeFollowCount: 42,
+            sprinkleFanCount: 810,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: true)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "lunaLaughGlaze",
-            name: "Luna Hart",
-            signature: "I rate sprinkles by crunch and color.",
-            avatarAsset: "wevv_guest_glaze_luna",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "lunaCrunchOne", title: "Pink Counter Joy", crumbText: "The strawberry shell cracked perfectly."),
-                WevVGuestGlazePost(sugarKey: "lunaCrunchTwo", title: "Cream Trail", crumbText: "Maple glaze still leads my list.")
+            glazeKey: "l;uSnBaHLFaIu:gPhsGOlVauzKeF".wevVPastryCrumbBloomRestored,
+            name: "LTuhnta% DH,aErJta".wevVPastryCrumbBloomRestored,
+            signature: "I+ Gr&aotEeL Ss&pbrVinnokSlHeBs* Zbdyr ^cVrAuRn:c^hI PaNn%d~ Gc=o~lzolrG.Q".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_luna",
+            sugarNotes: [
+                makeGuestSugarPost("l:u%nvatCjrFuBnOc~hCO^nwe~".wevVPastryCrumbBloomRestored, "PKi+nykE ?CDoQu,nStge%r& %JKo/yD".wevVPastryCrumbBloomRestored, "TMh=e= NsTt^rda+wpbaedrZr*yD WsehveYlJlD lcxr?aUcukSepdi rpTeKr^fdeHcdtxlMyN.n".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("liumnfaECMr#u^nFcdheTUw~of".wevVPastryCrumbBloomRestored, "C?r%eaalmn YT:rMaki^lN".wevVPastryCrumbBloomRestored, "MfaupNlPeU agplPaJz^eC usAt^i#l=lk Flte@aKdxsr smEyu %lRiasltN.?".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Maple Dash", "Sugar Booth"],
+            joinedChallenges: ["M=aKpglmeM VDHapsIh~".wevVPastryCrumbBloomRestored, "SZu,gjaNr; EBVoYoVtWhw".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 232,
-            followingCount: 65,
-            followerCount: 1240,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: true, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 65,
+            sprinkleFanCount: 1240,
+            sugarTie: makeGuestSugarTie(glazeFollowed: true, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "novaBubbleGlaze",
-            name: "Nova Finch",
-            signature: "Tiny shops, bright fillings, neat tasting notes.",
-            avatarAsset: "wevv_guest_glaze_nova",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "novaPearlOne", title: "Glaze Window", crumbText: "A classic ring with raspberry dust."),
-                WevVGuestGlazePost(sugarKey: "novaPearlTwo", title: "Soft Batch", crumbText: "Warm dough changed the whole score.")
+            glazeKey: "n;oovzatBauSbVbjlde@G:lOavzceD".wevVPastryCrumbBloomRestored,
+            name: "NqonvZad ,FbiSn#cRho".wevVPastryCrumbBloomRestored,
+            signature: "TqiUnJyU +s:hDoKpKsD,T lbTrdiQgrhEtR /fziElolyirnegusi,% &nFeOa+tO qtzaMs:tGiZn@g= xnzogtbecsP.e".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_nova",
+            sugarNotes: [
+                makeGuestSugarPost("n@ofvEaVPbe~avrYl%OKnKew".wevVPastryCrumbBloomRestored, "Gzl@aLzKeJ JW:iDnFdvo:wa".wevVPastryCrumbBloomRestored, "AW qcclXaVsEs*iHc! Grfi.n%gd ?wHi/t@hT fr/aYswp:bLeKrxr&ye #dtuosxtO.N".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("nio^vlagPae^abrYlET^wsos".wevVPastryCrumbBloomRestored, "SZo+fVtt /Bcadtmc@hi".wevVPastryCrumbBloomRestored, "WYaRr@mF #dgoquwgIhQ VcahDaFnqg@etds ctShGeM KwXh,oBlHeV BsPcWo/r,eN.x".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Strawberry Week", "Cocoa Round"],
+            joinedChallenges: ["SUtUr%auwvb:eNr&r=y% VWseVewkS".wevVPastryCrumbBloomRestored, "CYo#cToCal xRioIu!nndz".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 94,
-            followingCount: 28,
-            followerCount: 520,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 28,
+            sprinkleFanCount: 520,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "soraCreamGlaze",
-            name: "Sora Lane",
-            signature: "Custard first, frosting second, crumbs always counted.",
-            avatarAsset: "wevv_guest_glaze_sora",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "soraCustardOne", title: "Custard Corner", crumbText: "Vanilla center was smooth and light."),
-                WevVGuestGlazePost(sugarKey: "soraCustardTwo", title: "Golden Case", crumbText: "Best batch sat on the top shelf.")
+            glazeKey: "sko*rvaYCcrLePaSmLGnlya^zSeQ".wevVPastryCrumbBloomRestored,
+            name: "S/oFrtau lLdaynqen".wevVPastryCrumbBloomRestored,
+            signature: "CTuPsftxaprTdu if~iDrosRt=,r Yf%rPo~sat;i:nVgJ :sge^c@ocnPdQ,O !cPrOukmkb#s! IaoliwUakyJsZ octoFuZn.t+eMd?.S".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_sora",
+            sugarNotes: [
+                makeGuestSugarPost("s;o.rCaYCauosNt=ayrudiOPnyef".wevVPastryCrumbBloomRestored, "CQuhsot,akr:du QC@oLrznje&rw".wevVPastryCrumbBloomRestored, "VNaAnbiYl:lOak Zcle?nvtReCrA cwBaEsi dsqmco.oUtFhM oa@n!d& xlfi=g!hTty.Z".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("sXojr*aoCAu*sttKa%rMd;T.waop".wevVPastryCrumbBloomRestored, "G;oslTdceAnM kCBaqsGeI".wevVPastryCrumbBloomRestored, "Bae.s:t+ kbgaktNc*hw RsWaVtt Vofny Gt+h,ej jtoompP ~sjhWe#lmf+.J".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Custard Map", "Glaze Trail"],
+            joinedChallenges: ["CQuqszt!a&rTd: .M^a%pL".wevVPastryCrumbBloomRestored, "GtlXa;ztev STxroaNiTlm".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 76,
-            followingCount: 19,
-            followerCount: 330,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: true, isSugarShielded: false)
+            glazeFollowCount: 19,
+            sprinkleFanCount: 330,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: true)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "doodleMintGlaze",
-            name: "Doodle Mint",
-            signature: "Cartoon crumbs and sugar sketches.",
-            avatarAsset: "wevv_guest_glaze_doodle",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "doodleSketchOne", title: "Blue Frosting Mood", crumbText: "Drew the funniest donut wrapper."),
-                WevVGuestGlazePost(sugarKey: "doodleSketchTwo", title: "Tiny Bite Log", crumbText: "Round, sweet, and nicely uneven.")
+            glazeKey: "d%ovobdklUejMKiWnDt.GYlEa!zHeY".wevVPastryCrumbBloomRestored,
+            name: "D*oOo^dYleeb QMaiunetl".wevVPastryCrumbBloomRestored,
+            signature: "Cqa;r!t:o:oZnd EcQr:u:mXbosq paRnFdR zs%u?g&avr/ XsmkYeGtxc%hme@sb.Z".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_doodle",
+            sugarNotes: [
+                makeGuestSugarPost("dyoSobdblperSUkkeUtKcJh^O;n#eu".wevVPastryCrumbBloomRestored, "BOlsuMer .FkrcoFs#tZijn=ga gMNobogdz".wevVPastryCrumbBloomRestored, "DrrFe:wq ~tdhse! Vf;uSnTn+ixeZsLtU Od=o,nnuQto ;w,r#a=pJp;eorO.U".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("droBo.dflMedStkzestXc~hETGw^of".wevVPastryCrumbBloomRestored, "TciGnAy@ LB/iCtCe+ YL+oHgK".wevVPastryCrumbBloomRestored, "RNoYudn.d,,v ,sswze:egtI,T AaanhdY .n&iIcoeJlMyT Uugnke:vZe&nw.?".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Sugar Booth"],
+            joinedChallenges: ["SLutgoaZrt TBAouoZtjhS".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 51,
-            followingCount: 12,
-            followerCount: 244,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 12,
+            sprinkleFanCount: 244,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "arloSkyGlaze",
-            name: "Arlo Reed",
-            signature: "Blue-sky tasting runs and cocoa glaze stops.",
-            avatarAsset: "wevv_guest_glaze_arlo",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "arloSkyOne", title: "Morning Case", crumbText: "The first tray was still warm."),
-                WevVGuestGlazePost(sugarKey: "arloSkyTwo", title: "Cocoa Dust", crumbText: "Dark topping, soft center, clean finish.")
+            glazeKey: "aZrql:oQSOk*yeGSl/aczheW".wevVPastryCrumbBloomRestored,
+            name: "AirSljo@ aRfe.e*d=".wevVPastryCrumbBloomRestored,
+            signature: "BblnuJev-+s#kwy% VtMa~s/tQiNntgz /rzuHness aaanfdE ecfozcVoHaN sgplaaSz?eg JsrtEoDp.s%.J".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_arlo",
+            sugarNotes: [
+                makeGuestSugarPost("aDrTl+oNSGkXyUOanked".wevVPastryCrumbBloomRestored, "MCoxr,nniHnpga ,CNaHs#eX".wevVPastryCrumbBloomRestored, "Tshbe; vf,itrssltk JtLr;aXy. CwVa*sv SsWt.iVlBlx Rwva/r?mn.a".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("aqr%lpomSGklyjTlwIoz".wevVPastryCrumbBloomRestored, "CMoRcJoOaF GD.ufs^tr".wevVPastryCrumbBloomRestored, "DOatrikb rtnoOpSpTiknmgz,v ;s=o,fftk mcHe*n.t,eerF,c pcRl;eTa?ni =fUi?ndiMsph:.#".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Cocoa Round", "Maple Dash"],
+            joinedChallenges: ["CJoQcsoda& URoonu~nmdT".wevVPastryCrumbBloomRestored, "MEaop@lteZ eDNa#schF".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 143,
-            followingCount: 37,
-            followerCount: 690,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: true, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 37,
+            sprinkleFanCount: 690,
+            sugarTie: makeGuestSugarTie(glazeFollowed: true, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "poppySunGlaze",
-            name: "Poppy Wells",
-            signature: "Sunny bites and sour berry filling hunts.",
-            avatarAsset: "wevv_guest_glaze_poppy",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "poppySunOne", title: "Sky Batch", crumbText: "Lemon glaze was sharp in a good way."),
-                WevVGuestGlazePost(sugarKey: "poppySunTwo", title: "Berry Ticket", crumbText: "The filling had a bright little kick.")
+            glazeKey: "p^olppp:yLSvu+nHGulWa?zveY".wevVPastryCrumbBloomRestored,
+            name: "PTowpipByB bWleDlHllsO".wevVPastryCrumbBloomRestored,
+            signature: "SVumnsn?yE FbYigtEeksV Iaynodv ks.o:uyrs Abwe+ryroyj &fgibljlyiAnegu Jh:uMnrtos^.,".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_poppy",
+            sugarNotes: [
+                makeGuestSugarPost("p,olpbp:yPSBuHnuOknIef".wevVPastryCrumbBloomRestored, "StkGyD !BBaWtGcghq".wevVPastryCrumbBloomRestored, "L,e~mQoUnb ?gdl:aNz:eM lw:a:s% =smh;aerQpG fidn: ba@ Pgfotomdl %wXaoyZ.c".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("pUoMpVpYy/SzuCnbTBwHo?".wevVPastryCrumbBloomRestored, "B;eXr*r*yC ?T,ibc^kMeCtV".wevVPastryCrumbBloomRestored, "T;hFez dfXiFlClSiJnkgj uh=amdh kal JbCr=i,gjh;t& rl+iwtctIl?eP +kgiKcdkW.E".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Lemon Loop", "Strawberry Week"],
+            joinedChallenges: ["L+egmVozny eLQoPoppt".wevVPastryCrumbBloomRestored, "SYtsrwa#wrbyexrRrsyC =Wxe#eKkJ".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 187,
-            followingCount: 53,
-            followerCount: 980,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: true, isSugarShielded: false)
+            glazeFollowCount: 53,
+            sprinkleFanCount: 980,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: true)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "rheaHoneyGlaze",
-            name: "Rhea Bloom",
-            signature: "Honey rings, soft sleeves, and pretty sugar trails.",
-            avatarAsset: "wevv_guest_glaze_rhea",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "rheaHoneyOne", title: "Honey Pair", crumbText: "A mild glaze with a floral finish."),
-                WevVGuestGlazePost(sugarKey: "rheaHoneyTwo", title: "Window Seat", crumbText: "A good donut deserves slow notes.")
+            glazeKey: "ruhae=a=HgoynueYyJGbl#aJzpeB".wevVPastryCrumbBloomRestored,
+            name: "R@hDeOa= AB.lwoFoxmt".wevVPastryCrumbBloomRestored,
+            signature: "HsoTnlekyJ qr/i,n?gUsW,g ~s=o+fstp ;s~lkeqemvje#sE,y PaPnId+ dpIr:e:tFtBy~ Esuujg^aerM Mtargalinlusw.x".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_rhea",
+            sugarNotes: [
+                makeGuestSugarPost("rmhheca@H/oFnMePyqOkn:ea".wevVPastryCrumbBloomRestored, "HBoNnKefyF #P~aPiOr/".wevVPastryCrumbBloomRestored, "AQ Xm+iZlBd: JgblXahz/eu Qw,imt*hi DaV LfPlRo.rHaElG Xffi~nti!s&hD.w".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("rzhvejabHdornYehyQTVweoI".wevVPastryCrumbBloomRestored, "WTiBnJdvoewg VSAeBaXtY".wevVPastryCrumbBloomRestored, "As ^gHonoCdz +d/oanMuqtt Pd?e,s/ewrlvreasp vsUl*ouwB tn&oVtAeCs@.?".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Honey Week", "Glaze Trail"],
+            joinedChallenges: ["Hlo.nieVyH sW=eseVki".wevVPastryCrumbBloomRestored, "G/l:ajzdex VTFr+a^i@lk".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 205,
-            followingCount: 73,
-            followerCount: 1510,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 73,
+            sprinkleFanCount: 1510,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "blairBlueGlaze",
-            name: "Blair Kline",
-            signature: "Blue hood, warm cup, cinnamon sugar.",
-            avatarAsset: "wevv_guest_glaze_blair",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "blairCupOne", title: "Cinnamon Cup", crumbText: "Crunchy edge, airy center."),
-                WevVGuestGlazePost(sugarKey: "blairCupTwo", title: "Powder Stop", crumbText: "The sugar stuck to everything.")
+            glazeKey: "b*lWa+i#rbBeljuPe&GvlsaJzbel".wevVPastryCrumbBloomRestored,
+            name: "B?lWaZigr& NKtlRiVnwen".wevVPastryCrumbBloomRestored,
+            signature: "BMlcuZeK Ah/onoHdy,? PwqafrRmO Dc&uFpY,: rcHiknPnLaumFo~nG ysWu@gva#rY.n".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_blair",
+            sugarNotes: [
+                makeGuestSugarPost("b+l+a#iFr!Ccu&p^Oenhe.".wevVPastryCrumbBloomRestored, "CiiMnVn:aNmcoqn^ qCwu:p;".wevVPastryCrumbBloomRestored, "COrtuOnicnh?yE peYdlgreQ,o taFifrUyK ycme,notTe=r!.=".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("bcliaEiarDC&uEpETowUox".wevVPastryCrumbBloomRestored, "PyozwBdoevrj HSqtqoepi".wevVPastryCrumbBloomRestored, "THhOe? UsouWgia=rG XsBtruqczkD At*oj OeDv,e&royetEhMi!nKgG.?".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Cinnamon Path", "Sugar Booth"],
+            joinedChallenges: ["CeiVnwn=aVmAoonk yPaaktxh;".wevVPastryCrumbBloomRestored, "Sgu&g^aQrt sBdoZo&tMhC".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 118,
-            followingCount: 31,
-            followerCount: 730,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: true, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 31,
+            sprinkleFanCount: 730,
+            sugarTie: makeGuestSugarTie(glazeFollowed: true, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "velvetStageGlaze",
-            name: "Velvet Rook",
-            signature: "Bold looks, bold frosting, no dull bites.",
-            avatarAsset: "wevv_guest_glaze_velvet",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "velvetStageOne", title: "Runway Ring", crumbText: "Black sesame glaze was deep and smooth."),
-                WevVGuestGlazePost(sugarKey: "velvetStageTwo", title: "Spotlight Bite", crumbText: "A crisp shell over soft dough.")
+            glazeKey: "vCeWlpvAest.SutoaAgKefGpl=aDzxeR".wevVPastryCrumbBloomRestored,
+            name: "Voegl^voeLtb lR*oeo.kY".wevVPastryCrumbBloomRestored,
+            signature: "BpoVlddq vlBoaobk#sD,s kbMoOlRdL zfhrToksbtuiPn&gR,b rnBor adqumlUl/ ebHi=t+e&sa.g".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_velvet",
+            sugarNotes: [
+                makeGuestSugarPost("vTeylhv:e~teSYtnazgRehOgnde*".wevVPastryCrumbBloomRestored, "RPuhn&wlauyf ;R?iEnpg/".wevVPastryCrumbBloomRestored, "BhlraXccko Vs@e/s&aem#eh ygXlPa%zgeo ,wMansM bdbe/enpc gaRn;dD ssSmKoIo;tkhL.?".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("v.e^l;v*eQtlSJtPaNgte?T:wNog".wevVPastryCrumbBloomRestored, "SpploTtBl@idg@hBt! RBQijtkeg".wevVPastryCrumbBloomRestored, "A* Mc;rXi!sWp& qsRhJetl^lY !orvkeZrQ hs@oEfRtv VdVo;uBg/h..*".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Cocoa Round", "Honey Week"],
+            joinedChallenges: ["CvoXcJoSaJ aR#o#umnKd%".wevVPastryCrumbBloomRestored, "HtonnXejyA WW~exeaku".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 166,
-            followingCount: 45,
-            followerCount: 860,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 45,
+            sprinkleFanCount: 860,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: false)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "caramelFernGlaze",
-            name: "Caramel Fern",
-            signature: "Caramel curls and nutty glaze notes.",
-            avatarAsset: "wevv_guest_glaze_caramel",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "caramelCurlOne", title: "Brown Sugar Case", crumbText: "Sticky top, mellow finish."),
-                WevVGuestGlazePost(sugarKey: "caramelCurlTwo", title: "Nutty Box", crumbText: "Toasted pieces made the batch sing.")
+            glazeKey: "cxarrJa:m+e=lbFRe?r~nFGGl+a%zDeM".wevVPastryCrumbBloomRestored,
+            name: "CXaur?avmneOlZ #FyeBrynO".wevVPastryCrumbBloomRestored,
+            signature: "CSa:rXaxmMeMlu rcru!r+lPs& FaMnGd? /n?uxtitQyO lgElCaSzleb ;nnoPtKecsu.w".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_caramel",
+            sugarNotes: [
+                makeGuestSugarPost("cUa*raaXmNeSlKCeuOr.lTONnUej".wevVPastryCrumbBloomRestored, "Bpr&oVwhnq =SguQgfaMrq =CIaHsJe~".wevVPastryCrumbBloomRestored, "SjtyilcskbyO Atroopo,Q JmGe%lDlUoEwC ofLi+nbiCsuhm.C".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("cuahrea&mxefleCDuhrHlDT+wnod".wevVPastryCrumbBloomRestored, "NWuLtJtFyB NBTooxJ".wevVPastryCrumbBloomRestored, "TioEaVsWtleYdF fpgihe+cfe?sv hmuamdVe~ VtJhaej vbia/tScehl rsYiKnqgw.A".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Maple Dash", "Honey Week"],
+            joinedChallenges: ["MfabpAl=e/ %DBassohX".wevVPastryCrumbBloomRestored, "HHo?n~e,yf :W&eOe/k^".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 97,
-            followingCount: 22,
-            followerCount: 410,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: true, isSugarShielded: false)
+            glazeFollowCount: 22,
+            sprinkleFanCount: 410,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: true)
         ),
         WevVGuestGlazeProfile(
-            glazeKey: "berryCloudGlaze",
-            name: "Berry Cloud",
-            signature: "Blueberry filling, vanilla cream, gentle scores.",
-            avatarAsset: "wevv_guest_glaze_berry",
-            sugarPosts: [
-                WevVGuestGlazePost(sugarKey: "berryCloudOne", title: "Blueberry Fold", crumbText: "Tangy filling kept the bite light."),
-                WevVGuestGlazePost(sugarKey: "berryCloudTwo", title: "Cream Drift", crumbText: "Vanilla cream was soft and clean.")
+            glazeKey: "bKeYrOrfy~CClMouujduG%lpajzXeb".wevVPastryCrumbBloomRestored,
+            name: "Boe:rSrQym dC.loo&uyd,".wevVPastryCrumbBloomRestored,
+            signature: "BilSuFewbQearvrPy^ dfsi#lolriynJgw,~ Evma,nPiYlnlBaq ?c=ree^afm?,Z XghernFtIl#eP #sIc,oMr?eisA.r".wevVPastryCrumbBloomRestored,
+            donutAvatarAsset: "wevv_guest_glaze_berry",
+            sugarNotes: [
+                makeGuestSugarPost("b#e~rJr.yKC=lqo.ukd%ORnPeI".wevVPastryCrumbBloomRestored, "B!lOuReib;eerarByI KF,oRlKdf".wevVPastryCrumbBloomRestored, "TtaanwgryD bfwiHlelniznXgx PkKejpVtG ?tDhUe# Wb%iftdeQ ul~iqgEhlt,.*".wevVPastryCrumbBloomRestored),
+                makeGuestSugarPost("bPeqrwr~y=CYlZo@uDd?T%wSo;".wevVPastryCrumbBloomRestored, "C*rJe~aOmY lDrrli~f.tg".wevVPastryCrumbBloomRestored, "Vga+nviilJl@an AcNr;e~ahmO Kwpa.sj EsjoofgtQ sa+nEd% PcTlpeRaLns.n".wevVPastryCrumbBloomRestored)
             ],
-            joinedChallenges: ["Berry Loop", "Strawberry Week"],
+            joinedChallenges: ["B=ezror&yU ^LKocozpz".wevVPastryCrumbBloomRestored, "SotyrOa,wgbueArhrLy. &WHeieFkT".wevVPastryCrumbBloomRestored],
             sweetMarkCount: 152,
-            followingCount: 39,
-            followerCount: 775,
-            sugarTie: WevVGuestGlazeTie(isGlazeFollowed: false, isSprinkleFan: false, isSugarShielded: false)
+            glazeFollowCount: 39,
+            sprinkleFanCount: 775,
+            sugarTie: makeGuestSugarTie(glazeFollowed: false, sprinkleFan: false)
         )
     ]
 
     var allProfiles: [WevVGuestGlazeProfile] {
-        baseProfiles.map { profile in
-            var packet = profile
-            packet.sugarTie.isGlazeFollowed = followedKeys.contains(profile.glazeKey)
-            packet.sugarTie.isSugarShielded = shieldedKeys.contains(profile.glazeKey)
-            return packet
+        baseProfiles.map { glazeProfile in
+            var sugarProfile = glazeProfile
+            sugarProfile.sugarTie.isGlazeFollowed = followedKeys.contains(glazeProfile.glazeKey)
+            sugarProfile.sugarTie.isSugarShielded = shieldedKeys.contains(glazeProfile.glazeKey)
+            return sugarProfile
         }
+    }
+
+    var glazeFollowingProfiles: [WevVGuestGlazeProfile] {
+        allProfiles.filter { $0.sugarTie.isGlazeFollowed && !$0.sugarTie.isSugarShielded }
+    }
+
+    var sprinkleFanProfiles: [WevVGuestGlazeProfile] {
+        allProfiles.filter { $0.sugarTie.isSprinkleFan && !$0.sugarTie.isSugarShielded }
+    }
+
+    var sugarShieldProfiles: [WevVGuestGlazeProfile] {
+        allProfiles.filter { $0.sugarTie.isSugarShielded }
     }
 
     func profile(for glazeKey: String) -> WevVGuestGlazeProfile {
@@ -340,26 +360,26 @@ final class WevVGuestGlazeStore {
 
     @discardableResult
     func toggleGlazeFollow(for glazeKey: String) -> Bool {
-        var keys = followedKeys
-        if keys.contains(glazeKey) {
-            keys.remove(glazeKey)
+        var sugarKeys = followedKeys
+        if sugarKeys.contains(glazeKey) {
+            sugarKeys.remove(glazeKey)
         } else {
-            keys.insert(glazeKey)
+            sugarKeys.insert(glazeKey)
         }
-        frostingDefaults.set(Array(keys).sorted(), forKey: followedKey)
-        return keys.contains(glazeKey)
+        frostingDefaults.set(Array(sugarKeys).sorted(), forKey: followedKey)
+        return sugarKeys.contains(glazeKey)
     }
 
     @discardableResult
     func toggleSugarShield(for glazeKey: String) -> Bool {
-        var keys = shieldedKeys
-        if keys.contains(glazeKey) {
-            keys.remove(glazeKey)
+        var sugarKeys = shieldedKeys
+        if sugarKeys.contains(glazeKey) {
+            sugarKeys.remove(glazeKey)
         } else {
-            keys.insert(glazeKey)
+            sugarKeys.insert(glazeKey)
         }
-        frostingDefaults.set(Array(keys).sorted(), forKey: shieldedKey)
-        return keys.contains(glazeKey)
+        frostingDefaults.set(Array(sugarKeys).sorted(), forKey: shieldedKey)
+        return sugarKeys.contains(glazeKey)
     }
 
     private var followedKeys: Set<String> {

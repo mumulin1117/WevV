@@ -13,6 +13,25 @@ struct WevVSprinkleReview {
     let crumbScoreText: String
     let biteText: String
     let badgeText: String
+    let donutAvatarAsset: String?
+
+    init(
+        sprinkleKey: String,
+        tasterName: String,
+        tastingRole: String,
+        crumbScoreText: String,
+        biteText: String,
+        badgeText: String,
+        donutAvatarAsset: String? = nil
+    ) {
+        self.sprinkleKey = sprinkleKey
+        self.tasterName = tasterName
+        self.tastingRole = tastingRole
+        self.crumbScoreText = crumbScoreText
+        self.biteText = biteText
+        self.badgeText = badgeText
+        self.donutAvatarAsset = donutAvatarAsset
+    }
 }
 
 struct WevVSugarShopPick {

@@ -19,13 +19,19 @@ final class WevVSugarRosterController: UIViewController {
 
     private let mode: WevVSugarRosterMode
     private let guestStore = WevVGuestGlazeStore.shared
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    private let stackView = UIStackView()
+    private let rosterScrollView = UIScrollView()
+    private let rosterContentView = UIView()
+    private let rosterStack = UIStackView()
     private let paleTone = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
     private let inkTone = UIColor(red: 0.18, green: 0.12, blue: 0.24, alpha: 1)
     private let mutedTone = UIColor(red: 0.56, green: 0.49, blue: 0.58, alpha: 1)
     private let pinkTone = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
+
+    private struct RosterActionSugarStyle {
+        let sugarTitle: String
+        let sugarFill: UIColor
+        let sugarInk: UIColor
+    }
 
     init(mode: WevVSugarRosterMode) {
         self.mode = mode
@@ -45,180 +51,181 @@ final class WevVSugarRosterController: UIViewController {
     private func buildRosterPage() {
         view.backgroundColor = paleTone
 
-        let back = UIButton(type: .system)
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        back.tintColor = .black
-        back.addTarget(self, action: #selector(closeRoster), for: .touchUpInside)
+        let doughBackButton = UIButton(type: .system)
+        doughBackButton.translatesAutoresizingMaskIntoConstraints = false
+        doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        doughBackButton.tintColor = .black
+        doughBackButton.addTarget(self, action: #selector(closeRoster), for: .touchUpInside)
 
-        let title = makeRosterLabel(mode.title, size: 25, weight: .heavy, color: inkTone)
-        title.textAlignment = .center
+        let glazeTitle = makeRosterLabel(mode.title, size: 25, weight: .heavy, color: inkTone)
+        glazeTitle.textAlignment = .center
 
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.alwaysBounceVertical = true
-        view.addSubview(back)
-        view.addSubview(title)
-        view.addSubview(scrollView)
+        rosterScrollView.translatesAutoresizingMaskIntoConstraints = false
+        rosterScrollView.alwaysBounceVertical = true
+        view.addSubview(doughBackButton)
+        view.addSubview(glazeTitle)
+        view.addSubview(rosterScrollView)
 
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(contentView)
+        rosterContentView.translatesAutoresizingMaskIntoConstraints = false
+        rosterScrollView.addSubview(rosterContentView)
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 12
-        contentView.addSubview(stackView)
+        rosterStack.translatesAutoresizingMaskIntoConstraints = false
+        rosterStack.axis = .vertical
+        rosterStack.spacing = 12
+        rosterContentView.addSubview(rosterStack)
 
         NSLayoutConstraint.activate([
-            back.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            back.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
-            back.widthAnchor.constraint(equalToConstant: 44),
-            back.heightAnchor.constraint(equalToConstant: 44),
-            title.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            title.centerYAnchor.constraint(equalTo: back.centerYAnchor),
-            title.leadingAnchor.constraint(greaterThanOrEqualTo: back.trailingAnchor, constant: 12),
-            title.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -70),
-            scrollView.topAnchor.constraint(equalTo: back.bottomAnchor, constant: 22),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -36)
+            doughBackButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            doughBackButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            doughBackButton.widthAnchor.constraint(equalToConstant: 44),
+            doughBackButton.heightAnchor.constraint(equalToConstant: 44),
+            glazeTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            glazeTitle.centerYAnchor.constraint(equalTo: doughBackButton.centerYAnchor),
+            glazeTitle.leadingAnchor.constraint(greaterThanOrEqualTo: doughBackButton.trailingAnchor, constant: 12),
+            glazeTitle.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -70),
+            rosterScrollView.topAnchor.constraint(equalTo: doughBackButton.bottomAnchor, constant: 22),
+            rosterScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            rosterScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            rosterScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            rosterContentView.topAnchor.constraint(equalTo: rosterScrollView.contentLayoutGuide.topAnchor),
+            rosterContentView.leadingAnchor.constraint(equalTo: rosterScrollView.contentLayoutGuide.leadingAnchor),
+            rosterContentView.trailingAnchor.constraint(equalTo: rosterScrollView.contentLayoutGuide.trailingAnchor),
+            rosterContentView.bottomAnchor.constraint(equalTo: rosterScrollView.contentLayoutGuide.bottomAnchor),
+            rosterContentView.widthAnchor.constraint(equalTo: rosterScrollView.frameLayoutGuide.widthAnchor),
+            rosterStack.topAnchor.constraint(equalTo: rosterContentView.topAnchor),
+            rosterStack.leadingAnchor.constraint(equalTo: rosterContentView.leadingAnchor, constant: 22),
+            rosterStack.trailingAnchor.constraint(equalTo: rosterContentView.trailingAnchor, constant: -22),
+            rosterStack.bottomAnchor.constraint(equalTo: rosterContentView.bottomAnchor, constant: -36)
         ])
     }
 
     private func reloadRosterRows() {
-        stackView.arrangedSubviews.forEach { row in
-            stackView.removeArrangedSubview(row)
-            row.removeFromSuperview()
+        rosterStack.arrangedSubviews.forEach { donutRow in
+            rosterStack.removeArrangedSubview(donutRow)
+            donutRow.removeFromSuperview()
         }
 
         let profiles = currentProfiles()
         guard !profiles.isEmpty else {
-            stackView.addArrangedSubview(makeEmptyRoster())
+            rosterStack.addArrangedSubview(makeEmptyRoster())
             return
         }
-        profiles.forEach { stackView.addArrangedSubview(makeRosterRow($0)) }
+        profiles.forEach { rosterStack.addArrangedSubview(makeRosterRow($0)) }
     }
 
     private func currentProfiles() -> [WevVGuestGlazeProfile] {
         switch mode {
         case .glazeFollowing:
-            return guestStore.allProfiles.filter { $0.sugarTie.isGlazeFollowed && !$0.sugarTie.isSugarShielded }
+            return guestStore.glazeFollowingProfiles
         case .sprinkleFollower:
-            return guestStore.allProfiles.filter { $0.sugarTie.isSprinkleFan && !$0.sugarTie.isSugarShielded }
+            return guestStore.sprinkleFanProfiles
         case .sugarShield:
-            return guestStore.allProfiles.filter { $0.sugarTie.isSugarShielded }
+            return guestStore.sugarShieldProfiles
         }
     }
 
     private func makeEmptyRoster() -> UIView {
-        //        let empty = UIStackView()
-        //        empty.translatesAutoresizingMaskIntoConstraints = false
-        //        empty.axis = .vertical
-        //        empty.alignment = .center
-        //        empty.spacing = 10
+        let glazeImage = UIImageView(image: UIImage(named: "wevv_profile_empty_sugar_note"))
+        glazeImage.translatesAutoresizingMaskIntoConstraints = false
+        glazeImage.contentMode = .scaleAspectFit
 
-                let image = UIImageView(image: UIImage(named: "wevv_profile_empty_sugar_note"))
-                image.translatesAutoresizingMaskIntoConstraints = false
-                image.contentMode = .scaleAspectFit
-
-               
-
-        //        empty.addArrangedSubview(image)
-               
-                NSLayoutConstraint.activate([
-        //            empty.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.58),
-                    image.widthAnchor.constraint(equalToConstant: 140),
-                    image.heightAnchor.constraint(equalToConstant: 153)
-                ])
-                return image
-           
+        NSLayoutConstraint.activate([
+            glazeImage.widthAnchor.constraint(equalToConstant: 140),
+            glazeImage.heightAnchor.constraint(equalToConstant: 153)
+        ])
+        return glazeImage
     }
 
     private func makeRosterRow(_ profile: WevVGuestGlazeProfile) -> UIControl {
-        let row = UIControl()
-        row.translatesAutoresizingMaskIntoConstraints = false
-        row.accessibilityIdentifier = profile.glazeKey
-        row.backgroundColor = .white
-        row.layer.cornerRadius = 22
-        row.clipsToBounds = true
-        row.addTarget(self, action: #selector(openGuestProfile(_:)), for: .touchUpInside)
+        let donutRow = UIControl()
+        donutRow.translatesAutoresizingMaskIntoConstraints = false
+        donutRow.accessibilityIdentifier = profile.glazeKey
+        donutRow.backgroundColor = .white
+        donutRow.layer.cornerRadius = 22
+        donutRow.clipsToBounds = true
+        donutRow.addTarget(self, action: #selector(openGuestProfile(_:)), for: .touchUpInside)
 
-        let avatar = UIImageView(image: UIImage(named: profile.avatarAsset))
-        avatar.translatesAutoresizingMaskIntoConstraints = false
-        avatar.contentMode = .scaleAspectFill
-        avatar.layer.cornerRadius = 28
-        avatar.clipsToBounds = true
+        let sugarAvatar = makeRosterAvatar(profile)
 
-        let name = makeRosterLabel(profile.name, size: 17, weight: .heavy, color: inkTone)
-        let note = makeRosterLabel(profile.signature.replacingOccurrences(of: "\n", with: " · "), size: 13, weight: .medium, color: mutedTone)
-        note.numberOfLines = 1
+        let creamName = makeRosterLabel(profile.name, size: 17, weight: .heavy, color: inkTone)
+        let crumbNote = makeRosterLabel(profile.signature.replacingOccurrences(of: "\n", with: " X·! N".wevVPastryCrumbBloomRestored), size: 13, weight: .medium, color: mutedTone)
+        crumbNote.numberOfLines = 1
 
-        let action = UIButton(type: .system)
-        action.translatesAutoresizingMaskIntoConstraints = false
-        action.accessibilityIdentifier = profile.glazeKey
-        action.setTitle(rowActionTitle(profile), for: .normal)
-        action.setTitleColor(rowActionTextColor(profile), for: .normal)
-        action.titleLabel?.font = .systemFont(ofSize: 13, weight: .heavy)
-        action.backgroundColor = rowActionFill(profile)
-        action.layer.cornerRadius = 18
-        action.addTarget(self, action: #selector(tapRosterAction(_:)), for: .touchUpInside)
+        let action = makeRosterActionButton(profile)
 
-        row.addSubview(avatar)
-        row.addSubview(name)
-        row.addSubview(note)
-        row.addSubview(action)
+        donutRow.addSubview(sugarAvatar)
+        donutRow.addSubview(creamName)
+        donutRow.addSubview(crumbNote)
+        donutRow.addSubview(action)
 
         NSLayoutConstraint.activate([
-            row.heightAnchor.constraint(equalToConstant: 86),
-            avatar.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: 16),
-            avatar.centerYAnchor.constraint(equalTo: row.centerYAnchor),
-            avatar.widthAnchor.constraint(equalToConstant: 56),
-            avatar.heightAnchor.constraint(equalToConstant: 56),
-            action.trailingAnchor.constraint(equalTo: row.trailingAnchor, constant: -16),
-            action.centerYAnchor.constraint(equalTo: row.centerYAnchor),
+            donutRow.heightAnchor.constraint(equalToConstant: 86),
+            sugarAvatar.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor, constant: 16),
+            sugarAvatar.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
+            sugarAvatar.widthAnchor.constraint(equalToConstant: 56),
+            sugarAvatar.heightAnchor.constraint(equalToConstant: 56),
+            action.trailingAnchor.constraint(equalTo: donutRow.trailingAnchor, constant: -16),
+            action.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
             action.widthAnchor.constraint(equalToConstant: 92),
             action.heightAnchor.constraint(equalToConstant: 36),
-            name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 14),
-            name.topAnchor.constraint(equalTo: row.topAnchor, constant: 20),
-            name.trailingAnchor.constraint(equalTo: action.leadingAnchor, constant: -12),
-            note.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            note.trailingAnchor.constraint(equalTo: name.trailingAnchor),
-            note.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 5)
+            creamName.leadingAnchor.constraint(equalTo: sugarAvatar.trailingAnchor, constant: 14),
+            creamName.topAnchor.constraint(equalTo: donutRow.topAnchor, constant: 20),
+            creamName.trailingAnchor.constraint(equalTo: action.leadingAnchor, constant: -12),
+            crumbNote.leadingAnchor.constraint(equalTo: creamName.leadingAnchor),
+            crumbNote.trailingAnchor.constraint(equalTo: creamName.trailingAnchor),
+            crumbNote.topAnchor.constraint(equalTo: creamName.bottomAnchor, constant: 5)
         ])
-        return row
+        return donutRow
     }
 
-    private func rowActionTitle(_ profile: WevVGuestGlazeProfile) -> String {
-        if mode == .sugarShield { return "Remove" }
-        return profile.sugarTie.isGlazeFollowed ? "Following" : "Follow"
+    private func makeRosterAvatar(_ profile: WevVGuestGlazeProfile) -> UIImageView {
+        let glazeAvatar = UIImageView(image: UIImage(named: profile.donutAvatarAsset))
+        glazeAvatar.translatesAutoresizingMaskIntoConstraints = false
+        glazeAvatar.contentMode = .scaleAspectFill
+        glazeAvatar.layer.cornerRadius = 28
+        glazeAvatar.clipsToBounds = true
+        return glazeAvatar
     }
 
-    private func rowActionFill(_ profile: WevVGuestGlazeProfile) -> UIColor {
-        if mode == .sugarShield { return UIColor(red: 0.94, green: 0.94, blue: 0.95, alpha: 1) }
-        return profile.sugarTie.isGlazeFollowed ? UIColor(red: 0.72, green: 0.72, blue: 0.74, alpha: 1) : pinkTone
+    private func makeRosterActionButton(_ profile: WevVGuestGlazeProfile) -> UIButton {
+        let sprinkleButton = UIButton(type: .system)
+        let sugarStyle = rosterActionSugarStyle(for: profile)
+        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
+        sprinkleButton.accessibilityIdentifier = profile.glazeKey
+        sprinkleButton.setTitle(sugarStyle.sugarTitle, for: .normal)
+        sprinkleButton.setTitleColor(sugarStyle.sugarInk, for: .normal)
+        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .heavy)
+        sprinkleButton.backgroundColor = sugarStyle.sugarFill
+        sprinkleButton.layer.cornerRadius = 18
+        sprinkleButton.addTarget(self, action: #selector(tapRosterAction(_:)), for: .touchUpInside)
+        return sprinkleButton
     }
 
-    private func rowActionTextColor(_ profile: WevVGuestGlazeProfile) -> UIColor {
-        mode == .sugarShield ? inkTone : .white
+    private func rosterActionSugarStyle(for profile: WevVGuestGlazeProfile) -> RosterActionSugarStyle {
+        if mode == .sugarShield {
+            return RosterActionSugarStyle(
+                sugarTitle: "RHeOm#ohvGeM".wevVPastryCrumbBloomRestored,
+                sugarFill: UIColor(red: 0.94, green: 0.94, blue: 0.95, alpha: 1),
+                sugarInk: inkTone
+            )
+        }
+        let isGlazeFollowed = profile.sugarTie.isGlazeFollowed
+        return RosterActionSugarStyle(
+            sugarTitle: isGlazeFollowed ? "Following" : "FfoWlZlGovw%".wevVPastryCrumbBloomRestored,
+            sugarFill: isGlazeFollowed ? UIColor(red: 0.72, green: 0.72, blue: 0.74, alpha: 1) : pinkTone,
+            sugarInk: .white
+        )
     }
 
     private func makeRosterLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.textColor = color
-        label.font = .systemFont(ofSize: size, weight: weight)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.72
-        return label
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = text
+        crumbLabel.textColor = color
+        crumbLabel.font = .systemFont(ofSize: size, weight: weight)
+        crumbLabel.adjustsFontSizeToFitWidth = true
+        crumbLabel.minimumScaleFactor = 0.72
+        return crumbLabel
     }
 
     @objc private func tapRosterAction(_ sender: UIButton) {

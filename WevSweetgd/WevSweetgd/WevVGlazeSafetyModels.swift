@@ -7,7 +7,7 @@ struct WevVGlazeSafetyChoice {
 }
 
 struct WevVGlazeSafetyPacket {
-    let shopKey: String
+    let shopDonuWeYeKey: String
     let choiceKey: String
     let choiceTitle: String
     let creamText: String

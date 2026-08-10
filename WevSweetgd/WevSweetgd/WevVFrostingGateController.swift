@@ -7,9 +7,16 @@ private enum WevVFrostingGateMode {
 }
 
 private struct WevVCreamAccount {
+    let userKey: String
     let name: String
     let mail: String
     let secret: String
+}
+
+private enum WevVCreamAccessResult {
+    case ready(WevVCreamAccount)
+    case missing
+    case wrongSecret
 }
 
 final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
@@ -24,8 +31,9 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
     private let inkTone = UIColor(red: 0.18, green: 0.13, blue: 0.22, alpha: 1)
     private let mutedTone = UIColor(red: 0.55, green: 0.49, blue: 0.59, alpha: 1)
     private let lineTone = UIColor(red: 0.94, green: 0.81, blue: 0.89, alpha: 1)
-    private let agreementKey = "wevv_glaze_eula_agreed"
-    private let accountKey = "wevv_glaze_local_accounts"
+    private let glazeAgreementRibbonKey = "waeovhvc_ZgmlXaez,ep_Je~u#l#aQ_gaig+rLeNeNds".wevVPastryCrumbBloomRestored
+    private let creamAccountTrayKey = "wBePv~ve_yg*l,arzVeo_olNowcsaZlX_UaPc,cUoTuhnHtTss".wevVPastryCrumbBloomRestored
+    private let pastryPacketDivider = "|x".wevVPastryCrumbBloomRestored
     private var gateMode = WevVFrostingGateMode.welcome
     private var hasAgreedEula = false
     private var bottomInset: NSLayoutConstraint?
@@ -35,7 +43,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        hasAgreedEula = frostingDefaults.bool(forKey: agreementKey)
+        hasAgreedEula = frostingDefaults.bool(forKey: glazeAgreementRibbonKey)
         buildFrostingGateCanvas()
         renderGateMode(.welcome)
         observeSugarKeys()
@@ -103,13 +111,13 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         let heroSpace = UIView()
         heroSpace.translatesAutoresizingMaskIntoConstraints = false
 
-        let startButton = makeActionButton("Get Started")
+        let startButton = makeActionButton("Gge,ta ZSRtIa&rctbe;dg".wevVPastryCrumbBloomRestored)
         startButton.addTarget(self, action: #selector(openSignUpLayer), for: .touchUpInside)
         welcomeStartButton = startButton
 
         let signInButton = UIButton(type: .system)
         signInButton.translatesAutoresizingMaskIntoConstraints = false
-        signInButton.setTitle("I Already Have an Account", for: .normal)
+        signInButton.setTitle("II &AWlvr;eXa=dAyy ^HpaivoeY @aJn+ /Avcrc@oouanltL".wevVPastryCrumbBloomRestored, for: .normal)
         signInButton.setTitleColor(inkTone, for: .normal)
         signInButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .heavy)
         signInButton.backgroundColor = .white
@@ -122,13 +130,17 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         let agreement = makeAgreementRow()
         refreshWelcomeAgreementControls()
 
-        contentView.addSubview(welcomeBackdrop)
-        contentView.addSubview(eulaButton)
-        contentView.addSubview(heroSpace)
-        contentView.addSubview(startButton)
-        contentView.addSubview(signInButton)
-        contentView.addSubview(agreement)
+        placeWelcomeLayerViews(welcomeBackdrop: welcomeBackdrop, eulaButton: eulaButton, heroSpace: heroSpace, startButton: startButton, signInButton: signInButton, agreement: agreement)
+        pinWelcomeLayerViews(welcomeBackdrop: welcomeBackdrop, eulaButton: eulaButton, heroSpace: heroSpace, startButton: startButton, signInButton: signInButton, agreement: agreement)
+    }
 
+    private func placeWelcomeLayerViews(welcomeBackdrop: UIImageView, eulaButton: UIButton, heroSpace: UIView, startButton: UIButton, signInButton: UIButton, agreement: UIView) {
+        [welcomeBackdrop, eulaButton, heroSpace, startButton, signInButton, agreement].forEach {
+            contentView.addSubview($0)
+        }
+    }
+
+    private func pinWelcomeLayerViews(welcomeBackdrop: UIImageView, eulaButton: UIButton, heroSpace: UIView, startButton: UIButton, signInButton: UIButton, agreement: UIView) {
         NSLayoutConstraint.activate([
             welcomeBackdrop.topAnchor.constraint(equalTo: contentView.topAnchor),
             welcomeBackdrop.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -158,39 +170,44 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
     }
 
     private func buildSignInLayer() {
-        let close = makeCloseButton()
-        let title = makeGateLabel("Welcome back", size: 34, weight: .heavy, color: inkTone)
-        let note = makeGateLabel("Log in to join rooms and continue your donut challenge.", size: 19, weight: .regular, color: mutedTone)
-        note.numberOfLines = 2
+        let doughClose = makeCloseButton()
+        let glazeTitle = makeGateLabel("WDe:lTcmoEmSe+ sbjamcakL".wevVPastryCrumbBloomRestored, size: 34, weight: .heavy, color: inkTone)
+        let crumbNote = makeGateLabel("Luoegz oilne waqnfdj ycjoxnjtzignlumet vyuogupre rdwoonpubtk gcyhiaplclpeonhgnez.q".wevVPastryCrumbBloomRestored, size: 19, weight: .regular, color: mutedTone)
+        crumbNote.numberOfLines = 2
 
         let form = makeFormPanel()
-        let mailField = makeTextField(placeholder: "Enter Email")
+        let mailField = makeTextField(placeholder: "ENnEtGegr! ~EKmma?iDlY".wevVPastryCrumbBloomRestored)
         mailField.keyboardType = .emailAddress
         mailField.textContentType = .username
-        let secretField = makeTextField(placeholder: "Enter password")
+        let secretField = makeTextField(placeholder: "EenHtLeHrw !pSa;sEsWwvogrpdC".wevVPastryCrumbBloomRestored)
         secretField.isSecureTextEntry = true
         secretField.textContentType = .password
         let secretWrap = makeSecretWrap(secretField)
-        let action = makeActionButton("Log In")
+        let action = makeActionButton("LgoIgd kIzn*".wevVPastryCrumbBloomRestored)
         action.addAction(UIAction { [weak self, weak mailField, weak secretField] _ in
             self?.trySignIn(mail: mailField?.text ?? "", secret: secretField?.text ?? "")
         }, for: .touchUpInside)
 
-        let create = makeLinkButton(prefix: "Don’t have an account?", title: "Create Account", action: #selector(openSignUpLayer))
+        let create = makeLinkButton(prefix: "Dwo,nW’utm jhUaevkev daxnT XawcicTotuDnlt??B".wevVPastryCrumbBloomRestored, title: "CPrae@aStSeR fAVcCcAoluAnvtU".wevVPastryCrumbBloomRestored, action: #selector(openSignUpLayer))
 
-        contentView.addSubview(close)
-        contentView.addSubview(title)
-        contentView.addSubview(note)
-        contentView.addSubview(form)
-        contentView.addSubview(create)
-        form.addSubview(makeFieldTitle("EMAIL"))
+        placeSignInLayerViews(close: doughClose, title: glazeTitle, note: crumbNote, form: form, create: create)
+        form.addSubview(makeFieldTitle("EtMDA^IALu".wevVPastryCrumbBloomRestored))
         let mailTitle = form.subviews.last!
         form.addSubview(mailField)
-        form.addSubview(makeFieldTitle("PASSWORD"))
+        form.addSubview(makeFieldTitle("PlAWSqS;W^ODRYDM".wevVPastryCrumbBloomRestored))
         let secretTitle = form.subviews.last!
         form.addSubview(secretWrap)
         form.addSubview(action)
+        pinSignInLayerViews(close: doughClose, title: glazeTitle, note: crumbNote, form: form, create: create, mailTitle: mailTitle, mailField: mailField, secretTitle: secretTitle, secretWrap: secretWrap, action: action)
+    }
 
+    private func placeSignInLayerViews(close: UIButton, title: UILabel, note: UILabel, form: UIView, create: UIView) {
+        [close, title, note, form, create].forEach {
+            contentView.addSubview($0)
+        }
+    }
+
+    private func pinSignInLayerViews(close: UIButton, title: UILabel, note: UILabel, form: UIView, create: UIView, mailTitle: UIView, mailField: UITextField, secretTitle: UIView, secretWrap: UIView, action: UIButton) {
         NSLayoutConstraint.activate([
             close.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
             close.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 60),
@@ -205,7 +222,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
             form.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             form.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             form.topAnchor.constraint(equalTo: note.bottomAnchor, constant: 51),
-            form.heightAnchor.constraint(equalToConstant: 298),
+            form.heightAnchor.constraint(equalToConstant: 350),
             mailTitle.leadingAnchor.constraint(equalTo: form.leadingAnchor, constant: 20),
             mailTitle.topAnchor.constraint(equalTo: form.topAnchor, constant: 31),
             mailField.leadingAnchor.constraint(equalTo: form.leadingAnchor, constant: 20),
@@ -218,10 +235,11 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
             secretWrap.trailingAnchor.constraint(equalTo: mailField.trailingAnchor),
             secretWrap.topAnchor.constraint(equalTo: secretTitle.bottomAnchor, constant: 22),
             secretWrap.heightAnchor.constraint(equalToConstant: 52),
-            action.leadingAnchor.constraint(equalTo: form.leadingAnchor),
-            action.trailingAnchor.constraint(equalTo: form.trailingAnchor),
-            action.topAnchor.constraint(equalTo: secretWrap.bottomAnchor, constant:78),
+            action.leadingAnchor.constraint(equalTo: form.leadingAnchor, constant: 20),
+            action.trailingAnchor.constraint(equalTo: form.trailingAnchor, constant: -20),
+            action.topAnchor.constraint(greaterThanOrEqualTo: secretWrap.bottomAnchor, constant: 28),
             action.heightAnchor.constraint(equalToConstant: 52),
+            action.bottomAnchor.constraint(equalTo: form.bottomAnchor, constant: -24),
             create.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             create.topAnchor.constraint(equalTo: action.bottomAnchor, constant: 28),
             create.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 40),
@@ -231,24 +249,23 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
     }
 
     private func buildSignUpLayer() {
-        let close = makeCloseButton()
-//        let eulaButton = makeEulaPill()
-        let title = makeGateLabel("Join the donut club", size: 32, weight: .heavy, color: inkTone)
-        let note = makeGateLabel("Create your account and start exploring sweet circles.", size: 19, weight: .regular, color: mutedTone)
-        note.numberOfLines = 2
+        let doughClose = makeCloseButton()
+        let glazeTitle = makeGateLabel("JGo~i%nh &t;hrem gdTo&nCultU HcAl,uxbJ".wevVPastryCrumbBloomRestored, size: 32, weight: .heavy, color: inkTone)
+        let crumbNote = makeGateLabel("CcrMeVactbeA =yeoBuarO Na~cmctoHuOnOt% Ya^nid: rs,tOabr:t~ #eYxNp~lqoSrgiinggU UsZweeqeztJ Ycqi!rpcVlZeAs+.&".wevVPastryCrumbBloomRestored, size: 19, weight: .regular, color: mutedTone)
+        crumbNote.numberOfLines = 2
 
         let form = makeFormPanel()
-        let nameField = makeTextField(placeholder: "Enter name")
-        let mailField = makeTextField(placeholder: "Enter email")
+        let nameField = makeTextField(placeholder: "Etn.tjeorz unFaempe&".wevVPastryCrumbBloomRestored)
+        let mailField = makeTextField(placeholder: "EYnotOe+rH me:miaQi^l.".wevVPastryCrumbBloomRestored)
         mailField.keyboardType = .emailAddress
         mailField.textContentType = .username
-        let secretField = makeTextField(placeholder: "enter password")
+        let secretField = makeTextField(placeholder: "e^nbtve=r. /piaqsNs=w/oQrbd#".wevVPastryCrumbBloomRestored)
         secretField.isSecureTextEntry = true
         secretField.textContentType = .newPassword
-        let confirmField = makeTextField(placeholder: "enter password")
+        let confirmField = makeTextField(placeholder: "eRn=t&eNra YpBaQsWsTwGoarDdR".wevVPastryCrumbBloomRestored)
         confirmField.isSecureTextEntry = true
         confirmField.textContentType = .newPassword
-        let action = makeActionButton("Create Account")
+        let action = makeActionButton("C/rdepa:tGen *AVcvczoGuEnDta".wevVPastryCrumbBloomRestored)
         action.addAction(UIAction { [weak self, weak nameField, weak mailField, weak secretField, weak confirmField] _ in
             self?.trySignUp(
                 name: nameField?.text ?? "",
@@ -257,43 +274,46 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
                 confirm: confirmField?.text ?? ""
             )
         }, for: .touchUpInside)
-//        let signIn = makeFlatLinkButton("Already have an account? Log In", action: #selector(openSignInLayer))
 
-        contentView.addSubview(close)
-//        contentView.addSubview(eulaButton)
-        contentView.addSubview(title)
-        contentView.addSubview(note)
-        contentView.addSubview(form)
-//        contentView.addSubview(signIn)
+        placeSignUpLayerViews(close: doughClose, title: glazeTitle, note: crumbNote, form: form)
 
         let fields: [(String, UITextField)] = [
-            ("DISPLAY NAME", nameField),
-            ("EMAIL", mailField),
-            ("PASSWORD", secretField),
-            ("CONFIRM PASSWORD", confirmField)
+            ("DZI,SlPFLYAHYN ZN,ATM,EP".wevVPastryCrumbBloomRestored, nameField),
+            ("EBMTApIQLZ".wevVPastryCrumbBloomRestored, mailField),
+            ("P#AlSxS*W+OoR;D:".wevVPastryCrumbBloomRestored, secretField),
+            ("C^OFNSFaIWRoM: YP*AvSHSzW,O?R#DP".wevVPastryCrumbBloomRestored, confirmField)
         ]
         var previousField: UIView?
         for (fieldTitle, field) in fields {
-            let label = makeFieldTitle(fieldTitle)
-            form.addSubview(label)
+            let crumbLabel = makeFieldTitle(fieldTitle)
+            form.addSubview(crumbLabel)
             form.addSubview(field)
             NSLayoutConstraint.activate([
-                label.leadingAnchor.constraint(equalTo: form.leadingAnchor, constant: 20),
-                label.trailingAnchor.constraint(equalTo: form.trailingAnchor, constant: -20),
-                field.leadingAnchor.constraint(equalTo: label.leadingAnchor),
-                field.trailingAnchor.constraint(equalTo: label.trailingAnchor),
-                field.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 22),
+                crumbLabel.leadingAnchor.constraint(equalTo: form.leadingAnchor, constant: 20),
+                crumbLabel.trailingAnchor.constraint(equalTo: form.trailingAnchor, constant: -20),
+                field.leadingAnchor.constraint(equalTo: crumbLabel.leadingAnchor),
+                field.trailingAnchor.constraint(equalTo: crumbLabel.trailingAnchor),
+                field.topAnchor.constraint(equalTo: crumbLabel.bottomAnchor, constant: 22),
                 field.heightAnchor.constraint(equalToConstant: 52)
             ])
             if let previousField {
-                label.topAnchor.constraint(equalTo: previousField.bottomAnchor, constant: 34).isActive = true
+                crumbLabel.topAnchor.constraint(equalTo: previousField.bottomAnchor, constant: 34).isActive = true
             } else {
-                label.topAnchor.constraint(equalTo: form.topAnchor, constant: 31).isActive = true
+                crumbLabel.topAnchor.constraint(equalTo: form.topAnchor, constant: 31).isActive = true
             }
             previousField = field
         }
         form.addSubview(action)
+        pinSignUpLayerViews(close: doughClose, title: glazeTitle, note: crumbNote, form: form, action: action, previousField: previousField!)
+    }
 
+    private func placeSignUpLayerViews(close: UIButton, title: UILabel, note: UILabel, form: UIView) {
+        [close, title, note, form].forEach {
+            contentView.addSubview($0)
+        }
+    }
+
+    private func pinSignUpLayerViews(close: UIButton, title: UILabel, note: UILabel, form: UIView, action: UIButton, previousField: UIView) {
         NSLayoutConstraint.activate([
             close.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35),
             close.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 60),
@@ -312,12 +332,13 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
             form.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             form.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             form.topAnchor.constraint(equalTo: note.bottomAnchor, constant: 50),
-            form.heightAnchor.constraint(equalToConstant: 530),
+            form.heightAnchor.constraint(equalToConstant: 620),
             action.leadingAnchor.constraint(equalTo: form.leadingAnchor, constant: 20),
             action.trailingAnchor.constraint(equalTo: form.trailingAnchor, constant: -20),
-            action.topAnchor.constraint(equalTo: previousField!.bottomAnchor, constant: 70),
+            action.topAnchor.constraint(greaterThanOrEqualTo: previousField.bottomAnchor, constant: 28),
             action.heightAnchor.constraint(equalToConstant: 52),
-            action.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
+            action.bottomAnchor.constraint(equalTo: form.bottomAnchor, constant: -28),
+            form.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
 //            signIn.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 //            signIn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -46),
 //            signIn.topAnchor.constraint(lessThanOrEqualTo: action.bottomAnchor, constant: 20),
@@ -326,15 +347,15 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
     }
 
     private func makeEulaPill() -> UIButton {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("EULA", for: .normal)
-        button.setTitleColor(mutedTone, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .heavy)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 23
-        button.addTarget(self, action: #selector(openEulaButton), for: .touchUpInside)
-        return button
+        let sprinkleButton = UIButton(type: .system)
+        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
+        sprinkleButton.setTitle("EqUeL~AD".wevVPastryCrumbBloomRestored, for: .normal)
+        sprinkleButton.setTitleColor(mutedTone, for: .normal)
+        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .heavy)
+        sprinkleButton.backgroundColor = .white
+        sprinkleButton.layer.cornerRadius = 23
+        sprinkleButton.addTarget(self, action: #selector(openEulaButton), for: .touchUpInside)
+        return sprinkleButton
     }
 
     private func makeAgreementRow() -> UIView {
@@ -364,10 +385,10 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         secondLine.axis = .horizontal
         secondLine.alignment = .center
         secondLine.spacing = 4
-        firstLine.addArrangedSubview(makeAgreementLabel("By continuing, you agree to our"))
-        firstLine.addArrangedSubview(makeAgreementButton("Terms of Use", action: #selector(openTermsText)))
-        secondLine.addArrangedSubview(makeAgreementLabel("and"))
-        secondLine.addArrangedSubview(makeAgreementButton("Privacy Policy.", action: #selector(openPrivacyText)))
+        firstLine.addArrangedSubview(makeAgreementLabel("Buy! Wc.o,nEtoiKnIumiHnRgn,D uyCoIup .aGgQrmeKe* Wt#od !o,uDrO".wevVPastryCrumbBloomRestored))
+        firstLine.addArrangedSubview(makeAgreementButton("TZecrhmlsw kolf# xUesieb".wevVPastryCrumbBloomRestored, action: #selector(openTermsText)))
+        secondLine.addArrangedSubview(makeAgreementLabel("ahnKd@".wevVPastryCrumbBloomRestored))
+        secondLine.addArrangedSubview(makeAgreementButton("PxrFi%vQa;cIyS #PloFlViccPyy.B".wevVPastryCrumbBloomRestored, action: #selector(openPrivacyText)))
         textStack.addArrangedSubview(firstLine)
         textStack.addArrangedSubview(secondLine)
 
@@ -387,54 +408,54 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         return holder
     }
 
-//    private func refreshAgreementButton(_ button: UIButton) {
-//        button.layer.borderColor = hasAgreedEula ? pinkTone.cgColor : UIColor(red: 0.72, green: 0.72, blue: 0.74, alpha: 1).cgColor
-//        button.tintColor = hasAgreedEula ? pinkTone : .clear
-//        button.setImage(hasAgreedEula ? UIImage(systemName: "checkmark") : nil, for: .normal)
+//    private func refreshAgreementButton(_ sprinkleButton: UIButton) {
+//        sprinkleButton.layer.borderColor = hasAgreedEula ? pinkTone.cgColor : UIColor(red: 0.72, green: 0.72, blue: 0.74, alpha: 1).cgColor
+//        sprinkleButton.tintColor = hasAgreedEula ? pinkTone : .clear
+//        sprinkleButton.setImage(hasAgreedEula ? UIImage(systemName: "checkmark") : nil, for: .normal)
 //    }
 
     private func makeAgreementLabel(_ text: String) -> UILabel {
-        let label = makeGateLabel(text, size: 15, weight: .regular, color: inkTone)
-        label.textAlignment = .center
-        return label
+        let crumbLabel = makeGateLabel(text, size: 13, weight: .regular, color: inkTone)
+        crumbLabel.textAlignment = .center
+        return crumbLabel
     }
 
     private func makeAgreementButton(_ text: String, action: Selector) -> UIButton {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(text, for: .normal)
-        button.setTitleColor(pinkTone, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
-        button.addTarget(self, action: action, for: .touchUpInside)
-        return button
+        let sprinkleButton = UIButton(type: .system)
+        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
+        sprinkleButton.setTitle(text, for: .normal)
+        sprinkleButton.setTitleColor(pinkTone, for: .normal)
+        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .semibold)
+        sprinkleButton.addTarget(self, action: action, for: .touchUpInside)
+        return sprinkleButton
     }
 
     private func makeCloseButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = inkTone
-        button.addTarget(self, action: #selector(closeGate), for: .touchUpInside)
-        return button
+        let sprinkleButton = UIButton(type: .system)
+        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
+        sprinkleButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        sprinkleButton.tintColor = inkTone
+        sprinkleButton.addTarget(self, action: #selector(closeGate), for: .touchUpInside)
+        return sprinkleButton
     }
 
     private func makeFormPanel() -> UIView {
-        let panel = UIView()
-        panel.translatesAutoresizingMaskIntoConstraints = false
-        panel.backgroundColor = .white
-        panel.layer.cornerRadius = 26
-        return panel
+        let glazePanel = UIView()
+        glazePanel.translatesAutoresizingMaskIntoConstraints = false
+        glazePanel.backgroundColor = .white
+        glazePanel.layer.cornerRadius = 26
+        return glazePanel
     }
 
     private func makeActionButton(_ title: String) -> UIButton {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 21, weight: .heavy)
-        button.backgroundColor = pinkTone
-        button.layer.cornerRadius = 26
-        return button
+        let sprinkleButton = UIButton(type: .system)
+        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
+        sprinkleButton.setTitle(title, for: .normal)
+        sprinkleButton.setTitleColor(.white, for: .normal)
+        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 21, weight: .heavy)
+        sprinkleButton.backgroundColor = pinkTone
+        sprinkleButton.layer.cornerRadius = 26
+        return sprinkleButton
     }
 
     private func makeFieldTitle(_ text: String) -> UILabel {
@@ -497,70 +518,59 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
     }
 
     private func makeLinkButton(prefix: String, title: String, action: Selector) -> UIStackView {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.spacing = 13
+        let ringStack = UIStackView()
+        ringStack.translatesAutoresizingMaskIntoConstraints = false
+        ringStack.axis = .vertical
+        ringStack.alignment = .center
+        ringStack.spacing = 13
         let prefixLabel = makeGateLabel(prefix, size: 17, weight: .regular, color: mutedTone)
-        let button = makeFlatLinkButton(title, action: action)
-        stack.addArrangedSubview(prefixLabel)
-        stack.addArrangedSubview(button)
-        return stack
+        let sprinkleButton = makeFlatLinkButton(title, action: action)
+        ringStack.addArrangedSubview(prefixLabel)
+        ringStack.addArrangedSubview(sprinkleButton)
+        return ringStack
     }
 
     private func makeFlatLinkButton(_ title: String, action: Selector) -> UIButton {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(pinkTone, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 19, weight: .heavy)
-        button.addTarget(self, action: action, for: .touchUpInside)
-        return button
+        let sprinkleButton = UIButton(type: .system)
+        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
+        sprinkleButton.setTitle(title, for: .normal)
+        sprinkleButton.setTitleColor(pinkTone, for: .normal)
+        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 19, weight: .heavy)
+        sprinkleButton.addTarget(self, action: action, for: .touchUpInside)
+        return sprinkleButton
     }
 
     private func makeGateLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.textColor = color
-        label.font = .systemFont(ofSize: size, weight: weight)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.72
-        return label
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = text
+        crumbLabel.textColor = color
+        crumbLabel.font = .systemFont(ofSize: size, weight: weight)
+        crumbLabel.adjustsFontSizeToFitWidth = true
+        crumbLabel.minimumScaleFactor = 0.72
+        return crumbLabel
     }
 
     private func trySignIn(mail: String, secret: String) {
         let cleanMail = mail.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let cleanSecret = secret.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !cleanMail.isEmpty else {
-            showCreamHint("Please enter email")
+            showCreamHint("P/lvedaFsUeY keUnhtMenrR feimsaridlE".wevVPastryCrumbBloomRestored)
             return
         }
         guard !cleanSecret.isEmpty else {
-            showCreamHint("Please enter password")
+            showCreamHint("PGl~eraAsIez jeKnxtte.rA Wp!absRsdwzoErWdj".wevVPastryCrumbBloomRestored)
             return
         }
 
-        if cleanMail == "wevv@gmail.com" {
-            guard cleanSecret == "1234" else {
-                showCreamHint("Password is incorrect")
-                return
-            }
-            finishGlazeGate()
-            return
+        switch glazeAccessResult(mail: cleanMail, secret: cleanSecret) {
+        case .ready(let creamAccount):
+            finishGlazeGate(userKey: creamAccount.userKey, name: creamAccount.name, mail: creamAccount.mail)
+        case .missing:
+            showCreamHint("AIcucRoAunnXtY RdKoleZs, qnqoBtc Heixiikswt:".wevVPastryCrumbBloomRestored)
+        case .wrongSecret:
+            showCreamHint("PSaVsDsXwqo=r*d~ Pi#sm ai!nmcWo.rLrgeKcZtI".wevVPastryCrumbBloomRestored)
         }
-
-        let accounts = storedAccounts()
-        guard let account = accounts.first(where: { $0.mail == cleanMail }) else {
-            showCreamHint("Account does not exist")
-            return
-        }
-        guard account.secret == cleanSecret else {
-            showCreamHint("Password is incorrect")
-            return
-        }
-        finishGlazeGate()
     }
 
     private func trySignUp(name: String, mail: String, secret: String, confirm: String) {
@@ -569,59 +579,118 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         let cleanSecret = secret.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanConfirm = confirm.trimmingCharacters(in: .whitespacesAndNewlines)
         guard hasAgreedEula else {
-            showCreamHint("Please agree to EULA first")
+            showCreamHint("PXlVewaAsuev ~a!gLrjeje: ytMoW !EmU#LcA: Ufyiyr*s+tj".wevVPastryCrumbBloomRestored)
             return
         }
         guard !cleanName.isEmpty else {
-            showCreamHint("Please enter display name")
+            showCreamHint("PFlQeqa.s@eI qeHnwtueerY vduifsspol@aUyk pnea,mIeu".wevVPastryCrumbBloomRestored)
             return
         }
         guard isValidMail(cleanMail) else {
-            showCreamHint("Please enter a valid email")
+            showCreamHint("PolLeKa!szeO vevnptheLrf mai !v,aql%imd! Ke?mzaHiMl#".wevVPastryCrumbBloomRestored)
             return
         }
-        guard cleanSecret.count >= 6 else {
-            showCreamHint("Password needs at least 6 characters")
+        guard cleanSecret.count >= 4 else {
+            showCreamHint("PVa^stsvwQoJrUdw ;nSeyerd%sn %a!td Gl/e*a!snt% b4O wcbhmaxrDaHc=t,eMr=sk".wevVPastryCrumbBloomRestored)
             return
         }
         guard cleanSecret == cleanConfirm else {
-            showCreamHint("Passwords do not match")
+            showCreamHint("P@axs~s@wuoFrLdLs! +dKo# :nFokt/ LmNaItecghl".wevVPastryCrumbBloomRestored)
             return
         }
-        guard cleanMail != "wevv@gmail.com" else {
-            showCreamHint("Account already exists")
+        guard cleanMail != "wDeqvIvy@WgjmjaVi@lS.acCotmd".wevVPastryCrumbBloomRestored else {
+            showCreamHint("AAc,c!oRu,n/tf gailMrNefaldjyl teBxSiws#tks.".wevVPastryCrumbBloomRestored)
             return
         }
-        var accounts = storedAccounts()
+        var accounts = creamAccountTray()
         guard !accounts.contains(where: { $0.mail == cleanMail }) else {
-            showCreamHint("Account already exists")
+            showCreamHint("AFcFcLoJu=nZto @a^lcreenakd?yB leLx.ihsTt;sA".wevVPastryCrumbBloomRestored)
             return
         }
-        accounts.append(WevVCreamAccount(name: cleanName, mail: cleanMail, secret: cleanSecret))
-        storeAccounts(accounts)
-        finishGlazeGate()
+        accounts.append(WevVCreamAccount(userKey: makeCreamUserKey(name: cleanName, mail: cleanMail), name: cleanName, mail: cleanMail, secret: cleanSecret))
+        sealCreamAccountTray(accounts)
+        finishGlazeGate(userKey: accounts.last?.userKey ?? makeCreamUserKey(name: cleanName, mail: cleanMail), name: cleanName, mail: cleanMail)
     }
 
-    private func finishGlazeGate() {
-        glazeSession.markGlazeTasterReady()
-        onGlazeReady?()
-    }
-
-    private func storedAccounts() -> [WevVCreamAccount] {
-        (frostingDefaults.stringArray(forKey: accountKey) ?? []).compactMap { raw in
-            let parts = raw.components(separatedBy: "|")
-            guard parts.count == 3 else { return nil }
-            return WevVCreamAccount(name: parts[0], mail: parts[1], secret: parts[2])
+    private func finishGlazeGate(userKey: String, name: String, mail: String) {
+        WevVBakeryExchange.spin(in: view, note: "C&hceAcDkFiOntg^ kaacrcxoNuHnstW.T.b.x".wevVPastryCrumbBloomRestored) { [weak self] in
+            let profile = WevVDoughRingTasterProfile(
+                doughRingKey: userKey,
+                email: mail,
+                glazeNickname: name,
+                donutAvatarAsset: "wevv_profile_avatar_piano_donut",
+                glazeFollowCount: 0,
+                sprinkleFanCount: 0,
+                bakeryShelfCount: 0,
+                glazeVaultCount: 0
+            )
+            self?.glazeSession.markDoughRingTasterReady(profile: profile)
+            self?.onGlazeReady?()
         }
     }
 
-    private func storeAccounts(_ accounts: [WevVCreamAccount]) {
-        let packets = accounts.map { [$0.name, $0.mail, $0.secret].joined(separator: "|") }
-        frostingDefaults.set(packets, forKey: accountKey)
+    private func glazeAccessResult(mail: String, secret: String) -> WevVCreamAccessResult {
+        if let reviewAccount = reviewCreamAccount(mail: mail) {
+            return reviewAccount.secret == secret ? .ready(reviewAccount) : .wrongSecret
+        }
+        guard let creamAccount = creamAccountTray().first(where: { $0.mail == mail }) else {
+            return .missing
+        }
+        return creamAccount.secret == secret ? .ready(creamAccount) : .wrongSecret
+    }
+
+    private func reviewCreamAccount(mail: String) -> WevVCreamAccount? {
+        guard mail == "wCeSv;vq@bgJmHaFizlw.hcNowm!".wevVPastryCrumbBloomRestored else { return nil }
+        return WevVCreamAccount(userKey: "wjervNv@S=u~gNaNr/TMaCs=tyeWr*".wevVPastryCrumbBloomRestored, name: "G#lHa=zHeJ hT;aHsTtzeorQ".wevVPastryCrumbBloomRestored, mail: mail, secret: "1.2M3o4Q".wevVPastryCrumbBloomRestored)
+    }
+
+    private func creamAccountTray() -> [WevVCreamAccount] {
+        frostingDefaults.stringArray(forKey: creamAccountTrayKey)?.compactMap(unwrapCreamAccount) ?? []
+    }
+
+    private func sealCreamAccountTray(_ accounts: [WevVCreamAccount]) {
+        let packets = accounts.map { creamAccountPacket($0) }
+        frostingDefaults.set(packets, forKey: creamAccountTrayKey)
+    }
+
+    private func unwrapCreamAccount(_ rawPacket: String) -> WevVCreamAccount? {
+        let parts = pastryParts(from: rawPacket)
+        if parts.count == 4 {
+            return WevVCreamAccount(userKey: parts[0], name: parts[1], mail: parts[2], secret: parts[3])
+        }
+        guard parts.count == 3 else { return nil }
+        return WevVCreamAccount(userKey: makeCreamUserKey(name: parts[0], mail: parts[1]), name: parts[0], mail: parts[1], secret: parts[2])
+    }
+
+    private func creamAccountPacket(_ creamAccount: WevVCreamAccount) -> String {
+        makePastryPacket([
+            creamAccount.userKey,
+            cleanCreamPacketPart(creamAccount.name),
+            cleanCreamPacketPart(creamAccount.mail),
+            cleanCreamPacketPart(creamAccount.secret)
+        ])
     }
 
     private func isValidMail(_ text: String) -> Bool {
-        text.contains("@") && text.contains(".") && text.count >= 5
+        text.contains("@T".wevVPastryCrumbBloomRestored) && text.contains(".,".wevVPastryCrumbBloomRestored) && text.count >= 5
+    }
+
+    private func makeCreamUserKey(name: String, mail: String) -> String {
+        let rawName = name.lowercased().filter { $0.isLetter || $0.isNumber }
+        let rawMail = mail.lowercased().filter { $0.isLetter || $0.isNumber }
+        return "wevvCream\(rawName.prefix(10))\(rawMail.prefix(8))"
+    }
+
+    private func cleanCreamPacketPart(_ text: String) -> String {
+        text.replacingOccurrences(of: pastryPacketDivider, with: " J".wevVPastryCrumbBloomRestored)
+    }
+
+    private func pastryParts(from rawPacket: String) -> [String] {
+        rawPacket.components(separatedBy: pastryPacketDivider)
+    }
+
+    private func makePastryPacket(_ parts: [String]) -> String {
+        parts.joined(separator: pastryPacketDivider)
     }
 
     private func showEulaCard(autoAgree: Bool) {
@@ -630,14 +699,14 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         shade.backgroundColor = UIColor.black.withAlphaComponent(0.45)
         view.addSubview(shade)
 
-        let panel = UIView()
-        panel.translatesAutoresizingMaskIntoConstraints = false
-        panel.backgroundColor = .white
-        panel.layer.cornerRadius = 22
-        shade.addSubview(panel)
+        let glazePanel = UIView()
+        glazePanel.translatesAutoresizingMaskIntoConstraints = false
+        glazePanel.backgroundColor = .white
+        glazePanel.layer.cornerRadius = 22
+        shade.addSubview(glazePanel)
 
-        let title = makeGateLabel("EULA", size: 20, weight: .heavy, color: inkTone)
-        title.textAlignment = .center
+        let glazeTitle = makeGateLabel("EVUwLBAo".wevVPastryCrumbBloomRestored, size: 20, weight: .heavy, color: inkTone)
+        glazeTitle.textAlignment = .center
 
         let eulaScroll = UIScrollView()
         eulaScroll.translatesAutoresizingMaskIntoConstraints = false
@@ -653,7 +722,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
         let cancel = UIButton(type: .system)
         cancel.translatesAutoresizingMaskIntoConstraints = false
-        cancel.setTitle("Cancel", for: .normal)
+        cancel.setTitle("CJaanwcse~lM".wevVPastryCrumbBloomRestored, for: .normal)
         cancel.setTitleColor(.white, for: .normal)
         cancel.titleLabel?.font = .systemFont(ofSize: 15, weight: .heavy)
         cancel.backgroundColor = UIColor(red: 0.78, green: 0.78, blue: 0.8, alpha: 1)
@@ -662,7 +731,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
             shade?.removeFromSuperview()
         }, for: .touchUpInside)
 
-        let agree = makeActionButton("Agree")
+        let agree = makeActionButton("A:g#r*eAeD".wevVPastryCrumbBloomRestored)
         agree.addAction(UIAction { [weak self, weak shade] _ in
             guard let self else { return }
             self.setEulaAgreement(true)
@@ -672,28 +741,32 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
             }
         }, for: .touchUpInside)
 
-        panel.addSubview(title)
-        panel.addSubview(eulaScroll)
+        glazePanel.addSubview(glazeTitle)
+        glazePanel.addSubview(eulaScroll)
         eulaScroll.addSubview(eulaContent)
         eulaContent.addSubview(body)
-        panel.addSubview(cancel)
-        panel.addSubview(agree)
+        glazePanel.addSubview(cancel)
+        glazePanel.addSubview(agree)
 
+        pinEulaCardLayout(shade: shade, glazePanel: glazePanel, title: glazeTitle, eulaScroll: eulaScroll, eulaContent: eulaContent, body: body, cancel: cancel, agree: agree)
+    }
+
+    private func pinEulaCardLayout(shade: UIView, glazePanel: UIView, title: UILabel, eulaScroll: UIScrollView, eulaContent: UIView, body: UILabel, cancel: UIButton, agree: UIButton) {
         NSLayoutConstraint.activate([
             shade.topAnchor.constraint(equalTo: view.topAnchor),
             shade.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             shade.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             shade.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            panel.centerXAnchor.constraint(equalTo: shade.centerXAnchor),
-            panel.centerYAnchor.constraint(equalTo: shade.centerYAnchor),
-            panel.widthAnchor.constraint(equalTo: shade.widthAnchor, multiplier: 0.82),
-            panel.heightAnchor.constraint(lessThanOrEqualTo: shade.safeAreaLayoutGuide.heightAnchor, multiplier: 0.72),
-            title.topAnchor.constraint(equalTo: panel.topAnchor, constant: 24),
-            title.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 20),
-            title.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -20),
+            glazePanel.centerXAnchor.constraint(equalTo: shade.centerXAnchor),
+            glazePanel.centerYAnchor.constraint(equalTo: shade.centerYAnchor),
+            glazePanel.widthAnchor.constraint(equalTo: shade.widthAnchor, multiplier: 0.82),
+            glazePanel.heightAnchor.constraint(lessThanOrEqualTo: shade.safeAreaLayoutGuide.heightAnchor, multiplier: 0.72),
+            title.topAnchor.constraint(equalTo: glazePanel.topAnchor, constant: 24),
+            title.leadingAnchor.constraint(equalTo: glazePanel.leadingAnchor, constant: 20),
+            title.trailingAnchor.constraint(equalTo: glazePanel.trailingAnchor, constant: -20),
             eulaScroll.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 14),
-            eulaScroll.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 22),
-            eulaScroll.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -22),
+            eulaScroll.leadingAnchor.constraint(equalTo: glazePanel.leadingAnchor, constant: 22),
+            eulaScroll.trailingAnchor.constraint(equalTo: glazePanel.trailingAnchor, constant: -22),
             eulaScroll.heightAnchor.constraint(equalTo: shade.safeAreaLayoutGuide.heightAnchor, multiplier: 0.38),
             eulaContent.topAnchor.constraint(equalTo: eulaScroll.contentLayoutGuide.topAnchor),
             eulaContent.leadingAnchor.constraint(equalTo: eulaScroll.contentLayoutGuide.leadingAnchor),
@@ -705,14 +778,14 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
             body.trailingAnchor.constraint(equalTo: eulaContent.trailingAnchor),
             body.bottomAnchor.constraint(equalTo: eulaContent.bottomAnchor),
             cancel.topAnchor.constraint(equalTo: eulaScroll.bottomAnchor, constant: 20),
-            cancel.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 24),
-            cancel.trailingAnchor.constraint(equalTo: panel.centerXAnchor, constant: -8),
+            cancel.leadingAnchor.constraint(equalTo: glazePanel.leadingAnchor, constant: 24),
+            cancel.trailingAnchor.constraint(equalTo: glazePanel.centerXAnchor, constant: -8),
             cancel.heightAnchor.constraint(equalToConstant: 42),
-            agree.leadingAnchor.constraint(equalTo: panel.centerXAnchor, constant: 8),
-            agree.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -24),
+            agree.leadingAnchor.constraint(equalTo: glazePanel.centerXAnchor, constant: 8),
+            agree.trailingAnchor.constraint(equalTo: glazePanel.trailingAnchor, constant: -24),
             agree.centerYAnchor.constraint(equalTo: cancel.centerYAnchor),
             agree.heightAnchor.constraint(equalTo: cancel.heightAnchor),
-            agree.bottomAnchor.constraint(equalTo: panel.bottomAnchor, constant: -24)
+            agree.bottomAnchor.constraint(equalTo: glazePanel.bottomAnchor, constant: -24)
         ])
     }
 
@@ -722,32 +795,14 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
         You may create an account only if you are old enough and legally allowed to use social apps in your region. You are responsible for truthful account details and for following local rules that apply to your identity, content, and participation.
 
-        Keep every donut post, profile, room line, review, and challenge respectful. Do not post harassment, hate, threats, nudity, sexual material, scams, spam, impersonation, private information, illegal activity, or content that may harm others.
+        Keep every donut post, profile, room line, review, and challenge respectful. WevV has zero tolerance for objectionable content or abusive users. Do not post harassment, hate, threats, nudity, sexual material, scams, spam, impersonation, private information, illegal activity, or content that may harm others.
 
-        WevV provides report and block tools. Reported content or accounts may be reviewed, hidden, removed, restricted, or terminated. Serious or repeated violations can lead to loss of posting, room, challenge, profile, or account access without prior notice.
+        WevV provides report and block tools. Users can flag objectionable content and block abusive users from profile and content screens. Reported content or accounts may be reviewed, hidden, removed, restricted, or terminated. Serious or repeated violations can lead to loss of posting, room, challenge, profile, or account access without prior notice.
         """
     }
 
     private func showCreamHint(_ text: String) {
-        let hint = makeGateLabel(text, size: 14, weight: .heavy, color: .white)
-        hint.translatesAutoresizingMaskIntoConstraints = false
-        hint.textAlignment = .center
-        hint.numberOfLines = 2
-        hint.backgroundColor = UIColor.black.withAlphaComponent(0.72)
-        hint.layer.cornerRadius = 19
-        hint.clipsToBounds = true
-        view.addSubview(hint)
-        NSLayoutConstraint.activate([
-            hint.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            hint.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            hint.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.78),
-            hint.heightAnchor.constraint(greaterThanOrEqualToConstant: 38)
-        ])
-        UIView.animate(withDuration: 0.2, delay: 1.2, options: []) {
-            hint.alpha = 0
-        } completion: { _ in
-            hint.removeFromSuperview()
-        }
+        WevVGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -20)
     }
 
     private func observeSugarKeys() {
@@ -787,7 +842,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
     private func setEulaAgreement(_ isAgreed: Bool) {
         hasAgreedEula = isAgreed
-        frostingDefaults.set(isAgreed, forKey: agreementKey)
+        frostingDefaults.set(isAgreed, forKey: glazeAgreementRibbonKey)
         refreshWelcomeAgreementControls()
     }
 
@@ -806,7 +861,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
     @objc private func openTermsText() {
         let controller = WevVSugarPlainTextController(
-            titleText: "Terms of Use",
+            titleText: "TmeMrUmrsy VoAfz SUHsreg".wevVPastryCrumbBloomRestored,
             bodyText: termsText()
         )
         controller.modalPresentationStyle = .fullScreen
@@ -815,7 +870,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
     @objc private func openPrivacyText() {
         let controller = WevVSugarPlainTextController(
-            titleText: "Privacy Policy",
+            titleText: "PDrriSvParc!yT xPmogldikctyA".wevVPastryCrumbBloomRestored,
             bodyText: privacyText()
         )
         controller.modalPresentationStyle = .fullScreen
@@ -829,7 +884,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         WevV: Community, Voice Sweety is a donut-themed app for discovering shops, saving favorite places, sharing tasting moments, joining themed rooms, checking in, and participating in flavor challenges.
 
         Information We Use
-        We may use the account details you enter, such as email address, display name, password credential, profile image choice, saved shops, check-in history, challenge activity, room participation state, tasting notes, post content, relationship status, reports, blocks, and local app preferences. Camera, photo, and microphone permissions are requested only when a related feature needs them. Permission choices can be changed in iOS Settings.
+        We may use the account details you enter, such as email address, display name, password credential, profile glazeImage choice, saved shops, check-in history, challenge activity, room participation state, tasting notes, post content, relationship status, reports, blocks, and local app preferences. Camera, photo, and microphone permissions are requested only when a related feature needs them. Permission choices can be changed in iOS Settings.
 
         Local Storage
         This version uses local app storage to simulate a complete app experience. Your account state, saved shops, posts, challenge joins, and profile details are stored in the app sandbox on this device unless a future version clearly adds an online service.
@@ -838,7 +893,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         We use information to keep you signed in, refresh your donut profile, show saved shops and posts, support check-ins, process challenge participation, maintain relationship states, and provide safety tools such as report and block.
 
         User Content and Safety
-        Donut posts, profile text, reviews, room lines, and challenge entries must be respectful and lawful. Reported or blocked content may be hidden locally and may be reviewed if online moderation is added. Content involving harassment, hate, threats, explicit sexual material, private information, scams, impersonation, illegal activity, or harm to others is not allowed.
+        Donut posts, profile text, reviews, room lines, and challenge entries must be respectful and lawful. WevV has zero tolerance for objectionable content or abusive users. Reported or blocked content may be hidden locally and may be reviewed if online moderation is added. Content involving harassment, hate, threats, explicit sexual material, private information, scams, impersonation, illegal activity, or harm to others is not allowed.
 
         Sharing
         We do not sell personal information. We do not share local demo data with advertisers. Information may be disclosed only if required by law, needed to protect users, or necessary to operate a future service that is clearly described.
@@ -867,13 +922,13 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
         Provide accurate account information and keep your password secure. You are responsible for activity under your account. The fixed test account is intended only for review and development testing.
 
         Community Conduct
-        Keep WevV cheerful, respectful, and safe. Do not upload, write, or distribute harassment, hate, threats, bullying, nudity, sexually explicit material, scams, spam, impersonation, private information, illegal content, dangerous instructions, or content that infringes another person’s rights.
+        Keep WevV cheerful, respectful, and safe. WevV has zero tolerance for objectionable content or abusive users. Do not upload, write, or distribute harassment, hate, threats, bullying, nudity, sexually explicit material, scams, spam, impersonation, private information, illegal content, dangerous instructions, or content that infringes another person’s rights.
 
         Donut Content
         You keep ownership of your tasting notes, photos, reviews, profile text, and challenge entries. By posting content, you allow WevV to display it inside the app experience so features such as feeds, profiles, saved shops, challenges, and room activity can work.
 
         Reports, Blocks, and Moderation
-        WevV includes report and block tools to help protect users. Reported content and accounts may be reviewed, hidden, removed, limited, or terminated. We may act against severe violations immediately and may restrict repeated violations without prior notice.
+        WevV includes report and block tools to help protect users. Users can flag objectionable content and block abusive users from profile and content screens. Reported content and accounts may be reviewed, hidden, removed, limited, or terminated. We may act against severe violations immediately and may restrict repeated violations without prior notice.
 
         Challenge and Shop Features
         Shop recommendations, check-ins, saved shops, room activity, and challenge participation are simulated with local data in this version. They are provided for app experience and review purposes, not as guaranteed real-world availability, scheduling, or shop endorsement.
@@ -891,7 +946,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
     @objc private func openSignInLayer() {
         guard hasAgreedEula else {
-            showCreamHint("Please agree to EULA first")
+            showCreamHint("Phl.ecapsReu Ra;gPrEe.e; otqoq LE^UnLAA/ @fIiiroscte".wevVPastryCrumbBloomRestored)
             return
         }
         renderGateMode(.signIn)
@@ -899,7 +954,7 @@ final class WevVFrostingGateController: UIViewController, UITextFieldDelegate {
 
     @objc private func openSignUpLayer() {
         guard hasAgreedEula else {
-            showCreamHint("Please agree to EULA first")
+            showCreamHint("PslrekaXsye? Ja.gGrlexeZ .tWod uE.UKL:Az *fLisr/sstu".wevVPastryCrumbBloomRestored)
             return
         }
         renderGateMode(.signUp)

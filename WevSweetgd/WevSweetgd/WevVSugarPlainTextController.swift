@@ -1,12 +1,12 @@
 import UIKit
 
 final class WevVSugarPlainTextController: UIViewController {
-    private let titleText: String
-    private let bodyText: String
+    private let titleWevVSugarText: String
+    private let bodyWevVSugarText: String
 
     init(titleText: String, bodyText: String) {
-        self.titleText = titleText
-        self.bodyText = bodyText
+        self.titleWevVSugarText = titleText
+        self.bodyWevVSugarText = bodyText
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -22,19 +22,19 @@ final class WevVSugarPlainTextController: UIViewController {
     private func buildSugarTextPage() {
         view.backgroundColor = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
 
-        let back = UIButton(type: .system)
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.tintColor = .black
-        back.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        back.addTarget(self, action: #selector(closeSugarText), for: .touchUpInside)
+        let baSugarck = UIButton(type: .system)
+        baSugarck.translatesAutoresizingMaskIntoConstraints = false
+        baSugarck.tintColor = .black
+        baSugarck.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        baSugarck.addTarget(self, action: #selector(closeSugarText), for: .touchUpInside)
 
-        let title = makeSugarLabel(titleText, size: 18, weight: .heavy, color: .black)
-        title.textAlignment = .center
+        let glazeTitle = makeSugarLabel(titleWevVSugarText, size: 18, weight: .heavy, color: .black)
+        glazeTitle.textAlignment = .center
 
-        let panel = UIView()
-        panel.translatesAutoresizingMaskIntoConstraints = false
-        panel.backgroundColor = .white
-        panel.layer.cornerRadius = 16
+        let glazePanel = UIView()
+        glazePanel.translatesAutoresizingMaskIntoConstraints = false
+        glazePanel.backgroundColor = .white
+        glazePanel.layer.cornerRadius = 16
 
         let sugarScroll = UIScrollView()
         sugarScroll.translatesAutoresizingMaskIntoConstraints = false
@@ -44,16 +44,20 @@ final class WevVSugarPlainTextController: UIViewController {
         let sugarContent = UIView()
         sugarContent.translatesAutoresizingMaskIntoConstraints = false
 
-        let body = makeSugarLabel(bodyText, size: 15, weight: .regular, color: UIColor(red: 0.28, green: 0.24, blue: 0.32, alpha: 1))
+        let body = makeSugarLabel(bodyWevVSugarText, size: 15, weight: .regular, color: UIColor(red: 0.28, green: 0.24, blue: 0.32, alpha: 1))
         body.numberOfLines = 0
 
-        view.addSubview(back)
-        view.addSubview(title)
-        view.addSubview(panel)
-        panel.addSubview(sugarScroll)
+        view.addSubview(baSugarck)
+        view.addSubview(glazeTitle)
+        view.addSubview(glazePanel)
+        glazePanel.addSubview(sugarScroll)
         sugarScroll.addSubview(sugarContent)
         sugarContent.addSubview(body)
 
+        pinSugarTextPage(back: baSugarck, title: glazeTitle, glazePanel: glazePanel, sugarScroll: sugarScroll, sugarContent: sugarContent, body: body)
+    }
+
+    private func pinSugarTextPage(back: UIButton, title: UILabel, glazePanel: UIView, sugarScroll: UIScrollView, sugarContent: UIView, body: UILabel) {
         NSLayoutConstraint.activate([
             back.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             back.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
@@ -63,14 +67,14 @@ final class WevVSugarPlainTextController: UIViewController {
             title.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             title.leadingAnchor.constraint(greaterThanOrEqualTo: back.trailingAnchor, constant: 12),
             title.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -70),
-            panel.topAnchor.constraint(equalTo: back.bottomAnchor, constant: 28),
-            panel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            panel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            panel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
-            sugarScroll.topAnchor.constraint(equalTo: panel.topAnchor, constant: 18),
-            sugarScroll.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 18),
-            sugarScroll.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -18),
-            sugarScroll.bottomAnchor.constraint(equalTo: panel.bottomAnchor, constant: -18),
+            glazePanel.topAnchor.constraint(equalTo: back.bottomAnchor, constant: 28),
+            glazePanel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            glazePanel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            glazePanel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            sugarScroll.topAnchor.constraint(equalTo: glazePanel.topAnchor, constant: 18),
+            sugarScroll.leadingAnchor.constraint(equalTo: glazePanel.leadingAnchor, constant: 18),
+            sugarScroll.trailingAnchor.constraint(equalTo: glazePanel.trailingAnchor, constant: -18),
+            sugarScroll.bottomAnchor.constraint(equalTo: glazePanel.bottomAnchor, constant: -18),
             sugarContent.topAnchor.constraint(equalTo: sugarScroll.contentLayoutGuide.topAnchor),
             sugarContent.leadingAnchor.constraint(equalTo: sugarScroll.contentLayoutGuide.leadingAnchor),
             sugarContent.trailingAnchor.constraint(equalTo: sugarScroll.contentLayoutGuide.trailingAnchor),
@@ -84,14 +88,14 @@ final class WevVSugarPlainTextController: UIViewController {
     }
 
     private func makeSugarLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.font = .systemFont(ofSize: size, weight: weight)
-        label.textColor = color
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.72
-        return label
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = text
+        crumbLabel.font = .systemFont(ofSize: size, weight: weight)
+        crumbLabel.textColor = color
+        crumbLabel.adjustsFontSizeToFitWidth = true
+        crumbLabel.minimumScaleFactor = 0.72
+        return crumbLabel
     }
 
     @objc private func closeSugarText() {

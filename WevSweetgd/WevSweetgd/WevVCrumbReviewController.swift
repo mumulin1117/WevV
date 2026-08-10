@@ -7,7 +7,7 @@ final class WevVCrumbReviewController: UIViewController, UITextViewDelegate {
     private let sprinkleContent = UIView()
     private let noteBox = UITextView()
     private let hintLabel = UILabel()
-    private let postButton = WevVGlazePillButton(title: "Post")
+    private let postButton = WevVGlazePillButton(title: "P#oWsqtc".wevVPastryCrumbBloomRestored)
     private var starButtons: [UIButton] = []
     private var crumbRating = 3
 
@@ -67,17 +67,25 @@ final class WevVCrumbReviewController: UIViewController, UITextViewDelegate {
     }
 
     private func buildCrumbForm() {
-        let backButton = UIButton(type: .system)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.tintColor = .black
-        backButton.addTarget(self, action: #selector(closeCrumbForm), for: .touchUpInside)
+        let doughBackButton = UIButton(type: .system)
+        doughBackButton.translatesAutoresizingMaskIntoConstraints = false
+        doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        doughBackButton.tintColor = .black
+        doughBackButton.addTarget(self, action: #selector(closeCrumbForm), for: .touchUpInside)
 
-        let navTitle = makeCreamLabel("Review", size: 25, weight: .bold, color: .black)
-        navTitle.textAlignment = .center
+        let navdonutTitle = makeCreamLabel("Rselvqi*ewwW".wevVPastryCrumbBloomRestored, size: 25, weight: .bold, color: .black)
+        navdonutTitle.textAlignment = .center
 
-        let sectionTitle = makeCreamLabel("Review", size: 20, weight: .bold, color: .black)
+        let sectionTitle = makeCreamLabel("RHegvmiAeqwV".wevVPastryCrumbBloomRestored, size: 20, weight: .bold, color: .black)
+        tuneCrumbNoteBox()
+        let ratingTitle = makeCreamLabel("R!aNtGi,n~gs".wevVPastryCrumbBloomRestored, size: 20, weight: .bold, color: .black)
+        let starRow = makeCrumbStarRow()
+        placeCrumbFormViews(doughBackButton: doughBackButton, navdonutTitle: navdonutTitle, sectiondonutTitle: sectionTitle, ratingdonutTitle: ratingTitle, starRow: starRow)
+        pinCrumbFormLayout(doughBackButton: doughBackButton, navTitle: navdonutTitle, sectionTitle: sectionTitle, ratingTitle: ratingTitle, starRow: starRow)
+        bindCrumbDismissTap()
+    }
 
+    private func tuneCrumbNoteBox() {
         noteBox.translatesAutoresizingMaskIntoConstraints = false
         noteBox.backgroundColor = .white
         noteBox.layer.cornerRadius = 12
@@ -87,13 +95,13 @@ final class WevVCrumbReviewController: UIViewController, UITextViewDelegate {
         noteBox.delegate = self
 
         hintLabel.translatesAutoresizingMaskIntoConstraints = false
-        hintLabel.text = "Say Something"
+        hintLabel.text = "S;aqyA iS,oam!eHt%hmihnRgG".wevVPastryCrumbBloomRestored
         hintLabel.font = .systemFont(ofSize: 19, weight: .regular)
         hintLabel.textColor = UIColor(red: 0.7, green: 0.68, blue: 0.7, alpha: 1)
         noteBox.addSubview(hintLabel)
+    }
 
-        let ratingTitle = makeCreamLabel("Rating", size: 20, weight: .bold, color: .black)
-
+    private func makeCrumbStarRow() -> UIStackView {
         let starRow = UIStackView()
         starRow.translatesAutoresizingMaskIntoConstraints = false
         starRow.axis = .horizontal
@@ -111,23 +119,28 @@ final class WevVCrumbReviewController: UIViewController, UITextViewDelegate {
             star.heightAnchor.constraint(equalToConstant: 58).isActive = true
             starButtons.append(star)
         }
+        return starRow
+    }
 
-        sprinkleContent.addSubview(backButton)
-        sprinkleContent.addSubview(navTitle)
-        sprinkleContent.addSubview(sectionTitle)
+    private func placeCrumbFormViews(doughBackButton: UIButton, navdonutTitle: UILabel, sectiondonutTitle: UILabel, ratingdonutTitle: UILabel, starRow: UIStackView) {
+        sprinkleContent.addSubview(doughBackButton)
+        sprinkleContent.addSubview(navdonutTitle)
+        sprinkleContent.addSubview(sectiondonutTitle)
         sprinkleContent.addSubview(noteBox)
-        sprinkleContent.addSubview(ratingTitle)
+        sprinkleContent.addSubview(ratingdonutTitle)
         sprinkleContent.addSubview(starRow)
+    }
 
+    private func pinCrumbFormLayout(doughBackButton: UIButton, navTitle: UILabel, sectionTitle: UILabel, ratingTitle: UILabel, starRow: UIStackView) {
         NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: sprinkleContent.safeAreaLayoutGuide.topAnchor, constant: 58),
-            backButton.leadingAnchor.constraint(equalTo: sprinkleContent.leadingAnchor, constant: 22),
-            backButton.widthAnchor.constraint(equalToConstant: 36),
-            backButton.heightAnchor.constraint(equalToConstant: 36),
-            navTitle.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            doughBackButton.topAnchor.constraint(equalTo: sprinkleContent.safeAreaLayoutGuide.topAnchor, constant: 58),
+            doughBackButton.leadingAnchor.constraint(equalTo: sprinkleContent.leadingAnchor, constant: 22),
+            doughBackButton.widthAnchor.constraint(equalToConstant: 36),
+            doughBackButton.heightAnchor.constraint(equalToConstant: 36),
+            navTitle.centerYAnchor.constraint(equalTo: doughBackButton.centerYAnchor),
             navTitle.centerXAnchor.constraint(equalTo: sprinkleContent.centerXAnchor),
-            navTitle.leadingAnchor.constraint(greaterThanOrEqualTo: backButton.trailingAnchor, constant: 12),
-            sectionTitle.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 40),
+            navTitle.leadingAnchor.constraint(greaterThanOrEqualTo: doughBackButton.trailingAnchor, constant: 12),
+            sectionTitle.topAnchor.constraint(equalTo: doughBackButton.bottomAnchor, constant: 40),
             sectionTitle.leadingAnchor.constraint(equalTo: sprinkleContent.leadingAnchor, constant: 24),
             sectionTitle.trailingAnchor.constraint(equalTo: sprinkleContent.trailingAnchor, constant: -24),
             noteBox.topAnchor.constraint(equalTo: sectionTitle.bottomAnchor, constant: 24),
@@ -146,7 +159,9 @@ final class WevVCrumbReviewController: UIViewController, UITextViewDelegate {
             starRow.heightAnchor.constraint(equalToConstant: 72),
             starRow.bottomAnchor.constraint(equalTo: sprinkleContent.bottomAnchor, constant: -280)
         ])
+    }
 
+    private func bindCrumbDismissTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tuckCreamKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -174,14 +189,14 @@ final class WevVCrumbReviewController: UIViewController, UITextViewDelegate {
     }
 
     private func makeCreamLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.font = .systemFont(ofSize: size, weight: weight)
-        label.textColor = color
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.82
-        return label
+        let crumbLabel = UILabel()
+        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
+        crumbLabel.text = text
+        crumbLabel.font = .systemFont(ofSize: size, weight: weight)
+        crumbLabel.textColor = color
+        crumbLabel.adjustsFontSizeToFitWidth = true
+        crumbLabel.minimumScaleFactor = 0.82
+        return crumbLabel
     }
 
     private func refreshStarRow() {
@@ -209,9 +224,21 @@ final class WevVCrumbReviewController: UIViewController, UITextViewDelegate {
 
     @objc private func postCrumbNote() {
         let cleanText = noteBox.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        glazeSession.placeCrumbNote(shopKey: shopKey, rating: crumbRating, text: cleanText.isEmpty ? "Sweet glaze visit" : cleanText)
-        onCrumbPosted?()
-        dismiss(animated: true)
+        postButton.isEnabled = false
+        tuckCreamKeyboard()
+        WevVBakeryExchange.spin(in: view, note: "PAotshtSi#nDgZ HrWeCvPigeYw*.E.m.M".wevVPastryCrumbBloomRestored) { [weak self] in
+            guard let self else { return }
+            self.glazeSession.placeCrumbNote(shopKey: self.shopKey, rating: self.crumbRating, text: cleanText.isEmpty ? "Sweet glaze visit" : cleanText)
+            self.onCrumbPosted?()
+            WevVGlazePromptStyler.showSugarNotice(
+                in: self.view,
+                title: "R~e!vwijeww% hpEoAsVtzesdO".wevVPastryCrumbBloomRestored,
+                note: "YPofuGrK BdkoxnquptC HnKoetpeT OhPamsx bbXeWeinG baSdvdRevds.J".wevVPastryCrumbBloomRestored,
+                actionTitle: "OPKr".wevVPastryCrumbBloomRestored
+            ) { [weak self] in
+                self?.dismiss(animated: true)
+            }
+        }
     }
 
     @objc private func closeCrumbForm() {

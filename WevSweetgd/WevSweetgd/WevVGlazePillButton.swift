@@ -1,7 +1,7 @@
 import UIKit
 
 final class WevVGlazePillButton: UIControl {
-    private let titleLabel = UILabel()
+    private let glazeTitleLabel = UILabel()
     private let glazeLayer = CAGradientLayer()
     private var activeColors: [CGColor] = [
         UIColor(red: 1.0, green: 0.24, blue: 0.66, alpha: 1).cgColor,
@@ -19,20 +19,20 @@ final class WevVGlazePillButton: UIControl {
         layer.cornerRadius = 14
         layer.masksToBounds = true
 
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = title
-        titleLabel.textColor = .white
-        titleLabel.font = .systemFont(ofSize: 15, weight: .heavy)
-        titleLabel.textAlignment = .center
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.minimumScaleFactor = 0.72
-        addSubview(titleLabel)
+        glazeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        glazeTitleLabel.text = title
+        glazeTitleLabel.textColor = .white
+        glazeTitleLabel.font = .systemFont(ofSize: 15, weight: .heavy)
+        glazeTitleLabel.textAlignment = .center
+        glazeTitleLabel.adjustsFontSizeToFitWidth = true
+        glazeTitleLabel.minimumScaleFactor = 0.72
+        addSubview(glazeTitleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -10)
+            glazeTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            glazeTitleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            glazeTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 10),
+            glazeTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -10)
         ])
         refreshGlazeColors()
     }
@@ -57,7 +57,7 @@ final class WevVGlazePillButton: UIControl {
     }
 
     func setTitle(_ title: String) {
-        titleLabel.text = title
+        glazeTitleLabel.text = title
     }
 
     private func refreshGlazeColors() {

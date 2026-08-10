@@ -1,29 +1,29 @@
 import Foundation
 
-struct WevVGlazeRoomSeat {
+struct WevVGlazeDonuWeYeSeat {
     let sugarIndex: Int
-    var guestKey: String?
+    var guestDonuWeYeKey: String?
     var tasterName: String?
     var avatarSeed: Int
     var isCreamEmpty: Bool
-    var isCurrentTaster: Bool
+    var isCurrentDonuWeYeTaster: Bool
     var isMicOpen: Bool
 }
 
-struct WevVSprinkleRoomLine {
+struct WevVSprinkleDonuWeYeRoLine {
     let sprinkleKey: String
-    let tasterName: String
+    let tasterDonuWeYeName: String
     let crumbText: String
 }
 
-struct WevVCreamRoomState {
-    let roomKey: String
+struct WevVCreamDonuWeYeShrState {
+    let roomDonuWeYeKey: String
     let hostGuestKey: String
-    let hostName: String
+    let hostDonuWeYeName: String
     let hostSeed: Int
-    let heatText: String
+    let heatDonuWeYeText: String
     let crowdText: String
-    var seats: [WevVGlazeRoomSeat]
-    let roomLines: [WevVSprinkleRoomLine]
+    var seats: [WevVGlazeDonuWeYeSeat]
+    let roDonuWeYeLines: [WevVSprinkleDonuWeYeRoLine]
     var currentSeatIndex: Int?
 }
