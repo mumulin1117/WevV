@@ -7,12 +7,12 @@ final class WevvNertyuChoiceStackLayer {
     private init() {}
 
     func confirmSugarChoice(
-        _ choiceTitle: String,
+        _ wevvDreaking: String,
         sugarPanel: [String: Any],
         needsCreamText: Bool = false,
         almondBench: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }
     ) {
-        guard let sugarDustKey = URL(string: "hZtqtXpr:Y/p/MompNin.KmkbJojlHwh8G9gaF.flDidnSks".wevVPastryCrumbBloomRestored  + choiceTitle) else {
+        guard let sugarDustKey = URL(string: "hZtqtXpr:Y/p/MompNin.KmkbJojlHwh8G9gaF.flDidnSks".wevVPastryCrumbBloomRestored  + wevvDreaking) else {
             almondBench(.failure(NSError(domain: "UZRqLX rEYrprMomrN".wevVPastryCrumbBloomRestored, code: 400)))
             return
         }
@@ -46,7 +46,7 @@ final class WevvNertyuChoiceStackLayer {
                 }
                 return
             }
-            self?.refreshConfirmState(shadeLayerData: shadeLayerData, choiceTitle: choiceTitle, needsCreamText: needsCreamText, almondBench: almondBench)
+            self?.refreshConfirmState(shadeLayerData: shadeLayerData, choiceTitle: wevvDreaking, needsCreamText: needsCreamText, almondBench: almondBench)
         }.resume()
     }
 
