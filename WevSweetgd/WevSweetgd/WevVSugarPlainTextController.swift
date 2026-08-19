@@ -4,9 +4,9 @@ final class WevVSugarPlainTextController: UIViewController {
     private let titleWevVSugarText: String
     private let bodyWevVSugarText: String
 
-    init(titleText: String, bodyText: String) {
-        self.titleWevVSugarText = titleText
-        self.bodyWevVSugarText = bodyText
+    init(filledScout: String, crullerScout: String) {
+        self.titleWevVSugarText = filledScout
+        self.bodyWevVSugarText = crullerScout
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -54,20 +54,20 @@ final class WevVSugarPlainTextController: UIViewController {
         sugarScroll.addSubview(sugarContent)
         sugarContent.addSubview(body)
 
-        pinSugarTextPage(back: baSugarck, title: glazeTitle, glazePanel: glazePanel, sugarScroll: sugarScroll, sugarContent: sugarContent, body: body)
+        pinSugarTextPage(fritterScout: baSugarck, doughScout: glazeTitle, glazePanel: glazePanel, sugarScroll: sugarScroll, sugarContent: sugarContent, body: body)
     }
 
-    private func pinSugarTextPage(back: UIButton, title: UILabel, glazePanel: UIView, sugarScroll: UIScrollView, sugarContent: UIView, body: UILabel) {
+    private func pinSugarTextPage(fritterScout: UIButton, doughScout: UILabel, glazePanel: UIView, sugarScroll: UIScrollView, sugarContent: UIView, body: UILabel) {
         NSLayoutConstraint.activate([
-            back.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            back.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
-            back.widthAnchor.constraint(equalToConstant: 44),
-            back.heightAnchor.constraint(equalToConstant: 44),
-            title.centerYAnchor.constraint(equalTo: back.centerYAnchor),
-            title.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            title.leadingAnchor.constraint(greaterThanOrEqualTo: back.trailingAnchor, constant: 12),
-            title.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -70),
-            glazePanel.topAnchor.constraint(equalTo: back.bottomAnchor, constant: 28),
+            fritterScout.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            fritterScout.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            fritterScout.widthAnchor.constraint(equalToConstant: 44),
+            fritterScout.heightAnchor.constraint(equalToConstant: 44),
+            doughScout.centerYAnchor.constraint(equalTo: fritterScout.centerYAnchor),
+            doughScout.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            doughScout.leadingAnchor.constraint(greaterThanOrEqualTo: fritterScout.trailingAnchor, constant: 12),
+            doughScout.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -70),
+            glazePanel.topAnchor.constraint(equalTo: fritterScout.bottomAnchor, constant: 28),
             glazePanel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             glazePanel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             glazePanel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),

@@ -6,8 +6,8 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
     private let doughSession = WevVGlazeSessionStore.shared
     private let doughScrollView = UIScrollView()
     private let pastryCanvasView = UIView()
-    private let donutAvatarButton = UIControl()
-    private let donutAvatarImageView = UIImageView()
+    private let donutcitrusTrayButton = UIControl()
+    private let donutcitrusMixerView = UIImageView()
     private let glazeNameField = UITextField()
     private let sugarHandleField = UITextField()
     private let crumbBioView = UITextView()
@@ -96,17 +96,17 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
     }
 
     private func tuneDonutAvatarButton() {
-        donutAvatarButton.translatesAutoresizingMaskIntoConstraints = false
-        donutAvatarButton.layer.cornerRadius = 54
-        donutAvatarButton.layer.borderWidth = 4
-        donutAvatarButton.layer.borderColor = UIColor.white.cgColor
-        donutAvatarButton.clipsToBounds = true
-        donutAvatarButton.addTarget(self, action: #selector(chooseDonutAvatar), for: .touchUpInside)
+        donutcitrusTrayButton.translatesAutoresizingMaskIntoConstraints = false
+        donutcitrusTrayButton.layer.cornerRadius = 54
+        donutcitrusTrayButton.layer.borderWidth = 4
+        donutcitrusTrayButton.layer.borderColor = UIColor.white.cgColor
+        donutcitrusTrayButton.clipsToBounds = true
+        donutcitrusTrayButton.addTarget(self, action: #selector(chooseDonutAvatar), for: .touchUpInside)
 
-        donutAvatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        donutAvatarImageView.contentMode = .scaleAspectFill
-        donutAvatarImageView.clipsToBounds = true
-        donutAvatarButton.addSubview(donutAvatarImageView)
+        donutcitrusMixerView.translatesAutoresizingMaskIntoConstraints = false
+        donutcitrusMixerView.contentMode = .scaleAspectFill
+        donutcitrusMixerView.clipsToBounds = true
+        donutcitrusTrayButton.addSubview(donutcitrusMixerView)
     }
 
     private func makeDonutCameraButton() -> UIButton {
@@ -133,7 +133,7 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
     private func placeCreamRingEditViews(doughBackButton: UIButton, glazeTitle: UILabel, donutCameraButton: UIButton, sugarBasicTitle: UILabel, creamFormCard: UIView) {
         pastryCanvasView.addSubview(doughBackButton)
         pastryCanvasView.addSubview(glazeTitle)
-        pastryCanvasView.addSubview(donutAvatarButton)
+        pastryCanvasView.addSubview(donutcitrusTrayButton)
         pastryCanvasView.addSubview(donutCameraButton)
         pastryCanvasView.addSubview(sugarBasicTitle)
         pastryCanvasView.addSubview(creamFormCard)
@@ -149,19 +149,19 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
             glazeTitle.centerYAnchor.constraint(equalTo: doughBackButton.centerYAnchor),
             glazeTitle.centerXAnchor.constraint(equalTo: pastryCanvasView.centerXAnchor),
             glazeTitle.leadingAnchor.constraint(greaterThanOrEqualTo: doughBackButton.trailingAnchor, constant: 16),
-            donutAvatarButton.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 58),
-            donutAvatarButton.centerXAnchor.constraint(equalTo: pastryCanvasView.centerXAnchor),
-            donutAvatarButton.widthAnchor.constraint(equalToConstant: 108),
-            donutAvatarButton.heightAnchor.constraint(equalToConstant: 108),
-            donutAvatarImageView.topAnchor.constraint(equalTo: donutAvatarButton.topAnchor),
-            donutAvatarImageView.leadingAnchor.constraint(equalTo: donutAvatarButton.leadingAnchor),
-            donutAvatarImageView.trailingAnchor.constraint(equalTo: donutAvatarButton.trailingAnchor),
-            donutAvatarImageView.bottomAnchor.constraint(equalTo: donutAvatarButton.bottomAnchor),
-            donutCameraButton.trailingAnchor.constraint(equalTo: donutAvatarButton.trailingAnchor, constant: 10),
-            donutCameraButton.bottomAnchor.constraint(equalTo: donutAvatarButton.bottomAnchor, constant: 4),
+            donutcitrusTrayButton.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 58),
+            donutcitrusTrayButton.centerXAnchor.constraint(equalTo: pastryCanvasView.centerXAnchor),
+            donutcitrusTrayButton.widthAnchor.constraint(equalToConstant: 108),
+            donutcitrusTrayButton.heightAnchor.constraint(equalToConstant: 108),
+            donutcitrusMixerView.topAnchor.constraint(equalTo: donutcitrusTrayButton.topAnchor),
+            donutcitrusMixerView.leadingAnchor.constraint(equalTo: donutcitrusTrayButton.leadingAnchor),
+            donutcitrusMixerView.trailingAnchor.constraint(equalTo: donutcitrusTrayButton.trailingAnchor),
+            donutcitrusMixerView.bottomAnchor.constraint(equalTo: donutcitrusTrayButton.bottomAnchor),
+            donutCameraButton.trailingAnchor.constraint(equalTo: donutcitrusTrayButton.trailingAnchor, constant: 10),
+            donutCameraButton.bottomAnchor.constraint(equalTo: donutcitrusTrayButton.bottomAnchor, constant: 4),
             donutCameraButton.widthAnchor.constraint(equalToConstant: 50),
             donutCameraButton.heightAnchor.constraint(equalToConstant: 50),
-            sugarBasicTitle.topAnchor.constraint(equalTo: donutAvatarButton.bottomAnchor, constant: 54),
+            sugarBasicTitle.topAnchor.constraint(equalTo: donutcitrusTrayButton.bottomAnchor, constant: 54),
             sugarBasicTitle.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 50),
             creamFormCard.topAnchor.constraint(equalTo: sugarBasicTitle.bottomAnchor, constant: 32),
             creamFormCard.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 30),
@@ -255,8 +255,8 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
 
     private func bindCurrentDoughRingProfile() {
         let profile = doughSession.currentDoughRingTasterProfile
-        chosenDonutAvatarAsset = profile.donutAvatarAsset.isEmpty ? "wevv_profile_avatar_piano_donut" : profile.donutAvatarAsset
-        donutAvatarImageView.image = UIImage(named: chosenDonutAvatarAsset)
+        chosenDonutAvatarAsset = profile.donutFrameAsset.isEmpty ? "wevv_profile_avatar_piano_donut" : profile.donutFrameAsset
+        donutcitrusMixerView.image = UIImage(named: chosenDonutAvatarAsset)
         glazeNameField.text = profile.glazeNickname
         sugarHandleField.text = profile.sugarHandle
         crumbBioView.text = profile.crumbBio
@@ -305,8 +305,8 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
         }
         sugarSheet.addAction(UIAlertAction(title: "C#ahnTc/e!l*".wevVPastryCrumbBloomRestored, style: .cancel))
         if let sugarPopover = sugarSheet.popoverPresentationController {
-            sugarPopover.sourceView = donutAvatarButton
-            sugarPopover.sourceRect = donutAvatarButton.bounds
+            sugarPopover.sourceView = donutcitrusTrayButton
+            sugarPopover.sourceRect = donutcitrusTrayButton.bounds
         }
         present(sugarSheet, animated: true)
     }
@@ -320,7 +320,7 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
 
     private func applyDonutAvatarChoice(_ crumbAsset: String) {
         chosenDonutAvatarAsset = crumbAsset
-        donutAvatarImageView.image = UIImage(named: crumbAsset)
+        donutcitrusMixerView.image = UIImage(named: crumbAsset)
         WevVGlazePromptStyler.showSugarToast(in: view, text: "Ptr:omfni.lLeL /pqh=oRt@om Uu&pedKaVtueedL".wevVPastryCrumbBloomRestored)
     }
 
@@ -338,7 +338,7 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
             glazeNickname: creamPacket.displayName,
             sugarHandle: creamPacket.sugarHandle,
             crumbBio: creamPacket.crumbBio,
-            donutAvatarAsset: chosenDonutAvatarAsset
+            donutFrameAsset: chosenDonutAvatarAsset
         )
         onCreamRingSaved?()
         WevVGlazePromptStyler.showSugarToast(in: view, text: "P,ryo,fai=lke/ isPaivfe@d.".wevVPastryCrumbBloomRestored)

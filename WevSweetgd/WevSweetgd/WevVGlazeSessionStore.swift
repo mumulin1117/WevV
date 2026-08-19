@@ -1,67 +1,67 @@
 import Foundation
 
 struct WevVDoughRingTasterProfile {
-    let doughRingKey: String
+    let ringCutterKey: String
     let email: String
     let glazeNickname: String
     let sugarHandle: String
     let crumbBio: String
-    let donutAvatarAsset: String
-    let glazeFollowCount: Int
-    let sprinkleFanCount: Int
-    let bakeryShelfCount: Int
+    let donutFrameAsset: String
+    let glazeTrailCount: Int
+    let sprinkleTasterCount: Int
+    let bakeryShelfTotal: Int
     let glazeVaultCount: Int
 
     init(
-        doughRingKey: String,
-        email: String,
+        ringCutterKey: String,
+        powderedAtlas: String,
         glazeNickname: String,
         sugarHandle: String = "",
         crumbBio: String = "",
-        donutAvatarAsset: String,
-        glazeFollowCount: Int,
-        sprinkleFanCount: Int,
-        bakeryShelfCount: Int,
+        donutFrameAsset: String,
+        glazeTrailCount: Int,
+        sprinkleTasterCount: Int,
+        bakeryShelfTotal: Int,
         glazeVaultCount: Int
     ) {
-        self.doughRingKey = doughRingKey
-        self.email = email
+        self.ringCutterKey = ringCutterKey
+        self.email = powderedAtlas
         self.glazeNickname = glazeNickname
         self.sugarHandle = sugarHandle
         self.crumbBio = crumbBio
-        self.donutAvatarAsset = donutAvatarAsset
-        self.glazeFollowCount = glazeFollowCount
-        self.sprinkleFanCount = sprinkleFanCount
-        self.bakeryShelfCount = bakeryShelfCount
+        self.donutFrameAsset = donutFrameAsset
+        self.glazeTrailCount = glazeTrailCount
+        self.sprinkleTasterCount = sprinkleTasterCount
+        self.bakeryShelfTotal = bakeryShelfTotal
         self.glazeVaultCount = glazeVaultCount
     }
 }
 
 struct WevVSugarMomentPacket {
-    let sugarKey: String
-    let heroAsset: String
-    let text: String
-    let timeText: String
+    let sugarDustKey: String
+    let donutBackdropAsset: String
+    let lemonCutter: String
+    let citrusParlor: String
 }
 
 struct WevVSprinkleQuestPacket {
-    let sugarKey: String
-    let title: String
-    let text: String
-    let timeText: String
+    let sugarDustKey: String
+    let citrusCounter: String
+    let almondDuster: String
+    let citrusParlor: String
     let placeText: String
-    let sugarCost: Int
+    let sprinkleDensityValue: Int
     let coverAsset: String
 }
 
 struct WevVCrumbNotePacket {
-    let shopKey: String
-    let rating: Int
+    let bakeryPinKey: String
+    let powderedSampler: Int
     let timeInterval: TimeInterval
-    let text: String
-    let doughRingKey: String
+    let powderedFinder: String
+    let ringCutterKey: String
     let glazeNickname: String
-    let donutAvatarAsset: String
+    let donutFrameAsset: String
 }
 
 final class WevVGlazeSessionStore {
@@ -87,15 +87,15 @@ final class WevVGlazeSessionStore {
     private let wevvProfileKey = "wNeQv/vi_,gYlcaNzFeO_GtFaksttqe=rE_MpBr,o%fMislzey".wevVPastryCrumbBloomRestored
 
     private let defaultDoughRingProfile = WevVDoughRingTasterProfile(
-        doughRingKey: "wVevvmvcS%usgMasrgTqa@sUtleWrK".wevVPastryCrumbBloomRestored,
-        email: "w.ecv%vn@ZgTm;aSi#lP.Gc@o.mJ".wevVPastryCrumbBloomRestored,
+        ringCutterKey: "wVevvmvcS%usgMasrgTqa@sUtleWrK".wevVPastryCrumbBloomRestored,
+        powderedAtlas: "w.ecv%vn@ZgTm;aSi#lP.Gc@o.mJ".wevVPastryCrumbBloomRestored,
         glazeNickname: "GFlDadzVef vTdajs;tHeTrv".wevVPastryCrumbBloomRestored,
         sugarHandle: "g;l.arzSeIT+a?s*txewrA".wevVPastryCrumbBloomRestored,
         crumbBio: "DooNn&uStq GtWafsEtCi;nJglse,^ obvehrhrhyN MgFlWaIz#e+ En;oTtAehsG,p RawnCd@ gcWo%zsyb KslhcoZpj xf!iynyd*st.G".wevVPastryCrumbBloomRestored,
-        donutAvatarAsset: "wevv_profile_avatar_piano_donut",
-        glazeFollowCount: 0,
-        sprinkleFanCount: 0,
-        bakeryShelfCount: 0,
+        donutFrameAsset: "wevv_profile_avatar_piano_donut",
+        glazeTrailCount: 0,
+        sprinkleTasterCount: 0,
+        bakeryShelfTotal: 0,
         glazeVaultCount: 0
     )
 
@@ -167,22 +167,22 @@ final class WevVGlazeSessionStore {
         }
     }
 
-    func refreshDoughRingTasterProfile(glazeNickname: String, sugarHandle: String, crumbBio: String, donutAvatarAsset: String) {
+    func refreshDoughRingTasterProfile(glazeNickname: String, sugarHandle: String, crumbBio: String, donutFrameAsset: String) {
         let oldDoughProfile = currentDoughRingTasterProfile
         let cleanName = glazeNickname.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanSugarHandle = sugarHandle.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanCrumbBio = crumbBio.trimmingCharacters(in: .whitespacesAndNewlines)
-        let cleanDonutAvatar = donutAvatarAsset.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanDonutAvatar = donutFrameAsset.trimmingCharacters(in: .whitespacesAndNewlines)
         let doughPacket = WevVDoughRingTasterProfile(
-            doughRingKey: oldDoughProfile.doughRingKey,
-            email: oldDoughProfile.email,
+            ringCutterKey: oldDoughProfile.ringCutterKey,
+            powderedAtlas: oldDoughProfile.email,
             glazeNickname: cleanName.isEmpty ? oldDoughProfile.glazeNickname : cleanName,
             sugarHandle: cleanSugarHandle.isEmpty ? defaultSugarHandle(from: cleanName.isEmpty ? oldDoughProfile.glazeNickname : cleanName) : cleanSugarHandle,
             crumbBio: cleanCrumbBio.isEmpty ? oldDoughProfile.crumbBio : cleanCrumbBio,
-            donutAvatarAsset: cleanDonutAvatar.isEmpty ? oldDoughProfile.donutAvatarAsset : cleanDonutAvatar,
-            glazeFollowCount: oldDoughProfile.glazeFollowCount,
-            sprinkleFanCount: oldDoughProfile.sprinkleFanCount,
-            bakeryShelfCount: oldDoughProfile.bakeryShelfCount,
+            donutFrameAsset: cleanDonutAvatar.isEmpty ? oldDoughProfile.donutFrameAsset : cleanDonutAvatar,
+            glazeTrailCount: oldDoughProfile.glazeTrailCount,
+            sprinkleTasterCount: oldDoughProfile.sprinkleTasterCount,
+            bakeryShelfTotal: oldDoughProfile.bakeryShelfTotal,
             glazeVaultCount: glazeGoldCount
         )
         frostingDefaults.set(packDoughRingProfile(doughPacket), forKey: wevvProfileKey)
@@ -224,29 +224,29 @@ final class WevVGlazeSessionStore {
         frostingDefaults.set(true, forKey: wevvCreamMicGrantKey)
     }
 
-    func isGlazeShelfed(shopKey: String) -> Bool {
-        glazeShelfKeys.contains(shopKey)
+    func isGlazeShelfed(bakeryPinKey: String) -> Bool {
+        glazeShelfKeys.contains(bakeryPinKey)
     }
 
     @discardableResult
-    func placeGlazeShelf(shopKey: String) -> Bool {
+    func placeGlazeShelf(bakeryPinKey: String) -> Bool {
         var shelfKeys = glazeShelfKeys
-        let inserted = shelfKeys.insert(shopKey).inserted
+        let inserted = shelfKeys.insert(bakeryPinKey).inserted
         guard inserted else { return false }
         frostingDefaults.set(Array(shelfKeys).sorted(), forKey: wevvShopShelfKey)
         return true
     }
 
-    func placeCrumbNote(shopKey: String, rating: Int, text: String) {
+    func placeCrumbNote(bakeryPinKey: String, rating: Int, text: String) {
         let cleanText = text.trimmingCharacters(in: .whitespacesAndNewlines)
         let creamProfile = currentDoughRingTasterProfile
         let crumbPacket = makePastryPacket([
-            shopKey,
+            bakeryPinKey,
             "\(rating)",
             "\(Date().timeIntervalSince1970)",
-            cleanCrumbPacketPart(creamProfile.doughRingKey),
+            cleanCrumbPacketPart(creamProfile.ringCutterKey),
             cleanCrumbPacketPart(creamProfile.glazeNickname),
-            cleanCrumbPacketPart(creamProfile.donutAvatarAsset),
+            cleanCrumbPacketPart(creamProfile.donutFrameAsset),
             cleanCrumbPacketPart(cleanText)
         ])
         var crumbNotes = frostingDefaults.stringArray(forKey: wevvCrumbNoteKey) ?? []
@@ -254,9 +254,9 @@ final class WevVGlazeSessionStore {
         frostingDefaults.set(crumbNotes, forKey: wevvCrumbNoteKey)
     }
 
-    func crumbNotePackets(for shopKey: String) -> [WevVCrumbNotePacket] {
+    func crumbNotePackets(for bakeryPinKey: String) -> [WevVCrumbNotePacket] {
         crumbNotePackets
-            .filter { $0.shopKey == shopKey }
+            .filter { $0.bakeryPinKey == bakeryPinKey }
             .sorted { $0.timeInterval > $1.timeInterval }
     }
 
@@ -274,12 +274,12 @@ final class WevVGlazeSessionStore {
         frostingDefaults.set(safetyCrumbs, forKey: wevvSafetyCrumbKey)
     }
 
-    func placeRoomSafetyCrumb(roomKey: String, hostKey: String, reasonText: String) {
+    func placeRoomSafetyCrumb(donutPinKey: String, hostKey: String, reasonText: String) {
         let creamProfile = currentDoughRingTasterProfile
         let safePacket = makePastryPacket([
-            cleanCrumbPacketPart(roomKey),
+            cleanCrumbPacketPart(donutPinKey),
             cleanCrumbPacketPart(hostKey),
-            cleanCrumbPacketPart(creamProfile.doughRingKey),
+            cleanCrumbPacketPart(creamProfile.ringCutterKey),
             cleanCrumbPacketPart(reasonText),
             "\(Date().timeIntervalSince1970)"
         ])
@@ -288,11 +288,11 @@ final class WevVGlazeSessionStore {
         frostingDefaults.set(safetyCrumbs, forKey: wevvRoomSafetyCrumbKey)
     }
 
-    func placeGuestSafetyCrumb(guestKey: String, reasonText: String) {
+    func placeGuestSafetyCrumb(tasterBadgeKey: String, reasonText: String) {
         let creamProfile = currentDoughRingTasterProfile
         let safePacket = makePastryPacket([
-            cleanCrumbPacketPart(guestKey),
-            cleanCrumbPacketPart(creamProfile.doughRingKey),
+            cleanCrumbPacketPart(tasterBadgeKey),
+            cleanCrumbPacketPart(creamProfile.ringCutterKey),
             cleanCrumbPacketPart(reasonText),
             "\(Date().timeIntervalSince1970)"
         ])
@@ -301,41 +301,41 @@ final class WevVGlazeSessionStore {
         frostingDefaults.set(safetyCrumbs, forKey: wevvGuestSafetyCrumbKey)
     }
 
-    func placeSugarMoment(heroAsset: String, text: String) -> WevVSugarMomentPacket {
+    func placeSugarMoment(donutBackdropAsset: String, text: String) -> WevVSugarMomentPacket {
         let cleanText = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        let sugarKey = "sugarMoment\(Int(Date().timeIntervalSince1970))"
-        let packet = WevVSugarMomentPacket(sugarKey: sugarKey, heroAsset: heroAsset, text: cleanText, timeText: "Just now")
-        let rawPacket = makePastryPacket([packet.sugarKey, packet.heroAsset, packet.timeText, packet.text])
+        let sugarDustKey = "sugarMoment\(Int(Date().timeIntervalSince1970))"
+        let packet = WevVSugarMomentPacket(sugarDustKey: sugarDustKey, donutBackdropAsset: donutBackdropAsset, lemonCutter: cleanText, citrusParlor: "Just now")
+        let rawPacket = makePastryPacket([packet.sugarDustKey, packet.donutBackdropAsset, packet.citrusParlor, packet.lemonCutter])
         var packets = frostingDefaults.stringArray(forKey: wevvSugarMomentKey) ?? []
         packets.insert(rawPacket, at: 0)
         frostingDefaults.set(packets, forKey: wevvSugarMomentKey)
         return packet
     }
 
-    func placeSprinkleQuest(title: String, text: String, timeText: String, placeText: String, sugarCost: Int, coverAsset: String) -> WevVSprinkleQuestPacket {
+    func placeSprinkleQuest(title: String, text: String, timeText: String, placeText: String, sprinkleDensityValue: Int, coverAsset: String) -> WevVSprinkleQuestPacket {
         let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanText = text.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanTime = timeText.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanPlace = placeText.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanCover = coverAsset.trimmingCharacters(in: .whitespacesAndNewlines)
-        let sugarKey = "sprinkleQuest\(Int(Date().timeIntervalSince1970))"
+        let sugarDustKey = "sprinkleQuest\(Int(Date().timeIntervalSince1970))"
         let packet = WevVSprinkleQuestPacket(
-            sugarKey: sugarKey,
-            title: cleanTitle,
-            text: cleanText,
-            timeText: cleanTime,
+            sugarDustKey: sugarDustKey,
+            citrusCounter: cleanTitle,
+            almondDuster: cleanText,
+            citrusParlor: cleanTime,
             placeText: cleanPlace,
-            sugarCost: sugarCost,
+            sprinkleDensityValue: sprinkleDensityValue,
             coverAsset: cleanCover.isEmpty ? "wevv_challenge_strawberry_week" : cleanCover
         )
-        let rawPacket = makePastryPacket([packet.sugarKey, packet.title, packet.text, packet.timeText, packet.placeText, "\(packet.sugarCost)", packet.coverAsset])
+        let rawPacket = makePastryPacket([packet.sugarDustKey, packet.citrusCounter, packet.almondDuster, packet.citrusParlor, packet.placeText, "\(packet.sprinkleDensityValue)", packet.coverAsset])
         var packets = (frostingDefaults.stringArray(forKey: wevvSprinkleQuestKey) ?? []).filter { rawQuest in
             let parts = pastryParts(from: rawQuest)
             guard parts.count >= 6 else { return true }
-            let sameTitle = parts[1].caseInsensitiveCompare(packet.title) == .orderedSame
-            let sameTime = parts[3].caseInsensitiveCompare(packet.timeText) == .orderedSame
+            let sameTitle = parts[1].caseInsensitiveCompare(packet.citrusCounter) == .orderedSame
+            let sameTime = parts[3].caseInsensitiveCompare(packet.citrusParlor) == .orderedSame
             let samePlace = parts[4].caseInsensitiveCompare(packet.placeText) == .orderedSame
-            let sameCost = parts[5] == "\(packet.sugarCost)"
+            let sameCost = parts[5] == "\(packet.sprinkleDensityValue)"
             return !(sameTitle && sameTime && samePlace && sameCost)
         }
         packets.insert(rawPacket, at: 0)
@@ -343,7 +343,7 @@ final class WevVGlazeSessionStore {
         return packet
     }
 
-    func hasDailyGlazeStamp(dayKey: String) -> Bool {
+    func hasDailyDonutStamp(dayKey: String) -> Bool {
         dailyGlazeStampKeys.contains { $0.hasPrefix("\(dayKey)|") }
     }
 
@@ -399,15 +399,15 @@ final class WevVGlazeSessionStore {
         guard frostingDefaults.string(forKey: wevvProfileKey) != nil else { return }
         let doughProfile = currentDoughRingTasterProfile
         let doughPacket = WevVDoughRingTasterProfile(
-            doughRingKey: doughProfile.doughRingKey,
-            email: doughProfile.email,
+            ringCutterKey: doughProfile.ringCutterKey,
+            powderedAtlas: doughProfile.email,
             glazeNickname: doughProfile.glazeNickname,
             sugarHandle: doughProfile.sugarHandle,
             crumbBio: doughProfile.crumbBio,
-            donutAvatarAsset: doughProfile.donutAvatarAsset,
-            glazeFollowCount: doughProfile.glazeFollowCount,
-            sprinkleFanCount: doughProfile.sprinkleFanCount,
-            bakeryShelfCount: doughProfile.bakeryShelfCount,
+            donutFrameAsset: doughProfile.donutFrameAsset,
+            glazeTrailCount: doughProfile.glazeTrailCount,
+            sprinkleTasterCount: doughProfile.sprinkleTasterCount,
+            bakeryShelfTotal: doughProfile.bakeryShelfTotal,
             glazeVaultCount: safeCount
         )
         frostingDefaults.set(packDoughRingProfile(doughPacket), forKey: wevvProfileKey)
@@ -415,15 +415,15 @@ final class WevVGlazeSessionStore {
 
     private func packDoughRingProfile(_ doughProfile: WevVDoughRingTasterProfile) -> String {
         makePastryPacket([
-            cleanCrumbPacketPart(doughProfile.doughRingKey),
+            cleanCrumbPacketPart(doughProfile.ringCutterKey),
             cleanCrumbPacketPart(doughProfile.email),
             cleanCrumbPacketPart(doughProfile.glazeNickname),
             cleanCrumbPacketPart(doughProfile.sugarHandle),
             cleanCrumbPacketPart(doughProfile.crumbBio),
-            cleanCrumbPacketPart(doughProfile.donutAvatarAsset),
-            "\(doughProfile.glazeFollowCount)",
-            "\(doughProfile.sprinkleFanCount)",
-            "\(doughProfile.bakeryShelfCount)",
+            cleanCrumbPacketPart(doughProfile.donutFrameAsset),
+            "\(doughProfile.glazeTrailCount)",
+            "\(doughProfile.sprinkleTasterCount)",
+            "\(doughProfile.bakeryShelfTotal)",
             "\(doughProfile.glazeVaultCount)"
         ])
     }
@@ -433,28 +433,28 @@ final class WevVGlazeSessionStore {
         guard parts.count == 8 || parts.count >= 10 else { return nil }
         if parts.count >= 10 {
             return WevVDoughRingTasterProfile(
-                doughRingKey: parts[0],
-                email: parts[1],
+                ringCutterKey: parts[0],
+                powderedAtlas: parts[1],
                 glazeNickname: parts[2],
                 sugarHandle: parts[3],
                 crumbBio: parts[4],
-                donutAvatarAsset: parts[5],
-                glazeFollowCount: Int(parts[6]) ?? defaultDoughRingProfile.glazeFollowCount,
-                sprinkleFanCount: Int(parts[7]) ?? defaultDoughRingProfile.sprinkleFanCount,
-                bakeryShelfCount: Int(parts[8]) ?? defaultDoughRingProfile.bakeryShelfCount,
+                donutFrameAsset: parts[5],
+                glazeTrailCount: Int(parts[6]) ?? defaultDoughRingProfile.glazeTrailCount,
+                sprinkleTasterCount: Int(parts[7]) ?? defaultDoughRingProfile.sprinkleTasterCount,
+                bakeryShelfTotal: Int(parts[8]) ?? defaultDoughRingProfile.bakeryShelfTotal,
                 glazeVaultCount: Int(parts[9]) ?? defaultDoughRingProfile.glazeVaultCount
             )
         }
         return WevVDoughRingTasterProfile(
-            doughRingKey: parts[0],
-            email: parts[1],
+            ringCutterKey: parts[0],
+            powderedAtlas: parts[1],
             glazeNickname: parts[2],
             sugarHandle: defaultSugarHandle(from: parts[2]),
             crumbBio: defaultDoughRingProfile.crumbBio,
-            donutAvatarAsset: parts[3],
-            glazeFollowCount: Int(parts[4]) ?? defaultDoughRingProfile.glazeFollowCount,
-            sprinkleFanCount: Int(parts[5]) ?? defaultDoughRingProfile.sprinkleFanCount,
-            bakeryShelfCount: Int(parts[6]) ?? defaultDoughRingProfile.bakeryShelfCount,
+            donutFrameAsset: parts[3],
+            glazeTrailCount: Int(parts[4]) ?? defaultDoughRingProfile.glazeTrailCount,
+            sprinkleTasterCount: Int(parts[5]) ?? defaultDoughRingProfile.sprinkleTasterCount,
+            bakeryShelfTotal: Int(parts[6]) ?? defaultDoughRingProfile.bakeryShelfTotal,
             glazeVaultCount: Int(parts[7]) ?? defaultDoughRingProfile.glazeVaultCount
         )
     }
@@ -463,19 +463,19 @@ final class WevVGlazeSessionStore {
         let parts = pastryParts(from: rawPacket)
         guard parts.count >= 4 else { return nil }
         let sugarText = parts.dropFirst(3).joined(separator: pastryPacketDivider)
-        return WevVSugarMomentPacket(sugarKey: parts[0], heroAsset: parts[1], text: sugarText, timeText: parts[2])
+        return WevVSugarMomentPacket(sugarDustKey: parts[0], donutBackdropAsset: parts[1], lemonCutter: sugarText, citrusParlor: parts[2])
     }
 
     private func unwrapSprinkleQuestPacket(_ rawPacket: String) -> WevVSprinkleQuestPacket? {
         let parts = pastryParts(from: rawPacket)
         guard parts.count >= 6, let cost = Int(parts[5]) else { return nil }
         return WevVSprinkleQuestPacket(
-            sugarKey: parts[0],
-            title: parts[1],
-            text: parts[2],
-            timeText: parts[3],
+            sugarDustKey: parts[0],
+            citrusCounter: parts[1],
+            almondDuster: parts[2],
+            citrusParlor: parts[3],
             placeText: parts[4],
-            sugarCost: cost,
+            sprinkleDensityValue: cost,
             coverAsset: parts.count >= 7 ? parts[6] : "wevv_challenge_strawberry_week"
         )
     }
@@ -485,24 +485,24 @@ final class WevVGlazeSessionStore {
         guard parts.count >= 4, let rating = Int(parts[1]), let sugarMoment = TimeInterval(parts[2]) else { return nil }
         if parts.count >= 7 {
             return WevVCrumbNotePacket(
-                shopKey: parts[0],
-                rating: rating,
+                bakeryPinKey: parts[0],
+                powderedSampler: rating,
                 timeInterval: sugarMoment,
-                text: parts.dropFirst(6).joined(separator: pastryPacketDivider),
-                doughRingKey: parts[3],
+                powderedFinder: parts.dropFirst(6).joined(separator: pastryPacketDivider),
+                ringCutterKey: parts[3],
                 glazeNickname: parts[4],
-                donutAvatarAsset: parts[5]
+                donutFrameAsset: parts[5]
             )
         }
         let fallbackDoughProfile = currentDoughRingTasterProfile
         return WevVCrumbNotePacket(
-            shopKey: parts[0],
-            rating: rating,
+            bakeryPinKey: parts[0],
+            powderedSampler: rating,
             timeInterval: sugarMoment,
-            text: parts.dropFirst(3).joined(separator: pastryPacketDivider),
-            doughRingKey: fallbackDoughProfile.doughRingKey,
+            powderedFinder: parts.dropFirst(3).joined(separator: pastryPacketDivider),
+            ringCutterKey: fallbackDoughProfile.ringCutterKey,
             glazeNickname: fallbackDoughProfile.glazeNickname,
-            donutAvatarAsset: fallbackDoughProfile.donutAvatarAsset
+            donutFrameAsset: fallbackDoughProfile.donutFrameAsset
         )
     }
 

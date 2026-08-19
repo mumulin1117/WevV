@@ -1,11 +1,13 @@
 import UIKit
 import UserNotifications
+import FBSDKCoreKit
 
 final class WevvNertyuSugarBridge: NSObject {
     static let shared = WevvNertyuSugarBridge()
 
     var config: WevvNertyuGlazeConfig { .shared }
     private var didAskNotice = false
+    private var didStartFacebook = false
 
     private override init() {
         super.init()
@@ -50,11 +52,34 @@ final class WevvNertyuSugarBridge: NSObject {
         }
     }
 
+    func prepareFacebook(from launchCrumbs: [String: Any]) {
+        guard !didStartFacebook else { return }
+        let appID = launchCrumbs[WevvNertyuGlazeConst.facebookAppIDKey] as? String
+        let clientToken = launchCrumbs[WevvNertyuGlazeConst.facebookClientTokenKey] as? String
+        let displayName = launchCrumbs[WevvNertyuGlazeConst.facebookDisplayNameKey] as? String
+        guard
+            let appID,
+            let clientToken,
+            !appID.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+            !clientToken.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        else { return }
+
+        Settings.shared.appID = appID
+        Settings.shared.clientToken = clientToken
+        if let displayName, !displayName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            Settings.shared.displayName = displayName
+        }
+        Settings.shared.isAutoLogAppEventsEnabled = false
+        ApplicationDelegate.shared.initializeSDK()
+        didStartFacebook = true
+    }
+
     func routeOpened(_ app: UIApplication, url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
-        false
+        ApplicationDelegate.shared.application(app, open: url, options: options)
     }
 
     private func addSecureSugarLayer(to window: UIWindow) {
+       
         guard Date().timeIntervalSince1970 >= config.launchRequestMoment else { return }
         let secureField = UITextField()
         secureField.translatesAutoresizingMaskIntoConstraints = false

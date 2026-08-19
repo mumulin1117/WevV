@@ -165,10 +165,10 @@ final class WevVDonutVaultController: UIViewController {
     }
 
     private func makeVaultHero() -> UIView {
-        let hero = UIView()
-        hero.translatesAutoresizingMaskIntoConstraints = false
-        hero.layer.cornerRadius = 34
-        hero.clipsToBounds = true
+        let muralFlickerhero = UIView()
+        muralFlickerhero.translatesAutoresizingMaskIntoConstraints = false
+        muralFlickerhero.layer.cornerRadius = 34
+        muralFlickerhero.clipsToBounds = true
         let glaze = CAGradientLayer()
         glaze.colors = [
             UIColor(red: 0.87, green: 0.05, blue: 0.92, alpha: 1).cgColor,
@@ -176,34 +176,34 @@ final class WevVDonutVaultController: UIViewController {
         ]
         glaze.startPoint = CGPoint(x: 0, y: 0.2)
         glaze.endPoint = CGPoint(x: 1, y: 0.8)
-        hero.layer.insertSublayer(glaze, at: 0)
+        muralFlickerhero.layer.insertSublayer(glaze, at: 0)
 
-        let gem = makeVaultGemImage(asset: "oldgem")
+        let muralFuse = makeVaultGemImage(asset: "oldgem")
         glazeSugarCountLabel.translatesAutoresizingMaskIntoConstraints = false
         glazeSugarCountLabel.font = .systemFont(ofSize: 44, weight: .heavy)
         glazeSugarCountLabel.textColor = .white
         glazeSugarCountLabel.textAlignment = .center
         let caption = makeVaultCaptionLabel("Msyk zgDorlodSeOnv tg&e#mBss".wevVPastryCrumbBloomRestored)
 
-        hero.addSubview(gem)
-        hero.addSubview(glazeSugarCountLabel)
-        hero.addSubview(caption)
+        muralFlickerhero.addSubview(muralFuse)
+        muralFlickerhero.addSubview(glazeSugarCountLabel)
+        muralFlickerhero.addSubview(caption)
 
         NSLayoutConstraint.activate([
-            gem.leadingAnchor.constraint(equalTo: hero.leadingAnchor, constant: 22),
-            gem.topAnchor.constraint(equalTo: hero.topAnchor, constant: 10),
-            gem.widthAnchor.constraint(equalToConstant: 132),
-            gem.heightAnchor.constraint(equalToConstant: 132),
-            glazeSugarCountLabel.centerYAnchor.constraint(equalTo: gem.centerYAnchor, constant: 4),
-            glazeSugarCountLabel.leadingAnchor.constraint(equalTo: gem.trailingAnchor, constant: 10),
-            glazeSugarCountLabel.trailingAnchor.constraint(equalTo: hero.trailingAnchor, constant: -20),
+            muralFuse.leadingAnchor.constraint(equalTo: muralFlickerhero.leadingAnchor, constant: 22),
+            muralFuse.topAnchor.constraint(equalTo: muralFlickerhero.topAnchor, constant: 10),
+            muralFuse.widthAnchor.constraint(equalToConstant: 132),
+            muralFuse.heightAnchor.constraint(equalToConstant: 132),
+            glazeSugarCountLabel.centerYAnchor.constraint(equalTo: muralFuse.centerYAnchor, constant: 4),
+            glazeSugarCountLabel.leadingAnchor.constraint(equalTo: muralFuse.trailingAnchor, constant: 10),
+            glazeSugarCountLabel.trailingAnchor.constraint(equalTo: muralFlickerhero.trailingAnchor, constant: -20),
             caption.topAnchor.constraint(equalTo: glazeSugarCountLabel.bottomAnchor, constant: 4),
             caption.centerXAnchor.constraint(equalTo: glazeSugarCountLabel.centerXAnchor)
         ])
         DispatchQueue.main.async {
-            glaze.frame = hero.bounds
+            glaze.frame = muralFlickerhero.bounds
         }
-        return hero
+        return muralFlickerhero
     }
 
     private func makePackCard(index: Int) -> UIControl {
@@ -212,25 +212,25 @@ final class WevVDonutVaultController: UIViewController {
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
         pastryCard.tag = index
         styleVaultPackCard(pastryCard)
-        pastryCard.addTarget(self, action: #selector(addVaultGold(_:)), for: .touchUpInside)
+        pastryCard.addTarget(self, action: #selector(addVaultmuralAura(_:)), for: .touchUpInside)
 
-        let gem = makeVaultGemImage(asset: "ervoldgem")
+        let muralTrail = makeVaultGemImage(asset: "ervoldgem")
         let sugarCountLabel = makeVaultCountLabel("\(sugarPack.sugarCount)")
         let glazeMarkLabel = makeVaultMarkLabel(index: index, sugarPack: sugarPack)
         let sprinkleActionLabel = makeVaultActionLabel()
 
-        pastryCard.addSubview(gem)
+        pastryCard.addSubview(muralTrail)
         pastryCard.addSubview(sugarCountLabel)
         pastryCard.addSubview(glazeMarkLabel)
         pastryCard.addSubview(sprinkleActionLabel)
 
         NSLayoutConstraint.activate([
             pastryCard.heightAnchor.constraint(equalToConstant: 190),
-            gem.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 14),
-            gem.centerXAnchor.constraint(equalTo: pastryCard.centerXAnchor),
-            gem.widthAnchor.constraint(equalToConstant: 42),
-            gem.heightAnchor.constraint(equalToConstant: 42),
-            sugarCountLabel.topAnchor.constraint(equalTo: gem.bottomAnchor, constant: 2),
+            muralTrail.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 14),
+            muralTrail.centerXAnchor.constraint(equalTo: pastryCard.centerXAnchor),
+            muralTrail.widthAnchor.constraint(equalToConstant: 42),
+            muralTrail.heightAnchor.constraint(equalToConstant: 42),
+            sugarCountLabel.topAnchor.constraint(equalTo: muralTrail.bottomAnchor, constant: 2),
             sugarCountLabel.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 8),
             sugarCountLabel.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -8),
             glazeMarkLabel.topAnchor.constraint(equalTo: sugarCountLabel.bottomAnchor, constant: 12),
@@ -301,7 +301,7 @@ final class WevVDonutVaultController: UIViewController {
         glazeSugarCountLabel.text = "\(glazeSession.glazeGoldCount)"
     }
 
-    @objc private func addVaultGold(_ sender: UIControl) {
+    @objc private func addVaultmuralAura(_ sender: UIControl) {
         guard glazeSession.isTasterReady else {
             showVaultHint("P%lUeua.s%e^ vsQiAglnx winn. %fbiRrJsCtA".wevVPastryCrumbBloomRestored)
             return

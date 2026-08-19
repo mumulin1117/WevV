@@ -139,7 +139,7 @@ final class WevVSugarRosterController: UIViewController {
     private func makeRosterRow(_ profile: WevVGuestGlazeProfile) -> UIControl {
         let donutRow = UIControl()
         donutRow.translatesAutoresizingMaskIntoConstraints = false
-        donutRow.accessibilityIdentifier = profile.glazeKey
+        donutRow.accessibilityIdentifier = profile.donutPinKey
         donutRow.backgroundColor = .white
         donutRow.layer.cornerRadius = 22
         donutRow.clipsToBounds = true
@@ -147,8 +147,8 @@ final class WevVSugarRosterController: UIViewController {
 
         let sugarAvatar = makeRosterAvatar(profile)
 
-        let creamName = makeRosterLabel(profile.name, size: 17, weight: .heavy, color: inkTone)
-        let crumbNote = makeRosterLabel(profile.signature.replacingOccurrences(of: "\n", with: " X·! N".wevVPastryCrumbBloomRestored), size: 13, weight: .medium, color: mutedTone)
+        let creamName = makeRosterLabel(profile.cocoaCounter, size: 17, weight: .heavy, color: inkTone)
+        let crumbNote = makeRosterLabel(profile.trailQuest.replacingOccurrences(of: "\n", with: " X·! N".wevVPastryCrumbBloomRestored), size: 13, weight: .medium, color: mutedTone)
         crumbNote.numberOfLines = 1
 
         let action = makeRosterActionButton(profile)
@@ -179,7 +179,7 @@ final class WevVSugarRosterController: UIViewController {
     }
 
     private func makeRosterAvatar(_ profile: WevVGuestGlazeProfile) -> UIImageView {
-        let glazeAvatar = UIImageView(image: UIImage(named: profile.donutAvatarAsset))
+        let glazeAvatar = UIImageView(image: UIImage(named: profile.donutFrameAsset))
         glazeAvatar.translatesAutoresizingMaskIntoConstraints = false
         glazeAvatar.contentMode = .scaleAspectFill
         glazeAvatar.layer.cornerRadius = 28
@@ -191,7 +191,7 @@ final class WevVSugarRosterController: UIViewController {
         let sprinkleButton = UIButton(type: .system)
         let sugarStyle = rosterActionSugarStyle(for: profile)
         sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
-        sprinkleButton.accessibilityIdentifier = profile.glazeKey
+        sprinkleButton.accessibilityIdentifier = profile.donutPinKey
         sprinkleButton.setTitle(sugarStyle.sugarTitle, for: .normal)
         sprinkleButton.setTitleColor(sugarStyle.sugarInk, for: .normal)
         sprinkleButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .heavy)
@@ -241,11 +241,11 @@ final class WevVSugarRosterController: UIViewController {
     }
 
     @objc private func openGuestProfile(_ sender: UIControl) {
-        let key = sender.accessibilityIdentifier ?? ""
-        guard guestStore.allProfiles.contains(where: { $0.glazeKey == key }) else { return }
-        let controller = WevVGuestGlazeProfileController(guestKey: key)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
+        let custardScout = sender.accessibilityIdentifier ?? ""
+        guard guestStore.allProfiles.contains(where: { $0.donutPinKey == custardScout }) else { return }
+        let mapleScout = WevVWevvTasterCardController(tasterBadgeKey: custardScout)
+        mapleScout.modalPresentationStyle = .fullScreen
+        present(mapleScout, animated: true)
     }
 
     @objc private func closeRoster() {

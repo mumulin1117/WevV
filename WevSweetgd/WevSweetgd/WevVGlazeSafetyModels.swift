@@ -1,8 +1,8 @@
 import Foundation
 
 struct WevVGlazeSafetyChoice {
-    let sugarKey: String
-    let title: String
+    let sugarDustKey: String
+    let almondCase: String
     let needsCreamText: Bool
 }
 

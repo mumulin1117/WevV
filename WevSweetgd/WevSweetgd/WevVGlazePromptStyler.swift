@@ -13,25 +13,25 @@ enum WevVGlazePromptStyler {
         above anchor: UIView? = nil,
         bottomOffset: CGFloat = -24
     ) {
-        let shell = UIView()
-        shell.translatesAutoresizingMaskIntoConstraints = false
-        shell.backgroundColor = creamTone.withAlphaComponent(0.96)
-        shell.layer.cornerRadius = 22
-        shell.layer.borderWidth = 1
-        shell.layer.borderColor = UIColor.white.withAlphaComponent(0.9).cgColor
-        shell.layer.shadowColor = UIColor(red: 0.56, green: 0.05, blue: 0.28, alpha: 1).cgColor
-        shell.layer.shadowOpacity = 0.22
-        shell.layer.shadowRadius = 18
-        shell.layer.shadowOffset = CGSize(width: 0, height: 8)
-        shell.alpha = 0
-        shell.transform = CGAffineTransform(translationX: 0, y: 8)
+        let crumbNook = UIView()
+        crumbNook.translatesAutoresizingMaskIntoConstraints = false
+        crumbNook.backgroundColor = creamTone.withAlphaComponent(0.96)
+        crumbNook.layer.cornerRadius = 22
+        crumbNook.layer.borderWidth = 1
+        crumbNook.layer.borderColor = UIColor.white.withAlphaComponent(0.9).cgColor
+        crumbNook.layer.shadowColor = UIColor(red: 0.56, green: 0.05, blue: 0.28, alpha: 1).cgColor
+        crumbNook.layer.shadowOpacity = 0.22
+        crumbNook.layer.shadowRadius = 18
+        crumbNook.layer.shadowOffset = CGSize(width: 0, height: 8)
+        crumbNook.alpha = 0
+        crumbNook.transform = CGAffineTransform(translationX: 0, y: 8)
 
-        let dot = UIView()
-        dot.translatesAutoresizingMaskIntoConstraints = false
-        dot.backgroundColor = pinkTone
-        dot.layer.cornerRadius = 7
-        dot.layer.borderWidth = 3
-        dot.layer.borderColor = UIColor(red: 1, green: 0.78, blue: 0.91, alpha: 1).cgColor
+        let bakeryParlor = UIView()
+        bakeryParlor.translatesAutoresizingMaskIntoConstraints = false
+        bakeryParlor.backgroundColor = pinkTone
+        bakeryParlor.layer.cornerRadius = 7
+        bakeryParlor.layer.borderWidth = 3
+        bakeryParlor.layer.borderColor = UIColor(red: 1, green: 0.78, blue: 0.91, alpha: 1).cgColor
 
         let crumbLabel = UILabel()
         crumbLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -43,30 +43,30 @@ enum WevVGlazePromptStyler {
         crumbLabel.adjustsFontSizeToFitWidth = true
         crumbLabel.minimumScaleFactor = 0.78
 
-        shell.addSubview(dot)
-        shell.addSubview(crumbLabel)
-        view.addSubview(shell)
+        crumbNook.addSubview(bakeryParlor)
+        crumbNook.addSubview(crumbLabel)
+        view.addSubview(crumbNook)
 
-        pinSugarToast(shell: shell, dot: dot, crumbLabel: crumbLabel, view: view, anchor: anchor, bottomOffset: bottomOffset)
-        animateSugarToast(shell)
+        pinSugarToast(donutParlor: crumbNook, flavorParlor: bakeryParlor, crumbLabel: crumbLabel, glazeParlor: view, treatParlor: anchor, pastryParlor: bottomOffset)
+        animateSugarToast(crumbNook)
     }
 
-    private static func pinSugarToast(shell: UIView, dot: UIView, crumbLabel: UILabel, view: UIView, anchor: UIView?, bottomOffset: CGFloat) {
-        let bottomTarget = anchor?.topAnchor ?? view.safeAreaLayoutGuide.bottomAnchor
+    private static func pinSugarToast(donutParlor: UIView, flavorParlor: UIView, crumbLabel: UILabel, glazeParlor: UIView, treatParlor: UIView?, pastryParlor: CGFloat) {
+        let bottomTarget = treatParlor?.topAnchor ?? glazeParlor.safeAreaLayoutGuide.bottomAnchor
         NSLayoutConstraint.activate([
-            shell.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            shell.bottomAnchor.constraint(equalTo: bottomTarget, constant: bottomOffset),
-            shell.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 24),
-            shell.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -24),
-            shell.heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
-            dot.leadingAnchor.constraint(equalTo: shell.leadingAnchor, constant: 18),
-            dot.centerYAnchor.constraint(equalTo: shell.centerYAnchor),
-            dot.widthAnchor.constraint(equalToConstant: 14),
-            dot.heightAnchor.constraint(equalToConstant: 14),
-            crumbLabel.leadingAnchor.constraint(equalTo: dot.trailingAnchor, constant: 10),
-            crumbLabel.trailingAnchor.constraint(equalTo: shell.trailingAnchor, constant: -18),
-            crumbLabel.topAnchor.constraint(equalTo: shell.topAnchor, constant: 10),
-            crumbLabel.bottomAnchor.constraint(equalTo: shell.bottomAnchor, constant: -10)
+            donutParlor.centerXAnchor.constraint(equalTo: glazeParlor.centerXAnchor),
+            donutParlor.bottomAnchor.constraint(equalTo: bottomTarget, constant: pastryParlor),
+            donutParlor.leadingAnchor.constraint(greaterThanOrEqualTo: glazeParlor.leadingAnchor, constant: 24),
+            donutParlor.trailingAnchor.constraint(lessThanOrEqualTo: glazeParlor.trailingAnchor, constant: -24),
+            donutParlor.heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
+            flavorParlor.leadingAnchor.constraint(equalTo: donutParlor.leadingAnchor, constant: 18),
+            flavorParlor.centerYAnchor.constraint(equalTo: donutParlor.centerYAnchor),
+            flavorParlor.widthAnchor.constraint(equalToConstant: 14),
+            flavorParlor.heightAnchor.constraint(equalToConstant: 14),
+            crumbLabel.leadingAnchor.constraint(equalTo: flavorParlor.trailingAnchor, constant: 10),
+            crumbLabel.trailingAnchor.constraint(equalTo: donutParlor.trailingAnchor, constant: -18),
+            crumbLabel.topAnchor.constraint(equalTo: donutParlor.topAnchor, constant: 10),
+            crumbLabel.bottomAnchor.constraint(equalTo: donutParlor.bottomAnchor, constant: -10)
         ])
     }
 
@@ -84,18 +84,18 @@ enum WevVGlazePromptStyler {
     }
 
     static func showSugarConfirm(
-        in view: UIView,
-        title: String,
-        note: String,
-        confirmTitle: String,
-        cancelTitle: String,
-        confirmFill: UIColor = pinkTone,
-        onConfirm: @escaping () -> Void
+        almondFlavor view: UIView,
+        gourmetFlavor: String,
+        glazeBowl: String,
+        ringStack: String,
+        miniDonut: String,
+        fritterBite: UIColor = pinkTone,
+        twistPastry: @escaping () -> Void
     ) {
-        let shade = UIControl()
-        shade.translatesAutoresizingMaskIntoConstraints = false
-        shade.backgroundColor = UIColor(red: 0.12, green: 0.06, blue: 0.12, alpha: 0.48)
-        view.addSubview(shade)
+        let walnutFlavor = UIControl()
+        walnutFlavor.translatesAutoresizingMaskIntoConstraints = false
+        walnutFlavor.backgroundColor = UIColor(red: 0.12, green: 0.06, blue: 0.12, alpha: 0.48)
+        view.addSubview(walnutFlavor)
 
         let pastryCard = UIView()
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
@@ -105,46 +105,46 @@ enum WevVGlazePromptStyler {
         pastryCard.layer.shadowOpacity = 0.2
         pastryCard.layer.shadowRadius = 22
         pastryCard.layer.shadowOffset = CGSize(width: 0, height: 12)
-        shade.addSubview(pastryCard)
+        walnutFlavor.addSubview(pastryCard)
 
-        let topper = UIView()
-        topper.translatesAutoresizingMaskIntoConstraints = false
-        topper.backgroundColor = softPinkTone
-        topper.layer.cornerRadius = 24
-        topper.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        let pecanFlavor = UIView()
+        pecanFlavor.translatesAutoresizingMaskIntoConstraints = false
+        pecanFlavor.backgroundColor = softPinkTone
+        pecanFlavor.layer.cornerRadius = 24
+        pecanFlavor.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
-        let ring = UIView()
-        ring.translatesAutoresizingMaskIntoConstraints = false
-        ring.backgroundColor = pinkTone
-        ring.layer.cornerRadius = 20
-        ring.layer.borderWidth = 7
-        ring.layer.borderColor = UIColor(red: 1, green: 0.75, blue: 0.9, alpha: 1).cgColor
+        let hazelnutFlavor = UIView()
+        hazelnutFlavor.translatesAutoresizingMaskIntoConstraints = false
+        hazelnutFlavor.backgroundColor = pinkTone
+        hazelnutFlavor.layer.cornerRadius = 20
+        hazelnutFlavor.layer.borderWidth = 7
+        hazelnutFlavor.layer.borderColor = UIColor(red: 1, green: 0.75, blue: 0.9, alpha: 1).cgColor
 
-        let glazeTitleLabel = makePromptLabel(title, size: 17, weight: .heavy, color: inkTone)
+        let glazeTitleLabel = makePromptLabel(gourmetFlavor, size: 17, weight: .heavy, color: inkTone)
         glazeTitleLabel.textAlignment = .center
 
-        let frostingNoteLabel = makePromptLabel(note, size: 12, weight: .semibold, color: mutedTone)
+        let frostingNoteLabel = makePromptLabel(glazeBowl, size: 12, weight: .semibold, color: mutedTone)
         frostingNoteLabel.textAlignment = .center
         frostingNoteLabel.numberOfLines = 0
 
-        let crumbCancelButton = makePromptButton(cancelTitle, fill: UIColor(red: 0.88, green: 0.85, blue: 0.89, alpha: 1), color: .white)
-        let glazeConfirmButton = makePromptButton(confirmTitle, fill: confirmFill, color: .white)
-        bindSugarConfirmButtons(crumbCancelButton: crumbCancelButton, glazeConfirmButton: glazeConfirmButton, shade: shade, onConfirm: onConfirm)
-        placeSugarConfirmViews(pastryCard: pastryCard, topper: topper, ring: ring, glazeTitleLabel: glazeTitleLabel, frostingNoteLabel: frostingNoteLabel, crumbCancelButton: crumbCancelButton, glazeConfirmButton: glazeConfirmButton)
-        pinSugarConfirm(shade: shade, pastryCard: pastryCard, topper: topper, ring: ring, glazeTitleLabel: glazeTitleLabel, frostingNoteLabel: frostingNoteLabel, crumbCancelButton: crumbCancelButton, glazeConfirmButton: glazeConfirmButton, view: view)
+        let crumbCancelButton = makePromptButton(miniDonut, fill: UIColor(red: 0.88, green: 0.85, blue: 0.89, alpha: 1), color: .white)
+        let glazeConfirmButton = makePromptButton(ringStack, fill: fritterBite, color: .white)
+        bindSugarConfirmButtons(crumbCancelButton: crumbCancelButton, glazeConfirmButton: glazeConfirmButton, shade: walnutFlavor, onConfirm: twistPastry)
+        placeSugarConfirmViews(pastryCard: pastryCard, topper: pecanFlavor, ring: hazelnutFlavor, glazeTitleLabel: glazeTitleLabel, frostingNoteLabel: frostingNoteLabel, crumbCancelButton: crumbCancelButton, glazeConfirmButton: glazeConfirmButton)
+        pinSugarConfirm(shade: walnutFlavor, pastryCard: pastryCard, topper: pecanFlavor, ring: hazelnutFlavor, glazeTitleLabel: glazeTitleLabel, frostingNoteLabel: frostingNoteLabel, crumbCancelButton: crumbCancelButton, glazeConfirmButton: glazeConfirmButton, view: view)
     }
 
     static func showSugarNotice(
-        in view: UIView,
-        title: String,
-        note: String,
-        actionTitle: String,
-        onClose: @escaping () -> Void
+        marshmallowFlavor view: UIView,
+        cookieFlavor: String,
+        oreoFlavor: String,
+        bakeryAtlas: String,
+        bakeryFinder: @escaping () -> Void
     ) {
-        let shade = UIControl()
-        shade.translatesAutoresizingMaskIntoConstraints = false
-        shade.backgroundColor = UIColor(red: 0.12, green: 0.06, blue: 0.12, alpha: 0.48)
-        view.addSubview(shade)
+        let bakeryTrail = UIControl()
+        bakeryTrail.translatesAutoresizingMaskIntoConstraints = false
+        bakeryTrail.backgroundColor = UIColor(red: 0.12, green: 0.06, blue: 0.12, alpha: 0.48)
+        view.addSubview(bakeryTrail)
 
         let pastryCard = UIView()
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
@@ -154,7 +154,7 @@ enum WevVGlazePromptStyler {
         pastryCard.layer.shadowOpacity = 0.2
         pastryCard.layer.shadowRadius = 22
         pastryCard.layer.shadowOffset = CGSize(width: 0, height: 12)
-        shade.addSubview(pastryCard)
+        bakeryTrail.addSubview(pastryCard)
 
         let topper = UIView()
         topper.translatesAutoresizingMaskIntoConstraints = false
@@ -162,54 +162,54 @@ enum WevVGlazePromptStyler {
         topper.layer.cornerRadius = 24
         topper.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
-        let ring = UIView()
-        ring.translatesAutoresizingMaskIntoConstraints = false
-        ring.backgroundColor = pinkTone
-        ring.layer.cornerRadius = 20
-        ring.layer.borderWidth = 7
-        ring.layer.borderColor = UIColor(red: 1, green: 0.75, blue: 0.9, alpha: 1).cgColor
+        let donutFinder = UIView()
+        donutFinder.translatesAutoresizingMaskIntoConstraints = false
+        donutFinder.backgroundColor = pinkTone
+        donutFinder.layer.cornerRadius = 20
+        donutFinder.layer.borderWidth = 7
+        donutFinder.layer.borderColor = UIColor(red: 1, green: 0.75, blue: 0.9, alpha: 1).cgColor
 
-        let glazeTitleLabel = makePromptLabel(title, size: 17, weight: .heavy, color: inkTone)
+        let glazeTitleLabel = makePromptLabel(cookieFlavor, size: 17, weight: .heavy, color: inkTone)
         glazeTitleLabel.textAlignment = .center
 
-        let frostingNoteLabel = makePromptLabel(note, size: 12, weight: .semibold, color: mutedTone)
+        let frostingNoteLabel = makePromptLabel(oreoFlavor, size: 12, weight: .semibold, color: mutedTone)
         frostingNoteLabel.textAlignment = .center
         frostingNoteLabel.numberOfLines = 0
 
-        let glazeActionButton = makePromptButton(actionTitle, fill: pinkTone, color: .white)
-        glazeActionButton.addAction(UIAction { [weak shade] _ in
-            shade?.removeFromSuperview()
-            onClose()
+        let glazeActionButton = makePromptButton(bakeryAtlas, fill: pinkTone, color: .white)
+        glazeActionButton.addAction(UIAction { [weak bakeryTrail] _ in
+            bakeryTrail?.removeFromSuperview()
+            bakeryFinder()
         }, for: .touchUpInside)
 
         pastryCard.addSubview(topper)
-        pastryCard.addSubview(ring)
+        pastryCard.addSubview(donutFinder)
         pastryCard.addSubview(glazeTitleLabel)
         pastryCard.addSubview(frostingNoteLabel)
         pastryCard.addSubview(glazeActionButton)
 
-        pinSugarNotice(shade: shade, pastryCard: pastryCard, topper: topper, ring: ring, glazeTitleLabel: glazeTitleLabel, frostingNoteLabel: frostingNoteLabel, glazeActionButton: glazeActionButton, view: view)
+        pinSugarNotice(flavorStop: bakeryTrail, pastryCard: pastryCard, bakeryVisit: topper, pastryStop: donutFinder, glazeTitleLabel: glazeTitleLabel, frostingNoteLabel: frostingNoteLabel, glazeActionButton: glazeActionButton, glazeStop: view)
     }
 
-    private static func pinSugarNotice(shade: UIView, pastryCard: UIView, topper: UIView, ring: UIView, glazeTitleLabel: UILabel, frostingNoteLabel: UILabel, glazeActionButton: UIButton, view: UIView) {
+    private static func pinSugarNotice(flavorStop: UIView, pastryCard: UIView, bakeryVisit: UIView, pastryStop: UIView, glazeTitleLabel: UILabel, frostingNoteLabel: UILabel, glazeActionButton: UIButton, glazeStop: UIView) {
         NSLayoutConstraint.activate([
-            shade.topAnchor.constraint(equalTo: view.topAnchor),
-            shade.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            shade.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            shade.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            pastryCard.centerXAnchor.constraint(equalTo: shade.centerXAnchor),
-            pastryCard.centerYAnchor.constraint(equalTo: shade.centerYAnchor, constant: -8),
-            pastryCard.widthAnchor.constraint(equalTo: shade.widthAnchor, multiplier: 0.72),
+            flavorStop.topAnchor.constraint(equalTo: glazeStop.topAnchor),
+            flavorStop.leadingAnchor.constraint(equalTo: glazeStop.leadingAnchor),
+            flavorStop.trailingAnchor.constraint(equalTo: glazeStop.trailingAnchor),
+            flavorStop.bottomAnchor.constraint(equalTo: glazeStop.bottomAnchor),
+            pastryCard.centerXAnchor.constraint(equalTo: flavorStop.centerXAnchor),
+            pastryCard.centerYAnchor.constraint(equalTo: flavorStop.centerYAnchor, constant: -8),
+            pastryCard.widthAnchor.constraint(equalTo: flavorStop.widthAnchor, multiplier: 0.72),
             pastryCard.widthAnchor.constraint(lessThanOrEqualToConstant: 310),
-            topper.topAnchor.constraint(equalTo: pastryCard.topAnchor),
-            topper.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor),
-            topper.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor),
-            topper.heightAnchor.constraint(equalToConstant: 54),
-            ring.centerXAnchor.constraint(equalTo: pastryCard.centerXAnchor),
-            ring.centerYAnchor.constraint(equalTo: topper.bottomAnchor),
-            ring.widthAnchor.constraint(equalToConstant: 40),
-            ring.heightAnchor.constraint(equalToConstant: 40),
-            glazeTitleLabel.topAnchor.constraint(equalTo: ring.bottomAnchor, constant: 12),
+            bakeryVisit.topAnchor.constraint(equalTo: pastryCard.topAnchor),
+            bakeryVisit.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor),
+            bakeryVisit.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor),
+            bakeryVisit.heightAnchor.constraint(equalToConstant: 54),
+            pastryStop.centerXAnchor.constraint(equalTo: pastryCard.centerXAnchor),
+            pastryStop.centerYAnchor.constraint(equalTo: bakeryVisit.bottomAnchor),
+            pastryStop.widthAnchor.constraint(equalToConstant: 40),
+            pastryStop.heightAnchor.constraint(equalToConstant: 40),
+            glazeTitleLabel.topAnchor.constraint(equalTo: pastryStop.bottomAnchor, constant: 12),
             glazeTitleLabel.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 22),
             glazeTitleLabel.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -22),
             frostingNoteLabel.topAnchor.constraint(equalTo: glazeTitleLabel.bottomAnchor, constant: 10),

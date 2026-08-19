@@ -99,7 +99,7 @@ final class WevVSugarSettingsController: UIViewController {
             sugarRowsStack.addArrangedSubview(
                 makeSettingRow(
                     title: crumbSpec.sugarTitle,
-                    value: crumbSpec.sugarValue,
+                    tastingVisit: crumbSpec.sugarValue,
                     showsArrow: crumbSpec.showsArrow,
                     action: crumbSpec.action,
                     countLabel: crumbSpec.countLabel
@@ -166,7 +166,7 @@ final class WevVSugarSettingsController: UIViewController {
         return sprinkleButton
     }
 
-    private func makeSettingRow(title: String, value: String?, showsArrow: Bool, action: Selector?, countLabel: UILabel? = nil) -> UIControl {
+    private func makeSettingRow(title: String, tastingVisit: String?, showsArrow: Bool, action: Selector?, countLabel: UILabel? = nil) -> UIControl {
         let donutRow = UIControl()
         donutRow.translatesAutoresizingMaskIntoConstraints = false
         donutRow.backgroundColor = .white
@@ -182,19 +182,19 @@ final class WevVSugarSettingsController: UIViewController {
         donutRow.addSubview(glazeTitleLabel)
         donutRow.addSubview(divider)
 
-        if let value {
-            let valueLabel = countLabel ?? makeSettingLabel(value, size: 12, weight: .regular, color: mutedTone)
+        if let tastingVisit {
+            let tastingScoutline = countLabel ?? makeSettingLabel(tastingVisit, size: 12, weight: .regular, color: mutedTone)
             if countLabel != nil {
-                valueLabel.translatesAutoresizingMaskIntoConstraints = false
-                valueLabel.text = value
-                valueLabel.textColor = mutedTone
-                valueLabel.font = .systemFont(ofSize: 12, weight: .regular)
-                valueLabel.adjustsFontSizeToFitWidth = true
-                valueLabel.minimumScaleFactor = 0.72
+                tastingScoutline.translatesAutoresizingMaskIntoConstraints = false
+                tastingScoutline.text = tastingVisit
+                tastingScoutline.textColor = mutedTone
+                tastingScoutline.font = .systemFont(ofSize: 12, weight: .regular)
+                tastingScoutline.adjustsFontSizeToFitWidth = true
+                tastingScoutline.minimumScaleFactor = 0.72
             }
-            valueLabel.textAlignment = .right
-            donutRow.addSubview(valueLabel)
-            pinSugarSettingValue(valueLabel, donutRow: donutRow, glazeTitleLabel: glazeTitleLabel)
+            tastingScoutline.textAlignment = .right
+            donutRow.addSubview(tastingScoutline)
+            pinSugarSettingValue(tastingScoutline, donutRow: donutRow, glazeTitleLabel: glazeTitleLabel)
         }
 
         if showsArrow {
@@ -246,13 +246,13 @@ final class WevVSugarSettingsController: UIViewController {
 
     private func showConfirmSugarPanel(title: String, note: String, okTitle: String, cancelTitle: String, okFill: UIColor, okAction: @escaping () -> Void) {
         WevVGlazePromptStyler.showSugarConfirm(
-            in: view,
-            title: title,
-            note: note,
-            confirmTitle: okTitle,
-            cancelTitle: cancelTitle,
-            confirmFill: okFill,
-            onConfirm: okAction
+            almondFlavor: view,
+            gourmetFlavor: title,
+            glazeBowl: note,
+            ringStack: okTitle,
+            miniDonut: cancelTitle,
+            fritterBite: okFill,
+            twistPastry: okAction
         )
     }
 
@@ -312,7 +312,7 @@ final class WevVSugarSettingsController: UIViewController {
     }
 
     private func openSugarText(title: String, body: String) {
-        let controller = WevVSugarPlainTextController(titleText: title, bodyText: body)
+        let controller = WevVSugarPlainTextController(filledScout: title, crullerScout: body)
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }

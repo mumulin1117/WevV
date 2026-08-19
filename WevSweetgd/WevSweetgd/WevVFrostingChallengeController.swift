@@ -1,7 +1,7 @@
 import UIKit
 
 final class WevVFrostingChallengeController: UIViewController {
-    private let sprinkleChallenge: WevVSprinkleChallenge
+    private let sprinkleChallenge: WevVTastingQuest
     private let glazeSession = WevVGlazeSessionStore.shared
     private let guestStore = WevVGuestGlazeStore.shared
     private let joinButton = UIButton(type: .system)
@@ -9,26 +9,26 @@ final class WevVFrostingChallengeController: UIViewController {
 
     private var frostingGuestKeys: [String] {
         let keys = [
-            sprinkleChallenge.hostGuestKey,
+            sprinkleChallenge.tasterBadgeKey,
             "lKuZn&aRLPa;uwg;hCGTlba~zDeN".wevVPastryCrumbBloomRestored,
             "nno&v#aABGulbgb=l,e?GFl^aSzRee".wevVPastryCrumbBloomRestored,
             "a@r=lvoJSHkwyhGTlvaZzaey".wevVPastryCrumbBloomRestored,
             "rsh@eia!Hsoun/edyOGKlOaIz.eE".wevVPastryCrumbBloomRestored
         ]
         var seenKeys = Set<String>()
-        return keys.filter { glazeKey in
-            if seenKeys.contains(glazeKey) {
+        return keys.filter { donutPinKey in
+            if seenKeys.contains(donutPinKey) {
                 return false
             }
-            seenKeys.insert(glazeKey)
+            seenKeys.insert(donutPinKey)
             return true
         }
     }
 
     var onChallengedonutChanged: (() -> Void)?
 
-    init(challenge: WevVSprinkleChallenge) {
-        self.sprinkleChallenge = challenge
+    init(cocoaScout: WevVTastingQuest) {
+        self.sprinkleChallenge = cocoaScout
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .fullScreen
     }
@@ -59,7 +59,7 @@ final class WevVFrostingChallengeController: UIViewController {
         let progressCard = makeProgressCard()
         let hostLabel = makeChallengeLabel("HRoWs,tPexd^ ibpyE".wevVPastryCrumbBloomRestored, size: 13, weight: .heavy, color: UIColor(red: 0.49, green: 0.45, blue: 0.55, alpha: 1))
         let hostRow = makeHostRow()
-        let notes = makeChallengeLabel(sprinkleChallenge.missionText, size: 14, weight: .heavy, color: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
+        let notes = makeChallengeLabel(sprinkleChallenge.tastingQuestText, size: 14, weight: .heavy, color: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
         notes.numberOfLines = 2
         notes.minimumScaleFactor = 0.68
         let peopleButton = makePeopleButton()
@@ -128,10 +128,10 @@ final class WevVFrostingChallengeController: UIViewController {
         glaze.endPoint = CGPoint(x: 1, y: 0.9)
         hero.layer.insertSublayer(glaze, at: 0)
 
-        let glazeTitle = makeChallengeLabel(sprinkleChallenge.title, size: 24, weight: .heavy, color: .white)
-        let crumbNote = makeChallengeLabel(sprinkleChallenge.glazeLine, size: 15, weight: .regular, color: UIColor.white.withAlphaComponent(0.9))
+        let glazeTitle = makeChallengeLabel(sprinkleChallenge.menuBoardTitle, size: 24, weight: .heavy, color: .white)
+        let crumbNote = makeChallengeLabel(sprinkleChallenge.glazeTrailLine, size: 15, weight: .regular, color: UIColor.white.withAlphaComponent(0.9))
         crumbNote.numberOfLines = 2
-        let cost = makeGoldPill("\(sprinkleChallenge.sugarCost)")
+        let cost = makeGoldPill("\(sprinkleChallenge.sprinkleDensityValue)")
         configureJoinButton()
         joinButton.addTarget(self, action: #selector(joinChallenge), for: .touchUpInside)
 
@@ -168,8 +168,8 @@ final class WevVFrostingChallengeController: UIViewController {
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
         pastryCard.backgroundColor = UIColor(red: 1, green: 0.89, blue: 0.97, alpha: 1)
         pastryCard.layer.cornerRadius = 18
-        let first = makeProgressLine(symbolName: "cjluoDcIkg.rf&iGlWlJ".wevVPastryCrumbBloomRestored, text: sprinkleChallenge.sprinkleTimeText)
-        let second = makeProgressLine(symbolName: "m#aap+p;iEn~.FcPi*rbcjlleN.;fOiOlrlq".wevVPastryCrumbBloomRestored, text: sprinkleChallenge.crumbPlaceText)
+        let first = makeProgressLine(symbolName: "cjluoDcIkg.rf&iGlWlJ".wevVPastryCrumbBloomRestored, text: sprinkleChallenge.freshnessTagText)
+        let second = makeProgressLine(symbolName: "m#aap+p;iEn~.FcPi*rbcjlleN.;fOiOlrlq".wevVPastryCrumbBloomRestored, text: sprinkleChallenge.bakeryStopText)
         pastryCard.addSubview(first)
         pastryCard.addSubview(second)
         NSLayoutConstraint.activate([
@@ -209,13 +209,13 @@ final class WevVFrostingChallengeController: UIViewController {
     private func makeHostRow() -> UIView {
         let donutRow = UIView()
         donutRow.translatesAutoresizingMaskIntoConstraints = false
-        let hostProfile = guestStore.profile(for: sprinkleChallenge.hostGuestKey)
-        let avatar = makeAvatarView(guestKey: hostProfile.glazeKey, size: 48)
-        let creamName = makeChallengeLabel(hostProfile.name, size: 16, weight: .heavy, color: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
-        let sub = makeChallengeLabel(sprinkleChallenge.hostLine, size: 13, weight: .heavy, color: UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1))
-        let follow = WevVGlazePillButton(title: "FSoxlolhoAwX".wevVPastryCrumbBloomRestored)
+        let hostProfile = guestStore.profile(for: sprinkleChallenge.tasterBadgeKey)
+        let avatar = makeAvatarView(tasterBadgeKey: hostProfile.donutPinKey, size: 48)
+        let creamName = makeChallengeLabel(hostProfile.cocoaCounter, size: 16, weight: .heavy, color: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
+        let sub = makeChallengeLabel(sprinkleChallenge.tasterLine, size: 13, weight: .heavy, color: UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1))
+        let follow = WevVWevvMaplePillButton(title: "FSoxlolhoAwX".wevVPastryCrumbBloomRestored)
         follow.addAction(UIAction { [weak self] _ in
-            self?.openPersonProfile(guestKey: hostProfile.glazeKey)
+            self?.openPersonProfile(tasterBadgeKey: hostProfile.donutPinKey)
         }, for: .touchUpInside)
         donutRow.addSubview(avatar)
         donutRow.addSubview(creamName)
@@ -262,8 +262,8 @@ final class WevVFrostingChallengeController: UIViewController {
         avatars.translatesAutoresizingMaskIntoConstraints = false
         avatars.axis = .horizontal
         avatars.spacing = -8
-        for guestKey in frostingGuestKeys.prefix(3) {
-            avatars.addArrangedSubview(makeAvatarView(guestKey: guestKey, size: 24))
+        for tasterBadgeKey in frostingGuestKeys.prefix(3) {
+            avatars.addArrangedSubview(makeAvatarView(tasterBadgeKey: tasterBadgeKey, size: 24))
         }
         sprinkleButton.addSubview(icon)
         sprinkleButton.addSubview(glazeTitle)
@@ -343,7 +343,7 @@ final class WevVFrostingChallengeController: UIViewController {
 
     private func makeAvatarView(index: Int, size: CGFloat) -> UIImageView {
         let profile = guestStore.profile(at: index)
-        return makeAvatarView(guestKey: profile.glazeKey, size: size)
+        return makeAvatarView(tasterBadgeKey: profile.donutPinKey, size: size)
     }
 
     private func frostingParticipantCountText() -> String {
@@ -351,9 +351,9 @@ final class WevVFrostingChallengeController: UIViewController {
         return count == 1 ? "1 person" : "\(count) people"
     }
 
-    private func makeAvatarView(guestKey: String, size: CGFloat) -> UIImageView {
-        let profile = guestStore.profile(for: guestKey)
-        if let glazeImage = UIImage(named: profile.donutAvatarAsset) {
+    private func makeAvatarView(tasterBadgeKey: String, size: CGFloat) -> UIImageView {
+        let profile = guestStore.profile(for: tasterBadgeKey)
+        if let glazeImage = UIImage(named: profile.donutFrameAsset) {
             let avatar = UIImageView(image: glazeImage)
             avatar.translatesAutoresizingMaskIntoConstraints = false
             avatar.contentMode = .scaleAspectFill
@@ -375,7 +375,7 @@ final class WevVFrostingChallengeController: UIViewController {
                 UIColor(red: 0.76, green: 0.58, blue: 0.38, alpha: 1),
                 UIColor(red: 0.5, green: 0.35, blue: 0.78, alpha: 1)
             ]
-            colors[abs(guestKey.hashValue) % colors.count].setFill()
+            colors[abs(tasterBadgeKey.hashValue) % colors.count].setFill()
             UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: size, height: size)).fill()
             UIColor.white.withAlphaComponent(0.92).setFill()
             UIBezierPath(ovalIn: CGRect(x: size * 0.32, y: size * 0.2, width: size * 0.36, height: size * 0.36)).fill()
@@ -407,7 +407,7 @@ final class WevVFrostingChallengeController: UIViewController {
     }
 
     private func refreshJoinState() {
-        let joined = glazeSession.hasJoinedGlazeQuest(sprinkleChallenge.sprinkleKey)
+        let joined = glazeSession.hasJoinedGlazeQuest(sprinkleChallenge.sprinkleJarKey)
         joinButton.setTitle(joined ? "Joined" : "JIo.i^nY bCqhsaql,lCebnMgreE".wevVPastryCrumbBloomRestored, for: .normal)
         joinButton.isEnabled = !joined
         joinButton.backgroundColor = joined ? UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1) : UIColor(red: 1, green: 0.94, blue: 1, alpha: 1)
@@ -418,26 +418,26 @@ final class WevVFrostingChallengeController: UIViewController {
             showGlazeGate()
             return
         }
-        guard !glazeSession.hasJoinedGlazeQuest(sprinkleChallenge.sprinkleKey) else {
+        guard !glazeSession.hasJoinedGlazeQuest(sprinkleChallenge.sprinkleJarKey) else {
             refreshJoinState()
             return
         }
-        guard glazeSession.spendGlazeGold(sprinkleChallenge.sugarCost) else {
+        guard glazeSession.spendGlazeGold(sprinkleChallenge.sprinkleDensityValue) else {
             showNotEnoughGold()
             return
         }
         joinButton.isEnabled = false
-        WevVBakeryExchange.spin(in: view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
+        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
             guard let self else { return }
-            self.glazeSession.placeJoinedGlazeQuest(self.sprinkleChallenge.sprinkleKey)
+            self.glazeSession.placeJoinedGlazeQuest(self.sprinkleChallenge.sprinkleJarKey)
             self.refreshJoinState()
             self.onChallengedonutChanged?()
         }
     }
 
     private func showGlazeGate() {
-        let gate = WevVFrostingGateController()
-        gate.onGlazeReady = { [weak self] in
+        let gate = WevVWevvBakeryGateController()
+        gate.onWevvDonutReady = { [weak self] in
             self?.dismiss(animated: true) {
                 self?.refreshJoinState()
             }
@@ -460,7 +460,7 @@ final class WevVFrostingChallengeController: UIViewController {
         let crumbNote = makeChallengeLabel("Sorry, your donut vault is short.\nRecharge to join this sweet challenge.", size: 12, weight: .semibold, color: WevVGlazePromptStyler.mutedTone)
         crumbNote.textAlignment = .center
         crumbNote.numberOfLines = 2
-        let buy = WevVGlazePillButton(title: "BGu;yq".wevVPastryCrumbBloomRestored)
+        let buy = WevVWevvMaplePillButton(title: "BGu;yq".wevVPastryCrumbBloomRestored)
         buy.addTarget(self, action: #selector(openVaultFromPopup), for: .touchUpInside)
         pastryCard.addSubview(gem)
         pastryCard.addSubview(glazeTitle)
@@ -570,8 +570,8 @@ final class WevVFrostingChallengeController: UIViewController {
         ringStack.translatesAutoresizingMaskIntoConstraints = false
         ringStack.axis = .vertical
         ringStack.spacing = 18
-        for guestKey in frostingGuestKeys {
-            ringStack.addArrangedSubview(makePersonRow(profile: guestStore.profile(for: guestKey)))
+        for tasterBadgeKey in frostingGuestKeys {
+            ringStack.addArrangedSubview(makePersonRow(profile: guestStore.profile(for: tasterBadgeKey)))
         }
         return ringStack
     }
@@ -602,10 +602,10 @@ final class WevVFrostingChallengeController: UIViewController {
         let donutRow = UIControl()
         donutRow.translatesAutoresizingMaskIntoConstraints = false
         donutRow.addAction(UIAction { [weak self] _ in
-            self?.openPersonProfile(guestKey: profile.glazeKey)
+            self?.openPersonProfile(tasterBadgeKey: profile.donutPinKey)
         }, for: .touchUpInside)
-        let avatar = makeAvatarView(guestKey: profile.glazeKey, size: 42)
-        let crumbLabel = makeChallengeLabel(profile.name, size: 13, weight: .heavy, color: .black)
+        let avatar = makeAvatarView(tasterBadgeKey: profile.donutPinKey, size: 42)
+        let crumbLabel = makeChallengeLabel(profile.cocoaCounter, size: 13, weight: .heavy, color: .black)
         donutRow.addSubview(avatar)
         donutRow.addSubview(crumbLabel)
         NSLayoutConstraint.activate([
@@ -630,9 +630,9 @@ final class WevVFrostingChallengeController: UIViewController {
         present(controller, animated: true)
     }
 
-    private func openPersonProfile(guestKey: String) {
+    private func openPersonProfile(tasterBadgeKey: String) {
         closeDimLayer()
-        let controller = WevVGuestGlazeProfileController(guestKey: guestKey)
+        let controller = WevVWevvTasterCardController(tasterBadgeKey: tasterBadgeKey)
         present(controller, animated: true)
     }
 

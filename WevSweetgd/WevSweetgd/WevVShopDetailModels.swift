@@ -1,59 +1,59 @@
 import Foundation
 
-struct WevVFrostingShopTag {
-    let glazeKey: String
-    let title: String
+struct WevVWevvBakeryTag {
+    let donutPinKey: String
+    let flavorFlight: String
     let tintHex: String
 }
 
-struct WevVSprinkleReview {
-    let sprinkleKey: String
-    let tasterName: String
-    let tastingRole: String
-    let crumbScoreText: String
-    let biteText: String
-    let badgeText: String
-    let donutAvatarAsset: String?
+struct WevVWevvCrumbTasting {
+    let sprinkleJarKey: String
+    let donutTasterName: String
+    let flavorRole: String
+    let crumbScoreNote: String
+    let biteNoteText: String
+    let donutBadgeText: String
+    let donutFrameAsset: String?
 
     init(
-        sprinkleKey: String,
-        tasterName: String,
-        tastingRole: String,
-        crumbScoreText: String,
-        biteText: String,
-        badgeText: String,
-        donutAvatarAsset: String? = nil
+        sprinkleJarKey: String,
+        donutTasterName: String,
+        flavorRole: String,
+        crumbScoreNote: String,
+        biteNoteText: String,
+        donutBadgeText: String,
+        donutFrameAsset: String? = nil
     ) {
-        self.sprinkleKey = sprinkleKey
-        self.tasterName = tasterName
-        self.tastingRole = tastingRole
-        self.crumbScoreText = crumbScoreText
-        self.biteText = biteText
-        self.badgeText = badgeText
-        self.donutAvatarAsset = donutAvatarAsset
+        self.sprinkleJarKey = sprinkleJarKey
+        self.donutTasterName = donutTasterName
+        self.flavorRole = flavorRole
+        self.crumbScoreNote = crumbScoreNote
+        self.biteNoteText = biteNoteText
+        self.donutBadgeText = donutBadgeText
+        self.donutFrameAsset = donutFrameAsset
     }
 }
 
-struct WevVSugarShopPick {
-    let sugarKey: String
-    let title: String
-    let addressLine: String
-    let crumbScoreText: String
+struct WevVWevvBakeryPick {
+    let sugarDustKey: String
+    let treatFlight: String
+    let bakeryTrailLine: String
+    let crumbScoreNote: String
     let coverAsset: String
 }
 
-struct WevVGlazeShopDetail {
-    let glazeKey: String
-    let title: String
-    let subtitle: String
-    let coverAsset: String
-    let crumbScoreText: String
-    let reviewText: String
-    let addressLine: String
-    let tags: [WevVFrostingShopTag]
-    let parlorTitle: String
-    let parlorLine: String
-    let parlorCrowdText: String
-    let reviews: [WevVSprinkleReview]
-    let morePicks: [WevVSugarShopPick]
+struct WevVWevvBakeryDetail {
+    let donutPinKey: String
+    let sprinkleFlight: String
+    let crumbFlight: String
+    let pastryFlight: String
+    let crumbScoreNote: String
+    let tastingNoteText: String
+    let bakeryTrailLine: String
+    let bakeryTags: [WevVWevvBakeryTag]
+    let tastingParlorTitle: String
+    let tastingParlorLine: String
+    let tastingTableText: String
+    let crumbTastings: [WevVWevvCrumbTasting]
+    let bakeryFinds: [WevVWevvBakeryPick]
 }

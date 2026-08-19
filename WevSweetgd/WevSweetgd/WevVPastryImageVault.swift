@@ -4,11 +4,11 @@ enum WevVPastryImageVault {
     private static let glazePrefix = "wkeAvIvYLBoecya;lCI=mcawgues:E/*/@".wevVPastryCrumbBloomRestored
     private static let pastryFolderName = "wheWvsvg_cpQaCsCttrQyO_uiCmQaXgFeNsp".wevVPastryCrumbBloomRestored
 
-    static func glazeImage(for sugarKey: String) -> UIImage? {
-        if sugarKey.hasPrefix(glazePrefix) {
-            return UIImage(contentsOfFile: pastryPath(for: sugarKey).path)
+    static func glazeImage(for sugarDustKey: String) -> UIImage? {
+        if sugarDustKey.hasPrefix(glazePrefix) {
+            return UIImage(contentsOfFile: pastryPath(for: sugarDustKey).path)
         }
-        return UIImage(named: sugarKey)
+        return UIImage(named: sugarDustKey)
     }
 
     static func store(_ glazeImage: UIImage, purpose: String) -> String? {
@@ -30,8 +30,8 @@ enum WevVPastryImageVault {
         return base.appendingPathComponent(pastryFolderName, isDirectory: true)
     }
 
-    private static func pastryPath(for sugarKey: String) -> URL {
-        let fileName = String(sugarKey.dropFirst(glazePrefix.count))
+    private static func pastryPath(for sugarDustKey: String) -> URL {
+        let fileName = String(sugarDustKey.dropFirst(glazePrefix.count))
         return pastryFolder().appendingPathComponent(fileName)
     }
 }

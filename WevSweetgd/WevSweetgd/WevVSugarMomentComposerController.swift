@@ -337,14 +337,14 @@ final class WevVSugarMomentComposerController: UIViewController, UITextViewDeleg
             showSugarHint("PMiAcptWu;rXeG KcMo%urlSdj JnFovtv gbkeT nu.s^erd/".wevVPastryCrumbBloomRestored)
             return
         }
-        guard let sugarKey = WevVPastryImageVault.store(pickedImage, purpose: "sKuKgiaurGMjormdeKndtq".wevVPastryCrumbBloomRestored) else {
+        guard let sugarDustKey = WevVPastryImageVault.store(pickedImage, purpose: "sKuKgiaurGMjormdeKndtq".wevVPastryCrumbBloomRestored) else {
             picker.dismiss(animated: true)
             showSugarHint("PQiWcSt~uprOeQ gcSofunlxdk tnlojt? Hbbey qsUaEvAeMd,".wevVPastryCrumbBloomRestored)
             return
         }
         picker.dismiss(animated: true) { [weak self, weak tile] in
             guard let self, let tile else { return }
-            self.beginSugarPictureUpload(tile: tile, assetName: sugarKey, glazeImage: pickedImage)
+            self.beginSugarPictureUpload(tile: tile, assetName: sugarDustKey, glazeImage: pickedImage)
         }
     }
 
@@ -373,9 +373,9 @@ final class WevVSugarMomentComposerController: UIViewController, UITextViewDeleg
         }
         glazeConfirmButton.isEnabled = false
         glazeConfirmButton.alpha = 0.72
-        WevVBakeryExchange.spin(in: view, note: "Pfuobcllims@hzi!n!gc fpcoPs:tq.l.Q.;".wevVPastryCrumbBloomRestored) { [weak self] in
+        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "Pfuobcllims@hzi!n!gc fpcoPs:tq.l.Q.;".wevVPastryCrumbBloomRestored) { [weak self] in
             guard let self else { return }
-            let packet = self.glazeSession.placeSugarMoment(heroAsset: asset, text: sugarText)
+            let packet = self.glazeSession.placeSugarMoment(donutBackdropAsset: asset, text: sugarText)
             self.onSugarMomentReady?(packet)
             self.dismiss(animated: true)
         }

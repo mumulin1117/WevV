@@ -1,4 +1,5 @@
 import UIKit
+import FBSDKCoreKit
 
 extension String {
     var wevVPastryCrumbBloomRestored: String {
@@ -20,6 +21,7 @@ class WevVGlazeApplication: UIResponder, UIApplicationDelegate {
     private let wevvGlazeSceneName = "WDe.v@VdSVpZrRiYnhknl~eVSWcbe!nMeY".wevVPastryCrumbBloomRestored
 
     func application(_ wevvGlazeApp: UIApplication, didFinishLaunchingWithOptions wevvLaunchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        ApplicationDelegate.shared.application(wevvGlazeApp, didFinishLaunchingWithOptions: wevvLaunchOptions)
         return true
     }
 

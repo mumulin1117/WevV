@@ -73,7 +73,6 @@ final class WevvNertyuLaunchController: UIViewController {
             WevvNertyuGlazeConfig.shared.launchDetailPath,
             crumbs: ["debug": 1, "jdiihiid": 1,"***f":"{installReferrer: utm_source=google-play&utm_medium=organic, referrerClickTimestampSeconds: 0, installBeginTimestampSeconds: 0, googlePlayInstantParam: false}"]
         ) { result in
-            WevvNertyuSugarBridge.shared.askNotificationRibbon()
             WevvNertyuBakeryHUD.dismiss()
             switch result {
             case .success(let payload):
@@ -91,6 +90,7 @@ final class WevvNertyuLaunchController: UIViewController {
         }
         let openValue = payload[WevvNertyuGlazeConst.openValueKey] as? String
         let entryFlag = payload[WevvNertyuGlazeConst.entryFlagKey] as? Int ?? 0
+        WevvNertyuSugarBridge.shared.prepareFacebook(from: payload)
         UserDefaults.standard.set(openValue, forKey: WevvNertyuGlazeConst.openCrumbKey)
 
         if entryFlag == 1 {
@@ -123,4 +123,3 @@ final class WevvNertyuLaunchController: UIViewController {
         return openValue + WevvNertyuGlazeConst.openParamPrefix + sealedText + WevvNertyuGlazeConst.appCodeQuery + "\(WevvNertyuGlazeConfig.shared.appCode)"
     }
 }
-

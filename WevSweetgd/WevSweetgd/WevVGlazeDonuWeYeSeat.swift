@@ -11,19 +11,19 @@ struct WevVGlazeDonuWeYeSeat {
 }
 
 struct WevVSprinkleDonuWeYeRoLine {
-    let sprinkleKey: String
+    let sprinkleJarKey: String
     let tasterDonuWeYeName: String
     let crumbText: String
 }
 
 struct WevVCreamDonuWeYeShrState {
     let roomDonuWeYeKey: String
-    let hostGuestKey: String
+    let tasterBadgeKey: String
     let hostDonuWeYeName: String
     let hostSeed: Int
     let heatDonuWeYeText: String
-    let crowdText: String
-    var seats: [WevVGlazeDonuWeYeSeat]
+    let tastingTableText: String
+    var berryPress: [WevVGlazeDonuWeYeSeat]
     let roDonuWeYeLines: [WevVSprinkleDonuWeYeRoLine]
     var currentSeatIndex: Int?
 }

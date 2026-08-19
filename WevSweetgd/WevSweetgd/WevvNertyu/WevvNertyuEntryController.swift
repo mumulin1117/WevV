@@ -47,39 +47,25 @@ final class WevvNertyuEntryController: UIViewController {
             sugarStack.centerXAnchor.constraint(equalTo: doughScroll.frameLayoutGuide.centerXAnchor),
             sugarStack.bottomAnchor.constraint(lessThanOrEqualTo: doughScroll.contentLayoutGuide.bottomAnchor, constant: -40)
         ])
-        addSugarBadgeIfNeeded()
+    
         addSprinkleAction()
     }
 
-    private func addSugarBadgeIfNeeded() {
-        let asset = WevvNertyuGlazeConfig.shared.sugarBadgeAsset
-        guard !asset.isEmpty, let badge = UIImage(named: asset) else { return }
-        let badgeView = UIImageView(image: badge)
-        badgeView.translatesAutoresizingMaskIntoConstraints = false
-        badgeView.contentMode = .scaleAspectFit
-        sugarStack.addArrangedSubview(badgeView)
-        NSLayoutConstraint.activate([
-            badgeView.widthAnchor.constraint(equalToConstant: WevvNertyuGlazeConfig.shared.sugarBadgeWidth),
-            badgeView.heightAnchor.constraint(equalToConstant: WevvNertyuGlazeConfig.shared.sugarBadgeHeight)
-        ])
-    }
+   
 
     private func addSprinkleAction() {
         sprinkleAction.translatesAutoresizingMaskIntoConstraints = false
-        sprinkleAction.setTitle(WevvNertyuGlazeConst.entryButtonText, for: .normal)
-        sprinkleAction.setTitleColor(WevvNertyuGlazeConfig.shared.entryButtonTextColor, for: .normal)
-        sprinkleAction.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        sprinkleAction.layer.cornerRadius = WevvNertyuGlazeConfig.shared.entryButtonHeight / 2
-        sprinkleAction.backgroundColor = UIColor(red: 1.0, green: 0.27, blue: 0.62, alpha: 1)
-        if let asset = UIImage(named: WevvNertyuGlazeConfig.shared.entryButtonAsset) {
+       
+        let asset = UIImage(named: WevvNertyuGlazeConfig.shared.entryButtonAsset)
             sprinkleAction.setBackgroundImage(asset, for: .normal)
-            sprinkleAction.backgroundColor = .clear
-        }
+        
         sprinkleAction.addTarget(self, action: #selector(handleSprinkleEntry), for: .touchUpInside)
-        sugarStack.addArrangedSubview(sprinkleAction)
+        self.view.addSubview(sprinkleAction)
         NSLayoutConstraint.activate([
+            sprinkleAction.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             sprinkleAction.widthAnchor.constraint(equalTo: doughScroll.frameLayoutGuide.widthAnchor, constant: -48),
-            sprinkleAction.heightAnchor.constraint(equalToConstant: WevvNertyuGlazeConfig.shared.entryButtonHeight)
+            sprinkleAction.heightAnchor.constraint(equalToConstant: WevvNertyuGlazeConfig.shared.entryButtonHeight),
+            sprinkleAction.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
 

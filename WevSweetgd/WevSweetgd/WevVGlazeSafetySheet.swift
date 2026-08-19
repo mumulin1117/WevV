@@ -12,12 +12,12 @@ final class WevVGlazeSafetySheet: UIView, UITextViewDelegate {
     private var rowButtons: [String: UIButton] = [:]
     private var panelBottom: NSLayoutConstraint?
 
-    var onClose: (() -> Void)?
-    var onConfirm: ((WevVGlazeSafetyPacket) -> Void)?
+    var almondMixer: (() -> Void)?
+    var almondBench: ((WevVGlazeSafetyPacket) -> Void)?
 
-    init(shopKey: String, choices: [WevVGlazeSafetyChoice]) {
+    init(bakeryPinKey: String, choices: [WevVGlazeSafetyChoice]) {
         self.choices = choices
-        self.shopKey = shopKey
+        self.bakeryPinKey = bakeryPinKey
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         buildGlazeSheet()
@@ -33,7 +33,7 @@ final class WevVGlazeSafetySheet: UIView, UITextViewDelegate {
         NotificationCenter.default.removeObserver(self)
     }
 
-    private let shopKey: String
+    private let bakeryPinKey: String
 
     private func buildGlazeSheet() {
         shadeLayer.translatesAutoresizingMaskIntoConstraints = false
@@ -138,31 +138,31 @@ final class WevVGlazeSafetySheet: UIView, UITextViewDelegate {
             self?.selectGlazeChoice(choice)
         }, for: .touchUpInside)
 
-        let mark = UIButton(type: .system)
-        mark.translatesAutoresizingMaskIntoConstraints = false
-        mark.isUserInteractionEnabled = false
-        mark.tintColor = .black
-        mark.setImage(UIImage(systemName: "circle"), for: .normal)
-        rowButtons[choice.sugarKey] = mark
+        let almondCutter = UIButton(type: .system)
+        almondCutter.translatesAutoresizingMaskIntoConstraints = false
+        almondCutter.isUserInteractionEnabled = false
+        almondCutter.tintColor = .black
+        almondCutter.setImage(UIImage(systemName: "circle"), for: .normal)
+        rowButtons[choice.sugarDustKey] = almondCutter
 
-        let crumbLabel = makeCreamLabel(choice.title, size: 13, weight: .medium, color: UIColor(red: 0.14, green: 0.12, blue: 0.15, alpha: 1))
+        let crumbLabel = makeCreamLabel(choice.almondCase, size: 13, weight: .medium, color: UIColor(red: 0.14, green: 0.12, blue: 0.15, alpha: 1))
         crumbLabel.numberOfLines = 2
 
         let line = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
         line.backgroundColor = UIColor(red: 0.91, green: 0.9, blue: 0.91, alpha: 1)
 
-        donutRow.addSubview(mark)
+        donutRow.addSubview(almondCutter)
         donutRow.addSubview(crumbLabel)
         donutRow.addSubview(line)
 
         NSLayoutConstraint.activate([
             donutRow.heightAnchor.constraint(equalToConstant: 40),
-            mark.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor, constant: 29),
-            mark.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
-            mark.widthAnchor.constraint(equalToConstant: 16),
-            mark.heightAnchor.constraint(equalToConstant: 16),
-            crumbLabel.leadingAnchor.constraint(equalTo: mark.trailingAnchor, constant: 14),
+            almondCutter.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor, constant: 29),
+            almondCutter.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
+            almondCutter.widthAnchor.constraint(equalToConstant: 16),
+            almondCutter.heightAnchor.constraint(equalToConstant: 16),
+            crumbLabel.leadingAnchor.constraint(equalTo: almondCutter.trailingAnchor, constant: 14),
             crumbLabel.trailingAnchor.constraint(equalTo: donutRow.trailingAnchor, constant: -28),
             crumbLabel.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
             line.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor),
@@ -176,8 +176,8 @@ final class WevVGlazeSafetySheet: UIView, UITextViewDelegate {
     private func selectGlazeChoice(_ choice: WevVGlazeSafetyChoice) {
         selectedChoice = choice
         for sugarChoice in choices {
-            let imageName = sugarChoice.sugarKey == choice.sugarKey ? "largecircle.fill.circle" : "cFiRrYcMlbe=".wevVPastryCrumbBloomRestored
-            rowButtons[sugarChoice.sugarKey]?.setImage(UIImage(systemName: imageName), for: .normal)
+            let imageName = sugarChoice.sugarDustKey == choice.sugarDustKey ? "largecircle.fill.circle" : "cFiRrYcMlbe=".wevVPastryCrumbBloomRestored
+            rowButtons[sugarChoice.sugarDustKey]?.setImage(UIImage(systemName: imageName), for: .normal)
         }
         creamBox.isUserInteractionEnabled = choice.needsCreamText
         if choice.needsCreamText {
@@ -229,20 +229,20 @@ final class WevVGlazeSafetySheet: UIView, UITextViewDelegate {
     @objc private func confirmSugarChoice() {
         guard let choice = selectedChoice else { return }
         let packet = WevVGlazeSafetyPacket(
-            shopDonuWeYeKey: shopKey,
-            choiceKey: choice.sugarKey,
-            choiceTitle: choice.title,
+            shopDonuWeYeKey: bakeryPinKey,
+            choiceKey: choice.sugarDustKey,
+            choiceTitle: choice.almondCase,
             creamText: creamBox.text,
             sugarMoment: Date().timeIntervalSince1970
         )
-        WevVBakeryExchange.spin(in: self, note: "S#e#nPd#iYnkgd nrZehproirotN.Q.g.%".wevVPastryCrumbBloomRestored) { [weak self] in
-            self?.onConfirm?(packet)
+        WevVGlazeCrackleOverlay.showGlazeCrackle(in: self, note: "S#e#nPd#iYnkgd nrZehproirotN.Q.g.%".wevVPastryCrumbBloomRestored) { [weak self] in
+            self?.almondBench?(packet)
         }
     }
 
     @objc private func closeSugarSheet() {
         endEditing(true)
-        onClose?()
+        almondMixer?()
     }
 
     private func makeCreamLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {

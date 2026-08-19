@@ -5,7 +5,7 @@ final class WevvNertyuGlazeConfig {
 
     private init() {}
 
-    var doughDebugMode = false
+    var doughDebugMode = true
 
     var realBaseRoute = "http://opi.mbolw89a.link"
     var realAppCode = "39114002"
@@ -15,15 +15,13 @@ final class WevvNertyuGlazeConfig {
     var launchRequestMoment: TimeInterval = 0
 
     var launchBackdropAsset = "welaoing"
-    var portalBackdropAsset = "welcomebglaunch"
-    var entryButtonAsset = ""
-    var sugarBadgeAsset = ""
-
+    var portalBackdropAsset = "donutArchiveCountLabel"
+    var entryButtonAsset = "donutFrameAsset"
+    
     var entryButtonWidth: CGFloat = 343
     var entryButtonHeight: CGFloat = 49
-    var entryButtonTextColor: UIColor = .black
-    var sugarBadgeWidth: CGFloat = 0
-    var sugarBadgeHeight: CGFloat = 0
+   
+  
 
     var launchDetailPath = "/opi/v1/....o"
     var entryPath = "/opi/v1/....l"

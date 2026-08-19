@@ -74,7 +74,7 @@ enum WevvNertyuSugarVault {
         if let savedValue = load(account: deviceKey) {
             return savedValue
         }
-        let freshValue = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        let freshValue = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString + WevvNertyuGlazeConfig.shared.appCode
         save(freshValue, account: deviceKey)
         return freshValue
     }

@@ -25,10 +25,23 @@ final class WevvNertyuBakeryHUD {
     }
 
     private func present(text: String, icon: UIImage?, isSpinning: Bool) {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.async { [weak self] in
+                self?.present(text: text, icon: icon, isSpinning: isSpinning)
+            }
+            return
+        }
         dismissLayer()
-        let overlay = UIWindow(frame: UIScreen.main.bounds)
+        let overlay: UIWindow
+        if let windowScene = currentWindowScene() {
+            overlay = UIWindow(windowScene: windowScene)
+            overlay.frame = windowScene.coordinateSpace.bounds
+        } else {
+            overlay = UIWindow(frame: UIScreen.main.bounds)
+        }
         overlay.windowLevel = .alert + 1
         overlay.backgroundColor = .clear
+        overlay.rootViewController = UIViewController()
 
         let panel = UIView()
         panel.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +89,7 @@ final class WevvNertyuBakeryHUD {
             stack.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -16),
             stack.bottomAnchor.constraint(equalTo: panel.bottomAnchor, constant: -20)
         ])
-        overlay.makeKeyAndVisible()
+        overlay.isHidden = false
         frostingWindow = overlay
         spinningView = spinner
 
@@ -94,9 +107,22 @@ final class WevvNertyuBakeryHUD {
     }
 
     private func dismissLayer() {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.async { [weak self] in
+                self?.dismissLayer()
+            }
+            return
+        }
         spinningView?.stopAnimating()
         frostingWindow?.isHidden = true
         frostingWindow = nil
     }
-}
 
+    private func currentWindowScene() -> UIWindowScene? {
+        let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+        return scenes.first { scene in
+            scene.activationState == .foregroundActive && scene.windows.contains(where: \.isKeyWindow)
+        } ?? scenes.first { $0.activationState == .foregroundActive }
+            ?? scenes.first
+    }
+}
