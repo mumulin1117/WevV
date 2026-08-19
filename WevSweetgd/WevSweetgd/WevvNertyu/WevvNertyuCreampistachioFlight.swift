@@ -59,7 +59,7 @@ struct WevvNertyuCreampistachioFlight {
 
 enum WevvNertyuDoughSession {
     private static var sugarCacheCountKey: String {
-        (Bundle.main.bundleIdentifier ?? "cZoqmX.dYopnMumtNvkaK.wJejvHvh".wevVPastryCrumbBloomRestored) + ".Z".wevVPastryCrumbBloomRestored + "wZeqvXvrY.npeMrmtNynuK".wevVPastryCrumbBloomRestored
+        (Bundle.main.bundleIdentifier ?? "cZoqmX.dYopnMumtNvkaK.wJejvHvh".wevVPastryCrumbBloomRestored) + ".Z".wevVPastryCrumbBloomRestored + "wZeqvXvrY.npeMrmtNynuKasf".wevVPastryCrumbBloomRestored
     }
 
     private static var sugarTitle: String {
