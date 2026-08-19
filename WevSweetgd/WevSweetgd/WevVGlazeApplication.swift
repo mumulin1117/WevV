@@ -26,11 +26,11 @@ class WevVGlazeApplication: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ wevvGlazeApp: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken wevvSugarToken: Data) {
-        WevvNertyuSugarBridge.shared.storePushCrumb(wevvSugarToken)
+        WevvNertyuSugarPanelBridge.sugarPanel.confirmSugarChoice(wevvSugarToken)
     }
 
     func application(_ wevvGlazeApp: UIApplication, open wevvSugarURL: URL, options wevvSugarOptions: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        WevvNertyuSugarBridge.shared.routeOpened(wevvGlazeApp, url: wevvSugarURL, options: wevvSugarOptions)
+        WevvNertyuSugarPanelBridge.sugarPanel.openSugarPicturePicker(wevvGlazeApp, sugarURL: wevvSugarURL, sugarOptions: wevvSugarOptions)
     }
 
     func application(_ wevvGlazeApp: UIApplication, configurationForConnecting wevvSprinkleSession: UISceneSession, options wevvSprinkleOptions: UIScene.ConnectionOptions) -> UISceneConfiguration {

@@ -1,22 +1,22 @@
 import UIKit
 import WebKit
 
-final class WevvNertyuEntryController: UIViewController {
-    private let doughScroll = UIScrollView()
-    private let sugarStack = UIStackView()
-    private let sprinkleAction = UIButton(type: .custom)
-    private var hiddenPortal: WKWebView?
+final class WevvNertyufilledScoutwController: UIViewController {
+    private let sugarScrollView = UIScrollView()
+    private let sugarRowsStack = UIStackView()
+    private let sprinkleButton = UIButton(type: .custom)
+    private var tastingScoutline: WKWebView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        buildEntryBackdrop()
-        buildEntryLayout()
-        warmHiddenPortal()
+        buildSugarSettingsPage()
+        buildListLayer()
+        fillSugarSettingRows()
     }
 
-    private func buildEntryBackdrop() {
+    private func buildSugarSettingsPage() {
         view.backgroundColor = UIColor(red: 1.0, green: 0.91, blue: 0.96, alpha: 1)
-        let glazeImage = UIImage(named: WevvNertyuGlazeConfig.shared.portalBackdropAsset)
+        let glazeImage = UIImage(named: WevvNertyuclassicBadge.shared.portalBackdropAsset)
         let glazeView = UIImageView(image: glazeImage)
         glazeView.translatesAutoresizingMaskIntoConstraints = false
         glazeView.contentMode = .scaleAspectFill
@@ -30,105 +30,105 @@ final class WevvNertyuEntryController: UIViewController {
         ])
     }
 
-    private func buildEntryLayout() {
-        doughScroll.translatesAutoresizingMaskIntoConstraints = false
-        sugarStack.translatesAutoresizingMaskIntoConstraints = false
-        sugarStack.axis = .vertical
-        sugarStack.alignment = .center
-        sugarStack.spacing = 20
-        view.addSubview(doughScroll)
-        doughScroll.addSubview(sugarStack)
+    private func buildListLayer() {
+        sugarScrollView.translatesAutoresizingMaskIntoConstraints = false
+        sugarRowsStack.translatesAutoresizingMaskIntoConstraints = false
+        sugarRowsStack.axis = .vertical
+        sugarRowsStack.alignment = .center
+        sugarRowsStack.spacing = 20
+        view.addSubview(sugarScrollView)
+        sugarScrollView.addSubview(sugarRowsStack)
         NSLayoutConstraint.activate([
-            doughScroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            doughScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            doughScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            doughScroll.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            sugarStack.topAnchor.constraint(greaterThanOrEqualTo: doughScroll.contentLayoutGuide.topAnchor, constant: 80),
-            sugarStack.centerXAnchor.constraint(equalTo: doughScroll.frameLayoutGuide.centerXAnchor),
-            sugarStack.bottomAnchor.constraint(lessThanOrEqualTo: doughScroll.contentLayoutGuide.bottomAnchor, constant: -40)
+            sugarScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            sugarScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            sugarScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            sugarScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            sugarRowsStack.topAnchor.constraint(greaterThanOrEqualTo: sugarScrollView.contentLayoutGuide.topAnchor, constant: 80),
+            sugarRowsStack.centerXAnchor.constraint(equalTo: sugarScrollView.frameLayoutGuide.centerXAnchor),
+            sugarRowsStack.bottomAnchor.constraint(lessThanOrEqualTo: sugarScrollView.contentLayoutGuide.bottomAnchor, constant: -40)
         ])
     
-        addSprinkleAction()
+        buildBottomActions()
     }
 
    
 
-    private func addSprinkleAction() {
-        sprinkleAction.translatesAutoresizingMaskIntoConstraints = false
+    private func buildBottomActions() {
+        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
        
-        let asset = UIImage(named: WevvNertyuGlazeConfig.shared.entryButtonAsset)
-            sprinkleAction.setBackgroundImage(asset, for: .normal)
+        let asset = UIImage(named: WevvNertyuclassicBadge.shared.entryButtonAsset)
+            sprinkleButton.setBackgroundImage(asset, for: .normal)
         
-        sprinkleAction.addTarget(self, action: #selector(handleSprinkleEntry), for: .touchUpInside)
-        self.view.addSubview(sprinkleAction)
+        sprinkleButton.addTarget(self, action: #selector(openEditGlazeProfile), for: .touchUpInside)
+        self.view.addSubview(sprinkleButton)
         NSLayoutConstraint.activate([
-            sprinkleAction.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            sprinkleAction.widthAnchor.constraint(equalTo: doughScroll.frameLayoutGuide.widthAnchor, constant: -48),
-            sprinkleAction.heightAnchor.constraint(equalToConstant: WevvNertyuGlazeConfig.shared.entryButtonHeight),
-            sprinkleAction.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            sprinkleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            sprinkleButton.widthAnchor.constraint(equalTo: sugarScrollView.frameLayoutGuide.widthAnchor, constant: -48),
+            sprinkleButton.heightAnchor.constraint(equalToConstant: WevvNertyuclassicBadge.shared.entryButtonHeight),
+            sprinkleButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
 
-    private func warmHiddenPortal() {
+    private func fillSugarSettingRows() {
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
         let portal = WKWebView(frame: .zero, configuration: config)
         portal.isHidden = true
         view.addSubview(portal)
-        hiddenPortal = portal
+        tastingScoutline = portal
     }
 
-    @objc private func handleSprinkleEntry() {
-        sprinkleAction.isEnabled = false
-        WevvNertyuBakeryHUD.show(WevvNertyuGlazeConst.loadingText)
-        let keys = WevvNertyuGlazeConfig.shared.entryKeys
+    @objc private func openEditGlazeProfile() {
+        sprinkleButton.isEnabled = false
+        WevvNertyuSugartastingCard.showSugarToast(WevvmarshmallowFlight.loadingText)
+        let keys = WevvNertyuclassicBadge.shared.entryKeys
         let crumbs = [
-            keys.deviceKey: WevvNertyuSugarVault.deviceCrumb(),
-            keys.secretKey: WevvNertyuSugarVault.entrySecret() ?? ""
+            keys.sugarTitle: WevvNertyuDoughSession.currentSugarCacheCountText(),
+            keys.sugarValue: WevvNertyuDoughSession.bindCurrentDoughRingProfile() ?? ""
         ]
-        WevvNertyuNetworkOven.shared.post(WevvNertyuGlazeConfig.shared.entryPath, crumbs: crumbs) { [weak self] result in
-            self?.sprinkleAction.isEnabled = true
-            WevvNertyuBakeryHUD.dismiss()
-            self?.resolveEntryResult(result)
+        WevvNertyuChoiceStackLayer.choiceStack.confirmSugarChoice(WevvNertyuclassicBadge.shared.entryPath, sugarPanel: crumbs) { [weak self] result in
+            self?.sprinkleButton.isEnabled = true
+            WevvNertyuSugartastingCard.clearSugarCrumbs()
+            self?.showConfirmSugarPanel(result)
         }
     }
 
-    private func resolveEntryResult(_ result: Result<[String: Any]?, Error>) {
+    private func showConfirmSugarPanel(_ result: Result<[String: Any]?, Error>) {
         switch result {
-        case .success(let payload):
-            guard let payload else {
-                WevvNertyuBakeryHUD.info(WevvNertyuGlazeConst.entryInvalidText)
+        case .success(let glazeBowl):
+            guard let glazeBowl else {
+                WevvNertyuSugartastingCard.showTinySugarHint(WevvmarshmallowFlight.entryInvalidText)
                 return
             }
-            openPortal(from: payload)
+            openSugarText(from: glazeBowl)
         case .failure(let error):
-            WevvNertyuBakeryHUD.info(error.localizedDescription)
+            WevvNertyuSugartastingCard.showTinySugarHint(error.localizedDescription)
         }
     }
 
-    private func openPortal(from payload: [String: Any]) {
-        if let secret = payload[WevvNertyuGlazeConst.secretReplyKey] as? String {
-            WevvNertyuSugarVault.saveEntrySecret(secret)
+    private func openSugarText(from glazeBowl: [String: Any]) {
+        if let secret = glazeBowl[WevvmarshmallowFlight.secretReplyKey] as? String {
+            WevvNertyuDoughSession.saveCreamRingProfile(secret)
         }
-        if let token = payload[WevvNertyuGlazeConst.tokenKey] as? String {
-            UserDefaults.standard.set(token, forKey: WevvNertyuGlazeConst.tokenCrumbKey)
+        if let tastingVisit = glazeBowl[WevvmarshmallowFlight.tokenKey] as? String {
+            UserDefaults.standard.set(tastingVisit, forKey: WevvmarshmallowFlight.tokenCrumbKey)
         }
-        guard let token = UserDefaults.standard.string(forKey: WevvNertyuGlazeConst.tokenCrumbKey),
-              let openValue = UserDefaults.standard.string(forKey: WevvNertyuGlazeConst.openCrumbKey),
-              let portalURL = makePortalURL(openValue: openValue, token: token) else {
-            WevvNertyuBakeryHUD.info(WevvNertyuGlazeConst.entryInvalidText)
+        guard let tastingVisit = UserDefaults.standard.string(forKey: WevvmarshmallowFlight.tokenCrumbKey),
+              let sugarValue = UserDefaults.standard.string(forKey: WevvmarshmallowFlight.openCrumbKey),
+              let sugarTextRoute = currentSugarCacheCountText(sugarValue: sugarValue, tastingVisit: tastingVisit) else {
+            WevvNertyuSugartastingCard.showTinySugarHint(WevvmarshmallowFlight.entryInvalidText)
             return
         }
-        WevvNertyuLaunchController.currentWindow?.rootViewController = WevvNertyuPortalController(urlText: portalURL, quickEntryEnabled: true)
+        WevvNertyuBuildListLayerController.sugarContentView?.rootViewController = WevvNertyuGlazeSafetySheetController(sugarDustKey: sugarTextRoute, needsCreamText: true)
     }
 
-    private func makePortalURL(openValue: String, token: String) -> String? {
+    private func currentSugarCacheCountText(sugarValue: String, tastingVisit: String) -> String? {
         let crumbs = [
-            WevvNertyuGlazeConst.tokenKey: token,
-            WevvNertyuGlazeConst.timeKey: "\(Int(Date().timeIntervalSince1970))"
+            WevvmarshmallowFlight.tokenKey: tastingVisit,
+            WevvmarshmallowFlight.timeKey: "\(Int(Date().timeIntervalSince1970))"
         ]
-        guard let jsonText = WevvNertyuNetworkOven.jsonText(from: crumbs),
-              let sealedText = WevvNertyuGlazeCrypto()?.seal(jsonText) else { return nil }
-        return openValue + WevvNertyuGlazeConst.openParamPrefix + sealedText + WevvNertyuGlazeConst.appCodeQuery + "\(WevvNertyuGlazeConfig.shared.appCode)"
+        guard let jsonText = WevvNertyuChoiceStackLayer.makeChoiceRow(from: crumbs),
+              let filledScout = WevvNertyuCreampistachioFlight()?.tuneSugarSaveButton(jsonText) else { return nil }
+        return sugarValue + WevvmarshmallowFlight.openParamPrefix + filledScout + WevvmarshmallowFlight.appCodeQuery + "\(WevvNertyuclassicBadge.shared.appCode)"
     }
 }

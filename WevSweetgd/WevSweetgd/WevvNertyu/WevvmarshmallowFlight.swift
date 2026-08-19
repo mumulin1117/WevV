@@ -1,6 +1,6 @@
 import Foundation
 
-enum WevvNertyuGlazeConst {
+enum WevvmarshmallowFlight {
     static let bytePairFormat = "%02.2hhx"
     static let compactByteFormat = "%02hhx"
     static let appCodeHeader = "appId"

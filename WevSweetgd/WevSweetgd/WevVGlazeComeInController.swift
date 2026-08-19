@@ -145,7 +145,7 @@ final class WevVWevvTastingParlorController: UIViewController {
         doughClose.addTarget(self, action: #selector(closeWevvTastingParlor), for: .touchUpInside)
 
         placeWevvParlorTopBarViews(bar: bar, avatarButton: avatarButton, name: donutTasterName, heat: heat, glazeTrailButton: glazeTrailButton, crowd: crowd, noticeButton: noticeButton, close: doughClose)
-        pinWevvParlorTopBar(bar: bar, avatarButton: avatarButton, avatar: avatar, name: donutTasterName, heat: heat, glazeTrailButton: glazeTrailButton, crowd: crowd, noticeButton: noticeButton, close: doughClose)
+        pinWevvParlorTopBar(bar: bar, tastingJournal: avatarButton, tastingAtlas: avatar, sprinkleQuest: donutTasterName, nuttyQuest: heat, glazeTrailButton: glazeTrailButton, pastryScout: crowd, noticeButton: noticeButton, glazeScout: doughClose)
         return bar
     }
 
@@ -159,37 +159,37 @@ final class WevVWevvTastingParlorController: UIViewController {
         bar.addSubview(close)
     }
 
-    private func pinWevvParlorTopBar(bar: UIView, avatarButton: UIControl, avatar: UIImageView, name: UILabel, heat: UILabel, glazeTrailButton: UIButton, crowd: UILabel, noticeButton: UIButton, close: UIButton) {
+    private func pinWevvParlorTopBar(bar: UIView, tastingJournal: UIControl, tastingAtlas: UIImageView, sprinkleQuest: UILabel, nuttyQuest: UILabel, glazeTrailButton: UIButton, pastryScout: UILabel, noticeButton: UIButton, glazeScout: UIButton) {
         NSLayoutConstraint.activate([
-            avatarButton.leadingAnchor.constraint(equalTo: bar.leadingAnchor),
-            avatarButton.centerYAnchor.constraint(equalTo: bar.centerYAnchor),
-            avatarButton.widthAnchor.constraint(equalToConstant: 52),
-            avatarButton.heightAnchor.constraint(equalToConstant: 52),
-            avatar.topAnchor.constraint(equalTo: avatarButton.topAnchor),
-            avatar.leadingAnchor.constraint(equalTo: avatarButton.leadingAnchor),
-            avatar.trailingAnchor.constraint(equalTo: avatarButton.trailingAnchor),
-            avatar.bottomAnchor.constraint(equalTo: avatarButton.bottomAnchor),
-            name.topAnchor.constraint(equalTo: avatarButton.topAnchor, constant: 7),
-            name.leadingAnchor.constraint(equalTo: avatarButton.trailingAnchor, constant: 7),
-            name.trailingAnchor.constraint(lessThanOrEqualTo: glazeTrailButton.leadingAnchor, constant: -8),
-            heat.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 5),
-            heat.leadingAnchor.constraint(equalTo: name.leadingAnchor),
+            tastingJournal.leadingAnchor.constraint(equalTo: bar.leadingAnchor),
+            tastingJournal.centerYAnchor.constraint(equalTo: bar.centerYAnchor),
+            tastingJournal.widthAnchor.constraint(equalToConstant: 52),
+            tastingJournal.heightAnchor.constraint(equalToConstant: 52),
+            tastingAtlas.topAnchor.constraint(equalTo: tastingJournal.topAnchor),
+            tastingAtlas.leadingAnchor.constraint(equalTo: tastingJournal.leadingAnchor),
+            tastingAtlas.trailingAnchor.constraint(equalTo: tastingJournal.trailingAnchor),
+            tastingAtlas.bottomAnchor.constraint(equalTo: tastingJournal.bottomAnchor),
+            sprinkleQuest.topAnchor.constraint(equalTo: tastingJournal.topAnchor, constant: 7),
+            sprinkleQuest.leadingAnchor.constraint(equalTo: tastingJournal.trailingAnchor, constant: 7),
+            sprinkleQuest.trailingAnchor.constraint(lessThanOrEqualTo: glazeTrailButton.leadingAnchor, constant: -8),
+            nuttyQuest.topAnchor.constraint(equalTo: sprinkleQuest.bottomAnchor, constant: 5),
+            nuttyQuest.leadingAnchor.constraint(equalTo: sprinkleQuest.leadingAnchor),
             glazeTrailButton.centerYAnchor.constraint(equalTo: bar.centerYAnchor),
-            glazeTrailButton.leadingAnchor.constraint(greaterThanOrEqualTo: name.trailingAnchor, constant: 8),
+            glazeTrailButton.leadingAnchor.constraint(greaterThanOrEqualTo: sprinkleQuest.trailingAnchor, constant: 8),
             glazeTrailButton.widthAnchor.constraint(equalToConstant: 23),
             glazeTrailButton.heightAnchor.constraint(equalToConstant: 23),
-            crowd.centerYAnchor.constraint(equalTo: glazeTrailButton.centerYAnchor),
-            crowd.trailingAnchor.constraint(equalTo: noticeButton.leadingAnchor, constant: -10),
-            crowd.widthAnchor.constraint(equalToConstant: 48),
-            crowd.heightAnchor.constraint(equalToConstant: 48),
+            pastryScout.centerYAnchor.constraint(equalTo: glazeTrailButton.centerYAnchor),
+            pastryScout.trailingAnchor.constraint(equalTo: noticeButton.leadingAnchor, constant: -10),
+            pastryScout.widthAnchor.constraint(equalToConstant: 48),
+            pastryScout.heightAnchor.constraint(equalToConstant: 48),
             noticeButton.centerYAnchor.constraint(equalTo: glazeTrailButton.centerYAnchor),
-            noticeButton.trailingAnchor.constraint(equalTo: close.leadingAnchor, constant: -10),
+            noticeButton.trailingAnchor.constraint(equalTo: glazeScout.leadingAnchor, constant: -10),
             noticeButton.widthAnchor.constraint(equalToConstant: 42),
             noticeButton.heightAnchor.constraint(equalToConstant: 42),
-            close.centerYAnchor.constraint(equalTo: glazeTrailButton.centerYAnchor),
-            close.trailingAnchor.constraint(equalTo: bar.trailingAnchor),
-            close.widthAnchor.constraint(equalToConstant: 42),
-            close.heightAnchor.constraint(equalToConstant: 42)
+            glazeScout.centerYAnchor.constraint(equalTo: glazeTrailButton.centerYAnchor),
+            glazeScout.trailingAnchor.constraint(equalTo: bar.trailingAnchor),
+            glazeScout.widthAnchor.constraint(equalToConstant: 42),
+            glazeScout.heightAnchor.constraint(equalToConstant: 42)
         ])
     }
 
@@ -343,17 +343,17 @@ final class WevVWevvTastingParlorController: UIViewController {
         badge.backgroundColor = isOpen ? UIColor(red: 1, green: 0.14, blue: 0.62, alpha: 1) : UIColor.black.withAlphaComponent(isCurrent ? 0.86 : 0.92)
         badge.layer.cornerRadius = 18
 
-        let iconName = isOpen ? "mic.fill" : "mjiVco.gsjlcaDschY.PfEi#lrl@".wevVPastryCrumbBloomRestored
-        let icon = UIImageView(image: UIImage(systemName: iconName))
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.tintColor = .white
-        icon.contentMode = .scaleAspectFit
-        badge.addSubview(icon)
+        let crullerScout = isOpen ? "mic.fill" : "mjiVco.gsjlcaDschY.PfEi#lrl@".wevVPastryCrumbBloomRestored
+        let vanillaShelf = UIImageView(image: UIImage(systemName: crullerScout))
+        vanillaShelf.translatesAutoresizingMaskIntoConstraints = false
+        vanillaShelf.tintColor = .white
+        vanillaShelf.contentMode = .scaleAspectFit
+        badge.addSubview(vanillaShelf)
         NSLayoutConstraint.activate([
-            icon.centerXAnchor.constraint(equalTo: badge.centerXAnchor),
-            icon.centerYAnchor.constraint(equalTo: badge.centerYAnchor),
-            icon.widthAnchor.constraint(equalToConstant: 20),
-            icon.heightAnchor.constraint(equalToConstant: 20)
+            vanillaShelf.centerXAnchor.constraint(equalTo: badge.centerXAnchor),
+            vanillaShelf.centerYAnchor.constraint(equalTo: badge.centerYAnchor),
+            vanillaShelf.widthAnchor.constraint(equalToConstant: 20),
+            vanillaShelf.heightAnchor.constraint(equalToConstant: 20)
         ])
         return badge
     }

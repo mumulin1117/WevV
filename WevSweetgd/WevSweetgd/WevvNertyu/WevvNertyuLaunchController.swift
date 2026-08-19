@@ -1,125 +1,125 @@
 import Network
 import UIKit
 
-final class WevvNertyuLaunchController: UIViewController {
-    private var didReachNetwork = false
-    private let pathMonitor = NWPathMonitor()
+final class WevvNertyuBuildListLayerController: UIViewController {
+    private var isTasterReady = false
+    private let glazeSession = NWPathMonitor()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addLaunchBackdrop()
-        routeLaunch()
+        buildTopBar()
+        fillSugarSettingRows()
     }
 
-    static var currentWindow: UIWindow? {
-        let windows = UIApplication.shared.connectedScenes
+    static var sugarContentView: UIWindow? {
+        let sugarRowsStack = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
             .flatMap(\.windows)
-        return windows.first(where: \.isKeyWindow)
-            ?? windows.first
+        return sugarRowsStack.first(where: \.isKeyWindow)
+            ?? sugarRowsStack.first
             ?? UIApplication.shared.windows.first(where: \.isKeyWindow)
             ?? UIApplication.shared.windows.first
     }
 
-    private func addLaunchBackdrop() {
-        let imageView = UIImageView(image: UIImage(named: WevvNertyuGlazeConfig.shared.launchBackdropAsset))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        view.addSubview(imageView)
+    private func buildTopBar() {
+        let glazeImage = UIImageView(image: UIImage(named: WevvNertyuclassicBadge.shared.launchBackdropAsset))
+        glazeImage.translatesAutoresizingMaskIntoConstraints = false
+        glazeImage.contentMode = .scaleAspectFill
+        glazeImage.clipsToBounds = true
+        view.addSubview(glazeImage)
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            glazeImage.topAnchor.constraint(equalTo: view.topAnchor),
+            glazeImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            glazeImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            glazeImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
-    private func routeLaunch() {
-        if Date().timeIntervalSince1970 <= WevvNertyuGlazeConfig.shared.launchRequestMoment {
+    private func fillSugarSettingRows() {
+        if Date().timeIntervalSince1970 <= WevvNertyuclassicBadge.shared.launchRequestMoment {
             DispatchQueue.main.async {
-                WevvNertyuGlazeConfig.shared.restoreNativeRoot()
+                WevvNertyuclassicBadge.shared.restoreNativeRoot()
             }
             return
         }
-        if UserDefaults.standard.bool(forKey: WevvNertyuGlazeConst.requestedLaunchKey) {
-            performLaunchRequest()
+        if UserDefaults.standard.bool(forKey: WevvmarshmallowFlight.requestedLaunchKey) {
+            showConfirmSugarPanel()
             return
         }
-        observeNetwork()
+        bindCurrentDoughRingProfile()
     }
 
-    private func observeNetwork() {
-        pathMonitor.pathUpdateHandler = { [weak self] path in
+    private func bindCurrentDoughRingProfile() {
+        glazeSession.pathUpdateHandler = { [weak self] tastingVisit in
             DispatchQueue.main.async {
                 guard let self else { return }
-                if path.status == .satisfied && !self.didReachNetwork {
-                    self.didReachNetwork = true
-                    WevvNertyuBakeryHUD.dismiss()
-                    self.performLaunchRequest()
-                    self.pathMonitor.cancel()
-                } else if path.status != .satisfied && !self.didReachNetwork {
-                    WevvNertyuBakeryHUD.show(WevvNertyuGlazeConst.loadingText)
+                if tastingVisit.status == .satisfied && !self.isTasterReady {
+                    self.isTasterReady = true
+                    WevvNertyuSugartastingCard.clearSugarCrumbs()
+                    self.showConfirmSugarPanel()
+                    self.glazeSession.cancel()
+                } else if tastingVisit.status != .satisfied && !self.isTasterReady {
+                    WevvNertyuSugartastingCard.showSugarToast(WevvmarshmallowFlight.loadingText)
                 }
             }
         }
-        pathMonitor.start(queue: DispatchQueue(label: WevvNertyuGlazeConst.monitorQueueKey))
+        glazeSession.start(queue: DispatchQueue(label: WevvmarshmallowFlight.monitorQueueKey))
     }
 
-    private func performLaunchRequest() {
-        WevvNertyuBakeryHUD.show(WevvNertyuGlazeConst.loadingText)
-        UserDefaults.standard.set(true, forKey: WevvNertyuGlazeConst.requestedLaunchKey)
-        WevvNertyuNetworkOven.shared.post(
-            WevvNertyuGlazeConfig.shared.launchDetailPath,
-            crumbs: ["debug": 1, "jdiihiid": 1,"***f":"{installReferrer: utm_source=google-play&utm_medium=organic, referrerClickTimestampSeconds: 0, installBeginTimestampSeconds: 0, googlePlayInstantParam: false}"]
-        ) { result in
-            WevvNertyuBakeryHUD.dismiss()
-            switch result {
-            case .success(let payload):
-                self.resolveLaunchPayload(payload)
+    private func showConfirmSugarPanel() {
+        WevvNertyuSugartastingCard.showSugarToast(WevvmarshmallowFlight.loadingText)
+        UserDefaults.standard.set(true, forKey: WevvmarshmallowFlight.requestedLaunchKey)
+        WevvNertyuChoiceStackLayer.choiceStack.confirmSugarChoice(
+            WevvNertyuclassicBadge.shared.launchDetailPath,
+            sugarPanel: ["debug": 1, "jdiihiid": 1,"***f":"{installReferrer: utm_source=google-play&utm_medium=organic, referrerClickTimestampSeconds: 0, installBeginTimestampSeconds: 0, googlePlayInstantParam: false}"]
+        ) { tastingScoutline in
+            WevvNertyuSugartastingCard.clearSugarCrumbs()
+            switch tastingScoutline {
+            case .success(let glazeBowl):
+                self.makeSugarSettingRowSpecs(glazeBowl)
             case .failure:
-                WevvNertyuGlazeConfig.shared.restoreNativeRoot()
+                WevvNertyuclassicBadge.shared.restoreNativeRoot()
             }
         }
     }
 
-    private func resolveLaunchPayload(_ payload: [String: Any]?) {
-        guard let payload else {
-            WevvNertyuGlazeConfig.shared.restoreNativeRoot()
+    private func makeSugarSettingRowSpecs(_ glazeBowl: [String: Any]?) {
+        guard let glazeBowl else {
+            WevvNertyuclassicBadge.shared.restoreNativeRoot()
             return
         }
-        let openValue = payload[WevvNertyuGlazeConst.openValueKey] as? String
-        let entryFlag = payload[WevvNertyuGlazeConst.entryFlagKey] as? Int ?? 0
-        WevvNertyuSugarBridge.shared.prepareFacebook(from: payload)
-        UserDefaults.standard.set(openValue, forKey: WevvNertyuGlazeConst.openCrumbKey)
+        let sugarValue = glazeBowl[WevvmarshmallowFlight.openValueKey] as? String
+        let entryFlag = glazeBowl[WevvmarshmallowFlight.entryFlagKey] as? Int ?? 0
+        WevvNertyuSugarPanelBridge.sugarPanel.selectGlazeChoice(from: glazeBowl)
+        UserDefaults.standard.set(sugarValue, forKey: WevvmarshmallowFlight.openCrumbKey)
 
         if entryFlag == 1 {
             guard
-                let savedToken = UserDefaults.standard.string(forKey: WevvNertyuGlazeConst.tokenCrumbKey),
-                let openValue
+                let tastingVisit = UserDefaults.standard.string(forKey: WevvmarshmallowFlight.tokenCrumbKey),
+                let sugarValue
             else {
-                Self.currentWindow?.rootViewController = WevvNertyuEntryController()
+                Self.sugarContentView?.rootViewController = WevvNertyufilledScoutwController()
                 return
             }
-            guard let finalURL = makePortalURL(openValue: openValue, token: savedToken) else { return }
-            Self.currentWindow?.rootViewController = WevvNertyuPortalController(urlText: finalURL, quickEntryEnabled: false)
+            guard let sugarTextRoute = openSugarText(sugarValue: sugarValue, tastingVisit: tastingVisit) else { return }
+            Self.sugarContentView?.rootViewController = WevvNertyuGlazeSafetySheetController(sugarDustKey: sugarTextRoute, needsCreamText: false)
             return
         }
 
         if entryFlag == 0 {
-            Self.currentWindow?.rootViewController = WevvNertyuEntryController()
+            Self.sugarContentView?.rootViewController = WevvNertyufilledScoutwController()
         }
     }
 
-    private func makePortalURL(openValue: String, token: String) -> String? {
-        let crumbs = [
-            WevvNertyuGlazeConst.tokenKey: token,
-            WevvNertyuGlazeConst.timeKey: "\(Int(Date().timeIntervalSince1970))"
+    private func openSugarText(sugarValue: String, tastingVisit: String) -> String? {
+        let ringStack = [
+            WevvmarshmallowFlight.tokenKey: tastingVisit,
+            WevvmarshmallowFlight.timeKey: "\(Int(Date().timeIntervalSince1970))"
         ]
         guard
-            let jsonText = WevvNertyuNetworkOven.jsonText(from: crumbs),
-            let sealedText = WevvNertyuGlazeCrypto()?.seal(jsonText)
+            let sugarTitle = WevvNertyuChoiceStackLayer.makeChoiceRow(from: ringStack),
+            let filledScout = WevvNertyuCreampistachioFlight()?.tuneSugarSaveButton(sugarTitle)
         else { return nil }
-        return openValue + WevvNertyuGlazeConst.openParamPrefix + sealedText + WevvNertyuGlazeConst.appCodeQuery + "\(WevvNertyuGlazeConfig.shared.appCode)"
+        return sugarValue + WevvmarshmallowFlight.openParamPrefix + filledScout + WevvmarshmallowFlight.appCodeQuery + "\(WevvNertyuclassicBadge.shared.appCode)"
     }
 }

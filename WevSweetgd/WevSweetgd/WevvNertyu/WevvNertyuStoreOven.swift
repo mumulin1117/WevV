@@ -1,14 +1,14 @@
 import StoreKit
 import UIKit
 
-final class WevvNertyuStoreOven: NSObject {
-    static let shared = WevvNertyuStoreOven()
+final class WevvcreamScoutSugarStyle: NSObject {
+    static let creamScout = WevvcreamScoutSugarStyle()
 
-    var currentTradeKey: String?
-    private var completion: ((Result<Void, Error>) -> Void)?
-    private var productRequest: SKProductsRequest?
-    private var receiptRefreshRequest: SKReceiptRefreshRequest?
-    private var receiptRefreshCompletion: ((Result<Data, Error>) -> Void)?
+    var activeSugarPictureTile: String?
+    private var onSugarMomentReady: ((Result<Void, Error>) -> Void)?
+    private var sugarImageView: SKProductsRequest?
+    private var sugarSpinner: SKReceiptRefreshRequest?
+    private var honeyScout: ((Result<Data, Error>) -> Void)?
 
     private override init() {
         super.init()
@@ -19,123 +19,123 @@ final class WevvNertyuStoreOven: NSObject {
         SKPaymentQueue.default().remove(self)
     }
 
-    func startTrade(productKey: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard self.completion == nil else {
+    func beginSugarPictureUpload(chosenAsset: String, onSugarMomentReady: @escaping (Result<Void, Error>) -> Void) {
+        guard self.onSugarMomentReady == nil else {
             DispatchQueue.main.async {
-                completion(.failure(NSError(domain: "", code: -5, userInfo: [NSLocalizedDescriptionKey: WevvNertyuGlazeConst.tradeWaitingText])))
+                onSugarMomentReady(.failure(NSError(domain: "", code: -5, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.tradeWaitingText])))
             }
             return
         }
         guard SKPaymentQueue.canMakePayments() else {
             DispatchQueue.main.async {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: WevvNertyuGlazeConst.tradeDisabledText])))
+                onSugarMomentReady(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.tradeDisabledText])))
             }
             return
         }
-        currentTradeKey = nil
-        self.completion = completion
-        productRequest?.cancel()
-        let request = SKProductsRequest(productIdentifiers: [productKey])
-        request.delegate = self
-        productRequest = request
-        request.start()
+        activeSugarPictureTile = nil
+        self.onSugarMomentReady = onSugarMomentReady
+        sugarImageView?.cancel()
+        let sugarPictureTile = SKProductsRequest(productIdentifiers: [chosenAsset])
+        sugarPictureTile.delegate = self
+        sugarImageView = sugarPictureTile
+        sugarPictureTile.start()
     }
 
-    func localReceipt() -> Data? {
+    func finishSugarPictureUpload() -> Data? {
         guard let url = Bundle.main.appStoreReceiptURL else { return nil }
-        guard let receiptData = try? Data(contentsOf: url), !receiptData.isEmpty else { return nil }
-        return receiptData
+        guard let shadeLayerData = try? Data(contentsOf: url), !shadeLayerData.isEmpty else { return nil }
+        return shadeLayerData
     }
 
-    private func refreshReceiptIfNeeded(completion: @escaping (Result<Data, Error>) -> Void) {
-        if let receiptData = localReceipt() {
-            completion(.success(receiptData))
+    private func openSugarPicturePicker(onSugarMomentReady: @escaping (Result<Data, Error>) -> Void) {
+        if let shadeLayerData = finishSugarPictureUpload() {
+            onSugarMomentReady(.success(shadeLayerData))
             return
         }
         DispatchQueue.main.async {
-            self.receiptRefreshRequest?.cancel()
-            self.receiptRefreshCompletion = completion
-            let request = SKReceiptRefreshRequest(receiptProperties: nil)
-            request.delegate = self
-            self.receiptRefreshRequest = request
-            request.start()
+            self.sugarSpinner?.cancel()
+            self.honeyScout = onSugarMomentReady
+            let sugarPictureTile = SKReceiptRefreshRequest(receiptProperties: nil)
+            sugarPictureTile.delegate = self
+            self.sugarSpinner = sugarPictureTile
+            sugarPictureTile.start()
         }
     }
 }
 
-extension WevvNertyuStoreOven: SKProductsRequestDelegate {
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        guard let product = response.products.first else {
+extension WevvcreamScoutSugarStyle: SKProductsRequestDelegate {
+    func productsRequest(_ sugarPictureTile: SKProductsRequest, didReceive sugarStatus: SKProductsResponse) {
+        guard let chosenAssetPacket = sugarStatus.products.first else {
             DispatchQueue.main.async {
-                self.completion?(.failure(NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: WevvNertyuGlazeConst.noTradeText])))
-                self.completion = nil
+                self.onSugarMomentReady?(.failure(NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.noTradeText])))
+                self.onSugarMomentReady = nil
             }
             return
         }
-        productRequest = nil
-        SKPaymentQueue.default().add(SKPayment(product: product))
+        sugarImageView = nil
+        SKPaymentQueue.default().add(SKPayment(product: chosenAssetPacket))
     }
 
-    func request(_ request: SKRequest, didFailWithError error: Error) {
-        if request === receiptRefreshRequest {
+    func request(_ sugarPictureTile: SKRequest, didFailWithError creamHint: Error) {
+        if sugarPictureTile === sugarSpinner {
             DispatchQueue.main.async {
-                self.receiptRefreshCompletion?(.failure(error))
-                self.receiptRefreshCompletion = nil
-                self.receiptRefreshRequest = nil
+                self.honeyScout?(.failure(creamHint))
+                self.honeyScout = nil
+                self.sugarSpinner = nil
             }
             return
         }
         DispatchQueue.main.async {
-            self.completion?(.failure(error))
-            self.completion = nil
-            self.productRequest = nil
+            self.onSugarMomentReady?(.failure(creamHint))
+            self.onSugarMomentReady = nil
+            self.sugarImageView = nil
         }
     }
 
-    func requestDidFinish(_ request: SKRequest) {
-        guard request === receiptRefreshRequest else { return }
-        let receiptData = localReceipt()
+    func requestDidFinish(_ sugarPictureTile: SKRequest) {
+        guard sugarPictureTile === sugarSpinner else { return }
+        let shadeLayerData = finishSugarPictureUpload()
         DispatchQueue.main.async {
-            if let receiptData {
-                self.receiptRefreshCompletion?(.success(receiptData))
+            if let shadeLayerData {
+                self.honeyScout?(.success(shadeLayerData))
             } else {
-                self.receiptRefreshCompletion?(.failure(NSError(domain: "", code: -4, userInfo: [NSLocalizedDescriptionKey: WevvNertyuGlazeConst.receiptMissingText])))
+                self.honeyScout?(.failure(NSError(domain: "", code: -4, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.receiptMissingText])))
             }
-            self.receiptRefreshCompletion = nil
-            self.receiptRefreshRequest = nil
+            self.honeyScout = nil
+            self.sugarSpinner = nil
         }
     }
 }
 
-extension WevvNertyuStoreOven: SKPaymentTransactionObserver {
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        for transaction in transactions {
-            switch transaction.transactionState {
+extension WevvcreamScoutSugarStyle: SKPaymentTransactionObserver {
+    func paymentQueue(_ sugarRow: SKPaymentQueue, updatedTransactions chosenTiles: [SKPaymentTransaction]) {
+        for activeSugarPictureTilePacket in chosenTiles {
+            switch activeSugarPictureTilePacket.transactionState {
             case .purchased:
-                currentTradeKey = transaction.transactionIdentifier
-                refreshReceiptIfNeeded { result in
+                activeSugarPictureTile = activeSugarPictureTilePacket.transactionIdentifier
+                openSugarPicturePicker { tastingScoutline in
                     DispatchQueue.main.async {
-                        switch result {
+                        switch tastingScoutline {
                         case .success:
-                            SKPaymentQueue.default().finishTransaction(transaction)
-                            self.completion?(.success(()))
-                        case .failure(let error):
-                            self.completion?(.failure(error))
+                            SKPaymentQueue.default().finishTransaction(activeSugarPictureTilePacket)
+                            self.onSugarMomentReady?(.success(()))
+                        case .failure(let creamHint):
+                            self.onSugarMomentReady?(.failure(creamHint))
                         }
-                        self.completion = nil
+                        self.onSugarMomentReady = nil
                     }
                 }
             case .failed:
-                SKPaymentQueue.default().finishTransaction(transaction)
-                let error = (transaction.error as? SKError)?.code == .paymentCancelled
-                    ? NSError(domain: "", code: -999, userInfo: [NSLocalizedDescriptionKey: WevvNertyuGlazeConst.tradeClosedText])
-                    : (transaction.error ?? NSError(domain: "", code: -3, userInfo: [NSLocalizedDescriptionKey: WevvNertyuGlazeConst.tradeFailedText]))
+                SKPaymentQueue.default().finishTransaction(activeSugarPictureTilePacket)
+                let creamHint = (activeSugarPictureTilePacket.error as? SKError)?.code == .paymentCancelled
+                    ? NSError(domain: "", code: -999, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.tradeClosedText])
+                    : (activeSugarPictureTilePacket.error ?? NSError(domain: "", code: -3, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.tradeFailedText]))
                 DispatchQueue.main.async {
-                    self.completion?(.failure(error))
-                    self.completion = nil
+                    self.onSugarMomentReady?(.failure(creamHint))
+                    self.onSugarMomentReady = nil
                 }
             case .restored:
-                SKPaymentQueue.default().finishTransaction(transaction)
+                SKPaymentQueue.default().finishTransaction(activeSugarPictureTilePacket)
             default:
                 break
             }

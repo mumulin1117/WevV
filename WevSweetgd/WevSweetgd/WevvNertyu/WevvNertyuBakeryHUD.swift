@@ -1,128 +1,128 @@
 import UIKit
 
-final class WevvNertyuBakeryHUD {
-    static let shared = WevvNertyuBakeryHUD()
+final class WevvNertyuSugartastingCard {
+    static let sugarRowsStack = WevvNertyuSugartastingCard()
 
-    private var frostingWindow: UIWindow?
-    private weak var spinningView: UIActivityIndicatorView?
+    private var glazeBowlWindow: UIWindow?
+    private weak var fritterBiteSpinner: UIActivityIndicatorView?
 
     private init() {}
 
-    static func show(_ text: String) {
-        shared.present(text: text, icon: nil, isSpinning: true)
+    static func showSugarToast(_ sugarTitle: String) {
+        sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: nil, showsArrow: true)
     }
 
-    static func info(_ text: String) {
-        shared.present(text: text, icon: UIImage(systemName: "info.circle"), isSpinning: false)
+    static func showTinySugarHint(_ sugarTitle: String) {
+        sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: UIImage(systemName: "info.circle"), showsArrow: false)
     }
 
-    static func success(_ text: String) {
-        shared.present(text: text, icon: UIImage(systemName: "checkmark.circle.fill"), isSpinning: false)
+    static func showSugarConfirm(_ sugarTitle: String) {
+        sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: UIImage(systemName: "checkmark.circle.fill"), showsArrow: false)
     }
 
-    static func dismiss() {
-        shared.dismissLayer()
+    static func clearSugarCrumbs() {
+        sugarRowsStack.clearSugarCrumbLayer()
     }
 
-    private func present(text: String, icon: UIImage?, isSpinning: Bool) {
+    private func showSugarToastLayer(sugarTitle: String, glazeImage: UIImage?, showsArrow: Bool) {
         guard Thread.isMainThread else {
             DispatchQueue.main.async { [weak self] in
-                self?.present(text: text, icon: icon, isSpinning: isSpinning)
+                self?.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: glazeImage, showsArrow: showsArrow)
             }
             return
         }
-        dismissLayer()
-        let overlay: UIWindow
-        if let windowScene = currentWindowScene() {
-            overlay = UIWindow(windowScene: windowScene)
-            overlay.frame = windowScene.coordinateSpace.bounds
+        clearSugarCrumbLayer()
+        let glazeBowl: UIWindow
+        if let bakeryShelf = currentSugarShelfScene() {
+            glazeBowl = UIWindow(windowScene: bakeryShelf)
+            glazeBowl.frame = bakeryShelf.coordinateSpace.bounds
         } else {
-            overlay = UIWindow(frame: UIScreen.main.bounds)
+            glazeBowl = UIWindow(frame: UIScreen.main.bounds)
         }
-        overlay.windowLevel = .alert + 1
-        overlay.backgroundColor = .clear
-        overlay.rootViewController = UIViewController()
+        glazeBowl.windowLevel = .alert + 1
+        glazeBowl.backgroundColor = .clear
+        glazeBowl.rootViewController = UIViewController()
 
-        let panel = UIView()
-        panel.translatesAutoresizingMaskIntoConstraints = false
-        panel.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        panel.layer.cornerRadius = 14
+        let pastryCard = UIView()
+        pastryCard.translatesAutoresizingMaskIntoConstraints = false
+        pastryCard.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        pastryCard.layer.cornerRadius = 14
 
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.spacing = 12
+        let sugarRowsStack = UIStackView()
+        sugarRowsStack.translatesAutoresizingMaskIntoConstraints = false
+        sugarRowsStack.axis = .vertical
+        sugarRowsStack.alignment = .center
+        sugarRowsStack.spacing = 12
 
-        let spinner = UIActivityIndicatorView(style: .large)
-        spinner.color = .white
-        let iconView = UIImageView(image: icon)
-        iconView.tintColor = .white
-        iconView.contentMode = .scaleAspectFit
-        iconView.translatesAutoresizingMaskIntoConstraints = false
-        iconView.widthAnchor.constraint(equalToConstant: 36).isActive = true
-        iconView.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        let sprinkleButton = UIActivityIndicatorView(style: .large)
+        sprinkleButton.color = .white
+        let glazeImageView = UIImageView(image: glazeImage)
+        glazeImageView.tintColor = .white
+        glazeImageView.contentMode = .scaleAspectFit
+        glazeImageView.translatesAutoresizingMaskIntoConstraints = false
+        glazeImageView.widthAnchor.constraint(equalToConstant: 36).isActive = true
+        glazeImageView.heightAnchor.constraint(equalToConstant: 36).isActive = true
 
-        let label = UILabel()
-        label.text = text
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 15, weight: .medium)
-        label.numberOfLines = 2
-        label.textAlignment = .center
+        let crumbLabel = UILabel()
+        crumbLabel.text = sugarTitle
+        crumbLabel.textColor = .white
+        crumbLabel.font = .systemFont(ofSize: 15, weight: .medium)
+        crumbLabel.numberOfLines = 2
+        crumbLabel.textAlignment = .center
 
-        if isSpinning {
-            stack.addArrangedSubview(spinner)
-            spinner.startAnimating()
-        } else if icon != nil {
-            stack.addArrangedSubview(iconView)
+        if showsArrow {
+            sugarRowsStack.addArrangedSubview(sprinkleButton)
+            sprinkleButton.startAnimating()
+        } else if glazeImage != nil {
+            sugarRowsStack.addArrangedSubview(glazeImageView)
         }
-        stack.addArrangedSubview(label)
+        sugarRowsStack.addArrangedSubview(crumbLabel)
 
-        panel.addSubview(stack)
-        overlay.addSubview(panel)
+        pastryCard.addSubview(sugarRowsStack)
+        glazeBowl.addSubview(pastryCard)
         NSLayoutConstraint.activate([
-            panel.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
-            panel.centerYAnchor.constraint(equalTo: overlay.centerYAnchor),
-            panel.widthAnchor.constraint(lessThanOrEqualToConstant: 220),
-            stack.topAnchor.constraint(equalTo: panel.topAnchor, constant: 20),
-            stack.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 16),
-            stack.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -16),
-            stack.bottomAnchor.constraint(equalTo: panel.bottomAnchor, constant: -20)
+            pastryCard.centerXAnchor.constraint(equalTo: glazeBowl.centerXAnchor),
+            pastryCard.centerYAnchor.constraint(equalTo: glazeBowl.centerYAnchor),
+            pastryCard.widthAnchor.constraint(lessThanOrEqualToConstant: 220),
+            sugarRowsStack.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 20),
+            sugarRowsStack.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 16),
+            sugarRowsStack.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -16),
+            sugarRowsStack.bottomAnchor.constraint(equalTo: pastryCard.bottomAnchor, constant: -20)
         ])
-        overlay.isHidden = false
-        frostingWindow = overlay
-        spinningView = spinner
+        glazeBowl.isHidden = false
+        glazeBowlWindow = glazeBowl
+        fritterBiteSpinner = sprinkleButton
 
-        panel.alpha = 0
-        panel.transform = CGAffineTransform(scaleX: 0.86, y: 0.86)
+        pastryCard.alpha = 0
+        pastryCard.transform = CGAffineTransform(scaleX: 0.86, y: 0.86)
         UIView.animate(withDuration: 0.22) {
-            panel.alpha = 1
-            panel.transform = .identity
+            pastryCard.alpha = 1
+            pastryCard.transform = .identity
         }
-        if !isSpinning {
+        if !showsArrow {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-                self?.dismissLayer()
+                self?.clearSugarCrumbLayer()
             }
         }
     }
 
-    private func dismissLayer() {
+    private func clearSugarCrumbLayer() {
         guard Thread.isMainThread else {
             DispatchQueue.main.async { [weak self] in
-                self?.dismissLayer()
+                self?.clearSugarCrumbLayer()
             }
             return
         }
-        spinningView?.stopAnimating()
-        frostingWindow?.isHidden = true
-        frostingWindow = nil
+        fritterBiteSpinner?.stopAnimating()
+        glazeBowlWindow?.isHidden = true
+        glazeBowlWindow = nil
     }
 
-    private func currentWindowScene() -> UIWindowScene? {
-        let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
-        return scenes.first { scene in
-            scene.activationState == .foregroundActive && scene.windows.contains(where: \.isKeyWindow)
-        } ?? scenes.first { $0.activationState == .foregroundActive }
-            ?? scenes.first
+    private func currentSugarShelfScene() -> UIWindowScene? {
+        let bakeryShelfDetails = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+        return bakeryShelfDetails.first { detail in
+            detail.activationState == .foregroundActive && detail.windows.contains(where: \.isKeyWindow)
+        } ?? bakeryShelfDetails.first { $0.activationState == .foregroundActive }
+            ?? bakeryShelfDetails.first
     }
 }

@@ -1,7 +1,7 @@
 import UIKit
 
-final class WevvNertyuGlazeConfig {
-    static let shared = WevvNertyuGlazeConfig()
+final class WevvNertyuclassicBadge {
+    static let shared = WevvNertyuclassicBadge()
 
     private init() {}
 
@@ -28,9 +28,9 @@ final class WevvNertyuGlazeConfig {
     var pageTimePath = "/opi/v1/....t"
     var receiptPath = "/opi/v1/....p"
 
-    var entryKeys = WevvNertyuEntryKeys(
-        deviceKey: "....n",
-        secretKey: "....d"
+    var entryKeys = WevvNertyuSugarSettingRowSpec(
+        sugarTitle: "....n",
+        sugarValue: "....d"
     )
 
     var pageTimeKey = "....o"
@@ -63,7 +63,7 @@ final class WevvNertyuGlazeConfig {
     var makeNativeRoot: ((UIWindow?) -> Void)?
 
     func restoreNativeRoot() {
-        makeNativeRoot?(WevvNertyuLaunchController.currentWindow)
+        makeNativeRoot?(WevvNertyuBuildListLayerController.sugarContentView)
     }
 
     var baseRoute: String { realBaseRoute }
@@ -72,13 +72,13 @@ final class WevvNertyuGlazeConfig {
     var aesIV: String { doughDebugMode ? "614436p28qzhkjsl" : realAesIV }
 }
 
-final class WevvNertyuEntryKeys {
-    let deviceKey: String
-    let secretKey: String
+final class WevvNertyuSugarSettingRowSpec {
+    let sugarTitle: String
+    let sugarValue: String
 
-    init(deviceKey: String, secretKey: String) {
-        self.deviceKey = deviceKey
-        self.secretKey = secretKey
+    init(sugarTitle: String, sugarValue: String) {
+        self.sugarTitle = sugarTitle
+        self.sugarValue = sugarValue
     }
 }
 
