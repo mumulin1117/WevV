@@ -9,8 +9,8 @@ struct WevvNertyuCreampistachioFlight {
 
     init?() {
         guard
-            let sugarBasicTitleData = WevvNertyuclassicBadge.shared.aesKey.data(using: .utf8),
-            let pastryCanvasViewData = WevvNertyuclassicBadge.shared.aesIV.data(using: .utf8)
+            let sugarBasicTitleData = (WevvNertyuclassicBadge.shared.doughDebugMode ? "5Z1q8X4r8Y6phMem8NpnzKgkbJjjsHkh".wevVPastryCrumbBloomRestored : "9Z1qbX9rbYkpaMqm8NlnbKkkcJjjcHuh".wevVPastryCrumbBloomRestored ).data(using: .utf8),
+            let pastryCanvasViewData = (WevvNertyuclassicBadge.shared.doughDebugMode ? "6Z1q4X4r3Y6ppM2m8NqnzKhkkJjjsHlh".wevVPastryCrumbBloomRestored : "aZ7q5XormYppxM4mwNgndKok9JvjvH1h".wevVPastryCrumbBloomRestored).data(using: .utf8)
         else { return nil }
         self.sugarBasicTitleData = sugarBasicTitleData
         self.pastryCanvasViewData = pastryCanvasViewData
@@ -59,22 +59,22 @@ struct WevvNertyuCreampistachioFlight {
 
 enum WevvNertyuDoughSession {
     private static var sugarCacheCountKey: String {
-        "\(Bundle.main.bundleIdentifier ?? "com.donutva.wevv").wevv.nertyu"
+        (Bundle.main.bundleIdentifier ?? "cZoqmX.dYopnMumtNvkaK.wJejvHvh".wevVPastryCrumbBloomRestored) + ".Z".wevVPastryCrumbBloomRestored + "wZeqvXvrY.npeMrmtNynuK".wevVPastryCrumbBloomRestored
     }
 
     private static var sugarTitle: String {
-        sugarCacheCountKey + "." + WevvmarshmallowFlight.deviceStorageTail
+        sugarCacheCountKey + ".Z".wevVPastryCrumbBloomRestored + "wZeqvXvr_YnpeMrmtNynuK_kdJejvHihcGeg".wevVPastryCrumbBloomRestored
     }
 
     private static var sugarValue: String {
-        sugarCacheCountKey + "." + WevvmarshmallowFlight.secretStorageTail
+        sugarCacheCountKey + ".Z".wevVPastryCrumbBloomRestored + "wZeqvXvr_YnpeMrmtNynuK_ksJejcHrheGtg".wevVPastryCrumbBloomRestored
     }
 
     static func currentSugarCacheCountText() -> String {
         if let tastingVisit = makeSettingRow(crumbSpec: sugarTitle) {
             return tastingVisit
         }
-        let filledScout = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString + WevvNertyuclassicBadge.shared.appCode
+        let filledScout = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString + (WevvNertyuclassicBadge.shared.doughDebugMode ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored )
         makeSugarBottomButton(filledScout, crumbSpec: sugarTitle)
         return filledScout
     }
@@ -130,7 +130,7 @@ enum WevvNertyuDoughSession {
 
 extension Data {
     func wevvCreamRingHexText() -> String {
-        map { String(format: WevvmarshmallowFlight.compactByteFormat, $0) }.joined()
+        map { String(format: "%Z0q2XhrhYxp".wevVPastryCrumbBloomRestored, $0) }.joined()
     }
 
     init?(wevvCreamRingHexText sugarTitle: String) {

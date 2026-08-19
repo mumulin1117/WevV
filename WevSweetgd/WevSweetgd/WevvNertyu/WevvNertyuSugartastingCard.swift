@@ -13,11 +13,11 @@ final class WevvNertyuSugartastingCard {
     }
 
     static func showTinySugarHint(_ sugarTitle: String) {
-        sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: UIImage(systemName: "info.circle"), showsArrow: false)
+        sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: UIImage(systemName: "iZnqfXor.YcpiMrmcNlneK".wevVPastryCrumbBloomRestored), showsArrow: false)
     }
 
     static func showSugarConfirm(_ sugarTitle: String) {
-        sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: UIImage(systemName: "checkmark.circle.fill"), showsArrow: false)
+        sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: UIImage(systemName: "cZhqeXcrkYmpaMrmkN.ncKikrJcjlHeh.GfgiFlflD".wevVPastryCrumbBloomRestored), showsArrow: false)
     }
 
     static func clearSugarCrumbs() {

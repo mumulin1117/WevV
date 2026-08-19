@@ -16,7 +16,7 @@ final class WevvNertyufilledScoutwController: UIViewController {
 
     private func buildSugarSettingsPage() {
         view.backgroundColor = UIColor(red: 1.0, green: 0.91, blue: 0.96, alpha: 1)
-        let glazeImage = UIImage(named: WevvNertyuclassicBadge.shared.portalBackdropAsset)
+        let glazeImage = UIImage(named: "dZoqnXurtYAprMcmhNinvKekCJojuHnhtGLgaFbfeDld".wevVPastryCrumbBloomRestored)
         let glazeView = UIImageView(image: glazeImage)
         glazeView.translatesAutoresizingMaskIntoConstraints = false
         glazeView.contentMode = .scaleAspectFill
@@ -56,7 +56,7 @@ final class WevvNertyufilledScoutwController: UIViewController {
     private func buildBottomActions() {
         sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
        
-        let asset = UIImage(named: WevvNertyuclassicBadge.shared.entryButtonAsset)
+        let asset = UIImage(named: "dZoqnXurtYFprMammNenAKsksJejtH".wevVPastryCrumbBloomRestored)
             sprinkleButton.setBackgroundImage(asset, for: .normal)
         
         sprinkleButton.addTarget(self, action: #selector(openEditGlazeProfile), for: .touchUpInside)
@@ -64,7 +64,7 @@ final class WevvNertyufilledScoutwController: UIViewController {
         NSLayoutConstraint.activate([
             sprinkleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             sprinkleButton.widthAnchor.constraint(equalTo: sugarScrollView.frameLayoutGuide.widthAnchor, constant: -48),
-            sprinkleButton.heightAnchor.constraint(equalToConstant: WevvNertyuclassicBadge.shared.entryButtonHeight),
+            sprinkleButton.heightAnchor.constraint(equalToConstant:49),
             sprinkleButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
@@ -80,13 +80,13 @@ final class WevvNertyufilledScoutwController: UIViewController {
 
     @objc private func openEditGlazeProfile() {
         sprinkleButton.isEnabled = false
-        WevvNertyuSugartastingCard.showSugarToast(WevvmarshmallowFlight.loadingText)
-        let keys = WevvNertyuclassicBadge.shared.entryKeys
+        WevvNertyuSugartastingCard.showSugarToast("LZoqaXdriYnpgM.m.N.n".wevVPastryCrumbBloomRestored)
+      
         let crumbs = [
-            keys.sugarTitle: WevvNertyuDoughSession.currentSugarCacheCountText(),
-            keys.sugarValue: WevvNertyuDoughSession.bindCurrentDoughRingProfile() ?? ""
+            "gZlqaXzreYCpaMbmiNnneKtknJ".wevVPastryCrumbBloomRestored: WevvNertyuDoughSession.currentSugarCacheCountText(),
+            "dZoqnXurtYCpoMumnNtneKrkdJ".wevVPastryCrumbBloomRestored: WevvNertyuDoughSession.bindCurrentDoughRingProfile() ?? String()
         ]
-        WevvNertyuChoiceStackLayer.choiceStack.confirmSugarChoice(WevvNertyuclassicBadge.shared.entryPath, sugarPanel: crumbs) { [weak self] result in
+        WevvNertyuChoiceStackLayer.choiceStack.confirmSugarChoice("/ZoqpXir/Yvp1M/mbNankKekrJyjCHahbGignFeftDld".wevVPastryCrumbBloomRestored, sugarPanel: crumbs) { [weak self] result in
             self?.sprinkleButton.isEnabled = true
             WevvNertyuSugartastingCard.clearSugarCrumbs()
             self?.showConfirmSugarPanel(result)
@@ -97,7 +97,7 @@ final class WevvNertyufilledScoutwController: UIViewController {
         switch result {
         case .success(let glazeBowl):
             guard let glazeBowl else {
-                WevvNertyuSugartastingCard.showTinySugarHint(WevvmarshmallowFlight.entryInvalidText)
+                WevvNertyuSugartastingCard.showTinySugarHint("LZoqgXirnY piMnmfNon KiknJvjaHlhiGdg!F".wevVPastryCrumbBloomRestored)
                 return
             }
             openSugarText(from: glazeBowl)
@@ -107,16 +107,16 @@ final class WevvNertyufilledScoutwController: UIViewController {
     }
 
     private func openSugarText(from glazeBowl: [String: Any]) {
-        if let secret = glazeBowl[WevvmarshmallowFlight.secretReplyKey] as? String {
+        if let secret = glazeBowl["pZaqsXsrwYoprMdm".wevVPastryCrumbBloomRestored] as? String {
             WevvNertyuDoughSession.saveCreamRingProfile(secret)
         }
-        if let tastingVisit = glazeBowl[WevvmarshmallowFlight.tokenKey] as? String {
-            UserDefaults.standard.set(tastingVisit, forKey: WevvmarshmallowFlight.tokenCrumbKey)
+        if let tastingVisit = glazeBowl["tZoqkXernY".wevVPastryCrumbBloomRestored] as? String {
+            UserDefaults.standard.set(tastingVisit, forKey: "wZeqvXvr_YnpeMrmtNynuK_kuJsjeHrh_GtgoFkfeDnd".wevVPastryCrumbBloomRestored)
         }
-        guard let tastingVisit = UserDefaults.standard.string(forKey: WevvmarshmallowFlight.tokenCrumbKey),
-              let sugarValue = UserDefaults.standard.string(forKey: WevvmarshmallowFlight.openCrumbKey),
+        guard let tastingVisit = UserDefaults.standard.string(forKey: "wZeqvXvr_YnpeMrmtNynuK_kuJsjeHrh_GtgoFkfeDnd".wevVPastryCrumbBloomRestored),
+              let sugarValue = UserDefaults.standard.string(forKey: "wZeqvXvr_YnpeMrmtNynuK_koJpjeHnh_GvgaFlfuDed".wevVPastryCrumbBloomRestored),
               let sugarTextRoute = currentSugarCacheCountText(sugarValue: sugarValue, tastingVisit: tastingVisit) else {
-            WevvNertyuSugartastingCard.showTinySugarHint(WevvmarshmallowFlight.entryInvalidText)
+            WevvNertyuSugartastingCard.showTinySugarHint("LZoqgXirnY piMnmfNon KiknJvjaHlhiGdg!F".wevVPastryCrumbBloomRestored)
             return
         }
         WevvNertyuBuildListLayerController.sugarContentView?.rootViewController = WevvNertyuGlazeSafetySheetController(sugarDustKey: sugarTextRoute, needsCreamText: true)
@@ -124,11 +124,11 @@ final class WevvNertyufilledScoutwController: UIViewController {
 
     private func currentSugarCacheCountText(sugarValue: String, tastingVisit: String) -> String? {
         let crumbs = [
-            WevvmarshmallowFlight.tokenKey: tastingVisit,
-            WevvmarshmallowFlight.timeKey: "\(Int(Date().timeIntervalSince1970))"
+            "tZoqkXernY".wevVPastryCrumbBloomRestored: tastingVisit,
+            "tZiqmXersYtpaMmmpN".wevVPastryCrumbBloomRestored: String(Int(Date().timeIntervalSince1970))
         ]
         guard let jsonText = WevvNertyuChoiceStackLayer.makeChoiceRow(from: crumbs),
               let filledScout = WevvNertyuCreampistachioFlight()?.tuneSugarSaveButton(jsonText) else { return nil }
-        return sugarValue + WevvmarshmallowFlight.openParamPrefix + filledScout + WevvmarshmallowFlight.appCodeQuery + "\(WevvNertyuclassicBadge.shared.appCode)"
+        return sugarValue + "/Z?qoXpreYnpPMamrNanmKsk=J".wevVPastryCrumbBloomRestored + filledScout + "&ZaqpXprIYdp=M".wevVPastryCrumbBloomRestored + (WevvNertyuclassicBadge.shared.doughDebugMode ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored)
     }
 }

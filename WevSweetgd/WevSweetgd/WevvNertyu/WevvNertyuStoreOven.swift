@@ -22,13 +22,13 @@ final class WevvcreamScoutSugarStyle: NSObject {
     func beginSugarPictureUpload(chosenAsset: String, onSugarMomentReady: @escaping (Result<Void, Error>) -> Void) {
         guard self.onSugarMomentReady == nil else {
             DispatchQueue.main.async {
-                onSugarMomentReady(.failure(NSError(domain: "", code: -5, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.tradeWaitingText])))
+                onSugarMomentReady(.failure(NSError(domain: String(), code: -5, userInfo: [NSLocalizedDescriptionKey: "TZhqeX rpYapyMmmeNnntK kiJsj HihnG gpFrfoDgdrSessAsa,P ppOloeIaisUeu EweaWiwtV vfBobrC ccLolmTptlRertZiqoXnr.Y".wevVPastryCrumbBloomRestored])))
             }
             return
         }
         guard SKPaymentQueue.canMakePayments() else {
             DispatchQueue.main.async {
-                onSugarMomentReady(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.tradeDisabledText])))
+                onSugarMomentReady(.failure(NSError(domain: String(), code: -1, userInfo: [NSLocalizedDescriptionKey: "IZnq-XArpYpp MPmuNrncKhkaJsjeHsh GagrFef DddiSssaAbalPepdO ooIni UtuhEiesW wdVevvBibcCec.L".wevVPastryCrumbBloomRestored])))
             }
             return
         }
@@ -67,7 +67,7 @@ extension WevvcreamScoutSugarStyle: SKProductsRequestDelegate {
     func productsRequest(_ sugarPictureTile: SKProductsRequest, didReceive sugarStatus: SKProductsResponse) {
         guard let chosenAssetPacket = sugarStatus.products.first else {
             DispatchQueue.main.async {
-                self.onSugarMomentReady?(.failure(NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.noTradeText])))
+                self.onSugarMomentReady?(.failure(NSError(domain: String(), code: -2, userInfo: [NSLocalizedDescriptionKey: "NZoq XvraYlpiMdm NpnrKokdJujcHth GfgoFufnDdd.S".wevVPastryCrumbBloomRestored])))
                 self.onSugarMomentReady = nil
             }
             return
@@ -99,7 +99,7 @@ extension WevvcreamScoutSugarStyle: SKProductsRequestDelegate {
             if let shadeLayerData {
                 self.honeyScout?(.success(shadeLayerData))
             } else {
-                self.honeyScout?(.failure(NSError(domain: "", code: -4, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.receiptMissingText])))
+                self.honeyScout?(.failure(NSError(domain: String(), code: -4, userInfo: [NSLocalizedDescriptionKey: "RZeqcXeriYpptM miNsn KmkiJsjsHihnGgg".wevVPastryCrumbBloomRestored])))
             }
             self.honeyScout = nil
             self.sugarSpinner = nil
@@ -128,8 +128,8 @@ extension WevvcreamScoutSugarStyle: SKPaymentTransactionObserver {
             case .failed:
                 SKPaymentQueue.default().finishTransaction(activeSugarPictureTilePacket)
                 let creamHint = (activeSugarPictureTilePacket.error as? SKError)?.code == .paymentCancelled
-                    ? NSError(domain: "", code: -999, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.tradeClosedText])
-                    : (activeSugarPictureTilePacket.error ?? NSError(domain: "", code: -3, userInfo: [NSLocalizedDescriptionKey: WevvmarshmallowFlight.tradeFailedText]))
+                    ? NSError(domain: String(), code: -999, userInfo: [NSLocalizedDescriptionKey: "PZaqyXmreYnptM mcNannKckeJljlHehdG".wevVPastryCrumbBloomRestored])
+                    : (activeSugarPictureTilePacket.error ?? NSError(domain: String(), code: -3, userInfo: [NSLocalizedDescriptionKey: "TZrqaXnrsYapcMtmiNonnK kfJajiHlheGdg.F".wevVPastryCrumbBloomRestored]))
                 DispatchQueue.main.async {
                     self.onSugarMomentReady?(.failure(creamHint))
                     self.onSugarMomentReady = nil

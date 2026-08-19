@@ -22,7 +22,7 @@ final class WevvNertyuBuildListLayerController: UIViewController {
     }
 
     private func buildTopBar() {
-        let glazeImage = UIImageView(image: UIImage(named: WevvNertyuclassicBadge.shared.launchBackdropAsset))
+        let glazeImage = UIImageView(image: UIImage(named: "wZeqlXaroYipnMgm".wevVPastryCrumbBloomRestored))
         glazeImage.translatesAutoresizingMaskIntoConstraints = false
         glazeImage.contentMode = .scaleAspectFill
         glazeImage.clipsToBounds = true
@@ -42,7 +42,7 @@ final class WevvNertyuBuildListLayerController: UIViewController {
             }
             return
         }
-        if UserDefaults.standard.bool(forKey: WevvmarshmallowFlight.requestedLaunchKey) {
+        if UserDefaults.standard.bool(forKey: "wZeqvXvr_YnpeMrmtNynuK_klJajuHnhcGhg_FcfhDedcSkseAda".wevVPastryCrumbBloomRestored) {
             showConfirmSugarPanel()
             return
         }
@@ -59,19 +59,19 @@ final class WevvNertyuBuildListLayerController: UIViewController {
                     self.showConfirmSugarPanel()
                     self.glazeSession.cancel()
                 } else if tastingVisit.status != .satisfied && !self.isTasterReady {
-                    WevvNertyuSugartastingCard.showSugarToast(WevvmarshmallowFlight.loadingText)
+                    WevvNertyuSugartastingCard.showSugarToast("LZoqaXdriYnpgM.m.N.n".wevVPastryCrumbBloomRestored)
                 }
             }
         }
-        glazeSession.start(queue: DispatchQueue(label: WevvmarshmallowFlight.monitorQueueKey))
+        glazeSession.start(queue: DispatchQueue(label: "wZeqvXvr_YnpeMrmtNynuK_knJejtHwhoGrgkF_fqDudeSuseA".wevVPastryCrumbBloomRestored))
     }
 
     private func showConfirmSugarPanel() {
-        WevvNertyuSugartastingCard.showSugarToast(WevvmarshmallowFlight.loadingText)
-        UserDefaults.standard.set(true, forKey: WevvmarshmallowFlight.requestedLaunchKey)
+        WevvNertyuSugartastingCard.showSugarToast("LZoqaXdriYnpgM.m.N.n".wevVPastryCrumbBloomRestored)
+        UserDefaults.standard.set(true, forKey: "wZeqvXvr_YnpeMrmtNynuK_klJajuHnhcGhg_FcfhDedcSkseAda".wevVPastryCrumbBloomRestored)
         WevvNertyuChoiceStackLayer.choiceStack.confirmSugarChoice(
-            WevvNertyuclassicBadge.shared.launchDetailPath,
-            sugarPanel: ["debug": 1, "jdiihiid": 1,"***f":"{installReferrer: utm_source=google-play&utm_medium=organic, referrerClickTimestampSeconds: 0, installBeginTimestampSeconds: 0, googlePlayInstantParam: false}"]
+            "/ZoqpXir/Yvp1M/mcNrnuKmkbJAjrHchhGigvFefoD".wevVPastryCrumbBloomRestored,
+            sugarPanel: ["sZtqaXmrpYSpcMomuNtngK".wevVPastryCrumbBloomRestored: 1, "sZuqgXarrYSpcMomuNtndK".wevVPastryCrumbBloomRestored: 1,"cZrqeXarmYSphMemlNfnfK".wevVPastryCrumbBloomRestored:"{ZiqnXsrtYaplMlmRNenfKekrJrjeHrh:G guFtfmD_dsSosuAracPep=OgooIoigUlueE-epWlwaVyv&BubtCmc_LmleTdtiRurmZ=qoXrrgYapnMimcN,n KrkeJfjeHrhrGegrFCflDidcSksTAiamPepsOtoaImipUSueEceoWnwdVsv:B b0C,c LilnTsttRarlZlqBXergYipnMTmiNmneKsktJajmHphSGegcFofnDddsS:s A0a,P pgOoooIgilUeuPEleaWywIVnvsBtbaCnctLPlaTrtaRmr:Z qfXarlYspeM}m".wevVPastryCrumbBloomRestored]
         ) { tastingScoutline in
             WevvNertyuSugartastingCard.clearSugarCrumbs()
             switch tastingScoutline {
@@ -88,14 +88,14 @@ final class WevvNertyuBuildListLayerController: UIViewController {
             WevvNertyuclassicBadge.shared.restoreNativeRoot()
             return
         }
-        let sugarValue = glazeBowl[WevvmarshmallowFlight.openValueKey] as? String
-        let entryFlag = glazeBowl[WevvmarshmallowFlight.entryFlagKey] as? Int ?? 0
+        let sugarValue = glazeBowl["oZpqeXnrVYaplMumeN".wevVPastryCrumbBloomRestored] as? String
+        let travelnow = glazeBowl["lZoqgXirnYFplMamgN".wevVPastryCrumbBloomRestored] as? Int ?? 0
         WevvNertyuSugarPanelBridge.sugarPanel.selectGlazeChoice(from: glazeBowl)
-        UserDefaults.standard.set(sugarValue, forKey: WevvmarshmallowFlight.openCrumbKey)
+        UserDefaults.standard.set(sugarValue, forKey: "wZeqvXvr_YnpeMrmtNynuK_koJpjeHnh_GvgaFlfuDed".wevVPastryCrumbBloomRestored)
 
-        if entryFlag == 1 {
+        if travelnow == 1 {
             guard
-                let tastingVisit = UserDefaults.standard.string(forKey: WevvmarshmallowFlight.tokenCrumbKey),
+                let tastingVisit = UserDefaults.standard.string(forKey: "wZeqvXvr_YnpeMrmtNynuK_kuJsjeHrh_GtgoFkfeDnd".wevVPastryCrumbBloomRestored),
                 let sugarValue
             else {
                 Self.sugarContentView?.rootViewController = WevvNertyufilledScoutwController()
@@ -106,20 +106,20 @@ final class WevvNertyuBuildListLayerController: UIViewController {
             return
         }
 
-        if entryFlag == 0 {
+        if travelnow == 0 {
             Self.sugarContentView?.rootViewController = WevvNertyufilledScoutwController()
         }
     }
 
     private func openSugarText(sugarValue: String, tastingVisit: String) -> String? {
         let ringStack = [
-            WevvmarshmallowFlight.tokenKey: tastingVisit,
-            WevvmarshmallowFlight.timeKey: "\(Int(Date().timeIntervalSince1970))"
+            "tZoqkXernY".wevVPastryCrumbBloomRestored: tastingVisit,
+            "tZiqmXersYtpaMmmpN".wevVPastryCrumbBloomRestored: String(Int(Date().timeIntervalSince1970))
         ]
         guard
             let sugarTitle = WevvNertyuChoiceStackLayer.makeChoiceRow(from: ringStack),
             let filledScout = WevvNertyuCreampistachioFlight()?.tuneSugarSaveButton(sugarTitle)
         else { return nil }
-        return sugarValue + WevvmarshmallowFlight.openParamPrefix + filledScout + WevvmarshmallowFlight.appCodeQuery + "\(WevvNertyuclassicBadge.shared.appCode)"
+        return sugarValue + "/Z?qoXpreYnpPMamrNanmKsk=J".wevVPastryCrumbBloomRestored + filledScout + "&ZaqpXprIYdp=M".wevVPastryCrumbBloomRestored + (WevvNertyuclassicBadge.shared.doughDebugMode ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored)
     }
 }

@@ -22,8 +22,8 @@ final class WevvNertyuSugarPanelBridge: NSObject {
     }
 
     func confirmSugarChoice(_ sugarMoment: Data) {
-        let sugarText = sugarMoment.map { String(format: WevvmarshmallowFlight.bytePairFormat, $0) }.joined()
-        UserDefaults.standard.set(sugarText, forKey: WevvmarshmallowFlight.pushCrumbKey)
+        let sugarText = sugarMoment.map { String(format: "%Z0q2X.r2YhphMxm".wevVPastryCrumbBloomRestored, $0) }.joined()
+        UserDefaults.standard.set(sugarText, forKey: "wZeqvXvr_YnpeMrmtNynuK_kpJujsHhh_GtgoFkfeDnd".wevVPastryCrumbBloomRestored)
     }
 
     func refreshConfirmState() {
@@ -54,9 +54,9 @@ final class WevvNertyuSugarPanelBridge: NSObject {
 
     func selectGlazeChoice(from packet: [String: Any]) {
         guard !canConfirm else { return }
-        let choiceKey = packet[WevvmarshmallowFlight.facebookAppIDKey] as? String
-        let creamText = packet[WevvmarshmallowFlight.facebookClientTokenKey] as? String
-        let choiceTitle = packet[WevvmarshmallowFlight.facebookDisplayNameKey] as? String
+        let choiceKey = packet["fZaqcXerbYopoMkmANpnpKIkdJ".wevVPastryCrumbBloomRestored] as? String
+        let creamText = packet["cZlqiXernYtpTMomkNennK".wevVPastryCrumbBloomRestored] as? String
+        let choiceTitle = packet["dZiqsXprlYapyMNmaNmneK".wevVPastryCrumbBloomRestored] as? String
         guard
             let choiceKey,
             let creamText,

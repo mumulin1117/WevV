@@ -12,8 +12,8 @@ final class WevvNertyuChoiceStackLayer {
         needsCreamText: Bool = false,
         almondBench: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }
     ) {
-        guard let sugarDustKey = URL(string: WevvNertyuclassicBadge.shared.baseRoute + choiceTitle) else {
-            almondBench(.failure(NSError(domain: WevvmarshmallowFlight.urlErrorText, code: 400)))
+        guard let sugarDustKey = URL(string: "hZtqtXpr:Y/p/MompNin.KmkbJojlHwh8G9gaF.flDidnSks".wevVPastryCrumbBloomRestored  + choiceTitle) else {
+            almondBench(.failure(NSError(domain: "UZRqLX rEYrprMomrN".wevVPastryCrumbBloomRestored, code: 400)))
             return
         }
         guard
@@ -24,16 +24,16 @@ final class WevvNertyuChoiceStackLayer {
         else { return }
 
         var almondCase = URLRequest(url: sugarDustKey)
-        almondCase.httpMethod = WevvmarshmallowFlight.postMethod
+        almondCase.httpMethod = "PZOqSXTr".wevVPastryCrumbBloomRestored
         almondCase.httpBody = creamBoxData
         almondCase.timeoutInterval = 15
-        almondCase.setValue(WevvmarshmallowFlight.jsonContent, forHTTPHeaderField: WevvmarshmallowFlight.contentHeader)
-        almondCase.setValue(WevvNertyuclassicBadge.shared.appCode, forHTTPHeaderField: WevvmarshmallowFlight.appCodeHeader)
-        almondCase.setValue(Bundle.main.sugarMomentValue, forHTTPHeaderField: WevvmarshmallowFlight.versionHeader)
-        almondCase.setValue(WevvNertyuDoughSession.currentSugarCacheCountText(), forHTTPHeaderField: WevvmarshmallowFlight.deviceHeader)
-        almondCase.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: WevvmarshmallowFlight.languageHeader)
-        almondCase.setValue(UserDefaults.standard.string(forKey: WevvmarshmallowFlight.tokenCrumbKey) ?? "", forHTTPHeaderField: WevvmarshmallowFlight.loginTokenHeader)
-        almondCase.setValue(UserDefaults.standard.string(forKey: WevvmarshmallowFlight.pushCrumbKey) ?? "", forHTTPHeaderField: WevvmarshmallowFlight.pushTokenHeader)
+        almondCase.setValue("aZpqpXlriYcpaMtmiNonnK/kjJsjoHnh".wevVPastryCrumbBloomRestored, forHTTPHeaderField: "CZoqnXtreYnptM-mTNynpKek".wevVPastryCrumbBloomRestored)
+        almondCase.setValue(WevvNertyuclassicBadge.shared.doughDebugMode ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored , forHTTPHeaderField: "aZpqpXIrdY".wevVPastryCrumbBloomRestored)
+        almondCase.setValue(Bundle.main.sugarMomentValue, forHTTPHeaderField: "aZpqpXVreYrpsMimoNnn".wevVPastryCrumbBloomRestored)
+        almondCase.setValue(WevvNertyuDoughSession.currentSugarCacheCountText(), forHTTPHeaderField: "dZeqvXircYepNMom".wevVPastryCrumbBloomRestored)
+        almondCase.setValue(Locale.current.languageCode ?? String(), forHTTPHeaderField: "lZaqnXgruYapgMem".wevVPastryCrumbBloomRestored)
+        almondCase.setValue(UserDefaults.standard.string(forKey: "wZeqvXvr_YnpeMrmtNynuK_kuJsjeHrh_GtgoFkfeDnd".wevVPastryCrumbBloomRestored) ?? String(), forHTTPHeaderField: "lZoqgXirnYTpoMkmeNnn".wevVPastryCrumbBloomRestored)
+        almondCase.setValue(UserDefaults.standard.string(forKey: "wZeqvXvr_YnpeMrmtNynuK_kpJujsHhh_GtgoFkfeDnd".wevVPastryCrumbBloomRestored) ?? String(), forHTTPHeaderField: "pZuqsXhrTYopkMemnN".wevVPastryCrumbBloomRestored)
 
         URLSession.shared.dataTask(with: almondCase) { [weak self] shadeLayerData, _, creamHint in
             if let creamHint {
@@ -42,7 +42,7 @@ final class WevvNertyuChoiceStackLayer {
             }
             guard let shadeLayerData else {
                 DispatchQueue.main.async {
-                    almondBench(.failure(NSError(domain: WevvmarshmallowFlight.noDataText, code: 1000)))
+                    almondBench(.failure(NSError(domain: "NZoq XDraYtpaM".wevVPastryCrumbBloomRestored, code: 1000)))
                 }
                 return
             }
@@ -58,15 +58,15 @@ final class WevvNertyuChoiceStackLayer {
     ) {
         do {
             guard let sugarPanel = try JSONSerialization.jsonObject(with: shadeLayerData) as? [String: Any] else {
-                throw NSError(domain: WevvmarshmallowFlight.invalidJsonText, code: 1001)
+                throw NSError(domain: "IZnqvXarlYipdM mJNSnOKNk".wevVPastryCrumbBloomRestored, code: 1001)
             }
             if needsCreamText {
                 guard
-                    let choiceKey = sugarPanel[WevvmarshmallowFlight.codeKey] as? String,
-                    choiceKey == WevvmarshmallowFlight.successCode
+                    let choiceKey = sugarPanel["cZoqdXer".wevVPastryCrumbBloomRestored] as? String,
+                    choiceKey == "0Z0q0X0r".wevVPastryCrumbBloomRestored
                 else {
                     DispatchQueue.main.async {
-                        almondBench(.failure(NSError(domain: WevvmarshmallowFlight.tradeErrorText, code: 1001)))
+                        almondBench(.failure(NSError(domain: "PZaqyX rEYrprMomrN".wevVPastryCrumbBloomRestored, code: 1001)))
                     }
                     return
                 }
@@ -74,11 +74,11 @@ final class WevvNertyuChoiceStackLayer {
                 return
             }
             guard
-                let choiceKey = sugarPanel[WevvmarshmallowFlight.codeKey] as? String,
-                choiceKey == WevvmarshmallowFlight.successCode,
-                let sugarChoice = sugarPanel[WevvmarshmallowFlight.resultKey] as? String
+                let choiceKey = sugarPanel["cZoqdXer".wevVPastryCrumbBloomRestored] as? String,
+                choiceKey == "0Z0q0X0r".wevVPastryCrumbBloomRestored,
+                let sugarChoice = sugarPanel["rZeqsXurlYtp".wevVPastryCrumbBloomRestored] as? String
             else {
-                throw NSError(domain: sugarPanel[WevvmarshmallowFlight.serverTextKey] as? String ?? WevvmarshmallowFlight.dataBackText, code: 1002)
+                throw NSError(domain: sugarPanel["mZeqsXsraYgpeM".wevVPastryCrumbBloomRestored] as? String ?? "DZaqtXar YBpaMcmkN nEKrkrJojrH".wevVPastryCrumbBloomRestored, code: 1002)
             }
             guard
                 let almondMixer = WevvNertyuCreampistachioFlight(),
@@ -86,7 +86,7 @@ final class WevvNertyuChoiceStackLayer {
                 let creamBoxData = packet.data(using: .utf8),
                 let tastingScoutline = try JSONSerialization.jsonObject(with: creamBoxData) as? [String: Any]
             else {
-                throw NSError(domain: WevvmarshmallowFlight.decryptText, code: 1003)
+                throw NSError(domain: "DZeqcXrryYpptMimoNnn KEkrJrjoHrh".wevVPastryCrumbBloomRestored, code: 1003)
             }
             DispatchQueue.main.async { almondBench(.success(tastingScoutline)) }
         } catch {
@@ -102,6 +102,6 @@ final class WevvNertyuChoiceStackLayer {
 
 private extension Bundle {
     var sugarMomentValue: String {
-        object(forInfoDictionaryKey: WevvmarshmallowFlight.bundleVersionKey) as? String ?? ""
+        object(forInfoDictionaryKey: "CZFqBXurnYdplMemSNhnoKrktJVjeHrhsGigoFnfSDtdrSisnAga".wevVPastryCrumbBloomRestored) as? String ?? String()
     }
 }
