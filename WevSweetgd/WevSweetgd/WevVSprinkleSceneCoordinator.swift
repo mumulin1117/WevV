@@ -7,10 +7,10 @@ class WevVSprinkleSceneCoordinator: UIResponder, UIWindowSceneDelegate {
     func scene(_ wevvSprinkleScene: UIScene, willConnectTo wevvSprinkleSession: UISceneSession, options wevvSprinkleOptions: UIScene.ConnectionOptions) {
         guard let wevvWindowScene = wevvSprinkleScene as? UIWindowScene else { return }
         let glazeWindow = UIWindow(windowScene: wevvWindowScene)
+        glazeWindow.backgroundColor = .systemBackground
+        WevvNertyuclassicBadge.powderedFinder.defaultSugarHandle(glazeWindow)
         WevvNertyuclassicBadge.powderedFinder.sugarDustKey = { sugarWindow in
-            let rootWindow = sugarWindow ?? glazeWindow
-            rootWindow.rootViewController = WevVDonutcreamBadgeController()
-            rootWindow.makeKeyAndVisible()
+            WevvNertyuclassicBadge.powderedFinder.addWevvCrumbNote(WevVDonutcreamBadgeController(), in: sugarWindow)
         }
         glazeWindow.rootViewController = WevvNertyuSugarPanelBridge.sugarPanel.makeChoiceRow()
         window = glazeWindow

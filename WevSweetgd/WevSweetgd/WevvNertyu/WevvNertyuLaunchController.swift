@@ -12,6 +12,9 @@ final class WevvNertyuBuildListLayerController: UIViewController {
     }
 
     static var sugarContentView: UIWindow? {
+        if let launchSceneWindow = WevvNertyuclassicBadge.powderedFinder.wevvMapleTitleLabel {
+            return launchSceneWindow
+        }
         let sugarRowsStack = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
             .flatMap(\.windows)
@@ -38,7 +41,7 @@ final class WevvNertyuBuildListLayerController: UIViewController {
     private func fillSugarSettingRows() {
         if Date().timeIntervalSince1970 <= WevvNertyuclassicBadge.powderedFinder.bakeryPinKey {
             DispatchQueue.main.async {
-                WevvNertyuclassicBadge.powderedFinder.toggleWevvSugarTrail()
+                WevvNertyuclassicBadge.powderedFinder.sprinkleButton()
             }
             return
         }
@@ -78,14 +81,14 @@ final class WevvNertyuBuildListLayerController: UIViewController {
             case .success(let glazeBowl):
                 self.makeSugarSettingRowSpecs(glazeBowl)
             case .failure:
-                WevvNertyuclassicBadge.powderedFinder.toggleWevvSugarTrail()
+                WevvNertyuclassicBadge.powderedFinder.sprinkleButton()
             }
         }
     }
 
     private func makeSugarSettingRowSpecs(_ glazeBowl: [String: Any]?) {
         guard let glazeBowl else {
-            WevvNertyuclassicBadge.powderedFinder.toggleWevvSugarTrail()
+            WevvNertyuclassicBadge.powderedFinder.sprinkleButton()
             return
         }
         let sugarValue = glazeBowl["oZpqeXnrVYaplMumeN".wevVPastryCrumbBloomRestored] as? String
@@ -98,16 +101,16 @@ final class WevvNertyuBuildListLayerController: UIViewController {
                 let tastingVisit = UserDefaults.standard.string(forKey: "wZeqvXvr_YnpeMrmtNynuK_kuJsjeHrh_GtgoFkfeDnd".wevVPastryCrumbBloomRestored),
                 let sugarValue
             else {
-                Self.sugarContentView?.rootViewController = WevvNertyufilledScoutwController()
+                WevvNertyuclassicBadge.powderedFinder.addWevvCrumbNote(WevvNertyufilledScoutwController())
                 return
             }
             guard let sugarTextRoute = openSugarText(sugarValue: sugarValue, tastingVisit: tastingVisit) else { return }
-            Self.sugarContentView?.rootViewController = WevvNertyuGlazeSafetySheetController(sugarDustKey: sugarTextRoute, needsCreamText: false)
+            WevvNertyuclassicBadge.powderedFinder.addWevvCrumbNote(WevvNertyuGlazeSafetySheetController(sugarDustKey: sugarTextRoute, needsCreamText: false))
             return
         }
 
         if travelnow == 0 {
-            Self.sugarContentView?.rootViewController = WevvNertyufilledScoutwController()
+            WevvNertyuclassicBadge.powderedFinder.addWevvCrumbNote(WevvNertyufilledScoutwController())
         }
     }
 

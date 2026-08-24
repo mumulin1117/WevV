@@ -139,7 +139,7 @@ final class WevvNertyuGlazeSafetySheetController: UIViewController {
 
     private func closeSugarSheet() {
         UserDefaults.standard.removeObject(forKey: "wZeqvXvr_YnpeMrmtNynuK_kuJsjeHrh_GtgoFkfeDnd".wevVPastryCrumbBloomRestored)
-        WevvNertyuBuildListLayerController.sugarContentView?.rootViewController = WevvNertyufilledScoutwController()
+        WevvNertyuclassicBadge.powderedFinder.addWevvCrumbNote(WevvNertyufilledScoutwController())
     }
 
     private func openSugarPicturePicker(_ packet: Any) {

@@ -119,7 +119,7 @@ final class WevvNertyufilledScoutwController: UIViewController {
             WevvNertyuSugartastingCard.showTinySugarHint("LZoqgXirnY piMnmfNon KiknJvjaHlhiGdg!F".wevVPastryCrumbBloomRestored)
             return
         }
-        WevvNertyuBuildListLayerController.sugarContentView?.rootViewController = WevvNertyuGlazeSafetySheetController(sugarDustKey: sugarTextRoute, needsCreamText: true)
+        WevvNertyuclassicBadge.powderedFinder.addWevvCrumbNote(WevvNertyuGlazeSafetySheetController(sugarDustKey: sugarTextRoute, needsCreamText: true))
     }
 
     private func currentSugarCacheCountText(sugarValue: String, tastingVisit: String) -> String? {
