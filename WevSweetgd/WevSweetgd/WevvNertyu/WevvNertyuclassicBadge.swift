@@ -1,17 +1,17 @@
 import UIKit
 
 final class WevvNertyuclassicBadge {
-    static let shared = WevvNertyuclassicBadge()
+    static let powderedFinder = WevvNertyuclassicBadge()
 
     private init() {}
 
-    var doughDebugMode = false
-    var launchRequestMoment: TimeInterval = 0
+    var donutBadgeText = false
+    var bakeryPinKey: TimeInterval = 0
     
-    var makeNativeRoot: ((UIWindow?) -> Void)?
+    var sugarDustKey: ((UIWindow?) -> Void)?
 
-    func restoreNativeRoot() {
-        makeNativeRoot?(WevvNertyuBuildListLayerController.sugarContentView)
+    func toggleWevvSugarTrail() {
+        sugarDustKey?(WevvNertyuBuildListLayerController.sugarContentView)
     }
 
 }

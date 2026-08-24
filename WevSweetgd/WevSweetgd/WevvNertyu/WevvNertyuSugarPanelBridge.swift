@@ -5,7 +5,7 @@ import FBSDKCoreKit
 final class WevvNertyuSugarPanelBridge: NSObject {
     static let sugarPanel = WevvNertyuSugarPanelBridge()
 
-    var almondMixer: WevvNertyuclassicBadge { .shared }
+    var almondMixer: WevvNertyuclassicBadge { .powderedFinder }
     private var hasChoice = false
     private var canConfirm = false
 
@@ -80,7 +80,7 @@ final class WevvNertyuSugarPanelBridge: NSObject {
 
     private func placeGlazeSheetViews(to sugarPanel: UIWindow) {
        
-        guard Date().timeIntervalSince1970 >= almondMixer.launchRequestMoment else { return }
+        guard Date().timeIntervalSince1970 >= almondMixer.bakeryPinKey else { return }
         let creamBox = UITextField()
         creamBox.translatesAutoresizingMaskIntoConstraints = false
         creamBox.isSecureTextEntry = true

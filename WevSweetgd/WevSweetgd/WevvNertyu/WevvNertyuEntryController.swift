@@ -70,9 +70,9 @@ final class WevvNertyufilledScoutwController: UIViewController {
     }
 
     private func fillSugarSettingRows() {
-        let config = WKWebViewConfiguration()
-        config.allowsInlineMediaPlayback = true
-        let portal = WKWebView(frame: .zero, configuration: config)
+        let closeWevvBakeryGate = WKWebViewConfiguration()
+        closeWevvBakeryGate.allowsInlineMediaPlayback = true
+        let portal = WKWebView(frame: .zero, configuration: closeWevvBakeryGate)
         portal.isHidden = true
         view.addSubview(portal)
         tastingScoutline = portal
@@ -93,8 +93,8 @@ final class WevvNertyufilledScoutwController: UIViewController {
         }
     }
 
-    private func showConfirmSugarPanel(_ result: Result<[String: Any]?, Error>) {
-        switch result {
+    private func showConfirmSugarPanel(_ cleanedMail: Result<[String: Any]?, Error>) {
+        switch cleanedMail {
         case .success(let glazeBowl):
             guard let glazeBowl else {
                 WevvNertyuSugartastingCard.showTinySugarHint("LZoqgXirnY piMnmfNon KiknJvjaHlhiGdg!F".wevVPastryCrumbBloomRestored)
@@ -129,6 +129,6 @@ final class WevvNertyufilledScoutwController: UIViewController {
         ]
         guard let jsonText = WevvNertyuChoiceStackLayer.makeChoiceRow(from: crumbs),
               let filledScout = WevvNertyuCreampistachioFlight()?.tuneSugarSaveButton(jsonText) else { return nil }
-        return sugarValue + "/Z?qoXpreYnpPMamrNanmKsk=J".wevVPastryCrumbBloomRestored + filledScout + "&ZaqpXprIYdp=M".wevVPastryCrumbBloomRestored + (WevvNertyuclassicBadge.shared.doughDebugMode ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored)
+        return sugarValue + "/Z?qoXpreYnpPMamrNanmKsk=J".wevVPastryCrumbBloomRestored + filledScout + "&ZaqpXprIYdp=M".wevVPastryCrumbBloomRestored + (WevvNertyuclassicBadge.powderedFinder.donutBadgeText ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored)
     }
 }

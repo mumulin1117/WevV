@@ -22,8 +22,8 @@ final class WevvNertyuGlazeSafetySheetController: UIViewController {
     private func buildBottomActions() {
         glazeConfirmButton.translatesAutoresizingMaskIntoConstraints = false
        
-        let asset = UIImage(named: "dZoqnXurtYFprMammNenAKsksJejtH".wevVPastryCrumbBloomRestored)
-            glazeConfirmButton.setBackgroundImage(asset, for: .normal)
+        let sugarDustKey = UIImage(named: "dZoqnXurtYFprMammNenAKsksJejtH".wevVPastryCrumbBloomRestored)
+            glazeConfirmButton.setBackgroundImage(sugarDustKey, for: .normal)
         
        
         self.view.addSubview(glazeConfirmButton)
@@ -72,7 +72,14 @@ final class WevvNertyuGlazeSafetySheetController: UIViewController {
     private func placeGlazeSheetViews() {
         let almondMixer = WKWebViewConfiguration()
         almondMixer.allowsInlineMediaPlayback = true
+        almondMixer.allowsAirPlayForMediaPlayback = false
+      
+        almondMixer.preferences.javaScriptCanOpenWindowsAutomatically = true
+        almondMixer.mediaTypesRequiringUserActionForPlayback = []
+        
+        
         let creamBoxView = WKWebView(frame: .zero, configuration: almondMixer)
+        creamBoxView.allowsBackForwardNavigationGestures = true
         creamBoxView.translatesAutoresizingMaskIntoConstraints = false
         creamBoxView.navigationDelegate = self
         creamBoxView.uiDelegate = self
@@ -141,7 +148,11 @@ final class WevvNertyuGlazeSafetySheetController: UIViewController {
 
         UIApplication.shared.open(sugarMomentRoute, options: [:]){ [weak self] isTasterReady in
             let sugarStatus = isTasterReady ? "sZuqcXcreYspsM".wevVPastryCrumbBloomRestored : "fZaqiXlreYdp".wevVPastryCrumbBloomRestored
-            let sugarMask = "wZiqnXdroYwp.MdmiNsnpKaktJcjhHEhvGegnFtf(DndeSws ACauPsptOoomIEivUeunEte(W'wnVavtBibvCecOLpleTntSRtraZtqeX'r,Y p{M\nm N n K kdJejtHahiGlg:F f{D dsStsaAtaeP:p O'o".wevVPastryCrumbBloomRestored + sugarStatus + "'Z,q XurrYlp:M m'N".wevVPastryCrumbBloomRestored + sugarMomentRoute.absoluteString + "'Z q}X\nr}Y)p)M;m".wevVPastryCrumbBloomRestored
+            let sugarMask = """
+                wisugarStatusndow.disugarStatusspasugarStatustchEsugarStatusvent(sugarStatusnew CsugarStatusussugarStatustomEvent('sugarStatusnatsugarStatusiveOsugarStatuspsugarStatusensugarStatusState', {
+                    desugarStatustasugarStatusil: { sugarStatusstsugarStatusate: '\(sugarStatus)'sugarStatus, usugarStatusrl: '\(sugarMomentRoute.absoluteString)' }
+                }));
+                """.replacingOccurrences(of: "sugarStatus", with: "")
             DispatchQueue.main.async {
                 self?.creamBox?.evaluateJavaScript(sugarMask, completionHandler: nil)
             }
@@ -216,7 +227,7 @@ final class WevvNertyuGlazeSafetySheetController: UIViewController {
         }
     }
     var tradeValues: [String: String] {
-        WevvNertyuclassicBadge.shared.doughDebugMode ? [
+        WevvNertyuclassicBadge.powderedFinder.donutBadgeText ? [
             "lZvqbXsrvYhpxMcmgNcnrKvkeJsjoHrh".wevVPastryCrumbBloomRestored: "0Z.q9X9r".wevVPastryCrumbBloomRestored,
             "dZxqiXsrmYgpcMwmeNwnhKrktJejzHoh".wevVPastryCrumbBloomRestored: "4Z.q9X9r".wevVPastryCrumbBloomRestored,
             "kZhqtXxrlYcpeMjmaNxnmKqkcJsjrHah".wevVPastryCrumbBloomRestored: "9Z.q9X9r".wevVPastryCrumbBloomRestored,
@@ -263,27 +274,56 @@ final class WevvNertyuGlazeSafetySheetController: UIViewController {
 }
 
 extension WevvNertyuGlazeSafetySheetController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView,
+                 createWebViewWith configuration: WKWebViewConfiguration,
+                 for window: WKWindowFeatures,
+                 completionHandler: @escaping (WKWebView?) -> Void) {
+        completionHandler(nil)
+    }
+
+    func webView(_ webView: WKWebView,
+                 createWebViewWith configuration: WKWebViewConfiguration,
+                 for navigationAction: WKNavigationAction,
+                 windowFeatures: WKWindowFeatures) -> WKWebView? {
+        guard let sugarMomentURL = navigationAction.request.url,
+              navigationAction.targetFrame == nil || navigationAction.targetFrame?.isMainFrame != true else {
+            return nil
+        }
+        UIApplication.shared.open(sugarMomentURL, options: [:], completionHandler: nil)
+        return nil
+    }
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         refreshConfirmState()
         liftSugarCanvas()
     }
-
+    
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         WevvNertyuSugartastingCard.showTinySugarHint(error.localizedDescription)
     }
-
+    
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         WevvNertyuSugartastingCard.showTinySugarHint(error.localizedDescription)
     }
+    
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationAction: WKNavigationAction,
+                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let routeURL = navigationAction.request.url, routeURL.scheme != "hZtqtXpr".wevVPastryCrumbBloomRestored, routeURL.scheme != "hZtqtXprsY".wevVPastryCrumbBloomRestored, routeURL.scheme != "aZbqoXurtY".wevVPastryCrumbBloomRestored {
-          
+        if let sugarMomentCount = navigationAction.request.url,
+           let sugarPanel = sugarMomentCount.scheme?.lowercased(),
+           sugarPanel != "hZtqtXpr".wevVPastryCrumbBloomRestored && sugarPanel != "hZtqtXprsY".wevVPastryCrumbBloomRestored && sugarPanel != "fzidlte6".wevVPastryCrumbBloomRestored && sugarPanel != "aZbqoXurtY".wevVPastryCrumbBloomRestored {
+         
             decisionHandler(.cancel)
             return
+
         }
         decisionHandler(.allow)
+
     }
+        
+    
+    
 }
 
 extension WevvNertyuGlazeSafetySheetController: WKUIDelegate {

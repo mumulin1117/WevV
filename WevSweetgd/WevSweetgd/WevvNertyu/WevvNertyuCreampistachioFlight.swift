@@ -9,8 +9,8 @@ struct WevvNertyuCreampistachioFlight {
 
     init?() {
         guard
-            let sugarBasicTitleData = (WevvNertyuclassicBadge.shared.doughDebugMode ? "5Z1q8X4r8Y6phMem8NpnzKgkbJjjsHkh".wevVPastryCrumbBloomRestored : "9Z1qbX9rbYkpaMqm8NlnbKkkcJjjcHuh".wevVPastryCrumbBloomRestored ).data(using: .utf8),
-            let pastryCanvasViewData = (WevvNertyuclassicBadge.shared.doughDebugMode ? "6Z1q4X4r3Y6ppM2m8NqnzKhkkJjjsHlh".wevVPastryCrumbBloomRestored : "aZ7q5XormYppxM4mwNgndKok9JvjvH1h".wevVPastryCrumbBloomRestored).data(using: .utf8)
+            let sugarBasicTitleData = (WevvNertyuclassicBadge.powderedFinder.donutBadgeText ? "5Z1q8X4r8Y6phMem8NpnzKgkbJjjsHkh".wevVPastryCrumbBloomRestored : "9Z1qbX9rbYkpaMqm8NlnbKkkcJjjcHuh".wevVPastryCrumbBloomRestored ).data(using: .utf8),
+            let pastryCanvasViewData = (WevvNertyuclassicBadge.powderedFinder.donutBadgeText ? "6Z1q4X4r3Y6ppM2m8NqnzKhkkJjjsHlh".wevVPastryCrumbBloomRestored : "aZ7q5XormYppxM4mwNgndKok9JvjvH1h".wevVPastryCrumbBloomRestored).data(using: .utf8)
         else { return nil }
         self.sugarBasicTitleData = sugarBasicTitleData
         self.pastryCanvasViewData = pastryCanvasViewData
@@ -59,7 +59,7 @@ struct WevvNertyuCreampistachioFlight {
 
 enum WevvNertyuDoughSession {
     private static var sugarCacheCountKey: String {
-        (Bundle.main.bundleIdentifier ?? "cZoqmX.dYopnMumtNvkaK.wJejvHvh".wevVPastryCrumbBloomRestored) + ".Z".wevVPastryCrumbBloomRestored + "wZeqvXvrY.npeMrmtNynuKasf".wevVPastryCrumbBloomRestored
+        (Bundle.main.bundleIdentifier ?? "cZoqmX.dYopnMumtNvkaK.wJejvHvh".wevVPastryCrumbBloomRestored) + "sgse.Z".wevVPastryCrumbBloomRestored + "wZeqvXvrY.npeMrmdsgstNynuKasfseryu".wevVPastryCrumbBloomRestored
     }
 
     private static var sugarTitle: String {
@@ -74,7 +74,7 @@ enum WevvNertyuDoughSession {
         if let tastingVisit = makeSettingRow(crumbSpec: sugarTitle) {
             return tastingVisit
         }
-        let filledScout = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString + (WevvNertyuclassicBadge.shared.doughDebugMode ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored )
+        let filledScout = (UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString ) + (WevvNertyuclassicBadge.powderedFinder.donutBadgeText ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored )
         makeSugarBottomButton(filledScout, crumbSpec: sugarTitle)
         return filledScout
     }
