@@ -1,5 +1,5 @@
 import UIKit
-import FBSDKCoreKit
+
 
 extension String {
     var wevVPastryCrumbBloomRestored: String {
@@ -18,19 +18,10 @@ extension String {
 @main
 class WevVGlazeApplication: UIResponder, UIApplicationDelegate {
 
-    private let wevvGlazeSceneName = "WDe.v@VdSVpZrRiYnhknl~eVSWcbe!nMeY".wevVPastryCrumbBloomRestored
+    private let wevvGlazeSceneName = "WevVSprinkleScene"
 
     func application(_ wevvGlazeApp: UIApplication, didFinishLaunchingWithOptions wevvLaunchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        ApplicationDelegate.shared.application(wevvGlazeApp, didFinishLaunchingWithOptions: wevvLaunchOptions)
         return true
-    }
-
-    func application(_ wevvGlazeApp: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken wevvSugarToken: Data) {
-        WevvNertyuSugarPanelBridge.sugarPanel.confirmSugarChoice(wevvSugarToken)
-    }
-
-    func application(_ wevvGlazeApp: UIApplication, open wevvSugarURL: URL, options wevvSugarOptions: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        WevvNertyuSugarPanelBridge.sugarPanel.openSugarPicturePicker(wevvGlazeApp, sugarURL: wevvSugarURL, sugarOptions: wevvSugarOptions)
     }
 
     func application(_ wevvGlazeApp: UIApplication, configurationForConnecting wevvSprinkleSession: UISceneSession, options wevvSprinkleOptions: UIScene.ConnectionOptions) -> UISceneConfiguration {
