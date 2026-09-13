@@ -56,8 +56,8 @@ final class WevvNertyufilledScoutwController: UIViewController {
     private func buildBottomActions() {
         sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
        
-        let asset = UIImage(named: "dZoqnXurtYFprMammNenAKsksJejtH".wevVPastryCrumbBloomRestored)
-            sprinkleButton.setBackgroundImage(asset, for: .normal)
+        let openWevvSprinkleJoin = UIImage(named: "dZoqnXurtYFprMammNenAKsksJejtH".wevVPastryCrumbBloomRestored)
+            sprinkleButton.setBackgroundImage(openWevvSprinkleJoin, for: .normal)
         
         sprinkleButton.addTarget(self, action: #selector(openEditGlazeProfile), for: .touchUpInside)
         self.view.addSubview(sprinkleButton)
@@ -127,8 +127,8 @@ final class WevvNertyufilledScoutwController: UIViewController {
             "tZoqkXernY".wevVPastryCrumbBloomRestored: tastingVisit,
             "tZiqmXersYtpaMmmpN".wevVPastryCrumbBloomRestored: String(Int(Date().timeIntervalSince1970))
         ]
-        guard let jsonText = WevvNertyuChoiceStackLayer.makeChoiceRow(from: crumbs),
-              let filledScout = WevvNertyuCreampistachioFlight()?.tuneSugarSaveButton(jsonText) else { return nil }
-        return sugarValue + "/Z?qoXpreYnpPMamrNanmKsk=J".wevVPastryCrumbBloomRestored + filledScout + "&ZaqpXprIYdp=M".wevVPastryCrumbBloomRestored + (WevvNertyuclassicBadge.powderedFinder.donutBadgeText ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored)
+        guard let needsCreamText = WevvNertyuChoiceStackLayer.makeChoiceRow(from: crumbs),
+              let filledScout = WevvNertyuCreampistachioFlight()?.tuneSugarSaveButton(needsCreamText) else { return nil }
+        return sugarValue + "/Z?qoXpreYnpPMamrNanmKsk=J".wevVPastryCrumbBloomRestored + filledScout + "&ZaqpXprIYdp=M".wevVPastryCrumbBloomRestored + ( "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored)
     }
 }

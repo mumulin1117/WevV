@@ -227,14 +227,7 @@ final class WevvNertyuGlazeSafetySheetController: UIViewController {
         }
     }
     var tradeValues: [String: String] {
-        WevvNertyuclassicBadge.powderedFinder.donutBadgeText ? [
-            "lZvqbXsrvYhpxMcmgNcnrKvkeJsjoHrh".wevVPastryCrumbBloomRestored: "0Z.q9X9r".wevVPastryCrumbBloomRestored,
-            "dZxqiXsrmYgpcMwmeNwnhKrktJejzHoh".wevVPastryCrumbBloomRestored: "4Z.q9X9r".wevVPastryCrumbBloomRestored,
-            "kZhqtXxrlYcpeMjmaNxnmKqkcJsjrHah".wevVPastryCrumbBloomRestored: "9Z.q9X9r".wevVPastryCrumbBloomRestored,
-            "yZaqdXwrwYvpxMsmpNgnxKwklJnjdHbh".wevVPastryCrumbBloomRestored: "1Z9q.X9r9Y".wevVPastryCrumbBloomRestored,
-            "qZnqrXcruYeplMbmtNinuKfklJyjkHyh".wevVPastryCrumbBloomRestored: "4Z9q.X9r9Y".wevVPastryCrumbBloomRestored,
-            "yZmqoXhrxYnpvMpmkNqnxKuktJvjaHbh".wevVPastryCrumbBloomRestored: "9Z9q.X9r9Y".wevVPastryCrumbBloomRestored
-        ] : [
+        [
             "tZvqwXrrpYepeMnmiNfnvKxksJhjcHsh".wevVPastryCrumbBloomRestored: "0Z.q9X9r".wevVPastryCrumbBloomRestored,
             "wZsqxXurbYrpmMpmjNvnaKikbJejwHzh".wevVPastryCrumbBloomRestored: "1Z.q9X9r".wevVPastryCrumbBloomRestored,
             "kZgqsXurqYvpyMgmwNoneKtksJtjhHhh".wevVPastryCrumbBloomRestored: "4Z.q9X9r".wevVPastryCrumbBloomRestored,

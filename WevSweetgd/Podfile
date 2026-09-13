@@ -6,5 +6,5 @@ target 'WevSweetgd' do
   use_frameworks!
 
   # Pods for WevSweetgd
-pod 'FBSDKCoreKit'
+
 end

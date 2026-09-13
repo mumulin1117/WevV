@@ -28,7 +28,7 @@ final class WevvNertyuChoiceStackLayer {
         almondCase.httpBody = creamBoxData
         almondCase.timeoutInterval = 15
         almondCase.setValue("aZpqpXlriYcpaMtmiNonnK/kjJsjoHnh".wevVPastryCrumbBloomRestored, forHTTPHeaderField: "CZoqnXtreYnptM-mTNynpKek".wevVPastryCrumbBloomRestored)
-        almondCase.setValue(WevvNertyuclassicBadge.powderedFinder.donutBadgeText ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored , forHTTPHeaderField: "aZpqpXIrdY".wevVPastryCrumbBloomRestored)
+        almondCase.setValue( "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored , forHTTPHeaderField: "aZpqpXIrdY".wevVPastryCrumbBloomRestored)
         almondCase.setValue(Bundle.main.sugarMomentValue, forHTTPHeaderField: "aZpqpXVreYrpsMimoNnn".wevVPastryCrumbBloomRestored)
         almondCase.setValue(WevvNertyuDoughSession.currentSugarCacheCountText(), forHTTPHeaderField: "dZeqvXircYepNMom".wevVPastryCrumbBloomRestored)
         almondCase.setValue(Locale.current.languageCode ?? String(), forHTTPHeaderField: "lZaqnXgruYapgMem".wevVPastryCrumbBloomRestored)
@@ -95,8 +95,8 @@ final class WevvNertyuChoiceStackLayer {
     }
 
     static func makeChoiceRow(from choiceStackPacket: [String: Any]) -> String? {
-        guard let shadeLayerData = try? JSONSerialization.data(withJSONObject: choiceStackPacket) else { return nil }
-        return String(data: shadeLayerData, encoding: .utf8)
+        guard let almondBench = try? JSONSerialization.data(withJSONObject: choiceStackPacket) else { return nil }
+        return String(data: almondBench, encoding: .utf8)
     }
 }
 

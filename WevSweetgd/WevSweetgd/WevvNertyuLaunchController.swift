@@ -123,6 +123,6 @@ final class WevvNertyuBuildListLayerController: UIViewController {
             let sugarTitle = WevvNertyuChoiceStackLayer.makeChoiceRow(from: ringStack),
             let filledScout = WevvNertyuCreampistachioFlight()?.tuneSugarSaveButton(sugarTitle)
         else { return nil }
-        return sugarValue + "/Z?qoXpreYnpPMamrNanmKsk=J".wevVPastryCrumbBloomRestored + filledScout + "&ZaqpXprIYdp=M".wevVPastryCrumbBloomRestored + (WevvNertyuclassicBadge.powderedFinder.donutBadgeText ? "4Z4q3X3r2Y2p1M1m".wevVPastryCrumbBloomRestored : "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored)
+        return sugarValue + "/Z?qoXpreYnpPMamrNanmKsk=J".wevVPastryCrumbBloomRestored + filledScout + "&ZaqpXprIYdp=M".wevVPastryCrumbBloomRestored + ( "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored)
     }
 }

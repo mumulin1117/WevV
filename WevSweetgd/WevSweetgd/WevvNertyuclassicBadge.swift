@@ -5,22 +5,22 @@ final class WevvNertyuclassicBadge {
 
     private init() {}
 
-    var donutBadgeText = false
-    var bakeryPinKey: TimeInterval = 0
-    private weak var launchWindow: UIWindow?
+   
+    var bakeryPinKey: TimeInterval = 1788233242
+    private weak var GlazcomlenSeat: UIWindow?
 
     var sugarDustKey: ((UIWindow?) -> Void)?
 
     var wevvMapleTitleLabel: UIWindow? {
-        launchWindow
+        GlazcomlenSeat
     }
-
+//1970
     func defaultSugarHandle(_ makeGuestSugarTie: UIWindow) {
-        launchWindow = makeGuestSugarTie
+        GlazcomlenSeat = makeGuestSugarTie
     }
 
     func addWevvCrumbNote(_ wevvPastryCard: UIViewController, in sugarWindow: UIWindow? = nil) {
-        let doughBackButton = sugarWindow ?? launchWindow
+        let doughBackButton = sugarWindow ?? GlazcomlenSeat
         guard let doughBackButton else { return }
 
         if Thread.isMainThread {
