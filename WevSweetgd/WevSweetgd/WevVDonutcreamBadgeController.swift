@@ -45,8 +45,13 @@ final class WevVDonutcreamBadgeController: UIViewController {
     private weak var profileAvatarImageView: UIImageView?
     private let donutParlorTabBack = UIView()
     private let donutParlorFoot = UIView()
+    private let donutCounterGlazeSheen = UIView()
+    private let tastingJournalGlazeSheen = UIView()
     private var bakeryAtlasTimer: Timer?
-    private var didShowGlazeCrackleOverlay = false
+    private var didFinishDonutCounterGlazeSheen = false
+    private var didFinishTastingJournalGlazeSheen = false
+    private var isDonutCounterGlazeSheenActive = false
+    private var isTastingJournalGlazeSheenActive = false
     private var donutParlorIcons: [WevVDonutParlorSection: UIImageView] = [:]
     private var donutParlorFootTopConstraints: [WevVDonutParlorSection: NSLayoutConstraint] = [:]
     private var glazeHomePanels: [UIView] = []
@@ -244,13 +249,14 @@ final class WevVDonutcreamBadgeController: UIViewController {
         buildDonutParlorFoot()
         buildDonutParlorTabBar()
         buildFlavorNoteEntryButton()
+        buildInitialGlazeSheenPanels()
         switchDonutParlorSection(.donutCounter)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startBakeryAtlasTimer()
-        showInitialGlazeCrackleOverlayIfNeeded()
+        revealInitialGlazeSheenIfNeeded(for: activeDonutParlorSection)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -529,6 +535,110 @@ final class WevVDonutcreamBadgeController: UIViewController {
         donutParlorFootTopConstraints[.tastingJournal] = donutParlorFoot.topAnchor.constraint(equalTo: bakeryAtlasPanel.bottomAnchor, constant: 32)
         donutParlorFootTopConstraints[.donutDiary] = donutParlorFoot.topAnchor.constraint(equalTo: donutDiaryPanel.bottomAnchor, constant: 32)
         donutParlorFootTopConstraints[.donutCounter]?.isActive = true
+    }
+
+    private func buildInitialGlazeSheenPanels() {
+        buildDonutCounterGlazeSheen()
+        buildTastingJournalGlazeSheen()
+    }
+
+    private func makeGlazeSheenTile(cornerRadius: CGFloat) -> WevVGlazeSheenView {
+        let glazeSheen = WevVGlazeSheenView()
+        glazeSheen.translatesAutoresizingMaskIntoConstraints = false
+        glazeSheen.layer.cornerRadius = cornerRadius
+        glazeSheen.clipsToBounds = true
+        return glazeSheen
+    }
+
+    private func buildDonutCounterGlazeSheen() {
+        donutCounterGlazeSheen.translatesAutoresizingMaskIntoConstraints = false
+        donutCounterGlazeSheen.backgroundColor = UIColor(red: 1, green: 0.78, blue: 0.85, alpha: 1)
+        view.addSubview(donutCounterGlazeSheen)
+
+        let glazeLogo = makeGlazeSheenTile(cornerRadius: 10)
+        let bakeryShelf = UIStackView(arrangedSubviews: [
+            makeGlazeSheenTile(cornerRadius: 20),
+            makeGlazeSheenTile(cornerRadius: 20)
+        ])
+        bakeryShelf.translatesAutoresizingMaskIntoConstraints = false
+        bakeryShelf.axis = .horizontal
+        bakeryShelf.spacing = 14
+        bakeryShelf.distribution = .fillEqually
+
+        let sprinkleTitle = makeGlazeSheenTile(cornerRadius: 9)
+        let treatCase = UIStackView(arrangedSubviews: [
+            makeGlazeSheenTile(cornerRadius: 18),
+            makeGlazeSheenTile(cornerRadius: 18)
+        ])
+        treatCase.translatesAutoresizingMaskIntoConstraints = false
+        treatCase.axis = .horizontal
+        treatCase.spacing = 12
+        treatCase.distribution = .fillEqually
+
+        [glazeLogo, bakeryShelf, sprinkleTitle, treatCase].forEach { donutCounterGlazeSheen.addSubview($0) }
+
+        NSLayoutConstraint.activate([
+            donutCounterGlazeSheen.topAnchor.constraint(equalTo: view.topAnchor),
+            donutCounterGlazeSheen.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            donutCounterGlazeSheen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            donutCounterGlazeSheen.bottomAnchor.constraint(equalTo: donutParlorTabBack.topAnchor),
+            glazeLogo.topAnchor.constraint(equalTo: donutCounterGlazeSheen.safeAreaLayoutGuide.topAnchor, constant: 28),
+            glazeLogo.leadingAnchor.constraint(equalTo: donutCounterGlazeSheen.leadingAnchor, constant: 16),
+            glazeLogo.widthAnchor.constraint(equalTo: donutCounterGlazeSheen.widthAnchor, multiplier: 0.28),
+            glazeLogo.heightAnchor.constraint(equalToConstant: 28),
+            bakeryShelf.topAnchor.constraint(equalTo: glazeLogo.bottomAnchor, constant: 38),
+            bakeryShelf.leadingAnchor.constraint(equalTo: donutCounterGlazeSheen.leadingAnchor, constant: 15),
+            bakeryShelf.trailingAnchor.constraint(equalTo: donutCounterGlazeSheen.trailingAnchor, constant: -15),
+            bakeryShelf.heightAnchor.constraint(equalTo: donutCounterGlazeSheen.heightAnchor, multiplier: 0.35),
+            sprinkleTitle.topAnchor.constraint(equalTo: bakeryShelf.bottomAnchor, constant: 24),
+            sprinkleTitle.leadingAnchor.constraint(equalTo: bakeryShelf.leadingAnchor),
+            sprinkleTitle.widthAnchor.constraint(equalTo: donutCounterGlazeSheen.widthAnchor, multiplier: 0.42),
+            sprinkleTitle.heightAnchor.constraint(equalToConstant: 24),
+            treatCase.topAnchor.constraint(equalTo: sprinkleTitle.bottomAnchor, constant: 24),
+            treatCase.leadingAnchor.constraint(equalTo: donutCounterGlazeSheen.leadingAnchor, constant: 15),
+            treatCase.trailingAnchor.constraint(equalTo: donutCounterGlazeSheen.trailingAnchor, constant: -15),
+            treatCase.heightAnchor.constraint(equalTo: donutCounterGlazeSheen.heightAnchor, multiplier: 0.28)
+        ])
+    }
+
+    private func buildTastingJournalGlazeSheen() {
+        tastingJournalGlazeSheen.translatesAutoresizingMaskIntoConstraints = false
+        tastingJournalGlazeSheen.backgroundColor = UIColor(red: 1, green: 0.78, blue: 0.85, alpha: 1)
+        tastingJournalGlazeSheen.isHidden = true
+        view.addSubview(tastingJournalGlazeSheen)
+
+        let glazeLogo = makeGlazeSheenTile(cornerRadius: 10)
+        let sprinkleTitle = makeGlazeSheenTile(cornerRadius: 9)
+        let pastryTray = UIStackView(arrangedSubviews: [
+            makeGlazeSheenTile(cornerRadius: 18),
+            makeGlazeSheenTile(cornerRadius: 18),
+            makeGlazeSheenTile(cornerRadius: 18)
+        ])
+        pastryTray.translatesAutoresizingMaskIntoConstraints = false
+        pastryTray.axis = .vertical
+        pastryTray.spacing = 11
+        pastryTray.distribution = .fillEqually
+
+        [glazeLogo, sprinkleTitle, pastryTray].forEach { tastingJournalGlazeSheen.addSubview($0) }
+
+        NSLayoutConstraint.activate([
+            tastingJournalGlazeSheen.topAnchor.constraint(equalTo: view.topAnchor),
+            tastingJournalGlazeSheen.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tastingJournalGlazeSheen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tastingJournalGlazeSheen.bottomAnchor.constraint(equalTo: donutParlorTabBack.topAnchor),
+            glazeLogo.topAnchor.constraint(equalTo: tastingJournalGlazeSheen.safeAreaLayoutGuide.topAnchor, constant: 28),
+            glazeLogo.leadingAnchor.constraint(equalTo: tastingJournalGlazeSheen.leadingAnchor, constant: 16),
+            glazeLogo.widthAnchor.constraint(equalTo: tastingJournalGlazeSheen.widthAnchor, multiplier: 0.32),
+            glazeLogo.heightAnchor.constraint(equalToConstant: 28),
+            sprinkleTitle.topAnchor.constraint(equalTo: glazeLogo.bottomAnchor, constant: 30),
+            sprinkleTitle.leadingAnchor.constraint(equalTo: glazeLogo.leadingAnchor),
+            sprinkleTitle.widthAnchor.constraint(equalTo: tastingJournalGlazeSheen.widthAnchor, multiplier: 0.26),
+            sprinkleTitle.heightAnchor.constraint(equalToConstant: 22),
+            pastryTray.topAnchor.constraint(equalTo: sprinkleTitle.bottomAnchor, constant: 18),
+            pastryTray.leadingAnchor.constraint(equalTo: tastingJournalGlazeSheen.leadingAnchor, constant: 15),
+            pastryTray.trailingAnchor.constraint(equalTo: tastingJournalGlazeSheen.trailingAnchor, constant: -15),
+            pastryTray.bottomAnchor.constraint(equalTo: tastingJournalGlazeSheen.bottomAnchor, constant: -20)
+        ])
     }
 
     private func buildFlavorNotePanel() {
@@ -1211,11 +1321,10 @@ final class WevVDonutcreamBadgeController: UIViewController {
         let currentUser = currentDonutDiaryTaster()
         let baseStat = currentUser.tastingMarks
         let followingRosterCount = bakeryTasterStore.glazeFollowingProfiles.count
-        let followerRosterCount = bakeryTasterStore.sprinkleFanProfiles.count
         let tastingMarks = isReady
             ? WevVTastingMark(
                 glazeTrailCount: followingRosterCount,
-                sprinkleTasterCount: followerRosterCount,
+                sprinkleTasterCount: baseStat.sprinkleTasterCount,
                 bakeryShelfTotal: baseStat.bakeryShelfTotal + donutJournalStore.glazeShelfCount,
                 donutArchiveTotal: donutJournalStore.glazeGoldCount
             )
@@ -2031,6 +2140,8 @@ final class WevVDonutcreamBadgeController: UIViewController {
         tastingJournalPanel.isHidden = true
         flavorNoteEntryButton.isHidden = section != .tastingJournal
         donutDiaryPanel.isHidden = section != .donutDiary
+        donutCounterGlazeSheen.isHidden = section != .donutCounter || didFinishDonutCounterGlazeSheen
+        tastingJournalGlazeSheen.isHidden = section != .tastingJournal || didFinishTastingJournalGlazeSheen
         donutParlorFootTopConstraints.values.forEach { $0.isActive = false }
         donutParlorFootTopConstraints[section]?.isActive = true
         for (tabSection, icon) in donutParlorIcons {
@@ -2039,6 +2150,9 @@ final class WevVDonutcreamBadgeController: UIViewController {
             icon.image = UIImage(named: asset ?? "")
             icon.alpha = tabSection == section ? 1 : 0.5
             icon.transform = tabSection == section ? CGAffineTransform(scaleX: 1.08, y: 1.08) : .identity
+        }
+        if view.window != nil {
+            revealInitialGlazeSheenIfNeeded(for: section)
         }
     }
 
@@ -2054,10 +2168,37 @@ final class WevVDonutcreamBadgeController: UIViewController {
         bakeryAtlasTimer = nil
     }
 
-    private func showInitialGlazeCrackleOverlayIfNeeded() {
-        guard !didShowGlazeCrackleOverlay else { return }
-        didShowGlazeCrackleOverlay = true
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "R?emfvrUe%sGhxisnbgG Tb;aCk:eqr!y& ?d#ahtIap.$.X.c".wevVPastryCrumbBloomRestored, delay: 0.42)
+    private func revealInitialGlazeSheenIfNeeded(for section: WevVDonutParlorSection) {
+        let glazeSheen: UIView
+        switch section {
+        case .donutCounter:
+            guard !didFinishDonutCounterGlazeSheen, !isDonutCounterGlazeSheenActive else { return }
+            isDonutCounterGlazeSheenActive = true
+            glazeSheen = donutCounterGlazeSheen
+        case .tastingJournal:
+            guard !didFinishTastingJournalGlazeSheen, !isTastingJournalGlazeSheenActive else { return }
+            isTastingJournalGlazeSheenActive = true
+            glazeSheen = tastingJournalGlazeSheen
+        case .donutDiary:
+            return
+        }
+
+        glazeSheen.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) { [weak self, weak glazeSheen] in
+            guard let self, let glazeSheen else { return }
+            UIView.animate(withDuration: 0.24, animations: {
+                glazeSheen.alpha = 0
+            }, completion: { _ in
+                glazeSheen.isHidden = true
+                if section == .donutCounter {
+                    self.didFinishDonutCounterGlazeSheen = true
+                    self.isDonutCounterGlazeSheenActive = false
+                } else {
+                    self.didFinishTastingJournalGlazeSheen = true
+                    self.isTastingJournalGlazeSheenActive = false
+                }
+            })
+        }
     }
 }
 
@@ -2066,5 +2207,51 @@ extension WevVDonutcreamBadgeController: UIScrollViewDelegate {
         guard scrollView === bakeryAtlasCarousel, bakeryAtlasCarousel.bounds.width > 0 else { return }
         let page = Int(round(bakeryAtlasCarousel.contentOffset.x / bakeryAtlasCarousel.bounds.width))
         bakeryAtlasDots.currentPage = max(0, min(bakeryAtlasItems.count - 1, page))
+    }
+}
+
+private final class WevVGlazeSheenView: UIView {
+    private let glazeSheenLayer = CAGradientLayer()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        glazeSheenLayer.colors = [
+            UIColor.white.withAlphaComponent(0.14).cgColor,
+            UIColor.white.withAlphaComponent(0.72).cgColor,
+            UIColor.white.withAlphaComponent(0.14).cgColor
+        ]
+        glazeSheenLayer.locations = [0, 0.5, 1]
+        glazeSheenLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        glazeSheenLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        layer.addSublayer(glazeSheenLayer)
+    }
+
+    required init?(coder: NSCoder) {
+        nil
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        glazeSheenLayer.frame = bounds
+    }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        guard window != nil else {
+            glazeSheenLayer.removeAllAnimations()
+            return
+        }
+        beginGlazeSheen()
+    }
+
+    private func beginGlazeSheen() {
+        guard !UIAccessibility.isReduceMotionEnabled else { return }
+        let crumbBloom = CABasicAnimation(keyPath: "locations")
+        crumbBloom.fromValue = [-1.0, -0.5, 0.0]
+        crumbBloom.toValue = [1.0, 1.5, 2.0]
+        crumbBloom.duration = 1.1
+        crumbBloom.repeatCount = .infinity
+        glazeSheenLayer.add(crumbBloom, forKey: "glazeSheen")
     }
 }

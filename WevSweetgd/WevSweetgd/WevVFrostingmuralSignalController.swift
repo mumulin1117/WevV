@@ -6,6 +6,10 @@ final class WevVFrostingmuralSignalController: UIViewController {
     private let guestStore = WevVGuestGlazeStore.shared
     private let almondBench = UIButton(type: .system)
     private var dimLayer: UIControl?
+    private weak var glazeHeroView: UIView?
+    private weak var sprinklePeopleButton: UIControl?
+    private let glazeHeroLayer = CAGradientLayer()
+    private let sprinklePeopleLayer = CAGradientLayer()
 
     private var frostingGuestKeys: [String] {
         let keys = [
@@ -42,6 +46,15 @@ final class WevVFrostingmuralSignalController: UIViewController {
         view.backgroundColor = UIColor(red: 1, green: 0.95, blue: 0.98, alpha: 1)
         buildChallengeContent()
         refreshJoinState()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        glazeHeroLayer.frame = glazeHeroView?.bounds ?? .zero
+        sprinklePeopleLayer.frame = sprinklePeopleButton?.bounds ?? .zero
+        CATransaction.commit()
     }
 
     private func buildChallengeContent() {
@@ -117,16 +130,17 @@ final class WevVFrostingmuralSignalController: UIViewController {
     private func makeChallengeHero() -> UIView {
         let hero = UIView()
         hero.translatesAutoresizingMaskIntoConstraints = false
+        hero.backgroundColor = UIColor(red: 0.66, green: 0.57, blue: 0.97, alpha: 1)
         hero.layer.cornerRadius = 18
         hero.clipsToBounds = true
-        let glaze = CAGradientLayer()
-        glaze.colors = [
+        glazeHeroLayer.colors = [
             UIColor(red: 0.74, green: 0.65, blue: 1, alpha: 1).cgColor,
             UIColor(red: 0.58, green: 0.48, blue: 0.93, alpha: 1).cgColor
         ]
-        glaze.startPoint = CGPoint(x: 0, y: 0.2)
-        glaze.endPoint = CGPoint(x: 1, y: 0.9)
-        hero.layer.insertSublayer(glaze, at: 0)
+        glazeHeroLayer.startPoint = CGPoint(x: 0, y: 0.2)
+        glazeHeroLayer.endPoint = CGPoint(x: 1, y: 0.9)
+        hero.layer.insertSublayer(glazeHeroLayer, at: 0)
+        glazeHeroView = hero
 
         let glazeTitle = makeChallengeLabel(sprinkleChallenge.menuBoardTitle, size: 24, weight: .heavy, color: .white)
         let crumbNote = makeChallengeLabel(sprinkleChallenge.glazeTrailLine, size: 15, weight: .regular, color: UIColor.white.withAlphaComponent(0.9))
@@ -157,9 +171,6 @@ final class WevVFrostingmuralSignalController: UIViewController {
             almondBench.heightAnchor.constraint(equalToConstant: 34)
         ])
 
-        DispatchQueue.main.async {
-            glaze.frame = hero.bounds
-        }
         return hero
     }
 
@@ -241,17 +252,18 @@ final class WevVFrostingmuralSignalController: UIViewController {
     private func makePeopleButton() -> UIControl {
         let sprinkleButton = UIControl()
         sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
+        sprinkleButton.backgroundColor = UIColor(red: 0.27, green: 0.07, blue: 0.61, alpha: 1)
         sprinkleButton.layer.cornerRadius = 14
         sprinkleButton.clipsToBounds = true
         sprinkleButton.addTarget(self, action: #selector(showPeopleSheet), for: .touchUpInside)
-        let glaze = CAGradientLayer()
-        glaze.colors = [
+        sprinklePeopleLayer.colors = [
             UIColor(red: 0.48, green: 0.14, blue: 0.62, alpha: 1).cgColor,
             UIColor(red: 0.07, green: 0.0, blue: 0.6, alpha: 1).cgColor
         ]
-        glaze.startPoint = CGPoint(x: 0, y: 0.5)
-        glaze.endPoint = CGPoint(x: 1, y: 0.5)
-        sprinkleButton.layer.insertSublayer(glaze, at: 0)
+        sprinklePeopleLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        sprinklePeopleLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        sprinkleButton.layer.insertSublayer(sprinklePeopleLayer, at: 0)
+        sprinklePeopleButton = sprinkleButton
         let icon = UIImageView(image: UIImage(systemName: "person.3.fill"))
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.tintColor = UIColor(red: 1, green: 0.56, blue: 0.1, alpha: 1)
@@ -283,9 +295,6 @@ final class WevVFrostingmuralSignalController: UIViewController {
             avatars.trailingAnchor.constraint(equalTo: sprinkleButton.trailingAnchor, constant: -15),
             avatars.centerYAnchor.constraint(equalTo: sprinkleButton.centerYAnchor)
         ])
-        DispatchQueue.main.async {
-            glaze.frame = sprinkleButton.bounds
-        }
         return sprinkleButton
     }
 

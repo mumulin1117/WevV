@@ -47,7 +47,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 1.0, green: 0.77, blue: 0.86, alpha: 1.0)
+        view.backgroundColor = UIColor(red: 1.0, green: 0.92, blue: 0.96, alpha: 1.0)
         buildWevvMomentCanvas()
         refreshWevvTrailButton()
         NotificationCenter.default.addObserver(self, selector: #selector(liftWevvCrumbTray(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -65,18 +65,18 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
     private func buildWevvMomentCanvas() {
         let frostingGlow = UIView()
         frostingGlow.translatesAutoresizingMaskIntoConstraints = false
-        frostingGlow.backgroundColor = UIColor(red: 1.0, green: 0.77, blue: 0.86, alpha: 1.0)
+        frostingGlow.backgroundColor = UIColor(red: 1.0, green: 0.92, blue: 0.96, alpha: 1.0)
         view.addSubview(frostingGlow)
 
         wevvMomentScroll.translatesAutoresizingMaskIntoConstraints = false
         wevvMomentScroll.alwaysBounceVertical = true
         wevvMomentScroll.keyboardDismissMode = .interactive
-        wevvMomentScroll.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 132, right: 0)
+        wevvMomentScroll.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 96, right: 0)
         view.addSubview(wevvMomentScroll)
 
         wevvMomentStack.translatesAutoresizingMaskIntoConstraints = false
         wevvMomentStack.axis = .vertical
-        wevvMomentStack.spacing = 18
+        wevvMomentStack.spacing = 12
         wevvMomentScroll.addSubview(wevvMomentStack)
 
         wevvBottomTray.translatesAutoresizingMaskIntoConstraints = false
@@ -93,20 +93,28 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
             wevvMomentScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             wevvMomentScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             wevvMomentScroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            wevvMomentStack.topAnchor.constraint(equalTo: wevvMomentScroll.contentLayoutGuide.topAnchor, constant: 28),
-            wevvMomentStack.leadingAnchor.constraint(equalTo: wevvMomentScroll.frameLayoutGuide.leadingAnchor, constant: 30),
-            wevvMomentStack.trailingAnchor.constraint(equalTo: wevvMomentScroll.frameLayoutGuide.trailingAnchor, constant: -30),
-            wevvMomentStack.bottomAnchor.constraint(equalTo: wevvMomentScroll.contentLayoutGuide.bottomAnchor, constant: -150),
+            wevvMomentStack.topAnchor.constraint(equalTo: wevvMomentScroll.contentLayoutGuide.topAnchor, constant: 8),
+            wevvMomentStack.leadingAnchor.constraint(equalTo: wevvMomentScroll.frameLayoutGuide.leadingAnchor, constant: 20),
+            wevvMomentStack.trailingAnchor.constraint(equalTo: wevvMomentScroll.frameLayoutGuide.trailingAnchor, constant: -20),
+            wevvMomentStack.bottomAnchor.constraint(equalTo: wevvMomentScroll.contentLayoutGuide.bottomAnchor, constant: -104),
             wevvBottomTray.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             wevvBottomTray.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            wevvBottomTray.heightAnchor.constraint(equalToConstant: 88),
+            wevvBottomTray.heightAnchor.constraint(equalToConstant: 76),
             wevvTrayBottomConstraint!
         ])
 
-        wevvMomentStack.addArrangedSubview(makeWevvMomentHeader())
-        wevvMomentStack.addArrangedSubview(makeWevvHeroPanel())
-        wevvMomentStack.addArrangedSubview(makeWevvMomentText())
-        wevvMomentStack.addArrangedSubview(makeWevvReplyTitle())
+        let momentHeader = makeWevvMomentHeader()
+        let heroPanel = makeWevvHeroPanel()
+        let momentText = makeWevvMomentText()
+        let replyTitle = makeWevvReplyTitle()
+        wevvMomentStack.addArrangedSubview(momentHeader)
+        wevvMomentStack.addArrangedSubview(heroPanel)
+        wevvMomentStack.addArrangedSubview(momentText)
+        wevvMomentStack.addArrangedSubview(replyTitle)
+        wevvMomentStack.setCustomSpacing(8, after: momentHeader)
+        wevvMomentStack.setCustomSpacing(10, after: heroPanel)
+        wevvMomentStack.setCustomSpacing(12, after: momentText)
+        wevvMomentStack.setCustomSpacing(10, after: replyTitle)
         rebuildWevvCrumbReplies()
         buildWevvBottomTray()
         let sugarTap = UITapGestureRecognizer(target: self, action: #selector(endWevvCrumbEditing))
@@ -127,7 +135,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         let parlorQuest = UIButton(type: .custom)
         parlorQuest.translatesAutoresizingMaskIntoConstraints = false
         parlorQuest.clipsToBounds = true
-        parlorQuest.layer.cornerRadius = 26
+        parlorQuest.layer.cornerRadius = 16
         parlorQuest.setImage(makeWevvAuthorAvatar(), for: .normal)
         parlorQuest.imageView?.contentMode = .scaleAspectFill
         parlorQuest.addTarget(self, action: #selector(openBoundTasterCard), for: .touchUpInside)
@@ -135,23 +143,21 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         let donutTasterNameLabel = UILabel()
         donutTasterNameLabel.translatesAutoresizingMaskIntoConstraints = false
         donutTasterNameLabel.text = boundTasterCard?.cocoaCounter ?? donutSnapshot.tasterBloom.name
-        donutTasterNameLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        donutTasterNameLabel.font = .systemFont(ofSize: 14, weight: .bold)
         donutTasterNameLabel.textColor = UIColor(red: 0.12, green: 0.05, blue: 0.08, alpha: 1)
         donutTasterNameLabel.adjustsFontSizeToFitWidth = true
         donutTasterNameLabel.minimumScaleFactor = 0.72
 
         wevvTrailButton.translatesAutoresizingMaskIntoConstraints = false
-        wevvTrailButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
-        wevvTrailButton.layer.cornerRadius = 17.5
+        wevvTrailButton.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
+        wevvTrailButton.layer.cornerRadius = 14
         wevvTrailButton.clipsToBounds = true
         wevvTrailButton.addTarget(self, action: #selector(toggleWevvSugarTrail), for: .touchUpInside)
 
         let trailQuest = UIButton(type: .system)
         trailQuest.translatesAutoresizingMaskIntoConstraints = false
-        trailQuest.setImage(UIImage(systemName: "exclamationmark.triangle.fill"), for: .normal)
+        trailQuest.setImage(UIImage(systemName: "exclamationmark.triangle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)), for: .normal)
         trailQuest.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.58, alpha: 1)
-        trailQuest.backgroundColor = UIColor.white.withAlphaComponent(0.88)
-        trailQuest.layer.cornerRadius = 17
         trailQuest.addTarget(self, action: #selector(openWevvMomentNotice), for: .touchUpInside)
 
         placeWevvMomentHeaderViews(header: header, doughBackButton: doughBackButton, avatarButton: parlorQuest, donutTasterNameLabel: donutTasterNameLabel, noticeButton: trailQuest)
@@ -160,33 +166,33 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
     }
 
     private func placeWevvMomentHeaderViews(header: UIView, doughBackButton: UIButton, avatarButton: UIButton, donutTasterNameLabel: UILabel, noticeButton: UIButton) {
-        [doughBackButton, avatarButton, donutTasterNameLabel, wevvTrailButton, noticeButton].forEach {
+        [doughBackButton, avatarButton, donutTasterNameLabel, noticeButton, wevvTrailButton].forEach {
             header.addSubview($0)
         }
     }
 
     private func pinWevvMomentHeaderLayout(header: UIView, doughBackButton: UIButton, cherryScout: UIButton, donutTasterNameLabel: UILabel, cherryQuest: UIButton) {
         NSLayoutConstraint.activate([
-            header.heightAnchor.constraint(equalToConstant: 74),
-            doughBackButton.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: -8),
+            header.heightAnchor.constraint(equalToConstant: 36),
+            doughBackButton.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: -4),
             doughBackButton.centerYAnchor.constraint(equalTo: cherryScout.centerYAnchor),
-            doughBackButton.widthAnchor.constraint(equalToConstant: 38),
-            doughBackButton.heightAnchor.constraint(equalToConstant: 44),
-            cherryScout.leadingAnchor.constraint(equalTo: doughBackButton.trailingAnchor, constant: 20),
-            cherryScout.topAnchor.constraint(equalTo: header.topAnchor),
-            cherryScout.widthAnchor.constraint(equalToConstant: 52),
-            cherryScout.heightAnchor.constraint(equalToConstant: 52),
-            donutTasterNameLabel.leadingAnchor.constraint(equalTo: cherryScout.trailingAnchor, constant: 16),
+            doughBackButton.widthAnchor.constraint(equalToConstant: 28),
+            doughBackButton.heightAnchor.constraint(equalToConstant: 36),
+            cherryScout.leadingAnchor.constraint(equalTo: doughBackButton.trailingAnchor, constant: 8),
+            cherryScout.centerYAnchor.constraint(equalTo: header.centerYAnchor),
+            cherryScout.widthAnchor.constraint(equalToConstant: 32),
+            cherryScout.heightAnchor.constraint(equalToConstant: 32),
+            donutTasterNameLabel.leadingAnchor.constraint(equalTo: cherryScout.trailingAnchor, constant: 10),
             donutTasterNameLabel.centerYAnchor.constraint(equalTo: cherryScout.centerYAnchor),
-            donutTasterNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: wevvTrailButton.leadingAnchor, constant: -14),
-            wevvTrailButton.trailingAnchor.constraint(equalTo: cherryQuest.leadingAnchor, constant: -10),
-            wevvTrailButton.centerYAnchor.constraint(equalTo: cherryScout.centerYAnchor),
-            wevvTrailButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 84),
-            wevvTrailButton.heightAnchor.constraint(equalToConstant: 35),
-            cherryQuest.trailingAnchor.constraint(equalTo: header.trailingAnchor),
+            donutTasterNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: cherryQuest.leadingAnchor, constant: -6),
+            cherryQuest.trailingAnchor.constraint(equalTo: wevvTrailButton.leadingAnchor, constant: -6),
             cherryQuest.centerYAnchor.constraint(equalTo: cherryScout.centerYAnchor),
-            cherryQuest.widthAnchor.constraint(equalToConstant: 34),
-            cherryQuest.heightAnchor.constraint(equalToConstant: 34)
+            cherryQuest.widthAnchor.constraint(equalToConstant: 24),
+            cherryQuest.heightAnchor.constraint(equalToConstant: 24),
+            wevvTrailButton.trailingAnchor.constraint(equalTo: header.trailingAnchor),
+            wevvTrailButton.centerYAnchor.constraint(equalTo: cherryScout.centerYAnchor),
+            wevvTrailButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 70),
+            wevvTrailButton.heightAnchor.constraint(equalToConstant: 28)
         ])
     }
 
@@ -194,7 +200,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         let glazePanel = UIView()
         glazePanel.translatesAutoresizingMaskIntoConstraints = false
         glazePanel.clipsToBounds = true
-        glazePanel.layer.cornerRadius = 18
+        glazePanel.layer.cornerRadius = 16
 
         let pistachioSample = UIImageView(image: WevVPastryImageVault.glazeImage(for: donutSnapshot.donutBackdropAsset) ?? makeWevvFallbackDonutImage(seed: donutSnapshot.donutBackdropAsset))
         pistachioSample.translatesAutoresizingMaskIntoConstraints = false
@@ -216,7 +222,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         let crumbLabel = UILabel()
         crumbLabel.translatesAutoresizingMaskIntoConstraints = false
         crumbLabel.text = donutSnapshot.tastingText
-        crumbLabel.font = .systemFont(ofSize: 21, weight: .regular)
+        crumbLabel.font = .systemFont(ofSize: 13, weight: .regular)
         crumbLabel.textColor = UIColor(red: 0.16, green: 0.12, blue: 0.13, alpha: 1)
         crumbLabel.numberOfLines = 0
         return crumbLabel
@@ -226,8 +232,8 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         let crumbLabel = UILabel()
         crumbLabel.translatesAutoresizingMaskIntoConstraints = false
         crumbLabel.text = "CkocmpmYe#nwt;s,".wevVPastryCrumbBloomRestored
-        crumbLabel.font = .systemFont(ofSize: 24, weight: .bold)
-        crumbLabel.textColor = .black
+        crumbLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        crumbLabel.textColor = UIColor(red: 0.12, green: 0.08, blue: 0.1, alpha: 1)
         return crumbLabel
     }
 
@@ -246,7 +252,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
         pastryCard.accessibilityIdentifier = "wlewvYvKSyu.gPaormRFeQp=loyYCVa+rTdc".wevVPastryCrumbBloomRestored
         pastryCard.backgroundColor = .white
-        pastryCard.layer.cornerRadius = 28
+        pastryCard.layer.cornerRadius = 16
         pastryCard.clipsToBounds = true
         pastryCard.addTarget(self, action: #selector(showWevvCrumbFlagHint), for: .touchUpInside)
 
@@ -268,7 +274,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         glazeAvatar.translatesAutoresizingMaskIntoConstraints = false
         glazeAvatar.contentMode = .scaleAspectFill
         glazeAvatar.clipsToBounds = true
-        glazeAvatar.layer.cornerRadius = 21
+        glazeAvatar.layer.cornerRadius = 14
         return glazeAvatar
     }
 
@@ -276,8 +282,8 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         let crumbLabel = UILabel()
         crumbLabel.translatesAutoresizingMaskIntoConstraints = false
         crumbLabel.text = crumbNote.donutTasterName ?? (crumbNote.tasterBadgeKey == "a.rWlVo?SQkWyaGxlRaRzveh".wevVPastryCrumbBloomRestored ? "Bruno Pham" : tasterCard.cocoaCounter)
-        crumbLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        crumbLabel.textColor = .black
+        crumbLabel.font = .systemFont(ofSize: 13, weight: .semibold)
+        crumbLabel.textColor = UIColor(red: 0.12, green: 0.08, blue: 0.1, alpha: 1)
         return crumbLabel
     }
 
@@ -285,8 +291,8 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         let crumbLabel = UILabel()
         crumbLabel.translatesAutoresizingMaskIntoConstraints = false
         crumbLabel.text = crumbReplyText
-        crumbLabel.font = .systemFont(ofSize: 18, weight: .regular)
-        crumbLabel.textColor = UIColor(red: 0.48, green: 0.48, blue: 0.5, alpha: 1)
+        crumbLabel.font = .systemFont(ofSize: 13, weight: .regular)
+        crumbLabel.textColor = UIColor(red: 0.48, green: 0.46, blue: 0.49, alpha: 1)
         crumbLabel.numberOfLines = 2
         return crumbLabel
     }
@@ -295,8 +301,8 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         let crumbLabel = UILabel()
         crumbLabel.translatesAutoresizingMaskIntoConstraints = false
         crumbLabel.text = sugarTime
-        crumbLabel.font = .systemFont(ofSize: 16, weight: .regular)
-        crumbLabel.textColor = UIColor(red: 0.68, green: 0.68, blue: 0.7, alpha: 1)
+        crumbLabel.font = .systemFont(ofSize: 11, weight: .regular)
+        crumbLabel.textColor = UIColor(red: 0.68, green: 0.66, blue: 0.69, alpha: 1)
         return crumbLabel
     }
 
@@ -317,24 +323,24 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
 
     private func pinWevvCrumbNoteLayout(pastryCard: UIView, aromaFlight: UIImageView, donutTasterNameLabel: UILabel, textLabel: UILabel, timeLabel: UILabel, crumbFlagButton: UIButton) {
         NSLayoutConstraint.activate([
-            pastryCard.heightAnchor.constraint(greaterThanOrEqualToConstant: 92),
-            aromaFlight.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 26),
-            aromaFlight.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 22),
-            aromaFlight.widthAnchor.constraint(equalToConstant: 42),
-            aromaFlight.heightAnchor.constraint(equalToConstant: 42),
-            donutTasterNameLabel.leadingAnchor.constraint(equalTo: aromaFlight.trailingAnchor, constant: 18),
-            donutTasterNameLabel.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 22),
-            donutTasterNameLabel.trailingAnchor.constraint(equalTo: crumbFlagButton.leadingAnchor, constant: -12),
+            pastryCard.heightAnchor.constraint(greaterThanOrEqualToConstant: 86),
+            aromaFlight.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 12),
+            aromaFlight.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 13),
+            aromaFlight.widthAnchor.constraint(equalToConstant: 28),
+            aromaFlight.heightAnchor.constraint(equalToConstant: 28),
+            donutTasterNameLabel.leadingAnchor.constraint(equalTo: aromaFlight.trailingAnchor, constant: 10),
+            donutTasterNameLabel.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 12),
+            donutTasterNameLabel.trailingAnchor.constraint(equalTo: crumbFlagButton.leadingAnchor, constant: -8),
             textLabel.leadingAnchor.constraint(equalTo: donutTasterNameLabel.leadingAnchor),
-            textLabel.topAnchor.constraint(equalTo: donutTasterNameLabel.bottomAnchor, constant: 3),
-            textLabel.trailingAnchor.constraint(equalTo: crumbFlagButton.leadingAnchor, constant: -12),
+            textLabel.topAnchor.constraint(equalTo: donutTasterNameLabel.bottomAnchor, constant: 2),
+            textLabel.trailingAnchor.constraint(equalTo: crumbFlagButton.leadingAnchor, constant: -8),
             timeLabel.leadingAnchor.constraint(equalTo: donutTasterNameLabel.leadingAnchor),
-            timeLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 3),
-            timeLabel.bottomAnchor.constraint(lessThanOrEqualTo: pastryCard.bottomAnchor, constant: -14),
-            crumbFlagButton.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -20),
-            crumbFlagButton.centerYAnchor.constraint(equalTo: pastryCard.centerYAnchor),
-            crumbFlagButton.widthAnchor.constraint(equalToConstant: 34),
-            crumbFlagButton.heightAnchor.constraint(equalToConstant: 34)
+            timeLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 2),
+            timeLabel.bottomAnchor.constraint(lessThanOrEqualTo: pastryCard.bottomAnchor, constant: -10),
+            crumbFlagButton.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -10),
+            crumbFlagButton.bottomAnchor.constraint(equalTo: pastryCard.bottomAnchor, constant: -10),
+            crumbFlagButton.widthAnchor.constraint(equalToConstant: 22),
+            crumbFlagButton.heightAnchor.constraint(equalToConstant: 22)
         ])
     }
 
@@ -342,12 +348,12 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         wevvReplyField.translatesAutoresizingMaskIntoConstraints = false
         wevvReplyField.delegate = self
         wevvReplyField.placeholder = "WIhwaHtr ed.oR gyioouk Ed,oh noknk uwmeAeskOepn%dmsh?K".wevVPastryCrumbBloomRestored
-        wevvReplyField.font = .systemFont(ofSize: 17, weight: .regular)
+        wevvReplyField.font = .systemFont(ofSize: 12, weight: .regular)
         wevvReplyField.backgroundColor = UIColor(red: 0.95, green: 0.96, blue: 0.97, alpha: 1)
-        wevvReplyField.layer.cornerRadius = 24
+        wevvReplyField.layer.cornerRadius = 20
         wevvReplyField.clipsToBounds = true
         wevvReplyField.returnKeyType = .send
-        wevvReplyField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 1))
+        wevvReplyField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 14, height: 1))
         wevvReplyField.leftViewMode = .always
 
         let crumbSendButton = UIButton(type: .system)
@@ -358,7 +364,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
             crumbSendButton.setImage(UIImage(systemName: "paperplane.fill"), for: .normal)
             crumbSendButton.tintColor = .white
             crumbSendButton.backgroundColor = UIColor(red: 1, green: 0.2, blue: 0.58, alpha: 1)
-            crumbSendButton.layer.cornerRadius = 33
+            crumbSendButton.layer.cornerRadius = 20
         }
         crumbSendButton.addTarget(self, action: #selector(addWevvCrumbNote), for: .touchUpInside)
 
@@ -366,14 +372,14 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         wevvBottomTray.addSubview(crumbSendButton)
 
         NSLayoutConstraint.activate([
-            wevvReplyField.leadingAnchor.constraint(equalTo: wevvBottomTray.leadingAnchor, constant: 30),
-            wevvReplyField.topAnchor.constraint(equalTo: wevvBottomTray.topAnchor, constant: 12),
-            wevvReplyField.heightAnchor.constraint(equalToConstant: 48),
-            crumbSendButton.leadingAnchor.constraint(equalTo: wevvReplyField.trailingAnchor, constant: 24),
-            crumbSendButton.trailingAnchor.constraint(equalTo: wevvBottomTray.trailingAnchor, constant: -30),
+            wevvReplyField.leadingAnchor.constraint(equalTo: wevvBottomTray.leadingAnchor, constant: 20),
+            wevvReplyField.topAnchor.constraint(equalTo: wevvBottomTray.topAnchor, constant: 8),
+            wevvReplyField.heightAnchor.constraint(equalToConstant: 40),
+            crumbSendButton.leadingAnchor.constraint(equalTo: wevvReplyField.trailingAnchor, constant: 12),
+            crumbSendButton.trailingAnchor.constraint(equalTo: wevvBottomTray.trailingAnchor, constant: -20),
             crumbSendButton.centerYAnchor.constraint(equalTo: wevvReplyField.centerYAnchor),
-            crumbSendButton.widthAnchor.constraint(equalToConstant: 56),
-            crumbSendButton.heightAnchor.constraint(equalToConstant: 56)
+            crumbSendButton.widthAnchor.constraint(equalToConstant: 40),
+            crumbSendButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 
@@ -554,16 +560,16 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
         else { return }
         let overlap = max(0, frame.height - view.safeAreaInsets.bottom)
         wevvTrayBottomConstraint?.constant = -overlap
-        wevvMomentScroll.contentInset.bottom = overlap + 132
-        wevvMomentScroll.verticalScrollIndicatorInsets.bottom = overlap + 132
+        wevvMomentScroll.contentInset.bottom = overlap + 96
+        wevvMomentScroll.verticalScrollIndicatorInsets.bottom = overlap + 96
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
 
     @objc private func dropWevvCrumbTray(_ note: Notification) {
         let duration = note.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0.25
         wevvTrayBottomConstraint?.constant = 0
-        wevvMomentScroll.contentInset.bottom = 132
-        wevvMomentScroll.verticalScrollIndicatorInsets.bottom = 132
+        wevvMomentScroll.contentInset.bottom = 96
+        wevvMomentScroll.verticalScrollIndicatorInsets.bottom = 96
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
 

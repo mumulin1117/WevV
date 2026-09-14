@@ -342,7 +342,9 @@ final class WevVGuestGlazeStore {
     }
 
     var sprinkleFanProfiles: [WevVGuestGlazeProfile] {
-        allProfiles.filter { $0.sugarTie.isSprinkleFan && !$0.sugarTie.isSugarShielded }
+        let sprinkleCount = WevVGlazeSessionStore.shared.currentDoughRingTasterProfile.sprinkleTasterCount
+        guard sprinkleCount > 0 else { return [] }
+        return Array(allProfiles.filter { $0.sugarTie.isSprinkleFan && !$0.sugarTie.isSugarShielded }.prefix(sprinkleCount))
     }
 
     var sugarShieldProfiles: [WevVGuestGlazeProfile] {
@@ -366,7 +368,7 @@ final class WevVGuestGlazeStore {
         } else {
             sugarKeys.insert(donutPinKey)
         }
-        frostingDefaults.set(Array(sugarKeys).sorted(), forKey: crullerScout)
+        frostingDefaults.set(Array(sugarKeys).sorted(), forKey: scopedCrullerScout)
         return sugarKeys.contains(donutPinKey)
     }
 
@@ -382,8 +384,20 @@ final class WevVGuestGlazeStore {
         return sugarKeys.contains(donutPinKey)
     }
 
+    func clearGlazeRelationsForFreshTaster() {
+        frostingDefaults.set([String](), forKey: scopedCrullerScout)
+    }
+
     private var nuttyQuestwevv: Set<String> {
-        Set(frostingDefaults.stringArray(forKey: crullerScout) ?? [])
+        if frostingDefaults.object(forKey: scopedCrullerScout) != nil {
+            return Set(frostingDefaults.stringArray(forKey: scopedCrullerScout) ?? [])
+        }
+        return Set(frostingDefaults.stringArray(forKey: crullerScout) ?? [])
+    }
+
+    private var scopedCrullerScout: String {
+        let powderedScope = Data(WevVGlazeSessionStore.shared.currentTasterEmail.lowercased().utf8).base64EncodedString()
+        return "\(crullerScout).\(powderedScope)"
     }
 
     private var shieldeddoughScoutline: Set<String> {

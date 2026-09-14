@@ -609,10 +609,10 @@ final class WevVWevvBakeryGateController: UIViewController, UITextFieldDelegate 
         }
         accounts.append(WevVWevvDoughRecord(wevvcleanOutline: makeWevvDoughTasterKey(name: cleanName, mail: cleanMail), wevvhardOutline: cleanName, wevvhighlightStroke: cleanMail, wevvwhitePop: cleanSecret))
         sealWevvDoughRecordTray(accounts)
-        finishWevvBakeryGate(userKey: accounts.last?.wevvcleanOutline ?? makeWevvDoughTasterKey(name: cleanName, mail: cleanMail), name: cleanName, mail: cleanMail)
+        finishWevvBakeryGate(userKey: accounts.last?.wevvcleanOutline ?? makeWevvDoughTasterKey(name: cleanName, mail: cleanMail), name: cleanName, mail: cleanMail, startsFresh: true)
     }
 
-    private func finishWevvBakeryGate(userKey: String, name: String, mail: String) {
+    private func finishWevvBakeryGate(userKey: String, name: String, mail: String, startsFresh: Bool = false) {
         WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "C&hceAcDkFiOntg^ kaacrcxoNuHnstW.T.b.x".wevVPastryCrumbBloomRestored) { [weak self] in
             let profile = WevVDoughRingTasterProfile(
                 ringCutterKey: userKey,
@@ -624,7 +624,10 @@ final class WevVWevvBakeryGateController: UIViewController, UITextFieldDelegate 
                 bakeryShelfTotal: 0,
                 glazeVaultCount: 0
             )
-            self?.wevvDonutJournalStore.markDoughRingTasterReady(profile: profile)
+            self?.wevvDonutJournalStore.markDoughRingTasterReady(profile: profile, startsFresh: startsFresh)
+            if startsFresh {
+                WevVGuestGlazeStore.shared.clearGlazeRelationsForFreshTaster()
+            }
             self?.onWevvDonutReady?()
         }
     }

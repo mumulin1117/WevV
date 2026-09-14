@@ -83,7 +83,7 @@ final class WevVWevvTasterCardController: UIViewController {
         back.addTarget(self, action: #selector(closeWevvTasterCard), for: .touchUpInside)
 
         wevvNameTitle.translatesAutoresizingMaskIntoConstraints = false
-        wevvNameTitle.font = .systemFont(ofSize: 20, weight: .heavy)
+        wevvNameTitle.font = .systemFont(ofSize: 16, weight: .bold)
         wevvNameTitle.textAlignment = .center
         wevvNameTitle.textColor = .black
         wevvNameTitle.adjustsFontSizeToFitWidth = true
@@ -100,18 +100,18 @@ final class WevVWevvTasterCardController: UIViewController {
         view.addSubview(dots)
 
         NSLayoutConstraint.activate([
-            back.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            back.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 42),
-            back.widthAnchor.constraint(equalToConstant: 44),
-            back.heightAnchor.constraint(equalToConstant: 44),
+            back.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            back.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            back.widthAnchor.constraint(equalToConstant: 36),
+            back.heightAnchor.constraint(equalToConstant: 36),
             wevvNameTitle.centerYAnchor.constraint(equalTo: back.centerYAnchor),
             wevvNameTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             wevvNameTitle.leadingAnchor.constraint(greaterThanOrEqualTo: back.trailingAnchor, constant: 14),
             wevvNameTitle.trailingAnchor.constraint(lessThanOrEqualTo: dots.leadingAnchor, constant: -14),
-            dots.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
+            dots.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             dots.centerYAnchor.constraint(equalTo: back.centerYAnchor),
-            dots.widthAnchor.constraint(equalToConstant: 44),
-            dots.heightAnchor.constraint(equalToConstant: 44)
+            dots.widthAnchor.constraint(equalToConstant: 36),
+            dots.heightAnchor.constraint(equalToConstant: 36)
         ])
     }
 
@@ -155,7 +155,7 @@ final class WevVWevvTasterCardController: UIViewController {
         wevvDonutAvatarView.translatesAutoresizingMaskIntoConstraints = false
         wevvDonutAvatarView.contentMode = .scaleAspectFill
         wevvDonutAvatarView.clipsToBounds = true
-        wevvDonutAvatarView.layer.cornerRadius = 50
+        wevvDonutAvatarView.layer.cornerRadius = 46
 
         wevvTrailButton.translatesAutoresizingMaskIntoConstraints = false
         wevvTrailButton.tintColor = .white
@@ -163,19 +163,19 @@ final class WevVWevvTasterCardController: UIViewController {
         wevvTrailButton.addTarget(self, action: #selector(toggleWevvTasterTrail), for: .touchUpInside)
 
         wevvNameHero.translatesAutoresizingMaskIntoConstraints = false
-        wevvNameHero.font = .systemFont(ofSize: 25, weight: .heavy)
+        wevvNameHero.font = .systemFont(ofSize: 21, weight: .bold)
         wevvNameHero.textColor = .black
         wevvNameHero.adjustsFontSizeToFitWidth = true
         wevvNameHero.minimumScaleFactor = 0.68
 
         wevvFlavorLine.translatesAutoresizingMaskIntoConstraints = false
-        wevvFlavorLine.font = .systemFont(ofSize: 16, weight: .heavy)
+        wevvFlavorLine.font = .systemFont(ofSize: 13, weight: .semibold)
         wevvFlavorLine.textColor = wevvSoftCrumbTone
         wevvFlavorLine.adjustsFontSizeToFitWidth = true
         wevvFlavorLine.minimumScaleFactor = 0.68
 
         wevvBakeryLine.translatesAutoresizingMaskIntoConstraints = false
-        wevvBakeryLine.font = .systemFont(ofSize: 15, weight: .heavy)
+        wevvBakeryLine.font = .systemFont(ofSize: 12, weight: .medium)
         wevvBakeryLine.textColor = wevvSoftCrumbTone
         wevvBakeryLine.adjustsFontSizeToFitWidth = true
         wevvBakeryLine.minimumScaleFactor = 0.68
@@ -185,7 +185,7 @@ final class WevVWevvTasterCardController: UIViewController {
         let segment = UIView()
         segment.translatesAutoresizingMaskIntoConstraints = false
         segment.backgroundColor = .white
-        segment.layer.cornerRadius = 28
+        segment.layer.cornerRadius = 21
         segment.clipsToBounds = true
 
         configureWevvSegmentButton(wevvFlavorNoteButton, title: "PDo~s^tV".wevVPastryCrumbBloomRestored, action: #selector(selectWevvFlavorNotePane))
@@ -198,7 +198,7 @@ final class WevVWevvTasterCardController: UIViewController {
     private func configureWevvTasterBodyStack() {
         wevvBodyStack.translatesAutoresizingMaskIntoConstraints = false
         wevvBodyStack.axis = .vertical
-        wevvBodyStack.spacing = 22
+        wevvBodyStack.spacing = 14
     }
 
     private func placeWevvTasterScrollViews(statRow: UIStackView, firstDivider: UIView, secondDivider: UIView, segment: UIView) {
@@ -216,7 +216,7 @@ final class WevVWevvTasterCardController: UIViewController {
 
     private func pinWevvTasterScrollViews(statRow: UIStackView, firstDivider: UIView, secondDivider: UIView, segment: UIView, firstStatCenter: NSLayoutConstraint, secondStatCenter: NSLayoutConstraint) {
         NSLayoutConstraint.activate([
-            wevvFritterScroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 108),
+            wevvFritterScroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 56),
             wevvFritterScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             wevvFritterScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             wevvFritterScroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -225,57 +225,57 @@ final class WevVWevvTasterCardController: UIViewController {
             wevvGlazeCanvas.trailingAnchor.constraint(equalTo: wevvFritterScroll.contentLayoutGuide.trailingAnchor),
             wevvGlazeCanvas.bottomAnchor.constraint(equalTo: wevvFritterScroll.contentLayoutGuide.bottomAnchor),
             wevvGlazeCanvas.widthAnchor.constraint(equalTo: wevvFritterScroll.frameLayoutGuide.widthAnchor),
-            wevvDonutAvatarView.topAnchor.constraint(equalTo: wevvGlazeCanvas.topAnchor, constant: 6),
-            wevvDonutAvatarView.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 64),
-            wevvDonutAvatarView.widthAnchor.constraint(equalToConstant: 100),
-            wevvDonutAvatarView.heightAnchor.constraint(equalToConstant: 100),
+            wevvDonutAvatarView.topAnchor.constraint(equalTo: wevvGlazeCanvas.topAnchor, constant: 8),
+            wevvDonutAvatarView.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 32),
+            wevvDonutAvatarView.widthAnchor.constraint(equalToConstant: 92),
+            wevvDonutAvatarView.heightAnchor.constraint(equalToConstant: 92),
             wevvTrailButton.centerXAnchor.constraint(equalTo: wevvDonutAvatarView.centerXAnchor),
-            wevvTrailButton.bottomAnchor.constraint(equalTo: wevvDonutAvatarView.bottomAnchor, constant: 22),
-            wevvTrailButton.widthAnchor.constraint(equalToConstant: 78),
-            wevvTrailButton.heightAnchor.constraint(equalToConstant: 29),
-            wevvNameHero.leadingAnchor.constraint(equalTo: wevvDonutAvatarView.trailingAnchor, constant: 38),
-            wevvNameHero.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -32),
-            wevvNameHero.topAnchor.constraint(equalTo: wevvDonutAvatarView.topAnchor, constant: 18),
+            wevvTrailButton.bottomAnchor.constraint(equalTo: wevvDonutAvatarView.bottomAnchor, constant: 18),
+            wevvTrailButton.widthAnchor.constraint(equalToConstant: 76),
+            wevvTrailButton.heightAnchor.constraint(equalToConstant: 30),
+            wevvNameHero.leadingAnchor.constraint(equalTo: wevvDonutAvatarView.trailingAnchor, constant: 24),
+            wevvNameHero.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -24),
+            wevvNameHero.topAnchor.constraint(equalTo: wevvDonutAvatarView.topAnchor, constant: 12),
             wevvFlavorLine.leadingAnchor.constraint(equalTo: wevvNameHero.leadingAnchor),
             wevvFlavorLine.trailingAnchor.constraint(equalTo: wevvNameHero.trailingAnchor),
-            wevvFlavorLine.topAnchor.constraint(equalTo: wevvNameHero.bottomAnchor, constant: 16),
+            wevvFlavorLine.topAnchor.constraint(equalTo: wevvNameHero.bottomAnchor, constant: 10),
             wevvBakeryLine.leadingAnchor.constraint(equalTo: wevvNameHero.leadingAnchor),
             wevvBakeryLine.trailingAnchor.constraint(equalTo: wevvNameHero.trailingAnchor),
-            wevvBakeryLine.topAnchor.constraint(equalTo: wevvFlavorLine.bottomAnchor, constant: 6),
-            statRow.topAnchor.constraint(equalTo: wevvDonutAvatarView.bottomAnchor, constant: 62),
-            statRow.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 58),
-            statRow.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -58),
-            statRow.heightAnchor.constraint(equalToConstant: 64),
+            wevvBakeryLine.topAnchor.constraint(equalTo: wevvFlavorLine.bottomAnchor, constant: 5),
+            statRow.topAnchor.constraint(equalTo: wevvDonutAvatarView.bottomAnchor, constant: 46),
+            statRow.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 36),
+            statRow.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -36),
+            statRow.heightAnchor.constraint(equalToConstant: 50),
             firstDivider.centerYAnchor.constraint(equalTo: statRow.centerYAnchor),
             firstStatCenter,
             firstDivider.widthAnchor.constraint(equalToConstant: 1),
-            firstDivider.heightAnchor.constraint(equalToConstant: 40),
+            firstDivider.heightAnchor.constraint(equalToConstant: 32),
             secondDivider.centerYAnchor.constraint(equalTo: statRow.centerYAnchor),
             secondStatCenter,
             secondDivider.widthAnchor.constraint(equalToConstant: 1),
-            secondDivider.heightAnchor.constraint(equalToConstant: 40),
-            segment.topAnchor.constraint(equalTo: statRow.bottomAnchor, constant: 28),
-            segment.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 30),
-            segment.widthAnchor.constraint(equalTo: wevvGlazeCanvas.widthAnchor, multiplier: 0.58),
-            segment.heightAnchor.constraint(equalToConstant: 48),
-            wevvFlavorNoteButton.leadingAnchor.constraint(equalTo: segment.leadingAnchor, constant: 6),
+            secondDivider.heightAnchor.constraint(equalToConstant: 32),
+            segment.topAnchor.constraint(equalTo: statRow.bottomAnchor, constant: 18),
+            segment.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 20),
+            segment.widthAnchor.constraint(equalTo: wevvGlazeCanvas.widthAnchor, multiplier: 0.62),
+            segment.heightAnchor.constraint(equalToConstant: 42),
+            wevvFlavorNoteButton.leadingAnchor.constraint(equalTo: segment.leadingAnchor, constant: 4),
             wevvFlavorNoteButton.topAnchor.constraint(equalTo: segment.topAnchor, constant: 4),
             wevvFlavorNoteButton.bottomAnchor.constraint(equalTo: segment.bottomAnchor, constant: -4),
-            wevvFlavorNoteButton.widthAnchor.constraint(equalTo: segment.widthAnchor, multiplier: 0.5, constant: -6),
-            wevvTastingQuestButton.trailingAnchor.constraint(equalTo: segment.trailingAnchor, constant: -6),
+            wevvFlavorNoteButton.widthAnchor.constraint(equalTo: segment.widthAnchor, multiplier: 0.5, constant: -4),
+            wevvTastingQuestButton.trailingAnchor.constraint(equalTo: segment.trailingAnchor, constant: -4),
             wevvTastingQuestButton.topAnchor.constraint(equalTo: wevvFlavorNoteButton.topAnchor),
             wevvTastingQuestButton.bottomAnchor.constraint(equalTo: wevvFlavorNoteButton.bottomAnchor),
             wevvTastingQuestButton.widthAnchor.constraint(equalTo: wevvFlavorNoteButton.widthAnchor),
-            wevvBodyStack.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 30),
-            wevvBodyStack.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 30),
-            wevvBodyStack.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -30),
-            wevvBodyStack.bottomAnchor.constraint(equalTo: wevvGlazeCanvas.bottomAnchor, constant: -180)
+            wevvBodyStack.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 16),
+            wevvBodyStack.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 20),
+            wevvBodyStack.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -20),
+            wevvBodyStack.bottomAnchor.constraint(equalTo: wevvGlazeCanvas.bottomAnchor, constant: -128)
         ])
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let statWidth = max(view.bounds.width - 116, 1)
+        let statWidth = max(view.bounds.width - 72, 1)
         wevvFirstStatCenter?.constant = statWidth / 3
         wevvSecondStatCenter?.constant = -statWidth / 3
         wevvDonutAvatarView.layer.cornerRadius = wevvDonutAvatarView.bounds.height / 2
@@ -303,7 +303,7 @@ final class WevVWevvTasterCardController: UIViewController {
             wevvLockedFoot.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             wevvLockedFoot.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             wevvLockedFoot.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            wevvLockedFoot.heightAnchor.constraint(equalToConstant: 134),
+            wevvLockedFoot.heightAnchor.constraint(equalToConstant: 96),
 //            crumbLabel.leadingAnchor.constraint(equalTo: lockedFoot.leadingAnchor, constant: 30),
 //            crumbLabel.trailingAnchor.constraint(equalTo: lockedFoot.trailingAnchor, constant: -24),
 //            crumbLabel.topAnchor.constraint(equalTo: lockedFoot.topAnchor, constant: 22)
@@ -336,13 +336,13 @@ final class WevVWevvTasterCardController: UIViewController {
             wevvActionFoot.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             wevvActionFoot.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             wevvActionFoot.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            wevvActionFoot.heightAnchor.constraint(equalToConstant: 122),
-            donutRibbonNote.leadingAnchor.constraint(equalTo: wevvActionFoot.contentView.leadingAnchor, constant: 48),
-            donutRibbonNote.topAnchor.constraint(equalTo: wevvActionFoot.contentView.topAnchor, constant: 24),
-            donutRibbonNote.heightAnchor.constraint(equalToConstant: 54),
-            donutRibbonNote.trailingAnchor.constraint(equalTo: wevvActionFoot.contentView.centerXAnchor, constant: -14),
-            sprinkleLensButton.leadingAnchor.constraint(equalTo: wevvActionFoot.contentView.centerXAnchor, constant: 14),
-            sprinkleLensButton.trailingAnchor.constraint(equalTo: wevvActionFoot.contentView.trailingAnchor, constant: -48),
+            wevvActionFoot.heightAnchor.constraint(equalToConstant: 94),
+            donutRibbonNote.leadingAnchor.constraint(equalTo: wevvActionFoot.contentView.leadingAnchor, constant: 24),
+            donutRibbonNote.topAnchor.constraint(equalTo: wevvActionFoot.contentView.topAnchor, constant: 12),
+            donutRibbonNote.heightAnchor.constraint(equalToConstant: 46),
+            donutRibbonNote.trailingAnchor.constraint(equalTo: wevvActionFoot.contentView.centerXAnchor, constant: -7),
+            sprinkleLensButton.leadingAnchor.constraint(equalTo: wevvActionFoot.contentView.centerXAnchor, constant: 7),
+            sprinkleLensButton.trailingAnchor.constraint(equalTo: wevvActionFoot.contentView.trailingAnchor, constant: -24),
             sprinkleLensButton.topAnchor.constraint(equalTo: donutRibbonNote.topAnchor),
             sprinkleLensButton.heightAnchor.constraint(equalTo: donutRibbonNote.heightAnchor)
         ])
@@ -364,7 +364,7 @@ final class WevVWevvTasterCardController: UIViewController {
         refreshWevvBodyStack()
         wevvLockedFoot.isHidden = isDonutTrailOpen
         wevvActionFoot.isHidden = !isDonutTrailOpen
-        wevvFritterScroll.contentInset.bottom = isDonutTrailOpen ? 132 : 148
+        wevvFritterScroll.contentInset.bottom = isDonutTrailOpen ? 104 : 108
         wevvFritterScroll.verticalScrollIndicatorInsets.bottom = wevvFritterScroll.contentInset.bottom
     }
 
@@ -516,7 +516,7 @@ final class WevVWevvTasterCardController: UIViewController {
         let wevvPastryCard = UIView()
         wevvPastryCard.translatesAutoresizingMaskIntoConstraints = false
         wevvPastryCard.backgroundColor = .white
-        wevvPastryCard.layer.cornerRadius = 26
+        wevvPastryCard.layer.cornerRadius = 16
 
         let glazeImage = makeWevvQuestCover(asset: quest.assetName)
         let glazeTitle = makeWevvQuestTitle(quest.crumbScoutline)
@@ -541,22 +541,22 @@ final class WevVWevvTasterCardController: UIViewController {
         glazeImage.translatesAutoresizingMaskIntoConstraints = false
         glazeImage.contentMode = .scaleAspectFill
         glazeImage.clipsToBounds = true
-        glazeImage.layer.cornerRadius = 22
+        glazeImage.layer.cornerRadius = 14
         return glazeImage
     }
 
     private func makeWevvQuestTitle(_ sugarTitle: String) -> UILabel {
-        let glazeTitle = makeWevvGlazeLabel(sugarTitle, size: 18, weight: .heavy, color: wevvCocoaTone)
+        let glazeTitle = makeWevvGlazeLabel(sugarTitle, size: 14, weight: .bold, color: wevvCocoaTone)
         glazeTitle.numberOfLines = 2
         return glazeTitle
     }
 
     private func makeWevvQuestMeta(_ sugarText: String) -> UILabel {
-        makeWevvGlazeLabel(sugarText, size: 15, weight: .heavy, color: wevvSoftCrumbTone)
+        makeWevvGlazeLabel(sugarText, size: 11, weight: .medium, color: wevvSoftCrumbTone)
     }
 
     private func makeWevvQuestCost(_ sugarText: String) -> UILabel {
-        makeWevvGlazeLabel(sugarText, size: 15, weight: .heavy, color: wevvCocoaTone)
+        makeWevvGlazeLabel(sugarText, size: 12, weight: .semibold, color: wevvCocoaTone)
     }
 
     private func makeWevvQuestGem() -> UILabel {
@@ -565,23 +565,23 @@ final class WevVWevvTasterCardController: UIViewController {
 
     private func pinWevvQuestCard(wevvPastryCard: UIView, glazeImage: UIImageView, glazeTitle: UILabel, time: UILabel, place: UILabel, gem: UILabel, cost: UILabel) {
         NSLayoutConstraint.activate([
-            wevvPastryCard.heightAnchor.constraint(equalToConstant: 208),
-            glazeImage.leadingAnchor.constraint(equalTo: wevvPastryCard.leadingAnchor, constant: 24),
-            glazeImage.topAnchor.constraint(equalTo: wevvPastryCard.topAnchor, constant: 12),
-            glazeImage.bottomAnchor.constraint(equalTo: wevvPastryCard.bottomAnchor, constant: -12),
-            glazeImage.widthAnchor.constraint(equalTo: wevvPastryCard.widthAnchor, multiplier: 0.28),
-            glazeTitle.leadingAnchor.constraint(equalTo: glazeImage.trailingAnchor, constant: 15),
-            glazeTitle.topAnchor.constraint(equalTo: wevvPastryCard.topAnchor, constant: 22),
-            glazeTitle.trailingAnchor.constraint(equalTo: wevvPastryCard.trailingAnchor, constant: -24),
+            wevvPastryCard.heightAnchor.constraint(equalToConstant: 136),
+            glazeImage.leadingAnchor.constraint(equalTo: wevvPastryCard.leadingAnchor, constant: 10),
+            glazeImage.topAnchor.constraint(equalTo: wevvPastryCard.topAnchor, constant: 10),
+            glazeImage.bottomAnchor.constraint(equalTo: wevvPastryCard.bottomAnchor, constant: -10),
+            glazeImage.widthAnchor.constraint(equalToConstant: 112),
+            glazeTitle.leadingAnchor.constraint(equalTo: glazeImage.trailingAnchor, constant: 12),
+            glazeTitle.topAnchor.constraint(equalTo: wevvPastryCard.topAnchor, constant: 15),
+            glazeTitle.trailingAnchor.constraint(equalTo: wevvPastryCard.trailingAnchor, constant: -12),
             time.leadingAnchor.constraint(equalTo: glazeTitle.leadingAnchor),
-            time.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 10),
+            time.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 7),
             time.trailingAnchor.constraint(equalTo: glazeTitle.trailingAnchor),
             place.leadingAnchor.constraint(equalTo: glazeTitle.leadingAnchor),
-            place.topAnchor.constraint(equalTo: time.bottomAnchor, constant: 6),
+            place.topAnchor.constraint(equalTo: time.bottomAnchor, constant: 4),
             place.trailingAnchor.constraint(equalTo: glazeTitle.trailingAnchor),
             gem.leadingAnchor.constraint(equalTo: glazeTitle.leadingAnchor),
-            gem.bottomAnchor.constraint(equalTo: wevvPastryCard.bottomAnchor, constant: -20),
-            gem.widthAnchor.constraint(equalToConstant: 28),
+            gem.bottomAnchor.constraint(equalTo: wevvPastryCard.bottomAnchor, constant: -14),
+            gem.widthAnchor.constraint(equalToConstant: 24),
             cost.leadingAnchor.constraint(equalTo: gem.trailingAnchor, constant: 2),
             cost.centerYAnchor.constraint(equalTo: gem.centerYAnchor)
         ])
@@ -595,10 +595,10 @@ final class WevVWevvTasterCardController: UIViewController {
         sprinkleButton.setTitle(title, for: .normal)
         sprinkleButton.setTitleColor(tint, for: .normal)
         sprinkleButton.setImage(UIImage(systemName: symbol), for: .normal)
-        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .heavy)
+        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         sprinkleButton.titleLabel?.adjustsFontSizeToFitWidth = true
         sprinkleButton.titleLabel?.minimumScaleFactor = 0.82
-        sprinkleButton.layer.cornerRadius = 27
+        sprinkleButton.layer.cornerRadius = 23
         sprinkleButton.semanticContentAttribute = .forceLeftToRight
         return sprinkleButton
     }
@@ -654,10 +654,10 @@ final class WevVWevvTasterCardController: UIViewController {
         let holder = UIView()
         holder.translatesAutoresizingMaskIntoConstraints = false
         value.translatesAutoresizingMaskIntoConstraints = false
-        value.font = .systemFont(ofSize: 23, weight: .heavy)
+        value.font = .systemFont(ofSize: 18, weight: .bold)
         value.textColor = .black
         value.textAlignment = .center
-        let crumbLabel = makeWevvGlazeLabel(title, size: 15, weight: .regular, color: .black)
+        let crumbLabel = makeWevvGlazeLabel(title, size: 12, weight: .regular, color: wevvSoftCrumbTone)
         crumbLabel.textAlignment = .center
         holder.addSubview(value)
         holder.addSubview(crumbLabel)
@@ -665,7 +665,7 @@ final class WevVWevvTasterCardController: UIViewController {
             value.topAnchor.constraint(equalTo: holder.topAnchor, constant: 2),
             value.leadingAnchor.constraint(equalTo: holder.leadingAnchor),
             value.trailingAnchor.constraint(equalTo: holder.trailingAnchor),
-            crumbLabel.topAnchor.constraint(equalTo: value.bottomAnchor, constant: 8),
+            crumbLabel.topAnchor.constraint(equalTo: value.bottomAnchor, constant: 4),
             crumbLabel.leadingAnchor.constraint(equalTo: holder.leadingAnchor),
             crumbLabel.trailingAnchor.constraint(equalTo: holder.trailingAnchor)
         ])
@@ -682,7 +682,7 @@ final class WevVWevvTasterCardController: UIViewController {
     private func configureWevvSegmentButton(_ sprinkleButton: UIButton, title: String, action: Selector) {
         sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
         sprinkleButton.setTitle(title, for: .normal)
-        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .heavy)
+        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .semibold)
         sprinkleButton.layer.cornerRadius = 20
         sprinkleButton.addTarget(self, action: action, for: .touchUpInside)
     }

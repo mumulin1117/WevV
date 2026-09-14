@@ -127,6 +127,10 @@ final class WevVGlazeSessionStore {
     }
 
     var glazeGoldCount: Int {
+        let scopedKey = glazeGoldVaultKey(for: currentTasterEmail)
+        if frostingDefaults.object(forKey: scopedKey) != nil {
+            return frostingDefaults.integer(forKey: scopedKey)
+        }
         return frostingDefaults.integer(forKey: wevvGoldVaultKey)
     }
 
@@ -156,14 +160,20 @@ final class WevVGlazeSessionStore {
         markDoughRingTasterReady(profile: defaultDoughRingProfile)
     }
 
-    func markDoughRingTasterReady(profile doughProfile: WevVDoughRingTasterProfile) {
+    func markDoughRingTasterReady(profile doughProfile: WevVDoughRingTasterProfile, startsFresh: Bool = false) {
         frostingDefaults.set(true, forKey: wevvSignedInKey)
         frostingDefaults.set(true, forKey: wevvLegacyReadyKey)
         frostingDefaults.set(doughProfile.email, forKey: wevvCurrentEmailKey)
         frostingDefaults.set(makeGlazeToken(email: doughProfile.email), forKey: wevvTokenKey)
         frostingDefaults.set(packDoughRingProfile(doughProfile), forKey: wevvProfileKey)
-        if frostingDefaults.object(forKey: wevvGoldVaultKey) == nil {
-            frostingDefaults.set(doughProfile.glazeVaultCount, forKey: wevvGoldVaultKey)
+        let scopedGoldKey = glazeGoldVaultKey(for: doughProfile.email)
+        if startsFresh {
+            frostingDefaults.set(0, forKey: scopedGoldKey)
+        } else if frostingDefaults.object(forKey: scopedGoldKey) == nil {
+            let existingGold = frostingDefaults.object(forKey: wevvGoldVaultKey) == nil
+                ? doughProfile.glazeVaultCount
+                : frostingDefaults.integer(forKey: wevvGoldVaultKey)
+            frostingDefaults.set(existingGold, forKey: scopedGoldKey)
         }
     }
 
@@ -395,7 +405,7 @@ final class WevVGlazeSessionStore {
 
     private func updateGlazeGoldCount(_ count: Int) {
         let safeCount = max(0, count)
-        frostingDefaults.set(safeCount, forKey: wevvGoldVaultKey)
+        frostingDefaults.set(safeCount, forKey: glazeGoldVaultKey(for: currentTasterEmail))
         guard frostingDefaults.string(forKey: wevvProfileKey) != nil else { return }
         let doughProfile = currentDoughRingTasterProfile
         let doughPacket = WevVDoughRingTasterProfile(
@@ -509,6 +519,11 @@ final class WevVGlazeSessionStore {
     private func makeGlazeToken(email: String) -> String {
         let cleanedMail = email.replacingOccurrences(of: "@q".wevVPastryCrumbBloomRestored, with: "_^".wevVPastryCrumbBloomRestored).replacingOccurrences(of: ".!".wevVPastryCrumbBloomRestored, with: "_#".wevVPastryCrumbBloomRestored)
         return "wevv_token_\(cleanedMail)_\(Int(Date().timeIntervalSince1970))"
+    }
+
+    private func glazeGoldVaultKey(for email: String) -> String {
+        let glazeScope = Data(email.lowercased().utf8).base64EncodedString()
+        return "\(wevvGoldVaultKey).\(glazeScope)"
     }
 
     private func defaultSugarHandle(from glazeNickname: String) -> String {
