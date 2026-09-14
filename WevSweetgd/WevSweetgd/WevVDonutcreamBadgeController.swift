@@ -24,6 +24,7 @@ final class WevVDonutcreamBadgeController: UIViewController {
     private let donutJournalStore = WevVGlazeSessionStore.shared
     private let bakeryTasterStore = WevVGuestGlazeStore.shared
     private let pastryTrailScroll = UIScrollView()
+    private let sprinkleRefresh = UIRefreshControl()
     private let donutCaseContent = UIView()
     private let bakeryAtlasCarousel = UIScrollView()
     private let bakeryAtlasPages = UIStackView()
@@ -287,9 +288,22 @@ final class WevVDonutcreamBadgeController: UIViewController {
     private func buildPastryTrailScroll() {
         pastryTrailScroll.translatesAutoresizingMaskIntoConstraints = false
         pastryTrailScroll.showsVerticalScrollIndicator = false
+        pastryTrailScroll.alwaysBounceVertical = true
         pastryTrailScroll.contentInsetAdjustmentBehavior = .never
         pastryTrailScroll.contentInset.bottom = 110
         pastryTrailScroll.verticalScrollIndicatorInsets.bottom = 110
+        sprinkleRefresh.tintColor = UIColor(red: 0.18, green: 0.02, blue: 0.32, alpha: 1)
+        sprinkleRefresh.backgroundColor = UIColor.white.withAlphaComponent(0.32)
+        sprinkleRefresh.attributedTitle = NSAttributedString(
+            string: "P#u#l#l# #t#o# #r#e#f#r#e#s#h#".wevVPastryCrumbBloomRestored,
+            attributes: [
+                .foregroundColor: UIColor(red: 0.18, green: 0.02, blue: 0.32, alpha: 1),
+                .font: UIFont.systemFont(ofSize: 13, weight: .semibold)
+            ]
+        )
+        sprinkleRefresh.isEnabled = false
+        sprinkleRefresh.addTarget(self, action: #selector(refreshSprinkleMoments), for: .valueChanged)
+        pastryTrailScroll.refreshControl = sprinkleRefresh
         view.addSubview(pastryTrailScroll)
 
         donutCaseContent.translatesAutoresizingMaskIntoConstraints = false
@@ -1112,6 +1126,7 @@ final class WevVDonutcreamBadgeController: UIViewController {
     private func makeSprinkleMomentTextBand() -> UIView {
         let glazeBand = WevVSugarGradientBand()
         glazeBand.translatesAutoresizingMaskIntoConstraints = false
+        glazeBand.isUserInteractionEnabled = false
         return glazeBand
     }
 
@@ -1555,6 +1570,26 @@ final class WevVDonutcreamBadgeController: UIViewController {
     @objc private func selectDonutSection(_ glazeButton: UIControl) {
         guard let section = WevVDonutParlorSection(rawValue: glazeButton.tag) else { return }
         switchDonutParlorSection(section)
+    }
+
+    @objc private func refreshSprinkleMoments() {
+        guard activeDonutParlorSection == .tastingJournal else {
+            sprinkleRefresh.endRefreshing()
+            return
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) { [weak self] in
+            guard let self else { return }
+            let ringCutterKey = self.donutJournalStore.currentDoughRingTasterProfile.ringCutterKey
+            let sugarMoments = self.donutSnapshots.filter { $0.tasterBloom.donutPinKey == ringCutterKey }
+            var bakeryMoments = self.donutSnapshots.filter { $0.tasterBloom.donutPinKey != ringCutterKey }
+            if let pastryMoment = bakeryMoments.popLast() {
+                bakeryMoments.insert(pastryMoment, at: 0)
+            }
+            self.donutSnapshots = sugarMoments + bakeryMoments
+            self.rebuildDonutSnapshotStack()
+            self.sprinkleRefresh.endRefreshing()
+        }
     }
 
     @objc private func advanceBakeryAtlasCarousel() {
@@ -2132,6 +2167,10 @@ final class WevVDonutcreamBadgeController: UIViewController {
     private func switchDonutParlorSection(_ section: WevVDonutParlorSection) {
         activeDonutParlorSection = section
         let showHome = section == .donutCounter
+        if section == .tastingJournal {
+            let sprinkleTop = -pastryTrailScroll.adjustedContentInset.top
+            pastryTrailScroll.setContentOffset(CGPoint(x: 0, y: sprinkleTop), animated: false)
+        }
         if section == .donutDiary {
             refreshDonutDiaryPanel()
         }
@@ -2140,6 +2179,10 @@ final class WevVDonutcreamBadgeController: UIViewController {
         tastingJournalPanel.isHidden = true
         flavorNoteEntryButton.isHidden = section != .tastingJournal
         donutDiaryPanel.isHidden = section != .donutDiary
+        sprinkleRefresh.isEnabled = section == .tastingJournal
+        if section != .tastingJournal {
+            sprinkleRefresh.endRefreshing()
+        }
         donutCounterGlazeSheen.isHidden = section != .donutCounter || didFinishDonutCounterGlazeSheen
         tastingJournalGlazeSheen.isHidden = section != .tastingJournal || didFinishTastingJournalGlazeSheen
         donutParlorFootTopConstraints.values.forEach { $0.isActive = false }

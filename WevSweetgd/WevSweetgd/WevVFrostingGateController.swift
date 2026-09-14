@@ -41,8 +41,23 @@ final class WevVWevvBakeryGateController: UIViewController, UITextFieldDelegate 
     private weak var wevvLandingStartButton: UIButton?
     private weak var wevvLandingReturnButton: UIButton?
 
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        modalPresentationStyle = .pageSheet
+        isModalInPresentation = false
+    }
+
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        nil
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        sheetPresentationController?.prefersGrabberVisible = true
         wevvEulaAccepted = wevvPastryDefaults.bool(forKey: wevvEulaRibbonKey)
         buildWevvBakeryGateCanvas()
         renderWevvBakeryMode(.wevvSugarLanding)

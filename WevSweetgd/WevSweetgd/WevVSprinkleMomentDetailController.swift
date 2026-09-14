@@ -575,7 +575,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
 
     private func showWevvBakeryGate() {
         let menuFlight = WevVWevvBakeryGateController()
-        menuFlight.modalPresentationStyle = .fullScreen
+        menuFlight.modalPresentationStyle = .pageSheet
         menuFlight.onWevvDonutReady = { [weak self] in
             self?.dismiss(animated: true) {
                 self?.refreshWevvTrailButton()
