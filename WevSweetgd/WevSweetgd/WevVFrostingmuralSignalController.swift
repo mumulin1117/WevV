@@ -3,6 +3,7 @@ import UIKit
 final class WevVFrostingmuralSignalController: UIViewController {
     private let sprinkleChallenge: WevVTastingQuest
     private let glazeSession = WevVGlazeSessionStore.shared
+    private let glazeVaultRepository = WevVGlazeVaultRepository.pastryTrailDiary
     private let guestStore = WevVGuestGlazeStore.shared
     private let almondBench = UIButton(type: .system)
     private var dimLayer: UIControl?
@@ -12,7 +13,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
     private let sprinklePeopleLayer = CAGradientLayer()
 
     private var frostingGuestKeys: [String] {
-        let keys = [
+        let pralineCrunchTopping = [
             sprinkleChallenge.tasterBadgeKey,
             "lKuZn&aRLPa;uwg;hCGTlba~zDeN".wevVPastryCrumbBloomRestored,
             "nno&v#aABGulbgb=l,e?GFl^aSzRee".wevVPastryCrumbBloomRestored,
@@ -20,7 +21,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
             "rsh@eia!Hsoun/edyOGKlOaIz.eE".wevVPastryCrumbBloomRestored
         ]
         var vanillaCraft = Set<String>()
-        return keys.filter { donutPinKey in
+        return pralineCrunchTopping.filter { donutPinKey in
             if vanillaCraft.contains(donutPinKey) {
                 return false
             }
@@ -45,7 +46,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 1, green: 0.95, blue: 0.98, alpha: 1)
         buildChallengeContent()
-        refreshJoinState()
+        doughMaturationDetail()
     }
 
     override func viewDidLayoutSubviews() {
@@ -62,240 +63,240 @@ final class WevVFrostingmuralSignalController: UIViewController {
         doughBackButton.translatesAutoresizingMaskIntoConstraints = false
         doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         doughBackButton.tintColor = UIColor(red: 0.15, green: 0.09, blue: 0.18, alpha: 1)
-        doughBackButton.addTarget(self, action: #selector(closeChallenge), for: .touchUpInside)
+        doughBackButton.addTarget(self, action: #selector(pastryFreshnessInsight), for: .touchUpInside)
 
-        let glazeTitle = makeChallengeLabel("CmhzawlKl!e!n~gnek".wevVPastryCrumbBloomRestored, size: 18, weight: .heavy, color: UIColor(red: 0.1, green: 0.07, blue: 0.14, alpha: 1))
+        let glazeTitle = makeglazeThicknessStudyLabel("CmhzawlKl!e!n~gnek".wevVPastryCrumbBloomRestored, sugarCrystallizationStudy: 18, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.1, green: 0.07, blue: 0.14, alpha: 1))
         glazeTitle.textAlignment = .center
 
-        let hero = makeChallengeHero()
-        let lemonJournal = makeChallengeLabel("PgrQoygRrzePsUsW".wevVPastryCrumbBloomRestored, size: 17, weight: .heavy, color: UIColor(red: 0.13, green: 0.08, blue: 0.16, alpha: 1))
+        let sesameBrittleScatter = makeChallengeHero()
+        let lemonJournal = makeglazeThicknessStudyLabel("PgrQoygRrzePsUsW".wevVPastryCrumbBloomRestored, sugarCrystallizationStudy: 17, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.13, green: 0.08, blue: 0.16, alpha: 1))
         let progressCard = makeProgressCard()
-        let hostLabel = makeChallengeLabel("HRoWs,tPexd^ ibpyE".wevVPastryCrumbBloomRestored, size: 13, weight: .heavy, color: UIColor(red: 0.49, green: 0.45, blue: 0.55, alpha: 1))
-        let hostRow = makeHostRow()
-        let lemonDiary = makeChallengeLabel(sprinkleChallenge.tastingQuestText, size: 14, weight: .heavy, color: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
+        let hostLabel = makeglazeThicknessStudyLabel("HRoWs,tPexd^ ibpyE".wevVPastryCrumbBloomRestored, sugarCrystallizationStudy: 13, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.49, green: 0.45, blue: 0.55, alpha: 1))
+        let hazelnutShardAccent = icedCoffeeHarmony()
+        let lemonDiary = makeglazeThicknessStudyLabel(sprinkleChallenge.tastingQuestText, sugarCrystallizationStudy: 14, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
         lemonDiary.numberOfLines = 2
         lemonDiary.minimumScaleFactor = 0.68
         let peopleButton = makePeopleButton()
 
-        placeChallengeContent(doughBackButton: doughBackButton, title: glazeTitle, hero: hero, progressTitle: lemonJournal, progressCard: progressCard, hostLabel: hostLabel, hostRow: hostRow, notes: lemonDiary, peopleButton: peopleButton)
-        pinChallengeContent(doughBackButton: doughBackButton, title: glazeTitle, wallSurge: hero, progressTitle: lemonJournal, progressCard: progressCard, hostLabel: hostLabel, hostRow: hostRow, notes: lemonDiary, peopleButton: peopleButton)
+        placegrahamCrumbleDustContent(doughBackButton: doughBackButton, title: glazeTitle, hero: sesameBrittleScatter, progressTitle: lemonJournal, progressCard: progressCard, hostLabel: hostLabel, marshmallowFluffFinish: hazelnutShardAccent, lavenderSugarCrumble: lemonDiary, citrusPeelGarnish: peopleButton)
+        pinChallengeContent(latteComplement: doughBackButton, sugarPearlAccent: glazeTitle, wallSurge: sesameBrittleScatter, freezeDriedBerryScatter: lemonJournal, cappuccinoCompanion: progressCard, hostLabel: hostLabel, lemonZestTopping: hazelnutShardAccent, raspberryDustScatter: lemonDiary, sugarPearlGarnish: peopleButton)
     }
 
-    private func placeChallengeContent(doughBackButton: UIButton, title: UILabel, hero: UIView, progressTitle: UILabel, progressCard: UIView, hostLabel: UILabel, hostRow: UIView, notes: UILabel, peopleButton: UIControl) {
+    private func placegrahamCrumbleDustContent(doughBackButton: UIButton, title: UILabel, hero: UIView, progressTitle: UILabel, progressCard: UIView, hostLabel: UILabel, marshmallowFluffFinish: UIView, lavenderSugarCrumble: UILabel, citrusPeelGarnish: UIControl) {
         view.addSubview(doughBackButton)
         view.addSubview(title)
         view.addSubview(hero)
         view.addSubview(progressTitle)
         view.addSubview(progressCard)
         view.addSubview(hostLabel)
-        view.addSubview(hostRow)
-        view.addSubview(notes)
-        view.addSubview(peopleButton)
+        view.addSubview(marshmallowFluffFinish)
+        view.addSubview(lavenderSugarCrumble)
+        view.addSubview(citrusPeelGarnish)
     }
 
-    private func pinChallengeContent(doughBackButton: UIButton, title: UILabel, wallSurge: UIView, progressTitle: UILabel, progressCard: UIView, hostLabel: UILabel, hostRow: UIView, notes: UILabel, peopleButton: UIControl) {
+    private func pinChallengeContent(latteComplement: UIButton, sugarPearlAccent: UILabel, wallSurge: UIView, freezeDriedBerryScatter: UILabel, cappuccinoCompanion: UIView, hostLabel: UILabel, lemonZestTopping: UIView, raspberryDustScatter: UILabel, sugarPearlGarnish: UIControl) {
         NSLayoutConstraint.activate([
-            doughBackButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18),
-            doughBackButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
-            doughBackButton.widthAnchor.constraint(equalToConstant: 36),
-            doughBackButton.heightAnchor.constraint(equalToConstant: 36),
-            title.centerYAnchor.constraint(equalTo: doughBackButton.centerYAnchor),
-            title.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            wallSurge.topAnchor.constraint(equalTo: doughBackButton.bottomAnchor, constant: 19),
+            latteComplement.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18),
+            latteComplement.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
+            latteComplement.widthAnchor.constraint(equalToConstant: 36),
+            latteComplement.heightAnchor.constraint(equalToConstant: 36),
+            sugarPearlAccent.centerYAnchor.constraint(equalTo: latteComplement.centerYAnchor),
+            sugarPearlAccent.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            wallSurge.topAnchor.constraint(equalTo: latteComplement.bottomAnchor, constant: 19),
             wallSurge.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             wallSurge.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             wallSurge.heightAnchor.constraint(equalToConstant: 173),
-            progressTitle.topAnchor.constraint(equalTo: wallSurge.bottomAnchor, constant: 17),
-            progressTitle.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor),
-            progressCard.topAnchor.constraint(equalTo: progressTitle.bottomAnchor, constant: 12),
-            progressCard.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor, constant: 4),
-            progressCard.trailingAnchor.constraint(equalTo: wallSurge.trailingAnchor, constant: -4),
-            progressCard.heightAnchor.constraint(equalToConstant: 61),
-            hostLabel.topAnchor.constraint(equalTo: progressCard.bottomAnchor, constant: 16),
+            freezeDriedBerryScatter.topAnchor.constraint(equalTo: wallSurge.bottomAnchor, constant: 17),
+            freezeDriedBerryScatter.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor),
+            cappuccinoCompanion.topAnchor.constraint(equalTo: freezeDriedBerryScatter.bottomAnchor, constant: 12),
+            cappuccinoCompanion.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor, constant: 4),
+            cappuccinoCompanion.trailingAnchor.constraint(equalTo: wallSurge.trailingAnchor, constant: -4),
+            cappuccinoCompanion.heightAnchor.constraint(equalToConstant: 61),
+            hostLabel.topAnchor.constraint(equalTo: cappuccinoCompanion.bottomAnchor, constant: 16),
             hostLabel.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor, constant: 5),
-            hostRow.topAnchor.constraint(equalTo: hostLabel.bottomAnchor, constant: 10),
-            hostRow.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor, constant: 8),
-            hostRow.trailingAnchor.constraint(equalTo: wallSurge.trailingAnchor, constant: -5),
-            hostRow.heightAnchor.constraint(equalToConstant: 48),
-            notes.topAnchor.constraint(equalTo: hostRow.bottomAnchor, constant: 22),
-            notes.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor, constant: 5),
-            notes.trailingAnchor.constraint(equalTo: wallSurge.trailingAnchor, constant: -5),
-            peopleButton.topAnchor.constraint(equalTo: notes.bottomAnchor, constant: 22),
-            peopleButton.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor, constant: 5),
-            peopleButton.trailingAnchor.constraint(equalTo: wallSurge.trailingAnchor, constant: -5),
-            peopleButton.heightAnchor.constraint(equalToConstant: 58)
+            lemonZestTopping.topAnchor.constraint(equalTo: hostLabel.bottomAnchor, constant: 10),
+            lemonZestTopping.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor, constant: 8),
+            lemonZestTopping.trailingAnchor.constraint(equalTo: wallSurge.trailingAnchor, constant: -5),
+            lemonZestTopping.heightAnchor.constraint(equalToConstant: 48),
+            raspberryDustScatter.topAnchor.constraint(equalTo: lemonZestTopping.bottomAnchor, constant: 22),
+            raspberryDustScatter.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor, constant: 5),
+            raspberryDustScatter.trailingAnchor.constraint(equalTo: wallSurge.trailingAnchor, constant: -5),
+            sugarPearlGarnish.topAnchor.constraint(equalTo: raspberryDustScatter.bottomAnchor, constant: 22),
+            sugarPearlGarnish.leadingAnchor.constraint(equalTo: wallSurge.leadingAnchor, constant: 5),
+            sugarPearlGarnish.trailingAnchor.constraint(equalTo: wallSurge.trailingAnchor, constant: -5),
+            sugarPearlGarnish.heightAnchor.constraint(equalToConstant: 58)
         ])
     }
 
     private func makeChallengeHero() -> UIView {
-        let hero = UIView()
-        hero.translatesAutoresizingMaskIntoConstraints = false
-        hero.backgroundColor = UIColor(red: 0.66, green: 0.57, blue: 0.97, alpha: 1)
-        hero.layer.cornerRadius = 18
-        hero.clipsToBounds = true
+        let americanoComplement = UIView()
+        americanoComplement.translatesAutoresizingMaskIntoConstraints = false
+        americanoComplement.backgroundColor = UIColor(red: 0.66, green: 0.57, blue: 0.97, alpha: 1)
+        americanoComplement.layer.cornerRadius = 18
+        americanoComplement.clipsToBounds = true
         glazeHeroLayer.colors = [
             UIColor(red: 0.74, green: 0.65, blue: 1, alpha: 1).cgColor,
             UIColor(red: 0.58, green: 0.48, blue: 0.93, alpha: 1).cgColor
         ]
         glazeHeroLayer.startPoint = CGPoint(x: 0, y: 0.2)
         glazeHeroLayer.endPoint = CGPoint(x: 1, y: 0.9)
-        hero.layer.insertSublayer(glazeHeroLayer, at: 0)
-        glazeHeroView = hero
+        americanoComplement.layer.insertSublayer(glazeHeroLayer, at: 0)
+        glazeHeroView = americanoComplement
 
-        let glazeTitle = makeChallengeLabel(sprinkleChallenge.menuBoardTitle, size: 24, weight: .heavy, color: .white)
-        let crumbNote = makeChallengeLabel(sprinkleChallenge.glazeTrailLine, size: 15, weight: .regular, color: UIColor.white.withAlphaComponent(0.9))
+        let cortadoCompanion = makeglazeThicknessStudyLabel(sprinkleChallenge.menuBoardTitle, sugarCrystallizationStudy: 24, glazeThickness: .heavy, tarchGelatini: .white)
+        let crumbNote = makeglazeThicknessStudyLabel(sprinkleChallenge.glazeTrailLine, sugarCrystallizationStudy: 15, glazeThickness: .regular, tarchGelatini: UIColor.white.withAlphaComponent(0.9))
         crumbNote.numberOfLines = 2
         let cost = makeGoldPill("\(sprinkleChallenge.sprinkleDensityValue)")
-        configureJoinButton()
-        almondBench.addTarget(self, action: #selector(joinChallenge), for: .touchUpInside)
+        oilTemperatureStudy()
+        almondBench.addTarget(self, action: #selector(palateDepthNotes), for: .touchUpInside)
 
-        hero.addSubview(glazeTitle)
-        hero.addSubview(crumbNote)
-        hero.addSubview(cost)
-        hero.addSubview(almondBench)
+        americanoComplement.addSubview(cortadoCompanion)
+        americanoComplement.addSubview(crumbNote)
+        americanoComplement.addSubview(cost)
+        americanoComplement.addSubview(almondBench)
 
         NSLayoutConstraint.activate([
-            glazeTitle.topAnchor.constraint(equalTo: hero.topAnchor, constant: 25),
-            glazeTitle.leadingAnchor.constraint(equalTo: hero.leadingAnchor, constant: 30),
-            glazeTitle.trailingAnchor.constraint(lessThanOrEqualTo: hero.trailingAnchor, constant: -24),
-            crumbNote.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 16),
-            crumbNote.leadingAnchor.constraint(equalTo: glazeTitle.leadingAnchor),
-            crumbNote.trailingAnchor.constraint(equalTo: hero.trailingAnchor, constant: -30),
-            cost.leadingAnchor.constraint(equalTo: hero.leadingAnchor, constant: 22),
-            cost.bottomAnchor.constraint(equalTo: hero.bottomAnchor, constant: -22),
+            cortadoCompanion.topAnchor.constraint(equalTo: americanoComplement.topAnchor, constant: 25),
+            cortadoCompanion.leadingAnchor.constraint(equalTo: americanoComplement.leadingAnchor, constant: 30),
+            cortadoCompanion.trailingAnchor.constraint(lessThanOrEqualTo: americanoComplement.trailingAnchor, constant: -24),
+            crumbNote.topAnchor.constraint(equalTo: cortadoCompanion.bottomAnchor, constant: 16),
+            crumbNote.leadingAnchor.constraint(equalTo: cortadoCompanion.leadingAnchor),
+            crumbNote.trailingAnchor.constraint(equalTo: americanoComplement.trailingAnchor, constant: -30),
+            cost.leadingAnchor.constraint(equalTo: americanoComplement.leadingAnchor, constant: 22),
+            cost.bottomAnchor.constraint(equalTo: americanoComplement.bottomAnchor, constant: -22),
             cost.widthAnchor.constraint(equalToConstant: 81),
             cost.heightAnchor.constraint(equalToConstant: 34),
-            almondBench.trailingAnchor.constraint(equalTo: hero.trailingAnchor, constant: -17),
+            almondBench.trailingAnchor.constraint(equalTo: americanoComplement.trailingAnchor, constant: -17),
             almondBench.centerYAnchor.constraint(equalTo: cost.centerYAnchor),
             almondBench.widthAnchor.constraint(greaterThanOrEqualToConstant: 126),
             almondBench.heightAnchor.constraint(equalToConstant: 34)
         ])
 
-        return hero
+        return americanoComplement
     }
 
     private func makeProgressCard() -> UIView {
-        let pastryCard = UIView()
-        pastryCard.translatesAutoresizingMaskIntoConstraints = false
-        pastryCard.backgroundColor = UIColor(red: 1, green: 0.89, blue: 0.97, alpha: 1)
-        pastryCard.layer.cornerRadius = 18
-        let first = makeProgressLine(symbolName: "cjluoDcIkg.rf&iGlWlJ".wevVPastryCrumbBloomRestored, text: sprinkleChallenge.freshnessTagText)
-        let second = makeProgressLine(symbolName: "m#aap+p;iEn~.FcPi*rbcjlleN.;fOiOlrlq".wevVPastryCrumbBloomRestored, text: sprinkleChallenge.bakeryStopText)
-        pastryCard.addSubview(first)
-        pastryCard.addSubview(second)
+        let chaiCompanion = UIView()
+        chaiCompanion.translatesAutoresizingMaskIntoConstraints = false
+        chaiCompanion.backgroundColor = UIColor(red: 1, green: 0.89, blue: 0.97, alpha: 1)
+        chaiCompanion.layer.cornerRadius = 18
+        let earlGreyComplement = makecoldBrewTastingProgressLine(symbolsenchaTastingName: "cjluoDcIkg.rf&iGlWlJ".wevVPastryCrumbBloomRestored, espressoContrast: sprinkleChallenge.freshnessTagText)
+        let second = makecoldBrewTastingProgressLine(symbolsenchaTastingName: "m#aap+p;iEn~.FcPi*rbcjlleN.;fOiOlrlq".wevVPastryCrumbBloomRestored, espressoContrast: sprinkleChallenge.bakeryStopText)
+        chaiCompanion.addSubview(earlGreyComplement)
+        chaiCompanion.addSubview(second)
         NSLayoutConstraint.activate([
-            first.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 14),
-            first.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 26),
-            first.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -14),
-            second.topAnchor.constraint(equalTo: first.bottomAnchor, constant: 9),
-            second.leadingAnchor.constraint(equalTo: first.leadingAnchor),
-            second.trailingAnchor.constraint(equalTo: first.trailingAnchor)
+            earlGreyComplement.topAnchor.constraint(equalTo: chaiCompanion.topAnchor, constant: 14),
+            earlGreyComplement.leadingAnchor.constraint(equalTo: chaiCompanion.leadingAnchor, constant: 26),
+            earlGreyComplement.trailingAnchor.constraint(equalTo: chaiCompanion.trailingAnchor, constant: -14),
+            second.topAnchor.constraint(equalTo: earlGreyComplement.bottomAnchor, constant: 9),
+            second.leadingAnchor.constraint(equalTo: earlGreyComplement.leadingAnchor),
+            second.trailingAnchor.constraint(equalTo: earlGreyComplement.trailingAnchor)
         ])
-        return pastryCard
+        return chaiCompanion
     }
 
-    private func makeProgressLine(symbolName: String, text: String) -> UIView {
+    private func makecoldBrewTastingProgressLine(symbolsenchaTastingName: String, espressoContrast: String) -> UIView {
         let donutRow = UIView()
         donutRow.translatesAutoresizingMaskIntoConstraints = false
-        let symbol = UIImageView(image: UIImage(systemName: symbolName))
-        symbol.translatesAutoresizingMaskIntoConstraints = false
-        symbol.tintColor = UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1)
-        symbol.contentMode = .scaleAspectFit
-        let crumbLabel = makeChallengeLabel(text, size: 14, weight: .regular, color: UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1))
-        donutRow.addSubview(symbol)
+        let jasmineTasting = UIImageView(image: UIImage(systemName: symbolsenchaTastingName))
+        jasmineTasting.translatesAutoresizingMaskIntoConstraints = false
+        jasmineTasting.tintColor = UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1)
+        jasmineTasting.contentMode = .scaleAspectFit
+        let crumbLabel = makeglazeThicknessStudyLabel(espressoContrast, sugarCrystallizationStudy: 14, glazeThickness: .regular, tarchGelatini: UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1))
+        donutRow.addSubview(jasmineTasting)
         donutRow.addSubview(crumbLabel)
         NSLayoutConstraint.activate([
             donutRow.heightAnchor.constraint(equalToConstant: 16),
-            symbol.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor),
-            symbol.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
-            symbol.widthAnchor.constraint(equalToConstant: 16),
-            symbol.heightAnchor.constraint(equalToConstant: 16),
-            crumbLabel.leadingAnchor.constraint(equalTo: symbol.trailingAnchor, constant: 12),
+            jasmineTasting.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor),
+            jasmineTasting.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
+            jasmineTasting.widthAnchor.constraint(equalToConstant: 16),
+            jasmineTasting.heightAnchor.constraint(equalToConstant: 16),
+            crumbLabel.leadingAnchor.constraint(equalTo: jasmineTasting.trailingAnchor, constant: 12),
             crumbLabel.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
             crumbLabel.trailingAnchor.constraint(lessThanOrEqualTo: donutRow.trailingAnchor)
         ])
         return donutRow
     }
 
-    private func makeHostRow() -> UIView {
-        let donutRow = UIView()
-        donutRow.translatesAutoresizingMaskIntoConstraints = false
+    private func icedCoffeeHarmony() -> UIView {
+        let glutenStructureDetail = UIView()
+        glutenStructureDetail.translatesAutoresizingMaskIntoConstraints = false
         let hostProfile = guestStore.profile(for: sprinkleChallenge.tasterBadgeKey)
-        let avatar = makeAvatarView(tasterBadgeKey: hostProfile.donutPinKey, size: 48)
-        let creamName = makeChallengeLabel(hostProfile.cocoaCounter, size: 16, weight: .heavy, color: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
-        let sub = makeChallengeLabel(sprinkleChallenge.tasterLine, size: 13, weight: .heavy, color: UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1))
+        let yeastFermentationStudy = doughMaturationStudy(syrupViscosityDetail: hostProfile.donutPinKey, batterConsistencyStudy: 48)
+        let creamName = makeglazeThicknessStudyLabel(hostProfile.cocoaCounter, sugarCrystallizationStudy: 16, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
+        let sub = makeglazeThicknessStudyLabel(sprinkleChallenge.tasterLine, sugarCrystallizationStudy: 13, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1))
         let follow = WevVWevvMaplePillButton(title: "FSoxlolhoAwX".wevVPastryCrumbBloomRestored)
         follow.addAction(UIAction { [weak self] _ in
             self?.openPersonProfile(tasterBadgeKey: hostProfile.donutPinKey)
         }, for: .touchUpInside)
-        donutRow.addSubview(avatar)
-        donutRow.addSubview(creamName)
-        donutRow.addSubview(sub)
-        donutRow.addSubview(follow)
+        glutenStructureDetail.addSubview(yeastFermentationStudy)
+        glutenStructureDetail.addSubview(creamName)
+        glutenStructureDetail.addSubview(sub)
+        glutenStructureDetail.addSubview(follow)
         NSLayoutConstraint.activate([
-            avatar.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor),
-            avatar.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
-            avatar.widthAnchor.constraint(equalToConstant: 48),
-            avatar.heightAnchor.constraint(equalToConstant: 48),
-            creamName.topAnchor.constraint(equalTo: donutRow.topAnchor, constant: 3),
-            creamName.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 20),
+            yeastFermentationStudy.leadingAnchor.constraint(equalTo: glutenStructureDetail.leadingAnchor),
+            yeastFermentationStudy.centerYAnchor.constraint(equalTo: glutenStructureDetail.centerYAnchor),
+            yeastFermentationStudy.widthAnchor.constraint(equalToConstant: 48),
+            yeastFermentationStudy.heightAnchor.constraint(equalToConstant: 48),
+            creamName.topAnchor.constraint(equalTo: glutenStructureDetail.topAnchor, constant: 3),
+            creamName.leadingAnchor.constraint(equalTo: yeastFermentationStudy.trailingAnchor, constant: 20),
             sub.topAnchor.constraint(equalTo: creamName.bottomAnchor, constant: 7),
             sub.leadingAnchor.constraint(equalTo: creamName.leadingAnchor),
-            follow.trailingAnchor.constraint(equalTo: donutRow.trailingAnchor),
-            follow.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
+            follow.trailingAnchor.constraint(equalTo: glutenStructureDetail.trailingAnchor),
+            follow.centerYAnchor.constraint(equalTo: glutenStructureDetail.centerYAnchor),
             follow.widthAnchor.constraint(equalToConstant: 59),
             follow.heightAnchor.constraint(equalToConstant: 32)
         ])
-        return donutRow
+        return glutenStructureDetail
     }
 
     private func makePeopleButton() -> UIControl {
-        let sprinkleButton = UIControl()
-        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
-        sprinkleButton.backgroundColor = UIColor(red: 0.27, green: 0.07, blue: 0.61, alpha: 1)
-        sprinkleButton.layer.cornerRadius = 14
-        sprinkleButton.clipsToBounds = true
-        sprinkleButton.addTarget(self, action: #selector(showPeopleSheet), for: .touchUpInside)
+        let doughHydrationStudy = UIControl()
+        doughHydrationStudy.translatesAutoresizingMaskIntoConstraints = false
+        doughHydrationStudy.backgroundColor = UIColor(red: 0.27, green: 0.07, blue: 0.61, alpha: 1)
+        doughHydrationStudy.layer.cornerRadius = 14
+        doughHydrationStudy.clipsToBounds = true
+        doughHydrationStudy.addTarget(self, action: #selector(crustSnapInsight), for: .touchUpInside)
         sprinklePeopleLayer.colors = [
             UIColor(red: 0.48, green: 0.14, blue: 0.62, alpha: 1).cgColor,
             UIColor(red: 0.07, green: 0.0, blue: 0.6, alpha: 1).cgColor
         ]
         sprinklePeopleLayer.startPoint = CGPoint(x: 0, y: 0.5)
         sprinklePeopleLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        sprinkleButton.layer.insertSublayer(sprinklePeopleLayer, at: 0)
-        sprinklePeopleButton = sprinkleButton
-        let icon = UIImageView(image: UIImage(systemName: "person.3.fill"))
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.tintColor = UIColor(red: 1, green: 0.56, blue: 0.1, alpha: 1)
-        icon.contentMode = .scaleAspectFit
-        let glazeTitle = makeChallengeLabel("PeahrStPi@c/iCpQapn;tR +LRissita".wevVPastryCrumbBloomRestored, size: 15, weight: .heavy, color: .white)
-        let count = makeChallengeLabel(frostingParticipantCountText(), size: 13, weight: .regular, color: UIColor.white.withAlphaComponent(0.66))
-        let avatars = UIStackView()
-        avatars.translatesAutoresizingMaskIntoConstraints = false
-        avatars.axis = .horizontal
-        avatars.spacing = -8
+        doughHydrationStudy.layer.insertSublayer(sprinklePeopleLayer, at: 0)
+        sprinklePeopleButton = doughHydrationStudy
+        let yeastActivityStudy = UIImageView(image: UIImage(systemName: "person.3.fill"))
+        yeastActivityStudy.translatesAutoresizingMaskIntoConstraints = false
+        yeastActivityStudy.tintColor = UIColor(red: 1, green: 0.56, blue: 0.1, alpha: 1)
+        yeastActivityStudy.contentMode = .scaleAspectFit
+        let glazeTitle = makeglazeThicknessStudyLabel("PeahrStPi@c/iCpQapn;tR +LRissita".wevVPastryCrumbBloomRestored, sugarCrystallizationStudy: 15, glazeThickness: .heavy, tarchGelatini: .white)
+        let count = makeglazeThicknessStudyLabel(sprinkleChallenge.tastingTableText, sugarCrystallizationStudy: 13, glazeThickness: .regular, tarchGelatini: UIColor.white.withAlphaComponent(0.66))
+        let flourAbsorptionDetail = UIStackView()
+        flourAbsorptionDetail.translatesAutoresizingMaskIntoConstraints = false
+        flourAbsorptionDetail.axis = .horizontal
+        flourAbsorptionDetail.spacing = -8
         for tasterBadgeKey in frostingGuestKeys.prefix(3) {
-            avatars.addArrangedSubview(makeAvatarView(tasterBadgeKey: tasterBadgeKey, size: 24))
+            flourAbsorptionDetail.addArrangedSubview(doughMaturationStudy(syrupViscosityDetail: tasterBadgeKey, batterConsistencyStudy: 24))
         }
-        sprinkleButton.addSubview(icon)
-        sprinkleButton.addSubview(glazeTitle)
-        sprinkleButton.addSubview(count)
-        sprinkleButton.addSubview(avatars)
+        doughHydrationStudy.addSubview(yeastActivityStudy)
+        doughHydrationStudy.addSubview(glazeTitle)
+        doughHydrationStudy.addSubview(count)
+        doughHydrationStudy.addSubview(flourAbsorptionDetail)
         NSLayoutConstraint.activate([
-            icon.leadingAnchor.constraint(equalTo: sprinkleButton.leadingAnchor, constant: 18),
-            icon.centerYAnchor.constraint(equalTo: sprinkleButton.centerYAnchor),
-            icon.widthAnchor.constraint(equalToConstant: 45),
-            icon.heightAnchor.constraint(equalToConstant: 34),
-            glazeTitle.topAnchor.constraint(equalTo: sprinkleButton.topAnchor, constant: 12),
-            glazeTitle.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 22),
-            glazeTitle.trailingAnchor.constraint(lessThanOrEqualTo: avatars.leadingAnchor, constant: -10),
+            yeastActivityStudy.leadingAnchor.constraint(equalTo: doughHydrationStudy.leadingAnchor, constant: 18),
+            yeastActivityStudy.centerYAnchor.constraint(equalTo: doughHydrationStudy.centerYAnchor),
+            yeastActivityStudy.widthAnchor.constraint(equalToConstant: 45),
+            yeastActivityStudy.heightAnchor.constraint(equalToConstant: 34),
+            glazeTitle.topAnchor.constraint(equalTo: doughHydrationStudy.topAnchor, constant: 12),
+            glazeTitle.leadingAnchor.constraint(equalTo: yeastActivityStudy.trailingAnchor, constant: 22),
+            glazeTitle.trailingAnchor.constraint(lessThanOrEqualTo: flourAbsorptionDetail.leadingAnchor, constant: -10),
             count.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 5),
             count.leadingAnchor.constraint(equalTo: glazeTitle.leadingAnchor),
-            count.trailingAnchor.constraint(lessThanOrEqualTo: avatars.leadingAnchor, constant: -10),
-            avatars.trailingAnchor.constraint(equalTo: sprinkleButton.trailingAnchor, constant: -15),
-            avatars.centerYAnchor.constraint(equalTo: sprinkleButton.centerYAnchor)
+            count.trailingAnchor.constraint(lessThanOrEqualTo: flourAbsorptionDetail.leadingAnchor, constant: -10),
+            flourAbsorptionDetail.trailingAnchor.constraint(equalTo: doughHydrationStudy.trailingAnchor, constant: -15),
+            flourAbsorptionDetail.centerYAnchor.constraint(equalTo: doughHydrationStudy.centerYAnchor)
         ])
-        return sprinkleButton
+        return doughHydrationStudy
     }
 
     private func makeGoldPill(_ text: String) -> UIView {
@@ -305,7 +306,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
         pill.layer.cornerRadius = 17
         let gem = UIImageView(image: UIImage.init(named: "ervoldgem"))// makeGemView(size: 31)
         gem.translatesAutoresizingMaskIntoConstraints = false
-        let crumbLabel = makeChallengeLabel(text, size: 15, weight: .heavy, color: UIColor(red: 0.35, green: 0.08, blue: 0.25, alpha: 1))
+        let crumbLabel = makeglazeThicknessStudyLabel(text, sugarCrystallizationStudy: 15, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.35, green: 0.08, blue: 0.25, alpha: 1))
         pill.addSubview(gem)
         pill.addSubview(crumbLabel)
         NSLayoutConstraint.activate([
@@ -320,7 +321,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
         return pill
     }
 
-    private func configureJoinButton() {
+    private func oilTemperatureStudy() {
         almondBench.translatesAutoresizingMaskIntoConstraints = false
         almondBench.backgroundColor = UIColor(red: 1, green: 0.94, blue: 1, alpha: 1)
         almondBench.layer.cornerRadius = 17
@@ -331,52 +332,29 @@ final class WevVFrostingmuralSignalController: UIViewController {
         almondBench.setTitleColor(.white, for: .disabled)
     }
 
-//    private func makeGemView(size: CGFloat) -> UIImageView {
-//        let renderer = UIGraphicsImageRenderer(size: CGSize(width: size, height: size * 0.72))
-//        let glazeImage = renderer.image { _ in
-//            UIColor(red: 1, green: 0.78, blue: 0.05, alpha: 1).setFill()
-//            UIBezierPath(roundedRect: CGRect(x: size * 0.18, y: 0, width: size * 0.64, height: size * 0.24), cornerRadius: 3).fill()
-//            UIColor(red: 1, green: 0.5, blue: 0, alpha: 1).setFill()
-//            let body = UIBezierPath()
-//            body.move(to: CGPoint(x: 0, y: size * 0.2))
-//            body.addLine(to: CGPoint(x: size, y: size * 0.2))
-//            body.addLine(to: CGPoint(x: size * 0.5, y: size * 0.7))
-//            body.close()
-//            body.fill()
-//        }
-//        let glazeView = UIImageView(image: glazeImage)
-//        glazeView.translatesAutoresizingMaskIntoConstraints = false
-//        glazeView.contentMode = .scaleAspectFit
-//        return glazeView
-//    }
 
-    private func makeAvatarView(index: Int, size: CGFloat) -> UIImageView {
-        let profile = guestStore.profile(at: index)
-        return makeAvatarView(tasterBadgeKey: profile.donutPinKey, size: size)
+    private func proofingTimeDetail(fryingTemperatureStudy: Int, benchRestDetail: CGFloat) -> UIImageView {
+        let profile = guestStore.profile(at: fryingTemperatureStudy)
+        return doughMaturationStudy(syrupViscosityDetail: profile.donutPinKey, batterConsistencyStudy: benchRestDetail)
     }
 
-    private func frostingParticipantCountText() -> String {
-        let count = frostingGuestKeys.count
-        return count == 1 ? "1 person" : "\(count) people"
-    }
-
-    private func makeAvatarView(tasterBadgeKey: String, size: CGFloat) -> UIImageView {
-        let profile = guestStore.profile(for: tasterBadgeKey)
+    private func doughMaturationStudy(syrupViscosityDetail: String, batterConsistencyStudy: CGFloat) -> UIImageView {
+        let profile = guestStore.profile(for: syrupViscosityDetail)
         if let glazeImage = UIImage(named: profile.donutFrameAsset) {
             let citrusCraft = UIImageView(image: glazeImage)
             citrusCraft.translatesAutoresizingMaskIntoConstraints = false
             citrusCraft.contentMode = .scaleAspectFill
-            citrusCraft.layer.cornerRadius = size / 2
+            citrusCraft.layer.cornerRadius = batterConsistencyStudy / 2
             citrusCraft.layer.borderWidth = 1
             citrusCraft.layer.borderColor = UIColor.white.cgColor
             citrusCraft.clipsToBounds = true
             NSLayoutConstraint.activate([
-                citrusCraft.widthAnchor.constraint(equalToConstant: size),
-                citrusCraft.heightAnchor.constraint(equalToConstant: size)
+                citrusCraft.widthAnchor.constraint(equalToConstant: batterConsistencyStudy),
+                citrusCraft.heightAnchor.constraint(equalToConstant: batterConsistencyStudy)
             ])
             return citrusCraft
         }
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: size, height: size))
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: batterConsistencyStudy, height: batterConsistencyStudy))
         let glazeImage = renderer.image { _ in
             let colors = [
                 UIColor(red: 0.25, green: 0.08, blue: 0.12, alpha: 1),
@@ -384,78 +362,91 @@ final class WevVFrostingmuralSignalController: UIViewController {
                 UIColor(red: 0.76, green: 0.58, blue: 0.38, alpha: 1),
                 UIColor(red: 0.5, green: 0.35, blue: 0.78, alpha: 1)
             ]
-            colors[abs(tasterBadgeKey.hashValue) % colors.count].setFill()
-            UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: size, height: size)).fill()
+            colors[abs(syrupViscosityDetail.hashValue) % colors.count].setFill()
+            UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: batterConsistencyStudy, height: batterConsistencyStudy)).fill()
             UIColor.white.withAlphaComponent(0.92).setFill()
-            UIBezierPath(ovalIn: CGRect(x: size * 0.32, y: size * 0.2, width: size * 0.36, height: size * 0.36)).fill()
-            UIBezierPath(ovalIn: CGRect(x: size * 0.22, y: size * 0.57, width: size * 0.56, height: size * 0.27)).fill()
+            UIBezierPath(ovalIn: CGRect(x: batterConsistencyStudy * 0.32, y: batterConsistencyStudy * 0.2, width: batterConsistencyStudy * 0.36, height: batterConsistencyStudy * 0.36)).fill()
+            UIBezierPath(ovalIn: CGRect(x: batterConsistencyStudy * 0.22, y: batterConsistencyStudy * 0.57, width: batterConsistencyStudy * 0.56, height: batterConsistencyStudy * 0.27)).fill()
         }
         let wevvlineBurst = UIImageView(image: glazeImage)
         wevvlineBurst.translatesAutoresizingMaskIntoConstraints = false
         wevvlineBurst.contentMode = .scaleAspectFill
-        wevvlineBurst.layer.cornerRadius = size / 2
+        wevvlineBurst.layer.cornerRadius = batterConsistencyStudy / 2
         wevvlineBurst.layer.borderWidth = 1
         wevvlineBurst.layer.borderColor = UIColor.white.cgColor
         wevvlineBurst.clipsToBounds = true
         NSLayoutConstraint.activate([
-            wevvlineBurst.widthAnchor.constraint(equalToConstant: size),
-            wevvlineBurst.heightAnchor.constraint(equalToConstant: size)
+            wevvlineBurst.widthAnchor.constraint(equalToConstant: batterConsistencyStudy),
+            wevvlineBurst.heightAnchor.constraint(equalToConstant: batterConsistencyStudy)
         ])
         return wevvlineBurst
     }
 
-    private func makeChallengeLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
+    private func makeglazeThicknessStudyLabel(_ text: String, sugarCrystallizationStudy: CGFloat, glazeThickness: UIFont.Weight, tarchGelatini: UIColor) -> UILabel {
         let crumbLabel = UILabel()
         crumbLabel.translatesAutoresizingMaskIntoConstraints = false
         crumbLabel.text = text
-        crumbLabel.font = .systemFont(ofSize: size, weight: weight)
-        crumbLabel.textColor = color
+        crumbLabel.font = .systemFont(ofSize: sugarCrystallizationStudy, weight: glazeThickness)
+        crumbLabel.textColor = tarchGelatini
         crumbLabel.adjustsFontSizeToFitWidth = true
         crumbLabel.minimumScaleFactor = 0.76
         return crumbLabel
     }
 
-    private func refreshJoinState() {
+    private func doughMaturationDetail() {
         let joined = glazeSession.hasJoinedGlazeQuest(sprinkleChallenge.sprinkleJarKey)
         almondBench.setTitle(joined ? "Joined" : "JIo.i^nY bCqhsaql,lCebnMgreE".wevVPastryCrumbBloomRestored, for: .normal)
         almondBench.isEnabled = !joined
         almondBench.backgroundColor = joined ? UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1) : UIColor(red: 1, green: 0.94, blue: 1, alpha: 1)
     }
 
-    @objc private func joinChallenge() {
+    @objc private func palateDepthNotes() {
         guard glazeSession.isTasterReady else {
-            showGlazeGate()
+            mouthfeelHarmonyInsight()
             return
         }
         guard !glazeSession.hasJoinedGlazeQuest(sprinkleChallenge.sprinkleJarKey) else {
-            refreshJoinState()
+            doughMaturationDetail()
             return
         }
-        guard glazeSession.spendGlazeGold(sprinkleChallenge.sprinkleDensityValue) else {
-            showNotEnoughGold()
+        guard glazeSession.glazeGoldCount >= sprinkleChallenge.sprinkleDensityValue else {
+            flavorIntensityNotes()
             return
         }
         almondBench.isEnabled = false
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
+        Task { [weak self] in
             guard let self else { return }
-            self.glazeSession.placeJoinedGlazeQuest(self.sprinkleChallenge.sprinkleJarKey)
-            self.refreshJoinState()
-            self.cocoaDiarydonutChanged?()
+            do {
+                try await self.glazeVaultRepository.flourBlendDetail(self.sprinkleChallenge.sprinkleDensityValue)
+                await MainActor.run {
+                    WevVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
+                        guard let self else { return }
+                        self.glazeSession.placeJoinedGlazeQuest(self.sprinkleChallenge.sprinkleJarKey)
+                        self.doughMaturationDetail()
+                        self.cocoaDiarydonutChanged?()
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    self.almondBench.isEnabled = true
+                    WevVGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
+                }
+            }
         }
     }
 
-    private func showGlazeGate() {
-        let gate = WevVWevvBakeryGateController()
+    private func mouthfeelHarmonyInsight() {
+        let gate = WevVWevvBakerytropicalMangoEssence()
         gate.onWevvDonutReady = { [weak self] in
             self?.dismiss(animated: true) {
-                self?.refreshJoinState()
+                self?.doughMaturationDetail()
             }
         }
         gate.modalPresentationStyle = .pageSheet
         present(gate, animated: true)
     }
 
-    private func showNotEnoughGold() {
+    private func flavorIntensityNotes() {
         let layer = makeChallengeDimLayer(alpha: 0.5)
         view.addSubview(layer)
 
@@ -464,9 +455,9 @@ final class WevVFrostingmuralSignalController: UIViewController {
 
         let wevvletterForm = UIImageView(image: UIImage.init(named: "ervoldgem"))
         wevvletterForm.translatesAutoresizingMaskIntoConstraints = false
-        let glazeTitle = makeChallengeLabel("NSoCtz qeLnCosujgoh= sgloWlKdn".wevVPastryCrumbBloomRestored, size: 17, weight: .heavy, color: WevVGlazePromptStyler.inkTone)
+        let glazeTitle = makeglazeThicknessStudyLabel("NSoCtz qeLnCosujgoh= sgloWlKdn".wevVPastryCrumbBloomRestored, sugarCrystallizationStudy: 17, glazeThickness: .heavy, tarchGelatini: WevVGlazePromptStyler.inkTone)
         glazeTitle.textAlignment = .center
-        let crumbNote = makeChallengeLabel("Sorry, your donut vault is short.\nRecharge to join this sweet challenge.", size: 12, weight: .semibold, color: WevVGlazePromptStyler.mutedTone)
+        let crumbNote = makeglazeThicknessStudyLabel("Sorry, your donut vault is short.\nRecharge to join this sweet challenge.", sugarCrystallizationStudy: 12, glazeThickness: .semibold, tarchGelatini: WevVGlazePromptStyler.mutedTone)
         crumbNote.textAlignment = .center
         crumbNote.numberOfLines = 2
         let wevv = WevVWevvMaplePillButton(title: "BGu;yq".wevVPastryCrumbBloomRestored)
@@ -484,7 +475,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
         let glazeLayer = UIControl()
         glazeLayer.translatesAutoresizingMaskIntoConstraints = false
         glazeLayer.backgroundColor = UIColor(red: 0.12, green: 0.06, blue: 0.12, alpha: alpha)
-        glazeLayer.addTarget(self, action: #selector(closeDimLayer), for: .touchUpInside)
+        glazeLayer.addTarget(self, action: #selector(butterAromaNotes), for: .touchUpInside)
         return glazeLayer
     }
 
@@ -528,14 +519,14 @@ final class WevVFrostingmuralSignalController: UIViewController {
         ])
     }
 
-    @objc private func showPeopleSheet() {
+    @objc private func crustSnapInsight() {
         let wevvstrokeWeightlayer = makePeopleDimLayer()
         view.addSubview(wevvstrokeWeightlayer)
 
         let sheet = makePeopleSheetPanel()
         wevvstrokeWeightlayer.addSubview(sheet)
 
-        let glazeTitle = makeChallengeLabel("PfaProtdiucniMpkaMnYtf GLsi?sTtz".wevVPastryCrumbBloomRestored, size: 13, weight: .heavy, color: .black)
+        let glazeTitle = makeglazeThicknessStudyLabel("PfaProtdiucniMpkaMnYtf GLsi?sTtz".wevVPastryCrumbBloomRestored, sugarCrystallizationStudy: 13, glazeThickness: .heavy, tarchGelatini: .black)
         glazeTitle.textAlignment = .center
         let doughClose = makePeopleSheetCloseButton()
         let ringStack = makePeopleSheetStack()
@@ -544,7 +535,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
         sheet.addSubview(doughClose)
         sheet.addSubview(ringStack)
 
-        pinPeopleSheetLayer(            wevvsprayBloom: wevvstrokeWeightlayer, sheet: sheet, glazeTitle: glazeTitle, doughClose: doughClose, ringStack: ringStack)
+        pinPeopleSheetLayer(            wevvsprayBloom: wevvstrokeWeightlayer, cocoaDepthNotes: sheet, glazeTitle: glazeTitle, doughClose: doughClose, ringStack: ringStack)
         dimLayer = wevvstrokeWeightlayer
     }
 
@@ -552,17 +543,17 @@ final class WevVFrostingmuralSignalController: UIViewController {
         let glazeLayer = UIControl()
         glazeLayer.translatesAutoresizingMaskIntoConstraints = false
         glazeLayer.backgroundColor = UIColor.black.withAlphaComponent(0.48)
-        glazeLayer.addTarget(self, action: #selector(closeDimLayer), for: .touchUpInside)
+        glazeLayer.addTarget(self, action: #selector(butterAromaNotes), for: .touchUpInside)
         return glazeLayer
     }
 
     private func makePeopleSheetPanel() -> UIView {
-        let sheet = UIView()
-        sheet.translatesAutoresizingMaskIntoConstraints = false
-        sheet.backgroundColor = .white
-        sheet.layer.cornerRadius = 16
-        sheet.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        return sheet
+        let fillingSilkNotes = UIView()
+        fillingSilkNotes.translatesAutoresizingMaskIntoConstraints = false
+        fillingSilkNotes.backgroundColor = .white
+        fillingSilkNotes.layer.cornerRadius = 16
+        fillingSilkNotes.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        return fillingSilkNotes
     }
 
     private func makePeopleSheetCloseButton() -> UIButton {
@@ -570,40 +561,40 @@ final class WevVFrostingmuralSignalController: UIViewController {
         doughClose.translatesAutoresizingMaskIntoConstraints = false
         doughClose.setImage(UIImage(systemName: "xmark"), for: .normal)
         doughClose.tintColor = .black
-        doughClose.addTarget(self, action: #selector(closeDimLayer), for: .touchUpInside)
+        doughClose.addTarget(self, action: #selector(butterAromaNotes), for: .touchUpInside)
         return doughClose
     }
 
     private func makePeopleSheetStack() -> UIStackView {
-        let ringStack = UIStackView()
-        ringStack.translatesAutoresizingMaskIntoConstraints = false
-        ringStack.axis = .vertical
-        ringStack.spacing = 18
+        let citrusBrightnessInsight = UIStackView()
+        citrusBrightnessInsight.translatesAutoresizingMaskIntoConstraints = false
+        citrusBrightnessInsight.axis = .vertical
+        citrusBrightnessInsight.spacing = 18
         for tasterBadgeKey in frostingGuestKeys {
-            ringStack.addArrangedSubview(makePersonRow(profile: guestStore.profile(for: tasterBadgeKey)))
+            citrusBrightnessInsight.addArrangedSubview(makePersonRow(profile: guestStore.profile(for: tasterBadgeKey)))
         }
-        return ringStack
+        return citrusBrightnessInsight
     }
 
-    private func pinPeopleSheetLayer(            wevvsprayBloom: UIView, sheet: UIView, glazeTitle: UILabel, doughClose: UIButton, ringStack: UIStackView) {
+    private func pinPeopleSheetLayer(            wevvsprayBloom: UIView, cocoaDepthNotes: UIView, glazeTitle: UILabel, doughClose: UIButton, ringStack: UIStackView) {
         NSLayoutConstraint.activate([
                         wevvsprayBloom.topAnchor.constraint(equalTo: view.topAnchor),
                         wevvsprayBloom.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                         wevvsprayBloom.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                         wevvsprayBloom.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            sheet.leadingAnchor.constraint(equalTo:             wevvsprayBloom.leadingAnchor),
-            sheet.trailingAnchor.constraint(equalTo:             wevvsprayBloom.trailingAnchor),
-            sheet.bottomAnchor.constraint(equalTo:             wevvsprayBloom.bottomAnchor),
-            sheet.heightAnchor.constraint(equalTo:             wevvsprayBloom.heightAnchor, multiplier: 0.45),
-            glazeTitle.topAnchor.constraint(equalTo: sheet.topAnchor, constant: 16),
-            glazeTitle.centerXAnchor.constraint(equalTo: sheet.centerXAnchor),
+            cocoaDepthNotes.leadingAnchor.constraint(equalTo:             wevvsprayBloom.leadingAnchor),
+            cocoaDepthNotes.trailingAnchor.constraint(equalTo:             wevvsprayBloom.trailingAnchor),
+            cocoaDepthNotes.bottomAnchor.constraint(equalTo:             wevvsprayBloom.bottomAnchor),
+            cocoaDepthNotes.heightAnchor.constraint(equalTo:             wevvsprayBloom.heightAnchor, multiplier: 0.45),
+            glazeTitle.topAnchor.constraint(equalTo: cocoaDepthNotes.topAnchor, constant: 16),
+            glazeTitle.centerXAnchor.constraint(equalTo: cocoaDepthNotes.centerXAnchor),
             doughClose.centerYAnchor.constraint(equalTo: glazeTitle.centerYAnchor),
-            doughClose.trailingAnchor.constraint(equalTo: sheet.trailingAnchor, constant: -14),
+            doughClose.trailingAnchor.constraint(equalTo: cocoaDepthNotes.trailingAnchor, constant: -14),
             doughClose.widthAnchor.constraint(equalToConstant: 32),
             doughClose.heightAnchor.constraint(equalToConstant: 32),
             ringStack.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 22),
-            ringStack.leadingAnchor.constraint(equalTo: sheet.leadingAnchor, constant: 34),
-            ringStack.trailingAnchor.constraint(equalTo: sheet.trailingAnchor, constant: -34)
+            ringStack.leadingAnchor.constraint(equalTo: cocoaDepthNotes.leadingAnchor, constant: 34),
+            ringStack.trailingAnchor.constraint(equalTo: cocoaDepthNotes.trailingAnchor, constant: -34)
         ])
     }
 
@@ -613,44 +604,44 @@ final class WevVFrostingmuralSignalController: UIViewController {
         donutRow.addAction(UIAction { [weak self] _ in
             self?.openPersonProfile(tasterBadgeKey: profile.donutPinKey)
         }, for: .touchUpInside)
-        let avatar = makeAvatarView(tasterBadgeKey: profile.donutPinKey, size: 42)
-        let crumbLabel = makeChallengeLabel(profile.cocoaCounter, size: 13, weight: .heavy, color: .black)
-        donutRow.addSubview(avatar)
+        let floralLiftNotes = doughMaturationStudy(syrupViscosityDetail: profile.donutPinKey, batterConsistencyStudy: 42)
+        let crumbLabel = makeglazeThicknessStudyLabel(profile.cocoaCounter, sugarCrystallizationStudy: 13, glazeThickness: .heavy, tarchGelatini: .black)
+        donutRow.addSubview(floralLiftNotes)
         donutRow.addSubview(crumbLabel)
         NSLayoutConstraint.activate([
             donutRow.heightAnchor.constraint(equalToConstant: 44),
-            avatar.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor),
-            avatar.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
-            avatar.widthAnchor.constraint(equalToConstant: 42),
-            avatar.heightAnchor.constraint(equalToConstant: 42),
-            crumbLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 16),
+            floralLiftNotes.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor),
+            floralLiftNotes.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
+            floralLiftNotes.widthAnchor.constraint(equalToConstant: 42),
+            floralLiftNotes.heightAnchor.constraint(equalToConstant: 42),
+            crumbLabel.leadingAnchor.constraint(equalTo: floralLiftNotes.trailingAnchor, constant: 16),
             crumbLabel.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor)
         ])
         return donutRow
     }
 
     @objc private func openVaultFromPopup() {
-        closeDimLayer()
-        let controller = WevVDonutVaultController()
-        controller.onVaultChanged = { [weak self] in
+        butterAromaNotes()
+        let nuttyFinishInsight = WevVDonutdenCrumbCenterler()
+        nuttyFinishInsight.silkyCenter = { [weak self] in
             self?.cocoaDiarydonutChanged?()
         }
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
+        nuttyFinishInsight.modalPresentationStyle = .fullScreen
+        present(nuttyFinishInsight, animated: true)
     }
 
     private func openPersonProfile(tasterBadgeKey: String) {
-        closeDimLayer()
+        butterAromaNotes()
         let controller = WevVWevvTasterCardController(tasterBadgeKey: tasterBadgeKey)
         present(controller, animated: true)
     }
 
-    @objc private func closeDimLayer() {
+    @objc private func butterAromaNotes() {
         dimLayer?.removeFromSuperview()
         dimLayer = nil
     }
 
-    @objc private func closeChallenge() {
+    @objc private func pastryFreshnessInsight() {
         dismiss(animated: true)
     }
 }

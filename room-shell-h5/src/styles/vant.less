@@ -1,0 +1,127 @@
+:root {
+  --van-base-font: 'TT Norms Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --van-price-font: 'TT Norms Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --van-badge-font: 'TT Norms Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --van-primary-color: var(--color-primary);
+  --van-success-color: var(--color-success);
+  --van-danger-color: var(--color-danger);
+  --van-warning-color: var(--color-warning);
+  --van-text-color: var(--color-text);
+  --van-text-color-2: var(--color-text-muted);
+  --van-text-color-3: var(--color-text-subtle);
+  --van-background: var(--color-bg);
+  --van-background-2: var(--color-surface);
+  --van-background-3: var(--color-surface-raised);
+  --van-border-color: var(--color-border);
+  --van-active-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  --van-padding-md: 16px;
+  --van-radius-md: 8px;
+  --van-popup-background: var(--color-surface-raised);
+  --van-dialog-background: var(--color-surface-raised);
+  --van-overlay-background: var(--color-mask);
+  --van-nav-bar-background: transparent;
+  --van-nav-bar-text-color: var(--color-text);
+  --van-nav-bar-icon-color: var(--color-text);
+  --van-field-label-color: var(--color-text-muted);
+  --van-cell-background: var(--color-surface);
+  --van-cell-text-color: var(--color-text);
+  --van-cell-border-color: var(--color-border);
+  --van-action-sheet-background: var(--color-surface-raised);
+  --van-action-sheet-item-background: var(--color-surface-raised);
+  --van-action-sheet-item-text-color: var(--color-text);
+  --van-skeleton-row-background: var(--skeleton-base);
+}
+
+body,
+.van-config-provider,
+.van-popup,
+.van-overlay,
+.van-toast,
+.van-dialog,
+.van-action-sheet,
+.van-notify {
+  font-family:
+    'TT Norms Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
+.van-overlay {
+  background: var(--color-mask) !important;
+}
+
+.van-toast {
+  max-width: min(84vw, 360px);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-text) 88%, transparent);
+  color: var(--color-bg);
+}
+
+.van-dialog,
+.van-action-sheet,
+.van-popup {
+  color: var(--color-text);
+}
+
+.van-dialog {
+  width: min(76.5vw, 287px);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  background: var(--color-message-confirm);
+  box-shadow: 0 18px 54px rgb(0 0 0 / 38%);
+}
+
+.van-dialog__header {
+  padding-top: 24px;
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.van-dialog__message {
+  padding: 14px 24px 22px;
+  color: var(--color-text-muted);
+  line-height: 20px;
+}
+
+.van-dialog__footer {
+  gap: 10px;
+  padding: 0 18px 18px;
+}
+
+.van-dialog__footer::after,
+.van-dialog__confirm::after,
+.van-dialog__cancel::after {
+  display: none;
+}
+
+.van-dialog__confirm,
+.van-dialog__cancel {
+  min-height: 44px;
+  border-radius: 23px;
+  background: var(--color-message-sheet-action);
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.van-dialog__confirm {
+  background: var(--gradient-primary);
+  color: var(--color-text);
+}
+
+.van-action-sheet {
+  padding-bottom: calc(5px + var(--safe-bottom));
+  border-radius: 20px 20px 0 0;
+}
+
+.van-pull-refresh {
+  min-height: 100%;
+  overflow: visible;
+}
+
+.van-pull-refresh__track {
+  min-height: 100%;
+}

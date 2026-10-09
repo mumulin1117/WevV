@@ -1,0 +1,375 @@
+:root {
+  /* Only the three brand colors are injected from config/app-config.js. */
+  --color-primary: #ff1ba8;
+  --color-secondary: #e57eff;
+  --color-accent: #a846ee;
+  --gradient-primary: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-accent)
+  );
+  --color-brand-cool: var(--color-accent);
+  --color-on-primary: #121321;
+  --color-bg: #15052e;
+  --color-page-deep: #000021;
+  --color-surface: #282241;
+  --color-surface-raised: #35294d;
+  --color-nav-surface: rgb(17 17 24 / 72%);
+  --color-input-surface: #171935;
+  --color-text: #fff;
+  --color-link: #25a8ff;
+  --color-vip: #f3c96e;
+  --color-on-vip: #5a3100;
+  --color-danger: #ef4f64;
+  --color-warning: #f2a93b;
+  --color-success: #23b26d;
+  --color-ink: #000;
+  --color-on-dark: var(--color-text);
+  --color-on-dark-strong: color-mix(in srgb, var(--color-text) 80%, transparent);
+  --color-on-dark-secondary: color-mix(in srgb, var(--color-text) 70%, transparent);
+  --color-on-dark-muted: color-mix(in srgb, var(--color-text) 60%, transparent);
+  --color-on-dark-subtle: color-mix(in srgb, var(--color-text) 50%, transparent);
+  --color-on-dark-disabled: color-mix(in srgb, var(--color-text) 40%, transparent);
+  --color-on-dark-border-strong: color-mix(in srgb, var(--color-text) 20%, transparent);
+  --color-on-dark-border: color-mix(in srgb, var(--color-text) 12%, transparent);
+  --color-on-dark-fill: color-mix(in srgb, var(--color-text) 10%, transparent);
+  --color-on-dark-divider: color-mix(in srgb, var(--color-text) 5%, transparent);
+  --color-scrim-soft: color-mix(in srgb, var(--color-ink) 30%, transparent);
+  --color-scrim: color-mix(in srgb, var(--color-ink) 60%, transparent);
+  --color-scrim-strong: color-mix(in srgb, var(--color-ink) 80%, transparent);
+  --color-media-bg: #090a0f;
+  --color-activity-surface: #fff;
+  --color-activity-text: #111;
+  --color-activity-overlay: rgb(0 0 0 / 35%);
+  --color-activity-action-text: #fff;
+  --color-on-auth-button: var(--color-on-dark);
+  --color-surface-soft: color-mix(in srgb, var(--color-surface) 84%, var(--color-primary) 16%);
+  --color-blocklist-avatar-border: #1f1d3d;
+  --color-profile-card-surface: #171221;
+  --color-party-password-keyboard-bg: #f2f3f5;
+  --color-party-password-key-bg: var(--color-text);
+  --color-party-password-key-active: #ebedf0;
+  --color-party-password-key-text: #323233;
+  --panel-bg: #1f192a;
+  --color-message-bg: var(--color-page-deep);
+  --gradient-message-page:
+    linear-gradient(165deg, rgb(19 1 31) 0%, rgb(28 20 56) 14%, transparent 36%),
+    linear-gradient(197deg, rgb(35 39 66) 0%, rgb(0 0 40) 43%, rgb(0 0 3) 72%);
+  --color-message-tab-inactive: var(--color-on-dark-disabled);
+  --color-message-header: #222341;
+  --color-message-row-active: rgb(255 255 255 / 4%);
+  --color-message-bubble: #1d1d3b;
+  --color-message-bubble-own: #8855f8;
+  --color-message-notification-border: rgb(134 66 248);
+  --color-message-notification-text: rgb(124 124 141);
+  --color-message-notification-live-card: #1d1e41;
+  --color-message-notification-live-name: #3587ff;
+  --color-message-notice: rgb(39 34 63);
+  --color-live-notice-border: rgb(255 91 166 / 34%);
+  --color-live-notice-muted: rgb(255 255 255 / 62%);
+  --color-live-notice-footer: var(--color-on-dark-secondary);
+  --gradient-live-notice:
+    radial-gradient(circle at 8% 0%, rgb(168 70 238 / 40%), transparent 45%),
+    linear-gradient(130deg, rgb(42 30 75), var(--color-message-notice) 56%, rgb(22 21 48));
+  --gradient-live-notice-action: linear-gradient(
+    100deg,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  --color-message-recharge-bubble: #eee;
+  --color-message-recharge-text: #111;
+  --color-message-recharge-divider: #c5c5c5;
+  --color-message-recharge-link: #0443c7;
+  --color-gfit-message-footer-bg: linear-gradient(90deg, #7c23ff 0%, #2bb4ff 100%);
+  --gradient-message-recharge-title: linear-gradient(100deg, #ff8d2f, #f3c96e);
+  --color-message-vip: #2a174f;
+  --gradient-message-vip-title: linear-gradient(100deg, rgb(255 141 47), rgb(243 201 110));
+  --color-message-sheet: rgb(31 31 66);
+  --color-message-sheet-action: rgb(52 52 79);
+  --color-message-confirm: rgb(27 27 45);
+  --color-message-confirm-cancel: rgb(34 35 68);
+  --color-customer-service-bg: #000025;
+  --color-customer-service-card: #1a1b32;
+  --color-customer-service-card-border: #302b52;
+  --color-customer-service-divider: var(--color-on-dark-fill);
+  --color-customer-service-operation: var(--color-on-dark-divider);
+  --gradient-customer-service-page:
+    radial-gradient(circle at 78% -3%, rgb(37 42 70) 0%, transparent 34%),
+    linear-gradient(160deg, #19072f 0%, var(--color-customer-service-bg) 44%);
+  --color-action-sheet: var(--color-message-sheet);
+  --color-action-sheet-action: var(--color-message-sheet-action);
+  --color-action-sheet-cancel: var(--color-action-sheet-action);
+  --color-action-sheet-description: var(--color-text-muted);
+  --color-on-action-sheet-primary: var(--color-on-dark);
+  --color-loading-mask: rgb(0 0 0 / 8%);
+  --live-loading-cover-mask: rgb(0 0 0 / 50%);
+  --gradient-action-sheet-primary: linear-gradient(
+    90deg,
+    var(--color-secondary) 0%,
+    var(--color-primary) 100%
+  );
+  --gift-panel-bg: rgb(0 0 0 / 82%);
+  --gift-panel-footer-bg: rgb(0 0 12 / 96%);
+  --gift-panel-control-bg: var(--color-scrim-soft);
+  --gift-panel-control-border-color: var(--color-on-dark-disabled);
+  --gift-panel-selected-bg: rgb(121 38 255 / 22%);
+  --gift-panel-disabled-bg: rgb(98 88 115);
+  --gift-panel-unavailable-bg: rgb(9 5 24 / 78%);
+  --gift-panel-quantity-menu-bg: rgb(34 35 41 / 90%);
+  --gift-panel-quantity-menu-divider: rgb(217 217 217 / 10%);
+  --gift-panel-quantity-menu-text: rgb(255 255 255);
+  --gift-panel-quantity-menu-placeholder: rgb(255 255 255 / 50%);
+  --recharge-sheet-card-bg: var(--color-on-dark-divider);
+  --recharge-sheet-control-bg: var(--color-on-dark-fill);
+  --recharge-sheet-selected-bg: rgb(168 70 238 / 24%);
+  --recharge-sheet-selected-ring: rgb(255 48 121 / 28%);
+  --color-diamonds-page: var(--color-message-bg);
+  --color-diamonds-card: color-mix(in srgb, var(--color-surface) 74%, var(--color-page-deep));
+  --color-diamonds-card-featured: color-mix(
+    in srgb,
+    var(--color-primary) 15%,
+    var(--color-page-deep)
+  );
+  --color-diamonds-bonus: var(--color-vip);
+  --color-diamonds-sheet-control: color-mix(
+    in srgb,
+    var(--color-surface) 68%,
+    var(--color-page-deep)
+  );
+  --color-diamonds-method-border: var(--color-link);
+  --color-diamonds-submit-text: #2a1925;
+  --gradient-diamonds-card-featured:
+    radial-gradient(circle at 50% 15%, rgb(255 48 121 / 20%), transparent 60%),
+    var(--color-diamonds-card-featured);
+  --gradient-diamonds-sheet: linear-gradient(180deg, #2b164c 0%, #12072c 100%);
+  --gradient-diamonds-submit: linear-gradient(180deg, #fff8df 0%, #ffd98d 100%);
+  --color-level-recharge-card: #1c1d3b;
+  --color-level-recharge-bonus: #ffae4b;
+  --color-level-recharge-muted: rgb(255 255 255 / 72%);
+  --color-level-recharge-spinner: #ff3fb3;
+  --gradient-level-recharge-panel: linear-gradient(219deg, #200346 0%, #191729 100%);
+  --gradient-level-recharge-newbie: linear-gradient(90deg, #ff931f 0%, #ffdb5a 100%);
+  --ranking-bg-wealth: #2d1b07;
+  --ranking-bg-charm: #1f032d;
+  --ranking-bg-couple: rgb(166 16 122);
+  --ranking-nav-muted: rgb(255 255 255 / 50%);
+  --ranking-text-rank: rgb(253 247 183);
+  --ranking-level-text: rgb(255 222 135);
+  --ranking-period-bg: rgb(25 22 15);
+  --ranking-row-current: var(--color-on-dark-divider);
+  --gradient-ranking-self-wealth: linear-gradient(133deg, #f7ce64 0%, #c08654 100%);
+  --gradient-ranking-self-charm: linear-gradient(133deg, #6e64f7 0%, #b754c0 100%);
+  --color-user-level-text: var(--color-on-dark);
+  --color-live-rank-period-bg: rgb(42 42 86 / 100%);
+  --color-live-rank-tab-divider: rgb(124 35 255 / 18%);
+  --color-live-rank-number: rgb(136 85 248 / 100%);
+  --color-live-rank-meta: rgb(255 255 255 / 74%);
+  --color-pk-rank-avatar-border: #ff9dea;
+  --color-pk-rank-number: #ffe600;
+  --color-pk-rank-contribution: #fd00dd;
+  --color-pk-support-text: #561a00;
+  --color-rank-gold: #ffd54a;
+  --color-rank-silver: #cfd8dc;
+  --color-rank-bronze: #d9905a;
+  --color-pk-team-pink: #ff0090;
+  --color-pk-team-blue: #2099fc;
+  --gradient-pk-rank-self: linear-gradient(300deg, #17175a, #1d0e4c 35%, #130a2a);
+  --gradient-pk-support: linear-gradient(180deg, #fff400, #ff9421);
+  --gradient-live-rank-tab-indicator: linear-gradient(
+    90deg,
+    rgb(124 35 255 / 100%) 0,
+    rgb(43 180 255 / 100%) 100%
+  );
+  --gradient-live-rank-period-active: linear-gradient(
+    148deg,
+    rgb(229 126 255 / 100%) 0,
+    rgb(255 48 121 / 100%) 99.99%
+  );
+  --gradient-user-level-0: linear-gradient(90deg, #64439d 0%, #8f5db6 100%);
+  --gradient-user-level-1: linear-gradient(90deg, #583b8e 0%, #924cb7 100%);
+  --gradient-user-level-2: linear-gradient(90deg, #906cc9 0%, #bd5dd8 100%);
+  --gradient-user-level-3: linear-gradient(90deg, #924cec 0%, #c737f0 100%);
+  --gradient-user-level-4: linear-gradient(90deg, #541aba 0%, #84459a 100%);
+  --gradient-user-level-5: linear-gradient(90deg, #5b2c9a 0%, #ab56a6 100%);
+  --gradient-user-level-6: linear-gradient(90deg, #604685 0%, #b07793 100%);
+  --gradient-user-level-7: linear-gradient(90deg, #724eb2 0%, #da9885 100%);
+  --gradient-user-level-8: linear-gradient(90deg, #d45a2d 0%, #9a972a 100%);
+  --gradient-user-level-9: linear-gradient(90deg, #c74659 0%, #c03596 100%);
+  --gradient-user-level-10: linear-gradient(90deg, #ce2a2a 0%, #b58848 100%);
+  --color-user-entry-level-0: #5f8fbc;
+  --color-user-entry-level-1: #5e5acf;
+  --color-user-entry-level-2: #de8484;
+  --color-user-entry-level-3: #bf865e;
+  --color-user-entry-level-4: #dd6d9b;
+  --color-user-entry-level-5: #e8629a;
+  --gradient-level-page-stage-0: linear-gradient(159deg, #46027d 0%, #30018c 100%);
+  --gradient-level-page-stage-1: linear-gradient(197deg, #a167ba 0%, #32018b 100%);
+  --gradient-level-page-stage-2: linear-gradient(209deg, #b56f79 0%, #5219bc 100%);
+  --gradient-level-page-stage-3: linear-gradient(209deg, #eca590 0%, #33028b 100%);
+  --gradient-level-page-stage-4: linear-gradient(209deg, #e8a590 0%, #4c138f 100%);
+  --gradient-level-page-stage-5: linear-gradient(197deg, #c39d42 0%, #5a187f 100%);
+  --gradient-level-page-stage-6: linear-gradient(197deg, #d15a8e 0%, #62094f 100%);
+  --gradient-level-page-stage-7: linear-gradient(197deg, #b58848 0%, #681b29 100%);
+  --ranking-cp-name-text: rgb(109 15 82);
+  --ranking-cp-card-name-text: var(--color-on-dark);
+  --ranking-cp-rank-text: rgb(170 28 115);
+  --ranking-cp-score-text: var(--color-on-dark);
+  --ranking-cp-pill-bg: linear-gradient(90deg, rgb(181 5 111), rgb(245 124 197), rgb(181 5 111));
+  --ranking-cp-pill-border: var(--color-on-dark);
+  --ranking-cp-current-border: rgb(255 80 186 / 80%);
+  --color-party-list-card: linear-gradient(94deg, #211e49 0%, #1e1c3e 100%);
+  --color-party-list-card-lan-bg: rgb(255 27 168 / 24%);
+  --color-party-list-muted: var(--color-on-dark-subtle);
+  --color-party-list-id: var(--color-on-dark-strong);
+  --color-party-list-pill: var(--color-on-dark-fill);
+  --color-party-list-avatar-border: var(--color-party-list-muted);
+  --color-party-search-input: color-mix(in srgb, var(--color-text) 15%, transparent);
+  --color-party-search-border: color-mix(in srgb, var(--color-text) 30%, transparent);
+  --color-party-voice-bg: #50b96e;
+  --color-party-voice-text: #d7fdcd;
+  --color-party-live-voice-text: #ffe4f4;
+  --gradient-party-list: linear-gradient(222deg, #191f5c 0%, #080417 25%, #0d071e 100%);
+  --gradient-party-list-accent: linear-gradient(90deg, #ff9438 0%, #ff0090 55.08%, #fe00de 100%);
+  --gradient-party-my-room: linear-gradient(90deg, #006aff, #00bfff);
+  --color-party-rank-meta: var(--color-text-muted);
+  --color-party-rank-score: var(--color-pk-rank-number);
+  --color-party-rank-reward-chip: var(--color-scrim-soft);
+  --color-party-rank-reward-close: var(--color-on-dark-fill);
+  --gradient-party-rank-reward-card: linear-gradient(180deg, #72391e, #b78348);
+  --color-party-room-bg: #120c2b;
+  --color-party-seat-action: #3625aa;
+  --color-party-composer-input: #241c3a;
+  --color-party-gift-receiver: #958cb3;
+  --color-party-gift-receiver-selected: #fa06f4;
+  --color-party-gift-all-active: var(--color-gender-female);
+  --color-party-music-tabs: rgb(4 4 31 / 50%);
+  --color-party-music-now: var(--color-on-dark-border-strong);
+  --color-party-panel-muted: rgb(255 255 255 / 52%);
+  --color-party-panel-control: var(--color-scrim-soft);
+  --color-party-chat-tab: var(--color-party-rank-score);
+  --color-party-chat-name: #1affcd;
+  --color-party-chat-mention: #e75402;
+  --color-party-accent-fuchsia: #fe00de;
+  --color-party-chat-notice-border: #a7b0eb;
+  --color-party-chat-notice-bg: rgb(0 0 255 / 60%);
+  --color-party-chat-notice-title: #4cff94;
+  --gradient-party-sheet: linear-gradient(240deg, #17175a 0%, #1d0e4c 35%, #130a2a 100%);
+  --color-gender-male: #205fff;
+  --color-gender-female: #ff1aa7;
+  --gradient-gender-male: linear-gradient(90deg, #28beff 0%, #4976ff 100%);
+  --gradient-gender-female: linear-gradient(90deg, #ff5ae6 0%, #ff37a5 100%);
+  --color-party-quick-gift-item: var(--color-on-dark-fill);
+  --gradient-party-user-card: linear-gradient(240deg, #17175a, #1d0e4c 35%, #130a2a);
+  --gradient-party-quick-gift-more: linear-gradient(90deg, #a24bff, #ff4bd8);
+  --gradient-party-quick-gift-free: linear-gradient(90deg, #ff9a2e, #ff6b00);
+  --gradient-party-entry-gold: linear-gradient(270deg, #ffdc50, #fff38a 54%, #f59207);
+  --gradient-party-entry-rose: linear-gradient(90deg, #ff6dae, #c86bff);
+  --color-party-entry-lavender: #ead3ff;
+  --color-party-entry-highlight: #f7ff81;
+  --color-moment-composer-field: #313149;
+  --color-moment-composer-placeholder: #5a5a6d;
+  --color-moment-create-card: color-mix(in srgb, var(--color-message-bubble) 50%, transparent);
+  --color-moment-create-border: var(--color-on-dark-fill);
+  --color-moment-create-placeholder: var(--color-on-dark-subtle);
+  --color-moment-create-count: var(--color-on-dark-disabled);
+  --color-moment-create-media-count: var(--color-moment-create-count);
+  --color-moment-create-uploader-bg: var(--color-moment-create-card);
+  --color-moment-create-uploader-border: var(--color-moment-create-border);
+  --color-moment-create-uploader-icon: var(--color-moment-create-placeholder);
+  --color-moment-create-publish-disabled-bg: var(--color-customer-service-divider);
+  --color-moment-create-publish-disabled-text: rgb(255 255 255 / 30%);
+  --color-badge: var(--color-primary);
+  --color-on-badge: var(--color-on-dark);
+  --color-vip-ink: #271909;
+  --color-vip-page-bg: #160d0f;
+  --color-vip-plan: #2b201f;
+  --color-vip-plan-border: #f6e5b5;
+  --color-vip-plan-border-muted: rgb(246 229 181 / 20%);
+  --color-vip-plan-text: #f3d49f;
+  --color-vip-plan-price: #ffca71;
+  --color-vip-dialog-bg: #211d1a;
+  --color-vip-privilege-placeholder: rgb(39 25 9 / 8%);
+  --color-vip-payment-row: #1d1d3d;
+  --color-vip-payment-selected: var(--color-link);
+  --color-vip-submit-text: var(--color-diamonds-submit-text);
+  --gradient-vip-member-inactive: linear-gradient(100deg, #ffedc9 0%, #ffd0ba 100%);
+  --gradient-vip-privilege-dialog: linear-gradient(180deg, #fdcda7 0%, #f0e3cf 100%);
+  --gradient-vip-privilege-button: linear-gradient(270deg, #d5925f 0%, #f3b765 100%);
+  --gradient-vip-price: linear-gradient(180deg, #fff4d9 0%, #f4ca7e 100%);
+  --gradient-vip-sheet: linear-gradient(180deg, #292420 0%, #110d0c 100%);
+  --gradient-vip-submit: var(--gradient-diamonds-submit);
+  --gradient-vip-success-dialog:
+    radial-gradient(circle at 50% 0%, rgb(167 121 59 / 18%), transparent 42%),
+    linear-gradient(145deg, #312b23 0%, #251f19 54%, #1c1610 100%);
+  --color-feedback-field: rgb(34 35 65 / 60%);
+  --color-feedback-placeholder: var(--color-on-dark-border-strong);
+  --gradient-brand: linear-gradient(100deg, var(--color-brand-cool) 0%, var(--color-link) 100%);
+  --gradient-action: linear-gradient(147deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+  --check-in-mask: rgb(0 0 0 / 74%);
+  --check-in-day-text: #4c301c;
+  --check-in-primary-action: #3d268a;
+  --check-in-vip-action: linear-gradient(90deg, #ffd180 0%, #ffb69f 100%);
+  --check-in-upgrade-action: linear-gradient(90deg, #ff9438 0%, #ff0090 52%, #fe00de 100%);
+  --check-in-disabled-action: rgb(0 0 0 / 20%);
+  --check-in-disabled-text: var(--color-on-dark-secondary);
+  --check-in-text: var(--check-in-day-text);
+  --check-in-regular-title: linear-gradient(200.556deg, #ff67cf 0%, #ff35bf 100%);
+  --check-in-regular-day-text: #e57eff;
+  --check-in-regular-muted: #1c274c;
+  --check-in-timer-bg: #efb681;
+  --check-in-vip-title: linear-gradient(141.6325deg, #9f560f 0%, #391f05 100%);
+  --check-in-vip-day-text: #311605;
+  --check-in-vip-hint: rgb(76 48 28 / 60%);
+  --check-in-vip-amount: rgb(165 117 88 / 100%);
+  --check-in-vip-lock-mask: rgb(106 106 106 / 50%);
+  --check-in-vip-action-border: #edc487;
+  --check-in-vip-action-border-disabled: rgb(237 196 135 / 55%);
+  --check-in-vip-action-disabled: linear-gradient(
+    90deg,
+    rgb(255 209 128 / 55%) 0%,
+    rgb(255 182 159 / 55%) 100%
+  );
+  --check-in-vip-text-strong: #351b13;
+  --check-in-vip-text-disabled: rgb(53 27 19 / 55%);
+  --check-in-vip-timer-bg: var(--check-in-timer-bg);
+  --check-in-success-panel: linear-gradient(145deg, #f6e3ff 0%, #f3c9ed 54%, #d9b8f5 100%);
+  --check-in-success-title: #35127a;
+  --check-in-success-text: #745aa0;
+  --check-in-vip-success-panel: linear-gradient(180deg, #fff3dc 0%, #fff 100%);
+  --check-in-vip-success-title: var(--check-in-day-text);
+  --check-in-vip-success-text: #a57558;
+  --check-in-vip-reward-border: var(--check-in-vip-action-border);
+  --check-in-reward-border: #c67bec;
+  --check-in-reward-bg: rgb(255 255 255 / 72%);
+  --check-in-more-gradient: linear-gradient(90deg, #1e74f6 0%, #9411cc 100%);
+  --color-text-muted: var(--color-on-dark-muted);
+  --color-text-subtle: var(--color-on-dark-subtle);
+  --color-border: var(--color-on-dark-border);
+  --color-border-strong: var(--color-on-dark-border-strong);
+  --color-mask: var(--color-scrim);
+  --auth-button-bg: linear-gradient(100deg, var(--color-secondary), var(--color-primary));
+  --color-light-text: #141414;
+  --color-light-muted: #999;
+  --color-light-surface: var(--color-party-password-keyboard-bg);
+  --color-light-panel-tint: #f3f0fd;
+  --gradient-live-rps-header: linear-gradient(180deg, #1d0e4c, #130a2a);
+  --gradient-live-rps-action: linear-gradient(90deg, #fe00ed, #30baff);
+  --color-live-rps-control: rgb(69 58 97 / 50%);
+  --color-live-rps-control-border: rgb(112 91 132 / 70%);
+  --gradient-live-rps-control: linear-gradient(0deg, #120420, #39155d);
+  --gradient-live-rps-summary: linear-gradient(213deg, #8a0db0, #150b32 36%, #1d0e4c 64%, #1788ad);
+  --gradient-live-wheel-result: radial-gradient(circle, #ff8c8c 0%, #ffd3d3 100%);
+  --color-live-wheel-danger: #b62c3e;
+  --color-live-wheel-danger-text: #4a1c1c;
+  --color-live-wheel-accent: #fe00d6;
+  --skeleton-base: color-mix(in srgb, var(--color-surface) 88%, var(--color-page-deep));
+  --skeleton-highlight: color-mix(in srgb, var(--color-surface-raised) 78%, var(--color-accent));
+  --skeleton-surface: color-mix(in srgb, var(--color-page-deep) 84%, var(--color-surface));
+  --skeleton-shimmer: linear-gradient(
+    100deg,
+    transparent 18%,
+    var(--skeleton-highlight) 50%,
+    transparent 82%
+  );
+}

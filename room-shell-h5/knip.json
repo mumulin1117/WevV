@@ -1,0 +1,16 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreExportsUsedInFile": true,
+  "ignoreDependencies": ["autoprefixer", "postcss-mobile-forever"],
+  "include": ["dependencies", "unlisted", "binaries", "unresolved"],
+  "workspaces": {
+    ".": {
+      "entry": ["src/**/*.{ts,vue}", "scripts/**/*.mjs", "*.{ts,mjs}"],
+      "project": ["src/**/*.{ts,vue}", "scripts/**/*.mjs", "*.{ts,mjs}"]
+    },
+    "test-projects/agora-broadcaster": {
+      "entry": ["src/**/*.{ts,vue}", "*.{ts,mjs}"],
+      "project": ["src/**/*.{ts,vue}", "*.{ts,mjs}"]
+    }
+  }
+}

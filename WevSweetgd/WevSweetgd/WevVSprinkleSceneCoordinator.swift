@@ -3,30 +3,33 @@ import UIKit
 class WevVSprinkleSceneCoordinator: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    private var launchWindow: UIWindow?
+    private var sunriseShowcase: UIWindow?
 
-    func scene(_ wevvSprinkleScene: UIScene, willConnectTo wevvSprinkleSession: UISceneSession, options wevvSprinkleOptions: UIScene.ConnectionOptions) {
-        guard let wevvWindowScene = wevvSprinkleScene as? UIWindowScene else { return }
-        let glazeWindow = UIWindow(windowScene: wevvWindowScene)
-        glazeWindow.backgroundColor = .systemBackground
-        glazeWindow.rootViewController = WevVDonutcreamBadgeController()
-        glazeWindow.makeKeyAndVisible()
-        window = glazeWindow
-        launchWindow = glazeWindow
+    func scene(_ meadowHoneyAssortment: UIScene, willConnectTo harvestPearPalette: UISceneSession, options moonlitCocoaAssortment: UIScene.ConnectionOptions) {
+        guard let gardenRoseAssortment = meadowHoneyAssortment as? UIWindowScene else { return }
+        let winterSpiceAssortment = UIWindow(windowScene: gardenRoseAssortment)
+        winterSpiceAssortment.backgroundColor = .systemBackground
+        winterSpiceAssortment.rootViewController = WevVDonutcreamapricotFillinger()
+        winterSpiceAssortment.makeKeyAndVisible()
+        window = winterSpiceAssortment
+        sunriseShowcase = winterSpiceAssortment
+        Task {
+            await WevVGlazeSessionRepository.pastryTrailDiary.midnightTreatFestival()
+        }
     }
 
-    func sceneDidDisconnect(_ wevvSprinkleScene: UIScene) {
+    func sceneDidDisconnect(_ meadowHoneyAssortment: UIScene) {
     }
 
-    func sceneDidBecomeActive(_ wevvSprinkleScene: UIScene) {
+    func sceneDidBecomeActive(_ meadowHoneyAssortment: UIScene) {
     }
 
-    func sceneWillResignActive(_ wevvSprinkleScene: UIScene) {
+    func sceneWillResignActive(_ meadowHoneyAssortment: UIScene) {
     }
 
-    func sceneWillEnterForeground(_ wevvSprinkleScene: UIScene) {
+    func sceneWillEnterForeground(_ meadowHoneyAssortment: UIScene) {
     }
 
-    func sceneDidEnterBackground(_ wevvSprinkleScene: UIScene) {
+    func sceneDidEnterBackground(_ meadowHoneyAssortment: UIScene) {
     }
 }

@@ -1,0 +1,200 @@
+@import './colors.less';
+@import './runtime-vars.less';
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 100 349;
+  font-display: swap;
+  src: url('./fonts/tt-norms-pro-light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 350 449;
+  font-display: swap;
+  src: url('./fonts/tt-norms-pro-regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 450 649;
+  font-display: swap;
+  src: url('./fonts/tt-norms-pro-medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 650 749;
+  font-display: swap;
+  src: url('./fonts/tt-norms-pro-bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 750 900;
+  font-display: swap;
+  src: url('./fonts/tt-norms-pro-extra-bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  font-style: italic;
+  font-weight: 650 900;
+  font-display: swap;
+  src: url('./fonts/tt-norms-pro-bold-italic.otf') format('opentype');
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: var(--color-bg);
+}
+
+html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  color: var(--color-text);
+  font-family:
+    'TT Norms Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  font-synthesis: style;
+  touch-action: pan-x pan-y;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+  font: inherit;
+}
+
+input,
+textarea,
+select,
+[contenteditable='true'] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+button,
+[role='button'] {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 72%, var(--color-text));
+  outline-offset: 2px;
+}
+
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.page-card {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 42%);
+}
+
+html[data-app-hidden] *,
+html[data-app-hidden] *::before,
+html[data-app-hidden] *::after {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* Startup failures must remain actionable even before Vue mounts. */
+.boot-error {
+  display: grid;
+  min-height: 100dvh;
+  padding: 24px;
+  background: var(--color-media-bg, #15052e);
+  color: #fff;
+  place-items: center;
+  text-align: center;
+}
+
+.boot-error button {
+  min-width: 112px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--gradient-primary);
+  color: #fff;
+}

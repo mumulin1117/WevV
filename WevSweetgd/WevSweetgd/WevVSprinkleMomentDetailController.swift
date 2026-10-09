@@ -1,590 +1,508 @@
 import UIKit
 
-private struct WevVWevvCrumbReply {
-    let sugarDustKey: String
-    let tasterBadgeKey: String
-    let crumbReplyText: String
-    let cocoaShelf: String
-    let donutTasterName: String?
-    let donutFrameAsset: String?
-
-    init(sugarDustKey: String, tasterBadgeKey: String, text: String, timeText: String, donutTasterName: String? = nil, donutFrameAsset: String? = nil) {
-        self.sugarDustKey = sugarDustKey
-        self.tasterBadgeKey = tasterBadgeKey
-        self.crumbReplyText = text
-        self.cocoaShelf = timeText
-        self.donutTasterName = donutTasterName
-        self.donutFrameAsset = donutFrameAsset
-    }
-}
-
 final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate {
-    var onWevvDonutMomentGuarded: (() -> Void)?
+    var cocoaKissExperience: (() -> Void)?
 
-    private let donutSnapshot: WevVDonutSnapshot
-    private let wevvDonutJournalStore = WevVGlazeSessionStore.shared
-    private let wevvTasterStore = WevVGuestGlazeStore.shared
+    private let tangyCitrusAroma = WevVGlazeSocialRepository.pastryTrailDiary
+    private let mellowVanillaContrast = WevVGlazeSessionStore.shared
+    private var richCocoaFlavor: butteryTexture
+    private var fragrantJasmineFlavor: [featherlightBite] = []
+    private var herbalLavenderEssence: Task<Void, Never>?
 
-    private let wevvMomentScroll = UIScrollView()
-    private let wevvMomentStack = UIStackView()
-    private let wevvTrailButton = UIButton(type: .system)
-    private let wevvReplyField = UITextField()
-    private let wevvBottomTray = UIView()
-    private var wevvTrayBottomConstraint: NSLayoutConstraint?
-    private var wevvCrumbReplies: [WevVWevvCrumbReply] = [
-        WevVWevvCrumbReply(sugarDustKey: "b?rNulnOoBCHr/eDaHmRO#nweZ".wevVPastryCrumbBloomRestored, tasterBadgeKey: "aRrVlpotS+k?yMG&l=aHz;ee".wevVPastryCrumbBloomRestored, text: "G;rIebagtR hs/hJomt/!g VIL @lMoivteo Xietk".wevVPastryCrumbBloomRestored, timeText: "2l /mAinnpsZ raZguoi".wevVPastryCrumbBloomRestored),
-        WevVWevvCrumbReply(sugarDustKey: "b@rguKnyojCcr!erahmiTXwno+".wevVPastryCrumbBloomRestored, tasterBadgeKey: "b~lna:iZrsBYlVu;esG:lkauzzee".wevVPastryCrumbBloomRestored, text: "Ghr&e^awta msUhJo,tk!m dIW xleo@vReH ~iBtX".wevVPastryCrumbBloomRestored, timeText: "2Y /mUiKnysL oaYgXo&".wevVPastryCrumbBloomRestored)
-    ]
+    private let goldenHourFrame = UIScrollView()
+    private let frostingDetailFrame = UIStackView()
+    private let portraitPastryGallery = UIImageView()
+    private let flavorMenuGuide = UILabel()
+    private let honeyCrullerCruller = UIButton(type: .system)
+    private let daylightDisplayScene = UIImageView()
+    private let tastingTrayNotes = UILabel()
+    private let berryBurstNotebook = UIButton(type: .system)
+    private let donutDiarySelection = UIButton(type: .system)
+    private let butterAromaNotes = UILabel()
+    private let textureContrastNotes = UIStackView()
+    private let cocoaDrinkComplement = UITextField()
+    private let pastryCounterCollection = UIView()
+    private var crispEdgeCrust: NSLayoutConstraint?
 
-    init(donutSnapshot: WevVDonutSnapshot) {
-        self.donutSnapshot = donutSnapshot
+    init(richCocoaFlavor: butteryTexture) {
+        self.richCocoaFlavor = richCocoaFlavor
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("iDntiQte(&cVondzedr;:~)+ VhsaZs/ #n#octz abFeBeAnJ iiDmbpnlhe%mbe,n%tNe/dq".wevVPastryCrumbBloomRestored)
+    init(vanillaStrawberryDuet: WevVDonutSnapshot) {
+        richCocoaFlavor = butteryTexture(
+            coconutCenter: Int64(vanillaStrawberryDuet.sprinkleJarKey) ?? 0,
+            vanillaBeanIcing: Int64(vanillaStrawberryDuet.tasterBloom.donutPinKey) ?? 0,
+            gingerHoneyDrizzle: vanillaStrawberryDuet.tasterBloom.name,
+            cheesecakeMousse: vanillaStrawberryDuet.tasterBloom.donutFrameAsset,
+            caramelCurd: vanillaStrawberryDuet.tastingText,
+            passionfruitFilling: [vanillaStrawberryDuet.donutBackdropAsset],
+            limeCream: 0,
+            apricotCenter: 0,
+            figCustard: vanillaStrawberryDuet.freshnessTagText,
+            mascarponeCream: false,
+            cherryCompote: false,
+            custardMousse: false,
+            peachFilling: nil,
+            pearJam: nil
+        )
+        super.init(nibName: nil, bundle: nil)
     }
+
+    required init?(coder: NSCoder) { nil }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 1.0, green: 0.92, blue: 0.96, alpha: 1.0)
-        buildWevvMomentCanvas()
-        refreshWevvTrailButton()
-        NotificationCenter.default.addObserver(self, selector: #selector(liftWevvCrumbTray(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(dropWevvCrumbTray(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        artisanShowcase()
+        glazeGalleryGuide()
+        doughMaturationStudy()
+        freshMixSequence()
     }
 
     deinit {
+        herbalLavenderEssence?.cancel()
         NotificationCenter.default.removeObserver(self)
     }
 
-    private var boundTasterCard: WevVGuestGlazeProfile? {
-        wevvTasterStore.allProfiles.first { $0.donutPinKey == donutSnapshot.tasterBloom.donutPinKey }
-    }
+    private func artisanShowcase() {
+        view.backgroundColor = UIColor(red: 1, green: 0.92, blue: 0.96, alpha: 1)
+        let pastelBackdropGallery = UIImageView(image: UIImage(named: "wevv_donut_sprinkle_backdrop"))
+        pastelBackdropGallery.translatesAutoresizingMaskIntoConstraints = false
+        pastelBackdropGallery.contentMode = .scaleAspectFill
+        view.addSubview(pastelBackdropGallery)
 
-    private func buildWevvMomentCanvas() {
-        let frostingGlow = UIView()
-        frostingGlow.translatesAutoresizingMaskIntoConstraints = false
-        frostingGlow.backgroundColor = UIColor(red: 1.0, green: 0.92, blue: 0.96, alpha: 1.0)
-        view.addSubview(frostingGlow)
+        goldenHourFrame.translatesAutoresizingMaskIntoConstraints = false
+        goldenHourFrame.alwaysBounceVertical = true
+        goldenHourFrame.keyboardDismissMode = .interactive
+        goldenHourFrame.contentInset.bottom = 90
+        goldenHourFrame.verticalScrollIndicatorInsets.bottom = 90
+        view.addSubview(goldenHourFrame)
 
-        wevvMomentScroll.translatesAutoresizingMaskIntoConstraints = false
-        wevvMomentScroll.alwaysBounceVertical = true
-        wevvMomentScroll.keyboardDismissMode = .interactive
-        wevvMomentScroll.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 96, right: 0)
-        view.addSubview(wevvMomentScroll)
+        frostingDetailFrame.translatesAutoresizingMaskIntoConstraints = false
+        frostingDetailFrame.axis = .vertical
+        frostingDetailFrame.spacing = 12
+        goldenHourFrame.addSubview(frostingDetailFrame)
 
-        wevvMomentStack.translatesAutoresizingMaskIntoConstraints = false
-        wevvMomentStack.axis = .vertical
-        wevvMomentStack.spacing = 12
-        wevvMomentScroll.addSubview(wevvMomentStack)
+        rimLightingGallery(daylightDisplayScene, cornerRadius: 16)
+        daylightDisplayScene.backgroundColor = UIColor(red: 0.97, green: 0.84, blue: 0.93, alpha: 1)
+        tastingTrayNotes.translatesAutoresizingMaskIntoConstraints = false
+        tastingTrayNotes.numberOfLines = 0
+        tastingTrayNotes.font = .systemFont(ofSize: 13, weight: .regular)
+        tastingTrayNotes.textColor = UIColor(red: 0.16, green: 0.12, blue: 0.13, alpha: 1)
 
-        wevvBottomTray.translatesAutoresizingMaskIntoConstraints = false
-        wevvBottomTray.backgroundColor = .white
-        view.addSubview(wevvBottomTray)
-        wevvTrayBottomConstraint = wevvBottomTray.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        let tastingFlightShowcase = UIStackView(arrangedSubviews: [berryBurstNotebook, donutDiarySelection, UIView()])
+        tastingFlightShowcase.translatesAutoresizingMaskIntoConstraints = false
+        tastingFlightShowcase.axis = .horizontal
+        tastingFlightShowcase.spacing = 15
+        carefulCrimpSequence(berryBurstNotebook, action: #selector(sugarCrystallizationStudy))
+        carefulCrimpSequence(donutDiarySelection, action: #selector(butterEmulsionStudy))
+
+        butterAromaNotes.translatesAutoresizingMaskIntoConstraints = false
+        butterAromaNotes.font = .systemFont(ofSize: 16, weight: .bold)
+        butterAromaNotes.textColor = UIColor(red: 0.12, green: 0.08, blue: 0.1, alpha: 1)
+        textureContrastNotes.translatesAutoresizingMaskIntoConstraints = false
+        textureContrastNotes.axis = .vertical
+        textureContrastNotes.spacing = 10
+
+        let bakeryWindowAtelier = ringDisplayStudio()
+        [bakeryWindowAtelier, daylightDisplayScene, tastingTrayNotes, tastingFlightShowcase, butterAromaNotes, textureContrastNotes].forEach(frostingDetailFrame.addArrangedSubview)
+        frostingDetailFrame.setCustomSpacing(8, after: bakeryWindowAtelier)
+        frostingDetailFrame.setCustomSpacing(10, after: daylightDisplayScene)
+        frostingDetailFrame.setCustomSpacing(7, after: tastingTrayNotes)
+        pastryWorkshopCounter()
 
         NSLayoutConstraint.activate([
-            frostingGlow.topAnchor.constraint(equalTo: view.topAnchor),
-            frostingGlow.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            frostingGlow.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            frostingGlow.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            wevvMomentScroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            wevvMomentScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            wevvMomentScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            wevvMomentScroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            wevvMomentStack.topAnchor.constraint(equalTo: wevvMomentScroll.contentLayoutGuide.topAnchor, constant: 8),
-            wevvMomentStack.leadingAnchor.constraint(equalTo: wevvMomentScroll.frameLayoutGuide.leadingAnchor, constant: 20),
-            wevvMomentStack.trailingAnchor.constraint(equalTo: wevvMomentScroll.frameLayoutGuide.trailingAnchor, constant: -20),
-            wevvMomentStack.bottomAnchor.constraint(equalTo: wevvMomentScroll.contentLayoutGuide.bottomAnchor, constant: -104),
-            wevvBottomTray.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            wevvBottomTray.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            wevvBottomTray.heightAnchor.constraint(equalToConstant: 76),
-            wevvTrayBottomConstraint!
+            pastelBackdropGallery.topAnchor.constraint(equalTo: view.topAnchor),
+            pastelBackdropGallery.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pastelBackdropGallery.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pastelBackdropGallery.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            goldenHourFrame.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            goldenHourFrame.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            goldenHourFrame.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            goldenHourFrame.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            frostingDetailFrame.topAnchor.constraint(equalTo: goldenHourFrame.contentLayoutGuide.topAnchor, constant: 8),
+            frostingDetailFrame.leadingAnchor.constraint(equalTo: goldenHourFrame.frameLayoutGuide.leadingAnchor, constant: 20),
+            frostingDetailFrame.trailingAnchor.constraint(equalTo: goldenHourFrame.frameLayoutGuide.trailingAnchor, constant: -20),
+            frostingDetailFrame.bottomAnchor.constraint(equalTo: goldenHourFrame.contentLayoutGuide.bottomAnchor, constant: -104),
+            daylightDisplayScene.heightAnchor.constraint(equalTo: daylightDisplayScene.widthAnchor, multiplier: 0.78)
         ])
 
-        let momentHeader = makeWevvMomentHeader()
-        let heroPanel = makeWevvHeroPanel()
-        let momentText = makeWevvMomentText()
-        let replyTitle = makeWevvReplyTitle()
-        wevvMomentStack.addArrangedSubview(momentHeader)
-        wevvMomentStack.addArrangedSubview(heroPanel)
-        wevvMomentStack.addArrangedSubview(momentText)
-        wevvMomentStack.addArrangedSubview(replyTitle)
-        wevvMomentStack.setCustomSpacing(8, after: momentHeader)
-        wevvMomentStack.setCustomSpacing(10, after: heroPanel)
-        wevvMomentStack.setCustomSpacing(12, after: momentText)
-        wevvMomentStack.setCustomSpacing(10, after: replyTitle)
-        rebuildWevvCrumbReplies()
-        buildWevvBottomTray()
-        let sugarTap = UITapGestureRecognizer(target: self, action: #selector(endWevvCrumbEditing))
-        sugarTap.cancelsTouchesInView = false
-        view.addGestureRecognizer(sugarTap)
+        let sugarPearlAccent = UITapGestureRecognizer(target: self, action: #selector(handDipRhythm))
+        sugarPearlAccent.cancelsTouchesInView = false
+        view.addGestureRecognizer(sugarPearlAccent)
     }
 
-    private func makeWevvMomentHeader() -> UIView {
-        let header = UIView()
-        header.translatesAutoresizingMaskIntoConstraints = false
+    private func ringDisplayStudio() -> UIView {
+        let bakeryWindowAtelier = UIView()
+        bakeryWindowAtelier.translatesAutoresizingMaskIntoConstraints = false
+        let doughScraperGuide = UIButton(type: .system)
+        doughScraperGuide.translatesAutoresizingMaskIntoConstraints = false
+        doughScraperGuide.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
+        doughScraperGuide.tintColor = .black
+        doughScraperGuide.addTarget(self, action: #selector(slowRiseSequence), for: .touchUpInside)
 
-        let doughBackButton = UIButton(type: .system)
-        doughBackButton.translatesAutoresizingMaskIntoConstraints = false
-        doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        doughBackButton.tintColor = .black
-        doughBackButton.addTarget(self, action: #selector(closeWevvDonutMoment), for: .touchUpInside)
+        rimLightingGallery(portraitPastryGallery, cornerRadius: 16)
+        portraitPastryGallery.isUserInteractionEnabled = true
+        portraitPastryGallery.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(worldDoughnutNotebook)))
+        flavorMenuGuide.translatesAutoresizingMaskIntoConstraints = false
+        flavorMenuGuide.font = .systemFont(ofSize: 14, weight: .bold)
+        flavorMenuGuide.textColor = UIColor(red: 0.12, green: 0.05, blue: 0.08, alpha: 1)
+        flavorMenuGuide.adjustsFontSizeToFitWidth = true
+        flavorMenuGuide.minimumScaleFactor = 0.75
 
-        let parlorQuest = UIButton(type: .custom)
-        parlorQuest.translatesAutoresizingMaskIntoConstraints = false
-        parlorQuest.clipsToBounds = true
-        parlorQuest.layer.cornerRadius = 16
-        parlorQuest.setImage(makeWevvAuthorAvatar(), for: .normal)
-        parlorQuest.imageView?.contentMode = .scaleAspectFill
-        parlorQuest.addTarget(self, action: #selector(openBoundTasterCard), for: .touchUpInside)
+        honeyCrullerCruller.translatesAutoresizingMaskIntoConstraints = false
+        honeyCrullerCruller.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
+        honeyCrullerCruller.layer.cornerRadius = 14
+        honeyCrullerCruller.clipsToBounds = true
+        honeyCrullerCruller.addTarget(self, action: #selector(yeastActivityStudy), for: .touchUpInside)
 
-        let donutTasterNameLabel = UILabel()
-        donutTasterNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        donutTasterNameLabel.text = boundTasterCard?.cocoaCounter ?? donutSnapshot.tasterBloom.name
-        donutTasterNameLabel.font = .systemFont(ofSize: 14, weight: .bold)
-        donutTasterNameLabel.textColor = UIColor(red: 0.12, green: 0.05, blue: 0.08, alpha: 1)
-        donutTasterNameLabel.adjustsFontSizeToFitWidth = true
-        donutTasterNameLabel.minimumScaleFactor = 0.72
+        let citrusPeelGarnish = UIButton(type: .system)
+        citrusPeelGarnish.translatesAutoresizingMaskIntoConstraints = false
+        citrusPeelGarnish.setImage(UIImage(systemName: "exclamationmark.triangle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)), for: .normal)
+        citrusPeelGarnish.tintColor = UIColor(red: 1, green: 0.25, blue: 0.58, alpha: 1)
+        citrusPeelGarnish.addTarget(self, action: #selector(heritageBakingNotebook), for: .touchUpInside)
 
-        wevvTrailButton.translatesAutoresizingMaskIntoConstraints = false
-        wevvTrailButton.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
-        wevvTrailButton.layer.cornerRadius = 14
-        wevvTrailButton.clipsToBounds = true
-        wevvTrailButton.addTarget(self, action: #selector(toggleWevvSugarTrail), for: .touchUpInside)
-
-        let trailQuest = UIButton(type: .system)
-        trailQuest.translatesAutoresizingMaskIntoConstraints = false
-        trailQuest.setImage(UIImage(systemName: "exclamationmark.triangle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)), for: .normal)
-        trailQuest.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.58, alpha: 1)
-        trailQuest.addTarget(self, action: #selector(openWevvMomentNotice), for: .touchUpInside)
-
-        placeWevvMomentHeaderViews(header: header, doughBackButton: doughBackButton, avatarButton: parlorQuest, donutTasterNameLabel: donutTasterNameLabel, noticeButton: trailQuest)
-        pinWevvMomentHeaderLayout(header: header, doughBackButton: doughBackButton, cherryScout: parlorQuest, donutTasterNameLabel: donutTasterNameLabel, cherryQuest: trailQuest)
-        return header
-    }
-
-    private func placeWevvMomentHeaderViews(header: UIView, doughBackButton: UIButton, avatarButton: UIButton, donutTasterNameLabel: UILabel, noticeButton: UIButton) {
-        [doughBackButton, avatarButton, donutTasterNameLabel, noticeButton, wevvTrailButton].forEach {
-            header.addSubview($0)
-        }
-    }
-
-    private func pinWevvMomentHeaderLayout(header: UIView, doughBackButton: UIButton, cherryScout: UIButton, donutTasterNameLabel: UILabel, cherryQuest: UIButton) {
+        [doughScraperGuide, portraitPastryGallery, flavorMenuGuide, citrusPeelGarnish, honeyCrullerCruller].forEach(bakeryWindowAtelier.addSubview)
         NSLayoutConstraint.activate([
-            header.heightAnchor.constraint(equalToConstant: 36),
-            doughBackButton.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: -4),
-            doughBackButton.centerYAnchor.constraint(equalTo: cherryScout.centerYAnchor),
-            doughBackButton.widthAnchor.constraint(equalToConstant: 28),
-            doughBackButton.heightAnchor.constraint(equalToConstant: 36),
-            cherryScout.leadingAnchor.constraint(equalTo: doughBackButton.trailingAnchor, constant: 8),
-            cherryScout.centerYAnchor.constraint(equalTo: header.centerYAnchor),
-            cherryScout.widthAnchor.constraint(equalToConstant: 32),
-            cherryScout.heightAnchor.constraint(equalToConstant: 32),
-            donutTasterNameLabel.leadingAnchor.constraint(equalTo: cherryScout.trailingAnchor, constant: 10),
-            donutTasterNameLabel.centerYAnchor.constraint(equalTo: cherryScout.centerYAnchor),
-            donutTasterNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: cherryQuest.leadingAnchor, constant: -6),
-            cherryQuest.trailingAnchor.constraint(equalTo: wevvTrailButton.leadingAnchor, constant: -6),
-            cherryQuest.centerYAnchor.constraint(equalTo: cherryScout.centerYAnchor),
-            cherryQuest.widthAnchor.constraint(equalToConstant: 24),
-            cherryQuest.heightAnchor.constraint(equalToConstant: 24),
-            wevvTrailButton.trailingAnchor.constraint(equalTo: header.trailingAnchor),
-            wevvTrailButton.centerYAnchor.constraint(equalTo: cherryScout.centerYAnchor),
-            wevvTrailButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 70),
-            wevvTrailButton.heightAnchor.constraint(equalToConstant: 28)
+            bakeryWindowAtelier.heightAnchor.constraint(equalToConstant: 36),
+            doughScraperGuide.leadingAnchor.constraint(equalTo: bakeryWindowAtelier.leadingAnchor, constant: -4),
+            doughScraperGuide.centerYAnchor.constraint(equalTo: bakeryWindowAtelier.centerYAnchor),
+            doughScraperGuide.widthAnchor.constraint(equalToConstant: 28),
+            doughScraperGuide.heightAnchor.constraint(equalToConstant: 36),
+            portraitPastryGallery.leadingAnchor.constraint(equalTo: doughScraperGuide.trailingAnchor, constant: 8),
+            portraitPastryGallery.centerYAnchor.constraint(equalTo: bakeryWindowAtelier.centerYAnchor),
+            portraitPastryGallery.widthAnchor.constraint(equalToConstant: 32),
+            portraitPastryGallery.heightAnchor.constraint(equalToConstant: 32),
+            flavorMenuGuide.leadingAnchor.constraint(equalTo: portraitPastryGallery.trailingAnchor, constant: 10),
+            flavorMenuGuide.centerYAnchor.constraint(equalTo: portraitPastryGallery.centerYAnchor),
+            flavorMenuGuide.trailingAnchor.constraint(lessThanOrEqualTo: citrusPeelGarnish.leadingAnchor, constant: -6),
+            citrusPeelGarnish.trailingAnchor.constraint(equalTo: honeyCrullerCruller.leadingAnchor, constant: -6),
+            citrusPeelGarnish.centerYAnchor.constraint(equalTo: bakeryWindowAtelier.centerYAnchor),
+            citrusPeelGarnish.widthAnchor.constraint(equalToConstant: 24),
+            citrusPeelGarnish.heightAnchor.constraint(equalToConstant: 24),
+            honeyCrullerCruller.trailingAnchor.constraint(equalTo: bakeryWindowAtelier.trailingAnchor),
+            honeyCrullerCruller.centerYAnchor.constraint(equalTo: bakeryWindowAtelier.centerYAnchor),
+            honeyCrullerCruller.widthAnchor.constraint(greaterThanOrEqualToConstant: 70),
+            honeyCrullerCruller.heightAnchor.constraint(equalToConstant: 28)
         ])
+        return bakeryWindowAtelier
     }
 
-    private func makeWevvHeroPanel() -> UIView {
-        let glazePanel = UIView()
-        glazePanel.translatesAutoresizingMaskIntoConstraints = false
-        glazePanel.clipsToBounds = true
-        glazePanel.layer.cornerRadius = 16
-
-        let pistachioSample = UIImageView(image: WevVPastryImageVault.glazeImage(for: donutSnapshot.donutBackdropAsset) ?? makeWevvFallbackDonutImage(seed: donutSnapshot.donutBackdropAsset))
-        pistachioSample.translatesAutoresizingMaskIntoConstraints = false
-        pistachioSample.contentMode = .scaleAspectFill
-        pistachioSample.clipsToBounds = true
-
-        glazePanel.addSubview(pistachioSample)
-        NSLayoutConstraint.activate([
-            glazePanel.heightAnchor.constraint(equalTo: glazePanel.widthAnchor, multiplier: 0.78),
-            pistachioSample.topAnchor.constraint(equalTo: glazePanel.topAnchor),
-            pistachioSample.leadingAnchor.constraint(equalTo: glazePanel.leadingAnchor),
-            pistachioSample.trailingAnchor.constraint(equalTo: glazePanel.trailingAnchor),
-            pistachioSample.bottomAnchor.constraint(equalTo: glazePanel.bottomAnchor)
-        ])
-        return glazePanel
-    }
-
-    private func makeWevvMomentText() -> UILabel {
-        let crumbLabel = UILabel()
-        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
-        crumbLabel.text = donutSnapshot.tastingText
-        crumbLabel.font = .systemFont(ofSize: 13, weight: .regular)
-        crumbLabel.textColor = UIColor(red: 0.16, green: 0.12, blue: 0.13, alpha: 1)
-        crumbLabel.numberOfLines = 0
-        return crumbLabel
-    }
-
-    private func makeWevvReplyTitle() -> UILabel {
-        let crumbLabel = UILabel()
-        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
-        crumbLabel.text = "CkocmpmYe#nwt;s,".wevVPastryCrumbBloomRestored
-        crumbLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        crumbLabel.textColor = UIColor(red: 0.12, green: 0.08, blue: 0.1, alpha: 1)
-        return crumbLabel
-    }
-
-    private func rebuildWevvCrumbReplies() {
-        wevvMomentStack.arrangedSubviews
-            .filter { $0.accessibilityIdentifier == "w@eDvJvgS&ukgPa;rURkeRp^lmyUC~aSr!d?".wevVPastryCrumbBloomRestored }
-            .forEach { crumbCard in
-                wevvMomentStack.removeArrangedSubview(crumbCard)
-                crumbCard.removeFromSuperview()
-            }
-        wevvCrumbReplies.forEach { wevvMomentStack.addArrangedSubview(makeWevvCrumbNoteCard($0)) }
-    }
-
-    private func makeWevvCrumbNoteCard(_ crumbNote: WevVWevvCrumbReply) -> UIView {
-        let pastryCard = UIControl()
-        pastryCard.translatesAutoresizingMaskIntoConstraints = false
-        pastryCard.accessibilityIdentifier = "wlewvYvKSyu.gPaormRFeQp=loyYCVa+rTdc".wevVPastryCrumbBloomRestored
-        pastryCard.backgroundColor = .white
-        pastryCard.layer.cornerRadius = 16
-        pastryCard.clipsToBounds = true
-        pastryCard.addTarget(self, action: #selector(showWevvCrumbFlagHint), for: .touchUpInside)
-
-        let tasterCard = wevvTasterStore.profile(for: crumbNote.tasterBadgeKey)
-        let avatar = makeWevvCrumbNoteAvatar(crumbNote, tasterCard: tasterCard)
-        let donutTasterNameLabel = makeWevvCrumbNoteName(crumbNote, tasterCard: tasterCard)
-        let textLabel = makeWevvCrumbNoteText(crumbNote.crumbReplyText)
-        let timeLabel = makeWevvCrumbNoteTime(crumbNote.cocoaShelf)
-        let crumbFlagButton = makeWevvCrumbFlagButton()
-
-        placeWevvCrumbNoteViews(pastryCard: pastryCard, avatar: avatar, donutTasterNameLabel: donutTasterNameLabel, textLabel: textLabel, timeLabel: timeLabel, crumbFlagButton: crumbFlagButton)
-        pinWevvCrumbNoteLayout(pastryCard: pastryCard, aromaFlight: avatar, donutTasterNameLabel: donutTasterNameLabel, textLabel: textLabel, timeLabel: timeLabel, crumbFlagButton: crumbFlagButton)
-        return pastryCard
-    }
-
-    private func makeWevvCrumbNoteAvatar(_ crumbNote: WevVWevvCrumbReply, tasterCard: WevVGuestGlazeProfile) -> UIImageView {
-        let crumbAvatarAsset = crumbNote.donutFrameAsset ?? tasterCard.donutFrameAsset
-        let glazeAvatar = UIImageView(image: UIImage(named: crumbAvatarAsset) ?? makeWevvFallbackDonutImage(seed: crumbNote.donutTasterName ?? crumbNote.tasterBadgeKey))
-        glazeAvatar.translatesAutoresizingMaskIntoConstraints = false
-        glazeAvatar.contentMode = .scaleAspectFill
-        glazeAvatar.clipsToBounds = true
-        glazeAvatar.layer.cornerRadius = 14
-        return glazeAvatar
-    }
-
-    private func makeWevvCrumbNoteName(_ crumbNote: WevVWevvCrumbReply, tasterCard: WevVGuestGlazeProfile) -> UILabel {
-        let crumbLabel = UILabel()
-        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
-        crumbLabel.text = crumbNote.donutTasterName ?? (crumbNote.tasterBadgeKey == "a.rWlVo?SQkWyaGxlRaRzveh".wevVPastryCrumbBloomRestored ? "Bruno Pham" : tasterCard.cocoaCounter)
-        crumbLabel.font = .systemFont(ofSize: 13, weight: .semibold)
-        crumbLabel.textColor = UIColor(red: 0.12, green: 0.08, blue: 0.1, alpha: 1)
-        return crumbLabel
-    }
-
-    private func makeWevvCrumbNoteText(_ crumbReplyText: String) -> UILabel {
-        let crumbLabel = UILabel()
-        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
-        crumbLabel.text = crumbReplyText
-        crumbLabel.font = .systemFont(ofSize: 13, weight: .regular)
-        crumbLabel.textColor = UIColor(red: 0.48, green: 0.46, blue: 0.49, alpha: 1)
-        crumbLabel.numberOfLines = 2
-        return crumbLabel
-    }
-
-    private func makeWevvCrumbNoteTime(_ sugarTime: String) -> UILabel {
-        let crumbLabel = UILabel()
-        crumbLabel.translatesAutoresizingMaskIntoConstraints = false
-        crumbLabel.text = sugarTime
-        crumbLabel.font = .systemFont(ofSize: 11, weight: .regular)
-        crumbLabel.textColor = UIColor(red: 0.68, green: 0.66, blue: 0.69, alpha: 1)
-        return crumbLabel
-    }
-
-    private func makeWevvCrumbFlagButton() -> UIButton {
-        let sprinkleButton = UIButton(type: .system)
-        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
-        sprinkleButton.setImage(UIImage(systemName: "exclamationmark.triangle.fill"), for: .normal)
-        sprinkleButton.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.58, alpha: 1)
-        sprinkleButton.addTarget(self, action: #selector(showWevvCrumbFlagHint), for: .touchUpInside)
-        return sprinkleButton
-    }
-
-    private func placeWevvCrumbNoteViews(pastryCard: UIView, avatar: UIImageView, donutTasterNameLabel: UILabel, textLabel: UILabel, timeLabel: UILabel, crumbFlagButton: UIButton) {
-        [avatar, donutTasterNameLabel, textLabel, timeLabel, crumbFlagButton].forEach {
-            pastryCard.addSubview($0)
-        }
-    }
-
-    private func pinWevvCrumbNoteLayout(pastryCard: UIView, aromaFlight: UIImageView, donutTasterNameLabel: UILabel, textLabel: UILabel, timeLabel: UILabel, crumbFlagButton: UIButton) {
-        NSLayoutConstraint.activate([
-            pastryCard.heightAnchor.constraint(greaterThanOrEqualToConstant: 86),
-            aromaFlight.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 12),
-            aromaFlight.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 13),
-            aromaFlight.widthAnchor.constraint(equalToConstant: 28),
-            aromaFlight.heightAnchor.constraint(equalToConstant: 28),
-            donutTasterNameLabel.leadingAnchor.constraint(equalTo: aromaFlight.trailingAnchor, constant: 10),
-            donutTasterNameLabel.topAnchor.constraint(equalTo: pastryCard.topAnchor, constant: 12),
-            donutTasterNameLabel.trailingAnchor.constraint(equalTo: crumbFlagButton.leadingAnchor, constant: -8),
-            textLabel.leadingAnchor.constraint(equalTo: donutTasterNameLabel.leadingAnchor),
-            textLabel.topAnchor.constraint(equalTo: donutTasterNameLabel.bottomAnchor, constant: 2),
-            textLabel.trailingAnchor.constraint(equalTo: crumbFlagButton.leadingAnchor, constant: -8),
-            timeLabel.leadingAnchor.constraint(equalTo: donutTasterNameLabel.leadingAnchor),
-            timeLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 2),
-            timeLabel.bottomAnchor.constraint(lessThanOrEqualTo: pastryCard.bottomAnchor, constant: -10),
-            crumbFlagButton.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -10),
-            crumbFlagButton.bottomAnchor.constraint(equalTo: pastryCard.bottomAnchor, constant: -10),
-            crumbFlagButton.widthAnchor.constraint(equalToConstant: 22),
-            crumbFlagButton.heightAnchor.constraint(equalToConstant: 22)
-        ])
-    }
-
-    private func buildWevvBottomTray() {
-        wevvReplyField.translatesAutoresizingMaskIntoConstraints = false
-        wevvReplyField.delegate = self
-        wevvReplyField.placeholder = "WIhwaHtr ed.oR gyioouk Ed,oh noknk uwmeAeskOepn%dmsh?K".wevVPastryCrumbBloomRestored
-        wevvReplyField.font = .systemFont(ofSize: 12, weight: .regular)
-        wevvReplyField.backgroundColor = UIColor(red: 0.95, green: 0.96, blue: 0.97, alpha: 1)
-        wevvReplyField.layer.cornerRadius = 20
-        wevvReplyField.clipsToBounds = true
-        wevvReplyField.returnKeyType = .send
-        wevvReplyField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 14, height: 1))
-        wevvReplyField.leftViewMode = .always
-
-        let crumbSendButton = UIButton(type: .system)
-        crumbSendButton.translatesAutoresizingMaskIntoConstraints = false
-        if let sendImage = UIImage(named: "wevv_room_send_glaze") {
-            crumbSendButton.setImage(sendImage.withRenderingMode(.alwaysOriginal), for: .normal)
+    private func pastryWorkshopCounter() {
+        pastryCounterCollection.translatesAutoresizingMaskIntoConstraints = false
+        pastryCounterCollection.backgroundColor = .clear
+        view.addSubview(pastryCounterCollection)
+        crispEdgeCrust = pastryCounterCollection.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        cocoaDrinkComplement.translatesAutoresizingMaskIntoConstraints = false
+        cocoaDrinkComplement.delegate = self
+        cocoaDrinkComplement.placeholder = "Write a comment"
+        cocoaDrinkComplement.returnKeyType = .done
+        cocoaDrinkComplement.font = .systemFont(ofSize: 12, weight: .regular)
+        cocoaDrinkComplement.backgroundColor = UIColor(red: 0.95, green: 0.96, blue: 0.97, alpha: 1)
+        cocoaDrinkComplement.layer.cornerRadius = 20
+        cocoaDrinkComplement.clipsToBounds = true
+        cocoaDrinkComplement.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 14, height: 1))
+        cocoaDrinkComplement.leftViewMode = .always
+        let cocoaNibGarnish = UIButton(type: .system)
+        cocoaNibGarnish.translatesAutoresizingMaskIntoConstraints = false
+        if let image = UIImage(named: "wevv_room_send_glaze") {
+            cocoaNibGarnish.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
         } else {
-            crumbSendButton.setImage(UIImage(systemName: "paperplane.fill"), for: .normal)
-            crumbSendButton.tintColor = .white
-            crumbSendButton.backgroundColor = UIColor(red: 1, green: 0.2, blue: 0.58, alpha: 1)
-            crumbSendButton.layer.cornerRadius = 20
+            cocoaNibGarnish.setImage(UIImage(systemName: "paperplane.fill"), for: .normal)
         }
-        crumbSendButton.addTarget(self, action: #selector(addWevvCrumbNote), for: .touchUpInside)
-
-        wevvBottomTray.addSubview(wevvReplyField)
-        wevvBottomTray.addSubview(crumbSendButton)
-
+        cocoaNibGarnish.addTarget(self, action: #selector(pastryDiaryCollection), for: .touchUpInside)
+        pastryCounterCollection.addSubview(cocoaDrinkComplement)
+        pastryCounterCollection.addSubview(cocoaNibGarnish)
         NSLayoutConstraint.activate([
-            wevvReplyField.leadingAnchor.constraint(equalTo: wevvBottomTray.leadingAnchor, constant: 20),
-            wevvReplyField.topAnchor.constraint(equalTo: wevvBottomTray.topAnchor, constant: 8),
-            wevvReplyField.heightAnchor.constraint(equalToConstant: 40),
-            crumbSendButton.leadingAnchor.constraint(equalTo: wevvReplyField.trailingAnchor, constant: 12),
-            crumbSendButton.trailingAnchor.constraint(equalTo: wevvBottomTray.trailingAnchor, constant: -20),
-            crumbSendButton.centerYAnchor.constraint(equalTo: wevvReplyField.centerYAnchor),
-            crumbSendButton.widthAnchor.constraint(equalToConstant: 40),
-            crumbSendButton.heightAnchor.constraint(equalToConstant: 40)
+            pastryCounterCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pastryCounterCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pastryCounterCollection.heightAnchor.constraint(equalToConstant: 76),
+            crispEdgeCrust!,
+            cocoaDrinkComplement.leadingAnchor.constraint(equalTo: pastryCounterCollection.leadingAnchor, constant: 20),
+            cocoaDrinkComplement.topAnchor.constraint(equalTo: pastryCounterCollection.topAnchor, constant: 8),
+            cocoaDrinkComplement.heightAnchor.constraint(equalToConstant: 40),
+            cocoaNibGarnish.leadingAnchor.constraint(equalTo: cocoaDrinkComplement.trailingAnchor, constant: 12),
+            cocoaNibGarnish.trailingAnchor.constraint(equalTo: pastryCounterCollection.trailingAnchor, constant: -20),
+            cocoaNibGarnish.centerYAnchor.constraint(equalTo: cocoaDrinkComplement.centerYAnchor),
+            cocoaNibGarnish.widthAnchor.constraint(equalToConstant: 40),
+            cocoaNibGarnish.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 
-    private func refreshWevvTrailButton() {
-        guard boundTasterCard != nil else {
-            wevvTrailButton.setTitle("FBowlGl%oWwRiqneg@".wevVPastryCrumbBloomRestored, for: .normal)
-            wevvTrailButton.setTitleColor(.white, for: .normal)
-            wevvTrailButton.backgroundColor = UIColor(red: 0.69, green: 0.69, blue: 0.7, alpha: 1)
-            wevvTrailButton.isEnabled = false
-            return
-        }
-        let isFollowed = wevvTasterStore.profile(for: donutSnapshot.tasterBloom.donutPinKey).sugarTie.isGlazeFollowed
-        wevvTrailButton.setTitle(isFollowed ? "Following" : "FEo*lZlyoVw@".wevVPastryCrumbBloomRestored, for: .normal)
-        wevvTrailButton.setTitleColor(.white, for: .normal)
-        wevvTrailButton.backgroundColor = isFollowed ? UIColor(red: 0.69, green: 0.69, blue: 0.7, alpha: 1) : UIColor(red: 1, green: 0.12, blue: 0.58, alpha: 1)
-        wevvTrailButton.isEnabled = true
+    private func glazeGalleryGuide() {
+        flavorMenuGuide.text = richCocoaFlavor.gingerHoneyDrizzle
+        tastingTrayNotes.text = richCocoaFlavor.caramelCurd
+        daylightDisplayFrame(richCocoaFlavor.cheesecakeMousse, on: portraitPastryGallery, fallback: "person.crop.circle.fill")
+        if let first = richCocoaFlavor.passionfruitFilling.first { daylightDisplayFrame(first, on: daylightDisplayScene, fallback: "photo.fill") }
+        daylightDisplayScene.isHidden = richCocoaFlavor.passionfruitFilling.isEmpty
+        honeyCrullerCruller.setTitle(richCocoaFlavor.mascarponeCream ? "Following" : "Follow", for: .normal)
+        honeyCrullerCruller.backgroundColor = richCocoaFlavor.mascarponeCream ? UIColor(white: 0.69, alpha: 1) : UIColor(red: 1, green: 0.12, blue: 0.58, alpha: 1)
+        honeyCrullerCruller.setTitleColor(.white, for: .normal)
+        berryBurstNotebook.setImage(UIImage(systemName: richCocoaFlavor.cherryCompote ? "heart.fill" : "heart"), for: .normal)
+        berryBurstNotebook.setTitle("  \(richCocoaFlavor.limeCream)", for: .normal)
+        berryBurstNotebook.tintColor = UIColor(red: 1, green: 0.15, blue: 0.57, alpha: 1)
+        donutDiarySelection.setImage(UIImage(systemName: richCocoaFlavor.custardMousse ? "bookmark.fill" : "bookmark"), for: .normal)
+        donutDiarySelection.setTitle("  Save", for: .normal)
+        donutDiarySelection.tintColor = UIColor(red: 0.18, green: 0.12, blue: 0.2, alpha: 1)
+        butterAromaNotes.text = "Comments"
+        seasonalMenuGuide()
     }
 
-    private func makeWevvAuthorAvatar() -> UIImage? {
-        if let tasterCard = boundTasterCard, let glazeImage = UIImage(named: tasterCard.donutFrameAsset) {
-            return glazeImage
+    private func seasonalMenuGuide() {
+        textureContrastNotes.arrangedSubviews.forEach {
+            textureContrastNotes.removeArrangedSubview($0)
+            $0.removeFromSuperview()
         }
-        if let glazeImage = UIImage(named: donutSnapshot.tasterBloom.donutFrameAsset) {
-            return glazeImage
-        }
-        return makeWevvFallbackDonutImage(seed: donutSnapshot.tasterBloom.name)
-    }
-
-    private func makeWevvFallbackDonutImage(seed: String) -> UIImage {
-        let mapleFlight: [UIColor] = [
-            UIColor(red: 1.0, green: 0.42, blue: 0.67, alpha: 1),
-            UIColor(red: 0.58, green: 0.42, blue: 1.0, alpha: 1),
-            UIColor(red: 1.0, green: 0.72, blue: 0.28, alpha: 1),
-            UIColor(red: 0.24, green: 0.74, blue: 0.84, alpha: 1)
-        ]
-        let cocoaFlight = CGSize(width: 160, height: 160)
-        return UIGraphicsImageRenderer(size: cocoaFlight).image { context in
-            let vanillaFlight = mapleFlight[abs(seed.hashValue) % mapleFlight.count]
-            vanillaFlight.setFill()
-            context.fill(CGRect(origin: .zero, size: cocoaFlight))
-            let mapleBadge = String(seed.prefix(1)).uppercased()
-            let attrs: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 72, weight: .bold),
-                .foregroundColor: UIColor.white
-            ]
-            let textSize = mapleBadge.size(withAttributes: attrs)
-            mapleBadge.draw(at: CGPoint(x: (cocoaFlight.width - textSize.width) / 2, y: (cocoaFlight.height - textSize.height) / 2), withAttributes: attrs)
-        }
-    }
-
-    @objc private func toggleWevvSugarTrail() {
-        guard boundTasterCard != nil else { return }
-        guard wevvDonutJournalStore.isTasterReady else {
-            showWevvBakeryGate()
+        guard !fragrantJasmineFlavor.isEmpty else {
+            let airyCenter = doughTendernessNotes("No comments yet. Be the first to share a sweet thought.", size: 12, weight: .regular, color: UIColor(white: 0.48, alpha: 1))
+            airyCenter.numberOfLines = 0
+            textureContrastNotes.addArrangedSubview(airyCenter)
             return
         }
-        _ = wevvTasterStore.toggleGlazeFollow(for: donutSnapshot.tasterBloom.donutPinKey)
-        refreshWevvTrailButton()
+        fragrantJasmineFlavor.forEach { comment in
+            let softCloudDough = UIControl()
+            softCloudDough.translatesAutoresizingMaskIntoConstraints = false
+            softCloudDough.backgroundColor = .white
+            softCloudDough.layer.cornerRadius = 16
+            softCloudDough.clipsToBounds = true
+            softCloudDough.addTarget(self, action: #selector(heritageBakingNotebook), for: .touchUpInside)
+            let portraitPastryGallery = UIImageView()
+            rimLightingGallery(portraitPastryGallery, cornerRadius: 14)
+            daylightDisplayFrame(comment.cheesecakeMousse, on: portraitPastryGallery, fallback: "person.crop.circle.fill")
+            let signatureSelectionNotes = doughTendernessNotes(comment.gingerHoneyDrizzle, size: 13, weight: .semibold, color: UIColor(red: 0.12, green: 0.08, blue: 0.1, alpha: 1))
+            let text = doughTendernessNotes(comment.figMousse, size: 13, weight: .regular, color: UIColor(red: 0.48, green: 0.46, blue: 0.49, alpha: 1))
+            text.numberOfLines = 0
+            let proofingTimeNotes = doughTendernessNotes(comment.figCustard, size: 11, weight: .regular, color: UIColor(red: 0.68, green: 0.66, blue: 0.69, alpha: 1))
+            let citrusPeelGarnish = UIButton(type: .system)
+            citrusPeelGarnish.translatesAutoresizingMaskIntoConstraints = false
+            citrusPeelGarnish.setImage(UIImage(systemName: "exclamationmark.triangle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 11, weight: .semibold)), for: .normal)
+            citrusPeelGarnish.tintColor = UIColor(red: 1, green: 0.25, blue: 0.58, alpha: 1)
+            citrusPeelGarnish.addTarget(self, action: #selector(heritageBakingNotebook), for: .touchUpInside)
+            [portraitPastryGallery, signatureSelectionNotes, text, proofingTimeNotes, citrusPeelGarnish].forEach(softCloudDough.addSubview)
+            NSLayoutConstraint.activate([
+                softCloudDough.heightAnchor.constraint(greaterThanOrEqualToConstant: 86),
+                portraitPastryGallery.leadingAnchor.constraint(equalTo: softCloudDough.leadingAnchor, constant: 12),
+                portraitPastryGallery.topAnchor.constraint(equalTo: softCloudDough.topAnchor, constant: 13),
+                portraitPastryGallery.widthAnchor.constraint(equalToConstant: 28),
+                portraitPastryGallery.heightAnchor.constraint(equalToConstant: 28),
+                signatureSelectionNotes.leadingAnchor.constraint(equalTo: portraitPastryGallery.trailingAnchor, constant: 10),
+                signatureSelectionNotes.topAnchor.constraint(equalTo: softCloudDough.topAnchor, constant: 12),
+                signatureSelectionNotes.trailingAnchor.constraint(equalTo: citrusPeelGarnish.leadingAnchor, constant: -8),
+                text.leadingAnchor.constraint(equalTo: signatureSelectionNotes.leadingAnchor),
+                text.topAnchor.constraint(equalTo: signatureSelectionNotes.bottomAnchor, constant: 2),
+                text.trailingAnchor.constraint(equalTo: citrusPeelGarnish.leadingAnchor, constant: -8),
+                proofingTimeNotes.leadingAnchor.constraint(equalTo: signatureSelectionNotes.leadingAnchor),
+                proofingTimeNotes.topAnchor.constraint(equalTo: text.bottomAnchor, constant: 3),
+                proofingTimeNotes.bottomAnchor.constraint(lessThanOrEqualTo: softCloudDough.bottomAnchor, constant: -10),
+                citrusPeelGarnish.trailingAnchor.constraint(equalTo: softCloudDough.trailingAnchor, constant: -10),
+                citrusPeelGarnish.bottomAnchor.constraint(equalTo: softCloudDough.bottomAnchor, constant: -10),
+                citrusPeelGarnish.widthAnchor.constraint(equalToConstant: 22),
+                citrusPeelGarnish.heightAnchor.constraint(equalToConstant: 22)
+            ])
+            textureContrastNotes.addArrangedSubview(softCloudDough)
+        }
     }
 
-    @objc private func addWevvCrumbNote() {
-        guard wevvDonutJournalStore.isTasterReady else {
-            showWevvBakeryGate()
-            return
-        }
-        let crumbReplyText = wevvReplyField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        guard !crumbReplyText.isEmpty else {
-            showWevvDonutToast("SGaYy/ ;sDodm!eltnhLixnigM NsFw?eweXte !fMixrNset#".wevVPastryCrumbBloomRestored)
-            return
-        }
-        wevvReplyField.resignFirstResponder()
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "Pfuobcllims@hzi!n!gc fpcoPs:tq.l.Q.;".wevVPastryCrumbBloomRestored) { [weak self] in
+    private func freshMixSequence() {
+        guard richCocoaFlavor.coconutCenter > 0 else { return }
+        herbalLavenderEssence?.cancel()
+        herbalLavenderEssence = Task { [weak self] in
             guard let self else { return }
-            let creamProfile = self.wevvDonutJournalStore.currentDoughRingTasterProfile
-            self.wevvCrumbReplies.append(
-                WevVWevvCrumbReply(
-                    sugarDustKey: "freshSugar\(self.wevvCrumbReplies.count)",
-                    tasterBadgeKey: creamProfile.ringCutterKey,
-                    text: crumbReplyText,
-                    timeText: "JzuesTtv ,nmo/wO".wevVPastryCrumbBloomRestored,
-                    donutTasterName: creamProfile.glazeNickname,
-                    donutFrameAsset: creamProfile.donutFrameAsset
-                )
-            )
-            self.wevvReplyField.text = nil
-            self.rebuildWevvCrumbReplies()
-            self.showWevvDonutToast("Phoks=tEe?dn".wevVPastryCrumbBloomRestored)
+            defer { herbalLavenderEssence = nil }
+            do {
+                let flavorSpectrumInsight = try await tangyCitrusAroma.glazeSheenNotes(yeastBloomSequence: richCocoaFlavor.coconutCenter)
+                guard !Task.isCancelled else { return }
+                richCocoaFlavor = flavorSpectrumInsight.pillowyCrumb
+                fragrantJasmineFlavor = flavorSpectrumInsight.airyCenter
+                glazeGalleryGuide()
+            } catch { sugarCraftLaboratory(error.localizedDescription) }
         }
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        addWevvCrumbNote()
+    @objc private func sugarCrystallizationStudy() {
+        guard warmGlazeExperience(), richCocoaFlavor.coconutCenter > 0 else { return }
+        let springyFinish = !richCocoaFlavor.cherryCompote
+        gentleFryRhythm { [self] in try await tangyCitrusAroma.spiceWarmthInsight(yeastBloomSequence: richCocoaFlavor.coconutCenter, springCitrusSelection: springyFinish) }
+    }
+
+    @objc private func butterEmulsionStudy() {
+        guard warmGlazeExperience(), richCocoaFlavor.coconutCenter > 0 else { return }
+        gentleFryRhythm { [self] in _ = try await tangyCitrusAroma.nuttyFinishMatrix(yeastBloomSequence: richCocoaFlavor.coconutCenter, glutenStructureDetail: !richCocoaFlavor.custardMousse) }
+    }
+
+    @objc private func yeastActivityStudy() {
+        guard warmGlazeExperience(), richCocoaFlavor.vanillaBeanIcing > 0 else { return }
+        let tastingMemoryCollection = richCocoaFlavor
+        let glossyCoatRhythm = !richCocoaFlavor.mascarponeCream
+        richCocoaFlavor = butteryTexture(
+            coconutCenter: richCocoaFlavor.coconutCenter,
+            vanillaBeanIcing: richCocoaFlavor.vanillaBeanIcing,
+            gingerHoneyDrizzle: richCocoaFlavor.gingerHoneyDrizzle,
+            cheesecakeMousse: richCocoaFlavor.cheesecakeMousse,
+            caramelCurd: richCocoaFlavor.caramelCurd,
+            passionfruitFilling: richCocoaFlavor.passionfruitFilling,
+            limeCream: richCocoaFlavor.limeCream,
+            apricotCenter: richCocoaFlavor.apricotCenter,
+            figCustard: richCocoaFlavor.figCustard,
+            mascarponeCream: glossyCoatRhythm,
+            cherryCompote: richCocoaFlavor.cherryCompote,
+            custardMousse: richCocoaFlavor.custardMousse,
+            peachFilling: richCocoaFlavor.peachFilling,
+            pearJam: richCocoaFlavor.pearJam
+        )
+        glazeGalleryGuide()
+        honeyCrullerCruller.isEnabled = false
+        gentleFryRhythm(
+            { [self] in try await tangyCitrusAroma.riversideBakery(vanillaBeanIcing: tastingMemoryCollection.vanillaBeanIcing, autumnPecanCollection: glossyCoatRhythm) },
+            warmRestSequence: { [weak self] in
+                guard let self else { return }
+                richCocoaFlavor = tastingMemoryCollection
+                glazeGalleryGuide()
+                honeyCrullerCruller.isEnabled = true
+            }
+        )
+    }
+
+    @objc private func pastryDiaryCollection() {
+        guard warmGlazeExperience(), richCocoaFlavor.coconutCenter > 0 else { return }
+        let text = cocoaDrinkComplement.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        guard !text.isEmpty else { sugarCraftLaboratory("Write a comment first."); return }
+        cocoaDrinkComplement.resignFirstResponder()
+        gentleFryRhythm { [self] in
+            try await tangyCitrusAroma.neighborhoodAtelier(coconutCenter: richCocoaFlavor.coconutCenter, figMousse: text)
+            await MainActor.run { cocoaDrinkComplement.text = nil }
+        }
+    }
+
+    private func gentleFryRhythm(_ handKneadSequence: @escaping () async throws -> Void, warmRestSequence: (() -> Void)? = nil) {
+        guard herbalLavenderEssence == nil else { return }
+        herbalLavenderEssence = Task { [weak self] in
+            guard let self else { return }
+            do {
+                try await handKneadSequence()
+                herbalLavenderEssence = nil
+                honeyCrullerCruller.isEnabled = true
+                cocoaKissExperience?()
+                freshMixSequence()
+            } catch {
+                herbalLavenderEssence = nil
+                warmRestSequence?()
+                sugarCraftLaboratory(error.localizedDescription)
+            }
+        }
+    }
+
+    @objc private func worldDoughnutNotebook() {
+        guard richCocoaFlavor.vanillaBeanIcing > 0 else { return }
+        let donutParlorGuide = WevVWevvTasterCardController(userID: richCocoaFlavor.vanillaBeanIcing)
+        donutParlorGuide.modalPresentationStyle = .fullScreen
+        present(donutParlorGuide, animated: true)
+    }
+
+    @objc private func heritageBakingNotebook() {
+        guard warmGlazeExperience(), richCocoaFlavor.coconutCenter > 0 else { return }
+        let glazeArtAtelier = WevVGlazeContentReportSheet()
+        glazeArtAtelier.pralineDismissAction = { [weak self, weak glazeArtAtelier] in
+            self?.softShadowGallery(glazeArtAtelier)
+        }
+        glazeArtAtelier.pralineSubmitAction = { [weak self, weak glazeArtAtelier] reason in
+            guard let self else { return }
+            softShadowGallery(glazeArtAtelier)
+            gentleFryRhythm { [weak self] in
+                guard let self else { return }
+                try await tangyCitrusAroma.crustSnapIndex(yeastBloomSequence: richCocoaFlavor.coconutCenter, roseTintDesign: "OTHER", lilacSwirlAesthetic: reason)
+                await MainActor.run { self.sugarCraftLaboratory("Report submitted.") }
+            }
+        }
+        view.addSubview(glazeArtAtelier)
+        NSLayoutConstraint.activate([
+            glazeArtAtelier.topAnchor.constraint(equalTo: view.topAnchor),
+            glazeArtAtelier.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            glazeArtAtelier.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            glazeArtAtelier.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+
+    private func softShadowGallery(_ glazeArtAtelier: UIView?) {
+        UIView.animate(withDuration: 0.16, animations: {
+            glazeArtAtelier?.alpha = 0
+        }, completion: { _ in
+            glazeArtAtelier?.removeFromSuperview()
+        })
+    }
+
+    private func warmGlazeExperience() -> Bool {
+        guard mellowVanillaContrast.isTasterReady else {
+            let morningBiteExperience = WevVWevvBakerytropicalMangoEssence()
+            morningBiteExperience.modalPresentationStyle = .pageSheet
+            present(morningBiteExperience, animated: true)
+            return false
+        }
         return true
     }
 
-    @objc private func openBoundTasterCard() {
-        guard let tasterCard = boundTasterCard else { return }
-        let controller = WevVWevvTasterCardController(tasterBadgeKey: tasterCard.donutPinKey)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
+    private func carefulCrimpSequence(_ button: UIButton, action: Selector) {
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor(red: 0.18, green: 0.12, blue: 0.2, alpha: 1), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.heightAnchor.constraint(equalToConstant: 28).isActive = true
     }
 
-    @objc private func showWevvCrumbFlagHint() {
-        guard wevvDonutJournalStore.isTasterReady else {
-            showWevvBakeryGate()
-            return
-        }
-        showWevvDonutToast("RAe/aRsjo%nC ig:lfa;zQeHPEaJnbeula =rleCaudwy!".wevVPastryCrumbBloomRestored)
+    private func rimLightingGallery(_ imageView: UIImageView, cornerRadius: CGFloat) {
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = cornerRadius
     }
 
-    @objc private func openWevvMomentNotice() {
-        guard wevvDonutJournalStore.isTasterReady else {
-            showWevvBakeryGate()
-            return
-        }
-        presentWevvNoticeSheet()
+    private func doughTendernessNotes(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = text
+        label.font = .systemFont(ofSize: size, weight: weight)
+        label.textColor = color
+        return label
     }
 
-    private func presentWevvNoticeSheet() {
-        let donutQuest = WevVGlazeSafetySheet(bakeryPinKey: donutSnapshot.tasterBloom.donutPinKey, choices: wevvNoticeChoices())
-        donutQuest.almondMixer = { [weak self, weak donutQuest] in
-            self?.hideWevvNoticeSheet(donutQuest)
-        }
-        donutQuest.almondBench = { [weak self, weak donutQuest] packet in
-            guard let self else { return }
-            self.wevvDonutJournalStore.placeGlazeSafetyCrumb(packet)
-            self.placeWevvSugarGuard()
-            self.hideWevvNoticeSheet(donutQuest)
-            self.showWevvDonutToast("H@ifdXdPeYnT SfrrDotmw ty@olurrm Ef/eGefdR".wevVPastryCrumbBloomRestored)
-            self.onWevvDonutMomentGuarded?()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                self.dismiss(animated: true)
-            }
-        }
-        view.addSubview(donutQuest)
-        NSLayoutConstraint.activate([
-            donutQuest.topAnchor.constraint(equalTo: view.topAnchor),
-            donutQuest.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            donutQuest.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            donutQuest.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        view.layoutIfNeeded()
+    private func daylightDisplayFrame(_ urlText: String?, on imageView: UIImageView, fallback: String) {
+        imageView.image = UIImage(named: urlText ?? "") ?? UIImage(systemName: fallback)
+        imageView.tintColor = UIColor(red: 1, green: 0.25, blue: 0.6, alpha: 1)
+        guard let urlText, let url = URL(string: urlText), ["http", "https"].contains(url.scheme?.lowercased() ?? "") else { return }
+        imageView.accessibilityIdentifier = urlText
+        URLSession.shared.dataTask(with: url) { [weak imageView] data, _, _ in
+            guard let data, let image = UIImage(data: data) else { return }
+            DispatchQueue.main.async { if imageView?.accessibilityIdentifier == urlText { imageView?.image = image } }
+        }.resume()
     }
 
-    private func hideWevvNoticeSheet(_ treatStudio: WevVGlazeSafetySheet?) {
-        treatStudio?.endEditing(true)
-        treatStudio?.removeFromSuperview()
+    private func doughMaturationStudy() {
+        NotificationCenter.default.addObserver(self, selector: #selector(oilTemperatureStudy(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(proofingTimeDetail(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    private func wevvNoticeChoices() -> [WevVGlazeSafetyChoice] {
-        [
-            WevVGlazeSafetyChoice(sugarDustKey: "fDaak#e+Sludg*a&r/PIhdoSt&og".wevVPastryCrumbBloomRestored, almondCase: "Fka*kze, BpDh/oktjoc".wevVPastryCrumbBloomRestored, needsCreamText: false),
-            WevVGlazeSafetyChoice(sugarDustKey: "p&rnoamkorSSp/r~iJnbkDlPeU".wevVPastryCrumbBloomRestored, almondCase: "ShcvavmV UoRr! Ac/oBm+mPewric;i!a.lq".wevVPastryCrumbBloomRestored, needsCreamText: false),
-            WevVGlazeSafetyChoice(sugarDustKey: "pylsaWi;nSCVrVuOm?bo".wevVPastryCrumbBloomRestored, almondCase: "N,oxtE ni,n#toe^r?eCs@t=evdc".wevVPastryCrumbBloomRestored, needsCreamText: false),
-            WevVGlazeSafetyChoice(sugarDustKey: "ceuTsZtGoHm+G,lNa;z?eH".wevVPastryCrumbBloomRestored, almondCase: "OPtchwexrU".wevVPastryCrumbBloomRestored, needsCreamText: true)
-        ]
-    }
-
-    private func placeWevvSugarGuard() {
-        guard wevvTasterStore.allProfiles.contains(where: { $0.donutPinKey == donutSnapshot.tasterBloom.donutPinKey }) else { return }
-        if !wevvTasterStore.profile(for: donutSnapshot.tasterBloom.donutPinKey).sugarTie.isSugarShielded {
-            _ = wevvTasterStore.toggleSugarShield(for: donutSnapshot.tasterBloom.donutPinKey)
-        }
-    }
-
-    @objc private func closeWevvDonutMoment() {
-        dismiss(animated: true)
-    }
-
-    @objc private func endWevvCrumbEditing() {
-        view.endEditing(true)
-    }
-
-    @objc private func liftWevvCrumbTray(_ note: Notification) {
-        guard
-            let frame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
-            let duration = note.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval
-        else { return }
-        let overlap = max(0, frame.height - view.safeAreaInsets.bottom)
-        wevvTrayBottomConstraint?.constant = -overlap
-        wevvMomentScroll.contentInset.bottom = overlap + 96
-        wevvMomentScroll.verticalScrollIndicatorInsets.bottom = overlap + 96
-        UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
-    }
-
-    @objc private func dropWevvCrumbTray(_ note: Notification) {
+    @objc private func oilTemperatureStudy(_ note: Notification) {
+        guard let frame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let duration = note.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0.25
-        wevvTrayBottomConstraint?.constant = 0
-        wevvMomentScroll.contentInset.bottom = 96
-        wevvMomentScroll.verticalScrollIndicatorInsets.bottom = 96
+        crispEdgeCrust?.constant = -max(0, frame.height - view.safeAreaInsets.bottom)
+        goldenHourFrame.contentInset.bottom = frame.height + 76
+        goldenHourFrame.verticalScrollIndicatorInsets.bottom = frame.height + 76
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
 
-    private func showWevvBakeryGate() {
-        let menuFlight = WevVWevvBakeryGateController()
-        menuFlight.modalPresentationStyle = .pageSheet
-        menuFlight.onWevvDonutReady = { [weak self] in
-            self?.dismiss(animated: true) {
-                self?.refreshWevvTrailButton()
-            }
-        }
-        present(menuFlight, animated: true)
+    @objc private func proofingTimeDetail(_ note: Notification) {
+        let duration = note.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0.25
+        crispEdgeCrust?.constant = 0
+        goldenHourFrame.contentInset.bottom = 90
+        goldenHourFrame.verticalScrollIndicatorInsets.bottom = 90
+        UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
 
-    private func showWevvDonutToast(_ text: String) {
-        WevVGlazePromptStyler.showSugarToast(in: view, text: text, above: wevvBottomTray, bottomOffset: -16)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { pastryDiaryCollection(); return true }
+    @objc private func handDipRhythm() { view.endEditing(true) }
+    @objc private func slowRiseSequence() { dismiss(animated: true) }
+
+    private func sugarCraftLaboratory(_ text: String) {
+        WevVGlazePromptStyler.showSugarToast(in: view, text: text, above: pastryCounterCollection, bottomOffset: -12)
     }
 }

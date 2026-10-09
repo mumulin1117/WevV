@@ -5,7 +5,7 @@
 本文件是 WevV 的核心开发规范指南。Codex 在执行任何代码修改、UI 还原、逻辑重构或功能迭代时，必须严格遵守本指南，以确保包的代码特征与 App Store 审核规范完全合规。
 
 ## ⚙️ 0. App 数据设计和总体流程设计
-项目数据设计采用本地数据，模拟真实app用户交互 生成的相关用户数据，用户相关动态数据，交互数据，用户关系链表等等相结来展现的。生成UI还原度高，交互友好真实感强的代码。
+项目数据修改为完全正常项目的接口对接的数据设计模式，
 项目主模块在app登录时候就展示，逻辑上展现的是没登录状态的样式。当点击到某些需要用户信息的地方时候，就跳转app登录注册模块的欢迎页面（比如点赞，关注，举报，对话，没登录状态时候个人中心所有按钮，发布，参与，内购等等），登录注册成功更新本地登录用户状态和信息
 
 ## ⚙️ 1. App 基础信息 (App Identity)
@@ -53,7 +53,7 @@ Post your own donut moments through photos, and tasting notes, then explore comm
 本项目登录注册模块采用**本地状态闭环方案**。
 
 ### 6.1 固定测试账号
-账号：wevv@gmail.com    密码：1234
+账号：wevv@gmail.com    密码：123456
 
 ### 6.2 欢迎页面与合规 EULA 规则
 
@@ -69,9 +69,7 @@ elua内容需要结合app描述和apple审核规则生成。协议中必须明�
 2. 客户端非空校验：若为空，给出相应的提示，且中断后续逻辑。
 3.登录接口请求。登录成功后，从模拟响应字典中解析并保存 `userID`、`Token` 等基础凭证，准入。
 4. **非测试账号分支：** 检查本地持久化存储（如本地数据库/沙盒缓存）中是否存在该 `email` 的注册记录：
-* 若本地完全没有该邮箱记录，明确提示：英文“账号不存在”
-* 若本地存在该邮箱记录但密码错误，明确提示：英文“密码错误”
-* *(注：严禁将上述两种提示合并或模糊化处理为“账号或密码错误”)*
+
 
 
 5. **登录成功：** 状态机变更，保存登录态及用户信息，紧接着平滑切换或推入 App 的主 Tab 主页面。
@@ -80,15 +78,12 @@ elua内容需要结合app描述和apple审核规则生成。协议中必须明�
 
 1. 用户输入 `email` 和 `password`。
 2. 格式合法性校验：严格检验 `email` 的规范格式，且限制 `password` 的长度**至少为 6 位**。
-3. **防重注册校验：** 检索本地，若该 `email` 已存在注册记录，弹出提示
-4. **完善资料：** 若邮箱无重复，引导用户进入“完善资料页面”。资料页中的属性（如昵称、头像等）请根据蓝湖设计图进行提取，且每次实现时的变量名和假数据需结合专属词汇池进行特色替换。
+3
+4. **完善资料：** 若邮箱无重复，引导用户进入“完善资料页面”。
 5. **落盘持久化：** 注册流程完毕后，将用户数据同步写入本地，将全局变量 `wevviflogin` 设为 `true`，`wevvcurrentEmail` 设为当前邮箱。
 6. **状态重启恢复：** 确保应用彻底杀死重启后，依然能够不间断读取到当前登录的用户状态与资料。
 
-### 6.5 个人中心展示与登出
 
-* **读取规则：** 个人中心、我的页面、详情资料卡等区域，**必须绝对优先**读取本地当前登录的用户数据。若沙盒内暂无该字段数据，必须使用兜底的默认占位符或默认头像，**严禁发生致命崩溃（Crash）**。
-* **退出登录规则：** 点击退出登录后，**仅清除**当前的登录状态标识位（如将 `isLoggedIn` 设为 `false`），**绝对禁止删除或抹除**本地已经注册的其他用户数据。
 
 
 ## 📱 7. UIKit 项目特别要求 (UIKit Special Demands)
@@ -143,20 +138,36 @@ Codex 每次接手并开始动手修改代码前，必须先按顺序自检以�
 
 ```
 
-## 🔤 4. 命名词汇范围与规范 (Naming Vocabulary & Standards)
-
-### 4.1 语义合规要求
-
-
-* **保持命名纯净：** 杜绝残留或混用其他模板项目的异形名称、业务词或文案样式。所有英文文案应做到自然、地道、简洁。
-
-### 4.2 文件、类名与组件规范
-
-* **文件和目录：** 文件名必须清晰表达功能，且必须加上特定的**项目特色前缀**，拉开特征，防止大范围代码雷同。
-* **类与类组件：** 类名、组件名采用“业务前缀 + 业务清晰含义名”组合。严禁使用无意义命名
-
----
-
-
-### 4.3 专属命名词汇池：
-donutGlaze,doughRing,sprinkleCraft,frostingTrail,creamFilled,pastryCircle,sugarDust,jellyCore,mapleDrizzle,cocoaCrumb,vanillaSwirl,strawberryFrost,raspberryGlaze,blueberryCrumb,caramelRibbon,honeyDip,cinnamonCoat,almondCrunch,pistachioDust,coconutFlake,lemonZest,orangeGlaze,mochaFrost,espressoRing,matchaDust,cherryFilling,peachCream,mangoGlaze,bananaFrost,hazelnutCrumb,pecanTopper,walnutSprinkle,cookieCrumble,oreoDust,marshmallowCloud,custardCore,bavarianCream,bostonCream,frenchCruller,oldFashioned,yeastRaised,cakeDonut,glazedRing,powderedRing,fritterBite,twistPastry,cronutLayer,miniDonut,donutHole,ringStack,dozenBox,bakeryShelf,treatCase,pastryTray,glazeStation,doughMixer,proofingRack,fryerBasket,coolingGrid,toppingBar,fillingNozzle,icingSpatula,sugarSifter,crumbTongs,pastryBag,donutPress,ringCutter,doughBench,batterBowl,glazeBowl,drizzleSpoon,sprinkleJar,frostingKnife,displayCase,menuBoard,tastingCard,flavorNote,crumbScore,glazeRating,textureMark,aromaProfile,biteReview,donenessCheck,freshnessTag,softnessGauge,chewIndex,crispEdge,fluffyCenter,creamyPocket,sugarLevel,glazeSheen,toppingRatio,fillDensity,crumbTenderness,ringSymmetry,sprinkleDensity,frostingDepth,doughFerment,butterAroma,cocoaFinish,citrusLift,berryBurst,nuttyFinish,caramelDepth,mapleWarmth,vanillaBloom,honeyWarmth,cinnamonWarmth,creamRibbon,jellyRibbon,glazeCrackle,sugarSpark,crumbBloom,donutQuest,glazeQuest,sprinkleQuest,bakeryQuest,tastingQuest,flavorQuest,crumbQuest,frostingQuest,pastryQuest,shopQuest,donutTrail,glazeTrail,bakeryTrail,tastingTrail,sprinkleTrail,crumbTrail,pastryTrail,flavorTrail,donutScout,bakeryScout,flavorScout,glazeScout,sprinkleScout,crumbScout,treatScout,pastryScout,donutFinder,bakeryFinder,glazeFinder,flavorFinder,sprinkleFinder,crumbFinder,treatFinder,pastryFinder,donutAtlas,bakeryAtlas,flavorAtlas,glazeAtlas,sprinkleAtlas,crumbAtlas,treatAtlas,pastryAtlas,donutJournal,bakeryJournal,flavorJournal,glazeJournal,sprinkleJournal,crumbJournal,treatJournal,pastryJournal,donutDiary,bakeryDiary,flavorDiary,glazeDiary,sprinkleDiary,crumbDiary,treatDiary,pastryDiary,donutLog,bakeryLog,flavorLog,glazeLog,sprinkleLog,crumbLog,treatLog,pastryLog,donutBoard,bakeryBoard,flavorBoard,glazeBoard,sprinkleBoard,crumbBoard,treatBoard,pastryBoard,donutFeed,bakeryFeed,flavorFeed,glazeFeed,sprinkleFeed,crumbFeed,treatFeed,pastryFeed,donutMoment,bakeryMoment,flavorMoment,glazeMoment,sprinkleMoment,crumbMoment,treatMoment,pastryMoment,donutPost,bakeryPost,flavorPost,glazePost,sprinklePost,crumbPost,treatPost,pastryPost,donutStory,bakeryStory,flavorStory,glazeStory,sprinkleStory,crumbStory,treatStory,pastryStory,donutAlbum,bakeryAlbum,flavorAlbum,glazeAlbum,sprinkleAlbum,crumbAlbum,treatAlbum,pastryAlbum,donutSnapshot,bakerySnapshot,flavorSnapshot,glazeSnapshot,sprinkleSnapshot,crumbSnapshot,treatSnapshot,pastrySnapshot,donutFrame,bakeryFrame,flavorFrame,glazeFrame,sprinkleFrame,crumbFrame,treatFrame,pastryFrame,donutGallery,bakeryGallery,flavorGallery,glazeGallery,sprinkleGallery,crumbGallery,treatGallery,pastryGallery,donutArchive,bakeryArchive,flavorArchive,glazeArchive,sprinkleArchive,crumbArchive,treatArchive,pastryArchive,donutCollection,bakeryCollection,flavorCollection,glazeCollection,sprinkleCollection,crumbCollection,treatCollection,pastryCollection,donutBookmark,bakeryBookmark,flavorBookmark,glazeBookmark,sprinkleBookmark,crumbBookmark,treatBookmark,pastryBookmark,donutFavorite,bakeryFavorite,flavorFavorite,glazeFavorite,sprinkleFavorite,crumbFavorite,treatFavorite,pastryFavorite,donutCheckin,bakeryCheckin,flavorCheckin,glazeCheckin,sprinkleCheckin,crumbCheckin,treatCheckin,pastryCheckin,dailyDonut,dailyGlaze,dailySprinkle,dailyCrumb,dailyPastry,dailyTreat,dailyFlavor,dailyBakery,weeklyDonut,weeklyGlaze,weeklySprinkle,weeklyCrumb,weeklyPastry,weeklyTreat,weeklyFlavor,weeklyBakery,seasonalDonut,seasonalGlaze,seasonalSprinkle,seasonalCrumb,seasonalPastry,seasonalTreat,seasonalFlavor,seasonalBakery,limitedDonut,limitedGlaze,limitedSprinkle,limitedCrumb,limitedPastry,limitedTreat,limitedFlavor,limitedBakery,signatureDonut,signatureGlaze,signatureSprinkle,signatureCrumb,signaturePastry,signatureTreat,signatureFlavor,signatureBakery,classicDonut,classicGlaze,classicSprinkle,classicCrumb,classicPastry,classicTreat,classicFlavor,classicBakery,artisanDonut,artisanGlaze,artisanSprinkle,artisanCrumb,artisanPastry,artisanTreat,artisanFlavor,artisanBakery,gourmetDonut,gourmetGlaze,gourmetSprinkle,gourmetCrumb,gourmetPastry,gourmetTreat,gourmetFlavor,gourmetBakery,craftDonut,craftGlaze,craftSprinkle,craftCrumb,craftPastry,craftTreat,craftFlavor,craftBakery,freshDonut,freshGlaze,freshSprinkle,freshCrumb,freshPastry,freshTreat,freshFlavor,freshBakery,warmDonut,warmGlaze,warmSprinkle,warmCrumb,warmPastry,warmTreat,warmFlavor,warmBakery,softDonut,softGlaze,softSprinkle,softCrumb,softPastry,softTreat,softFlavor,softBakery,crispyDonut,crispyGlaze,crispySprinkle,crispyCrumb,crispyPastry,crispyTreat,crispyFlavor,crispyBakery,fluffyDonut,fluffyGlaze,fluffySprinkle,fluffyCrumb,fluffyPastry,fluffyTreat,fluffyFlavor,fluffyBakery,filledDonut,filledGlaze,filledSprinkle,filledCrumb,filledPastry,filledTreat,filledFlavor,filledBakery,ringRoom,glazeRoom,sprinkleRoom,crumbRoom,pastryRoom,treatRoom,flavorRoom,bakeryRoom,donutRoom,donutCircle,glazeCircle,sprinkleCircle,crumbCircle,pastryCircle,treatCircle,flavorCircle,bakeryCircle,donutCorner,glazeCorner,sprinkleCorner,crumbCorner,pastryCorner,treatCorner,flavorCorner,bakeryCorner,donutLounge,glazeLounge,sprinkleLounge,crumbLounge,pastryLounge,treatLounge,flavorLounge,bakeryLounge,donutParlor,glazeParlor,sprinkleParlor,crumbParlor,pastryParlor,treatParlor,flavorParlor,bakeryParlor,donutNook,glazeNook,sprinkleNook,crumbNook,pastryNook,treatNook,flavorNook,bakeryNook,donutHub,glazeHub,sprinkleHub,crumbHub,pastryHub,treatHub,flavorHub,bakeryHub,donutStudio,glazeStudio,sprinkleStudio,crumbStudio,pastryStudio,treatStudio,flavorStudio,bakeryStudio,donutCounter,glazeCounter,sprinkleCounter,crumbCounter,pastryCounter,treatCounter,flavorCounter,bakeryCounter,donutCabinet,glazeCabinet,sprinkleCabinet,crumbCabinet,pastryCabinet,treatCabinet,flavorCabinet,bakeryCabinet,donutShelf,glazeShelf,sprinkleShelf,crumbShelf,pastryShelf,treatShelf,flavorShelf,bakeryShelf,donutCart,glazeCart,sprinkleCart,crumbCart,pastryCart,treatCart,flavorCart,bakeryCart,donutBox,glazeBox,sprinkleBox,crumbBox,pastryBox,treatBox,flavorBox,bakeryBox,donutBatch,glazeBatch,sprinkleBatch,crumbBatch,pastryBatch,treatBatch,flavorBatch,bakeryBatch,donutSample,glazeSample,sprinkleSample,crumbSample,pastrySample,treatSample,flavorSample,bakerySample,donutFlight,glazeFlight,sprinkleFlight,crumbFlight,pastryFlight,treatFlight,flavorFlight,bakeryFlight,donutTasting,glazeTasting,sprinkleTasting,crumbTasting,pastryTasting,treatTasting,flavorTasting,bakeryTasting,donutChallenge,glazeChallenge,sprinkleChallenge,crumbChallenge,pastryChallenge,treatChallenge,flavorChallenge,bakeryChallenge,donutContest,glazeContest,sprinkleContest,crumbContest,pastryContest,treatContest,flavorContest,bakeryContest,donutEvent,glazeEvent,sprinkleEvent,crumbEvent,pastryEvent,treatEvent,flavorEvent,bakeryEvent,donutFestival,glazeFestival,sprinkleFestival,crumbFestival,pastryFestival,treatFestival,flavorFestival,bakeryFestival,donutRun,glazeRun,sprinkleRun,crumbRun,pastryRun,treatRun,flavorRun,bakeryRun,donutTour,glazeTour,sprinkleTour,crumbTour,pastryTour,treatTour,flavorTour,bakeryTour,donutRoute,glazeRoute,sprinkleRoute,crumbRoute,pastryRoute,treatRoute,flavorRoute,bakeryRoute,donutMap,glazeMap,sprinkleMap,crumbMap,pastryMap,treatMap,flavorMap,bakeryMap,donutPin,glazePin,sprinklePin,crumbPin,pastryPin,treatPin,flavorPin,bakeryPin,donutStop,glazeStop,sprinkleStop,crumbStop,pastryStop,treatStop,flavorStop,bakeryStop,donutVisit,glazeVisit,sprinkleVisit,crumbVisit,pastryVisit,treatVisit,flavorVisit,bakeryVisit,donutStamp,glazeStamp,sprinkleStamp,crumbStamp,pastryStamp,treatStamp,flavorStamp,bakeryStamp,donutBadge,glazeBadge,sprinkleBadge,crumbBadge,pastryBadge,treatBadge,flavorBadge,bakeryBadge,donutMedal,glazeMedal,sprinkleMedal,crumbMedal,pastryMedal,treatMedal,flavorMedal,bakeryMedal,donutRank,glazeRank,sprinkleRank,crumbRank,pastryRank,treatRank,flavorRank,bakeryRank,donutScore,glazeScore,sprinkleScore,crumbScore,pastryScore,treatScore,flavorScore,bakeryScore,donutLevel,glazeLevel,sprinkleLevel,crumbLevel,pastryLevel,treatLevel,flavorLevel,bakeryLevel,donutMilestone,glazeMilestone,sprinkleMilestone,crumbMilestone,pastryMilestone,treatMilestone,flavorMilestone,bakeryMilestone,donutStreak,glazeStreak,sprinkleStreak,crumbStreak,pastryStreak,treatStreak,flavorStreak,bakeryStreak,donutMood,glazeMood,sprinkleMood,crumbMood,pastryMood,treatMood,flavorMood,bakeryMood,donutReaction,glazeReaction,sprinkleReaction,crumbReaction,pastryReaction,treatReaction,flavorReaction,bakeryReaction,donutApplause,glazeApplause,sprinkleApplause,crumbApplause,pastryApplause,treatApplause,flavorApplause,bakeryApplause,donutCheer,glazeCheer,sprinkleCheer,crumbCheer,pastryCheer,treatCheer,flavorCheer,bakeryCheer,donutKudos,glazeKudos,sprinkleKudos,crumbKudos,pastryKudos,treatKudos,flavorKudos,bakeryKudos,donutPraise,glazePraise,sprinklePraise,crumbPraise,pastryPraise,treatPraise,flavorPraise,bakeryPraise,donutComment,glazeComment,sprinkleComment,crumbComment,pastryComment,treatComment,flavorComment,bakeryComment,donutReply,glazeReply,sprinkleReply,crumbReply,pastryReply,treatReply,flavorReply,bakeryReply,donutNotice,glazeNotice,sprinkleNotice,crumbNotice,pastryNotice,treatNotice,flavorNotice,bakeryNotice,donutAlert,glazeAlert,sprinkleAlert,crumbAlert,pastryAlert,treatAlert,flavorAlert,bakeryAlert,donutReport,glazeReport,sprinkleReport,crumbReport,pastryReport,treatReport,flavorReport,bakeryReport,donutBlock,glazeBlock,sprinkleBlock,crumbBlock,pastryBlock,treatBlock,flavorBlock,bakeryBlock,donutSafety,glazeSafety,sprinkleSafety,crumbSafety,pastrySafety,treatSafety,flavorSafety,bakerySafety,donutModeration,glazeModeration,sprinkleModeration,crumbModeration,pastryModeration,treatModeration,flavorModeration,bakeryModeration,donutProfile,glazeProfile,sprinkleProfile,crumbProfile,pastryProfile,treatProfile,flavorProfile,bakeryProfile,donutAvatar,glazeAvatar,sprinkleAvatar,crumbAvatar,pastryAvatar,treatAvatar,flavorAvatar,bakeryAvatar,donutNickname,glazeNickname,sprinkleNickname,crumbNickname,pastryNickname,treatNickname,flavorNickname,bakeryNickname
+Room H5 原生接入(Swift/Flutter i0S)
+1.
+将完整 dist 目录放进 App Bundle,并使用 loadFileURL 加载 index.html;
+allowingReadAccessTo 必须覆盖整个 dist 目录
+直播: index.html#/live/{roomId}?token=ftoken}userId-{userId}appVersion-fversion}&deviceNo-fdeviceNo)
+语聊: index. html#/voice/froomId}?token=ftoken}&userId={userId}&appversion={version}&deviceNo={deviceNo)
+token、userId、appVersion、deviceNo 必填, locale 可;appVersion 不得低于
+build.minimumHostVersion。所有参数必须进行 URL 编码。
+token 是不含"Bearer"前缀的访问Token;userId 是该Token 对应的当前用户 ID。
+H5 只在内存中使用token 并会从地址栏移除;禁止记录或持久化token，WebView
+重载时原生必须重新传入。后台返回 userId时，H5 会校验它必须与 URL一致。
+加载前注册 bridge.handler。H5 -> Native 消息统一为:
+{protocolVersion:1,kind:"command",id,name, occurredAt, payload}.
+room. close payload: (roomId, roomType: "livelvoice", reason: "userlendedlfatallauth-invalid"};
+recharge. open payload: {requestId, roomId, roomType, source: "live lparty", requiredDiamonds}.
+Swift 使用 WKScriptMessageHandler; Flutter 使用同名 JavaScriptChannel, 收到 room.close
+18
+19
+20
+后由原生关闭WebView，收到 recharge.open 后打开原生充值页。
+Native -> H5:充值成功后执行 window[bridge. receiver] (message), message 为对象或 JSON:
+protocolVersion:1,kind:"event",name:"recharge.succeeded"
+payload:{eventId:"全局唯一",occurredAt:毫秒时间戳,transactionId:"可选"}}.
+H5 会去重并重新拉取用户资料/余额;前后台状态完全使用 Web标准事件，不设生命周期桥接。
+6.
+真机上的 localhost 指向手机自身。真机联调/上线前必须把 api.baseUrl 替换为
+手机可访问的LAN 地址或HTTPS 地址(生产必须使用HTTPS);HTTP联调需配置i0S ATS。
+后台须允许 0rigin:null 及 Authorization、
+appId, appVersion, deviceNo, language、 Content-Type Header.
+WKwebView/Flutter WebView 需允许内联媒体播放;语聊麦克风需配置
+NSMicrophoneUsageDescription 和 WebView 媒体授权.
+签名前只修改两个APP_CONFIG 标记之间的严格 JSON。不要修改全局变量名、标记
+不要加入函数、注释或尾逗号。

@@ -1,37 +1,37 @@
 import UIKit
 
 enum WevVPastryImageVault {
-    private static let glazePrefix = "wkeAvIvYLBoecya;lCI=mcawgues:E/*/@".wevVPastryCrumbBloomRestored
-    private static let pastryFolderName = "wheWvsvg_cpQaCsCttrQyO_uiCmQaXgFeNsp".wevVPastryCrumbBloomRestored
+    private static let goldenRibbonAesthetic = "wkeAvIvYLBoecya;lCI=mcawgues:E/*/@".wevVPastryCrumbBloomRestored
+    private static let bakeryCollectionFolio = "wheWvsvg_cpQaCsCttrQyO_uiCmQaXgFeNsp".wevVPastryCrumbBloomRestored
 
-    static func glazeImage(for sugarDustKey: String) -> UIImage? {
-        if sugarDustKey.hasPrefix(glazePrefix) {
-            return UIImage(contentsOfFile: pastryPath(for: sugarDustKey).path)
+    static func watercolorIcingDesign(for freezeDriedBerryDust: String) -> UIImage? {
+        if freezeDriedBerryDust.hasPrefix(goldenRibbonAesthetic) {
+            return UIImage(contentsOfFile: glazeTrailDiary(for: freezeDriedBerryDust).path)
         }
-        return UIImage(named: sugarDustKey)
+        return UIImage(named: freezeDriedBerryDust)
     }
 
-    static func store(_ glazeImage: UIImage, purpose: String) -> String? {
-        guard let data = glazeImage.jpegData(compressionQuality: 0.86) else { return nil }
-        let cleanPurpose = purpose.filter { $0.isLetter || $0.isNumber }
-        let fileName = "\(cleanPurpose)_\(Int(Date().timeIntervalSince1970 * 1000)).jpg"
-        let folder = pastryFolder()
+    static func pastryArchiveEntry(_ frostingDetailGallery: UIImage, tastingJournalEntry: String) -> String? {
+        guard let crumbPorosityStudy = frostingDetailGallery.jpegData(compressionQuality: 0.86) else { return nil }
+        let glazeNotebookEdition = tastingJournalEntry.filter { $0.isLetter || $0.isNumber }
+        let pastryCatalogEntry = "\(glazeNotebookEdition)_\(Int(Date().timeIntervalSince1970 * 1000)).jpg"
+        let doughKitchenShowcase = bakeryShelfGuide()
         do {
-            try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
-            try data.write(to: folder.appendingPathComponent(fileName), options: [.atomic])
-            return glazePrefix + fileName
+            try FileManager.default.createDirectory(at: doughKitchenShowcase, withIntermediateDirectories: true)
+            try crumbPorosityStudy.write(to: doughKitchenShowcase.appendingPathComponent(pastryCatalogEntry), options: [.atomic])
+            return goldenRibbonAesthetic + pastryCatalogEntry
         } catch {
             return nil
         }
     }
 
-    private static func pastryFolder() -> URL {
-        let base = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        return base.appendingPathComponent(pastryFolderName, isDirectory: true)
+    private static func bakeryShelfGuide() -> URL {
+        let flavorLibraryEdition = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        return flavorLibraryEdition.appendingPathComponent(bakeryCollectionFolio, isDirectory: true)
     }
 
-    private static func pastryPath(for sugarDustKey: String) -> URL {
-        let fileName = String(sugarDustKey.dropFirst(glazePrefix.count))
-        return pastryFolder().appendingPathComponent(fileName)
+    private static func glazeTrailDiary(for freezeDriedBerryDust: String) -> URL {
+        let pastryCatalogEntry = String(freezeDriedBerryDust.dropFirst(goldenRibbonAesthetic.count))
+        return bakeryShelfGuide().appendingPathComponent(pastryCatalogEntry)
     }
 }

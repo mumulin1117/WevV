@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Room H5 App Config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "build", "app", "api", "theme", "bridge", "debug"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["buildId", "minimumHostVersion"],
+      "properties": {
+        "buildId": { "type": "string", "minLength": 1 },
+        "minimumHostVersion": { "type": "string", "pattern": "^\\d+(?:\\.\\d+){0,3}$" }
+      }
+    },
+    "app": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["appId", "documentTitle", "defaultLocale"],
+      "properties": {
+        "appId": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "documentTitle": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "defaultLocale": { "type": "string", "minLength": 2, "maxLength": 16 }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baseUrl", "encryptionKey", "encryptionIv", "timeoutMs"],
+      "properties": {
+        "baseUrl": { "type": "string", "format": "uri", "pattern": "^https?://" },
+        "encryptionKey": { "type": "string", "minLength": 16, "maxLength": 16 },
+        "encryptionIv": { "type": "string", "minLength": 16, "maxLength": 16 },
+        "timeoutMs": { "type": "integer", "minimum": 1000, "maximum": 60000 }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "secondary", "accent"],
+      "properties": {
+        "primary": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "secondary": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "accent": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+      }
+    },
+    "bridge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handler", "receiver", "commands", "events"],
+      "properties": {
+        "handler": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,63}$" },
+        "receiver": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_.-]{0,63}$" },
+        "commands": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["closeRoom", "openRecharge"],
+          "properties": {
+            "closeRoom": { "type": "string" },
+            "openRecharge": { "type": "string" }
+          }
+        },
+        "events": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rechargeSucceeded"],
+          "properties": {
+            "rechargeSucceeded": { "type": "string" }
+          }
+        }
+      }
+    },
+    "debug": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vConsoleEnabled"],
+      "properties": {
+        "vConsoleEnabled": { "type": "boolean" }
+      }
+    }
+  }
+}

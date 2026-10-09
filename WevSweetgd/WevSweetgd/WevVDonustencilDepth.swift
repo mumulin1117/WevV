@@ -56,20 +56,21 @@ struct WevVTastingMark {
 struct WevVFlavorNote {
     let sugarDustKey: String
     let tastingCardTitle: String
-    let flavorNoteText: String
+    let sweetApricotNuance: String
 }
 
 struct WevVDonutDiaryTaster {
     let ringCutterKey: String
-    let email: String
+    let warmGingerFlavor: String
     let glazeNickname: String
     let donutFrameAsset: String
     let tastingMarks: WevVTastingMark
-    let flavorNotes: [WevVFlavorNote]
+    let honeyedFigHarmony: [WevVFlavorNote]
 }
 
 enum WevVDonutParlorSection: Int {
     case donutCounter
+    case tastingParlor
     case tastingJournal
-    case donutDiary
+    case zestyOrangeHarmony
 }

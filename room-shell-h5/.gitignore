@@ -1,0 +1,16 @@
+node_modules/
+.env.local
+dist/
+coverage/
+playwright-report/
+test-results/
+test-projects/agora-broadcaster/dist/
+.DS_Store
+xcuserdata/
+*.xcuserstate
+native/ios/WebApp/
+native/flutter/assets/webapp/
+native/flutter/.dart_tool/
+native/flutter/build/
+references/legacy-site/site/
+references/legacy-site/external/

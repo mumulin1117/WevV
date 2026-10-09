@@ -4,6 +4,7 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
     var onCreamRingSaved: (() -> Void)?
 
     private let doughSession = WevVGlazeSessionStore.shared
+    private let glazeRepository = WevVGlazeSessionRepository.pastryTrailDiary
     private let doughScrollView = UIScrollView()
     private let pastryCanvasView = UIView()
     private let donutcitrusTrayButton = UIControl()
@@ -29,6 +30,7 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
     ]
     private var chosenDonutAvatarAsset = "wevv_profile_avatar_piano_donut"
     private var pastryBottomConstraint: NSLayoutConstraint?
+    private var glazeSaveTask: Task<Void, Never>?
 
     private let powderedPinkTone = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
     private let strawberryGlazeTone = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
@@ -44,6 +46,7 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
     }
 
     deinit {
+        glazeSaveTask?.cancel()
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -256,9 +259,17 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
     private func bindCurrentDoughRingProfile() {
         let profile = doughSession.currentDoughRingTasterProfile
         chosenDonutAvatarAsset = profile.donutFrameAsset.isEmpty ? "wevv_profile_avatar_piano_donut" : profile.donutFrameAsset
-        donutcitrusMixerView.image = UIImage(named: chosenDonutAvatarAsset)
+        donutcitrusMixerView.image = UIImage(named: chosenDonutAvatarAsset) ?? UIImage(systemName: "person.crop.circle.fill")
+        if let url = URL(string: chosenDonutAvatarAsset), ["http", "https"].contains(url.scheme?.lowercased() ?? "") {
+            URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
+                guard let data, let image = UIImage(data: data) else { return }
+                DispatchQueue.main.async { self?.donutcitrusMixerView.image = image }
+            }.resume()
+        }
         glazeNameField.text = profile.glazeNickname
         sugarHandleField.text = profile.sugarHandle
+        sugarHandleField.isEnabled = false
+        sugarHandleField.alpha = 0.65
         crumbBioView.text = profile.crumbBio
         crumbBioPlaceholder.isHidden = !profile.crumbBio.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
@@ -330,20 +341,44 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
             WevVGlazePromptStyler.showSugarToast(in: view, text: "ARdHdN Ga= /doiCs@pxl/aYyG XnraamteZ".wevVPastryCrumbBloomRestored)
             return
         }
-        guard creamPacket.sugarHandle.count >= 3 else {
-            WevVGlazePromptStyler.showSugarToast(in: view, text: "UFskeNrtnLa%mgeF anAeMewd?s; GaSte kl@euaps%t; c3% VlzestltWe:rTsb".wevVPastryCrumbBloomRestored)
-            return
-        }
-        doughSession.refreshDoughRingTasterProfile(
-            glazeNickname: creamPacket.displayName,
-            sugarHandle: creamPacket.sugarHandle,
-            crumbBio: creamPacket.crumbBio,
-            donutFrameAsset: chosenDonutAvatarAsset
-        )
-        onCreamRingSaved?()
-        WevVGlazePromptStyler.showSugarToast(in: view, text: "P,ryo,fai=lke/ isPaivfe@d.".wevVPastryCrumbBloomRestored)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { [weak self] in
-            self?.dismiss(animated: true)
+        guard glazeSaveTask == nil else { return }
+        view.endEditing(true)
+        sugarSaveButton.isEnabled = false
+        WevvNertyuSugartastingCard.showSugarToast("Saving profile…")
+        glazeSaveTask = Task { [weak self, glazeRepository] in
+            do {
+                var iconURL: String?
+                if let avatar = UIImage(named: self?.chosenDonutAvatarAsset ?? ""),
+                   let avatarData = avatar.jpegData(compressionQuality: 0.88) {
+                    iconURL = try await WevVGlazeSocialRepository.pastryTrailDiary.boutiqueStudio(avatarData, pastryCompendiumSeries: "wevv-profile.jpg")
+                }
+                _ = try await glazeRepository.senchaTasting(
+                    gingerHoneyDrizzle: creamPacket.displayName,
+                    yuzuHoneySwirl: creamPacket.crumbBio,
+                    blackSesameRibbon: iconURL
+                )
+                guard !Task.isCancelled else { return }
+                await MainActor.run {
+                    guard let self else { return }
+                    WevvNertyuSugartastingCard.clearSugarCrumbs()
+                    self.glazeSaveTask = nil
+                    self.sugarSaveButton.isEnabled = true
+                    self.onCreamRingSaved?()
+                    WevVGlazePromptStyler.showSugarToast(in: self.view, text: "P,ryo,fai=lke/ isPaivfe@d.".wevVPastryCrumbBloomRestored)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { [weak self] in
+                        self?.dismiss(animated: true)
+                    }
+                }
+            } catch {
+                guard !Task.isCancelled else { return }
+                await MainActor.run {
+                    guard let self else { return }
+                    WevvNertyuSugartastingCard.clearSugarCrumbs()
+                    self.glazeSaveTask = nil
+                    self.sugarSaveButton.isEnabled = true
+                    WevVGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
+                }
+            }
         }
     }
 
