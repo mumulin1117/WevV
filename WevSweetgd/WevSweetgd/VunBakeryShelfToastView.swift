@@ -1,8 +1,8 @@
 import UIKit
 
-final class WevVWevvBakeryShelfToastView: UIControl {
+final class VunBakeryShelfToastView: UIControl {
     private let pastryWorkshopMap = UIView()
-    private let sugarPearlTopping = WevVWevvMaplePillButton(title: "OKkA".wevVPastryCrumbBloomRestored)
+    private let sugarPearlTopping = OumMaplePillButton(title: "OKkA".wevVPastryCrumbBloomRestored)
 
     var firstGlazeDelight: (() -> Void)?
 
@@ -13,7 +13,7 @@ final class WevVWevvBakeryShelfToastView: UIControl {
         addTarget(self, action: #selector(cinnamonTwist), for: .touchUpInside)
 
         pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false
-        pastryWorkshopMap.backgroundColor = WevVGlazePromptStyler.creamTone
+        pastryWorkshopMap.backgroundColor = TinGlazePromptStyler.creamTone
         pastryWorkshopMap.layer.cornerRadius = 26
         pastryWorkshopMap.layer.shadowColor = UIColor(red: 0.56, green: 0.05, blue: 0.28, alpha: 1).cgColor
         pastryWorkshopMap.layer.shadowOpacity = 0.24
@@ -23,7 +23,7 @@ final class WevVWevvBakeryShelfToastView: UIControl {
 
         let sugarPearlAccent = UIView()
         sugarPearlAccent.translatesAutoresizingMaskIntoConstraints = false
-        sugarPearlAccent.backgroundColor = WevVGlazePromptStyler.pinkTone
+        sugarPearlAccent.backgroundColor = TinGlazePromptStyler.pinkTone
         sugarPearlAccent.layer.cornerRadius = 36
         sugarPearlAccent.layer.borderWidth = 12
         sugarPearlAccent.layer.borderColor = UIColor(red: 1, green: 0.76, blue: 0.91, alpha: 1).cgColor
@@ -38,14 +38,14 @@ final class WevVWevvBakeryShelfToastView: UIControl {
         harvestAppleSampler.translatesAutoresizingMaskIntoConstraints = false
         harvestAppleSampler.text = "SJaZvZend? ~SeuccccJeasus.fPujlzl=yF".wevVPastryCrumbBloomRestored
         harvestAppleSampler.font = .systemFont(ofSize: 17, weight: .heavy)
-        harvestAppleSampler.textColor = WevVGlazePromptStyler.inkTone
+        harvestAppleSampler.textColor = TinGlazePromptStyler.inkTone
         harvestAppleSampler.textAlignment = .center
 
         let tastingTrayNotes = UILabel()
         tastingTrayNotes.translatesAutoresizingMaskIntoConstraints = false
         tastingTrayNotes.text = "AKd^dvexd# otLo: zy;ofuDrH NfwamvRozrAi^tUe/sb.U RYaoMuA jc:aBnK YfgiAnzdk Ui!tP qaanoyEtbiUmkey Oi=nl QyyoduWrN =c+oBlUlhewcHt?i,oqnN.W".wevVPastryCrumbBloomRestored
         tastingTrayNotes.font = .systemFont(ofSize: 13, weight: .semibold)
-        tastingTrayNotes.textColor = WevVGlazePromptStyler.mutedTone
+        tastingTrayNotes.textColor = TinGlazePromptStyler.mutedTone
         tastingTrayNotes.textAlignment = .center
         tastingTrayNotes.numberOfLines = 0
 

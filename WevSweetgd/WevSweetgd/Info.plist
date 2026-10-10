@@ -19,7 +19,7 @@
 					<key>UISceneConfigurationName</key>
 					<string>WevVSprinkleScene</string>
 					<key>UISceneDelegateClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).WevVSprinkleSceneCoordinator</string>
+					<string>$(PRODUCT_MODULE_NAME).GimSprinkleSceneCoordinator</string>
 				</dict>
 			</array>
 		</dict>

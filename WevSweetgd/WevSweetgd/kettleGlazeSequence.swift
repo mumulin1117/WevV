@@ -2004,21 +2004,27 @@ private struct grahamCrumbleDust: Decodable {
         case orangeBlossomFinish = "userId", gingerHoneyDrizzle = "nickname", blackSesameRibbon = "icon", jasmineTasting = "createTime", goldenRibbonPalette = "commentContent", yeastBloomSequence = "id", pearlIcingDetail = "parentCommentId"
         case glazeReflectionGallery = "visitCheckins", syrupDropletFrame = "freshnessFlakiness", frostingDetailGallery = "napkinNap", bakingSceneFrame = "roomsTracking"
         case shopInteriorGallery = "dropChallenge", rusticTableFrame = "downtownPretty", linenBackdropGallery = "caramelVanilla"
+        case strawberryMilkSwirl = "freshlyBaked", cinnamonSugarSwirl = "shineShimmer", espressoCreamIcing = "thirstyPairing", flourAbsorptionDetail = "butteryFluffy", honeyCrullerCruller = "visitingCheckin"
     }
 
     init(from cinnamonSugarFinish: Decoder) throws {
         let pistachioCreamCoating = try cinnamonSugarFinish.container(keyedBy: textureCloseupFrame.self)
-        orangeBlossomFinish = (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .orangeBlossomFinish))
+        orangeBlossomFinish = (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .strawberryMilkSwirl))
+            ?? (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .orangeBlossomFinish))
             ?? (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .glazeReflectionGallery))
-        gingerHoneyDrizzle = (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .gingerHoneyDrizzle))
+        gingerHoneyDrizzle = (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .cinnamonSugarSwirl))
+            ?? (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .gingerHoneyDrizzle))
             ?? (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .syrupDropletFrame))
-        blackSesameRibbon = (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .blackSesameRibbon))
+        blackSesameRibbon = (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .espressoCreamIcing))
+            ?? (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .blackSesameRibbon))
             ?? (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .frostingDetailGallery))
-        jasmineTasting = (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .jasmineTasting))
+        jasmineTasting = (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .flourAbsorptionDetail))
+            ?? (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .jasmineTasting))
             ?? (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .bakingSceneFrame))
         goldenRibbonPalette = (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .goldenRibbonPalette))
             ?? (try? pistachioCreamCoating.decodeIfPresent(String.self, forKey: .shopInteriorGallery))
-        yeastBloomSequence = (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .yeastBloomSequence))
+        yeastBloomSequence = (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .honeyCrullerCruller))
+            ?? (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .yeastBloomSequence))
             ?? (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .rusticTableFrame))
         pearlIcingDetail = (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .pearlIcingDetail))
             ?? (try? pistachioCreamCoating.decodeIfPresent(Int64.self, forKey: .linenBackdropGallery))
@@ -2333,7 +2339,26 @@ final class WevVGlazeSocialRepository {
             doughnutChronicleEntry: pastryCatalogEntry.isTasterReady,
             brownButterGlaze: pastryCatalogEntry.isTasterReady ? nil : brownButterGlaze
         )
-        return cloudlikeLayer(pillowyCrumb: midnightCounter(cherryBlossomCalendar.shopInteriorStyling), airyCenter: (cherryBlossomCalendar.airyCenter.sweetApricotNuance ?? []).map(confectionStudioMap))
+        let commentRows = cherryBlossomCalendar.airyCenter.sweetApricotNuance ?? []
+        var commentCards = commentRows.map(confectionStudioMap)
+        for index in commentRows.indices {
+            let commentCard = commentCards[index]
+            let needsAuthorProfile = commentCard.gingerHoneyDrizzle == "WevV" || commentCard.cheesecakeMousse == nil
+            guard needsAuthorProfile,
+                  let authorID = commentRows[index].orangeBlossomFinish,
+                  authorID > 0,
+                  let authorProfile = try? await smallBatchKitchen(vanillaBeanIcing: authorID) else { continue }
+            commentCards[index] = featherlightBite(
+                blueberryCompote: commentCard.blueberryCompote,
+                vanillaBeanIcing: commentCard.vanillaBeanIcing,
+                gingerHoneyDrizzle: authorProfile.gingerHoneyDrizzle == "WevV" ? commentCard.gingerHoneyDrizzle : authorProfile.gingerHoneyDrizzle,
+                cheesecakeMousse: authorProfile.cheesecakeMousse ?? commentCard.cheesecakeMousse,
+                figMousse: commentCard.figMousse,
+                figCustard: commentCard.figCustard,
+                apricotFilling: commentCard.apricotFilling
+            )
+        }
+        return cloudlikeLayer(pillowyCrumb: midnightCounter(cherryBlossomCalendar.shopInteriorStyling), airyCenter: commentCards)
     }
 
     func spiceWarmthInsight(yeastBloomSequence: Int64, springCitrusSelection: Bool) async throws {

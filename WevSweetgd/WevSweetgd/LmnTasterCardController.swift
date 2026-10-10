@@ -1,7 +1,7 @@
 
 import UIKit
 
-final class WevVWevvTasterCardController: UIViewController {
+final class LmnTasterCardController: UIViewController {
     private enum WevvFlavorPane {
         case flavorNotePane
         case tastingQuestPane
@@ -23,7 +23,7 @@ final class WevVWevvTasterCardController: UIViewController {
 
     private let tasterBadgeKey: String
     private let remoteUserID: Int64?
-    private let wevvTasterStore = WevVGuestGlazeStore.shared
+    private let wevvTasterStore = VGuestSevenSweet.shared
     private let wevvDonutJournalStore = WevVGlazeSessionStore.shared
     private let wevvFritterScroll = UIScrollView()
     private let wevvGlazeCanvas = UIView()
@@ -191,6 +191,8 @@ final class WevVWevvTasterCardController: UIViewController {
 
     private func tuneWevvTasterHeaderViews() {
         wevvDonutAvatarView.translatesAutoresizingMaskIntoConstraints = false
+        wevvDonutAvatarView.image = UIImage(named: "wevv_profile_avatar_piano_donut")
+        wevvDonutAvatarView.backgroundColor = UIColor(white: 0.93, alpha: 1)
         wevvDonutAvatarView.contentMode = .scaleAspectFill
         wevvDonutAvatarView.clipsToBounds = true
         wevvDonutAvatarView.layer.cornerRadius = 46
@@ -492,7 +494,7 @@ final class WevVWevvTasterCardController: UIViewController {
             }
         case .tastingQuestPane:
             guard remoteUserID == nil,
-                  WevVDonutcreamapricotFillinger.homeChallengeParticipantKeys.contains(tasterBadgeKey) else {
+                  TvVDonutcreamapricotFillinger.homeChallengeParticipantKeys.contains(tasterBadgeKey) else {
                 let empty = makeWevvGlazeLabel("No challenge activity yet.", size: 13, weight: .medium, color: wevvSoftCrumbTone)
                 empty.textAlignment = .center
                 empty.numberOfLines = 0
@@ -835,7 +837,7 @@ final class WevVWevvTasterCardController: UIViewController {
     }
 
     private func showGateForWevvTrail() {
-        let gate = WevVWevvBakerytropicalMangoEssence()
+        let gate = UBakerytropicalMangoEssence()
         gate.onWevvDonutReady = { [weak self] in
             self?.dismiss(animated: true) {
                 self?.placeWevvTrailToggle()
@@ -912,7 +914,7 @@ final class WevVWevvTasterCardController: UIViewController {
     }
 
     private func showGateForWevvNotice() {
-        let gate = WevVWevvBakerytropicalMangoEssence()
+        let gate = UBakerytropicalMangoEssence()
         gate.onWevvDonutReady = { [weak self] in
             self?.dismiss(animated: true) {
                 self?.openWevvNoticeTray()
@@ -923,7 +925,7 @@ final class WevVWevvTasterCardController: UIViewController {
     }
 
     private func confirmWevvNoticeFlag() {
-        WevVGlazePromptStyler.showSugarConfirm(
+        TinGlazePromptStyler.showSugarConfirm(
             almondFlavor: view,
             gourmetFlavor: "RPeJppo?ritF mtthGi&sS ~p,rko*fmijl+em?b".wevVPastryCrumbBloomRestored,
             glazeBowl: "WHeJ Vw/iIlZlq ysGaJvmeg Xt?h@iwsj Gpgr~oDfJiNl^e^ nfkoFrD ksGanf,e~ttyN Wr~eUvoiceswh ,aln^dB buUsme+ Cictv DtooM Iipm=p#rroDvbeh uylocu@re mscw+eOe,tG ssFpLaIcLe@.u".wevVPastryCrumbBloomRestored,
@@ -932,12 +934,12 @@ final class WevVWevvTasterCardController: UIViewController {
             fritterBite: wevvBerryTone
         ) { [weak self] in
             guard let self else { return }
-            WevVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "S#e#nPd#iYnkgd nrZehproirotN.Q.g.%".wevVPastryCrumbBloomRestored) {
+            AoVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "S#e#nPd#iYnkgd nrZehproirotN.Q.g.%".wevVPastryCrumbBloomRestored) {
                 self.wevvDonutJournalStore.placeGuestSafetyCrumb(
                     tasterBadgeKey: self.tasterBadgeKey,
                     reasonText: "PCrCoKfgiZl:e^ tsTaZf=eZtEyW MrEelvci/emw=".wevVPastryCrumbBloomRestored
                 )
-                WevVGlazePromptStyler.showSugarToast(in: self.view, text: "R/elpqo;r&tu qsPumbQmkiZtYtZeudv".wevVPastryCrumbBloomRestored)
+                TinGlazePromptStyler.showSugarToast(in: self.view, text: "R/elpqo;r&tu qsPumbQmkiZtYtZeudv".wevVPastryCrumbBloomRestored)
             }
         }
     }
@@ -945,13 +947,13 @@ final class WevVWevvTasterCardController: UIViewController {
     private func toggleWevvSugarShield() {
         let isSugarGuarded = wevvTasterStore.toggleSugarShield(for: tasterBadgeKey)
         if isSugarGuarded {
-            WevVGlazePromptStyler.showSugarToast(in: view, text: "PYr%oPfSixl.ef rb!lVo,cPkyebdS".wevVPastryCrumbBloomRestored)
+            TinGlazePromptStyler.showSugarToast(in: view, text: "PYr%oPfSixl.ef rb!lVo,cPkyebdS".wevVPastryCrumbBloomRestored)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { [weak self] in
                 self?.dismiss(animated: true)
             }
         } else {
             refreshWevvTasterCardPage()
-            WevVGlazePromptStyler.showSugarToast(in: view, text: "PDr@ohf&iul&eu ,u=ngbsl*oScnkKeDdh".wevVPastryCrumbBloomRestored)
+            TinGlazePromptStyler.showSugarToast(in: view, text: "PDr@ohf&iul&eu ,u=ngbsl*oScnkKeDdh".wevVPastryCrumbBloomRestored)
         }
     }
 
@@ -1185,6 +1187,7 @@ final class WevVWevvTasterCardController: UIViewController {
     private func setRemoteProfileImage(_ text: String?, imageView: UIImageView) {
         let fallbackAvatar = UIImage(named: "wevv_profile_avatar_piano_donut")
             ?? UIImage(systemName: "person.crop.circle.fill")
+        imageView.backgroundColor = UIColor(white: 0.93, alpha: 1)
         let cleanText = text?.trimmingCharacters(in: .whitespacesAndNewlines)
         imageView.image = (cleanText.flatMap { UIImage(named: $0) }) ?? fallbackAvatar
         imageView.tintColor = wevvBerryTone
@@ -1209,7 +1212,7 @@ final class WevVWevvTasterCardController: UIViewController {
             } catch {
                 remoteTask = nil
                 refreshWevvTrailButton()
-                WevVGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
+                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
             }
         }
     }
@@ -1230,7 +1233,7 @@ final class WevVWevvTasterCardController: UIViewController {
                 present(controller, animated: true)
             } catch {
                 remoteTask = nil
-                WevVGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
+                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
             }
         }
     }
@@ -1241,19 +1244,19 @@ final class WevVWevvTasterCardController: UIViewController {
             showWevvSugarGuardPrompt()
             return
         }
-        WevVGlazePromptStyler.showSugarToast(in: view, text: "Video calling is not available in this build.")
+        TinGlazePromptStyler.showSugarToast(in: view, text: "Video calling is not available in this build.")
     }
 
     @objc private func openRemoteMoment(_ sender: UIControl) {
         guard let text = sender.accessibilityIdentifier, let id = Int64(text), let moment = remoteMoments.first(where: { $0.coconutCenter == id }) else { return }
-        let controller = WevVWevvDonutMomentController(richCocoaFlavor: moment)
+        let controller = KipoDonutMomentController(richCocoaFlavor: moment)
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
 
     @objc private func openRemoteSafety() {
         let isSugarGuarded = remoteCard?.delicateCrust ?? currentTasterCard.sugarTie.isSugarShielded
-        let tray = WevVGlazeProfileSafetyTray(cocoaGuarded: isSugarGuarded)
+        let tray = GzeProfileSafetyTray(cocoaGuarded: isSugarGuarded)
         tray.pralineDismissAction = { [weak self, weak tray] in
             self?.hideRemoteSafetyView(tray)
         }
@@ -1300,7 +1303,7 @@ final class WevVWevvTasterCardController: UIViewController {
                     tasterBadgeKey: self.tasterBadgeKey,
                     reasonText: self.remoteReportSuggestion(packet)
                 )
-                WevVGlazePromptStyler.showSugarToast(in: self.view, text: "Report submitted.")
+                TinGlazePromptStyler.showSugarToast(in: self.view, text: "Report submitted.")
             }
         }
         view.addSubview(sheet)
@@ -1338,10 +1341,10 @@ final class WevVWevvTasterCardController: UIViewController {
                     confettiSugarPattern: remoteReportSuggestion(packet)
                 )
                 remoteTask = nil
-                WevVGlazePromptStyler.showSugarToast(in: view, text: "Report submitted.")
+                TinGlazePromptStyler.showSugarToast(in: view, text: "Report submitted.")
             } catch {
                 remoteTask = nil
-                WevVGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
+                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
             }
         }
     }
@@ -1365,14 +1368,14 @@ final class WevVWevvTasterCardController: UIViewController {
                 loadRemoteCard()
             } catch {
                 remoteTask = nil
-                WevVGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
+                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
             }
         }
     }
 
     private func requireRemoteLogin() -> Bool {
         guard wevvDonutJournalStore.isTasterReady else {
-            let gate = WevVWevvBakerytropicalMangoEssence()
+            let gate = UBakerytropicalMangoEssence()
             gate.modalPresentationStyle = .pageSheet
             present(gate, animated: true)
             return false

@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-final class WevvNertyuChoiceStackLayer {
-    static let pastryWorkshopMap = WevvNertyuChoiceStackLayer()
+final class NertyuChoiceStackLayer {
+    static let pastryWorkshopMap = NertyuChoiceStackLayer()
 
     private init() {}
 

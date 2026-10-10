@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVSugarPlainblackberryCreamler: UIViewController {
+final class ZunugarPlainblackberryCreamler: UIViewController {
     private let titleWevVSugarText: String
     private let bodyWevVSugarText: String
 

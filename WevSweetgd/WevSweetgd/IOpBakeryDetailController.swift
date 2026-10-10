@@ -1,16 +1,16 @@
 import UIKit
 
-final class WevVWevvBakeryDetailController: UIViewController {
+final class IOpBakeryDetailController: UIViewController {
     private let pastryFolio: bakeryCollectionFolio
     private let pastryShelf: [bakeryCollectionFolio]
     private let tastingJournalStore = WevVGlazeSessionStore.shared
-    private let tastingGuestStore = WevVGuestGlazeStore.shared
+    private let tastingGuestStore = VGuestSevenSweet.shared
     private let pastryScroll = UIScrollView()
     private let pastryCanvas = UIView()
     private let pastryBackdropLayer = CAGradientLayer()
     private let tastingRow = UIStackView()
-    private let pastryShelfButton = WevVWevvMaplePillButton(title: "SKa%v@et".wevVPastryCrumbBloomRestored)
-    private var tastingSuccessLayer: WevVWevvBakeryShelfToastView?
+    private let pastryShelfButton = OumMaplePillButton(title: "SKa%v@et".wevVPastryCrumbBloomRestored)
+    private var tastingSuccessLayer: VunBakeryShelfToastView?
 
     var pastryShelfChanged: (() -> Void)?
 
@@ -150,7 +150,7 @@ final class WevVWevvBakeryDetailController: UIViewController {
         bar.backgroundColor = UIColor(red: 1, green: 0.96, blue: 0.99, alpha: 0.96)
         view.addSubview(bar)
 
-        let crumbTastingButton = WevVWevvMaplePillButton(title: "RGervvihe,wa".wevVPastryCrumbBloomRestored)
+        let crumbTastingButton = OumMaplePillButton(title: "RGervvihe,wa".wevVPastryCrumbBloomRestored)
         crumbTastingButton.addTarget(self, action: #selector(openTastingForm), for: .touchUpInside)
         pastryShelfButton.addTarget(self, action: #selector(placePastryIntoShelf), for: .touchUpInside)
 
@@ -467,13 +467,13 @@ final class WevVWevvBakeryDetailController: UIViewController {
     @objc private func openMorePastryPick(_ sender: UIControl) {
         let bakeryFindKey = sender.accessibilityIdentifier ?? ""
         guard let bakeryPick = pastryFolio.shopHoppingTrail.first(where: { $0.flavorLibraryEdition == bakeryFindKey }) else { return }
-        let controller = WevVWevvBakeryDetailController(detail: makePastryPickDetail(bakeryPick), bakeryShelf: pastryShelf)
+        let controller = IOpBakeryDetailController(detail: makePastryPickDetail(bakeryPick), bakeryShelf: pastryShelf)
         controller.pastryShelfChanged = { [weak self] in
             self?.refreshPastryShelfButton()
             self?.pastryShelfChanged?()
         }
         controller.modalPresentationStyle = .fullScreen
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "ORppegnSiFn=gG idoobnZugts GsIhmoWp^.r.P.I".wevVPastryCrumbBloomRestored) { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "ORppegnSiFn=gG idoobnZugts GsIhmoWp^.r.P.I".wevVPastryCrumbBloomRestored) { [weak self] in
             self?.present(controller, animated: true)
         }
     }
@@ -508,13 +508,13 @@ final class WevVWevvBakeryDetailController: UIViewController {
             presentPastryGate()
             return
         }
-        let controller = WevVFlavorNoteController(bakeryPinKey: pastryFolio.donutPinKey)
+        let controller = EFlavorNoteController(bakeryPinKey: pastryFolio.donutPinKey)
         controller.onFlavorNoteSaved = { [weak self] in
             self?.refreshTastingRow()
             self?.pastryShelfChanged?()
         }
         controller.modalPresentationStyle = .fullScreen
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "LPoYaOdGiFnxgu yrDe@vMiEeewA TfWoTrkmL.r.T.K".wevVPastryCrumbBloomRestored) { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "LPoYaOdGiFnxgu yrDe@vMiEeewA TfWoTrkmL.r.T.K".wevVPastryCrumbBloomRestored) { [weak self] in
             self?.present(controller, animated: true)
         }
     }
@@ -524,7 +524,7 @@ final class WevVWevvBakeryDetailController: UIViewController {
             presentPastryGate()
             return
         }
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "Sgaavxi:nhgY AsQhco$pS.+.S.I".wevVPastryCrumbBloomRestored) { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "Sgaavxi:nhgY AsQhco$pS.+.S.I".wevVPastryCrumbBloomRestored) { [weak self] in
             guard let self else { return }
             guard self.tastingJournalStore.placeGlazeShelf(bakeryPinKey: self.pastryFolio.donutPinKey) else {
                 self.refreshPastryShelfButton()
@@ -537,7 +537,7 @@ final class WevVWevvBakeryDetailController: UIViewController {
     }
 
     private func presentPastryGate() {
-        let gate = WevVWevvBakerytropicalMangoEssence()
+        let gate = UBakerytropicalMangoEssence()
         gate.onWevvDonutReady = { [weak self] in
             self?.dismiss(animated: true) {
                 self?.refreshPastryShelfButton()
@@ -549,7 +549,7 @@ final class WevVWevvBakeryDetailController: UIViewController {
     }
 
     private func showPastrySuccess() {
-        let layer = WevVWevvBakeryShelfToastView()
+        let layer = VunBakeryShelfToastView()
         layer.alpha = 0
         layer.firstGlazeDelight = { [weak self, weak layer] in
             UIView.animate(withDuration: 0.18, animations: {

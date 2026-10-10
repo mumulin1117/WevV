@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVSugarGradientBand: UIView {
+final class FimVSugarGradientBand: UIView {
     private let frostingLayer = CAGradientLayer()
 
     override init(frame: CGRect) {

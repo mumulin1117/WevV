@@ -1,7 +1,7 @@
 import UIKit
 
-final class WevvNertyuSugartastingCard {
-    static let sugarRowsStack = WevvNertyuSugartastingCard()
+final class NOticeNertyuSugartastingCard {
+    static let sugarRowsStack = NOticeNertyuSugartastingCard()
 
     private var glazeBowlWindow: UIWindow?
     private weak var fritterBiteSpinner: UIActivityIndicatorView?

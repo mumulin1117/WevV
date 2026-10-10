@@ -1,13 +1,13 @@
 import UIKit
 
-final class WevVFlavorNoteController: UIViewController, UITextViewDelegate {
+final class EFlavorNoteController: UIViewController, UITextViewDelegate {
     private let bakeryPinKey: String
     private let donutJournalStore = WevVGlazeSessionStore.shared
     private let pastryTrailScroll = UIScrollView()
     private let donutCaseContent = UIView()
     private let flavorTextBox = UITextView()
     private let flavorHintLabel = UILabel()
-    private let flavorSaveButton = WevVWevvMaplePillButton(title: "P#oWsqtc".wevVPastryCrumbBloomRestored)
+    private let flavorSaveButton = OumMaplePillButton(title: "P#oWsqtc".wevVPastryCrumbBloomRestored)
     private var crumbScoreButtons: [UIButton] = []
     private var crumbScoreValue = 3
 
@@ -226,11 +226,11 @@ final class WevVFlavorNoteController: UIViewController, UITextViewDelegate {
         let cleanText = flavorTextBox.text.trimmingCharacters(in: .whitespacesAndNewlines)
         flavorSaveButton.isEnabled = false
         tuckFlavorKeyboard()
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "PAotshtSi#nDgZ HrWeCvPigeYw*.E.m.M".wevVPastryCrumbBloomRestored) { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "PAotshtSi#nDgZ HrWeCvPigeYw*.E.m.M".wevVPastryCrumbBloomRestored) { [weak self] in
             guard let self else { return }
             self.donutJournalStore.placeCrumbNote(bakeryPinKey: self.bakeryPinKey, rating: self.crumbScoreValue, text: cleanText.isEmpty ? "Sweet glaze visit" : cleanText)
             self.onFlavorNoteSaved?()
-            WevVGlazePromptStyler.showSugarNotice(
+            TinGlazePromptStyler.showSugarNotice(
                 marshmallowFlavor: self.view,
                 cookieFlavor: "R~e!vwijeww% hpEoAsVtzesdO".wevVPastryCrumbBloomRestored,
                 oreoFlavor: "YPofuGrK BdkoxnquptC HnKoetpeT OhPamsx bbXeWeinG baSdvdRevds.J".wevVPastryCrumbBloomRestored,

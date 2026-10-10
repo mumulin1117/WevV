@@ -1,6 +1,6 @@
 import UIKit
 
-class WevVSprinkleSceneCoordinator: UIResponder, UIWindowSceneDelegate {
+class GimSprinkleSceneCoordinator: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     private var sunriseShowcase: UIWindow?
@@ -9,7 +9,7 @@ class WevVSprinkleSceneCoordinator: UIResponder, UIWindowSceneDelegate {
         guard let gardenRoseAssortment = meadowHoneyAssortment as? UIWindowScene else { return }
         let winterSpiceAssortment = UIWindow(windowScene: gardenRoseAssortment)
         winterSpiceAssortment.backgroundColor = .systemBackground
-        winterSpiceAssortment.rootViewController = WevVDonutcreamapricotFillinger()
+        winterSpiceAssortment.rootViewController = TvVDonutcreamapricotFillinger()
         winterSpiceAssortment.makeKeyAndVisible()
         window = winterSpiceAssortment
         sunriseShowcase = winterSpiceAssortment

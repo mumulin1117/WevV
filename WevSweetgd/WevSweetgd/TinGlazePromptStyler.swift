@@ -1,6 +1,6 @@
 import UIKit
 
-enum WevVGlazePromptStyler {
+enum TinGlazePromptStyler {
     static let pinkTone = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
     static let softPinkTone = UIColor(red: 1, green: 0.91, blue: 0.97, alpha: 1)
     static let inkTone = UIColor(red: 0.16, green: 0.09, blue: 0.2, alpha: 1)

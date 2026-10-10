@@ -6,7 +6,7 @@ private enum WevVWevvBakeryGateMode {
     case wevvSprinkleJoin
 }
 
-final class WevVWevvBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
+final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     var onWevvDonutReady: (() -> Void)?
 
     private let wevvSessionRepository = WevVGlazeSessionRepository.pastryTrailDiary
@@ -603,14 +603,14 @@ final class WevVWevvBakerytropicalMangoEssence: UIViewController, UITextFieldDel
     ) {
         guard citrusBergamotFinish == nil else { return }
         view.endEditing(true)
-        WevvNertyuSugartastingCard.showSugarToast(        roseWhisperDelight)
+        NOticeNertyuSugartastingCard.showSugarToast(        roseWhisperDelight)
         citrusBergamotFinish = Task { [weak self] in
             do {
                 _ = try await tinyTreatDelight()
                 guard !Task.isCancelled else { return }
                 await MainActor.run {
                     guard let self else { return }
-                    WevvNertyuSugartastingCard.clearSugarCrumbs()
+                    NOticeNertyuSugartastingCard.clearSugarCrumbs()
                     self.citrusBergamotFinish = nil
                     self.onWevvDonutReady?()
                 }
@@ -618,7 +618,7 @@ final class WevVWevvBakerytropicalMangoEssence: UIViewController, UITextFieldDel
                 guard !Task.isCancelled else { return }
                 await MainActor.run {
                     guard let self else { return }
-                    WevvNertyuSugartastingCard.clearSugarCrumbs()
+                    NOticeNertyuSugartastingCard.clearSugarCrumbs()
                     self.citrusBergamotFinish = nil
                     self.showWevvCreamHint(error.localizedDescription)
                 }
@@ -739,7 +739,7 @@ final class WevVWevvBakerytropicalMangoEssence: UIViewController, UITextFieldDel
     }
 
     private func showWevvCreamHint(_ text: String) {
-        WevVGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -20)
+        TinGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -20)
     }
 
     private func observeWevvKeyboardSugar() {
@@ -797,7 +797,7 @@ final class WevVWevvBakerytropicalMangoEssence: UIViewController, UITextFieldDel
     }
 
     @objc private func openWevvTermsText() {
-        let controller = WevVSugarPlainblackberryCreamler(
+        let controller = ZunugarPlainblackberryCreamler(
             filledScout: "TmeMrUmrsy VoAfz SUHsreg".wevVPastryCrumbBloomRestored,
             crullerScout: fragrantJasmineFlavor()
         )
@@ -806,7 +806,7 @@ final class WevVWevvBakerytropicalMangoEssence: UIViewController, UITextFieldDel
     }
 
     @objc private func openWevvNoticeText() {
-        let controller = WevVSugarPlainblackberryCreamler(
+        let controller = ZunugarPlainblackberryCreamler(
             filledScout: "PDrriSvParc!yT xPmogldikctyA".wevVPastryCrumbBloomRestored,
             crullerScout: earthySesameContrast()
         )

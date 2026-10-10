@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVWevvMaplePillButton: UIControl {
+final class OumMaplePillButton: UIControl {
     private let wevvMapleTitleLabel = UILabel()
     private let wevvMapleLayer = CAGradientLayer()
     private var wevvActiveGlazeColors: [CGColor] = [

@@ -1,10 +1,10 @@
 import UIKit
 
-final class WevVFrostingmuralSignalController: UIViewController {
+final class NmFrostingmuralSignalController: UIViewController {
     private let sprinkleChallenge: WevVTastingQuest
     private let glazeSession = WevVGlazeSessionStore.shared
     private let glazeVaultRepository = WevVGlazeVaultRepository.pastryTrailDiary
-    private let guestStore = WevVGuestGlazeStore.shared
+    private let guestStore = VGuestSevenSweet.shared
     private let almondBench = UIButton(type: .system)
     private var dimLayer: UIControl?
     private weak var glazeHeroView: UIView?
@@ -225,7 +225,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
         let yeastFermentationStudy = doughMaturationStudy(syrupViscosityDetail: hostProfile.donutPinKey, batterConsistencyStudy: 48)
         let creamName = makeglazeThicknessStudyLabel(hostProfile.cocoaCounter, sugarCrystallizationStudy: 16, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
         let sub = makeglazeThicknessStudyLabel(sprinkleChallenge.tasterLine, sugarCrystallizationStudy: 13, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1))
-        let follow = WevVWevvMaplePillButton(title: "FSoxlolhoAwX".wevVPastryCrumbBloomRestored)
+        let follow = OumMaplePillButton(title: "FSoxlolhoAwX".wevVPastryCrumbBloomRestored)
         follow.addAction(UIAction { [weak self] _ in
             self?.openPersonProfile(tasterBadgeKey: hostProfile.donutPinKey)
         }, for: .touchUpInside)
@@ -419,7 +419,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
             do {
                 try await self.glazeVaultRepository.flourBlendDetail(self.sprinkleChallenge.sprinkleDensityValue)
                 await MainActor.run {
-                    WevVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
+                    AoVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
                         guard let self else { return }
                         self.glazeSession.placeJoinedGlazeQuest(self.sprinkleChallenge.sprinkleJarKey)
                         self.doughMaturationDetail()
@@ -429,14 +429,14 @@ final class WevVFrostingmuralSignalController: UIViewController {
             } catch {
                 await MainActor.run {
                     self.almondBench.isEnabled = true
-                    WevVGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
+                    TinGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
                 }
             }
         }
     }
 
     private func mouthfeelHarmonyInsight() {
-        let gate = WevVWevvBakerytropicalMangoEssence()
+        let gate = UBakerytropicalMangoEssence()
         gate.onWevvDonutReady = { [weak self] in
             self?.dismiss(animated: true) {
                 self?.doughMaturationDetail()
@@ -455,12 +455,12 @@ final class WevVFrostingmuralSignalController: UIViewController {
 
         let wevvletterForm = UIImageView(image: UIImage.init(named: "ervoldgem"))
         wevvletterForm.translatesAutoresizingMaskIntoConstraints = false
-        let glazeTitle = makeglazeThicknessStudyLabel("NSoCtz qeLnCosujgoh= sgloWlKdn".wevVPastryCrumbBloomRestored, sugarCrystallizationStudy: 17, glazeThickness: .heavy, tarchGelatini: WevVGlazePromptStyler.inkTone)
+        let glazeTitle = makeglazeThicknessStudyLabel("NSoCtz qeLnCosujgoh= sgloWlKdn".wevVPastryCrumbBloomRestored, sugarCrystallizationStudy: 17, glazeThickness: .heavy, tarchGelatini: TinGlazePromptStyler.inkTone)
         glazeTitle.textAlignment = .center
-        let crumbNote = makeglazeThicknessStudyLabel("Sorry, your donut vault is short.\nRecharge to join this sweet challenge.", sugarCrystallizationStudy: 12, glazeThickness: .semibold, tarchGelatini: WevVGlazePromptStyler.mutedTone)
+        let crumbNote = makeglazeThicknessStudyLabel("Sorry, your donut vault is short.\nRecharge to join this sweet challenge.", sugarCrystallizationStudy: 12, glazeThickness: .semibold, tarchGelatini: TinGlazePromptStyler.mutedTone)
         crumbNote.textAlignment = .center
         crumbNote.numberOfLines = 2
-        let wevv = WevVWevvMaplePillButton(title: "BGu;yq".wevVPastryCrumbBloomRestored)
+        let wevv = OumMaplePillButton(title: "BGu;yq".wevVPastryCrumbBloomRestored)
         wevv.addTarget(self, action: #selector(openVaultFromPopup), for: .touchUpInside)
         pastryCard.addSubview(wevvletterForm)
         pastryCard.addSubview(glazeTitle)
@@ -482,7 +482,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
     private func makeGoldShortageCard() -> UIView {
         let pastryCard = UIView()
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
-        pastryCard.backgroundColor = WevVGlazePromptStyler.creamTone
+        pastryCard.backgroundColor = TinGlazePromptStyler.creamTone
         pastryCard.layer.cornerRadius = 24
         pastryCard.layer.shadowColor = UIColor(red: 0.56, green: 0.05, blue: 0.28, alpha: 1).cgColor
         pastryCard.layer.shadowOpacity = 0.22
@@ -622,7 +622,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
 
     @objc private func openVaultFromPopup() {
         butterAromaNotes()
-        let nuttyFinishInsight = WevVDonutdenCrumbCenterler()
+        let nuttyFinishInsight = GDonutdenCrumbCenterler()
         nuttyFinishInsight.silkyCenter = { [weak self] in
             self?.cocoaDiarydonutChanged?()
         }
@@ -632,7 +632,7 @@ final class WevVFrostingmuralSignalController: UIViewController {
 
     private func openPersonProfile(tasterBadgeKey: String) {
         butterAromaNotes()
-        let controller = WevVWevvTasterCardController(tasterBadgeKey: tasterBadgeKey)
+        let controller = LmnTasterCardController(tasterBadgeKey: tasterBadgeKey)
         present(controller, animated: true)
     }
 

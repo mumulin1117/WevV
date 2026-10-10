@@ -48,7 +48,7 @@ private final class WevVInsetLabel: UILabel {
     }
 }
 
-final class WevVDonutcreamapricotFillinger: UIViewController {
+final class TvVDonutcreamapricotFillinger: UIViewController {
     static let homeChallengeParticipantKeys: Set<String> = [
         "joabmmite#Ciotl?eF".wevVPastryCrumbBloomRestored,
         "rQhfeJaQHVoCneeuyOGilpamz,eE".wevVPastryCrumbBloomRestored,
@@ -57,7 +57,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
     ]
     private static let glazeImageCache = NSCache<NSString, UIImage>()
     private let donutJournalStore = WevVGlazeSessionStore.shared
-    private let bakeryTasterStore = WevVGuestGlazeStore.shared
+    private let bakeryTasterStore = VGuestSevenSweet.shared
     private let glazeContentRepository = WevVGlazeContentRepository.pastryTrailDiary
     private let glazeSocialRepository = WevVGlazeSocialRepository.pastryTrailDiary
     private let pastryTrailScroll = UIScrollView()
@@ -958,7 +958,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
         guard let hostID = sender.accessibilityIdentifier,
               let userID = Int64(hostID),
               userID > 0 else { return }
-        let controller = WevVWevvTasterCardController(userID: userID)
+        let controller = LmnTasterCardController(userID: userID)
         present(controller, animated: true)
     }
 
@@ -1584,7 +1584,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
         treatCaseCard.clipsToBounds = true
         treatCaseCard.addTarget(self, action: #selector(openChallengeDetail(_:)), for: .touchUpInside)
 
-        let heroImage = UIImageView(image: WevVPastryImageVault.watercolorIcingDesign(for: tastingQuest.cardAsset))
+        let heroImage = UIImageView(image: DucerPastryImageVault.watercolorIcingDesign(for: tastingQuest.cardAsset))
         heroImage.translatesAutoresizingMaskIntoConstraints = false
         heroImage.contentMode = .scaleAspectFill
         heroImage.clipsToBounds = true
@@ -2257,7 +2257,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
         treatCaseCard.clipsToBounds = true
         treatCaseCard.addTarget(self, action: #selector(openChallengeDetail(_:)), for: .touchUpInside)
 
-        let heroImage = UIImageView(image: WevVPastryImageVault.watercolorIcingDesign(for: tastingQuest.cardAsset))
+        let heroImage = UIImageView(image: DucerPastryImageVault.watercolorIcingDesign(for: tastingQuest.cardAsset))
         heroImage.translatesAutoresizingMaskIntoConstraints = false
         heroImage.contentMode = .scaleAspectFill
         heroImage.clipsToBounds = true
@@ -2352,7 +2352,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func makeSprinkleQuestHeroImage(asset: String) -> UIImageView {
-        let heroImage = UIImageView(image: WevVPastryImageVault.watercolorIcingDesign(for: asset))
+        let heroImage = UIImageView(image: DucerPastryImageVault.watercolorIcingDesign(for: asset))
         heroImage.translatesAutoresizingMaskIntoConstraints = false
         heroImage.contentMode = .scaleAspectFill
         heroImage.clipsToBounds = true
@@ -2515,7 +2515,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func makeSprinkleMomentHeroImage(_ donutSnapshot: WevVDonutSnapshot) -> UIImageView {
-        let glazeImage = UIImageView(image: WevVPastryImageVault.watercolorIcingDesign(for: donutSnapshot.donutBackdropAsset) ?? makeFrostingHeroImage(seed: donutSnapshot.donutBackdropAsset))
+        let glazeImage = UIImageView(image: DucerPastryImageVault.watercolorIcingDesign(for: donutSnapshot.donutBackdropAsset) ?? makeFrostingHeroImage(seed: donutSnapshot.donutBackdropAsset))
         glazeImage.translatesAutoresizingMaskIntoConstraints = false
         glazeImage.contentMode = .scaleAspectFill
         glazeImage.clipsToBounds = true
@@ -2523,7 +2523,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func makeSprinkleMomentTextBand() -> UIView {
-        let glazeBand = WevVSugarGradientBand()
+        let glazeBand = FimVSugarGradientBand()
         glazeBand.translatesAutoresizingMaskIntoConstraints = false
         glazeBand.isUserInteractionEnabled = false
         return glazeBand
@@ -3007,7 +3007,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        let controller = WevVNoticeEmptyController()
+        let controller = LisenNoticepoplater()
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
@@ -3174,7 +3174,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
         let roomID = String(identifier[identifier.index(after: separator)...])
         guard let kind = chocolateCompote(rawValue: kindText),
               let room = glazeRoomItems.first(where: { $0.lemonCurd == kind && $0.passionfruitMousse == roomID }) else { return }
-        present(WevVGlazeActortroller(tastingRoom: room), animated: true)
+        present(UKGlazeActortroller(tastingProfile: room), animated: true)
     }
 
     @objc private func advanceBakeryAtlasCarousel() {
@@ -3195,7 +3195,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        let controller = WevVWevvTastingQuestComposerController()
+        let controller = GemTastingQuestComposerController()
         controller.firstGlazeDelight = { [weak self] packet in
             guard let self else { return }
             let quest = self.makeTastingQuest(from: packet)
@@ -3213,8 +3213,8 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        let controller = WevVSugarMomentComposerController()
-        controller.onSugarMomentReady = { [weak self] in self?.loadGlazeContent() }
+        let controller = SugarMomentEbuController()
+        controller.vanillaBeanIcing = { [weak self] in self?.loadGlazeContent() }
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
@@ -3374,7 +3374,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        let controller = WevVDailyDonutcherryCompote()
+        let controller = DailyDonutcherryCompote()
         controller.onDonutStampChanged = { [weak self] in
             self?.refreshDonutDiaryPanel()
         }
@@ -3391,31 +3391,31 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        let controller = WevVWevvBakerfvanillaBeanIcing(bakeryDetails: allBakeryAtlasDetails())
+        let controller = CunBakerfvanillaBeanIcing(bakeryDetails: allBakeryAtlasDetails())
         controller.onWevvShelfChanged = { [weak self] in
             self?.refreshDonutDiaryPanel()
         }
         controller.modalPresentationStyle = .fullScreen
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "ORppegnSiFn=gG idoobnZugts GsIhmoWp^.r.P.I".wevVPastryCrumbBloomRestored) { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "ORppegnSiFn=gG idoobnZugts GsIhmoWp^.r.P.I".wevVPastryCrumbBloomRestored) { [weak self] in
             self?.present(controller, animated: true)
         }
     }
 
     @objc private func openBakeryTrailList() {
-        openDonutTasterRoster(.glazeFollowing)
+        openDonutTasterRoster(.brownButterGlaze)
     }
 
     @objc private func openTasterTrailList() {
-        openDonutTasterRoster(.sprinkleFollower)
+        openDonutTasterRoster(.maplePecanCoating)
     }
 
-    private func openDonutTasterRoster(_ mode: WevVSugarRosterMode) {
+    private func openDonutTasterRoster(_ rubyCocoaSwirl: saltedCaramelFinish) {
         guard donutJournalStore.isTasterReady else {
             presentProtectedGate()
             return
         }
-        let controller = WevVSugarRosterbrownButterDrizzle(mode: mode)
-        controller.onRosterChanged = { [weak self] in
+        let controller = XunSugarRosterbrownButterDrizzle(rubyCocoaSwirl: rubyCocoaSwirl)
+        controller.whiteChocolateRibbon = { [weak self] in
             self?.refreshDonutDiaryPanel()
             self?.rebuildDonutSnapshotStack()
         }
@@ -3428,7 +3428,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        let controller = WevVSugarpistachioCreamCoating()
+        let controller = DimSugarpistachioCreamCoating()
         controller.onSugarSettingChanged = { [weak self] in
             self?.refreshDonutDiaryPanel()
         }
@@ -3440,14 +3440,14 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
         if let identifier = sender.accessibilityIdentifier,
            let momentID = Int64(identifier),
            let moment = (glazeTrendingMomentItems + glazeFollowedMomentItems + glazeProfileMomentItems).first(where: { $0.coconutCenter == momentID }) {
-            let controller = WevVWevvDonutMomentController(richCocoaFlavor: moment)
+            let controller = KipoDonutMomentController(richCocoaFlavor: moment)
             controller.cocoaKissExperience = { [weak self] in self?.loadGlazeContent() }
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true)
             return
         }
         guard let donutSnapshot = donutSnapshots.first else { return }
-        let controller = WevVWevvDonutMomentController(vanillaStrawberryDuet: donutSnapshot)
+        let controller = KipoDonutMomentController(vanillaStrawberryDuet: donutSnapshot)
         controller.cocoaKissExperience = { [weak self] in
             self?.rebuildDonutSnapshotStack()
         }
@@ -3557,7 +3557,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func showRootSugarHint(_ text: String) {
-        WevVGlazePromptStyler.showSugarToast(in: view, text: text, above: donutParlorTabBack, bottomOffset: -14)
+        TinGlazePromptStyler.showSugarToast(in: view, text: text, above: donutParlorTabBack, bottomOffset: -14)
     }
 
     @objc private func openDonutArchive() {
@@ -3565,7 +3565,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        let controller = WevVDonutdenCrumbCenterler()
+        let controller = GDonutdenCrumbCenterler()
         controller.silkyCenter = { [weak self] in
             self?.refreshDonutDiaryPanel()
         }
@@ -3588,7 +3588,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
         let bakeryAtlas = bakeryAtlasItems.first { $0.donutPinKey == donutPinKey } ?? bakeryAtlasItems[0]
         let shopShelf = allBakeryAtlasDetails()
         let detail = shopShelf.first { $0.donutPinKey == bakeryAtlas.donutPinKey } ?? makeBakeryAtlasDetail(bakeryAtlas)
-        let controller = WevVWevvBakeryDetailController(detail: detail, bakeryShelf: shopShelf)
+        let controller = IOpBakeryDetailController(detail: detail, bakeryShelf: shopShelf)
         controller.pastryShelfChanged = { [weak self] in
             self?.refreshDonutDiaryPanel()
         }
@@ -3766,19 +3766,19 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
     @objc private func openChallengeDetail(_ sprinkleSender: UIControl) {
         let sprinkleJarKey = sprinkleSender.accessibilityIdentifier ?? ""
         let selectedChallenge = tastingQuests.first { $0.sprinkleJarKey == sprinkleJarKey } ?? tastingQuests[0]
-        let controller = WevVFrostingmuralSignalController(almondMixer: selectedChallenge)
+        let controller = NmFrostingmuralSignalController(almondMixer: selectedChallenge)
         controller.cocoaDiarydonutChanged = { [weak self] in
             self?.refreshDonutDiaryPanel()
         }
         controller.modalPresentationStyle = .fullScreen
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "OypleUn#iRnzgJ jcfhOawlzlEewn+g$eO.G.A.o".wevVPastryCrumbBloomRestored) { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "OypleUn#iRnzgJ jcfhOawlzlEewn+g$eO.G.A.o".wevVPastryCrumbBloomRestored) { [weak self] in
             self?.present(controller, animated: true)
         }
     }
 
     private func presentProtectedGate() {
         guard donutJournalStore.isTasterReady else {
-            let gate = WevVWevvBakerytropicalMangoEssence()
+            let gate = UBakerytropicalMangoEssence()
             gate.onWevvDonutReady = { [weak self] in
                 self?.refreshDonutDiaryPanel()
                 self?.dismiss(animated: true)
@@ -3878,7 +3878,7 @@ final class WevVDonutcreamapricotFillinger: UIViewController {
     }
 }
 
-extension WevVDonutcreamapricotFillinger: UIScrollViewDelegate {
+extension TvVDonutcreamapricotFillinger: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView === bakeryAtlasCarousel, bakeryAtlasCarousel.bounds.width > 0 {
             let page = Int(round(bakeryAtlasCarousel.contentOffset.x / bakeryAtlasCarousel.bounds.width))

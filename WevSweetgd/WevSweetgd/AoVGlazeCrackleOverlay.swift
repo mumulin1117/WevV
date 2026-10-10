@@ -1,6 +1,6 @@
 import UIKit
 
-enum WevVGlazeCrackleOverlay {
+enum AoVGlazeCrackleOverlay {
     static func showGlazeCrackle(
         in frostingDepthView: UIView,
         note: String,

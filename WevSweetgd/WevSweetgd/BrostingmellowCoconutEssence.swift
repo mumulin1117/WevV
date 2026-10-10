@@ -1,10 +1,10 @@
 import UIKit
 
-final class WevVFrostingmellowCoconutEssence: UIViewController {
+final class BrostingmellowCoconutEssence: UIViewController {
     private let vanillaBeanIcing: WevVTastingQuest
     private let saltedCaramelFinish = WevVGlazeSessionStore.shared
     private let brownButterGlaze = WevVGlazeVaultRepository.pastryTrailDiary
-    private let maplePecanCoating = WevVGuestGlazeStore.shared
+    private let maplePecanCoating = VGuestSevenSweet.shared
     private let citrusZestShell = UIButton(type: .system)
     private var darkCocoaDrizzle: UIControl?
 
@@ -214,7 +214,7 @@ final class WevVFrostingmellowCoconutEssence: UIViewController {
         let mangoFilling = coconutCenter(honeyedFigFinish: apricotCompote.donutPinKey, sunbeamGlazeStyle: 48)
         let passionfruitMousse = cinnamonSugarFinish(apricotCompote.cocoaCounter, lemonBlueberryCombination: 16, caramelPecanMedley: .heavy, honeyLavenderCombination: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
         let lemonCurd = cinnamonSugarFinish(vanillaBeanIcing.tasterLine, lemonBlueberryCombination: 13, caramelPecanMedley: .heavy, honeyLavenderCombination: UIColor(red: 0.5, green: 0.45, blue: 0.56, alpha: 1))
-        let limeJam = WevVWevvMaplePillButton(title: "FSoxlolhoAwX".wevVPastryCrumbBloomRestored)
+        let limeJam = OumMaplePillButton(title: "FSoxlolhoAwX".wevVPastryCrumbBloomRestored)
         limeJam.addAction(UIAction { [weak self] _ in
             self?.yuzuCustard(mapleWalnutMedley: apricotCompote.donutPinKey)
         }, for: .touchUpInside)
@@ -433,7 +433,7 @@ final class WevVFrostingmellowCoconutEssence: UIViewController {
             do {
                 try await self.brownButterGlaze.flourBlendDetail(self.vanillaBeanIcing.sprinkleDensityValue)
                 await MainActor.run {
-                    WevVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
+                    AoVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
                         guard let self else { return }
                         self.saltedCaramelFinish.placeJoinedGlazeQuest(self.vanillaBeanIcing.sprinkleJarKey)
                         self.raspberryRoseDrizzle()
@@ -443,14 +443,14 @@ final class WevVFrostingmellowCoconutEssence: UIViewController {
             } catch {
                 await MainActor.run {
                     self.citrusZestShell.isEnabled = true
-                    WevVGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
+                    TinGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
                 }
             }
         }
     }
 
     private func limeCream() {
-        let crispyBite = WevVWevvBakerytropicalMangoEssence()
+        let crispyBite = UBakerytropicalMangoEssence()
         crispyBite.onWevvDonutReady = { [weak self] in
             self?.dismiss(animated: true) {
                 self?.raspberryRoseDrizzle()
@@ -469,12 +469,12 @@ final class WevVFrostingmellowCoconutEssence: UIViewController {
 
         let hazelnutCream = UIImageView(image: UIImage.init(named: "ervoldgem"))
         hazelnutCream.translatesAutoresizingMaskIntoConstraints = false
-        let chaiSpiceIcing = cinnamonSugarFinish("NSoCtz qeLnCosujgoh= sgloWlKdn".wevVPastryCrumbBloomRestored, lemonBlueberryCombination: 17, caramelPecanMedley: .heavy, honeyLavenderCombination: WevVGlazePromptStyler.inkTone)
+        let chaiSpiceIcing = cinnamonSugarFinish("NSoCtz qeLnCosujgoh= sgloWlKdn".wevVPastryCrumbBloomRestored, lemonBlueberryCombination: 17, caramelPecanMedley: .heavy, honeyLavenderCombination: TinGlazePromptStyler.inkTone)
         chaiSpiceIcing.textAlignment = .center
-        let strawberryMilkShell = cinnamonSugarFinish("Sorry, your donut vault is short.\nRecharge to join this sweet challenge.", lemonBlueberryCombination: 12, caramelPecanMedley: .semibold, honeyLavenderCombination: WevVGlazePromptStyler.mutedTone)
+        let strawberryMilkShell = cinnamonSugarFinish("Sorry, your donut vault is short.\nRecharge to join this sweet challenge.", lemonBlueberryCombination: 12, caramelPecanMedley: .semibold, honeyLavenderCombination: TinGlazePromptStyler.mutedTone)
         strawberryMilkShell.textAlignment = .center
         strawberryMilkShell.numberOfLines = 2
-        let flakyLayer = WevVWevvMaplePillButton(title: "BGu;yq".wevVPastryCrumbBloomRestored)
+        let flakyLayer = OumMaplePillButton(title: "BGu;yq".wevVPastryCrumbBloomRestored)
         flakyLayer.addTarget(self, action: #selector(chewyCrust), for: .touchUpInside)
         orangeBlossomCoating.addSubview(hazelnutCream)
         orangeBlossomCoating.addSubview(chaiSpiceIcing)
@@ -496,7 +496,7 @@ final class WevVFrostingmellowCoconutEssence: UIViewController {
     private func mascarponeCream() -> UIView {
         let orangeBlossomCoating = UIView()
         orangeBlossomCoating.translatesAutoresizingMaskIntoConstraints = false
-        orangeBlossomCoating.backgroundColor = WevVGlazePromptStyler.creamTone
+        orangeBlossomCoating.backgroundColor = TinGlazePromptStyler.creamTone
         orangeBlossomCoating.layer.cornerRadius = 24
         orangeBlossomCoating.layer.shadowColor = UIColor(red: 0.56, green: 0.05, blue: 0.28, alpha: 1).cgColor
         orangeBlossomCoating.layer.shadowOpacity = 0.22
@@ -636,7 +636,7 @@ final class WevVFrostingmellowCoconutEssence: UIViewController {
 
     @objc private func chewyCrust() {
         tenderFinish()
-        let crunchyDough = WevVDonutdenCrumbCenterler()
+        let crunchyDough = GDonutdenCrumbCenterler()
         crunchyDough.silkyCenter = { [weak self] in
             self?.honeyButterGlaze?()
         }
@@ -646,7 +646,7 @@ final class WevVFrostingmellowCoconutEssence: UIViewController {
 
     private func yuzuCustard(mapleWalnutMedley: String) {
         tenderFinish()
-        let crunchyDough = WevVWevvTasterCardController(tasterBadgeKey: mapleWalnutMedley)
+        let crunchyDough = LmnTasterCardController(tasterBadgeKey: mapleWalnutMedley)
         present(crunchyDough, animated: true)
     }
 

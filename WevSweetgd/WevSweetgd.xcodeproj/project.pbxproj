@@ -15,6 +15,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				"room-dist.bundle",
 			);
 			target = 04CF1DD63011C45F00595192 /* WevSweetgd */;
 		};

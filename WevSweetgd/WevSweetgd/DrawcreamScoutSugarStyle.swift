@@ -1,8 +1,8 @@
 import StoreKit
 import UIKit
 
-final class WevvcreamScoutSugarStyle: NSObject {
-    static let creamScout = WevvcreamScoutSugarStyle()
+final class DrawcreamScoutSugarStyle: NSObject {
+    static let creamScout = DrawcreamScoutSugarStyle()
 
     var activeSugarPictureTile: String?
     private var onSugarMomentReady: ((Result<Void, Error>) -> Void)?
@@ -63,7 +63,7 @@ final class WevvcreamScoutSugarStyle: NSObject {
     }
 }
 
-extension WevvcreamScoutSugarStyle: SKProductsRequestDelegate {
+extension DrawcreamScoutSugarStyle: SKProductsRequestDelegate {
     func productsRequest(_ sugarPictureTile: SKProductsRequest, didReceive sugarStatus: SKProductsResponse) {
         guard let chosenAssetPacket = sugarStatus.products.first else {
             DispatchQueue.main.async {
@@ -107,7 +107,7 @@ extension WevvcreamScoutSugarStyle: SKProductsRequestDelegate {
     }
 }
 
-extension WevvcreamScoutSugarStyle: SKPaymentTransactionObserver {
+extension DrawcreamScoutSugarStyle: SKPaymentTransactionObserver {
     func paymentQueue(_ sugarRow: SKPaymentQueue, updatedTransactions chosenTiles: [SKPaymentTransaction]) {
         for activeSugarPictureTilePacket in chosenTiles {
             switch activeSugarPictureTilePacket.transactionState {

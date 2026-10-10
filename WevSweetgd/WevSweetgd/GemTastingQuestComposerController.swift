@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVWevvTastingQuestComposerController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+final class GemTastingQuestComposerController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var firstGlazeDelight: ((WevVSprinkleQuestPacket) -> Void)?
 
     private let sugarCraftLaboratory = WevVGlazeSessionStore.shared
@@ -15,6 +15,7 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
     private let portraitPastryGallery = UIImageView()
     private let pastryBrushEssentials = UIButton(type: .system)
     private let softShadowScene = UIView()
+    private let vanillaGlowBackdrop = CAGradientLayer()
     private let zestyTwistJourney = "SKhDaRrleY KyNoiu~ri Xs;whe;e%tSesshtZ Zs/tPrhaUwlb*eerBrqyp adwoPn&ujty Rc.rgeFaut+i,oBnL.R".wevVPastryCrumbBloomRestored
     private let seasonalMenuCollection = [
         "wevv_challenge_strawberry_week",
@@ -33,10 +34,23 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 1.0, green: 0.94, blue: 0.98, alpha: 1)
+        vanillaGlowBackdrop.colors = [
+            UIColor(red: 1.0, green: 0.89, blue: 0.95, alpha: 1).cgColor,
+            UIColor(red: 1.0, green: 0.96, blue: 0.98, alpha: 1).cgColor,
+            UIColor.white.cgColor
+        ]
+        vanillaGlowBackdrop.locations = [0, 0.56, 1]
+        vanillaGlowBackdrop.startPoint = CGPoint(x: 0.5, y: 0)
+        vanillaGlowBackdrop.endPoint = CGPoint(x: 0.5, y: 1)
+        view.layer.insertSublayer(vanillaGlowBackdrop, at: 0)
         warmBakeryHandbook()
         NotificationCenter.default.addObserver(self, selector: #selector(proofingTimeNotes(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(benchRestDetail(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        vanillaGlowBackdrop.frame = view.bounds
     }
 
     deinit {
@@ -54,16 +68,16 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
 
         let cakeRing = sweetKeepsakeEntry("PMudbRlxiqsih* MCmhOaHlCl;e^nCgieh".wevVPastryCrumbBloomRestored, size: 18, weight: .bold)
         cakeRing.textAlignment = .center
-        let flavorMenuJournal = sweetKeepsakeEntry("CIhpaBlKlgejnjgHe; JTzhLeqmkeZ".wevVPastryCrumbBloomRestored, size: 14, weight: .bold)
+        let flavorMenuJournal = sweetKeepsakeEntry("CIhpaBlKlgejnjgHe; JTzhLeqmkeZ".wevVPastryCrumbBloomRestored, size: 18, weight: .bold)
         let pastryCatalogSeries = tastingPassportEdition()
-        let ringCakeBeignet = sweetKeepsakeEntry("P!arrltYivc/iCp!a!tui?o?n@ ^CHoU".wevVPastryCrumbBloomRestored + "iynosi".wevVPastryCrumbBloomRestored, size: 14, weight: .bold)
+        let ringCakeBeignet = sweetKeepsakeEntry("P!arrltYivc/iCp!a!tui?o?n@ ^CHoU".wevVPastryCrumbBloomRestored + "iynosi".wevVPastryCrumbBloomRestored, size: 18, weight: .bold)
         let sugarRaisedBeignet = sugarCraftStudio()
-        let textureContrastIndex = sweetKeepsakeEntry("IGn~tPrxoPduu*cStPi/oGn@".wevVPastryCrumbBloomRestored, size: 14, weight: .bold)
+        let textureContrastIndex = sweetKeepsakeEntry("IGn~tPrxoPduu*cStPi/oGn@".wevVPastryCrumbBloomRestored, size: 18, weight: .bold)
         let fillingSilkMatrix = custardCraftHandbook()
-        let spiceWarmthNotes = sweetKeepsakeEntry("TZiAmgeV".wevVPastryCrumbBloomRestored, size: 14, weight: .bold)
-        let citrusBrightnessMatrix = sweetKeepsakeEntry("Luozc^aH".wevVPastryCrumbBloomRestored + "t!ihoJnH".wevVPastryCrumbBloomRestored, size: 14, weight: .bold)
-        let batterConsistencyStudy = doughKitchenShowcase(field: tastingSequenceInsight, text: "Friday · 8:00 PM –\n10:30 PM")
-        let glazeThicknessStudy = doughKitchenShowcase(field: cafeDirectorySelection, text: "128 Berry Street, San\nFranci...")
+        let spiceWarmthNotes = sweetKeepsakeEntry("TZiAmgeV".wevVPastryCrumbBloomRestored, size: 18, weight: .bold)
+        let citrusBrightnessMatrix = sweetKeepsakeEntry("Luozc^aH".wevVPastryCrumbBloomRestored + "t!ihoJnH".wevVPastryCrumbBloomRestored, size: 18, weight: .bold)
+        let batterConsistencyStudy = doughKitchenShowcase(field: tastingSequenceInsight, placeholder: "Enter Time")
+        let glazeThicknessStudy = doughKitchenShowcase(field: cafeDirectorySelection, placeholder: "Enter Location")
 
         confectionCraftWorkshop()
         handmadePastryStudio(doughScraperTechnique: doughScraperTechnique, cakeRing: cakeRing, flavorMenuJournal: flavorMenuJournal, pastryCatalogSeries: pastryCatalogSeries, ringCakeBeignet: ringCakeBeignet, sugarRaisedBeignet: sugarRaisedBeignet, textureContrastIndex: textureContrastIndex, fillingSilkMatrix: fillingSilkMatrix, spiceWarmthNotes: spiceWarmthNotes, citrusBrightnessMatrix: citrusBrightnessMatrix, batterConsistencyStudy: batterConsistencyStudy, glazeThicknessStudy: glazeThicknessStudy)
@@ -76,6 +90,8 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
         doughStretchRhythm.translatesAutoresizingMaskIntoConstraints = false
         doughStretchRhythm.alwaysBounceVertical = true
         doughStretchRhythm.keyboardDismissMode = .interactive
+        doughStretchRhythm.showsVerticalScrollIndicator = false
+        doughStretchRhythm.contentInsetAdjustmentBehavior = .never
         view.addSubview(doughStretchRhythm)
 
         pastryAlchemyStudio.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +107,7 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
             pastryAlchemyStudio.trailingAnchor.constraint(equalTo: doughStretchRhythm.contentLayoutGuide.trailingAnchor),
             pastryAlchemyStudio.bottomAnchor.constraint(equalTo: doughStretchRhythm.contentLayoutGuide.bottomAnchor),
             pastryAlchemyStudio.widthAnchor.constraint(equalTo: doughStretchRhythm.frameLayoutGuide.widthAnchor),
-            pastryAlchemyStudio.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+            pastryAlchemyStudio.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, constant: -28)
         ])
     }
 
@@ -101,7 +117,7 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
         handDipSequence.setTitleColor(.white, for: .normal)
         handDipSequence.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         handDipSequence.backgroundColor = UIColor(red: 1.0, green: 0.25, blue: 0.62, alpha: 1)
-        handDipSequence.layer.cornerRadius = 18
+        handDipSequence.layer.cornerRadius = 26
         handDipSequence.addTarget(self, action: #selector(weekendBrunchSampler), for: .touchUpInside)
     }
 
@@ -120,40 +136,40 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
             nuttyFinishInsight.centerYAnchor.constraint(equalTo: yeastBloomSequence.centerYAnchor),
             nuttyFinishInsight.centerXAnchor.constraint(equalTo: pastryAlchemyStudio.centerXAnchor),
             nuttyFinishInsight.leadingAnchor.constraint(greaterThanOrEqualTo: yeastBloomSequence.trailingAnchor, constant: 12),
-            airyCenter.topAnchor.constraint(equalTo: nuttyFinishInsight.bottomAnchor, constant: 22),
-            airyCenter.leadingAnchor.constraint(equalTo: pastryAlchemyStudio.leadingAnchor, constant: 15),
-            crispEdgeCrust.topAnchor.constraint(equalTo: airyCenter.bottomAnchor, constant: 10),
-            crispEdgeCrust.leadingAnchor.constraint(equalTo: pastryAlchemyStudio.leadingAnchor, constant: 15),
-            crispEdgeCrust.trailingAnchor.constraint(equalTo: pastryAlchemyStudio.trailingAnchor, constant: -15),
-            crispEdgeCrust.heightAnchor.constraint(equalToConstant: 92),
-            ringCakeBeignet.topAnchor.constraint(equalTo: crispEdgeCrust.bottomAnchor, constant: 14),
+            airyCenter.topAnchor.constraint(equalTo: nuttyFinishInsight.bottomAnchor, constant: 26),
+            airyCenter.leadingAnchor.constraint(equalTo: pastryAlchemyStudio.leadingAnchor, constant: 16),
+            crispEdgeCrust.topAnchor.constraint(equalTo: airyCenter.bottomAnchor, constant: 14),
+            crispEdgeCrust.leadingAnchor.constraint(equalTo: pastryAlchemyStudio.leadingAnchor, constant: 16),
+            crispEdgeCrust.trailingAnchor.constraint(equalTo: pastryAlchemyStudio.trailingAnchor, constant: -16),
+            crispEdgeCrust.heightAnchor.constraint(equalToConstant: 123),
+            ringCakeBeignet.topAnchor.constraint(equalTo: crispEdgeCrust.bottomAnchor, constant: 15),
             ringCakeBeignet.leadingAnchor.constraint(equalTo: airyCenter.leadingAnchor),
-            sugarRaisedBeignet.topAnchor.constraint(equalTo: ringCakeBeignet.bottomAnchor, constant: 8),
+            sugarRaisedBeignet.topAnchor.constraint(equalTo: ringCakeBeignet.bottomAnchor, constant: 11),
             sugarRaisedBeignet.leadingAnchor.constraint(equalTo: crispEdgeCrust.leadingAnchor),
             sugarRaisedBeignet.trailingAnchor.constraint(equalTo: crispEdgeCrust.trailingAnchor),
-            sugarRaisedBeignet.heightAnchor.constraint(equalToConstant: 48),
-            chewyCrust.topAnchor.constraint(equalTo: sugarRaisedBeignet.bottomAnchor, constant: 14),
+            sugarRaisedBeignet.heightAnchor.constraint(equalToConstant: 78),
+            chewyCrust.topAnchor.constraint(equalTo: sugarRaisedBeignet.bottomAnchor, constant: 17),
             chewyCrust.leadingAnchor.constraint(equalTo: airyCenter.leadingAnchor),
-            pastryFreshnessInsight.topAnchor.constraint(equalTo: chewyCrust.bottomAnchor, constant: 8),
+            pastryFreshnessInsight.topAnchor.constraint(equalTo: chewyCrust.bottomAnchor, constant: 10),
             pastryFreshnessInsight.leadingAnchor.constraint(equalTo: crispEdgeCrust.leadingAnchor),
             pastryFreshnessInsight.trailingAnchor.constraint(equalTo: crispEdgeCrust.trailingAnchor),
-            pastryFreshnessInsight.heightAnchor.constraint(equalToConstant: 110),
-            crustSnapInsight.topAnchor.constraint(equalTo: pastryFreshnessInsight.bottomAnchor, constant: 12),
+            pastryFreshnessInsight.heightAnchor.constraint(equalToConstant: 132),
+            crustSnapInsight.topAnchor.constraint(equalTo: pastryFreshnessInsight.bottomAnchor, constant: 15),
             crustSnapInsight.leadingAnchor.constraint(equalTo: crispEdgeCrust.leadingAnchor),
             textureContrastInsight.topAnchor.constraint(equalTo: crustSnapInsight.topAnchor),
             textureContrastInsight.leadingAnchor.constraint(equalTo: pastryAlchemyStudio.centerXAnchor, constant: 7),
-            mixingBowlEssentials.topAnchor.constraint(equalTo: crustSnapInsight.bottomAnchor, constant: 8),
-            mixingBowlEssentials.leadingAnchor.constraint(equalTo: crispEdgeCrust.leadingAnchor),
+            mixingBowlEssentials.topAnchor.constraint(equalTo: crustSnapInsight.bottomAnchor, constant: 10),
+            mixingBowlEssentials.leadingAnchor.constraint(equalTo: crispEdgeCrust.leadingAnchor, constant: 4),
             mixingBowlEssentials.trailingAnchor.constraint(equalTo: pastryAlchemyStudio.centerXAnchor, constant: -7),
-            mixingBowlEssentials.heightAnchor.constraint(equalToConstant: 64),
-            batterWhiskEssentials.topAnchor.constraint(equalTo: textureContrastInsight.bottomAnchor, constant: 8),
+            mixingBowlEssentials.heightAnchor.constraint(equalToConstant: 50),
+            batterWhiskEssentials.topAnchor.constraint(equalTo: textureContrastInsight.bottomAnchor, constant: 10),
             batterWhiskEssentials.leadingAnchor.constraint(equalTo: pastryAlchemyStudio.centerXAnchor, constant: 7),
-            batterWhiskEssentials.trailingAnchor.constraint(equalTo: crispEdgeCrust.trailingAnchor),
+            batterWhiskEssentials.trailingAnchor.constraint(equalTo: crispEdgeCrust.trailingAnchor, constant: -4),
             batterWhiskEssentials.heightAnchor.constraint(equalTo: mixingBowlEssentials.heightAnchor),
-            handDipSequence.topAnchor.constraint(equalTo: mixingBowlEssentials.bottomAnchor, constant: 20),
-            handDipSequence.leadingAnchor.constraint(equalTo: pastryAlchemyStudio.leadingAnchor, constant: 15),
-            handDipSequence.trailingAnchor.constraint(equalTo: pastryAlchemyStudio.trailingAnchor, constant: -15),
-            handDipSequence.heightAnchor.constraint(equalToConstant: 64),
+            handDipSequence.topAnchor.constraint(equalTo: mixingBowlEssentials.bottomAnchor, constant: 40),
+            handDipSequence.centerXAnchor.constraint(equalTo: pastryAlchemyStudio.centerXAnchor),
+            handDipSequence.widthAnchor.constraint(equalTo: pastryAlchemyStudio.widthAnchor, multiplier: 0.784),
+            handDipSequence.heightAnchor.constraint(equalToConstant: 52),
             handDipSequence.bottomAnchor.constraint(equalTo: pastryAlchemyStudio.bottomAnchor, constant: -24)
         ])
     }
@@ -231,7 +247,7 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
         pastryWorkshopMap.layer.cornerRadius = 20
         pastryWorkshopMap.clipsToBounds = true
 
-        let latteHarmony = sweetKeepsakeEntry("TGIyTqLsEW".wevVPastryCrumbBloomRestored, size: 10, weight: .bold)
+        let latteHarmony = sweetKeepsakeEntry("TGIyTqLsEW".wevVPastryCrumbBloomRestored, size: 13, weight: .bold)
         latteHarmony.textColor = UIColor(red: 0.66, green: 0.56, blue: 0.68, alpha: 1)
 
         donutArchivePage.translatesAutoresizingMaskIntoConstraints = false
@@ -242,18 +258,18 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
         donutArchivePage.layer.cornerRadius = 12
         donutArchivePage.layer.borderWidth = 1
         donutArchivePage.layer.borderColor = UIColor(red: 0.94, green: 0.80, blue: 0.89, alpha: 1).cgColor
-        donutArchivePage.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 1))
+        donutArchivePage.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
         donutArchivePage.leftViewMode = .always
 
         pastryWorkshopMap.addSubview(latteHarmony)
         pastryWorkshopMap.addSubview(donutArchivePage)
         NSLayoutConstraint.activate([
-            latteHarmony.topAnchor.constraint(equalTo: pastryWorkshopMap.topAnchor, constant: 15),
-            latteHarmony.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor, constant: 16),
-            donutArchivePage.topAnchor.constraint(equalTo: latteHarmony.bottomAnchor, constant: 8),
-            donutArchivePage.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor, constant: 12),
-            donutArchivePage.trailingAnchor.constraint(equalTo: pastryWorkshopMap.trailingAnchor, constant: -12),
-            donutArchivePage.heightAnchor.constraint(equalToConstant: 42)
+            latteHarmony.topAnchor.constraint(equalTo: pastryWorkshopMap.topAnchor, constant: 22),
+            latteHarmony.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor, constant: 20),
+            donutArchivePage.topAnchor.constraint(equalTo: latteHarmony.bottomAnchor, constant: 17),
+            donutArchivePage.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor, constant: 20),
+            donutArchivePage.trailingAnchor.constraint(equalTo: pastryWorkshopMap.trailingAnchor, constant: -20),
+            donutArchivePage.heightAnchor.constraint(equalToConstant: 52)
         ])
         return pastryWorkshopMap
     }
@@ -261,7 +277,9 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
     private func sugarCraftStudio() -> UIView {
         let pastryWorkshopMap = UIView()
         pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false
-        pastryWorkshopMap.backgroundColor = .clear
+        pastryWorkshopMap.backgroundColor = .white
+        pastryWorkshopMap.layer.cornerRadius = 30
+        pastryWorkshopMap.clipsToBounds = true
 
         let donutTrailPlanner = UIStackView()
         donutTrailPlanner.translatesAutoresizingMaskIntoConstraints = false
@@ -284,10 +302,10 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
         }
 
         NSLayoutConstraint.activate([
-            donutTrailPlanner.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor),
-            donutTrailPlanner.trailingAnchor.constraint(equalTo: pastryWorkshopMap.trailingAnchor),
+            donutTrailPlanner.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor, constant: 18),
+            donutTrailPlanner.trailingAnchor.constraint(equalTo: pastryWorkshopMap.trailingAnchor, constant: -18),
             donutTrailPlanner.centerYAnchor.constraint(equalTo: pastryWorkshopMap.centerYAnchor),
-            donutTrailPlanner.heightAnchor.constraint(equalToConstant: 42)
+            donutTrailPlanner.heightAnchor.constraint(equalToConstant: 48)
         ])
         return pastryWorkshopMap
     }
@@ -303,14 +321,14 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
         flavorNotebookFolio.translatesAutoresizingMaskIntoConstraints = false
         flavorNotebookFolio.delegate = self
         flavorNotebookFolio.text = zestyTwistJourney
-        flavorNotebookFolio.font = .systemFont(ofSize: 13, weight: .semibold)
+        flavorNotebookFolio.font = .systemFont(ofSize: 14, weight: .semibold)
         flavorNotebookFolio.textColor = UIColor(red: 0.58, green: 0.50, blue: 0.61, alpha: 1)
         flavorNotebookFolio.backgroundColor = .clear
-        flavorNotebookFolio.textContainerInset = UIEdgeInsets(top: 14, left: 10, bottom: 24, right: 10)
+        flavorNotebookFolio.textContainerInset = UIEdgeInsets(top: 14, left: 14, bottom: 28, right: 14)
 
         sugarCrystallizationDetail.translatesAutoresizingMaskIntoConstraints = false
         sugarCrystallizationDetail.text = "0t e/? !1l8&0/".wevVPastryCrumbBloomRestored
-        sugarCrystallizationDetail.font = .systemFont(ofSize: 11, weight: .medium)
+        sugarCrystallizationDetail.font = .systemFont(ofSize: 14, weight: .medium)
         sugarCrystallizationDetail.textColor = UIColor(red: 0.58, green: 0.50, blue: 0.61, alpha: 1)
         sugarCrystallizationDetail.textAlignment = .right
 
@@ -327,7 +345,7 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
         return pastryWorkshopMap
     }
 
-    private func doughKitchenShowcase(field: UITextField, text: String) -> UIView {
+    private func doughKitchenShowcase(field: UITextField, placeholder: String) -> UIView {
         let pastryWorkshopMap = UIView()
         pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false
         pastryWorkshopMap.backgroundColor = .white
@@ -336,8 +354,8 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
         pastryWorkshopMap.layer.borderColor = UIColor(red: 0.94, green: 0.80, blue: 0.89, alpha: 1).cgColor
 
         field.translatesAutoresizingMaskIntoConstraints = false
-        field.text = text
-        field.font = .systemFont(ofSize: 12, weight: .semibold)
+        field.placeholder = placeholder
+        field.font = .systemFont(ofSize: 14, weight: .semibold)
         field.textColor = UIColor(red: 0.47, green: 0.39, blue: 0.48, alpha: 1)
         field.rollingPinEssentials()
 
@@ -452,7 +470,7 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
             sweetPauseExperience("CUo@vvearE UcVoouIladd UnSo#tw xbmeP +uPs%exdx".wevVPastryCrumbBloomRestored)
             return
         }
-        guard let freezeDriedBerryDust = WevVPastryImageVault.pastryArchiveEntry(chocolateCurlDust, tastingJournalEntry: "s,pVrcisnLkjlneoQCuhejs^twCnoQvQeKr/".wevVPastryCrumbBloomRestored) else {
+        guard let freezeDriedBerryDust = DucerPastryImageVault.pastryArchiveEntry(chocolateCurlDust, tastingJournalEntry: "s,pVrcisnLkjlneoQCuhejs^twCnoQvQeKr/".wevVPastryCrumbBloomRestored) else {
             oilThermometerTechnique.dismiss(animated: true)
             sweetPauseExperience("CGoCvveGr. ;c:oxuelHdM JnHo=tS wbgeK ns!axv&eude".wevVPastryCrumbBloomRestored)
             return
@@ -493,7 +511,7 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
         }
         handDipSequence.isEnabled = false
         handDipSequence.alpha = 0.72
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "PGuAbBlri!sPhjicnNgH kc#hhaslXlNesnwgbeU.O.D.%".wevVPastryCrumbBloomRestored) { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "PGuAbBlri!sPhjicnNgH kc#hhaslXlNesnwgbeU.O.D.%".wevVPastryCrumbBloomRestored) { [weak self] in
             guard let self else { return }
             let tastingPassportPage = self.sugarCraftLaboratory.placeSprinkleQuest(title: harvestAppleSampler, text: tastingTrayNotes, timeText: proofingTimeDetail, placeText: cafeAtlasPlanner, sprinkleDensityValue: self.artisanFrySequence, coverAsset: self.goldenHourFrame)
             self.caramelMeltDelight(tastingPassportPage)
@@ -527,7 +545,7 @@ final class WevVWevvTastingQuestComposerController: UIViewController, UITextView
     }
 
     private func sweetPauseExperience(_ text: String) {
-        WevVGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -24)
+        TinGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -24)
     }
 
     private func caramelMeltDelight(_ tastingPassportPage: WevVSprinkleQuestPacket) {

@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVWevvBakerfvanillaBeanIcing: UIViewController {
+final class CunBakerfvanillaBeanIcing: UIViewController {
     var onWevvShelfChanged: (() -> Void)?
 
     private let wevvDonutJournalStore = WevVGlazeSessionStore.shared
@@ -255,7 +255,7 @@ final class WevVWevvBakerfvanillaBeanIcing: UIViewController {
     @objc private func openWevvShelfBakery(_ sender: UIControl) {
         let crullerScout = sender.accessibilityIdentifier ?? ""
         guard let jellyFlight = bakeryDetails.first(where: { $0.donutPinKey == crullerScout }) else { return }
-        let tastingScoutline = WevVWevvBakeryDetailController(detail: jellyFlight, bakeryShelf: bakeryDetails)
+        let tastingScoutline = IOpBakeryDetailController(detail: jellyFlight, bakeryShelf: bakeryDetails)
         tastingScoutline.pastryShelfChanged = { [weak self] in
             self?.reloadWevvBakeryShelfRows()
             self?.onWevvShelfChanged?()

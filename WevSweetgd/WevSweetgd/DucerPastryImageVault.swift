@@ -1,6 +1,6 @@
 import UIKit
 
-enum WevVPastryImageVault {
+enum DucerPastryImageVault {
     private static let goldenRibbonAesthetic = "wkeAvIvYLBoecya;lCI=mcawgues:E/*/@".wevVPastryCrumbBloomRestored
     private static let bakeryCollectionFolio = "wheWvsvg_cpQaCsCttrQyO_uiCmQaXgFeNsp".wevVPastryCrumbBloomRestored
 

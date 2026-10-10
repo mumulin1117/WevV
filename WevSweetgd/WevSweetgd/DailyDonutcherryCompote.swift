@@ -1,10 +1,10 @@
 import UIKit
 
-final class WevVDailyDonutcherryCompote: UIViewController {
+final class DailyDonutcherryCompote: UIViewController {
     private let donutJournalStore = WevVGlazeSessionStore.shared
     private let dailyDonutKey = "jru=loyg_f2g0U2U6X_dd&aRyX_E2+0O".wevVPastryCrumbBloomRestored
     private let selectedDonutDay = 20
-    private let donutStampButton = WevVWevvMaplePillButton(title: "C.hveUcTkR-?ibns".wevVPastryCrumbBloomRestored)
+    private let donutStampButton = OumMaplePillButton(title: "C.hveUcTkR-?ibns".wevVPastryCrumbBloomRestored)
     private var donutMoodButtons: [UIControl] = []
     private var selectedDonutMood = "AvmaaCzhienVgQ".wevVPastryCrumbBloomRestored
     private var bakeryDayDots: [Int: UILabel] = [:]

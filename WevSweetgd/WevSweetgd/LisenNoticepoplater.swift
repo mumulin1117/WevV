@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVNoticeEmptyController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+final class LisenNoticepoplater: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private let tangyCitrusAroma = WevVGlazeSocialRepository.pastryTrailDiary
     private let frostingDetailFrame = UITableView(frame: .zero, style: .plain)
     private let flavorMenuGuide = UILabel()
@@ -410,7 +410,7 @@ final class WevVGlazeMessageController: UIViewController, UITableViewDataSource,
                 frostingDetailFrame.reloadData()
                 doughStretchRhythm(animated: true)
             } catch {
-                WevVGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription, above: pastryCounterCollection, bottomOffset: -12)
+                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription, above: pastryCounterCollection, bottomOffset: -12)
             }
             herbalLavenderEssence = nil
         }
@@ -430,7 +430,7 @@ final class WevVGlazeMessageController: UIViewController, UITableViewDataSource,
                     self.dismiss(animated: true)
                 } catch {
                     self.herbalLavenderEssence = nil
-                    WevVGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription, above: self.pastryCounterCollection, bottomOffset: -12)
+                    TinGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription, above: self.pastryCounterCollection, bottomOffset: -12)
                 }
             }
         })

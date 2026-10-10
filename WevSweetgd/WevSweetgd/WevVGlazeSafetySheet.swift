@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVGlazeProfileSafetyTray: UIView {
+final class GzeProfileSafetyTray: UIView {
     private let frostingBackdrop = UIControl()
     private let berryReportButton = UIButton(type: .system)
     private let vanillaBlockButton = UIButton(type: .system)
@@ -326,7 +326,7 @@ final class WevVGlazeSafetySheet: UIView, UITextViewDelegate {
             tastingTrayNotes: tastingBox.text,
             glazeSheenIndex: Date().timeIntervalSince1970
         )
-        WevVGlazeCrackleOverlay.showGlazeCrackle(in: self, note: "S#e#nPd#iYnkgd nrZehproirotN.Q.g.%".wevVPastryCrumbBloomRestored) { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: self, note: "S#e#nPd#iYnkgd nrZehproirotN.Q.g.%".wevVPastryCrumbBloomRestored) { [weak self] in
             self?.pralineSubmitAction?(packet)
         }
     }

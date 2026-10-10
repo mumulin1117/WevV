@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVSugarpistachioCreamCoating: UIViewController {
+final class DimSugarpistachioCreamCoating: UIViewController {
     var onSugarSettingChanged: (() -> Void)?
 
     private let hazelnutCocoaShell = WevVGlazeSessionStore.shared
@@ -246,7 +246,7 @@ final class WevVSugarpistachioCreamCoating: UIViewController {
     }
 
     private func showConfirmSugarPanel(title: String, note: String, okTitle: String, cancelTitle: String, okFill: UIColor, okAction: @escaping () -> Void) {
-        WevVGlazePromptStyler.showSugarConfirm(
+        TinGlazePromptStyler.showSugarConfirm(
             almondFlavor: view,
             gourmetFlavor: title,
             glazeBowl: note,
@@ -280,7 +280,7 @@ final class WevVSugarpistachioCreamCoating: UIViewController {
     }
 
     @objc private func openEditGlazecitrusZestIcing() {
-        let controller = WevVCreamRingEditController()
+        let controller = CreamRingDellController()
         controller.onCreamRingSaved = { [weak self] in
             self?.onSugarSettingChanged?()
         }
@@ -300,8 +300,8 @@ final class WevVSugarpistachioCreamCoating: UIViewController {
     }
 
     @objc private func openSugarListText() {
-        let controller = WevVSugarRosterbrownButterDrizzle(mode: .sugarShield)
-        controller.onRosterChanged = { [weak self] in
+        let controller = XunSugarRosterbrownButterDrizzle(rubyCocoaSwirl: .citrusZestShell)
+        controller.whiteChocolateRibbon = { [weak self] in
             self?.onSugarSettingChanged?()
         }
         controller.modalPresentationStyle = .fullScreen
@@ -313,7 +313,7 @@ final class WevVSugarpistachioCreamCoating: UIViewController {
     }
 
     private func openSugarText(title: String, body: String) {
-        let controller = WevVSugarPlainblackberryCreamler(filledScout: title, crullerScout: body)
+        let controller = ZunugarPlainblackberryCreamler(filledScout: title, crullerScout: body)
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
     }
@@ -386,7 +386,7 @@ final class WevVSugarpistachioCreamCoating: UIViewController {
     }
 
     private func showTinySugarHint(_ text: String) {
-        WevVGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -18)
+        TinGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -18)
     }
 
     @objc private func showDeleteSugarPrompt() {
@@ -414,7 +414,7 @@ final class WevVSugarpistachioCreamCoating: UIViewController {
     }
 
     private func performGlazeAccountAction(deletesAccount: Bool) {
-        WevvNertyuSugartastingCard.showSugarToast(deletesAccount ? "Deleting account…" : "Logging out…")
+        NOticeNertyuSugartastingCard.showSugarToast(deletesAccount ? "Deleting account…" : "Logging out…")
         Task { [weak self, glazeRepository] in
             do {
                 if deletesAccount {
@@ -424,14 +424,14 @@ final class WevVSugarpistachioCreamCoating: UIViewController {
                 }
                 await MainActor.run {
                     guard let self else { return }
-                    WevvNertyuSugartastingCard.clearSugarCrumbs()
+                    NOticeNertyuSugartastingCard.clearSugarCrumbs()
                     self.onSugarSettingChanged?()
                     self.dismiss(animated: true)
                 }
             } catch {
                 await MainActor.run {
                     guard let self else { return }
-                    WevvNertyuSugartastingCard.clearSugarCrumbs()
+                    NOticeNertyuSugartastingCard.clearSugarCrumbs()
                     self.showTinySugarHint(error.localizedDescription)
                 }
             }

@@ -33,8 +33,8 @@ private func makeGuestSugarTie(glazeFollowed: Bool, sprinkleFan: Bool, sugarShie
     WevVGuestGlazeTie(isGlazeFollowed: glazeFollowed, isSprinkleFan: sprinkleFan, isSugarShielded: sugarShielded)
 }
 
-final class WevVGuestGlazeStore {
-    static let shared = WevVGuestGlazeStore()
+final class VGuestSevenSweet {
+    static let shared = VGuestSevenSweet()
 
     private let frostingDefaults = UserDefaults.standard
     private let crullerScout = "wzeyvIvF_bgpl:afzoe/_LgfuMessJt/_Qf:o?lOlboVwzeYdX".wevVPastryCrumbBloomRestored

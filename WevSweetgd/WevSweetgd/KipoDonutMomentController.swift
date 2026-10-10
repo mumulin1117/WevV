@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate {
+final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
     var cocoaKissExperience: (() -> Void)?
 
     private let tangyCitrusAroma = WevVGlazeSocialRepository.pastryTrailDiary
@@ -394,7 +394,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
 
     @objc private func worldDoughnutNotebook() {
         guard richCocoaFlavor.vanillaBeanIcing > 0 else { return }
-        let donutParlorGuide = WevVWevvTasterCardController(userID: richCocoaFlavor.vanillaBeanIcing)
+        let donutParlorGuide = LmnTasterCardController(userID: richCocoaFlavor.vanillaBeanIcing)
         donutParlorGuide.modalPresentationStyle = .fullScreen
         present(donutParlorGuide, animated: true)
     }
@@ -433,7 +433,7 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
 
     private func warmGlazeExperience() -> Bool {
         guard mellowVanillaContrast.isTasterReady else {
-            let morningBiteExperience = WevVWevvBakerytropicalMangoEssence()
+            let morningBiteExperience = UBakerytropicalMangoEssence()
             morningBiteExperience.modalPresentationStyle = .pageSheet
             present(morningBiteExperience, animated: true)
             return false
@@ -468,11 +468,18 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
     private func daylightDisplayFrame(_ urlText: String?, on imageView: UIImageView, fallback: String) {
         imageView.image = UIImage(named: urlText ?? "") ?? UIImage(systemName: fallback)
         imageView.tintColor = UIColor(red: 1, green: 0.25, blue: 0.6, alpha: 1)
-        guard let urlText, let url = URL(string: urlText), ["http", "https"].contains(url.scheme?.lowercased() ?? "") else { return }
-        imageView.accessibilityIdentifier = urlText
+        guard let urlText, !urlText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        let url: URL?
+        if let absoluteURL = URL(string: urlText), ["http", "https"].contains(absoluteURL.scheme?.lowercased() ?? "") {
+            url = absoluteURL
+        } else {
+            url = URL(string: urlText, relativeTo: filledShellSelection.cafeAtlasGuide)?.absoluteURL
+        }
+        guard let url else { return }
+        imageView.accessibilityIdentifier = url.absoluteString
         URLSession.shared.dataTask(with: url) { [weak imageView] data, _, _ in
             guard let data, let image = UIImage(data: data) else { return }
-            DispatchQueue.main.async { if imageView?.accessibilityIdentifier == urlText { imageView?.image = image } }
+            DispatchQueue.main.async { if imageView?.accessibilityIdentifier == url.absoluteString { imageView?.image = image } }
         }.resume()
     }
 
@@ -503,6 +510,6 @@ final class WevVWevvDonutMomentController: UIViewController, UITextFieldDelegate
     @objc private func slowRiseSequence() { dismiss(animated: true) }
 
     private func sugarCraftLaboratory(_ text: String) {
-        WevVGlazePromptStyler.showSugarToast(in: view, text: text, above: pastryCounterCollection, bottomOffset: -12)
+        TinGlazePromptStyler.showSugarToast(in: view, text: text, above: pastryCounterCollection, bottomOffset: -12)
     }
 }

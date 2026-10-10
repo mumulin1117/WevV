@@ -7,7 +7,7 @@ private struct WevVGlazeVaultPack {
     let batchKey: String
 }
 
-final class WevVDonutdenCrumbCenterler: UIViewController {
+final class GDonutdenCrumbCenterler: UIViewController {
     private let plushCenterFinish = WevVGlazeSessionStore.shared
     private let glazeVaultRepository = WevVGlazeVaultRepository.pastryTrailDiary
     private let glazeSugarCountLabel = UILabel()
@@ -479,7 +479,7 @@ final class WevVDonutdenCrumbCenterler: UIViewController {
     }
 
     private func plushCenterTexturerty(_ text: String) {
-        WevVGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -24)
+        TinGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -24)
     }
 
     @objc private func slowRiseSequence() {

@@ -1,6 +1,6 @@
 import UIKit
 
-final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
+final class CreamRingDellController: UIViewController, UITextViewDelegate {
     var onCreamRingSaved: (() -> Void)?
 
     private let doughSession = WevVGlazeSessionStore.shared
@@ -332,19 +332,19 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
     private func applyDonutAvatarChoice(_ crumbAsset: String) {
         chosenDonutAvatarAsset = crumbAsset
         donutcitrusMixerView.image = UIImage(named: crumbAsset)
-        WevVGlazePromptStyler.showSugarToast(in: view, text: "Ptr:omfni.lLeL /pqh=oRt@om Uu&pedKaVtueedL".wevVPastryCrumbBloomRestored)
+        TinGlazePromptStyler.showSugarToast(in: view, text: "Ptr:omfni.lLeL /pqh=oRt@om Uu&pedKaVtueedL".wevVPastryCrumbBloomRestored)
     }
 
     @objc private func saveCreamRingProfile() {
         let creamPacket = currentCreamRingFormPacket()
         guard !creamPacket.displayName.isEmpty else {
-            WevVGlazePromptStyler.showSugarToast(in: view, text: "ARdHdN Ga= /doiCs@pxl/aYyG XnraamteZ".wevVPastryCrumbBloomRestored)
+            TinGlazePromptStyler.showSugarToast(in: view, text: "ARdHdN Ga= /doiCs@pxl/aYyG XnraamteZ".wevVPastryCrumbBloomRestored)
             return
         }
         guard glazeSaveTask == nil else { return }
         view.endEditing(true)
         sugarSaveButton.isEnabled = false
-        WevvNertyuSugartastingCard.showSugarToast("Saving profile…")
+        NOticeNertyuSugartastingCard.showSugarToast("Saving profile…")
         glazeSaveTask = Task { [weak self, glazeRepository] in
             do {
                 var iconURL: String?
@@ -360,11 +360,11 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
                 guard !Task.isCancelled else { return }
                 await MainActor.run {
                     guard let self else { return }
-                    WevvNertyuSugartastingCard.clearSugarCrumbs()
+                    NOticeNertyuSugartastingCard.clearSugarCrumbs()
                     self.glazeSaveTask = nil
                     self.sugarSaveButton.isEnabled = true
                     self.onCreamRingSaved?()
-                    WevVGlazePromptStyler.showSugarToast(in: self.view, text: "P,ryo,fai=lke/ isPaivfe@d.".wevVPastryCrumbBloomRestored)
+                    TinGlazePromptStyler.showSugarToast(in: self.view, text: "P,ryo,fai=lke/ isPaivfe@d.".wevVPastryCrumbBloomRestored)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { [weak self] in
                         self?.dismiss(animated: true)
                     }
@@ -373,10 +373,10 @@ final class WevVCreamRingEditController: UIViewController, UITextViewDelegate {
                 guard !Task.isCancelled else { return }
                 await MainActor.run {
                     guard let self else { return }
-                    WevvNertyuSugartastingCard.clearSugarCrumbs()
+                    NOticeNertyuSugartastingCard.clearSugarCrumbs()
                     self.glazeSaveTask = nil
                     self.sugarSaveButton.isEnabled = true
-                    WevVGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
+                    TinGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
                 }
             }
         }
