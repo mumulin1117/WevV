@@ -1239,12 +1239,27 @@ final class LmnTasterCardController: UIViewController {
     }
 
     @objc private func openRemoteVideo() {
-        guard requireRemoteLogin(), let card = remoteCard else { return }
+        guard requireRemoteLogin(), let card = remoteCard, remoteTask == nil else { return }
         guard card.silkyCenter else {
             showWevvSugarGuardPrompt()
             return
         }
-        TinGlazePromptStyler.showSugarToast(in: view, text: "Video calling is not available in this build.")
+        remoteTask = Task { [weak self] in
+            guard let self else { return }
+            do {
+                let confectionStudioCounter = try await remoteRepository.confectionStudioCounter(
+                    vanillaBeanIcing: card.vanillaBeanIcing,
+                    springyFinish: card.springyFinish
+                )
+                remoteTask = nil
+                let controller = WevVGlazeVideoDialController(confectionStudioCounter: confectionStudioCounter)
+                controller.modalPresentationStyle = .fullScreen
+                present(controller, animated: true)
+            } catch {
+                remoteTask = nil
+                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
+            }
+        }
     }
 
     @objc private func openRemoteMoment(_ sender: UIControl) {
