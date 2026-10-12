@@ -1698,12 +1698,12 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func makeTastingParlorRoomCard(_ room: pearFilling, position: Int) -> UIControl {
         let paletteIndex = position % 3
-        let palettes: [[UIColor]] = [
-            [UIColor(red: 0.75, green: 0.57, blue: 0.99, alpha: 1), UIColor(red: 0.53, green: 0.70, blue: 0.98, alpha: 1)],
-            [UIColor(red: 0.57, green: 0.13, blue: 0.98, alpha: 1), UIColor(red: 0.43, green: 0.47, blue: 0.97, alpha: 1)],
-            [UIColor(red: 0.99, green: 0.35, blue: 0.72, alpha: 1), UIColor(red: 1.0, green: 0.86, blue: 0.55, alpha: 1)]
+        let roomCardBackdropNames = [
+            "wevv_voice_gift_bow_card",
+            "wevv_voice_rocket_stars_card",
+            "wevv_voice_lightning_star_card"
         ]
-        let card = WevVGlazepillowyCrumb(chewyCrust: palettes[paletteIndex])
+        let card = UIControl()
         card.translatesAutoresizingMaskIntoConstraints = false
         card.accessibilityIdentifier = "\(room.lemonCurd.rawValue):\(room.passionfruitMousse)"
         card.isAccessibilityElement = true
@@ -1712,6 +1712,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         card.layer.cornerRadius = 14
         card.clipsToBounds = true
         card.addTarget(self, action: #selector(openGlazeRoom(_:)), for: .touchUpInside)
+
+        let backdrop = UIImageView(image: UIImage(named: roomCardBackdropNames[paletteIndex]))
+        backdrop.translatesAutoresizingMaskIntoConstraints = false
+        backdrop.contentMode = .scaleAspectFill
+        backdrop.clipsToBounds = true
+        backdrop.isUserInteractionEnabled = false
+        card.addSubview(backdrop)
 
         let cover = UIImageView()
         cover.translatesAutoresizingMaskIntoConstraints = false
@@ -1790,6 +1797,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         [cover, ranking, title, tasterRow, audience, kind, join, signal].forEach { card.addSubview($0) }
         NSLayoutConstraint.activate([
             card.heightAnchor.constraint(equalToConstant: 124),
+            backdrop.topAnchor.constraint(equalTo: card.topAnchor),
+            backdrop.leadingAnchor.constraint(equalTo: card.leadingAnchor),
+            backdrop.trailingAnchor.constraint(equalTo: card.trailingAnchor),
+            backdrop.bottomAnchor.constraint(equalTo: card.bottomAnchor),
             cover.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 12),
             cover.topAnchor.constraint(equalTo: card.topAnchor, constant: 12),
             cover.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -12),
