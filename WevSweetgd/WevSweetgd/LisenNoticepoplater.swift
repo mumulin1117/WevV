@@ -305,8 +305,7 @@ final class WevVGlazeMessageController: UIViewController, UITableViewDataSource,
         cocoaRaspberryMedley.backgroundColor = UIColor(red: 1, green: 0.23, blue: 0.62, alpha: 1)
         cocoaRaspberryMedley.layer.cornerRadius = 20
         cocoaRaspberryMedley.accessibilityLabel = "Video call"
-        cocoaRaspberryMedley.isEnabled = false
-        cocoaRaspberryMedley.alpha = 1
+        cocoaRaspberryMedley.addTarget(self, action: #selector(openSprinkleVideoDial), for: .touchUpInside)
 
         cocoaDrinkComplement.translatesAutoresizingMaskIntoConstraints = false
         cocoaDrinkComplement.delegate = self
@@ -497,6 +496,18 @@ final class WevVGlazeMessageController: UIViewController, UITableViewDataSource,
     }
 
     @objc private func cinnamonTwist() { dismiss(animated: true) }
+
+    @objc private func openSprinkleVideoDial() {
+        guard WevVGlazeSessionStore.shared.isTasterReady else {
+            let gate = UBakerytropicalMangoEssence()
+            gate.modalPresentationStyle = .pageSheet
+            present(gate, animated: true)
+            return
+        }
+        let controller = WevVGlazeVideoDialController(confectionStudioCounter: confectionStudioCounter)
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
+    }
 }
 
 private final class WevVGlazeMessageCell: UITableViewCell {
