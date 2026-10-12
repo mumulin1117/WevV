@@ -450,7 +450,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         donutCaseContent.addSubview(wevvLogo)
         donutCaseContent.addSubview(challengeDonutWevvButton)
         donutCaseContent.addSubview(noticedonutWevvButton)
-        glazeHomePanels.append(contentsOf: [challengeDonutWevvButton, noticedonutWevvButton])
+        glazeHomePanels.append(contentsOf: [wevvLogo, challengeDonutWevvButton, noticedonutWevvButton])
 
         NSLayoutConstraint.activate([
             wevvLogo.topAnchor.constraint(equalTo: donutCaseContent.safeAreaLayoutGuide.topAnchor, constant: 24),
@@ -490,7 +490,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         bakeryAtlasDots.numberOfPages = bakeryAtlasItems.count
         bakeryAtlasDots.currentPage = 0
         bakeryAtlasDots.currentPageIndicatorTintColor = .white
-        bakeryAtlasDots.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.55)
+        bakeryAtlasDots.pageIndicatorTintColor = .white
+        refreshBakeryAtlasDots()
         donutCaseContent.addSubview(bakeryAtlasDots)
 
         glazeHomePanels.append(contentsOf: [bakeryAtlasCarousel, bakeryAtlasDots])
@@ -510,6 +511,23 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             bakeryAtlasDots.bottomAnchor.constraint(equalTo: bakeryAtlasCarousel.bottomAnchor, constant: 2),
             bakeryAtlasDots.heightAnchor.constraint(equalToConstant: 16)
         ])
+    }
+
+    private func makeBakeryAtlasIndicatorImage(width: CGFloat, alpha: CGFloat) -> UIImage {
+        let size = CGSize(width: width, height: 4)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { context in
+            UIColor.white.withAlphaComponent(alpha).setFill()
+            UIBezierPath(roundedRect: CGRect(origin: .zero, size: size), cornerRadius: 2).fill()
+        }
+    }
+
+    private func refreshBakeryAtlasDots() {
+        let activeImage = makeBakeryAtlasIndicatorImage(width: 18, alpha: 1)
+        let inactiveImage = makeBakeryAtlasIndicatorImage(width: 6, alpha: 0.55)
+        for page in 0..<bakeryAtlasDots.numberOfPages {
+            bakeryAtlasDots.setIndicatorImage(page == bakeryAtlasDots.currentPage ? activeImage : inactiveImage, forPage: page)
+        }
     }
 
     private func buildTastingQuestBand() {
@@ -681,7 +699,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             backdrop.leadingAnchor.constraint(equalTo: tastingParlorPanel.leadingAnchor),
             backdrop.trailingAnchor.constraint(equalTo: tastingParlorPanel.trailingAnchor),
             backdrop.bottomAnchor.constraint(equalTo: tastingParlorPanel.bottomAnchor),
-            title.topAnchor.constraint(equalTo: tastingParlorPanel.safeAreaLayoutGuide.topAnchor, constant: 16),
+            title.topAnchor.constraint(equalTo: donutCaseContent.safeAreaLayoutGuide.topAnchor, constant: 24),
             title.leadingAnchor.constraint(equalTo: tastingParlorPanel.leadingAnchor, constant: 15),
             title.widthAnchor.constraint(equalToConstant: 86),
             title.heightAnchor.constraint(equalToConstant: 30),
@@ -1026,17 +1044,12 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         newPostTitle.textColor = .black
         newPostTitle.font = .systemFont(ofSize: 22, weight: .heavy)
 
-        let newPostBand = UIView()
-        newPostBand.translatesAutoresizingMaskIntoConstraints = false
-        newPostBand.backgroundColor = UIColor(red: 1.0, green: 0.83, blue: 0.94, alpha: 1)
-
         donutSnapshotStack.translatesAutoresizingMaskIntoConstraints = false
         donutSnapshotStack.axis = .vertical
         donutSnapshotStack.spacing = 10
 
         configureGlazeStatusLabel(tastingJournalStatusLabel, text: "Loading community posts…")
 
-        bakeryAtlasPanel.addSubview(newPostBand)
         bakeryAtlasPanel.addSubview(exploredonutWevvButton)
         bakeryAtlasPanel.addSubview(noticeButton)
         bakeryAtlasPanel.addSubview(tastingJournalTrendingButton)
@@ -1052,7 +1065,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             bakeryAtlasPanel.topAnchor.constraint(equalTo: donutCaseContent.topAnchor),
             bakeryAtlasPanel.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor),
             bakeryAtlasPanel.trailingAnchor.constraint(equalTo: donutCaseContent.trailingAnchor),
-            exploredonutWevvButton.topAnchor.constraint(equalTo: bakeryAtlasPanel.safeAreaLayoutGuide.topAnchor, constant: 26),
+            exploredonutWevvButton.topAnchor.constraint(equalTo: donutCaseContent.safeAreaLayoutGuide.topAnchor, constant: 24),
             exploredonutWevvButton.leadingAnchor.constraint(equalTo: bakeryAtlasPanel.leadingAnchor, constant: 25),
             exploredonutWevvButton.widthAnchor.constraint(equalToConstant: 126),
             exploredonutWevvButton.heightAnchor.constraint(equalToConstant: 30),
@@ -1078,10 +1091,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             tastingJournalMomentPages.trailingAnchor.constraint(equalTo: tastingJournalMomentPager.contentLayoutGuide.trailingAnchor),
             tastingJournalMomentPages.bottomAnchor.constraint(equalTo: tastingJournalMomentPager.contentLayoutGuide.bottomAnchor),
             tastingJournalMomentPages.heightAnchor.constraint(equalTo: tastingJournalMomentPager.frameLayoutGuide.heightAnchor),
-            newPostBand.topAnchor.constraint(equalTo: tastingJournalMomentPager.bottomAnchor),
-            newPostBand.leadingAnchor.constraint(equalTo: bakeryAtlasPanel.leadingAnchor),
-            newPostBand.trailingAnchor.constraint(equalTo: bakeryAtlasPanel.trailingAnchor),
-            newPostBand.bottomAnchor.constraint(equalTo: bakeryAtlasPanel.bottomAnchor),
             newPostTitle.topAnchor.constraint(equalTo: tastingJournalMomentPager.bottomAnchor, constant: 22),
             newPostTitle.leadingAnchor.constraint(equalTo: bakeryAtlasPanel.leadingAnchor, constant: 15),
             donutSnapshotStack.topAnchor.constraint(equalTo: newPostTitle.bottomAnchor, constant: 16),
@@ -1393,7 +1402,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             donutDiaryPanel.topAnchor.constraint(equalTo: donutCaseContent.topAnchor),
             donutDiaryPanel.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor),
             donutDiaryPanel.trailingAnchor.constraint(equalTo: donutCaseContent.trailingAnchor),
-            meButton.topAnchor.constraint(equalTo: donutDiaryPanel.safeAreaLayoutGuide.topAnchor, constant: 26),
+            meButton.topAnchor.constraint(equalTo: donutCaseContent.safeAreaLayoutGuide.topAnchor, constant: 24),
             meButton.leadingAnchor.constraint(equalTo: donutDiaryPanel.leadingAnchor, constant: 25),
             meButton.widthAnchor.constraint(equalToConstant: 75),
             meButton.heightAnchor.constraint(equalToConstant: 30),
@@ -1709,7 +1718,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         cover.contentMode = .scaleAspectFill
         cover.clipsToBounds = true
         cover.layer.cornerRadius = 12
-        if let coverURL = room.pearCenter ?? room.appleCompote {
+        if let coverURL = room.appleCompote ?? room.pearCenter {
             setGlazeRemoteImage(coverURL, on: cover)
         } else {
             cover.image = UIImage(named: "wevv_guest_glaze_arlo")
@@ -1950,7 +1959,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         name.font = .systemFont(ofSize: 15, weight: .semibold)
         name.lineBreakMode = .byTruncatingTail
 
-        let followMark = makeTastingJournalFollowControl(moment, diameter: 30, fontSize: 22)
+        let followMark = makeTastingJournalFollowControl(moment, diameter: 20, fontSize: 16)
 
         let caption = UILabel()
         caption.translatesAutoresizingMaskIntoConstraints = false
@@ -1977,11 +1986,11 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             avatar.centerYAnchor.constraint(equalTo: shade.centerYAnchor),
             name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
             name.centerYAnchor.constraint(equalTo: avatar.centerYAnchor),
-            name.trailingAnchor.constraint(lessThanOrEqualTo: followMark.leadingAnchor, constant: -7),
+            name.trailingAnchor.constraint(equalTo: followMark.leadingAnchor, constant: -8),
             followMark.trailingAnchor.constraint(equalTo: cover.trailingAnchor, constant: -14),
             followMark.centerYAnchor.constraint(equalTo: avatar.centerYAnchor),
-            followMark.widthAnchor.constraint(equalToConstant: 30),
-            followMark.heightAnchor.constraint(equalTo: followMark.widthAnchor),
+            followMark.widthAnchor.constraint(equalToConstant: 20),
+            followMark.heightAnchor.constraint(equalToConstant: 20),
             caption.topAnchor.constraint(equalTo: cover.bottomAnchor, constant: 10),
             caption.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 14),
             caption.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -12),
@@ -3184,6 +3193,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let nextOffset = CGPoint(x: CGFloat(nextPage) * bakeryAtlasCarousel.bounds.width, y: 0)
         bakeryAtlasCarousel.setContentOffset(nextOffset, animated: true)
         bakeryAtlasDots.currentPage = nextPage
+        refreshBakeryAtlasDots()
     }
 
     @objc private func openProtectedGlazeAction() {
@@ -3883,6 +3893,7 @@ extension TvVDonutcreamapricotFillinger: UIScrollViewDelegate {
         if scrollView === bakeryAtlasCarousel, bakeryAtlasCarousel.bounds.width > 0 {
             let page = Int(round(bakeryAtlasCarousel.contentOffset.x / bakeryAtlasCarousel.bounds.width))
             bakeryAtlasDots.currentPage = max(0, min(bakeryAtlasItems.count - 1, page))
+            refreshBakeryAtlasDots()
             return
         }
         if scrollView === tastingParlorRoomPager, tastingParlorRoomPager.bounds.width > 0 {
@@ -4000,7 +4011,7 @@ private final class WevVGlazzestyOrangeEssence: UIView {
     }
 }
 
-private final class WevVGlazeSheenView: UIView {
+final class WevVGlazeSheenView: UIView {
     private let crunchyDough = CAGradientLayer()
 
     override init(frame: CGRect) {

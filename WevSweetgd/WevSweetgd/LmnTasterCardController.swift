@@ -47,6 +47,7 @@ final class LmnTasterCardController: UIViewController {
     private var wevvSelectedPane: WevvFlavorPane = .tastingQuestPane
     private let remoteRepository = WevVGlazeSocialRepository.pastryTrailDiary
     private let remoteStatus = UILabel()
+    private var remoteSheenPlaceholder: UIView?
     private var remoteCard: meltawayCrumb?
     private var remoteMoments: [butteryTexture] = []
     private var remoteTask: Task<Void, Never>?
@@ -1074,8 +1075,10 @@ final class LmnTasterCardController: UIViewController {
         wevvSelectedPane = .tastingQuestPane
         buildWevvTasterCardPage()
         refreshWevvTasterCardPage()
+        showRemoteSheenPlaceholder()
         remoteStatus.translatesAutoresizingMaskIntoConstraints = false
         remoteStatus.text = "Loading profile…"
+        remoteStatus.isHidden = true
         remoteStatus.textColor = wevvSoftCrumbTone
         remoteStatus.font = .systemFont(ofSize: 13, weight: .semibold)
         remoteStatus.textAlignment = .center
@@ -1089,11 +1092,113 @@ final class LmnTasterCardController: UIViewController {
         ])
     }
 
+    private func showRemoteSheenPlaceholder() {
+        remoteSheenPlaceholder?.removeFromSuperview()
+
+        let placeholder = UIView()
+        placeholder.translatesAutoresizingMaskIntoConstraints = false
+        placeholder.backgroundColor = wevvBlushCreamTone
+
+        let avatar = WevVGlazeSheenView()
+        avatar.translatesAutoresizingMaskIntoConstraints = false
+        avatar.layer.cornerRadius = 46
+        avatar.clipsToBounds = true
+
+        let name = WevVGlazeSheenView()
+        name.translatesAutoresizingMaskIntoConstraints = false
+        name.layer.cornerRadius = 10
+        name.clipsToBounds = true
+
+        let flavor = WevVGlazeSheenView()
+        flavor.translatesAutoresizingMaskIntoConstraints = false
+        flavor.layer.cornerRadius = 7
+        flavor.clipsToBounds = true
+
+        let bakery = WevVGlazeSheenView()
+        bakery.translatesAutoresizingMaskIntoConstraints = false
+        bakery.layer.cornerRadius = 7
+        bakery.clipsToBounds = true
+
+        let stats = UIStackView()
+        stats.translatesAutoresizingMaskIntoConstraints = false
+        stats.axis = .horizontal
+        stats.spacing = 12
+        stats.distribution = .fillEqually
+        for _ in 0..<3 {
+            let stat = WevVGlazeSheenView()
+            stat.translatesAutoresizingMaskIntoConstraints = false
+            stat.layer.cornerRadius = 10
+            stat.clipsToBounds = true
+            stats.addArrangedSubview(stat)
+        }
+
+        let segment = WevVGlazeSheenView()
+        segment.translatesAutoresizingMaskIntoConstraints = false
+        segment.layer.cornerRadius = 21
+        segment.clipsToBounds = true
+
+        let cards = UIStackView()
+        cards.translatesAutoresizingMaskIntoConstraints = false
+        cards.axis = .vertical
+        cards.spacing = 14
+        for _ in 0..<2 {
+            let card = WevVGlazeSheenView()
+            card.translatesAutoresizingMaskIntoConstraints = false
+            card.layer.cornerRadius = 18
+            card.clipsToBounds = true
+            cards.addArrangedSubview(card)
+            card.heightAnchor.constraint(equalToConstant: 128).isActive = true
+        }
+
+        [avatar, name, flavor, bakery, stats, segment, cards].forEach(placeholder.addSubview)
+        view.addSubview(placeholder)
+        NSLayoutConstraint.activate([
+            placeholder.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 56),
+            placeholder.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            placeholder.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            placeholder.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            avatar.topAnchor.constraint(equalTo: placeholder.topAnchor, constant: 8),
+            avatar.leadingAnchor.constraint(equalTo: placeholder.leadingAnchor, constant: 32),
+            avatar.widthAnchor.constraint(equalToConstant: 92),
+            avatar.heightAnchor.constraint(equalToConstant: 92),
+            name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 24),
+            name.topAnchor.constraint(equalTo: avatar.topAnchor, constant: 14),
+            name.trailingAnchor.constraint(equalTo: placeholder.trailingAnchor, constant: -24),
+            name.heightAnchor.constraint(equalToConstant: 20),
+            flavor.leadingAnchor.constraint(equalTo: name.leadingAnchor),
+            flavor.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 12),
+            flavor.widthAnchor.constraint(equalToConstant: 132),
+            flavor.heightAnchor.constraint(equalToConstant: 13),
+            bakery.leadingAnchor.constraint(equalTo: name.leadingAnchor),
+            bakery.topAnchor.constraint(equalTo: flavor.bottomAnchor, constant: 8),
+            bakery.widthAnchor.constraint(equalToConstant: 174),
+            bakery.heightAnchor.constraint(equalToConstant: 12),
+            stats.topAnchor.constraint(equalTo: avatar.bottomAnchor, constant: 46),
+            stats.leadingAnchor.constraint(equalTo: placeholder.leadingAnchor, constant: 36),
+            stats.trailingAnchor.constraint(equalTo: placeholder.trailingAnchor, constant: -36),
+            stats.heightAnchor.constraint(equalToConstant: 50),
+            segment.topAnchor.constraint(equalTo: stats.bottomAnchor, constant: 18),
+            segment.leadingAnchor.constraint(equalTo: placeholder.leadingAnchor, constant: 20),
+            segment.widthAnchor.constraint(equalTo: placeholder.widthAnchor, multiplier: 0.62),
+            segment.heightAnchor.constraint(equalToConstant: 42),
+            cards.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 16),
+            cards.leadingAnchor.constraint(equalTo: placeholder.leadingAnchor, constant: 20),
+            cards.trailingAnchor.constraint(equalTo: placeholder.trailingAnchor, constant: -20)
+        ])
+        remoteSheenPlaceholder = placeholder
+    }
+
+    private func hideRemoteSheenPlaceholder() {
+        remoteSheenPlaceholder?.removeFromSuperview()
+        remoteSheenPlaceholder = nil
+    }
+
     private func loadRemoteCard(showsLoading: Bool = true) {
         guard let remoteUserID else { return }
         remoteTask?.cancel()
         if showsLoading {
-            remoteStatus.isHidden = false
+            showRemoteSheenPlaceholder()
+            remoteStatus.isHidden = true
             remoteStatus.text = "Loading profile…"
         }
         remoteTask = Task { [weak self] in
@@ -1107,8 +1212,11 @@ final class LmnTasterCardController: UIViewController {
                 remoteMoments = result.1
                 wevvSelectedPane = remoteTrailState == .mutual ? .flavorNotePane : .tastingQuestPane
                 rebuildRemoteCard()
+                hideRemoteSheenPlaceholder()
                 remoteStatus.isHidden = true
             } catch {
+                hideRemoteSheenPlaceholder()
+                remoteStatus.isHidden = false
                 remoteStatus.text = error.localizedDescription
             }
             remoteTask = nil

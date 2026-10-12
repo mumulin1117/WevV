@@ -5,9 +5,11 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
     private let donutJournalStore = WevVGlazeSessionStore.shared
     private let pastryTrailScroll = UIScrollView()
     private let donutCaseContent = UIView()
+    private let flavorBackdropLayer = CAGradientLayer()
     private let flavorTextBox = UITextView()
     private let flavorHintLabel = UILabel()
-    private let flavorSaveButton = OumMaplePillButton(title: "P#oWsqtc".wevVPastryCrumbBloomRestored)
+    private let flavorSaveButton = UIButton(type: .custom)
+    private let flavorSaveGradientLayer = CAGradientLayer()
     private var crumbScoreButtons: [UIButton] = []
     private var crumbScoreValue = 3
 
@@ -33,12 +35,28 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
         bindFlavorKeyboard()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        flavorBackdropLayer.frame = view.bounds
+        flavorSaveGradientLayer.frame = flavorSaveButton.bounds
+        flavorSaveGradientLayer.cornerRadius = flavorSaveButton.layer.cornerRadius
+    }
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
     private func buildFlavorBackdrop() {
-        view.backgroundColor = UIColor(red: 1, green: 0.94, blue: 0.98, alpha: 1)
+        view.backgroundColor = UIColor(red: 1, green: 0.97, blue: 0.99, alpha: 1)
+        flavorBackdropLayer.colors = [
+            UIColor(red: 1.0, green: 0.87, blue: 0.95, alpha: 1).cgColor,
+            UIColor(red: 1.0, green: 0.94, blue: 0.98, alpha: 1).cgColor,
+            UIColor(red: 1.0, green: 0.99, blue: 1.0, alpha: 1).cgColor
+        ]
+        flavorBackdropLayer.locations = [0, 0.5, 1]
+        flavorBackdropLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        flavorBackdropLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        view.layer.insertSublayer(flavorBackdropLayer, at: 0)
     }
 
     private func buildFlavorScroll() {
@@ -46,8 +64,8 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
         pastryTrailScroll.alwaysBounceVertical = true
         pastryTrailScroll.showsVerticalScrollIndicator = false
         pastryTrailScroll.keyboardDismissMode = .interactive
-        pastryTrailScroll.contentInset.bottom = 132
-        pastryTrailScroll.verticalScrollIndicatorInsets.bottom = 132
+        pastryTrailScroll.contentInset.bottom = 133
+        pastryTrailScroll.verticalScrollIndicatorInsets.bottom = 133
         view.addSubview(pastryTrailScroll)
 
         donutCaseContent.translatesAutoresizingMaskIntoConstraints = false
@@ -73,12 +91,12 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
         doughBackButton.tintColor = .black
         doughBackButton.addTarget(self, action: #selector(closeFlavorNoteForm), for: .touchUpInside)
 
-        let navdonutTitle = makeTastingLabel("Rselvqi*ewwW".wevVPastryCrumbBloomRestored, size: 25, weight: .bold, color: .black)
+        let navdonutTitle = makeTastingLabel("Rselvqi*ewwW".wevVPastryCrumbBloomRestored, size: 22, weight: .bold, color: .black)
         navdonutTitle.textAlignment = .center
 
-        let sectionTitle = makeTastingLabel("RHegvmiAeqwV".wevVPastryCrumbBloomRestored, size: 20, weight: .bold, color: .black)
+        let sectionTitle = makeTastingLabel("RHegvmiAeqwV".wevVPastryCrumbBloomRestored, size: 16, weight: .bold, color: .black)
         tuneFlavorTextBox()
-        let ratingTitle = makeTastingLabel("R!aNtGi,n~gs".wevVPastryCrumbBloomRestored, size: 20, weight: .bold, color: .black)
+        let ratingTitle = makeTastingLabel("R!aNtGi,n~gs".wevVPastryCrumbBloomRestored, size: 16, weight: .bold, color: .black)
         let starRow = makeCrumbScoreRow()
         placeFlavorNoteViews(doughBackButton: doughBackButton, navdonutTitle: navdonutTitle, sectiondonutTitle: sectionTitle, ratingdonutTitle: ratingTitle, starRow: starRow)
         pinFlavorNoteLayout(doughBackButton: doughBackButton, navTitle: navdonutTitle, sectionTitle: sectionTitle, ratingTitle: ratingTitle, starRow: starRow)
@@ -88,15 +106,15 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
     private func tuneFlavorTextBox() {
         flavorTextBox.translatesAutoresizingMaskIntoConstraints = false
         flavorTextBox.backgroundColor = .white
-        flavorTextBox.layer.cornerRadius = 12
-        flavorTextBox.font = .systemFont(ofSize: 18, weight: .regular)
-        flavorTextBox.textColor = .black
-        flavorTextBox.textContainerInset = UIEdgeInsets(top: 24, left: 22, bottom: 22, right: 22)
+        flavorTextBox.layer.cornerRadius = 15
+        flavorTextBox.font = .systemFont(ofSize: 16, weight: .regular)
+        flavorTextBox.textColor = UIColor(red: 0.16, green: 0.09, blue: 0.19, alpha: 1)
+        flavorTextBox.textContainerInset = UIEdgeInsets(top: 20, left: 25, bottom: 16, right: 16)
         flavorTextBox.delegate = self
 
         flavorHintLabel.translatesAutoresizingMaskIntoConstraints = false
         flavorHintLabel.text = "S;aqyA iS,oam!eHt%hmihnRgG".wevVPastryCrumbBloomRestored
-        flavorHintLabel.font = .systemFont(ofSize: 19, weight: .regular)
+        flavorHintLabel.font = .systemFont(ofSize: 12, weight: .regular)
         flavorHintLabel.textColor = UIColor(red: 0.7, green: 0.68, blue: 0.7, alpha: 1)
         flavorTextBox.addSubview(flavorHintLabel)
     }
@@ -113,10 +131,12 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
             star.translatesAutoresizingMaskIntoConstraints = false
             star.tag = index
             star.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 46, weight: .regular), forImageIn: .normal)
+            star.tintColor = UIColor(red: 0.81, green: 0.78, blue: 0.8, alpha: 1)
             star.addTarget(self, action: #selector(selectCrumbScore(_:)), for: .touchUpInside)
             starRow.addArrangedSubview(star)
-            star.widthAnchor.constraint(equalToConstant: 58).isActive = true
-            star.heightAnchor.constraint(equalToConstant: 58).isActive = true
+            star.widthAnchor.constraint(equalToConstant: 48).isActive = true
+            star.heightAnchor.constraint(equalToConstant: 48).isActive = true
             crumbScoreButtons.append(star)
         }
         return starRow
@@ -133,31 +153,31 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
 
     private func pinFlavorNoteLayout(doughBackButton: UIButton, navTitle: UILabel, sectionTitle: UILabel, ratingTitle: UILabel, starRow: UIStackView) {
         NSLayoutConstraint.activate([
-            doughBackButton.topAnchor.constraint(equalTo: donutCaseContent.safeAreaLayoutGuide.topAnchor, constant: 58),
-            doughBackButton.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor, constant: 22),
+            doughBackButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 6),
+            doughBackButton.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor, constant: 16),
             doughBackButton.widthAnchor.constraint(equalToConstant: 36),
             doughBackButton.heightAnchor.constraint(equalToConstant: 36),
             navTitle.centerYAnchor.constraint(equalTo: doughBackButton.centerYAnchor),
             navTitle.centerXAnchor.constraint(equalTo: donutCaseContent.centerXAnchor),
             navTitle.leadingAnchor.constraint(greaterThanOrEqualTo: doughBackButton.trailingAnchor, constant: 12),
-            sectionTitle.topAnchor.constraint(equalTo: doughBackButton.bottomAnchor, constant: 40),
+            sectionTitle.topAnchor.constraint(equalTo: doughBackButton.bottomAnchor, constant: 18),
             sectionTitle.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor, constant: 24),
             sectionTitle.trailingAnchor.constraint(equalTo: donutCaseContent.trailingAnchor, constant: -24),
-            flavorTextBox.topAnchor.constraint(equalTo: sectionTitle.bottomAnchor, constant: 24),
+            flavorTextBox.topAnchor.constraint(equalTo: sectionTitle.bottomAnchor, constant: 14),
             flavorTextBox.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor, constant: 15),
             flavorTextBox.trailingAnchor.constraint(equalTo: donutCaseContent.trailingAnchor, constant: -15),
             flavorTextBox.heightAnchor.constraint(equalTo: flavorTextBox.widthAnchor, multiplier: 0.55),
-            flavorHintLabel.topAnchor.constraint(equalTo: flavorTextBox.topAnchor, constant: 25),
+            flavorHintLabel.topAnchor.constraint(equalTo: flavorTextBox.topAnchor, constant: 20),
             flavorHintLabel.leadingAnchor.constraint(equalTo: flavorTextBox.leadingAnchor, constant: 25),
-            flavorHintLabel.trailingAnchor.constraint(equalTo: flavorTextBox.trailingAnchor, constant: -25),
-            ratingTitle.topAnchor.constraint(equalTo: flavorTextBox.bottomAnchor, constant: 30),
+            flavorHintLabel.trailingAnchor.constraint(equalTo: flavorTextBox.trailingAnchor, constant: -16),
+            ratingTitle.topAnchor.constraint(equalTo: flavorTextBox.bottomAnchor, constant: 17),
             ratingTitle.leadingAnchor.constraint(equalTo: sectionTitle.leadingAnchor),
             ratingTitle.trailingAnchor.constraint(equalTo: sectionTitle.trailingAnchor),
-            starRow.topAnchor.constraint(equalTo: ratingTitle.bottomAnchor, constant: 26),
-            starRow.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor, constant: 25),
-            starRow.trailingAnchor.constraint(equalTo: donutCaseContent.trailingAnchor, constant: -25),
-            starRow.heightAnchor.constraint(equalToConstant: 72),
-            starRow.bottomAnchor.constraint(equalTo: donutCaseContent.bottomAnchor, constant: -280)
+            starRow.topAnchor.constraint(equalTo: ratingTitle.bottomAnchor, constant: 20),
+            starRow.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor, constant: 24),
+            starRow.trailingAnchor.constraint(equalTo: donutCaseContent.trailingAnchor, constant: -24),
+            starRow.heightAnchor.constraint(equalToConstant: 54),
+            starRow.bottomAnchor.constraint(equalTo: donutCaseContent.bottomAnchor, constant: -240)
         ])
     }
 
@@ -170,9 +190,21 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
     private func buildFlavorNoteActionBar() {
         let markerRhythm = UIView()
         markerRhythm.translatesAutoresizingMaskIntoConstraints = false
-        markerRhythm.backgroundColor = UIColor(red: 1, green: 0.94, blue: 0.98, alpha: 0.96)
+        markerRhythm.backgroundColor = .clear
         view.addSubview(markerRhythm)
 
+        flavorSaveButton.setTitle("P#oWsqtc".wevVPastryCrumbBloomRestored, for: .normal)
+        flavorSaveButton.setTitleColor(.white, for: .normal)
+        flavorSaveButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        flavorSaveButton.layer.cornerRadius = 26
+        flavorSaveButton.clipsToBounds = true
+        flavorSaveGradientLayer.colors = [
+            UIColor(red: 1.0, green: 0.27, blue: 0.65, alpha: 1).cgColor,
+            UIColor(red: 1.0, green: 0.27, blue: 0.65, alpha: 1).cgColor
+        ]
+        flavorSaveGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        flavorSaveGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        flavorSaveButton.layer.insertSublayer(flavorSaveGradientLayer, at: 0)
         flavorSaveButton.addTarget(self, action: #selector(saveFlavorNote), for: .touchUpInside)
         markerRhythm.addSubview(flavorSaveButton)
 
@@ -180,7 +212,7 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
             markerRhythm.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             markerRhythm.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             markerRhythm.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            markerRhythm.heightAnchor.constraint(equalToConstant: 118),
+            markerRhythm.heightAnchor.constraint(equalToConstant: 133),
             flavorSaveButton.topAnchor.constraint(equalTo: markerRhythm.topAnchor, constant: 15),
             flavorSaveButton.leadingAnchor.constraint(equalTo: markerRhythm.leadingAnchor, constant: 25),
             flavorSaveButton.trailingAnchor.constraint(equalTo: markerRhythm.trailingAnchor, constant: -25),
@@ -252,12 +284,12 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
     @objc private func liftFlavorNoteForm(_ note: Notification) {
         guard let textureEcho = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let bottomLift = textureEcho.height + 20
-        pastryTrailScroll.contentInset.bottom = bottomLift + 118
-        pastryTrailScroll.verticalScrollIndicatorInsets.bottom = bottomLift + 118
+        pastryTrailScroll.contentInset.bottom = bottomLift + 133
+        pastryTrailScroll.verticalScrollIndicatorInsets.bottom = bottomLift + 133
     }
 
     @objc private func settleFlavorNoteForm(_ note: Notification) {
-        pastryTrailScroll.contentInset.bottom = 132
-        pastryTrailScroll.verticalScrollIndicatorInsets.bottom = 132
+        pastryTrailScroll.contentInset.bottom = 133
+        pastryTrailScroll.verticalScrollIndicatorInsets.bottom = 133
     }
 }

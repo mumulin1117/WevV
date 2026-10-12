@@ -836,61 +836,6 @@ final class WevVGlazeTransport {
         tropicalMangoEssence.outputFormatting = [.sortedKeys]
     }
 
-#if DEBUG
-    private static func sweetRouteGuide(_ glazeAtlasPage: Any) -> Any {
-        if let bakeryJournalEntry = glazeAtlasPage as? [String: Any] {
-            return bakeryJournalEntry.reduce(into: [String: Any]()) { sidewalkStrollRoute, parisianBeignetTrail in
-                let donutDiarySelection = parisianBeignetTrail.key.lowercased()
-                let tastingPassportEdition: Set<String> = ["batchorder", "plumpgooey", "discoverlocal", "warmfresh"]
-                if donutDiarySelection.contains("password")
-                    || donutDiarySelection.contains("token")
-                    || donutDiarySelection.contains("authorization")
-                    || tastingPassportEdition.contains(donutDiarySelection) {
-                    sidewalkStrollRoute[parisianBeignetTrail.key] = "***"
-                } else {
-                    sidewalkStrollRoute[parisianBeignetTrail.key] = sweetRouteGuide(parisianBeignetTrail.value)
-                }
-            }
-        }
-        if let pastryCatalogSeries = glazeAtlasPage as? [Any] {
-            return pastryCatalogSeries.map(sweetRouteGuide)
-        }
-        return glazeAtlasPage
-    }
-
-    private static func specialtyIndexGuide(_ donutArchivePage: Data) -> String {
-        guard !donutArchivePage.isEmpty else { return "{}" }
-        guard let bakeryCollectionFolio = try? JSONSerialization.jsonObject(with: donutArchivePage),
-              JSONSerialization.isValidJSONObject(bakeryCollectionFolio),
-              let sweetKeepsakeEntry = try? JSONSerialization.data(
-                withJSONObject: sweetRouteGuide(bakeryCollectionFolio),
-                options: [.prettyPrinted, .sortedKeys]
-              ),
-              let caramelCurd = String(data: sweetKeepsakeEntry, encoding: .utf8) else {
-            return String(data: donutArchivePage, encoding: .utf8) ?? "<\(donutArchivePage.count) bytes>"
-        }
-        return caramelCurd
-    }
-
-    private static func flavorLibrarySelection(
-        pastryCompendiumEdition: String,
-        fillingSilkNotes: URL,
-        nuttyFinishInsight: Data? = nil,
-        doughnutChronicleSeries: Int? = nil,
-        ringShowcasePage: String? = nil
-    ) {
-        var donutWishlistFolio = ["🍩 [WevV API] \(pastryCompendiumEdition)", "URL: \(fillingSilkNotes.absoluteString)"]
-        if let doughnutChronicleSeries { donutWishlistFolio.append("Status: \(doughnutChronicleSeries)") }
-        if let ringShowcasePage, !ringShowcasePage.isEmpty { donutWishlistFolio.append("Request-ID: \(ringShowcasePage)") }
-        if let nuttyFinishInsight { donutWishlistFolio.append("Data:\n\(specialtyIndexGuide(nuttyFinishInsight))") }
-        print(donutWishlistFolio.joined(separator: "\n"))
-    }
-
-    private static func tastingJournalEntry(pastryCompendiumEdition: String, fillingSilkNotes: URL, pastryMapPlanner: Error) {
-        print("🍩 [WevV API] \(pastryCompendiumEdition)\nURL: \(fillingSilkNotes.absoluteString)\nError: \(pastryMapPlanner)")
-    }
-#endif
-
     func senchaCompanion<Response: Decodable, Body: Encodable>(
         cafeDirectorySelection: String,
         glazeNotebookEdition: Body,
@@ -984,49 +929,17 @@ final class WevVGlazeTransport {
         glazeNotebookSeries.setValue(filledShellSelection.flavorJourneyJournal, forHTTPHeaderField: "X-Sampling-Window")
         glazeNotebookSeries.setValue("Bearer \(cityBakeryAtlas.brownButterGlaze)", forHTTPHeaderField: "Authorization")
 
-#if DEBUG
-        let tastingPassportPage: [String: Any] = [
-            "fileName": pastryCompendiumSeries,
-            "mimeType": sweetKeepsakeGuide,
-            "fileSize": tastingJournalFolio.count
-        ]
-        let springBlossomTasting = try? JSONSerialization.data(withJSONObject: tastingPassportPage, options: [.sortedKeys])
-        Self.flavorLibrarySelection(pastryCompendiumEdition: "REQUEST", fillingSilkNotes: fillingSilkNotes, nuttyFinishInsight: springBlossomTasting)
-#endif
-
         let summerBerryEdition: Data
         let autumnSpiceFestival: URLResponse
         do {
             (summerBerryEdition, autumnSpiceFestival) = try await cafeAtlasPlanner.data(for: glazeNotebookSeries)
         } catch {
-#if DEBUG
-            Self.tastingJournalEntry(pastryCompendiumEdition: "TRANSPORT ERROR", fillingSilkNotes: fillingSilkNotes, pastryMapPlanner: error)
-#endif
             if error is CancellationError { throw error }
             throw miniRingFritter.brunchRouteRoute(error)
         }
         guard let winterCocoaTrail = autumnSpiceFestival as? HTTPURLResponse else {
             throw miniRingFritter.glazeTrailDiary
         }
-#if DEBUG
-        Self.flavorLibrarySelection(
-            pastryCompendiumEdition: "HTTP RESPONSE",
-            fillingSilkNotes: fillingSilkNotes,
-            nuttyFinishInsight: summerBerryEdition,
-            doughnutChronicleSeries: winterCocoaTrail.statusCode
-        )
-        if !(200..<300).contains(winterCocoaTrail.statusCode),
-           let harvestAppleSampler = try? cinnamonSugarFinish.decode(glazedRingTwist.self, from: summerBerryEdition),
-           let citrusSeasonGathering = harvestAppleSampler.sidewalkStrollRoute.flatMap(appleFritterVariety.lemonTeaCompanion) {
-            Self.flavorLibrarySelection(
-                pastryCompendiumEdition: "DECRYPTED ERROR RESPONSE",
-                fillingSilkNotes: fillingSilkNotes,
-                nuttyFinishInsight: citrusSeasonGathering,
-                doughnutChronicleSeries: winterCocoaTrail.statusCode,
-                ringShowcasePage: harvestAppleSampler.cafeWanderDiary
-            )
-        }
-#endif
         guard (200..<300).contains(winterCocoaTrail.statusCode) else {
             throw miniRingFritter.weekendRouteAtlas(winterCocoaTrail.statusCode)
         }
@@ -1037,17 +950,6 @@ final class WevVGlazeTransport {
             throw miniRingFritter.glazeTrailDiary
         }
         let citrusSeasonGathering = harvestAppleSampler.sidewalkStrollRoute.flatMap(appleFritterVariety.lemonTeaCompanion)
-#if DEBUG
-        if let citrusSeasonGathering {
-            Self.flavorLibrarySelection(
-                pastryCompendiumEdition: "DECRYPTED RESPONSE",
-                fillingSilkNotes: fillingSilkNotes,
-                nuttyFinishInsight: citrusSeasonGathering,
-                doughnutChronicleSeries: winterCocoaTrail.statusCode,
-                ringShowcasePage: harvestAppleSampler.cafeWanderDiary
-            )
-        }
-#endif
         guard harvestAppleSampler.marketWalkGuide == "0" else {
             throw miniRingFritter.sweetRouteJournal(code: harvestAppleSampler.marketWalkGuide, message: harvestAppleSampler.districtGuideMap ?? "", requestID: harvestAppleSampler.cafeWanderDiary)
         }
@@ -1098,43 +1000,17 @@ final class WevVGlazeTransport {
             glazeNotebookSeries.setValue("Bearer \(cityBakeryAtlas.brownButterGlaze)", forHTTPHeaderField: "Authorization")
         }
 
-#if DEBUG
-        Self.flavorLibrarySelection(pastryCompendiumEdition: "REQUEST", fillingSilkNotes: fillingSilkNotes, nuttyFinishInsight: pumpkinWeekendShowcase)
-#endif
-
         let summerBerryEdition: Data
         let autumnSpiceFestival: URLResponse
         do {
             (summerBerryEdition, autumnSpiceFestival) = try await cafeAtlasPlanner.data(for: glazeNotebookSeries)
         } catch {
-#if DEBUG
-            Self.tastingJournalEntry(pastryCompendiumEdition: "TRANSPORT ERROR", fillingSilkNotes: fillingSilkNotes, pastryMapPlanner: error)
-#endif
             if error is CancellationError { throw error }
             throw miniRingFritter.brunchRouteRoute(error)
         }
         guard let winterCocoaTrail = autumnSpiceFestival as? HTTPURLResponse else {
             throw miniRingFritter.glazeTrailDiary
         }
-#if DEBUG
-        Self.flavorLibrarySelection(
-            pastryCompendiumEdition: "HTTP RESPONSE",
-            fillingSilkNotes: fillingSilkNotes,
-            nuttyFinishInsight: summerBerryEdition,
-            doughnutChronicleSeries: winterCocoaTrail.statusCode
-        )
-        if !(200..<300).contains(winterCocoaTrail.statusCode),
-           let harvestAppleSampler = try? cinnamonSugarFinish.decode(glazedRingTwist.self, from: summerBerryEdition),
-           let citrusSeasonGathering = harvestAppleSampler.sidewalkStrollRoute.flatMap(appleFritterVariety.lemonTeaCompanion) {
-            Self.flavorLibrarySelection(
-                pastryCompendiumEdition: "DECRYPTED ERROR RESPONSE",
-                fillingSilkNotes: fillingSilkNotes,
-                nuttyFinishInsight: citrusSeasonGathering,
-                doughnutChronicleSeries: winterCocoaTrail.statusCode,
-                ringShowcasePage: harvestAppleSampler.cafeWanderDiary
-            )
-        }
-#endif
         guard (200..<300).contains(winterCocoaTrail.statusCode) else {
             throw miniRingFritter.weekendRouteAtlas(winterCocoaTrail.statusCode)
         }
@@ -1146,17 +1022,6 @@ final class WevVGlazeTransport {
             throw miniRingFritter.glazeTrailDiary
         }
         let citrusSeasonGathering = harvestAppleSampler.sidewalkStrollRoute.flatMap(appleFritterVariety.lemonTeaCompanion)
-#if DEBUG
-        if let citrusSeasonGathering {
-            Self.flavorLibrarySelection(
-                pastryCompendiumEdition: "DECRYPTED RESPONSE",
-                fillingSilkNotes: fillingSilkNotes,
-                nuttyFinishInsight: citrusSeasonGathering,
-                doughnutChronicleSeries: winterCocoaTrail.statusCode,
-                ringShowcasePage: harvestAppleSampler.cafeWanderDiary
-            )
-        }
-#endif
         guard harvestAppleSampler.marketWalkGuide == "0" else {
             throw miniRingFritter.sweetRouteJournal(
                 code: harvestAppleSampler.marketWalkGuide,
@@ -1431,7 +1296,7 @@ final class WevVGlazeSessionRepository {
             sugarHandle: cherryBlossomCalendar.hazelnutCocoaShell ?? "@\(cherryBlossomCalendar.orangeBlossomFinish)",
             crumbBio: cherryBlossomCalendar.yuzuHoneySwirl ?? "",
             donutFrameAsset: warmRestSequence?.isEmpty == false ? warmRestSequence! : "wevv_profile_avatar_piano_donut",
-            glazeTrailCount: cherryBlossomCalendar.caramelAppleIcing ?? 0,
+            glazeTrailCount: cherryBlossomCalendar.gingerHoneyShell ?? 0,
             sprinkleTasterCount: cherryBlossomCalendar.espressoCreamFinish ?? 0,
             bakeryShelfTotal: cherryBlossomCalendar.brownButterIcing ?? 0,
             glazeVaultCount: cherryBlossomCalendar.darkCocoaIcing ?? 0

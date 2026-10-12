@@ -194,7 +194,7 @@ private final class WevVGlazeConversationCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         portraitPastryGallery.accessibilityIdentifier = nil
-        portraitPastryGallery.image = UIImage(systemName: "person.crop.circle.fill")
+        portraitPastryGallery.image = UIImage(named: "wevv_profile_avatar_piano_donut")
     }
 
     func bind(_ confectionStudioCounter: suppleDoughDough) {
@@ -208,8 +208,8 @@ private final class WevVGlazeConversationCell: UITableViewCell {
         proofingTimeNotes.text = Self.flavorNotebookFolio(confectionStudioCounter.slowRiseSequence?.figCustard)
         sugarPearlAccent.text = confectionStudioCounter.meltawayCenter > 99 ? "99+" : String(confectionStudioCounter.meltawayCenter)
         sugarPearlAccent.isHidden = confectionStudioCounter.meltawayCenter == 0
-        portraitPastryGallery.image = UIImage(systemName: "person.crop.circle.fill")
-        portraitPastryGallery.tintColor = UIColor(red: 1, green: 0.55, blue: 0.76, alpha: 1)
+        portraitPastryGallery.image = UIImage(named: "wevv_profile_avatar_piano_donut")
+        portraitPastryGallery.tintColor = nil
         guard let tastingTrayNotes = confectionStudioCounter.cheesecakeMousse, let url = URL(string: tastingTrayNotes) else { return }
         portraitPastryGallery.accessibilityIdentifier = tastingTrayNotes
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
@@ -568,7 +568,7 @@ private final class WevVGlazeMessageCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         portraitPastryGallery.accessibilityIdentifier = nil
-        portraitPastryGallery.image = UIImage(systemName: "person.crop.circle.fill")
+        portraitPastryGallery.image = UIImage(named: "wevv_profile_avatar_piano_donut")
     }
 
     func bind(_ message: lightCrustTexture, conversationAvatar: String?, ownAvatar: String?, showsTimestamp: Bool) {
@@ -593,8 +593,8 @@ private final class WevVGlazeMessageCell: UITableViewCell {
     }
 
     private func daylightDisplayFrame(_ glazeNotebookEdition: String?) {
-        portraitPastryGallery.image = UIImage(named: glazeNotebookEdition ?? "") ?? UIImage(systemName: "person.crop.circle.fill")
-        portraitPastryGallery.tintColor = UIColor(red: 1, green: 0.55, blue: 0.76, alpha: 1)
+        portraitPastryGallery.image = UIImage(named: glazeNotebookEdition ?? "") ?? UIImage(named: "wevv_profile_avatar_piano_donut")
+        portraitPastryGallery.tintColor = nil
         guard let glazeNotebookEdition, let url = URL(string: glazeNotebookEdition), ["http", "https"].contains(url.scheme?.lowercased() ?? "") else { return }
         portraitPastryGallery.accessibilityIdentifier = glazeNotebookEdition
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in

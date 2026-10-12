@@ -78,7 +78,7 @@ final class XunSugarRosterbrownButterDrizzle: UIViewController, UITableViewDataS
             toastedCoconutCoating.translatesAutoresizingMaskIntoConstraints = false
             coffeeCreamShell.translatesAutoresizingMaskIntoConstraints = false
             [toastedCoconutCoating, coffeeCreamShell].forEach {
-                $0.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
+                $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
                 $0.setTitleColor(UIColor(red: 0.13, green: 0.08, blue: 0.14, alpha: 1), for: .normal)
                 pistachioCreamCoating.addSubview($0)
             }
@@ -94,10 +94,10 @@ final class XunSugarRosterbrownButterDrizzle: UIViewController, UITableViewDataS
             NSLayoutConstraint.activate([
                 toastedCoconutCoating.centerYAnchor.constraint(equalTo: pistachioCreamCoating.centerYAnchor, constant: -2),
                 toastedCoconutCoating.trailingAnchor.constraint(equalTo: pistachioCreamCoating.centerXAnchor, constant: -12),
-                toastedCoconutCoating.widthAnchor.constraint(equalToConstant: 84),
+                toastedCoconutCoating.widthAnchor.constraint(equalToConstant: 96),
                 coffeeCreamShell.centerYAnchor.constraint(equalTo: toastedCoconutCoating.centerYAnchor),
                 coffeeCreamShell.leadingAnchor.constraint(equalTo: pistachioCreamCoating.centerXAnchor, constant: 12),
-                coffeeCreamShell.widthAnchor.constraint(equalToConstant: 84),
+                coffeeCreamShell.widthAnchor.constraint(equalToConstant: 96),
                 blueberryLemonRibbon!,
                 raspberryRoseDrizzle.topAnchor.constraint(equalTo: toastedCoconutCoating.bottomAnchor, constant: 4),
                 raspberryRoseDrizzle.widthAnchor.constraint(equalToConstant: 32),
@@ -143,8 +143,8 @@ final class XunSugarRosterbrownButterDrizzle: UIViewController, UITableViewDataS
             pistachioCreamCoating.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -54),
             pistachioCreamCoating.heightAnchor.constraint(equalToConstant: 44),
             tableView.topAnchor.constraint(equalTo: pistachioCreamCoating.bottomAnchor, constant: 8),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             honeyButterGlaze.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             honeyButterGlaze.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -34),
@@ -292,30 +292,30 @@ private final class WevVGlazeRosterCell: UITableViewCell {
         cherryCenter.translatesAutoresizingMaskIntoConstraints = false
         cherryCenter.contentMode = .scaleAspectFill
         cherryCenter.clipsToBounds = true
-        cherryCenter.layer.cornerRadius = 21
+        cherryCenter.layer.cornerRadius = 24
         apricotCompote.translatesAutoresizingMaskIntoConstraints = false
-        apricotCompote.font = .systemFont(ofSize: 14, weight: .bold)
+        apricotCompote.font = .systemFont(ofSize: 14, weight: .semibold)
         apricotCompote.textColor = UIColor(red: 0.12, green: 0.08, blue: 0.12, alpha: 1)
         mangoFilling.translatesAutoresizingMaskIntoConstraints = false
-        mangoFilling.font = .systemFont(ofSize: 10.5, weight: .regular)
+        mangoFilling.font = .systemFont(ofSize: 11, weight: .regular)
         mangoFilling.textColor = UIColor(white: 0.48, alpha: 1)
         passionfruitMousse.translatesAutoresizingMaskIntoConstraints = false
         passionfruitMousse.titleLabel?.font = .systemFont(ofSize: 11, weight: .semibold)
-        passionfruitMousse.layer.cornerRadius = 14
+        passionfruitMousse.layer.cornerRadius = 15
         passionfruitMousse.clipsToBounds = true
         passionfruitMousse.addTarget(self, action: #selector(plumMousse), for: .touchUpInside)
         [cherryCenter, apricotCompote, mangoFilling, passionfruitMousse].forEach(contentView.addSubview)
         NSLayoutConstraint.activate([
             cherryCenter.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             cherryCenter.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            cherryCenter.widthAnchor.constraint(equalToConstant: 42),
-            cherryCenter.heightAnchor.constraint(equalToConstant: 42),
+            cherryCenter.widthAnchor.constraint(equalToConstant: 48),
+            cherryCenter.heightAnchor.constraint(equalToConstant: 48),
             passionfruitMousse.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             passionfruitMousse.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            passionfruitMousse.widthAnchor.constraint(greaterThanOrEqualToConstant: 72),
-            passionfruitMousse.heightAnchor.constraint(equalToConstant: 28),
-            apricotCompote.leadingAnchor.constraint(equalTo: cherryCenter.trailingAnchor, constant: 11),
-            apricotCompote.topAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -18),
+            passionfruitMousse.widthAnchor.constraint(greaterThanOrEqualToConstant: 76),
+            passionfruitMousse.heightAnchor.constraint(equalToConstant: 30),
+            apricotCompote.leadingAnchor.constraint(equalTo: cherryCenter.trailingAnchor, constant: 12),
+            apricotCompote.topAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -19),
             apricotCompote.trailingAnchor.constraint(lessThanOrEqualTo: passionfruitMousse.leadingAnchor, constant: -9),
             mangoFilling.leadingAnchor.constraint(equalTo: apricotCompote.leadingAnchor),
             mangoFilling.topAnchor.constraint(equalTo: apricotCompote.bottomAnchor, constant: 4),

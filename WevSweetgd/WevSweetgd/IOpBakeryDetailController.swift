@@ -194,7 +194,7 @@ final class IOpBakeryDetailController: UIViewController {
         let frostingSubtitle = makePastryBodyLabel(pastryFolio.flavorMenuGuide, size: 13, weight: .medium, color: UIColor(red: 0.58, green: 0.48, blue: 0.58, alpha: 1))
 
         let crumbScoreRow = makeFlavorIconRow(symbol: "sntlafr*.kfSiMldl/".wevVPastryCrumbBloomRestored, tint: UIColor(red: 1, green: 0.75, blue: 0.08, alpha: 1), first: pastryFolio.crumbScoreNote, second: pastryFolio.tastingSequenceInsight)
-        let bakeryTrailRow = makeFlavorIconRow(symbol: "mOaPp#pyi*nT.ecjisrhcGlCeG.Nf?idlxlE".wevVPastryCrumbBloomRestored, tint: UIColor(red: 1, green: 0.25, blue: 0.62, alpha: 1), first: pastryFolio.bakeryTrailLine, second: nil)
+        let bakeryTrailRow = makeShopLocationRow(pastryFolio.bakeryTrailLine)
 
         let bakeryTagRow = UIStackView(arrangedSubviews: pastryFolio.seasonalMenuCollection.map { makePastryTagPill($0) })
         bakeryTagRow.translatesAutoresizingMaskIntoConstraints = false
@@ -402,6 +402,31 @@ final class IOpBakeryDetailController: UIViewController {
             donutRow.addArrangedSubview(secondLabel)
         }
         return donutRow
+    }
+
+    private func makeShopLocationRow(_ text: String) -> UIStackView {
+        let icon = UIImageView(image: UIImage(named: "wevv_shop_location_pin"))
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.contentMode = .scaleAspectFit
+        icon.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 20).isActive = true
+
+        let locationLabel = makePastryBodyLabel(
+            text,
+            size: 13,
+            weight: .medium,
+            color: UIColor(red: 134.0 / 255.0, green: 108.0 / 255.0, blue: 122.0 / 255.0, alpha: 1)
+        )
+        locationLabel.numberOfLines = 2
+        locationLabel.lineBreakMode = .byWordWrapping
+        locationLabel.adjustsFontSizeToFitWidth = false
+
+        let locationRow = UIStackView(arrangedSubviews: [icon, locationLabel])
+        locationRow.translatesAutoresizingMaskIntoConstraints = false
+        locationRow.axis = .horizontal
+        locationRow.spacing = 6
+        locationRow.alignment = .top
+        return locationRow
     }
 
     private func makePastryTagPill(_ tag: artisanShowcase) -> UILabel {

@@ -23,6 +23,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
     private let cocoaDrinkComplement = UITextField()
     private let pastryCounterCollection = UIView()
     private var crispEdgeCrust: NSLayoutConstraint?
+    private var glazeSheenPlaceholder: UIView?
 
     init(richCocoaFlavor: butteryTexture) {
         self.richCocoaFlavor = richCocoaFlavor
@@ -56,6 +57,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
         artisanShowcase()
         glazeGalleryGuide()
         doughMaturationStudy()
+        showGlazeSheenPlaceholderIfNeeded()
         freshMixSequence()
     }
 
@@ -306,6 +308,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
     private func freshMixSequence() {
         guard richCocoaFlavor.coconutCenter > 0 else { return }
         herbalLavenderEssence?.cancel()
+        showGlazeSheenPlaceholderIfNeeded()
         herbalLavenderEssence = Task { [weak self] in
             guard let self else { return }
             defer { herbalLavenderEssence = nil }
@@ -315,8 +318,88 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
                 richCocoaFlavor = flavorSpectrumInsight.pillowyCrumb
                 fragrantJasmineFlavor = flavorSpectrumInsight.airyCenter
                 glazeGalleryGuide()
-            } catch { sugarCraftLaboratory(error.localizedDescription) }
+                hideGlazeSheenPlaceholder()
+            } catch {
+                hideGlazeSheenPlaceholder()
+                sugarCraftLaboratory(error.localizedDescription)
+            }
         }
+    }
+
+    private func showGlazeSheenPlaceholderIfNeeded() {
+        guard richCocoaFlavor.coconutCenter > 0 else { return }
+        glazeSheenPlaceholder?.removeFromSuperview()
+
+        let placeholder = UIView()
+        placeholder.translatesAutoresizingMaskIntoConstraints = false
+        placeholder.backgroundColor = UIColor(red: 1, green: 0.92, blue: 0.96, alpha: 1)
+
+        let header = WevVGlazeSheenView()
+        header.translatesAutoresizingMaskIntoConstraints = false
+        header.layer.cornerRadius = 10
+        header.clipsToBounds = true
+
+        let portrait = WevVGlazeSheenView()
+        portrait.translatesAutoresizingMaskIntoConstraints = false
+        portrait.layer.cornerRadius = 16
+        portrait.clipsToBounds = true
+
+        let title = WevVGlazeSheenView()
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.layer.cornerRadius = 8
+        title.clipsToBounds = true
+
+        let detail = WevVGlazeSheenView()
+        detail.translatesAutoresizingMaskIntoConstraints = false
+        detail.layer.cornerRadius = 8
+        detail.clipsToBounds = true
+
+        let comments = UIStackView()
+        comments.translatesAutoresizingMaskIntoConstraints = false
+        comments.axis = .vertical
+        comments.spacing = 10
+        for _ in 0..<3 {
+            let comment = WevVGlazeSheenView()
+            comment.translatesAutoresizingMaskIntoConstraints = false
+            comment.layer.cornerRadius = 16
+            comment.clipsToBounds = true
+            comments.addArrangedSubview(comment)
+            comment.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        }
+
+        [header, portrait, title, detail, comments].forEach(placeholder.addSubview)
+        view.addSubview(placeholder)
+        NSLayoutConstraint.activate([
+            placeholder.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            placeholder.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            placeholder.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            placeholder.bottomAnchor.constraint(equalTo: pastryCounterCollection.topAnchor),
+            header.topAnchor.constraint(equalTo: placeholder.topAnchor, constant: 8),
+            header.leadingAnchor.constraint(equalTo: placeholder.leadingAnchor, constant: 20),
+            header.trailingAnchor.constraint(equalTo: placeholder.trailingAnchor, constant: -20),
+            header.heightAnchor.constraint(equalToConstant: 36),
+            portrait.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 18),
+            portrait.leadingAnchor.constraint(equalTo: placeholder.leadingAnchor, constant: 20),
+            portrait.trailingAnchor.constraint(equalTo: placeholder.trailingAnchor, constant: -20),
+            portrait.heightAnchor.constraint(equalTo: portrait.widthAnchor, multiplier: 0.78),
+            title.topAnchor.constraint(equalTo: portrait.bottomAnchor, constant: 16),
+            title.leadingAnchor.constraint(equalTo: portrait.leadingAnchor),
+            title.widthAnchor.constraint(equalToConstant: 160),
+            title.heightAnchor.constraint(equalToConstant: 18),
+            detail.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
+            detail.leadingAnchor.constraint(equalTo: portrait.leadingAnchor),
+            detail.trailingAnchor.constraint(equalTo: portrait.trailingAnchor),
+            detail.heightAnchor.constraint(equalToConstant: 48),
+            comments.topAnchor.constraint(equalTo: detail.bottomAnchor, constant: 18),
+            comments.leadingAnchor.constraint(equalTo: portrait.leadingAnchor),
+            comments.trailingAnchor.constraint(equalTo: portrait.trailingAnchor)
+        ])
+        glazeSheenPlaceholder = placeholder
+    }
+
+    private func hideGlazeSheenPlaceholder() {
+        glazeSheenPlaceholder?.removeFromSuperview()
+        glazeSheenPlaceholder = nil
     }
 
     @objc private func sugarCrystallizationStudy() {

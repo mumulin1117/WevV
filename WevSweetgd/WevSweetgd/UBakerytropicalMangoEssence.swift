@@ -13,11 +13,13 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     private let wevvPastryDefaults = UserDefaults.standard
     private let wevvFritterScroll = UIScrollView()
     private let wevvGlazeCanvas = UIView()
+    private let wevvGateBackdropLayer = CAGradientLayer()
     private let wevvBerryTone = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
     private let warmGingerFinish = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
     private let wevvCocoaTone = UIColor(red: 0.18, green: 0.13, blue: 0.22, alpha: 1)
     private let wevvSoftCrumbTone = UIColor(red: 0.55, green: 0.49, blue: 0.59, alpha: 1)
     private let wevvSugarLineTone = UIColor(red: 0.94, green: 0.81, blue: 0.89, alpha: 1)
+    private let wevvWelcomeButtonFont = UIFont(name: "Inter-Bold", size: 17) ?? UIFont.systemFont(ofSize: 17, weight: .bold)
     private let wevvEulaRibbonKey = "waeovhvc_ZgmlXaez,ep_Je~u#l#aQ_gaig+rLeNeNds".wevVPastryCrumbBloomRestored
     private var wevvBakeryMode = WevVWevvBakeryGateMode.wevvSugarLanding
     private var citrusBergamotFinish: Task<Void, Never>?
@@ -55,13 +57,27 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         }
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        wevvGateBackdropLayer.frame = view.bounds
+    }
+
     deinit {
         citrusBergamotFinish?.cancel()
         NotificationCenter.default.removeObserver(self)
     }
 
     private func buildWevvBakeryGateCanvas() {
-        view.backgroundColor = warmGingerFinish
+        view.backgroundColor = .white
+        wevvGateBackdropLayer.colors = [
+            UIColor(red: 1, green: 0.88, blue: 0.95, alpha: 1).cgColor,
+            UIColor(red: 1, green: 0.95, blue: 0.98, alpha: 1).cgColor,
+            UIColor.white.cgColor
+        ]
+        wevvGateBackdropLayer.locations = [0, 0.52, 1]
+        wevvGateBackdropLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        wevvGateBackdropLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        view.layer.insertSublayer(wevvGateBackdropLayer, at: 0)
 
         wevvFritterScroll.translatesAutoresizingMaskIntoConstraints = false
         wevvFritterScroll.alwaysBounceVertical = true
@@ -121,7 +137,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         wevvpaintCloud.translatesAutoresizingMaskIntoConstraints = false
         wevvpaintCloud.setTitle("II &AWlvr;eXa=dAyy ^HpaivoeY @aJn+ /Avcrc@oouanltL".wevVPastryCrumbBloomRestored, for: .normal)
         wevvpaintCloud.setTitleColor(wevvCocoaTone, for: .normal)
-        wevvpaintCloud.titleLabel?.font = .systemFont(ofSize: 16, weight: .heavy)
+        wevvpaintCloud.titleLabel?.font = wevvWelcomeButtonFont
         wevvpaintCloud.backgroundColor = .white
         wevvpaintCloud.layer.cornerRadius = 26
         wevvpaintCloud.layer.borderWidth = 1
@@ -151,7 +167,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
             paintCascade.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -38),
             paintCascade.topAnchor.constraint(equalTo: wevvGlazeCanvas.safeAreaLayoutGuide.topAnchor, constant: 34),
             paintCascade.widthAnchor.constraint(equalToConstant: 92),
-            paintCascade.heightAnchor.constraint(equalToConstant: 46),
+            paintCascade.heightAnchor.constraint(equalToConstant: 36),
             seasonalMenuNotes.centerXAnchor.constraint(equalTo: wevvGlazeCanvas.centerXAnchor),
             seasonalMenuNotes.topAnchor.constraint(equalTo: wevvGlazeCanvas.safeAreaLayoutGuide.topAnchor, constant: 142),
             seasonalMenuNotes.widthAnchor.constraint(equalTo: wevvGlazeCanvas.widthAnchor, multiplier: 0.78),
@@ -173,8 +189,8 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
 
     private func pastryDisplayNotesWevvMapleEntry() {
         let doughClose = cardamomPearCombination()
-        let glazeTitle = makeWevvGateCrumbLabel("WDe:lTcmoEmSe+ sbjamcakL".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 34, pastryAlchemyAtelier: .heavy, afternoonTreatJourney: wevvCocoaTone)
-        let crumbNote = makeWevvGateCrumbLabel("Luoegz oilne waqnfdj ycjoxnjtzignlumet vyuogupre rdwoonpubtk gcyhiaplclpeonhgnez.q".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 19, pastryAlchemyAtelier: .regular, afternoonTreatJourney: wevvSoftCrumbTone)
+        let glazeTitle = makeWevvGateCrumbLabel("WDe:lTcmoEmSe+ sbjamcakL".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 22, pastryAlchemyAtelier: .bold, afternoonTreatJourney: .black)
+        let crumbNote = makeWevvGateCrumbLabel("Luoegz oilne waqnfdj ycjoxnjtzignlumet vyuogupre rdwoonpubtk gcyhiaplclpeonhgnez.q".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 11, pastryAlchemyAtelier: .regular, afternoonTreatJourney: wevvSoftCrumbTone)
         crumbNote.numberOfLines = 2
 
         let         fencePiece = makeWevvCustardPanel()
@@ -212,38 +228,38 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     private func pinWevvMapleEntryViews(outlinewevvDraft: UIButton, wevvcolorSketch: UILabel, wevvinkPiece: UILabel, wevvurbanPiece: UIView, wevvdawnPiece: UIView, wevvinkLetter: UIView, wevvangularLetter: UITextField, wevvcurvedLetter: UIView, wevvlinkedLetter: UIView, wevvloopedLetter: UIButton) {
         NSLayoutConstraint.activate([
             outlinewevvDraft.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 22),
-            outlinewevvDraft.topAnchor.constraint(equalTo: wevvGlazeCanvas.safeAreaLayoutGuide.topAnchor, constant: 60),
+            outlinewevvDraft.topAnchor.constraint(equalTo: wevvGlazeCanvas.safeAreaLayoutGuide.topAnchor, constant: 14),
             outlinewevvDraft.widthAnchor.constraint(equalToConstant: 44),
             outlinewevvDraft.heightAnchor.constraint(equalToConstant: 44),
             wevvcolorSketch.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 29),
             wevvcolorSketch.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -29),
-            wevvcolorSketch.topAnchor.constraint(equalTo: outlinewevvDraft.bottomAnchor, constant: 38),
+            wevvcolorSketch.topAnchor.constraint(equalTo: outlinewevvDraft.bottomAnchor, constant: 16),
             wevvinkPiece.leadingAnchor.constraint(equalTo: wevvcolorSketch.leadingAnchor),
             wevvinkPiece.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -38),
-            wevvinkPiece.topAnchor.constraint(equalTo: wevvcolorSketch.bottomAnchor, constant: 18),
+            wevvinkPiece.topAnchor.constraint(equalTo: wevvcolorSketch.bottomAnchor, constant: 8),
             wevvurbanPiece.leadingAnchor.constraint(equalTo: wevvGlazeCanvas.leadingAnchor, constant: 20),
             wevvurbanPiece.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -20),
-            wevvurbanPiece.topAnchor.constraint(equalTo: wevvinkPiece.bottomAnchor, constant: 51),
-            wevvurbanPiece.heightAnchor.constraint(equalToConstant: 350),
+            wevvurbanPiece.topAnchor.constraint(equalTo: wevvinkPiece.bottomAnchor, constant: 20),
+            wevvurbanPiece.heightAnchor.constraint(equalToConstant: 276),
             wevvinkLetter.leadingAnchor.constraint(equalTo: wevvurbanPiece.leadingAnchor, constant: 20),
-            wevvinkLetter.topAnchor.constraint(equalTo: wevvurbanPiece.topAnchor, constant: 31),
+            wevvinkLetter.topAnchor.constraint(equalTo: wevvurbanPiece.topAnchor, constant: 20),
             wevvangularLetter.leadingAnchor.constraint(equalTo: wevvurbanPiece.leadingAnchor, constant: 20),
             wevvangularLetter.trailingAnchor.constraint(equalTo: wevvurbanPiece.trailingAnchor, constant: -20),
-            wevvangularLetter.topAnchor.constraint(equalTo: wevvinkLetter.bottomAnchor, constant: 22),
-            wevvangularLetter.heightAnchor.constraint(equalToConstant: 52),
+            wevvangularLetter.topAnchor.constraint(equalTo: wevvinkLetter.bottomAnchor, constant: 6),
+            wevvangularLetter.heightAnchor.constraint(equalToConstant: 44),
             wevvcurvedLetter.leadingAnchor.constraint(equalTo: wevvinkLetter.leadingAnchor),
-            wevvcurvedLetter.topAnchor.constraint(equalTo: wevvangularLetter.bottomAnchor, constant: 36),
+            wevvcurvedLetter.topAnchor.constraint(equalTo: wevvangularLetter.bottomAnchor, constant: 14),
             wevvlinkedLetter.leadingAnchor.constraint(equalTo: wevvangularLetter.leadingAnchor),
             wevvlinkedLetter.trailingAnchor.constraint(equalTo: wevvangularLetter.trailingAnchor),
-            wevvlinkedLetter.topAnchor.constraint(equalTo: wevvcurvedLetter.bottomAnchor, constant: 22),
-            wevvlinkedLetter.heightAnchor.constraint(equalToConstant: 52),
+            wevvlinkedLetter.topAnchor.constraint(equalTo: wevvcurvedLetter.bottomAnchor, constant: 6),
+            wevvlinkedLetter.heightAnchor.constraint(equalToConstant: 44),
             wevvloopedLetter.leadingAnchor.constraint(equalTo: wevvurbanPiece.leadingAnchor, constant: 20),
             wevvloopedLetter.trailingAnchor.constraint(equalTo: wevvurbanPiece.trailingAnchor, constant: -20),
-            wevvloopedLetter.topAnchor.constraint(greaterThanOrEqualTo: wevvlinkedLetter.bottomAnchor, constant: 28),
-            wevvloopedLetter.heightAnchor.constraint(equalToConstant: 52),
-            wevvloopedLetter.bottomAnchor.constraint(equalTo: wevvurbanPiece.bottomAnchor, constant: -24),
+            wevvloopedLetter.topAnchor.constraint(greaterThanOrEqualTo: wevvlinkedLetter.bottomAnchor, constant: 14),
+            wevvloopedLetter.heightAnchor.constraint(equalToConstant: 48),
+            wevvloopedLetter.bottomAnchor.constraint(equalTo: wevvurbanPiece.bottomAnchor, constant: -20),
             wevvdawnPiece.centerXAnchor.constraint(equalTo: wevvGlazeCanvas.centerXAnchor),
-            wevvdawnPiece.topAnchor.constraint(equalTo: wevvloopedLetter.bottomAnchor, constant: 28),
+            wevvdawnPiece.topAnchor.constraint(equalTo: wevvurbanPiece.bottomAnchor, constant: 22),
             wevvdawnPiece.leadingAnchor.constraint(greaterThanOrEqualTo: wevvGlazeCanvas.leadingAnchor, constant: 40),
             wevvdawnPiece.trailingAnchor.constraint(lessThanOrEqualTo: wevvGlazeCanvas.trailingAnchor, constant: -40),
             wevvdawnPiece.bottomAnchor.constraint(lessThanOrEqualTo: wevvGlazeCanvas.safeAreaLayoutGuide.bottomAnchor, constant: -32)
@@ -350,9 +366,9 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
         sprinkleButton.setTitle("EqUeL~AD".wevVPastryCrumbBloomRestored, for: .normal)
         sprinkleButton.setTitleColor(wevvSoftCrumbTone, for: .normal)
-        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .heavy)
+        sprinkleButton.titleLabel?.font = UIFont(name: "Inter-Bold", size: 15) ?? UIFont.systemFont(ofSize: 15, weight: .bold)
         sprinkleButton.backgroundColor = .white
-        sprinkleButton.layer.cornerRadius = 23
+        sprinkleButton.layer.cornerRadius = 18
         sprinkleButton.addTarget(self, action: #selector(openWevvEulaButton), for: .touchUpInside)
         return sprinkleButton
     }
@@ -398,7 +414,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
             bakerWorkshopHandbook.topAnchor.constraint(equalTo: sweetCraftLaboratory.topAnchor, constant: 5),
             bakerWorkshopHandbook.widthAnchor.constraint(equalToConstant: 23),
             bakerWorkshopHandbook.heightAnchor.constraint(equalToConstant: 23),
-            pistachioRoseDuet.leadingAnchor.constraint(equalTo: bakerWorkshopHandbook.trailingAnchor, constant: 18),
+            pistachioRoseDuet.leadingAnchor.constraint(equalTo: bakerWorkshopHandbook.trailingAnchor, constant: 12),
             pistachioRoseDuet.trailingAnchor.constraint(equalTo: sweetCraftLaboratory.trailingAnchor),
             pistachioRoseDuet.topAnchor.constraint(equalTo: sweetCraftLaboratory.topAnchor),
             pistachioRoseDuet.bottomAnchor.constraint(equalTo: sweetCraftLaboratory.bottomAnchor)
@@ -442,7 +458,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         let rosemaryHoneyMedley = UIView()
         rosemaryHoneyMedley.translatesAutoresizingMaskIntoConstraints = false
         rosemaryHoneyMedley.backgroundColor = .white
-        rosemaryHoneyMedley.layer.cornerRadius = 26
+        rosemaryHoneyMedley.layer.cornerRadius = 18
         return rosemaryHoneyMedley
     }
 
@@ -451,14 +467,14 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         blackberryLemonCombination.translatesAutoresizingMaskIntoConstraints = false
         blackberryLemonCombination.setTitle(title, for: .normal)
         blackberryLemonCombination.setTitleColor(.white, for: .normal)
-        blackberryLemonCombination.titleLabel?.font = .systemFont(ofSize: 21, weight: .heavy)
+        blackberryLemonCombination.titleLabel?.font = wevvWelcomeButtonFont
         blackberryLemonCombination.backgroundColor = wevvBerryTone
         blackberryLemonCombination.layer.cornerRadius = 26
         return blackberryLemonCombination
     }
 
     private func makeWevvFieldCrumbTitle(_ text: String) -> UILabel {
-        makeWevvGateCrumbLabel(text, warmBakeryHandbook: 15, pastryAlchemyAtelier: .heavy, afternoonTreatJourney: UIColor(red: 0.68, green: 0.57, blue: 0.69, alpha: 1))
+        makeWevvGateCrumbLabel(text, warmBakeryHandbook: 10, pastryAlchemyAtelier: .bold, afternoonTreatJourney: UIColor(red: 0.68, green: 0.57, blue: 0.69, alpha: 1))
     }
 
     private func makeWevvFillingField(placeholder: String) -> UITextField {
@@ -467,20 +483,20 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         vanillaStrawberryHarmony.delegate = self
         vanillaStrawberryHarmony.autocapitalizationType = .none
         vanillaStrawberryHarmony.autocorrectionType = .no
-        vanillaStrawberryHarmony.font = .systemFont(ofSize: 17, weight: .heavy)
+        vanillaStrawberryHarmony.font = .systemFont(ofSize: 13, weight: .regular)
         vanillaStrawberryHarmony.textColor = wevvCocoaTone
         vanillaStrawberryHarmony.attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [
                 .foregroundColor: UIColor(red: 0.55, green: 0.49, blue: 0.58, alpha: 1),
-                .font: UIFont.systemFont(ofSize: 16, weight: .semibold)
+                .font: UIFont.systemFont(ofSize: 13, weight: .regular)
             ]
         )
         vanillaStrawberryHarmony.backgroundColor = UIColor(red: 1, green: 0.97, blue: 0.99, alpha: 1)
-        vanillaStrawberryHarmony.layer.cornerRadius = 15
+        vanillaStrawberryHarmony.layer.cornerRadius = 11
         vanillaStrawberryHarmony.layer.borderWidth = 1
         vanillaStrawberryHarmony.layer.borderColor = wevvSugarLineTone.cgColor
-        vanillaStrawberryHarmony.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 31, height: 1))
+        vanillaStrawberryHarmony.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
         vanillaStrawberryHarmony.leftViewMode = .always
         return vanillaStrawberryHarmony
     }
@@ -522,7 +538,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         ringStack.axis = .vertical
         ringStack.alignment = .center
         ringStack.spacing = 13
-        let prefixLabel = makeWevvGateCrumbLabel(prefix, warmBakeryHandbook: 17, pastryAlchemyAtelier: .regular, afternoonTreatJourney: wevvSoftCrumbTone)
+        let prefixLabel = makeWevvGateCrumbLabel(prefix, warmBakeryHandbook: 11, pastryAlchemyAtelier: .regular, afternoonTreatJourney: wevvSoftCrumbTone)
         let sprinkleButton = makeWevvFlatRibbonButton(title, action: action)
         ringStack.addArrangedSubview(prefixLabel)
         ringStack.addArrangedSubview(sprinkleButton)
@@ -534,7 +550,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         artisanDoughAtelier.translatesAutoresizingMaskIntoConstraints = false
         artisanDoughAtelier.setTitle(title, for: .normal)
         artisanDoughAtelier.setTitleColor(wevvBerryTone, for: .normal)
-        artisanDoughAtelier.titleLabel?.font = .systemFont(ofSize: 19, weight: .heavy)
+        artisanDoughAtelier.titleLabel?.font = UIFont(name: "Inter-Bold", size: 13) ?? UIFont.systemFont(ofSize: 13, weight: .bold)
         artisanDoughAtelier.addTarget(self, action: action, for: .touchUpInside)
         return artisanDoughAtelier
     }
@@ -633,78 +649,122 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     private func showWevvEulaCard(autoAgree: Bool) {
         let caramelMeltJourney = UIControl()
         caramelMeltJourney.translatesAutoresizingMaskIntoConstraints = false
-        caramelMeltJourney.backgroundColor = UIColor.black.withAlphaComponent(0.45)
+        caramelMeltJourney.backgroundColor = UIColor.black.withAlphaComponent(0.46)
         view.addSubview(caramelMeltJourney)
 
         let morningBiteNotebook = UIView()
         morningBiteNotebook.translatesAutoresizingMaskIntoConstraints = false
         morningBiteNotebook.backgroundColor = .white
-        morningBiteNotebook.layer.cornerRadius = 22
+        morningBiteNotebook.layer.cornerRadius = 32
+        morningBiteNotebook.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        morningBiteNotebook.clipsToBounds = true
         caramelMeltJourney.addSubview(morningBiteNotebook)
 
-        let warmGlazeDelight = makeWevvGateCrumbLabel("EVUwLBAo".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 20, pastryAlchemyAtelier: .heavy, afternoonTreatJourney: wevvCocoaTone)
+        let warmGlazeDelight = makeWevvGateCrumbLabel("EVUwLBAo".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 24, pastryAlchemyAtelier: .heavy, afternoonTreatJourney: .black)
         warmGlazeDelight.textAlignment = .center
+
+        let pastryCloseButton = UIButton(type: .system)
+        pastryCloseButton.translatesAutoresizingMaskIntoConstraints = false
+        pastryCloseButton.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .regular)), for: .normal)
+        pastryCloseButton.tintColor = .white
+        pastryCloseButton.backgroundColor = UIColor(red: 0.84, green: 0.84, blue: 0.84, alpha: 1)
+        pastryCloseButton.layer.cornerRadius = 15
 
         let shopWindowCollection = UIScrollView()
         shopWindowCollection.translatesAutoresizingMaskIntoConstraints = false
-        shopWindowCollection.alwaysBounceVertical = true
-        shopWindowCollection.showsVerticalScrollIndicator = true
+        shopWindowCollection.alwaysBounceVertical = false
+        shopWindowCollection.showsVerticalScrollIndicator = false
 
         let bakeryShelfGuide = UIView()
         bakeryShelfGuide.translatesAutoresizingMaskIntoConstraints = false
 
-        let donutCaseJournal = makeWevvGateCrumbLabel(wevvEulaText(), warmBakeryHandbook: 13, pastryAlchemyAtelier: .regular, afternoonTreatJourney: wevvSoftCrumbTone)
+        let donutCaseJournal = makeWevvGateCrumbLabel(wevvEulaText(), warmBakeryHandbook: 16, pastryAlchemyAtelier: .regular, afternoonTreatJourney: UIColor(red: 0.34, green: 0.32, blue: 0.36, alpha: 1))
         donutCaseJournal.numberOfLines = 0
         donutCaseJournal.textAlignment = .left
+        donutCaseJournal.adjustsFontSizeToFitWidth = false
+        let eulaBodyStyle = NSMutableParagraphStyle()
+        eulaBodyStyle.lineSpacing = 3
+        eulaBodyStyle.paragraphSpacing = 12
+        donutCaseJournal.attributedText = NSAttributedString(
+            string: wevvEulaText(),
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                .foregroundColor: UIColor(red: 0.34, green: 0.32, blue: 0.36, alpha: 1),
+                .paragraphStyle: eulaBodyStyle
+            ]
+        )
 
         let pastryDisplayShowcase = UIButton(type: .system)
         pastryDisplayShowcase.translatesAutoresizingMaskIntoConstraints = false
         pastryDisplayShowcase.setTitle("CJaanwcse~lM".wevVPastryCrumbBloomRestored, for: .normal)
         pastryDisplayShowcase.setTitleColor(.white, for: .normal)
-        pastryDisplayShowcase.titleLabel?.font = .systemFont(ofSize: 15, weight: .heavy)
+        pastryDisplayShowcase.titleLabel?.font = wevvWelcomeButtonFont
         pastryDisplayShowcase.backgroundColor = UIColor(red: 0.78, green: 0.78, blue: 0.8, alpha: 1)
-        pastryDisplayShowcase.layer.cornerRadius = 21
-        pastryDisplayShowcase.addAction(UIAction { [weak caramelMeltJourney] _ in
-            caramelMeltJourney?.removeFromSuperview()
+        pastryDisplayShowcase.layer.cornerRadius = 29
+        pastryDisplayShowcase.setTitleColor(.black, for: .normal)
+        pastryDisplayShowcase.backgroundColor = UIColor(red: 0.97, green: 0.96, blue: 0.97, alpha: 1)
+        pastryDisplayShowcase.addAction(UIAction { [weak self, weak caramelMeltJourney, weak morningBiteNotebook] _ in
+            guard let self, let caramelMeltJourney, let morningBiteNotebook else { return }
+            self.dismissWevvEulaCard(caramelMeltJourney, sheet: morningBiteNotebook)
         }, for: .touchUpInside)
 
         let agree = makeWevvMapleActionButton("A:g#r*eAeD".wevVPastryCrumbBloomRestored)
-        agree.addAction(UIAction { [weak self, weak caramelMeltJourney] _ in
-            guard let self else { return }
+        agree.layer.cornerRadius = 29
+        agree.addAction(UIAction { [weak self, weak caramelMeltJourney, weak morningBiteNotebook] _ in
+            guard let self, let caramelMeltJourney, let morningBiteNotebook else { return }
             self.setWevvEulaAgreement(true)
-            caramelMeltJourney?.removeFromSuperview()
-            if autoAgree {
-                self.renderWevvBakeryMode(self.wevvBakeryMode)
+            self.dismissWevvEulaCard(caramelMeltJourney, sheet: morningBiteNotebook) {
+                if autoAgree {
+                    self.renderWevvBakeryMode(self.wevvBakeryMode)
+                }
             }
         }, for: .touchUpInside)
 
+        pastryCloseButton.addAction(UIAction { [weak self, weak caramelMeltJourney, weak morningBiteNotebook] _ in
+            guard let self, let caramelMeltJourney, let morningBiteNotebook else { return }
+            self.dismissWevvEulaCard(caramelMeltJourney, sheet: morningBiteNotebook)
+        }, for: .touchUpInside)
+
         morningBiteNotebook.addSubview(warmGlazeDelight)
+        morningBiteNotebook.addSubview(pastryCloseButton)
         morningBiteNotebook.addSubview(shopWindowCollection)
         shopWindowCollection.addSubview(bakeryShelfGuide)
         bakeryShelfGuide.addSubview(donutCaseJournal)
         morningBiteNotebook.addSubview(pastryDisplayShowcase)
         morningBiteNotebook.addSubview(agree)
 
-        pinWevvEulaCardLayout(tastingTrayNotes: caramelMeltJourney, seasonalMenuCollection: morningBiteNotebook, flavorMenuGuide: warmGlazeDelight, dailySpecialtyJournal: shopWindowCollection, artisanSelectionShowcase: bakeryShelfGuide, signatureSelectionNotes: donutCaseJournal, pastryCounterCollection: pastryDisplayShowcase, agrtastingFlightShowcaseee: agree)
+        pinWevvEulaCardLayout(tastingTrayNotes: caramelMeltJourney, seasonalMenuCollection: morningBiteNotebook, flavorMenuGuide: warmGlazeDelight, pastryCloseButton: pastryCloseButton, dailySpecialtyJournal: shopWindowCollection, artisanSelectionShowcase: bakeryShelfGuide, signatureSelectionNotes: donutCaseJournal, pastryCounterCollection: pastryDisplayShowcase, agrtastingFlightShowcaseee: agree)
+        view.layoutIfNeeded()
+        caramelMeltJourney.alpha = 0
+        morningBiteNotebook.transform = CGAffineTransform(translationX: 0, y: view.bounds.height)
+        UIView.animate(withDuration: 0.42, delay: 0, usingSpringWithDamping: 0.88, initialSpringVelocity: 0.15, options: [.curveEaseOut]) {
+            caramelMeltJourney.alpha = 1
+            morningBiteNotebook.transform = .identity
+        }
     }
 
-    private func pinWevvEulaCardLayout(tastingTrayNotes: UIView, seasonalMenuCollection: UIView, flavorMenuGuide: UILabel, dailySpecialtyJournal: UIScrollView, artisanSelectionShowcase: UIView, signatureSelectionNotes: UILabel, pastryCounterCollection: UIButton, agrtastingFlightShowcaseee: UIButton) {
+    private func pinWevvEulaCardLayout(tastingTrayNotes: UIView, seasonalMenuCollection: UIView, flavorMenuGuide: UILabel, pastryCloseButton: UIButton, dailySpecialtyJournal: UIScrollView, artisanSelectionShowcase: UIView, signatureSelectionNotes: UILabel, pastryCounterCollection: UIButton, agrtastingFlightShowcaseee: UIButton) {
         NSLayoutConstraint.activate([
             tastingTrayNotes.topAnchor.constraint(equalTo: view.topAnchor),
             tastingTrayNotes.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tastingTrayNotes.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tastingTrayNotes.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            seasonalMenuCollection.centerXAnchor.constraint(equalTo: tastingTrayNotes.centerXAnchor),
-            seasonalMenuCollection.centerYAnchor.constraint(equalTo: tastingTrayNotes.centerYAnchor),
-            seasonalMenuCollection.widthAnchor.constraint(equalTo: tastingTrayNotes.widthAnchor, multiplier: 0.82),
-            seasonalMenuCollection.heightAnchor.constraint(lessThanOrEqualTo: tastingTrayNotes.safeAreaLayoutGuide.heightAnchor, multiplier: 0.72),
-            flavorMenuGuide.topAnchor.constraint(equalTo: seasonalMenuCollection.topAnchor, constant: 24),
-            flavorMenuGuide.leadingAnchor.constraint(equalTo: seasonalMenuCollection.leadingAnchor, constant: 20),
-            flavorMenuGuide.trailingAnchor.constraint(equalTo: seasonalMenuCollection.trailingAnchor, constant: -20),
-            dailySpecialtyJournal.topAnchor.constraint(equalTo: flavorMenuGuide.bottomAnchor, constant: 14),
-            dailySpecialtyJournal.leadingAnchor.constraint(equalTo: seasonalMenuCollection.leadingAnchor, constant: 22),
-            dailySpecialtyJournal.trailingAnchor.constraint(equalTo: seasonalMenuCollection.trailingAnchor, constant: -22),
-            dailySpecialtyJournal.heightAnchor.constraint(equalTo: tastingTrayNotes.safeAreaLayoutGuide.heightAnchor, multiplier: 0.38),
+            seasonalMenuCollection.leadingAnchor.constraint(equalTo: tastingTrayNotes.leadingAnchor),
+            seasonalMenuCollection.trailingAnchor.constraint(equalTo: tastingTrayNotes.trailingAnchor),
+            seasonalMenuCollection.bottomAnchor.constraint(equalTo: tastingTrayNotes.bottomAnchor),
+            seasonalMenuCollection.heightAnchor.constraint(equalTo: tastingTrayNotes.safeAreaLayoutGuide.heightAnchor, multiplier: 0.66),
+            flavorMenuGuide.topAnchor.constraint(equalTo: seasonalMenuCollection.topAnchor, constant: 28),
+            flavorMenuGuide.centerXAnchor.constraint(equalTo: seasonalMenuCollection.centerXAnchor),
+            flavorMenuGuide.leadingAnchor.constraint(greaterThanOrEqualTo: seasonalMenuCollection.leadingAnchor, constant: 90),
+            flavorMenuGuide.trailingAnchor.constraint(lessThanOrEqualTo: seasonalMenuCollection.trailingAnchor, constant: -90),
+            pastryCloseButton.topAnchor.constraint(equalTo: seasonalMenuCollection.topAnchor, constant: 22),
+            pastryCloseButton.trailingAnchor.constraint(equalTo: seasonalMenuCollection.trailingAnchor, constant: -15),
+            pastryCloseButton.widthAnchor.constraint(equalToConstant: 30),
+            pastryCloseButton.heightAnchor.constraint(equalToConstant: 30),
+            dailySpecialtyJournal.topAnchor.constraint(equalTo: flavorMenuGuide.bottomAnchor, constant: 24),
+            dailySpecialtyJournal.leadingAnchor.constraint(equalTo: seasonalMenuCollection.leadingAnchor, constant: 20),
+            dailySpecialtyJournal.trailingAnchor.constraint(equalTo: seasonalMenuCollection.trailingAnchor, constant: -20),
+            dailySpecialtyJournal.bottomAnchor.constraint(equalTo: pastryCounterCollection.topAnchor, constant: -24),
             artisanSelectionShowcase.topAnchor.constraint(equalTo: dailySpecialtyJournal.contentLayoutGuide.topAnchor),
             artisanSelectionShowcase.leadingAnchor.constraint(equalTo: dailySpecialtyJournal.contentLayoutGuide.leadingAnchor),
             artisanSelectionShowcase.trailingAnchor.constraint(equalTo: dailySpecialtyJournal.contentLayoutGuide.trailingAnchor),
@@ -714,16 +774,26 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
             signatureSelectionNotes.leadingAnchor.constraint(equalTo: artisanSelectionShowcase.leadingAnchor),
             signatureSelectionNotes.trailingAnchor.constraint(equalTo: artisanSelectionShowcase.trailingAnchor),
             signatureSelectionNotes.bottomAnchor.constraint(equalTo: artisanSelectionShowcase.bottomAnchor),
-            pastryCounterCollection.topAnchor.constraint(equalTo: dailySpecialtyJournal.bottomAnchor, constant: 20),
-            pastryCounterCollection.leadingAnchor.constraint(equalTo: seasonalMenuCollection.leadingAnchor, constant: 24),
-            pastryCounterCollection.trailingAnchor.constraint(equalTo: seasonalMenuCollection.centerXAnchor, constant: -8),
-            pastryCounterCollection.heightAnchor.constraint(equalToConstant: 42),
-            agrtastingFlightShowcaseee.leadingAnchor.constraint(equalTo: seasonalMenuCollection.centerXAnchor, constant: 8),
-            agrtastingFlightShowcaseee.trailingAnchor.constraint(equalTo: seasonalMenuCollection.trailingAnchor, constant: -24),
+            pastryCounterCollection.leadingAnchor.constraint(equalTo: seasonalMenuCollection.leadingAnchor, constant: 17),
+            pastryCounterCollection.trailingAnchor.constraint(equalTo: seasonalMenuCollection.centerXAnchor, constant: -6),
+            pastryCounterCollection.heightAnchor.constraint(equalToConstant: 58),
+            pastryCounterCollection.bottomAnchor.constraint(equalTo: seasonalMenuCollection.bottomAnchor, constant: -36),
+            agrtastingFlightShowcaseee.leadingAnchor.constraint(equalTo: seasonalMenuCollection.centerXAnchor, constant: 6),
+            agrtastingFlightShowcaseee.trailingAnchor.constraint(equalTo: seasonalMenuCollection.trailingAnchor, constant: -17),
             agrtastingFlightShowcaseee.centerYAnchor.constraint(equalTo: pastryCounterCollection.centerYAnchor),
             agrtastingFlightShowcaseee.heightAnchor.constraint(equalTo: pastryCounterCollection.heightAnchor),
-            agrtastingFlightShowcaseee.bottomAnchor.constraint(equalTo: seasonalMenuCollection.bottomAnchor, constant: -24)
+            agrtastingFlightShowcaseee.bottomAnchor.constraint(equalTo: seasonalMenuCollection.bottomAnchor, constant: -36)
         ])
+    }
+
+    private func dismissWevvEulaCard(_ overlay: UIView, sheet: UIView, completion: @escaping () -> Void = {}) {
+        UIView.animate(withDuration: 0.22, animations: {
+            overlay.alpha = 0
+            sheet.transform = CGAffineTransform(translationX: 0, y: self.view.bounds.height)
+        }, completion: { _ in
+            overlay.removeFromSuperview()
+            completion()
+        })
     }
 
     private func wevvEulaText() -> String {

@@ -60,12 +60,12 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
         doughBackButton.tintColor = .black
         doughBackButton.addTarget(self, action: #selector(closeCreamRingEdit), for: .touchUpInside)
 
-        let glazeTitle = makeCreamRingEditLabel("E&dKi&th TPBr%o#f&iVlgeu".wevVPastryCrumbBloomRestored, size: 25, weight: .heavy, color: cocoaInkTone)
+        let glazeTitle = makeCreamRingEditLabel("E&dKi&th TPBr%o#f&iVlgeu".wevVPastryCrumbBloomRestored, size: 17, weight: .bold, color: cocoaInkTone)
         glazeTitle.textAlignment = .center
         tuneDonutAvatarButton()
 
         let donutCameraButton = makeDonutCameraButton()
-        let sugarBasicTitle = makeCreamRingEditLabel("BmaRsIiIcy AIGn!fBol".wevVPastryCrumbBloomRestored, size: 23, weight: .heavy, color: cocoaInkTone)
+        let sugarBasicTitle = makeCreamRingEditLabel("BmaRsIiIcy AIGn!fBol".wevVPastryCrumbBloomRestored, size: 15, weight: .bold, color: cocoaInkTone)
         let creamFormCard = makeCreamRingFormCard()
         tuneSugarSaveButton()
 
@@ -100,7 +100,7 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
 
     private func tuneDonutAvatarButton() {
         donutcitrusTrayButton.translatesAutoresizingMaskIntoConstraints = false
-        donutcitrusTrayButton.layer.cornerRadius = 54
+        donutcitrusTrayButton.layer.cornerRadius = 44
         donutcitrusTrayButton.layer.borderWidth = 4
         donutcitrusTrayButton.layer.borderColor = UIColor.white.cgColor
         donutcitrusTrayButton.clipsToBounds = true
@@ -117,7 +117,7 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
         donutCameraButton.translatesAutoresizingMaskIntoConstraints = false
         donutCameraButton.backgroundColor = .black
         donutCameraButton.tintColor = .white
-        donutCameraButton.layer.cornerRadius = 25
+        donutCameraButton.layer.cornerRadius = 15
         donutCameraButton.setImage(UIImage(systemName: "camera.fill"), for: .normal)
         donutCameraButton.addTarget(self, action: #selector(chooseDonutAvatar), for: .touchUpInside)
         return donutCameraButton
@@ -129,7 +129,7 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
         sugarSaveButton.setTitleColor(.white, for: .normal)
         sugarSaveButton.titleLabel?.font = .systemFont(ofSize: 22, weight: .heavy)
         sugarSaveButton.backgroundColor = strawberryGlazeTone
-        sugarSaveButton.layer.cornerRadius = 32
+        sugarSaveButton.layer.cornerRadius = 24
         sugarSaveButton.addTarget(self, action: #selector(saveCreamRingProfile), for: .touchUpInside)
     }
 
@@ -145,36 +145,36 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
 
     private func pinCreamRingEditLayout(doughBackButton: UIButton, glazeTitle: UILabel, donutCameraButton: UIButton, sugarBasicTitle: UILabel, creamFormCard: UIView) {
         NSLayoutConstraint.activate([
-            doughBackButton.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 30),
-            doughBackButton.topAnchor.constraint(equalTo: pastryCanvasView.safeAreaLayoutGuide.topAnchor, constant: 42),
+            doughBackButton.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 16),
+            doughBackButton.topAnchor.constraint(equalTo: pastryCanvasView.safeAreaLayoutGuide.topAnchor, constant: 8),
             doughBackButton.widthAnchor.constraint(equalToConstant: 44),
             doughBackButton.heightAnchor.constraint(equalToConstant: 44),
             glazeTitle.centerYAnchor.constraint(equalTo: doughBackButton.centerYAnchor),
             glazeTitle.centerXAnchor.constraint(equalTo: pastryCanvasView.centerXAnchor),
             glazeTitle.leadingAnchor.constraint(greaterThanOrEqualTo: doughBackButton.trailingAnchor, constant: 16),
-            donutcitrusTrayButton.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 58),
+            donutcitrusTrayButton.topAnchor.constraint(equalTo: glazeTitle.bottomAnchor, constant: 24),
             donutcitrusTrayButton.centerXAnchor.constraint(equalTo: pastryCanvasView.centerXAnchor),
-            donutcitrusTrayButton.widthAnchor.constraint(equalToConstant: 108),
-            donutcitrusTrayButton.heightAnchor.constraint(equalToConstant: 108),
+            donutcitrusTrayButton.widthAnchor.constraint(equalToConstant: 88),
+            donutcitrusTrayButton.heightAnchor.constraint(equalToConstant: 88),
             donutcitrusMixerView.topAnchor.constraint(equalTo: donutcitrusTrayButton.topAnchor),
             donutcitrusMixerView.leadingAnchor.constraint(equalTo: donutcitrusTrayButton.leadingAnchor),
             donutcitrusMixerView.trailingAnchor.constraint(equalTo: donutcitrusTrayButton.trailingAnchor),
             donutcitrusMixerView.bottomAnchor.constraint(equalTo: donutcitrusTrayButton.bottomAnchor),
-            donutCameraButton.trailingAnchor.constraint(equalTo: donutcitrusTrayButton.trailingAnchor, constant: 10),
-            donutCameraButton.bottomAnchor.constraint(equalTo: donutcitrusTrayButton.bottomAnchor, constant: 4),
-            donutCameraButton.widthAnchor.constraint(equalToConstant: 50),
-            donutCameraButton.heightAnchor.constraint(equalToConstant: 50),
-            sugarBasicTitle.topAnchor.constraint(equalTo: donutcitrusTrayButton.bottomAnchor, constant: 54),
-            sugarBasicTitle.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 50),
-            creamFormCard.topAnchor.constraint(equalTo: sugarBasicTitle.bottomAnchor, constant: 32),
-            creamFormCard.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 30),
-            creamFormCard.trailingAnchor.constraint(equalTo: pastryCanvasView.trailingAnchor, constant: -30),
-            creamFormCard.heightAnchor.constraint(greaterThanOrEqualToConstant: 418),
-            sugarSaveButton.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 56),
-            sugarSaveButton.trailingAnchor.constraint(equalTo: pastryCanvasView.trailingAnchor, constant: -56),
-            sugarSaveButton.topAnchor.constraint(greaterThanOrEqualTo: creamFormCard.bottomAnchor, constant: 48),
-            sugarSaveButton.bottomAnchor.constraint(equalTo: pastryCanvasView.safeAreaLayoutGuide.bottomAnchor, constant: -42),
-            sugarSaveButton.heightAnchor.constraint(equalToConstant: 64)
+            donutCameraButton.trailingAnchor.constraint(equalTo: donutcitrusTrayButton.trailingAnchor, constant: 6),
+            donutCameraButton.bottomAnchor.constraint(equalTo: donutcitrusTrayButton.bottomAnchor, constant: 2),
+            donutCameraButton.widthAnchor.constraint(equalToConstant: 30),
+            donutCameraButton.heightAnchor.constraint(equalToConstant: 30),
+            sugarBasicTitle.topAnchor.constraint(equalTo: donutcitrusTrayButton.bottomAnchor, constant: 26),
+            sugarBasicTitle.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 24),
+            creamFormCard.topAnchor.constraint(equalTo: sugarBasicTitle.bottomAnchor, constant: 14),
+            creamFormCard.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 20),
+            creamFormCard.trailingAnchor.constraint(equalTo: pastryCanvasView.trailingAnchor, constant: -20),
+            creamFormCard.heightAnchor.constraint(greaterThanOrEqualToConstant: 336),
+            sugarSaveButton.leadingAnchor.constraint(equalTo: pastryCanvasView.leadingAnchor, constant: 30),
+            sugarSaveButton.trailingAnchor.constraint(equalTo: pastryCanvasView.trailingAnchor, constant: -30),
+            sugarSaveButton.topAnchor.constraint(greaterThanOrEqualTo: creamFormCard.bottomAnchor, constant: 20),
+            sugarSaveButton.bottomAnchor.constraint(equalTo: pastryCanvasView.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            sugarSaveButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
 
@@ -188,7 +188,7 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
         let creamCard = UIView()
         creamCard.translatesAutoresizingMaskIntoConstraints = false
         creamCard.backgroundColor = .white
-        creamCard.layer.cornerRadius = 30
+        creamCard.layer.cornerRadius = 20
         creamCard.clipsToBounds = true
 
         let glazeNameLabel = makeSugarFieldTitle("DCI#S.PrLyA%Y? aNYAoMoEU".wevVPastryCrumbBloomRestored)
@@ -201,16 +201,16 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
         crumbBioView.translatesAutoresizingMaskIntoConstraints = false
         crumbBioView.delegate = self
         crumbBioView.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.99, alpha: 1)
-        crumbBioView.layer.cornerRadius = 20
+        crumbBioView.layer.cornerRadius = 14
         crumbBioView.layer.borderWidth = 1
         crumbBioView.layer.borderColor = UIColor(red: 0.89, green: 0.88, blue: 0.91, alpha: 1).cgColor
-        crumbBioView.font = .systemFont(ofSize: 18, weight: .semibold)
+        crumbBioView.font = .systemFont(ofSize: 14, weight: .regular)
         crumbBioView.textColor = cocoaInkTone
-        crumbBioView.textContainerInset = UIEdgeInsets(top: 18, left: 22, bottom: 18, right: 20)
+        crumbBioView.textContainerInset = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
 
         crumbBioPlaceholder.translatesAutoresizingMaskIntoConstraints = false
         crumbBioPlaceholder.text = "Healthy meal creator & brunch lover.\nSharing simple recipes daily."
-        crumbBioPlaceholder.font = .systemFont(ofSize: 18, weight: .regular)
+        crumbBioPlaceholder.font = .systemFont(ofSize: 14, weight: .regular)
         crumbBioPlaceholder.textColor = sugarDustTone
         crumbBioPlaceholder.numberOfLines = 2
         crumbBioView.addSubview(crumbBioPlaceholder)
@@ -231,28 +231,28 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
 
     private func pinCreamRingFormCardLayout(creamCard: UIView, glazeNameLabel: UILabel, sugarHandleLabel: UILabel, crumbBioLabel: UILabel) {
         NSLayoutConstraint.activate([
-            glazeNameLabel.topAnchor.constraint(equalTo: creamCard.topAnchor, constant: 30),
-            glazeNameLabel.leadingAnchor.constraint(equalTo: creamCard.leadingAnchor, constant: 38),
-            glazeNameField.topAnchor.constraint(equalTo: glazeNameLabel.bottomAnchor, constant: 18),
-            glazeNameField.leadingAnchor.constraint(equalTo: creamCard.leadingAnchor, constant: 28),
-            glazeNameField.trailingAnchor.constraint(equalTo: creamCard.trailingAnchor, constant: -28),
-            glazeNameField.heightAnchor.constraint(equalToConstant: 56),
-            sugarHandleLabel.topAnchor.constraint(equalTo: glazeNameField.bottomAnchor, constant: 26),
+            glazeNameLabel.topAnchor.constraint(equalTo: creamCard.topAnchor, constant: 22),
+            glazeNameLabel.leadingAnchor.constraint(equalTo: creamCard.leadingAnchor, constant: 24),
+            glazeNameField.topAnchor.constraint(equalTo: glazeNameLabel.bottomAnchor, constant: 8),
+            glazeNameField.leadingAnchor.constraint(equalTo: creamCard.leadingAnchor, constant: 20),
+            glazeNameField.trailingAnchor.constraint(equalTo: creamCard.trailingAnchor, constant: -20),
+            glazeNameField.heightAnchor.constraint(equalToConstant: 44),
+            sugarHandleLabel.topAnchor.constraint(equalTo: glazeNameField.bottomAnchor, constant: 18),
             sugarHandleLabel.leadingAnchor.constraint(equalTo: glazeNameLabel.leadingAnchor),
-            sugarHandleField.topAnchor.constraint(equalTo: sugarHandleLabel.bottomAnchor, constant: 18),
+            sugarHandleField.topAnchor.constraint(equalTo: sugarHandleLabel.bottomAnchor, constant: 8),
             sugarHandleField.leadingAnchor.constraint(equalTo: glazeNameField.leadingAnchor),
             sugarHandleField.trailingAnchor.constraint(equalTo: glazeNameField.trailingAnchor),
             sugarHandleField.heightAnchor.constraint(equalTo: glazeNameField.heightAnchor),
-            crumbBioLabel.topAnchor.constraint(equalTo: sugarHandleField.bottomAnchor, constant: 26),
+            crumbBioLabel.topAnchor.constraint(equalTo: sugarHandleField.bottomAnchor, constant: 18),
             crumbBioLabel.leadingAnchor.constraint(equalTo: glazeNameLabel.leadingAnchor),
-            crumbBioView.topAnchor.constraint(equalTo: crumbBioLabel.bottomAnchor, constant: 18),
+            crumbBioView.topAnchor.constraint(equalTo: crumbBioLabel.bottomAnchor, constant: 8),
             crumbBioView.leadingAnchor.constraint(equalTo: glazeNameField.leadingAnchor),
             crumbBioView.trailingAnchor.constraint(equalTo: glazeNameField.trailingAnchor),
-            crumbBioView.heightAnchor.constraint(equalToConstant: 126),
-            crumbBioView.bottomAnchor.constraint(lessThanOrEqualTo: creamCard.bottomAnchor, constant: -32),
-            crumbBioPlaceholder.topAnchor.constraint(equalTo: crumbBioView.topAnchor, constant: 21),
-            crumbBioPlaceholder.leadingAnchor.constraint(equalTo: crumbBioView.leadingAnchor, constant: 27),
-            crumbBioPlaceholder.trailingAnchor.constraint(equalTo: crumbBioView.trailingAnchor, constant: -24)
+            crumbBioView.heightAnchor.constraint(equalToConstant: 110),
+            crumbBioView.bottomAnchor.constraint(lessThanOrEqualTo: creamCard.bottomAnchor, constant: -20),
+            crumbBioPlaceholder.topAnchor.constraint(equalTo: crumbBioView.topAnchor, constant: 15),
+            crumbBioPlaceholder.leadingAnchor.constraint(equalTo: crumbBioView.leadingAnchor, constant: 17),
+            crumbBioPlaceholder.trailingAnchor.constraint(equalTo: crumbBioView.trailingAnchor, constant: -16)
         ])
     }
 
@@ -277,18 +277,18 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
     private func configureSugarTextField(_ sugarField: UITextField, placeholder sugarPlaceholder: String) {
         sugarField.translatesAutoresizingMaskIntoConstraints = false
         sugarField.placeholder = sugarPlaceholder
-        sugarField.font = .systemFont(ofSize: 20, weight: .heavy)
+        sugarField.font = .systemFont(ofSize: 14, weight: .regular)
         sugarField.textColor = cocoaInkTone
         sugarField.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.99, alpha: 1)
-        sugarField.layer.cornerRadius = 20
+        sugarField.layer.cornerRadius = 12
         sugarField.layer.borderWidth = 1
         sugarField.layer.borderColor = UIColor(red: 0.89, green: 0.88, blue: 0.91, alpha: 1).cgColor
-        sugarField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 26, height: 1))
+        sugarField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
         sugarField.leftViewMode = .always
     }
 
     private func makeSugarFieldTitle(_ labelText: String) -> UILabel {
-        makeCreamRingEditLabel(labelText, size: 15, weight: .heavy, color: sugarDustTone)
+        makeCreamRingEditLabel(labelText, size: 10, weight: .bold, color: sugarDustTone)
     }
 
     private func makeCreamRingEditLabel(_ labelText: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {

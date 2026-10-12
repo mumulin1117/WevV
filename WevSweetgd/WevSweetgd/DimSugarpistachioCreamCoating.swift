@@ -42,7 +42,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         doughBackButton.addTarget(self, action: #selector(closeSugarSettings), for: .touchUpInside)
 
-        let yuzuHoneySwirl = espressoCreamIcing("Sbejtxtti!nrgcs^".wevVPastryCrumbBloomRestored, almondPralineShell: 16, orangeBlossomCoating: .heavy, brownButterShell: inkTone)
+        let yuzuHoneySwirl = espressoCreamIcing("Sbejtxtti!nrgcs^".wevVPastryCrumbBloomRestored, almondPralineShell: 18, orangeBlossomCoating: .bold, brownButterShell: inkTone)
         yuzuHoneySwirl.textAlignment = .center
 
         view.addSubview(doughBackButton)
@@ -50,7 +50,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
 
         NSLayoutConstraint.activate([
             doughBackButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            doughBackButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 26),
+            doughBackButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             doughBackButton.widthAnchor.constraint(equalToConstant: 44),
             doughBackButton.heightAnchor.constraint(equalToConstant: 44),
             yuzuHoneySwirl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -72,14 +72,18 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         sugarRowsStack.axis = .vertical
         sugarRowsStack.spacing = 0
         sugarRowsStack.backgroundColor = .white
-        sugarRowsStack.layer.cornerRadius = 4
+        sugarRowsStack.layer.cornerRadius = 18
+        sugarRowsStack.layer.shadowColor = UIColor.black.cgColor
+        sugarRowsStack.layer.shadowOpacity = 0.05
+        sugarRowsStack.layer.shadowRadius = 12
+        sugarRowsStack.layer.shadowOffset = CGSize(width: 0, height: 4)
         sugarRowsStack.clipsToBounds = true
         sugarContentView.addSubview(sugarRowsStack)
 
         fillSugarespressoCreamFinish()
 
         NSLayoutConstraint.activate([
-            sugarScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
+            sugarScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 76),
             sugarScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             sugarScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             sugarScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -89,8 +93,8 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             sugarContentView.bottomAnchor.constraint(equalTo: sugarScrollView.contentLayoutGuide.bottomAnchor),
             sugarContentView.widthAnchor.constraint(equalTo: sugarScrollView.frameLayoutGuide.widthAnchor),
             sugarRowsStack.topAnchor.constraint(equalTo: sugarContentView.topAnchor),
-            sugarRowsStack.leadingAnchor.constraint(equalTo: sugarContentView.leadingAnchor, constant: 38),
-            sugarRowsStack.trailingAnchor.constraint(equalTo: sugarContentView.trailingAnchor, constant: -38),
+            sugarRowsStack.leadingAnchor.constraint(equalTo: sugarContentView.leadingAnchor, constant: 20),
+            sugarRowsStack.trailingAnchor.constraint(equalTo: sugarContentView.trailingAnchor, constant: -20),
             sugarRowsStack.heightAnchor.constraint(equalToConstant: 258)
         ])
     }
@@ -143,15 +147,15 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         sugarContentView.addSubview(frostingRestButton)
 
         NSLayoutConstraint.activate([
-            crumbEraseButton.topAnchor.constraint(equalTo: sugarRowsStack.bottomAnchor, constant: 52),
+            crumbEraseButton.topAnchor.constraint(equalTo: sugarRowsStack.bottomAnchor, constant: 32),
             crumbEraseButton.leadingAnchor.constraint(equalTo: sugarRowsStack.leadingAnchor),
             crumbEraseButton.trailingAnchor.constraint(equalTo: sugarRowsStack.trailingAnchor),
-            crumbEraseButton.heightAnchor.constraint(equalToConstant: 46),
-            frostingRestButton.topAnchor.constraint(equalTo: crumbEraseButton.bottomAnchor, constant: 14),
+            crumbEraseButton.heightAnchor.constraint(equalToConstant: 48),
+            frostingRestButton.topAnchor.constraint(equalTo: crumbEraseButton.bottomAnchor, constant: 16),
             frostingRestButton.leadingAnchor.constraint(equalTo: sugarRowsStack.leadingAnchor),
             frostingRestButton.trailingAnchor.constraint(equalTo: sugarRowsStack.trailingAnchor),
-            frostingRestButton.heightAnchor.constraint(equalToConstant: 46),
-            frostingRestButton.bottomAnchor.constraint(equalTo: sugarContentView.bottomAnchor, constant: -60)
+            frostingRestButton.heightAnchor.constraint(equalToConstant: 48),
+            frostingRestButton.bottomAnchor.constraint(equalTo: sugarContentView.bottomAnchor, constant: -32)
         ])
     }
 
@@ -160,9 +164,9 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         brownButterIcing.translatesAutoresizingMaskIntoConstraints = false
         brownButterIcing.setTitle(sugarTitle, for: .normal)
         brownButterIcing.setTitleColor(sugarInk, for: .normal)
-        brownButterIcing.titleLabel?.font = .systemFont(ofSize: fontSize, weight: .heavy)
+        brownButterIcing.titleLabel?.font = .systemFont(ofSize: fontSize, weight: .bold)
         brownButterIcing.backgroundColor = sugarFill
-        brownButterIcing.layer.cornerRadius = 23
+        brownButterIcing.layer.cornerRadius = 24
         brownButterIcing.addTarget(self, action: action, for: .touchUpInside)
         return brownButterIcing
     }
@@ -175,7 +179,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             donutRow.addTarget(self, action: action, for: .touchUpInside)
         }
 
-        let glazeTitleLabel = espressoCreamIcing(title, almondPralineShell: 13, orangeBlossomCoating: .heavy, brownButterShell: inkTone)
+        let glazeTitleLabel = espressoCreamIcing(title, almondPralineShell: 14, orangeBlossomCoating: .semibold, brownButterShell: inkTone)
         let divider = UIView()
         divider.translatesAutoresizingMaskIntoConstraints = false
         divider.backgroundColor = UIColor(red: 0.91, green: 0.89, blue: 0.92, alpha: 1)
@@ -231,11 +235,11 @@ final class DimSugarpistachioCreamCoating: UIViewController {
     private func pinSugarsaltedCaramelSwirl(donutRow: UIControl, glazeTitleLabel: UILabel, cinnamonSugarSwirl: UIView) {
         NSLayoutConstraint.activate([
             donutRow.heightAnchor.constraint(equalToConstant: 43),
-            glazeTitleLabel.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor, constant: 14),
+            glazeTitleLabel.leadingAnchor.constraint(equalTo: donutRow.leadingAnchor, constant: 18),
             glazeTitleLabel.centerYAnchor.constraint(equalTo: donutRow.centerYAnchor),
             glazeTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: donutRow.trailingAnchor, constant: -55),
             cinnamonSugarSwirl.leadingAnchor.constraint(equalTo: glazeTitleLabel.leadingAnchor),
-            cinnamonSugarSwirl.trailingAnchor.constraint(equalTo: donutRow.trailingAnchor, constant: -14),
+            cinnamonSugarSwirl.trailingAnchor.constraint(equalTo: donutRow.trailingAnchor, constant: -18),
             cinnamonSugarSwirl.bottomAnchor.constraint(equalTo: donutRow.bottomAnchor),
             cinnamonSugarSwirl.heightAnchor.constraint(equalToConstant: 1)
         ])
