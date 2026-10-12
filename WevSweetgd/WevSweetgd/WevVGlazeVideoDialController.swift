@@ -119,17 +119,11 @@ final class WevVGlazeVideoDialController: UIViewController {
 
         let hangUpButton = UIButton(type: .custom)
         hangUpButton.translatesAutoresizingMaskIntoConstraints = false
-        if let hangImage = UIImage(named: "wevv_chat_video_hang_glaze") {
-            hangUpButton.setImage(hangImage.withRenderingMode(.alwaysOriginal), for: .normal)
-        } else {
-            hangUpButton.backgroundColor = UIColor(red: 1, green: 0.23, blue: 0.35, alpha: 1)
-            hangUpButton.layer.cornerRadius = 32
-            hangUpButton.setImage(
-                UIImage(systemName: "phone.down.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24, weight: .bold)),
-                for: .normal
-            )
-            hangUpButton.tintColor = .white
-        }
+        hangUpButton.setImage(
+            UIImage(named: "wevv_chat_video_hang_glaze")?.withRenderingMode(.alwaysOriginal),
+            for: .normal
+        )
+        hangUpButton.imageView?.contentMode = .scaleAspectFit
         hangUpButton.accessibilityLabel = wevvVideoDialCopy.hangUpAccessibility
         hangUpButton.addTarget(self, action: #selector(closeVideoDial), for: .touchUpInside)
 

@@ -133,7 +133,9 @@ final class WevVGlazeSafetySheet: UIView, UITextViewDelegate {
 
         pastryPanel.translatesAutoresizingMaskIntoConstraints = false
         pastryPanel.backgroundColor = .white
-        pastryPanel.layer.cornerRadius = 0
+        pastryPanel.layer.cornerRadius = 30
+        pastryPanel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        pastryPanel.clipsToBounds = true
         addSubview(pastryPanel)
 
         let pastryTitle = makeTastingLabel("REePpfoTrOth".wevVPastryCrumbBloomRestored, size: 15, weight: .heavy, color: .black)
