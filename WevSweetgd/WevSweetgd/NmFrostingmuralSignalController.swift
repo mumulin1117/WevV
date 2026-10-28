@@ -3,7 +3,6 @@ import UIKit
 final class NmFrostingmuralSignalController: UIViewController {
     private let sprinkleChallenge: WevVTastingQuest
     private let glazeSession = WevVGlazeSessionStore.shared
-    private let glazeVaultRepository = WevVGlazeVaultRepository.pastryTrailDiary
     private let guestStore = VGuestSevenSweet.shared
     private let almondBench = UIButton(type: .system)
     private var dimLayer: UIControl?
@@ -146,7 +145,7 @@ final class NmFrostingmuralSignalController: UIViewController {
         let cortadoCompanion = makeglazeThicknessStudyLabel(sprinkleChallenge.menuBoardTitle, sugarCrystallizationStudy: 24, glazeThickness: .heavy, tarchGelatini: .white)
         let crumbNote = makeglazeThicknessStudyLabel(sprinkleChallenge.glazeTrailLine, sugarCrystallizationStudy: 15, glazeThickness: .regular, tarchGelatini: UIColor.white.withAlphaComponent(0.9))
         crumbNote.numberOfLines = 2
-        let cost = makeGoldPill("\(sprinkleChallenge.sprinkleDensityValue)")
+        let cost = makeLimitedTimeFreePill()
         oilTemperatureStudy()
         almondBench.addTarget(self, action: #selector(palateDepthNotes), for: .touchUpInside)
 
@@ -164,7 +163,7 @@ final class NmFrostingmuralSignalController: UIViewController {
             crumbNote.trailingAnchor.constraint(equalTo: americanoComplement.trailingAnchor, constant: -30),
             cost.leadingAnchor.constraint(equalTo: americanoComplement.leadingAnchor, constant: 22),
             cost.bottomAnchor.constraint(equalTo: americanoComplement.bottomAnchor, constant: -22),
-            cost.widthAnchor.constraint(equalToConstant: 81),
+            cost.trailingAnchor.constraint(equalTo: almondBench.leadingAnchor, constant: -8),
             cost.heightAnchor.constraint(equalToConstant: 34),
             almondBench.trailingAnchor.constraint(equalTo: americanoComplement.trailingAnchor, constant: -17),
             almondBench.centerYAnchor.constraint(equalTo: cost.centerYAnchor),
@@ -299,24 +298,23 @@ final class NmFrostingmuralSignalController: UIViewController {
         return doughHydrationStudy
     }
 
-    private func makeGoldPill(_ text: String) -> UIView {
+    private func makeLimitedTimeFreePill() -> UIView {
         let pill = UIView()
         pill.translatesAutoresizingMaskIntoConstraints = false
         pill.backgroundColor = .white
         pill.layer.cornerRadius = 17
-        let gem = UIImageView(image: UIImage.init(named: "ervoldgem"))// makeGemView(size: 31)
-        gem.translatesAutoresizingMaskIntoConstraints = false
-        let crumbLabel = makeglazeThicknessStudyLabel(text, sugarCrystallizationStudy: 15, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.35, green: 0.08, blue: 0.25, alpha: 1))
-        pill.addSubview(gem)
+        let crumbLabel = makeglazeThicknessStudyLabel("Free for a limited time", sugarCrystallizationStudy: 12, glazeThickness: .heavy, tarchGelatini: UIColor(red: 0.35, green: 0.08, blue: 0.25, alpha: 1))
+        crumbLabel.numberOfLines = 2
+        crumbLabel.textAlignment = .center
+        crumbLabel.adjustsFontSizeToFitWidth = false
+        crumbLabel.lineBreakMode = .byWordWrapping
         pill.addSubview(crumbLabel)
         NSLayoutConstraint.activate([
-            gem.leadingAnchor.constraint(equalTo: pill.leadingAnchor, constant: 9),
-            gem.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
-            gem.widthAnchor.constraint(equalToConstant: 31),
-            gem.heightAnchor.constraint(equalToConstant: 31),
-            crumbLabel.leadingAnchor.constraint(equalTo: gem.trailingAnchor, constant: 7),
+            crumbLabel.leadingAnchor.constraint(equalTo: pill.leadingAnchor, constant: 8),
             crumbLabel.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
-            crumbLabel.trailingAnchor.constraint(lessThanOrEqualTo: pill.trailingAnchor, constant: -8)
+            crumbLabel.trailingAnchor.constraint(equalTo: pill.trailingAnchor, constant: -8),
+            crumbLabel.topAnchor.constraint(greaterThanOrEqualTo: pill.topAnchor, constant: 2),
+            crumbLabel.bottomAnchor.constraint(lessThanOrEqualTo: pill.bottomAnchor, constant: -2)
         ])
         return pill
     }
@@ -409,29 +407,13 @@ final class NmFrostingmuralSignalController: UIViewController {
             doughMaturationDetail()
             return
         }
-        guard glazeSession.glazeGoldCount >= sprinkleChallenge.sprinkleDensityValue else {
-            flavorIntensityNotes()
-            return
-        }
+        guard almondBench.isEnabled else { return }
         almondBench.isEnabled = false
-        Task { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
             guard let self else { return }
-            do {
-                try await self.glazeVaultRepository.flourBlendDetail(self.sprinkleChallenge.sprinkleDensityValue)
-                await MainActor.run {
-                    AoVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
-                        guard let self else { return }
-                        self.glazeSession.placeJoinedGlazeQuest(self.sprinkleChallenge.sprinkleJarKey)
-                        self.doughMaturationDetail()
-                        self.cocoaDiarydonutChanged?()
-                    }
-                }
-            } catch {
-                await MainActor.run {
-                    self.almondBench.isEnabled = true
-                    TinGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
-                }
-            }
+            self.glazeSession.placeJoinedGlazeQuest(self.sprinkleChallenge.sprinkleJarKey)
+            self.doughMaturationDetail()
+            self.cocoaDiarydonutChanged?()
         }
     }
 
@@ -622,12 +604,9 @@ final class NmFrostingmuralSignalController: UIViewController {
 
     @objc private func openVaultFromPopup() {
         butterAromaNotes()
-        let nuttyFinishInsight = GDonutdenCrumbCenterler()
-        nuttyFinishInsight.silkyCenter = { [weak self] in
+        WevVGlazeH5Navigation.present(.diamonds, from: self, onClose: { [weak self] in
             self?.cocoaDiarydonutChanged?()
-        }
-        nuttyFinishInsight.modalPresentationStyle = .fullScreen
-        present(nuttyFinishInsight, animated: true)
+        })
     }
 
     private func openPersonProfile(tasterBadgeKey: String) {

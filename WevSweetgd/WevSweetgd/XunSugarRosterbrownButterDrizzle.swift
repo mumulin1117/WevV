@@ -231,9 +231,16 @@ final class XunSugarRosterbrownButterDrizzle: UIViewController, UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard earlyMorningGuide.indices.contains(indexPath.row) else { return }
-        let citrusZestIcing = LmnTasterCardController(userID: earlyMorningGuide[indexPath.row].vanillaBeanIcing)
-        citrusZestIcing.modalPresentationStyle = .fullScreen
-        present(citrusZestIcing, animated: true)
+        let person = earlyMorningGuide[indexPath.row]
+        guard person.vanillaBeanIcing > 0 else { return }
+        WevVGlazeH5Navigation.present(
+            .user(userID: String(person.vanillaBeanIcing), imAccount: person.springyFinish),
+            from: self,
+            onClose: { [weak self] in
+                self?.whiteChocolateRibbon?()
+                self?.saltedCaramelSwirl()
+            }
+        )
     }
 
     private func brownButterDrizzle(at raspberryCurd: Int) {

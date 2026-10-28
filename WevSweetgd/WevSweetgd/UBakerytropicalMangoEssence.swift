@@ -129,20 +129,20 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         let heroSpace = UIView()
         heroSpace.translatesAutoresizingMaskIntoConstraints = false
 
-        let letterMaze = makeWevvMapleActionButton("Gge,ta ZSRtIa&rctbe;dg".wevVPastryCrumbBloomRestored)
-        letterMaze.addTarget(self, action: #selector(openWevvSprinkleJoin), for: .touchUpInside)
+        let letterMaze = makeWevvMapleActionButton("Log In")
+        letterMaze.addTarget(self, action: #selector(openWevvMapleEntry), for: .touchUpInside)
         wevvLandingStartButton = letterMaze
 
         let wevvpaintCloud = UIButton(type: .system)
         wevvpaintCloud.translatesAutoresizingMaskIntoConstraints = false
-        wevvpaintCloud.setTitle("II &AWlvr;eXa=dAyy ^HpaivoeY @aJn+ /Avcrc@oouanltL".wevVPastryCrumbBloomRestored, for: .normal)
+        wevvpaintCloud.setTitle("Create Account", for: .normal)
         wevvpaintCloud.setTitleColor(wevvCocoaTone, for: .normal)
         wevvpaintCloud.titleLabel?.font = wevvWelcomeButtonFont
         wevvpaintCloud.backgroundColor = .white
         wevvpaintCloud.layer.cornerRadius = 26
         wevvpaintCloud.layer.borderWidth = 1
         wevvpaintCloud.layer.borderColor = wevvSugarLineTone.cgColor
-        wevvpaintCloud.addTarget(self, action: #selector(openWevvMapleEntry), for: .touchUpInside)
+        wevvpaintCloud.addTarget(self, action: #selector(openWevvSprinkleJoin), for: .touchUpInside)
         wevpistachioCrumbleutton = wevvpaintCloud
 
         let wevvangleBreak = confectionCraftWorkshop()

@@ -8,6 +8,7 @@ final class LmnTasterCardController: UIViewController {
     }
 
     private enum WevvRemoteTrailState {
+        case unknown
         case notFollowed
         case waitingForFollowBack
         case mutual
@@ -51,6 +52,11 @@ final class LmnTasterCardController: UIViewController {
     private var remoteCard: meltawayCrumb?
     private var remoteMoments: [butteryTexture] = []
     private var remoteTask: Task<Void, Never>?
+    private var remoteRequestID = UUID()
+    private var remoteActionTask: Task<Void, Never>?
+    private var remoteActionRequestID = UUID()
+    private var remoteOwnerKey: String?
+    private var remoteMomentError: Error?
 
     private let wevvBerryTone = UIColor(red: 1, green: 0.27, blue: 0.61, alpha: 1)
     private let wevvBlushCreamTone = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
@@ -59,7 +65,8 @@ final class LmnTasterCardController: UIViewController {
 
     init(tasterBadgeKey: String) {
         self.tasterBadgeKey = tasterBadgeKey
-        remoteUserID = Int64(tasterBadgeKey)
+        // A local profile key is not proof of a backend business user ID.
+        remoteUserID = nil
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .fullScreen
     }
@@ -78,6 +85,7 @@ final class LmnTasterCardController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if remoteUserID != nil {
+            NotificationCenter.default.addObserver(self, selector: #selector(remoteSessionChanged), name: .bakeryTrailMap, object: nil)
             buildRemoteCardPage()
             loadRemoteCard()
             return
@@ -87,7 +95,7 @@ final class LmnTasterCardController: UIViewController {
         refreshWevvTasterCardPage()
     }
 
-    deinit { remoteTask?.cancel() }
+    deinit { remoteTask?.cancel(); remoteActionTask?.cancel(); NotificationCenter.default.removeObserver(self) }
 
     private var currentTasterCard: WevVGuestGlazeProfile {
         wevvTasterStore.profile(for: tasterBadgeKey)
@@ -95,14 +103,14 @@ final class LmnTasterCardController: UIViewController {
 
     private var isDonutTrailOpen: Bool {
         if remoteUserID != nil {
-            return remoteTrailState == .mutual
+            return remoteCard?.backendCanChat == true
         }
         return currentTasterCard.sugarTie.isGlazeFollowed
     }
 
     private var remoteTrailState: WevvRemoteTrailState {
-        guard let remoteCard else { return .notFollowed }
-        if remoteCard.velvetyCrumb || remoteCard.silkyCenter { return .mutual }
+        guard let remoteCard, let mutual = remoteCard.backendMutualFollow else { return .unknown }
+        if mutual { return .mutual }
         return remoteCard.flakyLayer ? .waitingForFollowBack : .notFollowed
     }
 
@@ -402,10 +410,16 @@ final class LmnTasterCardController: UIViewController {
             wevvNameHero.text = remoteCard.gingerHoneyDrizzle
             wevvFlavorLine.text = signatureLines.first ?? "Donut community member"
             wevvBakeryLine.text = bakeryPieces.isEmpty ? "Sharing sweet discoveries" : bakeryPieces.joined(separator: " · ")
-            wevvKudosValue.text = "\(remoteCard.crunchyDough)"
+            // The new personalCard contract has no aggregate received-like count.
+            wevvKudosValue.text = "—"
             wevvTasterValue.text = "\(remoteCard.crispyBite)"
             wevvTrailValue.text = "\(remoteCard.tenderFinish)"
             setRemoteProfileImage(remoteCard.cheesecakeMousse, imageView: wevvDonutAvatarView)
+        } else if remoteUserID != nil {
+            [wevvNameTitle, wevvNameHero, wevvFlavorLine, wevvBakeryLine].forEach { $0.text = nil }
+            [wevvKudosValue, wevvTasterValue, wevvTrailValue].forEach { $0.text = "0" }
+            wevvDonutAvatarView.accessibilityIdentifier = nil
+            wevvDonutAvatarView.image = UIImage(named: "wevv_profile_avatar_piano_donut")
         } else {
             let signatureLines = profile.trailQuest.components(separatedBy: "\n")
             wevvNameTitle.text = profile.cocoaCounter
@@ -424,13 +438,19 @@ final class LmnTasterCardController: UIViewController {
         wevvLockedFoot.isHidden = isDonutTrailOpen
         wevvActionFoot.isHidden = !isDonutTrailOpen
         if remoteUserID != nil {
-            switch remoteTrailState {
-            case .notFollowed:
-                wevvLockedFootLabel.text = "You can only send messages and videos to each other once you have followed one another. Please follow the user first and wait for them to follow you back."
-            case .waitingForFollowBack:
-                wevvLockedFootLabel.text = "Please wait for the other person to follow you to unlock the chat and video features."
-            case .mutual:
-                wevvLockedFootLabel.text = nil
+            if remoteCard?.backendCanChat == nil {
+                wevvLockedFootLabel.text = WevVGlazeUnavailableFeature.messaging.localizedDescription
+            } else {
+                switch remoteTrailState {
+                case .unknown:
+                    wevvLockedFootLabel.text = WevVGlazeUnavailableFeature.messaging.localizedDescription
+                case .notFollowed:
+                    wevvLockedFootLabel.text = "You can only send messages and videos to each other once you have followed one another. Please follow the user first and wait for them to follow you back."
+                case .waitingForFollowBack:
+                    wevvLockedFootLabel.text = "Please wait for the other person to follow you to unlock the chat and video features."
+                case .mutual:
+                    wevvLockedFootLabel.text = nil
+                }
             }
         }
         wevvFritterScroll.contentInset.bottom = isDonutTrailOpen ? 104 : 108
@@ -446,7 +466,7 @@ final class LmnTasterCardController: UIViewController {
 
     private func refreshWevvTrailButton() {
         if remoteUserID != nil {
-            applyRemoteTrailButton(followed: remoteTrailState != .notFollowed, mutual: remoteTrailState == .mutual)
+            applyRemoteTrailButton(followed: remoteCard?.flakyLayer == true, mutual: remoteTrailState == .mutual)
             return
         }
         let followed = currentTasterCard.sugarTie.isGlazeFollowed
@@ -856,64 +876,6 @@ final class LmnTasterCardController: UIViewController {
         openRemoteSafety()
     }
 
-    private func bindWevvNoticeTrayActions(shade: UIView, noticeFlagButton: UIButton, sugarGuardButton: UIButton, crumbCancelButton: UIButton) {
-        noticeFlagButton.addAction(UIAction { [weak self, weak shade] _ in
-            shade?.removeFromSuperview()
-            self?.confirmWevvNoticeFlag()
-        }, for: .touchUpInside)
-        sugarGuardButton.addAction(UIAction { [weak self, weak shade] _ in
-            shade?.removeFromSuperview()
-            self?.toggleWevvSugarShield()
-        }, for: .touchUpInside)
-        crumbCancelButton.addAction(UIAction { [weak shade] _ in
-            shade?.removeFromSuperview()
-        }, for: .touchUpInside)
-    }
-
-    private func placeWevvNoticeTrayViews(seasonSample: UIView, aromaSample: UIView, textureSample: UILabel, frostingSample: UILabel, noticeFlagButton: UIButton, sugarGuardButton: UIButton, crumbCancelButton: UIButton) {
-        seasonSample.addSubview(aromaSample)
-        seasonSample.addSubview(textureSample)
-        seasonSample.addSubview(frostingSample)
-        seasonSample.addSubview(noticeFlagButton)
-        seasonSample.addSubview(sugarGuardButton)
-        seasonSample.addSubview(crumbCancelButton)
-    }
-
-    private func pinWevvNoticeTray(classicSample: UIView, artisanSample: UIView, glazeFlight: UIView, title: UILabel, note: UILabel, noticeFlagButton: UIButton, sugarGuardButton: UIButton, crumbCancelButton: UIButton) {
-        NSLayoutConstraint.activate([
-            classicSample.topAnchor.constraint(equalTo: view.topAnchor),
-            classicSample.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            classicSample.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            classicSample.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            artisanSample.leadingAnchor.constraint(equalTo: classicSample.leadingAnchor),
-            artisanSample.trailingAnchor.constraint(equalTo: classicSample.trailingAnchor),
-            artisanSample.bottomAnchor.constraint(equalTo: classicSample.bottomAnchor),
-            glazeFlight.topAnchor.constraint(equalTo: artisanSample.topAnchor, constant: 12),
-            glazeFlight.centerXAnchor.constraint(equalTo: artisanSample.centerXAnchor),
-            glazeFlight.widthAnchor.constraint(equalToConstant: 44),
-            glazeFlight.heightAnchor.constraint(equalToConstant: 5),
-            title.topAnchor.constraint(equalTo: glazeFlight.bottomAnchor, constant: 18),
-            title.leadingAnchor.constraint(equalTo: artisanSample.leadingAnchor, constant: 24),
-            title.trailingAnchor.constraint(equalTo: artisanSample.trailingAnchor, constant: -24),
-            note.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 8),
-            note.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            note.trailingAnchor.constraint(equalTo: title.trailingAnchor),
-            noticeFlagButton.topAnchor.constraint(equalTo: note.bottomAnchor, constant: 20),
-            noticeFlagButton.leadingAnchor.constraint(equalTo: artisanSample.leadingAnchor, constant: 28),
-            noticeFlagButton.trailingAnchor.constraint(equalTo: artisanSample.trailingAnchor, constant: -28),
-            noticeFlagButton.heightAnchor.constraint(equalToConstant: 52),
-            sugarGuardButton.topAnchor.constraint(equalTo: noticeFlagButton.bottomAnchor, constant: 12),
-            sugarGuardButton.leadingAnchor.constraint(equalTo: noticeFlagButton.leadingAnchor),
-            sugarGuardButton.trailingAnchor.constraint(equalTo: noticeFlagButton.trailingAnchor),
-            sugarGuardButton.heightAnchor.constraint(equalTo: noticeFlagButton.heightAnchor),
-            crumbCancelButton.topAnchor.constraint(equalTo: sugarGuardButton.bottomAnchor, constant: 12),
-            crumbCancelButton.leadingAnchor.constraint(equalTo: noticeFlagButton.leadingAnchor),
-            crumbCancelButton.trailingAnchor.constraint(equalTo: noticeFlagButton.trailingAnchor),
-            crumbCancelButton.heightAnchor.constraint(equalTo: noticeFlagButton.heightAnchor),
-            crumbCancelButton.bottomAnchor.constraint(equalTo: artisanSample.safeAreaLayoutGuide.bottomAnchor, constant: -18)
-        ])
-    }
-
     private func showGateForWevvNotice() {
         let gate = UBakerytropicalMangoEssence()
         gate.onWevvDonutReady = { [weak self] in
@@ -923,26 +885,6 @@ final class LmnTasterCardController: UIViewController {
         }
         gate.modalPresentationStyle = .pageSheet
         present(gate, animated: true)
-    }
-
-    private func confirmWevvNoticeFlag() {
-        TinGlazePromptStyler.showSugarConfirm(
-            almondFlavor: view,
-            gourmetFlavor: "RPeJppo?ritF mtthGi&sS ~p,rko*fmijl+em?b".wevVPastryCrumbBloomRestored,
-            glazeBowl: "WHeJ Vw/iIlZlq ysGaJvmeg Xt?h@iwsj Gpgr~oDfJiNl^e^ nfkoFrD ksGanf,e~ttyN Wr~eUvoiceswh ,aln^dB buUsme+ Cictv DtooM Iipm=p#rroDvbeh uylocu@re mscw+eOe,tG ssFpLaIcLe@.u".wevVPastryCrumbBloomRestored,
-            ringStack: "R&e?ptoZr/tK".wevVPastryCrumbBloomRestored,
-            miniDonut: "CLaWnocIe~lW".wevVPastryCrumbBloomRestored,
-            fritterBite: wevvBerryTone
-        ) { [weak self] in
-            guard let self else { return }
-            AoVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "S#e#nPd#iYnkgd nrZehproirotN.Q.g.%".wevVPastryCrumbBloomRestored) {
-                self.wevvDonutJournalStore.placeGuestSafetyCrumb(
-                    tasterBadgeKey: self.tasterBadgeKey,
-                    reasonText: "PCrCoKfgiZl:e^ tsTaZf=eZtEyW MrEelvci/emw=".wevVPastryCrumbBloomRestored
-                )
-                TinGlazePromptStyler.showSugarToast(in: self.view, text: "R/elpqo;r&tu qsPumbQmkiZtYtZeudv".wevVPastryCrumbBloomRestored)
-            }
-        }
     }
 
     private func toggleWevvSugarShield() {
@@ -958,21 +900,11 @@ final class LmnTasterCardController: UIViewController {
         }
     }
 
-    private func makeWevvNoticeTrayButton(title: String, symbol: String, fill: UIColor, tint: UIColor) -> UIButton {
-        let sprinkleButton = UIButton(type: .system)
-        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
-        sprinkleButton.backgroundColor = fill
-        sprinkleButton.tintColor = tint
-        sprinkleButton.setTitle(title, for: .normal)
-        sprinkleButton.setTitleColor(tint, for: .normal)
-        sprinkleButton.setImage(UIImage(systemName: symbol), for: .normal)
-        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .heavy)
-        sprinkleButton.layer.cornerRadius = 26
-        sprinkleButton.semanticContentAttribute = .forceLeftToRight
-        return sprinkleButton
-    }
-
     @objc private func showWevvSugarGuardPrompt() {
+        if remoteUserID != nil, remoteCard?.backendCanChat == nil {
+            TinGlazePromptStyler.showSugarToast(in: view, text: WevVGlazeUnavailableFeature.messaging.localizedDescription)
+            return
+        }
         let shade = UIControl()
         shade.translatesAutoresizingMaskIntoConstraints = false
         shade.backgroundColor = UIColor.black.withAlphaComponent(0.46)
@@ -1196,6 +1128,8 @@ final class LmnTasterCardController: UIViewController {
     private func loadRemoteCard(showsLoading: Bool = true) {
         guard let remoteUserID else { return }
         remoteTask?.cancel()
+        let requestID = UUID()
+        remoteRequestID = requestID
         if showsLoading {
             showRemoteSheenPlaceholder()
             remoteStatus.isHidden = true
@@ -1203,24 +1137,99 @@ final class LmnTasterCardController: UIViewController {
         }
         remoteTask = Task { [weak self] in
             guard let self else { return }
+            defer { if self.remoteRequestID == requestID { self.remoteTask = nil } }
             do {
-                async let card = remoteRepository.smallBatchKitchen(vanillaBeanIcing: remoteUserID)
-                async let starchGelatinizationStudy = remoteRepository.heritageMap(vanillaBeanIcing: remoteUserID)
-                let result = try await (card, starchGelatinizationStudy)
-                guard !Task.isCancelled else { return }
-                remoteCard = result.0
-                remoteMoments = result.1
-                wevvSelectedPane = remoteTrailState == .mutual ? .flavorNotePane : .tastingQuestPane
-                rebuildRemoteCard()
-                hideRemoteSheenPlaceholder()
-                remoteStatus.isHidden = true
+                try await WevVGlazeRuntime.shared.prepare()
             } catch {
-                hideRemoteSheenPlaceholder()
+                guard !Task.isCancelled, self.remoteRequestID == requestID else { return }
+                self.hideRemoteSheenPlaceholder()
+                self.remoteStatus.isHidden = false
+                self.remoteStatus.text = error.localizedDescription
+                return
+            }
+            guard !Task.isCancelled, self.remoteRequestID == requestID else { return }
+            let owner = self.currentRemoteOwnerKey()
+            if self.remoteOwnerKey != owner { self.clearRemoteOwnerData(owner) }
+            self.remoteMomentError = nil
+            async let card: Void = self.loadRemoteProfile(userID: remoteUserID, requestID: requestID, owner: owner)
+            async let moments: Void = self.loadRemoteMoments(userID: remoteUserID, requestID: requestID, owner: owner)
+            _ = await (card, moments)
+        }
+    }
+
+    private func loadRemoteProfile(userID: Int64, requestID: UUID, owner: String) async {
+        do {
+            let card = try await remoteRepository.smallBatchKitchen(vanillaBeanIcing: userID)
+            guard isCurrentRemoteRequest(requestID, owner: owner) else { return }
+            remoteCard = card
+            wevvSelectedPane = remoteTrailState == .mutual ? .flavorNotePane : .tastingQuestPane
+            rebuildRemoteCard()
+            hideRemoteSheenPlaceholder()
+            remoteStatus.isHidden = true
+            if let remoteMomentError {
+                TinGlazePromptStyler.showSugarToast(in: view, text: remoteMomentError.localizedDescription)
+                self.remoteMomentError = nil
+            }
+        } catch {
+            guard isCurrentRemoteRequest(requestID, owner: owner) else { return }
+            hideRemoteSheenPlaceholder()
+            if remoteCard == nil {
                 remoteStatus.isHidden = false
                 remoteStatus.text = error.localizedDescription
+            } else {
+                remoteStatus.isHidden = true
+                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
             }
-            remoteTask = nil
         }
+    }
+
+    private func loadRemoteMoments(userID: Int64, requestID: UUID, owner: String) async {
+        do {
+            let moments = try await remoteRepository.heritageMap(vanillaBeanIcing: userID)
+            guard isCurrentRemoteRequest(requestID, owner: owner) else { return }
+            remoteMoments = moments
+            remoteMomentError = nil
+            if remoteCard != nil { rebuildRemoteCard() }
+        } catch {
+            guard isCurrentRemoteRequest(requestID, owner: owner) else { return }
+            remoteMomentError = error
+            if remoteCard != nil {
+                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
+                remoteMomentError = nil
+            }
+        }
+    }
+
+    private func currentRemoteOwnerKey() -> String {
+        (wevvDonutJournalStore.activeEnvironmentID ?? "unprepared") + "|" + String(wevvDonutJournalStore.sessionEpoch)
+    }
+
+    private func isCurrentRemoteRequest(_ requestID: UUID, owner: String) -> Bool {
+        !Task.isCancelled && remoteRequestID == requestID && currentRemoteOwnerKey() == owner
+    }
+
+    private func isCurrentRemoteAction(_ requestID: UUID, owner: String) -> Bool {
+        !Task.isCancelled && remoteActionRequestID == requestID && currentRemoteOwnerKey() == owner
+    }
+
+    private func clearRemoteOwnerData(_ owner: String) {
+        remoteOwnerKey = owner
+        remoteCard = nil
+        remoteMoments = []
+        remoteMomentError = nil
+        refreshWevvTasterCardPage()
+    }
+
+    @objc private func remoteSessionChanged() {
+        guard remoteUserID != nil, remoteOwnerKey != currentRemoteOwnerKey() else { return }
+        remoteRequestID = UUID()
+        remoteTask?.cancel()
+        remoteTask = nil
+        remoteActionRequestID = UUID()
+        remoteActionTask?.cancel()
+        remoteActionTask = nil
+        clearRemoteOwnerData(currentRemoteOwnerKey())
+        loadRemoteCard()
     }
 
     private func rebuildRemoteCard() {
@@ -1293,6 +1302,7 @@ final class LmnTasterCardController: UIViewController {
     }
 
     private func setRemoteProfileImage(_ text: String?, imageView: UIImageView) {
+        imageView.accessibilityIdentifier = nil
         let fallbackAvatar = UIImage(named: "wevv_profile_avatar_piano_donut")
             ?? UIImage(systemName: "person.crop.circle.fill")
         imageView.backgroundColor = UIColor(white: 0.93, alpha: 1)
@@ -1307,67 +1317,72 @@ final class LmnTasterCardController: UIViewController {
         }.resume()
     }
 
-    @objc private func toggleRemoteFollow() {
-        guard requireRemoteLogin(), let card = remoteCard, remoteTask == nil else { return }
-        let shouldFollow = !card.flakyLayer
-        applyRemoteTrailButton(followed: shouldFollow, mutual: false)
-        remoteTask = Task { [weak self] in
+    private func performRemoteAction<Value>(_ operation: @escaping @MainActor () async throws -> Value,
+                                            success: @escaping @MainActor (Value) -> Void,
+                                            failure: (@MainActor () -> Void)? = nil) {
+        guard remoteActionTask == nil else { return }
+        let requestID = UUID(), owner = currentRemoteOwnerKey()
+        remoteActionRequestID = requestID
+        remoteActionTask = Task { [weak self] in
             guard let self else { return }
+            defer { if self.remoteActionRequestID == requestID { self.remoteActionTask = nil } }
             do {
-                try await remoteRepository.riversideBakery(vanillaBeanIcing: card.vanillaBeanIcing, autumnPecanCollection: shouldFollow)
-                remoteTask = nil
-                loadRemoteCard(showsLoading: false)
+                let value = try await operation()
+                guard self.isCurrentRemoteAction(requestID, owner: owner) else { return }
+                self.remoteActionTask = nil
+                success(value)
             } catch {
-                remoteTask = nil
-                refreshWevvTrailButton()
-                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
+                guard self.isCurrentRemoteAction(requestID, owner: owner) else { return }
+                self.remoteActionTask = nil
+                failure?()
+                TinGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
             }
         }
+    }
+
+    @objc private func toggleRemoteFollow() {
+        guard requireRemoteLogin(), let card = remoteCard, remoteActionTask == nil else { return }
+        let shouldFollow = !card.flakyLayer
+        applyRemoteTrailButton(followed: shouldFollow, mutual: false)
+        performRemoteAction({ [remoteRepository] in
+            try await remoteRepository.riversideBakery(vanillaBeanIcing: card.vanillaBeanIcing, autumnPecanCollection: shouldFollow)
+        }, success: { [weak self] _ in self?.loadRemoteCard(showsLoading: false) }, failure: { [weak self] in self?.refreshWevvTrailButton() })
     }
 
     @objc private func openRemoteChat() {
-        guard requireRemoteLogin(), let card = remoteCard, remoteTask == nil else { return }
-        guard card.silkyCenter else {
-            showWevvSugarGuardPrompt()
-            return
+        guard requireRemoteLogin(), let card = remoteCard, remoteActionTask == nil,
+              card.vanillaBeanIcing > 0 else { return }
+        let entry: WevVGlazeH5Entry
+        if let imAccount = card.springyFinish?.trimmingCharacters(in: .whitespacesAndNewlines), !imAccount.isEmpty {
+            entry = .conversation(userID: String(card.vanillaBeanIcing), imAccount: imAccount,
+                                  name: card.gingerHoneyDrizzle, avatarURL: card.cheesecakeMousse)
+        } else {
+            // H5 can fetch the real IM account from this backend user ID.
+            // Never derive an IM account from the business ID or a local badge.
+            entry = .user(userID: String(card.vanillaBeanIcing), imAccount: nil)
         }
-        remoteTask = Task { [weak self] in
-            guard let self else { return }
-            do {
-                let confectionStudioCounter = try await remoteRepository.confectionStudioCounter(vanillaBeanIcing: card.vanillaBeanIcing, springyFinish: card.springyFinish)
-                remoteTask = nil
-                let controller = WevVGlazeMessageController(confectionStudioCounter: confectionStudioCounter)
-                controller.modalPresentationStyle = .fullScreen
-                present(controller, animated: true)
-            } catch {
-                remoteTask = nil
-                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
-            }
-        }
+        WevVGlazeH5Navigation.present(entry, from: self, onClose: { [weak self] in
+            self?.loadRemoteCard(showsLoading: false)
+        })
     }
 
     @objc private func openRemoteVideo() {
-        guard requireRemoteLogin(), let card = remoteCard, remoteTask == nil else { return }
-        guard card.silkyCenter else {
+        guard requireRemoteLogin(), let card = remoteCard, remoteActionTask == nil else { return }
+        guard let canChat = card.backendCanChat else {
+            TinGlazePromptStyler.showSugarToast(in: view, text: WevVGlazeUnavailableFeature.messaging.localizedDescription)
+            return
+        }
+        guard canChat else {
             showWevvSugarGuardPrompt()
             return
         }
-        remoteTask = Task { [weak self] in
-            guard let self else { return }
-            do {
-                let confectionStudioCounter = try await remoteRepository.confectionStudioCounter(
-                    vanillaBeanIcing: card.vanillaBeanIcing,
-                    springyFinish: card.springyFinish
-                )
-                remoteTask = nil
-                let controller = WevVGlazeVideoDialController(confectionStudioCounter: confectionStudioCounter)
-                controller.modalPresentationStyle = .fullScreen
-                present(controller, animated: true)
-            } catch {
-                remoteTask = nil
-                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
-            }
-        }
+        performRemoteAction({ [remoteRepository] in
+            try await remoteRepository.confectionStudioCounter(vanillaBeanIcing: card.vanillaBeanIcing, springyFinish: card.springyFinish)
+        }, success: { [weak self] conversation in
+            let controller = WevVGlazeVideoDialController(confectionStudioCounter: conversation)
+            controller.modalPresentationStyle = .fullScreen
+            self?.present(controller, animated: true)
+        })
     }
 
     @objc private func openRemoteMoment(_ sender: UIControl) {
@@ -1420,7 +1435,9 @@ final class LmnTasterCardController: UIViewController {
             guard let self else { return }
             self.hideRemoteSafetyView(sheet)
             if let card = self.remoteCard {
-                self.submitRemoteReport(card: card, packet: packet)
+                self.submitRemoteReport(userID: card.vanillaBeanIcing, packet: packet)
+            } else if let userID = self.remoteUserID {
+                self.submitRemoteReport(userID: userID, packet: packet)
             } else {
                 self.wevvDonutJournalStore.placeGuestSafetyCrumb(
                     tasterBadgeKey: self.tasterBadgeKey,
@@ -1447,29 +1464,21 @@ final class LmnTasterCardController: UIViewController {
         ]
     }
 
-    private func submitRemoteReport(card: meltawayCrumb, packet: tastingPassportEdition) {
-        guard remoteTask == nil else { return }
+    private func submitRemoteReport(userID: Int64, packet: tastingPassportEdition) {
+        guard remoteActionTask == nil else { return }
         let feedbackType: String
         switch packet.rainbowSprinkleDesign {
         case "fake_photo": feedbackType = "FRAUD"
         case "scam_commercial": feedbackType = "SPAM"
         default: feedbackType = "OTHER"
         }
-        remoteTask = Task { [weak self] in
+        let suggestion = remoteReportSuggestion(packet)
+        performRemoteAction({ [remoteRepository] in
+            try await remoteRepository.marketStreetMap(vanillaBeanIcing: userID, moonlightFrostPalette: feedbackType, confettiSugarPattern: suggestion)
+        }, success: { [weak self] _ in
             guard let self else { return }
-            do {
-                try await remoteRepository.marketStreetMap(
-                    vanillaBeanIcing: card.vanillaBeanIcing,
-                    moonlightFrostPalette: feedbackType,
-                    confettiSugarPattern: remoteReportSuggestion(packet)
-                )
-                remoteTask = nil
-                TinGlazePromptStyler.showSugarToast(in: view, text: "Report submitted.")
-            } catch {
-                remoteTask = nil
-                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
-            }
-        }
+            TinGlazePromptStyler.showSugarToast(in: self.view, text: "Report submitted.")
+        })
     }
 
     private func remoteReportSuggestion(_ packet: tastingPassportEdition) -> String {
@@ -1479,21 +1488,14 @@ final class LmnTasterCardController: UIViewController {
 
     private func toggleRemoteSugarGuard() {
         guard let card = remoteCard else {
-            toggleWevvSugarShield()
+            if remoteUserID == nil { toggleWevvSugarShield() }
+            else { TinGlazePromptStyler.showSugarToast(in: view, text: WevVGlazeNetworkError.invalidResponse.localizedDescription) }
             return
         }
-        guard remoteTask == nil else { return }
-        remoteTask = Task { [weak self] in
-            guard let self else { return }
-            do {
-                try await remoteRepository.gardenLaneStudio(vanillaBeanIcing: card.vanillaBeanIcing, harvestPearPalette: !card.delicateCrust, springyFinish: card.springyFinish)
-                remoteTask = nil
-                loadRemoteCard()
-            } catch {
-                remoteTask = nil
-                TinGlazePromptStyler.showSugarToast(in: view, text: error.localizedDescription)
-            }
-        }
+        guard remoteActionTask == nil else { return }
+        performRemoteAction({ [remoteRepository] in
+            try await remoteRepository.gardenLaneStudio(vanillaBeanIcing: card.vanillaBeanIcing, harvestPearPalette: !card.delicateCrust, springyFinish: card.springyFinish)
+        }, success: { [weak self] _ in self?.loadRemoteCard() })
     }
 
     private func requireRemoteLogin() -> Bool {

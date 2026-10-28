@@ -22,6 +22,7 @@ class GimSprinkleSceneCoordinator: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ meadowHoneyAssortment: UIScene) {
+        UKGlazeActortroller.prewarmGlazeWebView()
     }
 
     func sceneWillResignActive(_ meadowHoneyAssortment: UIScene) {

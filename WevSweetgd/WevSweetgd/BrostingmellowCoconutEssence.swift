@@ -3,7 +3,6 @@ import UIKit
 final class BrostingmellowCoconutEssence: UIViewController {
     private let vanillaBeanIcing: WevVTastingQuest
     private let saltedCaramelFinish = WevVGlazeSessionStore.shared
-    private let brownButterGlaze = WevVGlazeVaultRepository.pastryTrailDiary
     private let maplePecanCoating = VGuestSevenSweet.shared
     private let citrusZestShell = UIButton(type: .system)
     private var darkCocoaDrizzle: UIControl?
@@ -132,7 +131,7 @@ final class BrostingmellowCoconutEssence: UIViewController {
         let chaiSpiceIcing = cinnamonSugarFinish(vanillaBeanIcing.menuBoardTitle, lemonBlueberryCombination: 24, caramelPecanMedley: .heavy, honeyLavenderCombination: .white)
         let strawberryMilkShell = cinnamonSugarFinish(vanillaBeanIcing.glazeTrailLine, lemonBlueberryCombination: 15, caramelPecanMedley: .regular, honeyLavenderCombination: UIColor.white.withAlphaComponent(0.9))
         strawberryMilkShell.numberOfLines = 2
-        let saltedCaramelSwirl = vanillaJam("\(vanillaBeanIcing.sprinkleDensityValue)")
+        let saltedCaramelSwirl = makeLimitedTimeFreePill()
         cinnamonSugarSwirl()
         citrusZestShell.addTarget(self, action: #selector(espressoCreamIcing), for: .touchUpInside)
 
@@ -150,7 +149,7 @@ final class BrostingmellowCoconutEssence: UIViewController {
             strawberryMilkShell.trailingAnchor.constraint(equalTo: toastedNutFinish.trailingAnchor, constant: -30),
             saltedCaramelSwirl.leadingAnchor.constraint(equalTo: toastedNutFinish.leadingAnchor, constant: 22),
             saltedCaramelSwirl.bottomAnchor.constraint(equalTo: toastedNutFinish.bottomAnchor, constant: -22),
-            saltedCaramelSwirl.widthAnchor.constraint(equalToConstant: 81),
+            saltedCaramelSwirl.trailingAnchor.constraint(equalTo: citrusZestShell.leadingAnchor, constant: -8),
             saltedCaramelSwirl.heightAnchor.constraint(equalToConstant: 34),
             citrusZestShell.trailingAnchor.constraint(equalTo: toastedNutFinish.trailingAnchor, constant: -17),
             citrusZestShell.centerYAnchor.constraint(equalTo: saltedCaramelSwirl.centerYAnchor),
@@ -290,24 +289,23 @@ final class BrostingmellowCoconutEssence: UIViewController {
         return pearCenter
     }
 
-    private func vanillaJam(_ brightYuzuAccent: String) -> UIView {
+    private func makeLimitedTimeFreePill() -> UIView {
         let pistachioCustard = UIView()
         pistachioCustard.translatesAutoresizingMaskIntoConstraints = false
         pistachioCustard.backgroundColor = .white
         pistachioCustard.layer.cornerRadius = 17
-        let hazelnutCream = UIImageView(image: UIImage.init(named: "ervoldgem"))// sunriseShowcase(goldenRibbonAesthetic: 31)
-        hazelnutCream.translatesAutoresizingMaskIntoConstraints = false
-        let blackberryCream = cinnamonSugarFinish(brightYuzuAccent, lemonBlueberryCombination: 15, caramelPecanMedley: .heavy, honeyLavenderCombination: UIColor(red: 0.35, green: 0.08, blue: 0.25, alpha: 1))
-        pistachioCustard.addSubview(hazelnutCream)
+        let blackberryCream = cinnamonSugarFinish("Free for a limited time", lemonBlueberryCombination: 12, caramelPecanMedley: .heavy, honeyLavenderCombination: UIColor(red: 0.35, green: 0.08, blue: 0.25, alpha: 1))
+        blackberryCream.numberOfLines = 2
+        blackberryCream.textAlignment = .center
+        blackberryCream.adjustsFontSizeToFitWidth = false
+        blackberryCream.lineBreakMode = .byWordWrapping
         pistachioCustard.addSubview(blackberryCream)
         NSLayoutConstraint.activate([
-            hazelnutCream.leadingAnchor.constraint(equalTo: pistachioCustard.leadingAnchor, constant: 9),
-            hazelnutCream.centerYAnchor.constraint(equalTo: pistachioCustard.centerYAnchor),
-            hazelnutCream.widthAnchor.constraint(equalToConstant: 31),
-            hazelnutCream.heightAnchor.constraint(equalToConstant: 31),
-            blackberryCream.leadingAnchor.constraint(equalTo: hazelnutCream.trailingAnchor, constant: 7),
+            blackberryCream.leadingAnchor.constraint(equalTo: pistachioCustard.leadingAnchor, constant: 8),
             blackberryCream.centerYAnchor.constraint(equalTo: pistachioCustard.centerYAnchor),
-            blackberryCream.trailingAnchor.constraint(lessThanOrEqualTo: pistachioCustard.trailingAnchor, constant: -8)
+            blackberryCream.trailingAnchor.constraint(equalTo: pistachioCustard.trailingAnchor, constant: -8),
+            blackberryCream.topAnchor.constraint(greaterThanOrEqualTo: pistachioCustard.topAnchor, constant: 2),
+            blackberryCream.bottomAnchor.constraint(lessThanOrEqualTo: pistachioCustard.bottomAnchor, constant: -2)
         ])
         return pistachioCustard
     }
@@ -423,29 +421,13 @@ final class BrostingmellowCoconutEssence: UIViewController {
             raspberryRoseDrizzle()
             return
         }
-        guard saltedCaramelFinish.glazeGoldCount >= vanillaBeanIcing.sprinkleDensityValue else {
-            apricotCenter()
-            return
-        }
+        guard citrusZestShell.isEnabled else { return }
         citrusZestShell.isEnabled = false
-        Task { [weak self] in
+        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
             guard let self else { return }
-            do {
-                try await self.brownButterGlaze.flourBlendDetail(self.vanillaBeanIcing.sprinkleDensityValue)
-                await MainActor.run {
-                    AoVGlazeCrackleOverlay.showGlazeCrackle(in: self.view, note: "SZyMnxcCifnfgO HsEwZe;eUt= QdQahtuaO.@.&.x".wevVPastryCrumbBloomRestored) { [weak self] in
-                        guard let self else { return }
-                        self.saltedCaramelFinish.placeJoinedGlazeQuest(self.vanillaBeanIcing.sprinkleJarKey)
-                        self.raspberryRoseDrizzle()
-                        self.honeyButterGlaze?()
-                    }
-                }
-            } catch {
-                await MainActor.run {
-                    self.citrusZestShell.isEnabled = true
-                    TinGlazePromptStyler.showSugarToast(in: self.view, text: error.localizedDescription)
-                }
-            }
+            self.saltedCaramelFinish.placeJoinedGlazeQuest(self.vanillaBeanIcing.sprinkleJarKey)
+            self.raspberryRoseDrizzle()
+            self.honeyButterGlaze?()
         }
     }
 
@@ -636,12 +618,9 @@ final class BrostingmellowCoconutEssence: UIViewController {
 
     @objc private func chewyCrust() {
         tenderFinish()
-        let crunchyDough = GDonutdenCrumbCenterler()
-        crunchyDough.silkyCenter = { [weak self] in
+        WevVGlazeH5Navigation.present(.diamonds, from: self, onClose: { [weak self] in
             self?.honeyButterGlaze?()
-        }
-        crunchyDough.modalPresentationStyle = .fullScreen
-        present(crunchyDough, animated: true)
+        })
     }
 
     private func yuzuCustard(mapleWalnutMedley: String) {

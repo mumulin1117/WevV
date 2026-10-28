@@ -261,9 +261,15 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
         chosenDonutAvatarAsset = profile.donutFrameAsset.isEmpty ? "wevv_profile_avatar_piano_donut" : profile.donutFrameAsset
         donutcitrusMixerView.image = UIImage(named: chosenDonutAvatarAsset) ?? UIImage(systemName: "person.crop.circle.fill")
         if let url = URL(string: chosenDonutAvatarAsset), ["http", "https"].contains(url.scheme?.lowercased() ?? "") {
+            let requestedAvatar = chosenDonutAvatarAsset
+            let epoch = doughSession.sessionEpoch
             URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
                 guard let data, let image = UIImage(data: data) else { return }
-                DispatchQueue.main.async { self?.donutcitrusMixerView.image = image }
+                DispatchQueue.main.async {
+                    guard let self, self.chosenDonutAvatarAsset == requestedAvatar,
+                          self.doughSession.sessionEpoch == epoch else { return }
+                    self.donutcitrusMixerView.image = image
+                }
             }.resume()
         }
         glazeNameField.text = profile.glazeNickname
@@ -345,18 +351,23 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
         view.endEditing(true)
         sugarSaveButton.isEnabled = false
         NOticeNertyuSugartastingCard.showSugarToast("Saving profile…")
+        let saveEpoch = WevVGlazeSessionStore.shared.sessionEpoch
+        let saveScope = WevVGlazeSessionRepository.pastryTrailDiary.glazeEnvironmentID
         glazeSaveTask = Task { [weak self, glazeRepository] in
             do {
+                try WevVGlazeRuntime.shared.assertCurrent(epoch: saveEpoch, scope: saveScope)
                 var iconURL: String?
                 if let avatar = UIImage(named: self?.chosenDonutAvatarAsset ?? ""),
                    let avatarData = avatar.jpegData(compressionQuality: 0.88) {
                     iconURL = try await WevVGlazeSocialRepository.pastryTrailDiary.boutiqueStudio(avatarData, pastryCompendiumSeries: "wevv-profile.jpg")
                 }
+                try WevVGlazeRuntime.shared.assertCurrent(epoch: saveEpoch, scope: saveScope)
                 _ = try await glazeRepository.senchaTasting(
                     gingerHoneyDrizzle: creamPacket.displayName,
                     yuzuHoneySwirl: creamPacket.crumbBio,
                     blackSesameRibbon: iconURL
                 )
+                try WevVGlazeRuntime.shared.assertCurrent(epoch: saveEpoch, scope: saveScope)
                 guard !Task.isCancelled else { return }
                 await MainActor.run {
                     guard let self else { return }

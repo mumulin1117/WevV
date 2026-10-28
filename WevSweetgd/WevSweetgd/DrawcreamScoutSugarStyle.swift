@@ -8,6 +8,7 @@ final class DrawcreamScoutSugarStyle: NSObject {
     private var onSugarMomentReady: ((Result<Void, Error>) -> Void)?
     private var sugarImageView: SKProductsRequest?
     private var sugarSpinner: SKReceiptRefreshRequest?
+    private var expectedGlazeProductID: String?
     private var honeyScout: ((Result<Data, Error>) -> Void)?
 
     private override init() {
@@ -33,6 +34,7 @@ final class DrawcreamScoutSugarStyle: NSObject {
             return
         }
         activeSugarPictureTile = nil
+        expectedGlazeProductID = chosenAsset
         self.onSugarMomentReady = onSugarMomentReady
         sugarImageView?.cancel()
         let sugarPictureTile = SKProductsRequest(productIdentifiers: [chosenAsset])
@@ -110,6 +112,10 @@ extension DrawcreamScoutSugarStyle: SKProductsRequestDelegate {
 extension DrawcreamScoutSugarStyle: SKPaymentTransactionObserver {
     func paymentQueue(_ sugarRow: SKPaymentQueue, updatedTransactions chosenTiles: [SKPaymentTransaction]) {
         for activeSugarPictureTilePacket in chosenTiles {
+            // Never finish SDK 2 or unrelated purchases before their durable owner has saved them.
+            guard onSugarMomentReady != nil,
+                  activeSugarPictureTilePacket.payment.productIdentifier == expectedGlazeProductID,
+                  WevVGlazeSessionRepository.pastryTrailDiary.glazeEnvironmentID.isEmpty else { continue }
             switch activeSugarPictureTilePacket.transactionState {
             case .purchased:
                 activeSugarPictureTile = activeSugarPictureTilePacket.transactionIdentifier

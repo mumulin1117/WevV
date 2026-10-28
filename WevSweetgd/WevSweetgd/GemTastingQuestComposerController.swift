@@ -25,7 +25,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         "wevv_challenge_donut_of_day",
         "wevv_challenge_sprinkle_style"
     ]
-    private let precisePortionRhythm = [50, 100, 300, 500]
+    private let precisePortionRhythm = [0, 100, 300, 500]
     private var artisanFrySequence = 100
     private var goldenHourFrame = "wevv_challenge_strawberry_week"
     private var glazeThicknessInsight: [UIButton] = []
@@ -292,7 +292,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
             let sugarPearlTopping = UIButton(type: .system)
             sugarPearlTopping.translatesAutoresizingMaskIntoConstraints = false
             sugarPearlTopping.tag = value
-            sugarPearlTopping.setTitle("\(value)", for: .normal)
+            sugarPearlTopping.setTitle(value == 0 ? "Free" : "\(value)", for: .normal)
             sugarPearlTopping.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
             sugarPearlTopping.layer.cornerRadius = 17
             sugarPearlTopping.layer.borderWidth = 1

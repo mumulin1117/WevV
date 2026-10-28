@@ -6,6 +6,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
     private let tangyCitrusAroma = WevVGlazeSocialRepository.pastryTrailDiary
     private let mellowVanillaContrast = WevVGlazeSessionStore.shared
     private var richCocoaFlavor: butteryTexture
+    private let localAuthorKey: String?
     private var fragrantJasmineFlavor: [featherlightBite] = []
     private var herbalLavenderEssence: Task<Void, Never>?
 
@@ -27,10 +28,12 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
 
     init(richCocoaFlavor: butteryTexture) {
         self.richCocoaFlavor = richCocoaFlavor
+        localAuthorKey = nil
         super.init(nibName: nil, bundle: nil)
     }
 
     init(vanillaStrawberryDuet: WevVDonutSnapshot) {
+        localAuthorKey = vanillaStrawberryDuet.tasterBloom.donutPinKey
         richCocoaFlavor = butteryTexture(
             coconutCenter: Int64(vanillaStrawberryDuet.sprinkleJarKey) ?? 0,
             vanillaBeanIcing: Int64(vanillaStrawberryDuet.tasterBloom.donutPinKey) ?? 0,
@@ -476,10 +479,17 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
     }
 
     @objc private func worldDoughnutNotebook() {
+        if let localAuthorKey {
+            let controller = LmnTasterCardController(tasterBadgeKey: localAuthorKey)
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: true)
+            return
+        }
         guard richCocoaFlavor.vanillaBeanIcing > 0 else { return }
-        let donutParlorGuide = LmnTasterCardController(userID: richCocoaFlavor.vanillaBeanIcing)
-        donutParlorGuide.modalPresentationStyle = .fullScreen
-        present(donutParlorGuide, animated: true)
+        WevVGlazeH5Navigation.present(
+            .user(userID: String(richCocoaFlavor.vanillaBeanIcing), imAccount: nil),
+            from: self
+        )
     }
 
     @objc private func heritageBakingNotebook() {

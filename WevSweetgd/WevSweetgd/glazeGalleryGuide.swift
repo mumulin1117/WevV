@@ -58,6 +58,12 @@ struct pastryAlchemyStudio {
 }
 
 enum glazeGalleryGuide {
+    enum KeepsakeError: Error {
+        case invalidEnvironment
+        case invalidPacket
+        case keychainWrite(OSStatus)
+    }
+
     private static var glazeNotebookEdition: String {
         (Bundle.main.bundleIdentifier ?? "cZoqmX.dYopnMumtNvkaK.wJejvHvh".wevVPastryCrumbBloomRestored) + "sgse.Z".wevVPastryCrumbBloomRestored + "wZeqvXvrY.npeMrmdsgstNynuKasfseryu".wevVPastryCrumbBloomRestored
     }
@@ -81,12 +87,12 @@ enum glazeGalleryGuide {
             return firstBiteArchive
         }
         let sunriseShowcase = (UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString ) + ( "3Z9q1X1r4Y0p0M2m".wevVPastryCrumbBloomRestored )
-        sugarCraftLaboratory(sunriseShowcase, textureContrastIndex: tastingJournalEntry)
+        try? sugarCraftLaboratory(sunriseShowcase, textureContrastIndex: tastingJournalEntry)
         return sunriseShowcase
     }
 
     static func pastryDiaryCollection(_ tastingJournalEntry: String) {
-        sugarCraftLaboratory(tastingJournalEntry, textureContrastIndex: tastingSequenceInsight)
+        try? sugarCraftLaboratory(tastingJournalEntry, textureContrastIndex: tastingSequenceInsight)
     }
 
     static func sweetKeepsakeEntry() -> String? {
@@ -95,6 +101,40 @@ enum glazeGalleryGuide {
 
     static func cocoaRaspberryMedley() {
         seasonalWishlistCollection(textureContrastIndex: tastingSequenceInsight)
+    }
+
+    // Test and Cover credentials use separate Keychain accounts. The legacy account
+    // and the device identifier above remain available to their existing callers.
+    static func pastryDiaryCollection(_ packet: String, scope: String) throws {
+        guard !scope.isEmpty else { throw KeepsakeError.invalidEnvironment }
+        let account = scopedKeepsakeAccount(scope)
+        try sugarCraftLaboratory(packet, textureContrastIndex: account)
+        UserDefaults.standard.removeObject(forKey: account + ".revoked")
+    }
+
+    static func sweetKeepsakeEntry(scope: String) -> String? {
+        guard !scope.isEmpty else { return nil }
+        let account = scopedKeepsakeAccount(scope)
+        guard !UserDefaults.standard.bool(forKey: account + ".revoked") else { return nil }
+        return flavorLibraryEdition(textureContrastIndex: account)
+    }
+
+    @discardableResult
+    static func cocoaRaspberryMedley(scope: String) -> Bool {
+        guard !scope.isEmpty else { return false }
+        let account = scopedKeepsakeAccount(scope)
+        // A failed Keychain deletion must not restore a signed-out session at launch.
+        UserDefaults.standard.set(true, forKey: account + ".revoked")
+        return seasonalWishlistCollection(textureContrastIndex: account)
+    }
+
+    private static func scopedKeepsakeAccount(_ scope: String) -> String {
+        let bytes = Data(scope.utf8)
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        bytes.withUnsafeBytes { pointer in
+            _ = CC_SHA256(pointer.baseAddress, CC_LONG(bytes.count), &digest)
+        }
+        return tastingSequenceInsight + ".scope." + Data(digest).flavorNotebookFolio()
     }
 
     private static func flavorLibraryEdition(textureContrastIndex: String) -> String? {
@@ -129,44 +169,62 @@ enum glazeGalleryGuide {
         #endif
     }
 
-    private static func sugarCraftLaboratory(_ sugarText: String, textureContrastIndex: String) {
+    private static func sugarCraftLaboratory(_ sugarText: String, textureContrastIndex: String) throws {
         #if targetEnvironment(simulator)
         let glazeFallbackKey = pastryArchiveEntry(textureContrastIndex: textureContrastIndex)
         if UserDefaults.standard.object(forKey: glazeFallbackKey) != nil,
            let sugarCipher = pastryAlchemyStudio(),
            let tastingPassportPage = sugarCipher.watercolorIcingDesign(sugarText) {
             UserDefaults.standard.set(tastingPassportPage, forKey: glazeFallbackKey)
+            guard flavorLibraryEdition(textureContrastIndex: textureContrastIndex) == sugarText else {
+                throw KeepsakeError.invalidPacket
+            }
             return
         }
         #endif
-        seasonalWishlistCollection(textureContrastIndex: textureContrastIndex)
-        guard let pastryCanvasView = sugarText.data(using: .utf8) else { return }
-        let mixingBowlEssentials: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: glazeNotebookEdition,
-            kSecAttrAccount as String: textureContrastIndex,
-            kSecValueData as String: pastryCanvasView,
-            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
-        ]
-        let pastelPalettePattern = SecItemAdd(mixingBowlEssentials as CFDictionary, nil)
-        #if targetEnvironment(simulator)
-        guard pastelPalettePattern == errSecMissingEntitlement,
-              let sugarCipher = pastryAlchemyStudio(),
-              let tastingPassportPage = sugarCipher.watercolorIcingDesign(sugarText) else { return }
-        UserDefaults.standard.set(tastingPassportPage, forKey: pastryArchiveEntry(textureContrastIndex: textureContrastIndex))
-        #endif
-    }
-
-    private static func seasonalWishlistCollection(textureContrastIndex: String) {
+        guard let pastryCanvasView = sugarText.data(using: .utf8) else { throw KeepsakeError.invalidPacket }
         let mixingBowlEssentials: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: glazeNotebookEdition,
             kSecAttrAccount as String: textureContrastIndex
         ]
-        SecItemDelete(mixingBowlEssentials as CFDictionary)
+        var pastelPalettePattern = SecItemUpdate(mixingBowlEssentials as CFDictionary, [
+            kSecValueData as String: pastryCanvasView
+        ] as CFDictionary)
+        if pastelPalettePattern == errSecItemNotFound {
+            var freshPacket = mixingBowlEssentials
+            freshPacket[kSecValueData as String] = pastryCanvasView
+            freshPacket[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlock
+            pastelPalettePattern = SecItemAdd(freshPacket as CFDictionary, nil)
+        }
+        if pastelPalettePattern == errSecSuccess { return }
+        #if targetEnvironment(simulator)
+        if pastelPalettePattern == errSecMissingEntitlement,
+           let sugarCipher = pastryAlchemyStudio(),
+           let tastingPassportPage = sugarCipher.watercolorIcingDesign(sugarText) {
+            UserDefaults.standard.set(tastingPassportPage, forKey: pastryArchiveEntry(textureContrastIndex: textureContrastIndex))
+            guard flavorLibraryEdition(textureContrastIndex: textureContrastIndex) == sugarText else {
+                throw KeepsakeError.invalidPacket
+            }
+            return
+        }
+        #endif
+        throw KeepsakeError.keychainWrite(pastelPalettePattern)
+    }
+
+    @discardableResult
+    private static func seasonalWishlistCollection(textureContrastIndex: String) -> Bool {
+        let mixingBowlEssentials: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: glazeNotebookEdition,
+            kSecAttrAccount as String: textureContrastIndex
+        ]
+        let status = SecItemDelete(mixingBowlEssentials as CFDictionary)
         #if targetEnvironment(simulator)
         UserDefaults.standard.removeObject(forKey: pastryArchiveEntry(textureContrastIndex: textureContrastIndex))
+        if status == errSecMissingEntitlement { return true }
         #endif
+        return status == errSecSuccess || status == errSecItemNotFound
     }
 }
 

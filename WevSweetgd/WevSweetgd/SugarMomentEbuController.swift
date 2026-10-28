@@ -459,21 +459,30 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         whiteChocolateRibbon.isEnabled = false
         whiteChocolateRibbon.alpha = 0.72
         NOticeNertyuSugartastingCard.showSugarToast("Publishing post…")
+        let submitEpoch = WevVGlazeSessionStore.shared.sessionEpoch
+        let submitScope = WevVGlazeSessionRepository.pastryTrailDiary.glazeEnvironmentID
         cinnamonSugarFinish = Task { [weak self] in
             guard let self else { return }
             do {
+                try WevVGlazeRuntime.shared.assertCurrent(epoch: submitEpoch, scope: submitScope)
                 var cherryCompote: [String] = []
                 for (yuzuHoneySwirl, custardMousse) in mascarponeFilling.enumerated() {
                     let peachFilling = try await WevVGlazeSocialRepository.pastryTrailDiary.boutiqueStudio(custardMousse, pastryCompendiumSeries: "wevv-moment-\(yuzuHoneySwirl + 1).jpg")
+                    try WevVGlazeRuntime.shared.assertCurrent(epoch: submitEpoch, scope: submitScope)
                     cherryCompote.append(peachFilling)
                 }
-                _ = try await WevVGlazeSocialRepository.pastryTrailDiary.cornerBakery(caramelCurd: mascarponeCream, passionfruitFilling: cherryCompote)
+                let outcome = try await WevVGlazeSocialRepository.pastryTrailDiary.cornerBakery(caramelCurd: mascarponeCream, passionfruitFilling: cherryCompote)
+                try WevVGlazeRuntime.shared.assertCurrent(epoch: submitEpoch, scope: submitScope)
                 guard !Task.isCancelled else { return }
                 await MainActor.run {
                     NOticeNertyuSugartastingCard.clearSugarCrumbs()
                     self.cinnamonSugarFinish = nil
                     self.vanillaBeanIcing?()
-                    self.dismiss(animated: true)
+                    self.dismiss(animated: true) {
+                        if case .pendingReview = outcome {
+                            NOticeNertyuSugartastingCard.showSugarToast("Your post has been submitted for review.")
+                        }
+                    }
                 }
             } catch {
                 guard !Task.isCancelled else { return }

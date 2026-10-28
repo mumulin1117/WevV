@@ -3,13 +3,10 @@ import UIKit
 final class DimSugarpistachioCreamCoating: UIViewController {
     var onSugarSettingChanged: (() -> Void)?
 
-    private let hazelnutCocoaShell = WevVGlazeSessionStore.shared
     private let glazeRepository = WevVGlazeSessionRepository.pastryTrailDiary
     private let sugarScrollView = UIScrollView()
     private let sugarContentView = UIView()
     private let sugarRowsStack = UIStackView()
-    private let sugarCacheCountLabel = UILabel()
-    private let sugarCacheCountKey = "wGexvkvU_TstuegKa*r@_Bc.akcMhXe:_:cFomuunztb_ytTe:x/te".wevVPastryCrumbBloomRestored
     private let gingerHoneyDrizzle = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
     private let paleTone = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
     private let inkTone = UIColor(red: 0.11, green: 0.08, blue: 0.14, alpha: 1)
@@ -17,10 +14,10 @@ final class DimSugarpistachioCreamCoating: UIViewController {
 
     private struct SugarSettingRowSpec {
         let sugarTitle: String
-        let sugarValue: String?
-        let showsArrow: Bool
-        let action: Selector?
-        let countLabel: UILabel?
+        var sugarValue: String? = nil
+        var showsArrow = true
+        var action: Selector? = nil
+        var h5Entry: WevVGlazeH5Entry? = nil
     }
 
     override func viewDidLoad() {
@@ -70,14 +67,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
 
         sugarRowsStack.translatesAutoresizingMaskIntoConstraints = false
         sugarRowsStack.axis = .vertical
-        sugarRowsStack.spacing = 0
-        sugarRowsStack.backgroundColor = .white
-        sugarRowsStack.layer.cornerRadius = 18
-        sugarRowsStack.layer.shadowColor = UIColor.black.cgColor
-        sugarRowsStack.layer.shadowOpacity = 0.05
-        sugarRowsStack.layer.shadowRadius = 12
-        sugarRowsStack.layer.shadowOffset = CGSize(width: 0, height: 4)
-        sugarRowsStack.clipsToBounds = true
+        sugarRowsStack.spacing = 16
         sugarContentView.addSubview(sugarRowsStack)
 
         fillSugarespressoCreamFinish()
@@ -94,33 +84,65 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             sugarContentView.widthAnchor.constraint(equalTo: sugarScrollView.frameLayoutGuide.widthAnchor),
             sugarRowsStack.topAnchor.constraint(equalTo: sugarContentView.topAnchor),
             sugarRowsStack.leadingAnchor.constraint(equalTo: sugarContentView.leadingAnchor, constant: 20),
-            sugarRowsStack.trailingAnchor.constraint(equalTo: sugarContentView.trailingAnchor, constant: -20),
-            sugarRowsStack.heightAnchor.constraint(equalToConstant: 258)
+            sugarRowsStack.trailingAnchor.constraint(equalTo: sugarContentView.trailingAnchor, constant: -20)
         ])
     }
 
     private func fillSugarespressoCreamFinish() {
-        makeSugargingerHoneyShellSpecs().forEach { crumbSpec in
-            sugarRowsStack.addArrangedSubview(
-                makeSettingRow(
+        for specs in makeSugargingerHoneyShellSpecs() {
+            let group = UIStackView()
+            group.axis = .vertical
+            group.spacing = 0
+            group.backgroundColor = .white
+            group.layer.cornerRadius = 18
+            group.layer.shadowColor = UIColor.black.cgColor
+            group.layer.shadowOpacity = 0.05
+            group.layer.shadowRadius = 12
+            group.layer.shadowOffset = CGSize(width: 0, height: 4)
+            group.clipsToBounds = true
+            for crumbSpec in specs {
+                let row = makeSettingRow(
                     title: crumbSpec.sugarTitle,
                     tastingVisit: crumbSpec.sugarValue,
                     showsArrow: crumbSpec.showsArrow,
-                    action: crumbSpec.action,
-                    countLabel: crumbSpec.countLabel
+                    action: crumbSpec.action
                 )
-            )
+                if let entry = crumbSpec.h5Entry {
+                    row.addAction(UIAction { [weak self] _ in
+                        guard let self else { return }
+                        WevVGlazeH5Navigation.present(entry, from: self, onClose: { [weak self] in
+                            self?.onSugarSettingChanged?()
+                        })
+                    }, for: .touchUpInside)
+                }
+                group.addArrangedSubview(row)
+            }
+            sugarRowsStack.addArrangedSubview(group)
         }
     }
 
-    private func makeSugargingerHoneyShellSpecs() -> [SugarSettingRowSpec] {
+    private func makeSugargingerHoneyShellSpecs() -> [[SugarSettingRowSpec]] {
         [
-            SugarSettingRowSpec(sugarTitle: "EBd^iktw mPErwoLfkiJl.eP".wevVPastryCrumbBloomRestored, sugarValue: nil, showsArrow: true, action: #selector(openEditGlazecitrusZestIcing), countLabel: nil),
-            SugarSettingRowSpec(sugarTitle: "C#lIeCa%rK ncxaIcrh=eE".wevVPastryCrumbBloomRestored, sugarValue: currentSugarCacheCountText(), showsArrow: false, action: #selector(clearSugarCache), countLabel: sugarCacheCountLabel),
-            SugarSettingRowSpec(sugarTitle: "Pcr#iZvHaNcqy^ ^PsoxlHiRctyT".wevVPastryCrumbBloomRestored, sugarValue: nil, showsArrow: false, action: #selector(openPrivacySugarText), countLabel: nil),
-            SugarSettingRowSpec(sugarTitle: "B^l&aUcskNlDiSsKt!".wevVPastryCrumbBloomRestored, sugarValue: nil, showsArrow: true, action: #selector(openSugarListText), countLabel: nil),
-            SugarSettingRowSpec(sugarTitle: "TCeTrum/sR XoIfL ,S@eHrQvXiTc.ea".wevVPastryCrumbBloomRestored, sugarValue: nil, showsArrow: false, action: #selector(openTermsSugarText), countLabel: nil),
-            SugarSettingRowSpec(sugarTitle: "App Version", sugarValue: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0", showsArrow: false, action: nil, countLabel: nil)
+            [
+                SugarSettingRowSpec(sugarTitle: "Edit Profile", h5Entry: .editProfile),
+                SugarSettingRowSpec(sugarTitle: "Level", h5Entry: .level),
+                SugarSettingRowSpec(sugarTitle: "Friends", h5Entry: .relations(.friends))
+            ],
+            [
+                SugarSettingRowSpec(sugarTitle: "Store", h5Entry: .store),
+                SugarSettingRowSpec(sugarTitle: "Backpack", h5Entry: .backpack),
+                SugarSettingRowSpec(sugarTitle: "Diamond Records", h5Entry: .diamondRecords)
+            ],
+            [
+                SugarSettingRowSpec(sugarTitle: "System Message", h5Entry: .systemMessages),
+                SugarSettingRowSpec(sugarTitle: "Feedback", h5Entry: .feedback)
+            ],
+            [
+                SugarSettingRowSpec(sugarTitle: "Privacy Policy", showsArrow: false, action: #selector(openPrivacySugarText)),
+                SugarSettingRowSpec(sugarTitle: "Blacklist", h5Entry: .blocklist),
+                SugarSettingRowSpec(sugarTitle: "Terms of Service", showsArrow: false, action: #selector(openTermsSugarText)),
+                SugarSettingRowSpec(sugarTitle: "App Version", sugarValue: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0", showsArrow: false)
+            ]
         ]
     }
 
@@ -143,19 +165,19 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             action: #selector(showRestSugarPrompt)
         )
 
-        sugarContentView.addSubview(crumbEraseButton)
-        sugarContentView.addSubview(frostingRestButton)
+        let accountGroup = UIStackView(arrangedSubviews: [crumbEraseButton, frostingRestButton])
+        accountGroup.translatesAutoresizingMaskIntoConstraints = false
+        accountGroup.axis = .vertical
+        accountGroup.spacing = 16
+        sugarContentView.addSubview(accountGroup)
 
         NSLayoutConstraint.activate([
-            crumbEraseButton.topAnchor.constraint(equalTo: sugarRowsStack.bottomAnchor, constant: 32),
-            crumbEraseButton.leadingAnchor.constraint(equalTo: sugarRowsStack.leadingAnchor),
-            crumbEraseButton.trailingAnchor.constraint(equalTo: sugarRowsStack.trailingAnchor),
+            accountGroup.topAnchor.constraint(equalTo: sugarRowsStack.bottomAnchor, constant: 32),
+            accountGroup.leadingAnchor.constraint(equalTo: sugarRowsStack.leadingAnchor),
+            accountGroup.trailingAnchor.constraint(equalTo: sugarRowsStack.trailingAnchor),
+            accountGroup.bottomAnchor.constraint(equalTo: sugarContentView.bottomAnchor, constant: -32),
             crumbEraseButton.heightAnchor.constraint(equalToConstant: 48),
-            frostingRestButton.topAnchor.constraint(equalTo: crumbEraseButton.bottomAnchor, constant: 16),
-            frostingRestButton.leadingAnchor.constraint(equalTo: sugarRowsStack.leadingAnchor),
-            frostingRestButton.trailingAnchor.constraint(equalTo: sugarRowsStack.trailingAnchor),
-            frostingRestButton.heightAnchor.constraint(equalToConstant: 48),
-            frostingRestButton.bottomAnchor.constraint(equalTo: sugarContentView.bottomAnchor, constant: -32)
+            frostingRestButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
 
@@ -171,7 +193,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         return brownButterIcing
     }
 
-    private func makeSettingRow(title: String, tastingVisit: String?, showsArrow: Bool, action: Selector?, countLabel: UILabel? = nil) -> UIControl {
+    private func makeSettingRow(title: String, tastingVisit: String?, showsArrow: Bool, action: Selector?) -> UIControl {
         let donutRow = UIControl()
         donutRow.translatesAutoresizingMaskIntoConstraints = false
         donutRow.backgroundColor = .white
@@ -188,15 +210,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         donutRow.addSubview(divider)
 
         if let tastingVisit {
-            let tastingScoutline = countLabel ?? espressoCreamIcing(tastingVisit, almondPralineShell: 12, orangeBlossomCoating: .regular, brownButterShell: mutedTone)
-            if countLabel != nil {
-                tastingScoutline.translatesAutoresizingMaskIntoConstraints = false
-                tastingScoutline.text = tastingVisit
-                tastingScoutline.textColor = mutedTone
-                tastingScoutline.font = .systemFont(ofSize: 12, weight: .regular)
-                tastingScoutline.adjustsFontSizeToFitWidth = true
-                tastingScoutline.minimumScaleFactor = 0.72
-            }
+            let tastingScoutline = espressoCreamIcing(tastingVisit, almondPralineShell: 12, orangeBlossomCoating: .regular, brownButterShell: mutedTone)
             tastingScoutline.textAlignment = .right
             donutRow.addSubview(tastingScoutline)
             pinSugarSettingValue(tastingScoutline, donutRow: donutRow, glazeTitleLabel: glazeTitleLabel)
@@ -245,10 +259,6 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         ])
     }
 
-    private func currentSugarCacheCountText() -> String {
-        UserDefaults.standard.string(forKey: sugarCacheCountKey) ?? "1C2eMHbV".wevVPastryCrumbBloomRestored
-    }
-
     private func showConfirmSugarPanel(title: String, note: String, okTitle: String, cancelTitle: String, okFill: UIColor, okAction: @escaping () -> Void) {
         TinGlazePromptStyler.showSugarConfirm(
             almondFlavor: view,
@@ -259,17 +269,6 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             fritterBite: okFill,
             twistPastry: okAction
         )
-    }
-
-    private func makeDialogButton(_ title: String, fill: UIColor, color: UIColor) -> UIButton {
-        let sprinkleButton = UIButton(type: .system)
-        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
-        sprinkleButton.setTitle(title, for: .normal)
-        sprinkleButton.setTitleColor(color, for: .normal)
-        sprinkleButton.titleLabel?.font = .systemFont(ofSize: 12, weight: .heavy)
-        sprinkleButton.backgroundColor = fill
-        sprinkleButton.layer.cornerRadius = 17
-        return sprinkleButton
     }
 
     private func espressoCreamIcing(_ text: String, almondPralineShell: CGFloat, orangeBlossomCoating: UIFont.Weight, brownButterShell: UIColor) -> UILabel {
@@ -283,33 +282,8 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         return crumbLabel
     }
 
-    @objc private func openEditGlazecitrusZestIcing() {
-        let controller = CreamRingDellController()
-        controller.onCreamRingSaved = { [weak self] in
-            self?.onSugarSettingChanged?()
-        }
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
-    }
-
-    @objc private func clearSugarCache() {
-        hazelnutCocoaShell.clearSugarCrumbs()
-        UserDefaults.standard.set("0=MYbQ".wevVPastryCrumbBloomRestored, forKey: sugarCacheCountKey)
-        sugarCacheCountLabel.text = "0YMgbt".wevVPastryCrumbBloomRestored
-        showTinySugarHint("CXaAckh.eP TcelfeaaXr&e~d!.O".wevVPastryCrumbBloomRestored)
-    }
-
     @objc private func openPrivacySugarText() {
         openSugarText(title: "PXrRimvkaNcLyj SP;o@lHigcfyL".wevVPastryCrumbBloomRestored, body: privacySugarText())
-    }
-
-    @objc private func openSugarListText() {
-        let controller = XunSugarRosterbrownButterDrizzle(rubyCocoaSwirl: .citrusZestShell)
-        controller.whiteChocolateRibbon = { [weak self] in
-            self?.onSugarSettingChanged?()
-        }
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
     }
 
     @objc private func openTermsSugarText() {

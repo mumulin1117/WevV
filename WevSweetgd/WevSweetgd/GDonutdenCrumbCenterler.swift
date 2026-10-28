@@ -9,7 +9,6 @@ private struct WevVGlazeVaultPack {
 
 final class GDonutdenCrumbCenterler: UIViewController {
     private let plushCenterFinish = WevVGlazeSessionStore.shared
-    private let glazeVaultRepository = WevVGlazeVaultRepository.pastryTrailDiary
     private let glazeSugarCountLabel = UILabel()
     private let frostingScroll = UIScrollView()
     private let sprinkleContent = UIView()
@@ -18,21 +17,14 @@ final class GDonutdenCrumbCenterler: UIViewController {
     private var glazeStoreItemsByKey: [String: Product] = [:]
     private var sprinkleTradeTask: Task<Void, Never>?
     private var glazePackCards: [UIControl] = []
-    private var completedGlazeTradeIDs = Set<String>()
     private var isGlazeStoreLoading = false
+    private var glazeCatalogOwner = ""
+    private weak var glazeVaultGrid: UIStackView?
+    private let glazeCatalogRefresh = UIRefreshControl()
 
     var silkyCenter: (() -> Void)?
 
-    private let smoothShellBite: [WevVGlazeVaultPack] = [
-        WevVGlazeVaultPack(sugarCount: 100, fallbackMark: "0N.J9~9a$r".wevVPastryCrumbBloomRestored, batchKey: "pThJdQsyyowXurdornjpa!h:anpYfsnN".wevVPastryCrumbBloomRestored),
-        WevVGlazeVaultPack(sugarCount: 200, fallbackMark: "1E.b9L9O$R".wevVPastryCrumbBloomRestored, batchKey: "oCnDiceVx;t/wag#wbxVv^fewtd;bDwY".wevVPastryCrumbBloomRestored),
-        WevVGlazeVaultPack(sugarCount: 325, fallbackMark: "2@.F9/9F$/".wevVPastryCrumbBloomRestored, batchKey: "w:exfNrvwMeefDwMf~wse,gTzBdTh!wmpP".wevVPastryCrumbBloomRestored),
-        WevVGlazeVaultPack(sugarCount: 575, fallbackMark: "4!.T9a9h$b".wevVPastryCrumbBloomRestored, batchKey: "uRlrdszjg+bfv;iVy.oTzfq+nGgSa!dF".wevVPastryCrumbBloomRestored),
-        WevVGlazeVaultPack(sugarCount: 1050, fallbackMark: "9&.L9=9N$G".wevVPastryCrumbBloomRestored, batchKey: "m:dLdMigyaurs~mii&cKf/cWiuy?n=i~".wevVPastryCrumbBloomRestored),
-        WevVGlazeVaultPack(sugarCount: 2250, fallbackMark: "1w9N.o9u9k$@".wevVPastryCrumbBloomRestored, batchKey: "seqKgvgfmhklb~col&eUzDyzhCgLfdxD".wevVPastryCrumbBloomRestored),
-        WevVGlazeVaultPack(sugarCount: 5500, fallbackMark: "4w9t.E9*9u$P".wevVPastryCrumbBloomRestored, batchKey: "tuhhkWxQuzzKaPwbhLk&aXf*xlwggysG".wevVPastryCrumbBloomRestored),
-        WevVGlazeVaultPack(sugarCount: 10500, fallbackMark: "9F9Y.j9M9b$:".wevVPastryCrumbBloomRestored, batchKey: "yggHjvpLxEaivRihn^adiRf~ebt+cpn;".wevVPastryCrumbBloomRestored),
-    ]
+    private var smoothShellBite: [WevVGlazeVaultPack] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +63,9 @@ final class GDonutdenCrumbCenterler: UIViewController {
     private func crispEdgeDough() {
         frostingScroll.translatesAutoresizingMaskIntoConstraints = false
         frostingScroll.showsVerticalScrollIndicator = false
+        frostingScroll.alwaysBounceVertical = true
+        glazeCatalogRefresh.addTarget(self, action: #selector(retryGlazeVaultProducts), for: .valueChanged)
+        frostingScroll.refreshControl = glazeCatalogRefresh
         view.addSubview(frostingScroll)
 
         sprinkleContent.translatesAutoresizingMaskIntoConstraints = false
@@ -106,6 +101,7 @@ final class GDonutdenCrumbCenterler: UIViewController {
         tray.layer.cornerRadius = 26
 
         let warmGingerNuance = makeVaultPackGrid()
+        glazeVaultGrid = warmGingerNuance
 
         sprinkleContent.addSubview(doughmeltawayCrust)
         sprinkleContent.addSubview(crunchyCrumb)
@@ -309,174 +305,146 @@ final class GDonutdenCrumbCenterler: UIViewController {
 
     @objc private func addVaultmuralAura(_ sender: UIControl) {
         guard plushCenterFinish.isTasterReady else {
-            plushCenterTexturerty("P%lUeua.s%e^ vsQiAglnx winn. %fbiRrJsCtA".wevVPastryCrumbBloomRestored)
-            return
+            plushCenterTexturerty("Please sign in first."); return
+        }
+        guard glazeCatalogOwner == currentGlazeWalletOwner(), smoothShellBite.indices.contains(sender.tag) else {
+            loadGlazeVaultProducts(); return
         }
         guard SKPaymentQueue.canMakePayments() else {
-            plushCenterTexturerty("TOrTeeaTtC @cfhIehcGkIoYuGtG xiHsf mdGiVsCaTbGllecdl eoTnJ xtchtiPsV bdyePvXiVcEee.E".wevVPastryCrumbBloomRestored)
+            plushCenterTexturerty("Purchases are disabled on this device."); return
+        }
+        let package = smoothShellBite[sender.tag]
+        guard let product = glazeStoreItemsByKey[package.batchKey] else {
+            loadGlazeVaultProducts()
+            plushCenterTexturerty("Store items are still preparing. Please try again shortly.")
             return
         }
-        let sugarPack = smoothShellBite[max(0, min(sender.tag, smoothShellBite.count - 1))]
-        guard let storeItem = glazeStoreItemsByKey[sugarPack.batchKey] else {
-            if !isGlazeStoreLoading {
-                loadGlazeVaultProducts()
-            }
-            plushCenterTexturerty("SHtwoLrkep diFtieGmksZ naDrDed Dsxt@ihlGlf lpKrPebpna#reiTnhgo.D sPglKehaHszeG ltsrgyx FadgiaKidnn GiFnA QaN bmWovmPeNnOtX.c".wevVPastryCrumbBloomRestored)
-            return
-        }
-        bakeGlazeVaultPack(sugarPack, storeItem: storeItem, pastryCard: sender)
+        bakeGlazeVaultPack(package, storeItem: product, pastryCard: sender)
+    }
+
+    @objc private func retryGlazeVaultProducts() {
+        loadGlazeVaultProducts()
     }
 
     private func loadGlazeVaultProducts() {
-        guard !isGlazeStoreLoading else { return }
+        guard !isGlazeStoreLoading else { glazeCatalogRefresh.endRefreshing(); return }
         isGlazeStoreLoading = true
+        let owner = currentGlazeWalletOwner()
         Task { [weak self] in
             guard let self else { return }
-            do {
-                let ids = self.smoothShellBite.map(\.batchKey)
-                let storeItems = try await Product.products(for: ids)
-                await MainActor.run {
-                    self.glazeStoreItemsByKey = Dictionary(uniqueKeysWithValues: storeItems.map { ($0.id, $0) })
-                    self.refreshVaultMarks()
-                    if storeItems.isEmpty {
-                        self.plushCenterTexturerty("SAtnobreeF UiKtIeVmisL iaYrjeu RnooVtg PrgeravdByG nyseZtF.k FPjlgewaTsEe@ NtAr@yg BatgWaIiCno YszhPoRr?tClbyP.s".wevVPastryCrumbBloomRestored)
-                    }
-                }
-            } catch {
-                await MainActor.run {
-                    self.plushCenterTexturerty("SAtnobreeF UiKtIeVmisL iaYrjeu RnooVtg PrgeravdByG nyseZtF.k FPjlgewaTsEe@ NtAr@yg BatgWaIiCno YszhPoRr?tClbyP.s".wevVPastryCrumbBloomRestored)
-                }
-            }
-            await MainActor.run {
+            defer {
                 self.isGlazeStoreLoading = false
+                self.glazeCatalogRefresh.endRefreshing()
+            }
+            do {
+                let catalog = try await WevVGlazeNativeRechargeService.shared.packages()
+                guard !Task.isCancelled, self.currentGlazeWalletOwner() == owner else { return }
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .decimal
+                formatter.minimumFractionDigits = 2
+                formatter.maximumFractionDigits = 2
+                self.smoothShellBite = catalog.map { package in
+                    let price = formatter.string(from: NSDecimalNumber(decimal: package.price)) ?? NSDecimalNumber(decimal: package.price).stringValue
+                    return WevVGlazeVaultPack(sugarCount: package.diamonds,
+                        fallbackMark: package.currencySymbol + price, batchKey: package.productID)
+                }
+                self.glazeCatalogOwner = owner
+                self.glazeStoreItemsByKey = [:]
+                self.rebuildGlazeVaultCards()
+                guard !catalog.isEmpty else {
+                    self.plushCenterTexturerty("Store items are not ready yet. Please try again shortly.")
+                    return
+                }
+                let products = try await Product.products(for: catalog.map(\.productID))
+                guard !Task.isCancelled, self.currentGlazeWalletOwner() == owner else { return }
+                self.glazeStoreItemsByKey = Dictionary(uniqueKeysWithValues: products.map { ($0.id, $0) })
+                self.refreshVaultMarks()
+                if products.isEmpty { self.plushCenterTexturerty("Store items are not ready yet. Please try again shortly.") }
+            } catch {
+                guard !Task.isCancelled, self.currentGlazeWalletOwner() == owner else { return }
+                self.plushCenterTexturerty(error.localizedDescription)
             }
         }
     }
 
+    private func currentGlazeWalletOwner() -> String {
+        (plushCenterFinish.activeEnvironmentID ?? "") + "|" + String(plushCenterFinish.sessionEpoch)
+    }
+
+    private func rebuildGlazeVaultCards() {
+        guard let grid = glazeVaultGrid else { return }
+        grid.arrangedSubviews.forEach { grid.removeArrangedSubview($0); $0.removeFromSuperview() }
+        glazePackCards = []
+        for row in stride(from: 0, to: smoothShellBite.count, by: 3) {
+            grid.addArrangedSubview(makeVaultPackRow(rowStart: row))
+        }
+        refreshVaultMarks()
+    }
+
     private func refreshVaultMarks() {
-        for pastryCard in glazePackCards {
-            let index = max(0, min(pastryCard.tag, smoothShellBite.count - 1))
-            let sugarPack = smoothShellBite[index]
-            let crumbLabel = pastryCard.subviews.compactMap { $0 as? UILabel }.first { $0.accessibilityIdentifier == "glazeVaultMark\(index)" }
-            crumbLabel?.text = glazeStoreItemsByKey[sugarPack.batchKey]?.displayPrice ?? sugarPack.fallbackMark
+        for card in glazePackCards where smoothShellBite.indices.contains(card.tag) {
+            let package = smoothShellBite[card.tag]
+            let label = card.subviews.compactMap { $0 as? UILabel }.first { $0.accessibilityIdentifier == "glazeVaultMark\(card.tag)" }
+            label?.text = glazeStoreItemsByKey[package.batchKey]?.displayPrice ?? package.fallbackMark
+            // Missing StoreKit products use the existing tap-to-retry branch, never a purchase.
+            card.isEnabled = glazeCatalogOwner == currentGlazeWalletOwner()
+            card.alpha = glazeStoreItemsByKey[package.batchKey] != nil && card.isEnabled ? 1 : 0.62
         }
     }
 
     private func bakeGlazeVaultPack(_ sugarPack: WevVGlazeVaultPack, storeItem: Product, pastryCard: UIControl) {
+        guard storeItem.id == sugarPack.batchKey else { return }
         pastryCard.isEnabled = false
         pastryCard.alpha = 0.62
-        plushCenterTexturerty("ODp#e&nkiOnSgC :Adpgpq ASrtMoUrUe= zs/hjeQe#tL.Z.F.#".wevVPastryCrumbBloomRestored)
+        let owner = currentGlazeWalletOwner()
         Task { [weak self, weak pastryCard] in
             guard let self else { return }
-            do {
-                let result = try await storeItem.purchase()
-                switch result {
-                case .success(let verification):
-                    let trade = try self.meltawayCrust(verification)
-                    guard self.completedGlazeTradeIDs.insert(String(trade.id)).inserted else { break }
-                    do {
-                        let balance = try await self.glazeVaultRepository.rechargeGlazeBalance(sugarPack.sugarCount)
-                        let vaultTrade = twistKnotRing(
-                            sweetShowcaseMap: String(trade.id),
-                            doughKitchenShowcase: sugarPack.sugarCount,
-                            fillingSilkMatrix: balance,
-                            pastryWorkshopMap: true
-                        )
-                        await MainActor.run {
-                            self.completeGlazeVaultTrade(vaultTrade, fallbackCount: sugarPack.sugarCount)
-                        }
-                    } catch {
-                        self.completedGlazeTradeIDs.remove(String(trade.id))
-                        throw error
-                    }
-                    await trade.finish()
-                case .pending:
-                    await MainActor.run {
-                        self.plushCenterTexturerty("SytUoGrXej ?r#egqnuOeksLtB ziRsQ opneNnUdzibnRgq.Z".wevVPastryCrumbBloomRestored)
-                    }
-                case .userCancelled:
-                    await MainActor.run {
-                        self.plushCenterTexturerty("SHtSoErpeE lshhIeHe?tw nwBaYsm ecWlEoBsweVdH.J".wevVPastryCrumbBloomRestored)
-                    }
-                @unknown default:
-                    await MainActor.run {
-                        self.plushCenterTexturerty("ShtMo?rHeD QcUhYejczkooOuytO kcxoqutlidN pndoutt VfNimnaiUsghg.# CPVl@edaLsFek Fthrjyy gaQguaeiNnI.I".wevVPastryCrumbBloomRestored)
-                    }
-                }
-            } catch {
-                await MainActor.run {
-                    let crumbText = error is GlazeVaultTradeError
-                        ? "SstWoPr@eG qr@enc#eviWpxtu scqoVuhldd? mn@oXtA Fbce@ Cvbeir?infGiSeRdn.H".wevVPastryCrumbBloomRestored
-                        : "ShtMo?rHeD QcUhYejczkooOuytO kcxoqutlidN pndoutt VfNimnaiUsghg.# CPVl@edaLsFek Fthrjyy gaQguaeiNnI.I".wevVPastryCrumbBloomRestored
-                    self.plushCenterTexturerty(crumbText)
+            defer {
+                if self.currentGlazeWalletOwner() == owner {
+                    pastryCard?.isEnabled = true; pastryCard?.alpha = 1
                 }
             }
-            await MainActor.run {
-                pastryCard?.isEnabled = true
-                pastryCard?.alpha = 1
+            do {
+                let outcome = try await WevVGlazeNativeRechargeService.shared.purchase(productID: storeItem.id)
+                guard !Task.isCancelled, self.currentGlazeWalletOwner() == owner else { return }
+                switch outcome {
+                case .cancelled: self.plushCenterTexturerty("Store sheet was closed.")
+                case .pending: self.plushCenterTexturerty("Your purchase is still being confirmed.")
+                case .credited(let balance):
+                    self.glazeSugarCountLabel.text = String(balance)
+                    self.silkyCenter?()
+                    self.plushCenterTexturerty("Donut vault balance updated")
+                }
+            } catch {
+                guard !Task.isCancelled, self.currentGlazeWalletOwner() == owner else { return }
+                self.plushCenterTexturerty(error.localizedDescription)
             }
         }
     }
 
-    private func completeGlazeVaultTrade(_ trade: twistKnotRing, fallbackCount: Int) {
-        guard completedGlazeTradeIDs.contains(trade.sweetShowcaseMap) else { return }
-        glazeSugarCountLabel.text = "\(trade.fillingSilkMatrix)"
-        silkyCenter?()
-        let creditedCount = trade.doughKitchenShowcase > 0 ? trade.doughKitchenShowcase : fallbackCount
-        plushCenterTexturerty(trade.pastryWorkshopMap ? "Donut vault balance updated" : "\(creditedCount) gems added")
-    }
+
 
     private func listenForGlazeTrades() {
+        let owner = currentGlazeWalletOwner()
         sprinkleTradeTask = Task { [weak self] in
-            for await result in Transaction.unfinished {
-                guard let self else { return }
-                await self.syncGlazeVaultTrade(result)
-            }
-            for await result in Transaction.updates {
-                guard let self else { return }
-                await self.syncGlazeVaultTrade(result)
-            }
-        }
-    }
-
-    private func syncGlazeVaultTrade(_ result: VerificationResult<Transaction>) async {
-        do {
-            let trade = try meltawayCrust(result)
-            guard let sugarPack = smoothShellBite.first(where: { $0.batchKey == trade.productID }) else {
-                await trade.finish()
-                return
-            }
-            guard completedGlazeTradeIDs.insert(String(trade.id)).inserted else { return }
-            let balance: Int
+            guard let self else { return }
             do {
-                balance = try await glazeVaultRepository.rechargeGlazeBalance(sugarPack.sugarCount)
+                let result = try await WevVGlazeNativeRechargeService.shared.recoverPending()
+                guard !Task.isCancelled, self.currentGlazeWalletOwner() == owner else { return }
+                if let balance = result.balance { self.glazeSugarCountLabel.text = String(balance); self.silkyCenter?() }
+                if !result.failedCodes.isEmpty || result.limitReached {
+                    self.plushCenterTexturerty("Some purchases are still awaiting confirmation. Please try again later.")
+                }
             } catch {
-                completedGlazeTradeIDs.remove(String(trade.id))
-                throw error
+                guard !Task.isCancelled, self.currentGlazeWalletOwner() == owner else { return }
+                self.plushCenterTexturerty(error.localizedDescription)
             }
-            let vaultTrade = twistKnotRing(
-                sweetShowcaseMap: String(trade.id),
-                doughKitchenShowcase: sugarPack.sugarCount,
-                fillingSilkMatrix: balance,
-                pastryWorkshopMap: true
-            )
-            await MainActor.run {
-                self.completeGlazeVaultTrade(vaultTrade, fallbackCount: sugarPack.sugarCount)
-            }
-            await trade.finish()
-        } catch {
-            return
         }
     }
 
-    private func meltawayCrust<T>(_ result: VerificationResult<T>) throws -> T {
-        switch result {
-        case .verified(let trade):
-            return trade
-        case .unverified:
-            throw GlazeVaultTradeError.unverified
-        }
-    }
+
+
+
 
     private func plushCenterTexturerty(_ text: String) {
         TinGlazePromptStyler.showSugarToast(in: view, text: text, bottomOffset: -24)
