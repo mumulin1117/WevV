@@ -209,18 +209,31 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
         _ = try await productionNetwork.opi(path: "/_v2/business", body: json([:]))
         precondition(probe.last("/sugary9/crumb/voice").url?.host == "gateway.unit.example")
         precondition(probe.last("/mapped/business").url?.host == "production.unit.example")
-        let businessCount = probe.count("/mapped/business")
-        for invalidURL in ["https://unit.example", "https://production.unit.example:9443", "https://production.unit.example/other"] {
-            probe.routeAPIBaseURL = invalidURL
-            let rejectedNetwork = fresh(productionProfile)
-            do { _ = try await rejectedNetwork.opi(path: "/_v2/business", body: json([:])); fatalError("production accepted an unconfigured API base") }
-            catch WevVGlazeNetworkError.invalidConfiguration {}
-            precondition(rejectedNetwork.currentRoute == nil && probe.count("/mapped/business") == businessCount)
+        for selectedURL in ["https://selected.unit.example", "https://production.unit.example:9443"] {
+            probe.routeAPIBaseURL = selectedURL
+            let selectedNetwork = fresh(productionProfile)
+            _ = try await selectedNetwork.open(force: true)
+            _ = try await selectedNetwork.opi(path: "/_v2/business", body: json([:]))
+            precondition(selectedNetwork.currentRoute?.apiBaseURL.absoluteString == selectedURL)
+            for path in ["/mapped/open", "/mapped/business"] {
+                precondition(probe.last(path).url?.absoluteString == selectedURL + path,
+                             "Open and business requests must use the server-selected base")
+            }
         }
+        probe.routeAPIBaseURL = "https://selected.unit.example/edge"
+        let prefixedRoute = try await fresh(productionProfile).bootstrap()
+        precondition(prefixedRoute.apiBaseURL.absoluteString == probe.routeAPIBaseURL,
+                     "The route may select a business base path as well as a host")
         probe.routeAPIBaseURL = "https://production.unit.example"
-        probe.routeTarget = "PRODUCTION"
-        do { _ = try await fresh(productionProfile).bootstrap(); fatalError("undocumented startup target accepted") }
-        catch WevVGlazeNetworkError.invalidConfiguration {}
+        for target in ["SOURCE", "REPLICA", "FUTURE_TARGET"] {
+            probe.routeTarget = target
+            probe.routeOverrides = ["conversationTastingVisit": false]
+            let selectedNetwork = fresh(productionProfile)
+            _ = try await selectedNetwork.open(force: true)
+            precondition(selectedNetwork.currentRoute?.target == target && selectedNetwork.currentRoute?.fullFeaturesEnabled == false,
+                         "Target metadata must not reject a route or override its feature flag")
+        }
+        probe.routeOverrides = [:]
         probe.routeTarget = "REPLICA"
         let productionOpenCount = probe.count("/mapped/open")
         probe.routeOverrides = ["treatRecommendationPhoto": 17, "sweetnessVisitRing": "route temporarily unavailable"]
@@ -242,6 +255,11 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
             ["visitFillingCheckin": 0], ["visitFillingCheckin": false],
             ["conversationTastingVisit": 1], ["conversationTastingVisit": "true"],
             ["cozySeasonalGlaze": "http://production.unit.example"],
+            ["cozySeasonalGlaze": "https://user:password@production.unit.example"],
+            ["cozySeasonalGlaze": "https://production.unit.example?token=invalid"],
+            ["cozySeasonalGlaze": "https://production.unit.example#invalid"],
+            ["cozySeasonalGlaze": ""], ["cozySeasonalGlaze": NSNull()],
+            ["seasonalRingPhoto": ""], ["seasonalRingPhoto": " \n "], ["seasonalRingPhoto": 1],
             ["seasonalRingPhoto": NSNull(), "profileIdentityGentle": "REPLICA"]
         ]
         for overrides in invalidRoutes {
@@ -254,6 +272,21 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
         probe.routeOverrides = ["treatRecommendationPhoto": 0, "conversationTastingVisit": false]
         let limitedRoute = try await fresh(productionProfile).bootstrap()
         precondition(!limitedRoute.fullFeaturesEnabled && limitedRoute.apiBaseURL == productionProfile.initialBaseURL)
+        probe.routeOverrides = [:]
+        let changingRouteNetwork = fresh(productionProfile)
+        _ = try await changingRouteNetwork.open(force: true)
+        probe.routeAPIBaseURL = "https://changed.unit.example"
+        probe.routeOverrides = ["visitFillingCheckin": 4]
+        _ = try await changingRouteNetwork.bootstrap(force: true)
+        precondition(changingRouteNetwork.currentOpen == nil, "A new route invalidates the previous Open")
+        _ = try await changingRouteNetwork.open()
+        precondition(probe.last("/mapped/open").url?.host == "changed.unit.example")
+        let opensBeforeRevision = probe.count("/mapped/open")
+        probe.routeOverrides = ["visitFillingCheckin": 5]
+        _ = try await changingRouteNetwork.bootstrap(force: true)
+        precondition(changingRouteNetwork.currentOpen == nil, "A new revision invalidates Open even at the same address")
+        _ = try await changingRouteNetwork.open()
+        precondition(probe.count("/mapped/open") == opensBeforeRevision + 1)
         probe.routeOverrides = [:]
         for invalidEnvironment: Any in ["staging", 1, NSNull()] {
             var invalidFixture = productionFixture
@@ -292,12 +325,12 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
         _ = try await splitNetwork.open(force: true)
         let splitResult = try await splitNetwork.opi(path: "/_v2/business", body: json(["value": 9]))
         let splitRestored = try JSONSerialization.jsonObject(with: splitResult) as! [String: Int]
-        precondition(splitRestored["value"] == 7 && splitNetwork.currentRoute?.apiBaseURL == splitProfile.initialBaseURL)
+        precondition(splitRestored["value"] == 7 && splitNetwork.currentRoute?.apiBaseURL.absoluteString == probe.routeAPIBaseURL)
         let splitRequests = Array(probe.snapshot().dropFirst(splitRequestStart))
         precondition(splitRequests.count == 3 && splitRequests[0].url?.host == "gateway.unit.example")
         precondition(URLComponents(url: splitRequests[0].url!, resolvingAgainstBaseURL: false)?.queryItems == [URLQueryItem(name: "treatWarmDelight", value: "fixture")])
         precondition(splitRequests.dropFirst().allSatisfy {
-            $0.url?.host == "production.unit.example"
+            $0.url?.host == "unit.example"
                 && $0.value(forHTTPHeaderField: "appId") == "production-fixture"
                 && $0.value(forHTTPHeaderField: "X-Production-App") == "production-fixture"
         })
@@ -317,7 +350,7 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
             do { _ = try parseProfile(invalidFixture); fatalError("invalid bootstrap identity accepted") }
             catch WevVGlazeNetworkError.invalidConfiguration {}
         }
-        print("PASS: new obfuscated bootstrap contract, formal 39114002 startup/business identity, request isolation, concurrency, recursive aliases, Hex/Base64 separation, strict code/flag types, auth failures, SAPI prefix/default expiry, retry, account-separated Open, production bootstrap separation/API pinning, HTTP/business/invalid route failures without Open/fallback, split startup/business compatibility, environment validation")
+        print("PASS: obfuscated bootstrap contract, server-selected HTTPS business routes, independent startup/business identity, SOURCE/REPLICA metadata, preserved false feature flag, route/revision Open invalidation, request isolation, concurrency, recursive aliases, Hex/Base64 separation, strict code/flag types, auth failures, SAPI prefix/default expiry, retry, account-separated Open, HTTP/business/invalid route failures without Open/fallback, split startup/business compatibility, environment validation")
         session.invalidateAndCancel()
     }
 }

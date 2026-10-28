@@ -2,6 +2,18 @@
 
 更新：2026-10-28。当前资源已经切换正式项目；下方折叠保留此前测试环境接入证据，不代表当前运行配置。原生一级页面、布局、样式和键盘逻辑保留；按用户最新要求，将有公开 H5 合同的现有二级入口切换到 SDK2。
 
+## 按启动返回值选择业务域名（2026-10-28）
+
+根据本轮提供的 `新接B尝试/NATIVE_INTEGRATION.md` 第 1、2.1、2.2 节和测试项目前端说明第五章，Profile 的 `services.apiBaseUrl` 只作为初始配置，后续 OPI 和 H5 context 使用启动响应的 `apiBaseUrl`。原生网络层移除生产域名必须匹配 Profile 初始域名的限制，以及启动／业务 App ID 不同时强制覆盖返回域名的旧分支；删除不再使用的 `matchesAPIBase`。启动地址、App ID、Profile 混淆表和密钥仍读取既有配置，没有把这次返回的业务域名写入源码或重打 H5 资源包。
+
+`target` 校验为非空字符串并保留服务端原值，不再写死为 `REPLICA`，也不据此猜测环境或改动功能开关。业务功能继续遵守响应中的布尔 `fullFeaturesEnabled`。保留启动 App ID、成功码、revision、字段类型和 HTTPS 地址校验；不接受带账号密码、query 或 fragment 的业务基础地址。启动失败不回退 Profile 默认地址；现有同进程路由复用、Open 并发去重、每次 H5 入口准备及失败重试保持原流程。
+
+实际网络代码回归覆盖服务端选择不同域名／端口／基础路径、SOURCE／REPLICA／新增 target 元数据、false 功能开关、域名或 revision 变化后重新 Open，以及启动失败不请求 Open。会话回归共 31 项通过，新增检查实际路由域名与 Profile 初始域名不同时，凭据隔离和 H5 context 均采用路由域名，不向新域名发送旧域名 refreshToken；旧凭据保留在原隔离域。生产运行时代码无需另建路由或存储机制。
+
+无签名 Debug Simulator 构建通过，日志 `/private/tmp/wevv-dynamic-route-build.log`。没有安装或启动用户设备上的 App；本轮没有修改页面、Auto Layout、SafeArea 或键盘处理，未进行大小屏 UI 实机验收。
+
+2026-10-28 19:56（北京时间）从本机使用当前资源小包和修改后的真实 Swift 网络实现验证完整启动→Open，无启动绕过、无用户登录或账号操作：启动 `getaway.wevvstream.online` 返回 HTTP 200，target=SOURCE、revision=5、fullFeaturesEnabled=false，业务域名为 `opi.mbolw89a.link`；随后向该返回域名的混淆 Open 路径 `/meadow/unfold` 请求，返回 HTTP 200、业务 code=0，解密及 runtimeConfig 校验通过。该结果只验证启动和 Open，不代表开关关闭时可以进入受限房间。
+
 ## 首页 Live 卡片按直播状态显示右上条纹（2026-10-28）
 
 此前 `makeHomeGlazeRoomCard` 对每条数据无条件创建 `WevVGlazzestyOrangeEssence`，控件挂入窗口后自动循环播放，房间数据中没有直播状态也会抖动。现按当前交付 H5 的直播状态合同处理：liveRoomState=2 为正在直播，1 为已结束；直播池返回的 id、人数或在线／关注状态不代替这一状态。

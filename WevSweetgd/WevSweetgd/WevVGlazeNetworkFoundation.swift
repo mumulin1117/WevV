@@ -402,33 +402,19 @@ final class WevVGlazeNetworkFoundation {
         if let text = response["treatWarmDelight"] as? String { routeAppID = text }
         else if let number = response["treatWarmDelight"] as? NSNumber, CFGetTypeID(number) != CFBooleanGetTypeID() { routeAppID = number.stringValue }
         else { routeAppID = nil }
-        // The explicitly configured startup identity may select feature flags for a
-        // production project whose OPI endpoint and credentials remain independent.
-        let usesDedicatedProductionAPI = profile.environment == "production" && profile.bootstrapAppID != profile.appID
+        // The bootstrap service selects the business address. The Profile address
+        // is only the initial configuration, not an allowlist for returned routes.
+        // Preserve target as metadata; feature availability comes from its own flag.
         guard routeAppID == profile.bootstrapAppID,
-              let target = response["seasonalRingPhoto"] as? String, target == "REPLICA",
+              let target = response["seasonalRingPhoto"] as? String,
+              !target.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               let revision = Self.integer(response["visitFillingCheckin"]), revision > 0,
               let enabled = response["conversationTastingVisit"] as? NSNumber, CFGetTypeID(enabled) == CFBooleanGetTypeID(),
-              let apiURL = WevVGlazeOPIProfile.secureURL(response["cozySeasonalGlaze"], scheme: "https"),
-              profile.environment != "production" || usesDedicatedProductionAPI || Self.matchesAPIBase(apiURL, profile.initialBaseURL) else {
+              let apiURL = WevVGlazeOPIProfile.secureURL(response["cozySeasonalGlaze"], scheme: "https") else {
             throw WevVGlazeNetworkError.invalidConfiguration
         }
-        return WevVGlazeLaunchRoute(apiBaseURL: usesDedicatedProductionAPI ? profile.initialBaseURL : apiURL,
+        return WevVGlazeLaunchRoute(apiBaseURL: apiURL,
                                    fullFeaturesEnabled: enabled.boolValue, revision: revision, target: target)
-    }
-
-    private static func matchesAPIBase(_ received: URL, _ configured: URL) -> Bool {
-        guard let actual = URLComponents(url: received, resolvingAgainstBaseURL: false),
-              let expected = URLComponents(url: configured, resolvingAgainstBaseURL: false) else { return false }
-        func basePath(_ path: String) -> String {
-            var value = path
-            while value.hasSuffix("/") { value.removeLast() }
-            return value
-        }
-        return actual.scheme?.lowercased() == expected.scheme?.lowercased()
-            && actual.host?.lowercased() == expected.host?.lowercased()
-            && (actual.port ?? 443) == (expected.port ?? 443)
-            && basePath(actual.percentEncodedPath) == basePath(expected.percentEncodedPath)
     }
 
     private func send(_ request: URLRequest) async throws -> [String: Any] {

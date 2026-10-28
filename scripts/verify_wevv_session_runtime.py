@@ -66,6 +66,7 @@ enum glazeGalleryGuide {
     static var appID = "12211334"
     static var bootstrapAppID = "12211334"
     static var apiBaseURL = URL(string: "https://test.invalid")!
+    static var selectedAPIBaseURL: URL?
 }
 @MainActor struct WevVGlazeOPIProfile {
     let appID = OfflineProfileSelection.appID
@@ -131,7 +132,7 @@ enum UKGlazeActortroller { static let glazeArchiveConfigurationSeed = "offline-s
     func bootstrap(force: Bool = false) async throws -> WevVGlazeLaunchRoute {
         Self.bootstrapCount += 1
         if Self.bootstrapFailures > 0 { Self.bootstrapFailures -= 1; throw WevVGlazeNetworkError.http(503) }
-        let route = WevVGlazeLaunchRoute(apiBaseURL: profile.initialBaseURL); currentRoute = route; return route
+        let route = WevVGlazeLaunchRoute(apiBaseURL: OfflineProfileSelection.selectedAPIBaseURL ?? profile.initialBaseURL); currentRoute = route; return route
     }
     __ACTUAL_OPEN_METHOD__
     func opi(path: String, body: Data, accessToken: String? = nil, refreshToken: String? = nil) async throws -> Data {
@@ -291,6 +292,20 @@ TESTS = r'''
             OfflineProfileSelection.bootstrapAppID = "12211334"
             OfflineProfileSelection.apiBaseURL = URL(string: "https://production.invalid")!
         }
+        if scenario == "production-server-selected-domain" {
+            OfflineProfileSelection.environment = "production"
+            OfflineProfileSelection.appID = "39114002"
+            OfflineProfileSelection.bootstrapAppID = "39114002"
+            OfflineProfileSelection.apiBaseURL = URL(string: "https://initial.invalid")!
+            OfflineProfileSelection.selectedAPIBaseURL = URL(string: "https://selected.invalid")!
+            store.selectGlazeEnvironment("production|39114002|https://initial.invalid")
+            try store.persistGlazeCredentials(almondPralineGlaze(
+                vanillaBeanIcing: 1, saltedCaramelFinish: "offline1@example.invalid",
+                brownButterGlaze: "access-initial", maplePecanCoating: "refresh-initial",
+                citrusZestShell: Date().addingTimeInterval(1800), darkCocoaDrizzle: Date().addingTimeInterval(3600),
+                whiteChocolateRibbon: true, legacyToken: "legacy-initial", imAccount: "im-initial", imToken: "im-token-initial",
+                environmentID: "production|39114002|https://initial.invalid", registered: true))
+        }
         if scenario == "production-domain-migration" {
             // Domain migration is a new credential boundary even with the same formal App ID.
             let oldScope = "production|39114002|https://opi.mbolw89a.link"
@@ -366,6 +381,19 @@ TESTS = r'''
             let context = try await runtime.prepareH5Context()
             try check(context["apiBaseUrl"] as? String == "https://production.invalid", "H5 receives production OPI base")
             try check(store.currentGlazeCredentials?.environmentID == productionScope, "persisted session remains in formal business scope")
+        case "production-server-selected-domain":
+            let scope = "production|39114002|https://selected.invalid"
+            try check(runtime.environmentID == scope && store.activeEnvironmentID == scope,
+                      "credential scope follows the server route, not the Profile initial address")
+            try check(store.currentGlazeCredentials == nil && WevVGlazeNetworkFoundation.openRefreshTokens == [nil],
+                      "Open cannot receive credentials saved for the initial domain")
+            try install(2, "selected")
+            let context = try await runtime.prepareH5Context()
+            try check(context["apiBaseUrl"] as? String == "https://selected.invalid"
+                      && (context["session"] as? [String: Any])?["accessToken"] as? String == "access-selected",
+                      "H5 receives the server-selected address and matching session")
+            try check(glazeGalleryGuide.packets["production|39114002|https://initial.invalid"] != nil,
+                      "switching routes preserves the original credential packet in its own scope")
         case "production-domain-migration":
             let scope = "production|39114002|https://getaway.wevvstream.online"
             let oldScope = "production|39114002|https://opi.mbolw89a.link"
@@ -567,7 +595,7 @@ def main():
     selected.append((SOURCES / "WevVGlazeRuntime.swift").read_text())
     scenarios = ("h5-cold-single-open", "h5-cold-concurrent", "h5-cold-open-failure", "h5-cold-account-switch",
                  "h5-cold-refresh-key", "h5-other-account-open-during-refresh", "h5-hot-fresh", "h5-hot-open-failure",
-                 "h5-context-cancelled", "h5-context-environment-change", "startup-retry", "test-scope-default", "production-scope-isolation", "production-split-identity-scope", "production-domain-migration",
+                 "h5-context-cancelled", "h5-context-environment-change", "startup-retry", "test-scope-default", "production-scope-isolation", "production-split-identity-scope", "production-domain-migration", "production-server-selected-domain",
                  "guest-isolation", "refresh-coalescing", "late-account-response",
                  "logout-same-account-relogin", "cancelled-login-profile", "profile-temporary-failure",
                  "persistence-failure", "late-guest-response", "refresh-identity-mismatch",
