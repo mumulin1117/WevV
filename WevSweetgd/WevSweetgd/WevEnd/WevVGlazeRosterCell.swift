@@ -1,7 +1,7 @@
 import CoreFoundation
 import Foundation
 
-enum WevVGlazeSocialServiceError: LocalizedError {
+enum glazeSugarCountLabel: LocalizedError {
     case invalidInput
     case invalidResponse
     case incompletePagination
@@ -15,7 +15,7 @@ enum WevVGlazeSocialServiceError: LocalizedError {
     }
 }
 
-struct WevVGlazeSocialBoundary: Equatable {
+struct glazeVaultGrid: Equatable {
     let epoch: Int
     let environmentID: String
     let ownerID: Int64?
@@ -24,15 +24,15 @@ struct WevVGlazeSocialBoundary: Equatable {
 // Dependencies are injectable only to run the same service against offline
 // fixtures. The production instance always uses the selected test Runtime.
 @MainActor
-final class WevVGlazeSocialService {
-    typealias Begin = (Bool) async throws -> WevVGlazeSocialBoundary
+final class WevVGlazeRosterCell {
+    typealias Begin = (Bool) async throws -> glazeVaultGrid
     typealias Send = (String, [String: Any], Bool) async throws -> Data
-    typealias Check = (WevVGlazeSocialBoundary) throws -> Void
+    typealias Check = (glazeVaultGrid) throws -> Void
 
     #if !WEVV_SOCIAL_TESTING
-    static let shared = WevVGlazeSocialService(
+    static let shared = WevVGlazeRosterCell(
         begin: { authenticated in
-            let runtime = WevVGlazeRuntime.shared
+            let runtime = BrostingmellowCoconutEssence.shared
             let store = WevVGlazeSessionStore.shared
             let observedEpoch = store.sessionEpoch
             let observedScope = runtime.environmentID
@@ -45,7 +45,7 @@ final class WevVGlazeSocialService {
                     throw CancellationError()
                 }
             }
-            let boundary = WevVGlazeSocialBoundary(epoch: store.sessionEpoch, environmentID: runtime.environmentID,
+            let boundary = glazeVaultGrid(epoch: store.sessionEpoch, environmentID: runtime.environmentID,
                                                   ownerID: store.isTasterReady ? store.currentGlazeCredentials?.vanillaBeanIcing : nil)
             if authenticated {
                 _ = try await runtime.validSignedInSession()
@@ -58,12 +58,12 @@ final class WevVGlazeSocialService {
             return boundary
         },
         send: { path, body, browsing in
-            if browsing { return try await WevVGlazeRuntime.shared.browsingOPI(path: path, body: body) }
-            return try await WevVGlazeRuntime.shared.opi(path: path, body: JSONSerialization.data(withJSONObject: body), authenticated: true)
+            if browsing { return try await BrostingmellowCoconutEssence.shared.browsingOPI(path: path, body: body) }
+            return try await BrostingmellowCoconutEssence.shared.opi(path: path, body: JSONSerialization.data(withJSONObject: body), authenticated: true)
         },
         check: { boundary in
             let store = WevVGlazeSessionStore.shared
-            try WevVGlazeRuntime.shared.assertCurrent(epoch: boundary.epoch, scope: boundary.environmentID)
+            try BrostingmellowCoconutEssence.shared.assertCurrent(epoch: boundary.epoch, scope: boundary.environmentID)
             guard (store.isTasterReady ? store.currentGlazeCredentials?.vanillaBeanIcing : nil) == boundary.ownerID else {
                 throw CancellationError()
             }
@@ -82,19 +82,19 @@ final class WevVGlazeSocialService {
     }
 
     func displayName(userID: Int64) async throws -> String? {
-        guard userID > 0 else { throw WevVGlazeSocialServiceError.invalidInput }
+        guard userID > 0 else { throw glazeSugarCountLabel.invalidInput }
         let boundary = try await begin(false)
         let data = try await request("/_v2/user/personalCard", body: ["userId": userID], browsing: true, boundary: boundary)
         let object = try Self.object(data)
         let returnedID = try Self.optionalInteger(object["userId"])
-        guard returnedID == nil || returnedID == userID else { throw WevVGlazeSocialServiceError.invalidResponse }
+        guard returnedID == nil || returnedID == userID else { throw glazeSugarCountLabel.invalidResponse }
         // Room names and placeholder text are not a user's display name.
         // A list only needs the public card, without relationship requests.
         return Self.text(object["nickName"])
     }
 
     func profile(userID: Int64) async throws -> meltawayCrumb {
-        guard userID > 0 else { throw WevVGlazeSocialServiceError.invalidInput }
+        guard userID > 0 else { throw glazeSugarCountLabel.invalidInput }
         let boundary = try await begin(false)
         let data = try await request("/_v2/user/personalCard", body: ["userId": userID], browsing: true, boundary: boundary)
         let basic = try Self.profileValue(data, requestedUserID: userID)
@@ -106,7 +106,7 @@ final class WevVGlazeSocialService {
             let rows = try Self.rows(friends)
             let identifiers = try rows.map { row -> Int64 in
                 guard let identifier = try Self.optionalInteger(row["userId"]), identifier > 0 else {
-                    throw WevVGlazeSocialServiceError.invalidResponse
+                    throw glazeSugarCountLabel.invalidResponse
                 }
                 return identifier
             }
@@ -122,7 +122,7 @@ final class WevVGlazeSocialService {
     }
 
     func relations(type: Int) async throws -> [goldenCrumbCenter] {
-        guard (1...3).contains(type) else { throw WevVGlazeSocialServiceError.invalidInput }
+        guard (1...3).contains(type) else { throw glazeSugarCountLabel.invalidInput }
         let boundary = try await begin(true)
         let data = try await request("/_v2/user/relations", body: ["type": type], browsing: false, boundary: boundary)
         let rows = try Self.rows(data)
@@ -140,35 +140,35 @@ final class WevVGlazeSocialService {
         for page in 1...100 {
             let data = try await request("/_v2/user/block/list", body: ["currentPage": page, "pageSize": pageSize], browsing: false, boundary: boundary)
             let rows = try Self.rows(data)
-            guard rows.count <= pageSize else { throw WevVGlazeSocialServiceError.invalidResponse }
+            guard rows.count <= pageSize else { throw glazeSugarCountLabel.invalidResponse }
             var added = 0
             for row in rows {
                 let value = try Self.relationValue(row, followingList: false)
                 if seen.insert(value.vanillaBeanIcing).inserted { result.append(value); added += 1 }
             }
             if rows.count < pageSize { return result }
-            guard added > 0 else { throw WevVGlazeSocialServiceError.incompletePagination }
+            guard added > 0 else { throw glazeSugarCountLabel.incompletePagination }
         }
-        throw WevVGlazeSocialServiceError.incompletePagination
+        throw glazeSugarCountLabel.incompletePagination
     }
 
     func setFollow(userID: Int64, follow: Bool) async throws {
-        guard userID > 0 else { throw WevVGlazeSocialServiceError.invalidInput }
+        guard userID > 0 else { throw glazeSugarCountLabel.invalidInput }
         let boundary = try await begin(true)
-        guard userID != boundary.ownerID else { throw WevVGlazeSocialServiceError.invalidInput }
+        guard userID != boundary.ownerID else { throw glazeSugarCountLabel.invalidInput }
         _ = try await request("/_v2/user/followUser", body: ["followUserId": userID, "followType": follow ? 1 : 2], browsing: false, boundary: boundary)
     }
 
     func setBlocked(userID: Int64, blocked: Bool, imAccount: String? = nil) async throws {
-        guard userID > 0 else { throw WevVGlazeSocialServiceError.invalidInput }
+        guard userID > 0 else { throw glazeSugarCountLabel.invalidInput }
         let boundary = try await begin(true)
-        guard userID != boundary.ownerID else { throw WevVGlazeSocialServiceError.invalidInput }
+        guard userID != boundary.ownerID else { throw glazeSugarCountLabel.invalidInput }
         // userId is the authoritative selector. An optional known IM account is
         // passed only as supporting data; the server gives userId precedence.
         var body: [String: Any] = ["userId": userID, "type": 1]
         if let account = Self.text(imAccount), !account.isEmpty {
             guard account.utf8.count <= 128, !account.unicodeScalars.contains(where: { CharacterSet.controlCharacters.contains($0) }) else {
-                throw WevVGlazeSocialServiceError.invalidInput
+                throw glazeSugarCountLabel.invalidInput
             }
             body["yxAccid"] = account
         }
@@ -179,10 +179,10 @@ final class WevVGlazeSocialService {
         let code = type.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         let allowed = Set(["SPAM", "NUDITY", "HARASS", "FRAUD", "UNDERAGE", "OTHER"])
         guard userID > 0, allowed.contains(code), momentID.map({ $0 > 0 }) ?? true else {
-            throw WevVGlazeSocialServiceError.invalidInput
+            throw glazeSugarCountLabel.invalidInput
         }
         let boundary = try await begin(true)
-        guard userID != boundary.ownerID else { throw WevVGlazeSocialServiceError.invalidInput }
+        guard userID != boundary.ownerID else { throw glazeSugarCountLabel.invalidInput }
         var body: [String: Any] = ["feedbackType": code, "targetUserId": userID]
         // feedback/save reports a real user. Post ID is operator-readable
         // context only; this does not claim a missing moment-report endpoint.
@@ -191,10 +191,10 @@ final class WevVGlazeSocialService {
         _ = try await request("/_v2/feedback/save", body: body, browsing: false, boundary: boundary)
     }
 
-    private func request(_ path: String, body: [String: Any], browsing: Bool, boundary: WevVGlazeSocialBoundary) async throws -> Data {
+    private func request(_ path: String, body: [String: Any], browsing: Bool, boundary: glazeVaultGrid) async throws -> Data {
         try Task.checkCancellation()
         try check(boundary)
-        guard browsing || boundary.ownerID != nil else { throw WevVGlazeSocialServiceError.invalidInput }
+        guard browsing || boundary.ownerID != nil else { throw glazeSugarCountLabel.invalidInput }
         let data: Data
         do { data = try await send(path, body, browsing) }
         catch {
@@ -210,7 +210,7 @@ final class WevVGlazeSocialService {
     private static func profileValue(_ data: Data, requestedUserID: Int64, mutualFollow: Bool? = nil) throws -> meltawayCrumb {
         let object = try object(data)
         let returnedID = try optionalInteger(object["userId"])
-        guard returnedID == nil || returnedID == requestedUserID else { throw WevVGlazeSocialServiceError.invalidResponse }
+        guard returnedID == nil || returnedID == requestedUserID else { throw glazeSugarCountLabel.invalidResponse }
         // These values are all defined by the new personalCard contract.
         var result = meltawayCrumb(
             vanillaBeanIcing: requestedUserID,
@@ -233,7 +233,7 @@ final class WevVGlazeSocialService {
     }
 
     private static func relationValue(_ row: [String: Any], followingList: Bool) throws -> goldenCrumbCenter {
-        guard let userID = try optionalInteger(row["userId"]), userID > 0 else { throw WevVGlazeSocialServiceError.invalidResponse }
+        guard let userID = try optionalInteger(row["userId"]), userID > 0 else { throw glazeSugarCountLabel.invalidResponse }
         return goldenCrumbCenter(vanillaBeanIcing: userID, gingerHoneyDrizzle: text(row["nickname"]) ?? "WevV",
                                  cheesecakeMousse: text(row["icon"]),
                                  flakyLayer: try optionalBoolean(row["followed"]) ?? followingList,
@@ -243,14 +243,14 @@ final class WevVGlazeSocialService {
 
     private static func object(_ data: Data) throws -> [String: Any] {
         guard let object = try JSONSerialization.jsonObject(with: data, options: [.fragmentsAllowed]) as? [String: Any] else {
-            throw WevVGlazeSocialServiceError.invalidResponse
+            throw glazeSugarCountLabel.invalidResponse
         }
         return object
     }
 
     private static func rows(_ data: Data) throws -> [[String: Any]] {
         let object = try object(data)
-        guard let rows = object["rows"] as? [[String: Any]] else { throw WevVGlazeSocialServiceError.invalidResponse }
+        guard let rows = object["rows"] as? [[String: Any]] else { throw glazeSugarCountLabel.invalidResponse }
         return rows
     }
 
@@ -264,13 +264,13 @@ final class WevVGlazeSocialService {
         guard let value, !(value is NSNull) else { return nil }
         if let number = value as? NSNumber, CFGetTypeID(number) != CFBooleanGetTypeID(), let integer = Int64(number.stringValue) { return integer }
         if let value = value as? String, let integer = Int64(value) { return integer }
-        throw WevVGlazeSocialServiceError.invalidResponse
+        throw glazeSugarCountLabel.invalidResponse
     }
 
     private static func optionalBoolean(_ value: Any?) throws -> Bool? {
         guard let value, !(value is NSNull) else { return nil }
         guard let number = value as? NSNumber, CFGetTypeID(number) == CFBooleanGetTypeID() else {
-            throw WevVGlazeSocialServiceError.invalidResponse
+            throw glazeSugarCountLabel.invalidResponse
         }
         return number.boolValue
     }

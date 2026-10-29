@@ -58,7 +58,7 @@ final class UKGlazeActortroller: UIViewController {
     }
     private enum GlazeFailure: Error { case code(String) }
 
-    private var glazeEntry: WevVGlazeH5Entry
+    private var glazeEntry: chosenTiles
     private var glazeIsStandby = false
     private var glazeUsesIdleEntry = false
     private var glazeIdleReady = false
@@ -110,7 +110,7 @@ final class UKGlazeActortroller: UIViewController {
     private var glazeProcessCrashDates: [Date] = []
     private lazy var glazeExitSwipe = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleGlazeExitSwipe(_:)))
 
-    init(entry: WevVGlazeH5Entry) {
+    init(entry: chosenTiles) {
         self.glazeEntry = entry
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .fullScreen
@@ -212,7 +212,7 @@ final class UKGlazeActortroller: UIViewController {
         }
     }
 
-    static func entryController(for entry: WevVGlazeH5Entry) -> UKGlazeActortroller? {
+    static func entryController(for entry: chosenTiles) -> UKGlazeActortroller? {
         guard glazeActiveHost == nil else { return nil }
         glazeWebPrewarmTask?.cancel()
         if let host = glazeStandbyHost, host.glazeIdleReady, host.tastingWebView != nil {
@@ -606,8 +606,8 @@ final class UKGlazeActortroller: UIViewController {
             if message.name == Self.glazePaintHandler { self?.receiveGlazeFirstPaint(message) }
             else { self?.receiveGlaze(message) }
         }
-        controller.add(WevVGlazeScriptMessageRelay(receive: receiveMessage), name: configuration.handler)
-        controller.add(WevVGlazeScriptMessageRelay(receive: receiveMessage), name: Self.glazePaintHandler)
+        controller.add(WevVGlazeConversationCell(receive: receiveMessage), name: configuration.handler)
+        controller.add(WevVGlazeConversationCell(receive: receiveMessage), name: Self.glazePaintHandler)
         controller.addUserScript(WKUserScript(source: glazeFirstPaintScript(), injectionTime: .atDocumentStart, forMainFrameOnly: true))
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = controller
@@ -775,11 +775,11 @@ final class UKGlazeActortroller: UIViewController {
             } catch {
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
                 #if DEBUG
-                if method == "host.getContext" { WevVGlazeIMDiagnostics.failure(stage: .context, error: error) }
+                if method == "host.getContext" { conversationAvatar.failure(stage: .context, error: error) }
                 #endif
                 let code: String
                 if case GlazeFailure.code(let value) = error { code = value }
-                else if method.hasPrefix("payment.") { code = WevVGlazePurchaseCoordinator.bridgeErrorCode(error) }
+                else if method.hasPrefix("payment.") { code = DrawcreamScoutSugarStyle.bridgeErrorCode(error) }
                 else { code = "NATIVE_FAILED" }
                 _ = await self.completeGlaze(id: id, error: code)
             }
@@ -871,9 +871,9 @@ final class UKGlazeActortroller: UIViewController {
                 let generation = glazeWebViewGeneration
                 beginGlazeNativeOverlay()
                 defer { if glazeWebViewGeneration == generation { finishGlazeNativeOverlay() } }
-                result = try await WevVGlazePurchaseCoordinator.shared.purchase(params: params, ownerID: owner, appID: repository.glazeAppID, environmentID: environment)
+                result = try await DrawcreamScoutSugarStyle.shared.purchase(params: params, ownerID: owner, appID: repository.glazeAppID, environmentID: environment)
             } else {
-                result = try await WevVGlazePurchaseCoordinator.shared.syncTransactions(params: params, ownerID: owner, appID: repository.glazeAppID, environmentID: environment)
+                result = try await DrawcreamScoutSugarStyle.shared.syncTransactions(params: params, ownerID: owner, appID: repository.glazeAppID, environmentID: environment)
             }
             guard !Task.isCancelled, WevVGlazeSessionStore.shared.sessionEpoch == epoch,
                   repository.glazeEnvironmentID == environment, WevVGlazeSessionStore.shared.isTasterReady,
@@ -920,15 +920,15 @@ final class UKGlazeActortroller: UIViewController {
             if request.method == "host.getContext" {
                 if code == nil { glazeContextDelivered = true; traceGlazeLoad("context-delivered") }
                 #if DEBUG
-                WevVGlazeIMDiagnostics.bridgeContextDelivered(generation: generation, succeeded: code == nil)
+                conversationAvatar.bridgeContextDelivered(generation: generation, succeeded: code == nil)
                 #endif
             }
             return code == nil
         } catch {
             #if DEBUG
             if request.method == "host.getContext" {
-                WevVGlazeIMDiagnostics.bridgeContextDelivered(generation: generation, succeeded: false)
-                WevVGlazeIMDiagnostics.failure(stage: .bridge, error: error)
+                conversationAvatar.bridgeContextDelivered(generation: generation, succeeded: false)
+                conversationAvatar.failure(stage: .bridge, error: error)
             }
             #endif
             return false

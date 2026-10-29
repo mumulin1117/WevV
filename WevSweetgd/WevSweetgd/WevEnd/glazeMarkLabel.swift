@@ -1,7 +1,7 @@
 import Foundation
 import CoreFoundation
 
-struct WevVGlazeLivePage: Sendable {
+struct glazeMarkLabel: Sendable {
     let rooms: [pearFilling]
     let total: Int?
     /// Count before invalid room identifiers are filtered out of the visible list.
@@ -9,7 +9,7 @@ struct WevVGlazeLivePage: Sendable {
 }
 
 /// Decodes semantic (already de-obfuscated) records without mixing business, IM and RTC IDs.
-enum WevVGlazeRoomMapper {
+enum XunSugarRosterbrownButterDrizzle {
     private static func text(_ value: Any?) -> String? {
         guard let value else { return nil }
         if let string = value as? String { let clean = string.trimmingCharacters(in: .whitespacesAndNewlines); return clean.isEmpty ? nil : clean }
@@ -47,8 +47,8 @@ enum WevVGlazeRoomMapper {
     static func live(_ data: Data) throws -> [pearFilling] {
         try livePage(data).rooms
     }
-    static func livePage(_ data: Data) throws -> WevVGlazeLivePage {
-        guard let root = try JSONSerialization.jsonObject(with: data) as? [String: Any], let rows = root["rows"] as? [[String: Any]] else { throw WevVGlazeNetworkError.invalidResponse }
+    static func livePage(_ data: Data) throws -> glazeMarkLabel {
+        guard let root = try JSONSerialization.jsonObject(with: data) as? [String: Any], let rows = root["rows"] as? [[String: Any]] else { throw GlazeVaultTradeError.invalidResponse }
         let rooms: [pearFilling] = rows.compactMap { row in
             // Live discovery uses /discover/live/pool, whose room and host IDs are flat.
             // Online anchor snapshots and IM/RTC identifiers are not pool room IDs.
@@ -66,13 +66,13 @@ enum WevVGlazeRoomMapper {
                 glazeIsLive: text(row["liveRoomState"]).flatMap(Int.init) == 2)
         }
         let total = text(root["total"]).flatMap(Int.init).flatMap { $0 >= 0 ? $0 : nil }
-        return WevVGlazeLivePage(rooms: rooms, total: total, rawCount: rows.count)
+        return glazeMarkLabel(rooms: rooms, total: total, rawCount: rows.count)
     }
     static func voice(_ data: Data, followed: Bool) throws -> [pearFilling] {
         try voicePage(data, followed: followed).rooms
     }
-    static func voicePage(_ data: Data, followed: Bool) throws -> WevVGlazeVoicePage {
-        guard let rows = try JSONSerialization.jsonObject(with: data) as? [[String: Any]] else { throw WevVGlazeNetworkError.invalidResponse }
+    static func voicePage(_ data: Data, followed: Bool) throws -> glazeVaultHeroView {
+        guard let rows = try JSONSerialization.jsonObject(with: data) as? [[String: Any]] else { throw GlazeVaultTradeError.invalidResponse }
         let rooms: [pearFilling] = rows.compactMap { row in
             guard let roomID = id(row["id"]), let ownerID = id(row["ownerId"]) else { return nil }
             let status = text(row["roomStatus"]).flatMap(Int.init)
@@ -86,10 +86,10 @@ enum WevVGlazeRoomMapper {
         }
         // The server cursor belongs to the raw final row, even if its room was
         // closed or invalid and consequently absent from the visible cards.
-        let nextCursor = rows.last.flatMap { row -> WevVGlazeVoiceCursor? in
+        let nextCursor = rows.last.flatMap { row -> glazeVaultHeroLayer? in
             guard let score = text(row["score"]).flatMap(Int64.init) else { return nil }
-            return WevVGlazeVoiceCursor(offset: score, snapshotID: text(row["snapshotId"]))
+            return glazeVaultHeroLayer(offset: score, snapshotID: text(row["snapshotId"]))
         }
-        return WevVGlazeVoicePage(rooms: rooms, rawCount: rows.count, nextCursor: nextCursor)
+        return glazeVaultHeroView(rooms: rooms, rawCount: rows.count, nextCursor: nextCursor)
     }
 }

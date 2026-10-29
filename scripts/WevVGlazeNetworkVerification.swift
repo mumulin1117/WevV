@@ -110,15 +110,15 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
 @main struct NetworkVerification {
     @MainActor static func main() async throws {
         let fixture: [String: Any] = ["services": ["apiBaseUrl": "https://unit.example", "apiClient": ["appId": "fixture", "appVersion": "1.3", "protocol": "opi-v2-aes", "encryptionKey": "0123456789abcdef", "encryptionIv": "fedcba9876543210"]], "aliases": ["path": ["/_v2/config/open": "/mapped/open", "/_v2/business": "/mapped/business", "/_v2/string-code": "/mapped/string-code", "/_v2/auth": "/mapped/auth"], "field": ["value": "maskedValue"], "header": ["appId": "X-App", "deviceNo": "X-Device", "appVersion": "X-Version", "language": "X-Language", "refreshToken": "X-Refresh"]]]
-        func parseProfile(_ value: [String: Any]) throws -> WevVGlazeOPIProfile {
-            try WevVGlazeOPIProfile(javaScript: Data(("/*__OPI_PROFILE_START__*/" + String(data: json(value), encoding: .utf8)! + "/*__OPI_PROFILE_END__*/").utf8))
+        func parseProfile(_ value: [String: Any]) throws -> WevVGlazeVaultPack {
+            try WevVGlazeVaultPack(javaScript: Data(("/*__OPI_PROFILE_START__*/" + String(data: json(value), encoding: .utf8)! + "/*__OPI_PROFILE_END__*/").utf8))
         }
         let profile = try parseProfile(fixture)
         precondition(profile.environment == "test" && profile.bootstrapBaseURL == profile.initialBaseURL && profile.bootstrapAppID == profile.appID)
         let config = URLSessionConfiguration.ephemeral; config.protocolClasses = [MockProtocol.self]
         let session = URLSession(configuration: config)
         let probe = Probe(); MockProtocol.probe = probe
-        func fresh(_ selectedProfile: WevVGlazeOPIProfile? = nil) -> WevVGlazeNetworkFoundation { WevVGlazeNetworkFoundation(profile: selectedProfile ?? profile, deviceNo: "device", hostVersion: "1.3", language: "en-US", session: session) }
+        func fresh(_ selectedProfile: WevVGlazeVaultPack? = nil) -> NertyuChoiceStackLayer { NertyuChoiceStackLayer(profile: selectedProfile ?? profile, deviceNo: "device", hostVersion: "1.3", language: "en-US", session: session) }
         let network = fresh()
         precondition(network.openRevision == 0)
         async let a = network.bootstrap(); async let b = network.bootstrap()
@@ -151,9 +151,9 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
         precondition(opiRequest.value(forHTTPHeaderField: "appId") == "fixture" && opiRequest.value(forHTTPHeaderField: "X-App") == "fixture")
         let opiBody = try decodeRequest(opiRequest, base64: false)
         precondition((opiBody["maskedValue"] as? [[String: Int]])?.first?["maskedValue"] == 9)
-        do { _ = try await network.opi(path: "/unknown", body: json([:])); fatalError("unmapped accepted") } catch WevVGlazeNetworkError.missingContract(_) {}
-        do { _ = try await network.opi(path: "/_v2/string-code", body: json([:])); fatalError("string OPI code accepted") } catch WevVGlazeNetworkError.invalidResponse {}
-        do { _ = try await network.opi(path: "/_v2/auth", body: json([:])); fatalError("auth failure accepted") } catch let error as WevVGlazeNetworkError { precondition(error.isAuthenticationFailure) }
+        do { _ = try await network.opi(path: "/unknown", body: json([:])); fatalError("unmapped accepted") } catch GlazeVaultTradeError.missingContract(_) {}
+        do { _ = try await network.opi(path: "/_v2/string-code", body: json([:])); fatalError("string OPI code accepted") } catch GlazeVaultTradeError.invalidResponse {}
+        do { _ = try await network.opi(path: "/_v2/auth", body: json([:])); fatalError("auth failure accepted") } catch let error as GlazeVaultTradeError { precondition(error.isAuthenticationFailure) }
         let ticket = try await network.exchange(legacyToken: "legacy")
         precondition(ticket.tokenValue == "ticket" && ticket.expiresAt.timeIntervalSinceNow > 1790)
         let exchangeRequest = probe.last("/sapi/auth/v1/client/auth/exchangeToken")
@@ -161,7 +161,7 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
         let exchangeBody = try decodeRequest(exchangeRequest, base64: true)
         precondition(exchangeBody["token"] as? String == "legacy")
         _ = try await network.sapi(path: "/sapi/weidou/v1/client/party/room/list", body: json([:]), authToken: ticket.tokenValue)
-        do { _ = try await network.sapi(path: "/sapi/numeric", body: json([:]), authToken: "ticket"); fatalError("numeric SAPI code accepted") } catch WevVGlazeNetworkError.invalidResponse {}
+        do { _ = try await network.sapi(path: "/sapi/numeric", body: json([:]), authToken: "ticket"); fatalError("numeric SAPI code accepted") } catch GlazeVaultTradeError.invalidResponse {}
         let retryNetwork = fresh(); probe.failBootstrap = true
         do { _ = try await retryNetwork.bootstrap(); fatalError("failed bootstrap accepted") } catch {}
         _ = try await retryNetwork.bootstrap()
@@ -172,7 +172,7 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
         precondition(retryNetwork.openRevision == 1)
         probe.openHTTPStatus = 503
         do { _ = try await retryNetwork.open(force: true); fatalError("HTTP failure accepted") }
-        catch WevVGlazeNetworkError.http(503) {}
+        catch GlazeVaultTradeError.http(503) {}
         precondition(retryNetwork.openRevision == 1, "HTTP failure cannot advance Open revision")
         probe.malformedOpen = true
         do { _ = try await retryNetwork.open(force: true); fatalError("Malformed Open accepted") }
@@ -200,7 +200,7 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
         probe.bootstrapHTTPStatus = 404
         let unavailableProductionNetwork = fresh(productionProfile)
         do { _ = try await unavailableProductionNetwork.open(force: true); fatalError("production bootstrap HTTP 404 was bypassed") }
-        catch WevVGlazeNetworkError.http(404) {}
+        catch GlazeVaultTradeError.http(404) {}
         let failedStartupRequests = Array(probe.snapshot().dropFirst(requestsBefore404))
         precondition(unavailableProductionNetwork.currentRoute == nil && unavailableProductionNetwork.currentOpen == nil)
         precondition(failedStartupRequests.count == 1)
@@ -242,7 +242,7 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
         probe.routeOverrides = ["treatRecommendationPhoto": 17, "sweetnessVisitRing": "route temporarily unavailable"]
         let businessRejected = fresh(productionProfile)
         do { _ = try await businessRejected.open(force: true); fatalError("startup business failure accepted") }
-        catch WevVGlazeNetworkError.business(let code, let message) {
+        catch GlazeVaultTradeError.business(let code, let message) {
             precondition(code == "17" && message == "route temporarily unavailable")
         }
         precondition(businessRejected.currentRoute == nil && businessRejected.currentOpen == nil && probe.count("/mapped/open") == productionOpenCount)
@@ -250,7 +250,7 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
             probe.routeOverrides = ["treatRecommendationPhoto": invalidCode]
             let rejectedNetwork = fresh(productionProfile)
             do { _ = try await rejectedNetwork.open(force: true); fatalError("invalid startup code type accepted") }
-            catch WevVGlazeNetworkError.invalidResponse {}
+            catch GlazeVaultTradeError.invalidResponse {}
             precondition(rejectedNetwork.currentRoute == nil && rejectedNetwork.currentOpen == nil && probe.count("/mapped/open") == productionOpenCount)
         }
         let invalidRoutes: [[String: Any]] = [
@@ -269,7 +269,7 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
             probe.routeOverrides = overrides
             let rejectedNetwork = fresh(productionProfile)
             do { _ = try await rejectedNetwork.open(force: true); fatalError("invalid startup route accepted") }
-            catch WevVGlazeNetworkError.invalidConfiguration {}
+            catch GlazeVaultTradeError.invalidConfiguration {}
             precondition(rejectedNetwork.currentRoute == nil && rejectedNetwork.currentOpen == nil && probe.count("/mapped/open") == productionOpenCount)
         }
         probe.routeOverrides = ["treatRecommendationPhoto": 0, "conversationTastingVisit": false]
@@ -297,14 +297,14 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
             invalidServices["environment"] = invalidEnvironment
             invalidFixture["services"] = invalidServices
             do { _ = try parseProfile(invalidFixture); fatalError("invalid environment accepted") }
-            catch WevVGlazeNetworkError.invalidConfiguration {}
+            catch GlazeVaultTradeError.invalidConfiguration {}
         }
         var invalidBootstrapFixture = productionFixture
         var invalidBootstrapServices = productionServices
         invalidBootstrapServices["bootstrapBaseUrl"] = "http://gateway.unit.example"
         invalidBootstrapFixture["services"] = invalidBootstrapServices
         do { _ = try parseProfile(invalidBootstrapFixture); fatalError("insecure explicit bootstrap silently fell back") }
-        catch WevVGlazeNetworkError.invalidConfiguration {}
+        catch GlazeVaultTradeError.invalidConfiguration {}
         var splitFixture = productionFixture
         var splitServices = productionServices
         var splitClient = splitServices["apiClient"] as! [String: Any]
@@ -343,7 +343,7 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
         probe.routeAppID = "production-fixture"
         let splitRejected = fresh(splitProfile)
         do { _ = try await splitRejected.open(force: true); fatalError("startup response matched business ID instead of configured startup ID") }
-        catch WevVGlazeNetworkError.invalidConfiguration {}
+        catch GlazeVaultTradeError.invalidConfiguration {}
         precondition(splitRejected.currentRoute == nil && splitRejected.currentOpen == nil)
         for invalidID: Any in ["", " ", 1, NSNull()] {
             var invalidFixture = splitFixture
@@ -351,7 +351,7 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
             invalidServices["bootstrapAppId"] = invalidID
             invalidFixture["services"] = invalidServices
             do { _ = try parseProfile(invalidFixture); fatalError("invalid bootstrap identity accepted") }
-            catch WevVGlazeNetworkError.invalidConfiguration {}
+            catch GlazeVaultTradeError.invalidConfiguration {}
         }
         probe.routeAppID = "fixture"
         probe.routeAPIBaseURL = "https://unit.example"

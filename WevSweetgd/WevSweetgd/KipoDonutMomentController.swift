@@ -458,7 +458,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
 
     @objc private func worldDoughnutNotebook() {
         guard richCocoaFlavor.vanillaBeanIcing > 0 else { return }
-        WevVGlazeH5Navigation.present(
+        GDonutdenCrumbCenterler.present(
             .creator(userID: String(richCocoaFlavor.vanillaBeanIcing), imAccount: nil),
             from: self
         )

@@ -55,7 +55,7 @@ enum glazeGalleryGuide {
     static func firstBiteArchive() -> String { "offline-device" }
     static func sweetKeepsakeEntry(scope: String) -> String? { packets[scope] }
     static func pastryDiaryCollection(_ packet: String, scope: String) throws {
-        if refuseWrite { throw WevVGlazeNetworkError.invalidConfiguration }
+        if refuseWrite { throw GlazeVaultTradeError.invalidConfiguration }
         packets[scope] = packet
     }
     @discardableResult static func cocoaRaspberryMedley(scope: String) -> Bool {
@@ -70,41 +70,41 @@ enum glazeGalleryGuide {
     static var apiBaseURL = URL(string: "https://test.invalid")!
     static var selectedAPIBaseURL: URL?
 }
-@MainActor struct WevVGlazeOPIProfile {
+@MainActor struct WevVGlazeVaultPack {
     let appID = OfflineProfileSelection.appID
     let bootstrapAppID = OfflineProfileSelection.bootstrapAppID
     let environment = OfflineProfileSelection.environment
     let initialBaseURL = OfflineProfileSelection.apiBaseURL
 }
-@MainActor struct WevVGlazeBundleConfiguration {
-    let profile = WevVGlazeOPIProfile()
+@MainActor struct CreamRingDellController {
+    let profile = WevVGlazeVaultPack()
     init(seed: String, hostVersion: String) throws {}
 }
 enum UKGlazeActortroller { static let glazeArchiveConfigurationSeed = "offline-seed" }
-@MainActor final class WevVGlazeMediaTransfer {
-    static let shared = WevVGlazeMediaTransfer()
+@MainActor final class WevVGlazeMessageController {
+    static let shared = WevVGlazeMessageController()
     func upload(data: Data, fileName: String, mimeType: String) async throws -> String {
-        throw WevVGlazeNetworkError.missingContract("offline media boundary")
+        throw GlazeVaultTradeError.missingContract("offline media boundary")
     }
 }
-@MainActor struct WevVGlazeLaunchRoute {
+@MainActor struct crumbBioView {
     let apiBaseURL: URL
     let fullFeaturesEnabled = true
 }
-@MainActor struct WevVGlazeRuntimeConfiguration {
+@MainActor struct donutAvatarChoiceTitles {
     let sapiBaseURL = URL(string: "https://test.invalid/sapi")!
     let sapiAesKey = "offline-only-key"
     let sapiAesIv = "offline-only-iv"
     let dictionary: [String: Any]
     init(dictionary: [String: Any]) throws { self.dictionary = dictionary }
 }
-@MainActor struct WevVGlazeOpenContext {
-    let runtimeConfig: WevVGlazeRuntimeConfiguration
+@MainActor struct donutAvatarChoices {
+    let runtimeConfig: donutAvatarChoiceTitles
     let cdnDomainConfig: String?
     let accessToken: String?
     let expiresIn: Int?
 }
-@MainActor struct WevVGlazeSAPITicket { let tokenValue: String; let expiresAt: Date }
+@MainActor struct donutCameraButton { let tokenValue: String; let expiresAt: Date }
 @MainActor final class Gate {
     private var continuation: CheckedContinuation<Data, Error>?
     private(set) var entered = false
@@ -115,7 +115,7 @@ enum UKGlazeActortroller { static let glazeArchiveConfigurationSeed = "offline-s
     func succeed(_ data: Data) { continuation!.resume(returning: data); continuation = nil }
     func fail(_ error: Error) { continuation!.resume(throwing: error); continuation = nil }
 }
-@MainActor final class WevVGlazeNetworkFoundation {
+@MainActor final class NertyuChoiceStackLayer {
     struct Call { let path: String; let token: String?; let body: Data }
     static var handler: ((String, Data, String?) async throws -> Data)?
     static var calls: [Call] = []
@@ -124,17 +124,17 @@ enum UKGlazeActortroller { static let glazeArchiveConfigurationSeed = "offline-s
     static var exchangeCount = 0
     static var openRefreshTokens: [String?] = []
     static var openHandler: ((String?) async throws -> Data)?
-    static weak var latest: WevVGlazeNetworkFoundation?
-    let profile: WevVGlazeOPIProfile
+    static weak var latest: NertyuChoiceStackLayer?
+    let profile: WevVGlazeVaultPack
     private let language: String
     __ACTUAL_OPEN_STATE__
-    init(profile: WevVGlazeOPIProfile, deviceNo: String, hostVersion: String, language: String) {
+    init(profile: WevVGlazeVaultPack, deviceNo: String, hostVersion: String, language: String) {
         self.profile = profile; self.language = language; Self.latest = self
     }
-    func bootstrap(force: Bool = false) async throws -> WevVGlazeLaunchRoute {
+    func bootstrap(force: Bool = false) async throws -> crumbBioView {
         Self.bootstrapCount += 1
-        if Self.bootstrapFailures > 0 { Self.bootstrapFailures -= 1; throw WevVGlazeNetworkError.http(503) }
-        let route = WevVGlazeLaunchRoute(apiBaseURL: OfflineProfileSelection.selectedAPIBaseURL ?? profile.initialBaseURL); currentRoute = route; return route
+        if Self.bootstrapFailures > 0 { Self.bootstrapFailures -= 1; throw GlazeVaultTradeError.http(503) }
+        let route = crumbBioView(apiBaseURL: OfflineProfileSelection.selectedAPIBaseURL ?? profile.initialBaseURL); currentRoute = route; return route
     }
     __ACTUAL_OPEN_METHOD__
     func opi(path: String, body: Data, accessToken: String? = nil, refreshToken: String? = nil) async throws -> Data {
@@ -151,9 +151,9 @@ enum UKGlazeActortroller { static let glazeArchiveConfigurationSeed = "offline-s
         if path == "/_v2/user/info" { return try json(["userId": 1, "nickname": "Offline Taster"]) }
         return try json([:])
     }
-    func exchange(legacyToken: String) async throws -> WevVGlazeSAPITicket {
+    func exchange(legacyToken: String) async throws -> donutCameraButton {
         Self.exchangeCount += 1
-        return WevVGlazeSAPITicket(tokenValue: "ticket-" + legacyToken, expiresAt: Date().addingTimeInterval(3600))
+        return donutCameraButton(tokenValue: "ticket-" + legacyToken, expiresAt: Date().addingTimeInterval(3600))
     }
     func sapi(path: String, body: Data, authToken: String) async throws -> Data {
         Self.calls.append(Call(path: path, token: authToken, body: body))
@@ -179,7 +179,7 @@ TESTS = r'''
 @main struct SessionRuntimeVerification {
     @MainActor static func main() async throws {
         let scenario = CommandLine.arguments[1]
-        let runtime = WevVGlazeRuntime.shared
+        let runtime = BrostingmellowCoconutEssence.shared
         let store = WevVGlazeSessionStore.shared
         func check(_ value: Bool, _ label: String) throws {
             if !value { throw NSError(domain: "OfflineSessionRegression", code: 1, userInfo: [NSLocalizedDescriptionKey: label]) }
@@ -204,76 +204,76 @@ TESTS = r'''
             try install(1, "cold", expiredAccess: expired, environment: scope)
             switch scenario {
             case "h5-cold-single-open":
-                WevVGlazeNetworkFoundation.openHandler = { _ in try openResponse(accessToken: "access-startup") }
+                NertyuChoiceStackLayer.openHandler = { _ in try openResponse(accessToken: "access-startup") }
                 let context = try await runtime.prepareH5Context()
-                try check(WevVGlazeNetworkFoundation.openRefreshTokens == ["refresh-cold"], "cold H5 preparation must share its matching startup Open")
-                try check(WevVGlazeNetworkFoundation.latest?.openRevision == 1, "cold startup has one successful Open revision")
+                try check(NertyuChoiceStackLayer.openRefreshTokens == ["refresh-cold"], "cold H5 preparation must share its matching startup Open")
+                try check(NertyuChoiceStackLayer.latest?.openRevision == 1, "cold startup has one successful Open revision")
                 try check((context["session"] as? [String: Any])?["accessToken"] as? String == "access-startup", "reused Open still accepts its new access token")
             case "h5-cold-concurrent":
                 let gate = Gate()
-                WevVGlazeNetworkFoundation.openHandler = { _ in try await gate.wait() }
+                NertyuChoiceStackLayer.openHandler = { _ in try await gate.wait() }
                 let first = Task { try await runtime.prepareH5Context() }
                 let second = Task { try await runtime.prepareH5Context() }
                 try await wait(gate)
-                try check(WevVGlazeNetworkFoundation.openRefreshTokens.count == 1, "concurrent cold preparations share the pending startup Open")
+                try check(NertyuChoiceStackLayer.openRefreshTokens.count == 1, "concurrent cold preparations share the pending startup Open")
                 gate.succeed(try openResponse())
                 let values = try await [first.value, second.value]
                 try check(values.allSatisfy { ($0["session"] as? [String: Any])?["accountId"] as? String == "1" }, "both cold callers receive the current account")
-                try check(WevVGlazeNetworkFoundation.openRefreshTokens.count == 1 && WevVGlazeNetworkFoundation.latest?.openRevision == 1, "startup completion must not trigger two follow-up Opens")
+                try check(NertyuChoiceStackLayer.openRefreshTokens.count == 1 && NertyuChoiceStackLayer.latest?.openRevision == 1, "startup completion must not trigger two follow-up Opens")
             case "h5-cold-open-failure":
                 var attempts = 0
-                WevVGlazeNetworkFoundation.openHandler = { _ in
+                NertyuChoiceStackLayer.openHandler = { _ in
                     attempts += 1
-                    if attempts == 1 { throw WevVGlazeNetworkError.http(503) }
+                    if attempts == 1 { throw GlazeVaultTradeError.http(503) }
                     return try openResponse()
                 }
                 do { _ = try await runtime.prepareH5Context(); throw NSError(domain: "FailedColdOpenAccepted", code: 20) }
                 catch let error as NSError where error.domain == "FailedColdOpenAccepted" { throw error }
-                catch WevVGlazeNetworkError.http(503) { }
-                try check(WevVGlazeNetworkFoundation.latest?.openRevision == 0, "a failed Open cannot create a reusable successful revision")
+                catch GlazeVaultTradeError.http(503) { }
+                try check(NertyuChoiceStackLayer.latest?.openRevision == 0, "a failed Open cannot create a reusable successful revision")
                 _ = try await runtime.prepareH5Context()
-                try check(attempts == 2 && WevVGlazeNetworkFoundation.latest?.openRevision == 1 && store.isTasterReady, "retry performs one successful startup Open and preserves the account")
+                try check(attempts == 2 && NertyuChoiceStackLayer.latest?.openRevision == 1 && store.isTasterReady, "retry performs one successful startup Open and preserves the account")
             case "h5-cold-account-switch":
                 let gate = Gate()
-                WevVGlazeNetworkFoundation.openHandler = { _ in try await gate.wait() }
+                NertyuChoiceStackLayer.openHandler = { _ in try await gate.wait() }
                 let pending = Task { try await runtime.prepareH5Context() }
                 try await wait(gate); try install(2, "new", startingNewSession: true, environment: scope)
                 gate.succeed(try openResponse(accessToken: "access-old-account"))
                 do { _ = try await pending.value; throw NSError(domain: "OldColdContextAccepted", code: 21) }
                 catch is CancellationError { }
                 try check(store.currentGlazeCredentials?.vanillaBeanIcing == 2 && store.currentGlazeCredentials?.brownButterGlaze == "access-new", "late startup Open cannot overwrite the new account")
-                WevVGlazeNetworkFoundation.openHandler = nil
+                NertyuChoiceStackLayer.openHandler = nil
                 let context = try await runtime.prepareH5Context()
-                try check(WevVGlazeNetworkFoundation.openRefreshTokens == ["refresh-cold", "refresh-new"] && (context["session"] as? [String: Any])?["accountId"] as? String == "2", "new account requires its own Open")
+                try check(NertyuChoiceStackLayer.openRefreshTokens == ["refresh-cold", "refresh-new"] && (context["session"] as? [String: Any])?["accountId"] as? String == "2", "new account requires its own Open")
             case "h5-cold-refresh-key":
                 let context = try await runtime.prepareH5Context()
-                try check(WevVGlazeNetworkFoundation.openRefreshTokens == ["refresh-cold", "refresh-renewed"], "revision change must not bypass a renewed refresh-token cache key")
+                try check(NertyuChoiceStackLayer.openRefreshTokens == ["refresh-cold", "refresh-renewed"], "revision change must not bypass a renewed refresh-token cache key")
                 try check((context["session"] as? [String: Any])?["accessToken"] as? String == "access-renewed", "post-Open session validation uses renewed credentials")
             case "h5-other-account-open-during-refresh":
                 let gate = Gate()
-                WevVGlazeNetworkFoundation.handler = { path, _, _ in
+                NertyuChoiceStackLayer.handler = { path, _, _ in
                     if path == "/_v2/auth/token/refresh" { return try await gate.wait() }
                     return try json([:])
                 }
                 let pending = Task { try await runtime.prepareH5Context() }
                 try await wait(gate)
-                _ = try await WevVGlazeNetworkFoundation.latest!.open(refreshToken: "refresh-other-account", force: true)
+                _ = try await NertyuChoiceStackLayer.latest!.open(refreshToken: "refresh-other-account", force: true)
                 gate.succeed(try response(user: 1, suffix: "renewed"))
                 let context = try await pending.value
-                try check(WevVGlazeNetworkFoundation.openRefreshTokens == ["refresh-cold", "refresh-other-account", "refresh-renewed"], "another account's successful revision must not be reused for the current account")
+                try check(NertyuChoiceStackLayer.openRefreshTokens == ["refresh-cold", "refresh-other-account", "refresh-renewed"], "another account's successful revision must not be reused for the current account")
                 try check((context["session"] as? [String: Any])?["accountId"] as? String == "1" && store.currentGlazeCredentials?.maplePecanCoating == "refresh-renewed", "foreign Open cannot change context identity")
             default: throw NSError(domain: "UnknownColdScenario", code: 22)
             }
             print("PASS \(scenario)"); return
         }
         if scenario == "startup-retry" {
-            WevVGlazeNetworkFoundation.bootstrapFailures = 1
+            NertyuChoiceStackLayer.bootstrapFailures = 1
             do { try await runtime.prepare(); throw NSError(domain: "ExpectedStartupFailure", code: 3) }
             catch let error as NSError where error.domain == "ExpectedStartupFailure" { throw error }
             catch { }
             try check(!store.isTasterReady && runtime.apiBaseURL == nil, "failed bootstrap must not create a usable route")
             try await runtime.prepare()
-            try check(WevVGlazeNetworkFoundation.bootstrapCount == 2 && runtime.apiBaseURL?.host == "test.invalid", "startup retries the test route")
+            try check(NertyuChoiceStackLayer.bootstrapCount == 2 && runtime.apiBaseURL?.host == "test.invalid", "startup retries the test route")
             print("PASS \(scenario)"); return
         }
         if scenario == "production-scope-isolation" {
@@ -330,27 +330,27 @@ TESTS = r'''
         switch scenario {
         case "h5-hot-fresh":
             try install(1, "hot")
-            let count = WevVGlazeNetworkFoundation.openRefreshTokens.count
-            let revision = WevVGlazeNetworkFoundation.latest!.openRevision
+            let count = NertyuChoiceStackLayer.openRefreshTokens.count
+            let revision = NertyuChoiceStackLayer.latest!.openRevision
             _ = try await runtime.prepareH5Context(); _ = try await runtime.prepareH5Context()
-            try check(WevVGlazeNetworkFoundation.openRefreshTokens.count == count + 2 && WevVGlazeNetworkFoundation.latest?.openRevision == revision + 2, "each established H5 entry must force a fresh Open")
+            try check(NertyuChoiceStackLayer.openRefreshTokens.count == count + 2 && NertyuChoiceStackLayer.latest?.openRevision == revision + 2, "each established H5 entry must force a fresh Open")
         case "h5-hot-open-failure":
             try install(1, "hot")
             _ = try await runtime.prepareH5Context()
-            let revision = WevVGlazeNetworkFoundation.latest!.openRevision
-            let count = WevVGlazeNetworkFoundation.openRefreshTokens.count
-            WevVGlazeNetworkFoundation.openHandler = { _ in throw WevVGlazeNetworkError.http(503) }
+            let revision = NertyuChoiceStackLayer.latest!.openRevision
+            let count = NertyuChoiceStackLayer.openRefreshTokens.count
+            NertyuChoiceStackLayer.openHandler = { _ in throw GlazeVaultTradeError.http(503) }
             do { _ = try await runtime.prepareH5Context(); throw NSError(domain: "FailedHotOpenAccepted", code: 23) }
             catch let error as NSError where error.domain == "FailedHotOpenAccepted" { throw error }
-            catch WevVGlazeNetworkError.http(503) { }
-            try check(WevVGlazeNetworkFoundation.latest?.openRevision == revision && store.isTasterReady, "failed forced Open neither advances revision nor falls back to the old Open")
-            WevVGlazeNetworkFoundation.openHandler = nil
+            catch GlazeVaultTradeError.http(503) { }
+            try check(NertyuChoiceStackLayer.latest?.openRevision == revision && store.isTasterReady, "failed forced Open neither advances revision nor falls back to the old Open")
+            NertyuChoiceStackLayer.openHandler = nil
             _ = try await runtime.prepareH5Context()
-            try check(WevVGlazeNetworkFoundation.openRefreshTokens.count == count + 2 && WevVGlazeNetworkFoundation.latest?.openRevision == revision + 1, "next hot entry retries the failed Open")
+            try check(NertyuChoiceStackLayer.openRefreshTokens.count == count + 2 && NertyuChoiceStackLayer.latest?.openRevision == revision + 1, "next hot entry retries the failed Open")
         case "h5-context-cancelled", "h5-context-environment-change":
             try install(1, "hot")
             let gate = Gate()
-            WevVGlazeNetworkFoundation.openHandler = { _ in try await gate.wait() }
+            NertyuChoiceStackLayer.openHandler = { _ in try await gate.wait() }
             let pending = Task { try await runtime.prepareH5Context() }
             try await wait(gate)
             if scenario == "h5-context-cancelled" { pending.cancel() }
@@ -387,7 +387,7 @@ TESTS = r'''
             let scope = "production|39114002|https://selected.invalid"
             try check(runtime.environmentID == scope && store.activeEnvironmentID == scope,
                       "credential scope follows the server route, not the Profile initial address")
-            try check(store.currentGlazeCredentials == nil && WevVGlazeNetworkFoundation.openRefreshTokens == [nil],
+            try check(store.currentGlazeCredentials == nil && NertyuChoiceStackLayer.openRefreshTokens == [nil],
                       "Open cannot receive credentials saved for the initial domain")
             try install(2, "selected")
             let context = try await runtime.prepareH5Context()
@@ -405,7 +405,7 @@ TESTS = r'''
                       "new formal domain is the active credential scope")
             try check(!store.isTasterReady && store.currentGlazeCredentials == nil,
                       "new formal domain cannot restore old-domain credentials")
-            try check(WevVGlazeNetworkFoundation.openRefreshTokens.allSatisfy { $0 == nil },
+            try check(NertyuChoiceStackLayer.openRefreshTokens.allSatisfy { $0 == nil },
                       "startup Open must not send the previous domain's refresh token")
             let oldPacket = glazeGalleryGuide.packets[oldScope]
             try check(oldPacket != nil, "old-domain credentials stay preserved in their original scope")
@@ -424,28 +424,28 @@ TESTS = r'''
             let guest = try await runtime.browsingSession()
             _ = try await runtime.browsingSession()
             try check(guest.vanillaBeanIcing == 999 && !store.isTasterReady && store.currentGlazeCredentials == nil, "device session must remain technical")
-            try check(WevVGlazeNetworkFoundation.calls.filter { $0.path == "/_v2/auth/device/login" }.count == 1, "guest session is reused")
+            try check(NertyuChoiceStackLayer.calls.filter { $0.path == "/_v2/auth/device/login" }.count == 1, "guest session is reused")
             do { _ = try await runtime.opi(path: "/_v2/user/update", body: json([:]), authenticated: true); throw NSError(domain: "GuestWasAuthorized", code: 4) }
             catch let error as NSError where error.domain == "GuestWasAuthorized" { throw error }
             catch { }
-            try check(!WevVGlazeNetworkFoundation.calls.contains { $0.path == "/_v2/user/update" }, "guest cannot reach protected request")
+            try check(!NertyuChoiceStackLayer.calls.contains { $0.path == "/_v2/user/update" }, "guest cannot reach protected request")
         case "refresh-coalescing":
             try install(1, "old", expiredAccess: true)
             let epoch = store.sessionEpoch, gate = Gate()
-            WevVGlazeNetworkFoundation.handler = { path, _, _ in path == "/_v2/auth/token/refresh" ? try await gate.wait() : try json([:]) }
+            NertyuChoiceStackLayer.handler = { path, _, _ in path == "/_v2/auth/token/refresh" ? try await gate.wait() : try json([:]) }
             let one = Task { try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true) }
             let two = Task { try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true) }
             try await wait(gate)
             for _ in 0..<50 { await Task.yield() }
             gate.succeed(try response(user: 1, suffix: "new"))
             _ = try await one.value; _ = try await two.value
-            try check(WevVGlazeNetworkFoundation.calls.filter { $0.path == "/_v2/auth/token/refresh" }.count == 1, "concurrent requests must share refresh")
+            try check(NertyuChoiceStackLayer.calls.filter { $0.path == "/_v2/auth/token/refresh" }.count == 1, "concurrent requests must share refresh")
             try check(store.sessionEpoch == epoch && store.currentGlazeCredentials?.brownButterGlaze == "access-new", "refresh persists without changing account epoch")
-            try check(WevVGlazeNetworkFoundation.calls.filter { $0.path == "/_v2/user/info" }.allSatisfy { $0.token == "access-new" }, "business requests use renewed token")
+            try check(NertyuChoiceStackLayer.calls.filter { $0.path == "/_v2/user/info" }.allSatisfy { $0.token == "access-new" }, "business requests use renewed token")
         case "late-account-response":
             try install(1, "one")
             let gate = Gate()
-            WevVGlazeNetworkFoundation.handler = { _, _, _ in try await gate.wait() }
+            NertyuChoiceStackLayer.handler = { _, _, _ in try await gate.wait() }
             let pending = Task { try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true) }
             try await wait(gate); try install(2, "two"); gate.succeed(try json(["userId": 1]))
             do { _ = try await pending.value; throw NSError(domain: "LateAccountDataAccepted", code: 5) }
@@ -456,7 +456,7 @@ TESTS = r'''
             glazeGalleryGuide.legacyPacket = "retired-credential"
             TestDefaults.shared.set("retired-token", forKey: "wevv_glaze_token")
             TestDefaults.shared.set("retired-profile", forKey: "wevv_glaze_taster_profile")
-            WevVGlazeNetworkFoundation.openHandler = { _ in try openResponse(accessToken: "access-open-old") }
+            NertyuChoiceStackLayer.openHandler = { _ in try openResponse(accessToken: "access-open-old") }
             _ = try await runtime.prepareH5Context()
             _ = try await runtime.voiceList(path: "/sapi/room/list")
             let profile = WevVDoughRingTasterProfile(ringCutterKey: "1", powderedAtlas: "offline1@example.invalid",
@@ -467,7 +467,7 @@ TESTS = r'''
             let departing = store.currentGlazeCredentials!
             let oldScope = runtime.environmentID
             var revoked = false
-            WevVGlazeNetworkFoundation.handler = { path, _, token in
+            NertyuChoiceStackLayer.handler = { path, _, token in
                 if path == "/_v2/auth/logout" {
                     try check(token == departing.brownButterGlaze, "only logout revocation uses the departing access token")
                     revoked = true
@@ -484,36 +484,36 @@ TESTS = r'''
                 && TestDefaults.shared.values["wevvcurrentEmail"] == nil,
                 "scoped Keychain, retired credentials and compatibility user values are removed")
             try check(store.currentDoughRingTasterProfile.glazeNickname != "Departing User"
-                && WevVGlazeNetworkFoundation.latest?.currentOpen?.accessToken == nil
-                && WevVGlazeNetworkFoundation.latest?.currentOpen?.expiresIn == nil,
+                && NertyuChoiceStackLayer.latest?.currentOpen?.accessToken == nil
+                && NertyuChoiceStackLayer.latest?.currentOpen?.expiresIn == nil,
                 "profile and Open cache no longer retain the departed account/token")
             let restored = WevVGlazeSessionStore()
             restored.selectGlazeEnvironment(oldScope)
             try check(!restored.isTasterReady && restored.currentGlazeCredentials == nil,
                 "a new session store cannot restore the signed-out account")
-            WevVGlazeNetworkFoundation.handler = nil
+            NertyuChoiceStackLayer.handler = nil
             _ = try await runtime.browsingOPI(path: "/_v2/moments/feed", body: [:])
             _ = try await runtime.voiceList(path: "/sapi/room/list")
-            try check(WevVGlazeNetworkFoundation.calls.first(where: { $0.path == "/_v2/moments/feed" })?.token == "access-guest"
-                && WevVGlazeNetworkFoundation.calls.last?.token == "ticket-legacy-guest"
-                && WevVGlazeNetworkFoundation.exchangeCount == 2,
+            try check(NertyuChoiceStackLayer.calls.first(where: { $0.path == "/_v2/moments/feed" })?.token == "access-guest"
+                && NertyuChoiceStackLayer.calls.last?.token == "ticket-legacy-guest"
+                && NertyuChoiceStackLayer.exchangeCount == 2,
                 "post-logout feeds/voice lists use fresh technical browsing credentials, not the user's OPI/SAPI tokens")
             do {
                 _ = try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true)
                 throw NSError(domain: "SignedOutRequestSent", code: 21)
             } catch let error as NSError where error.domain == "SignedOutRequestSent" { throw error }
             catch { }
-            try check(!WevVGlazeNetworkFoundation.calls.contains { $0.path == "/_v2/user/info" }
+            try check(!NertyuChoiceStackLayer.calls.contains { $0.path == "/_v2/user/info" }
                 && !store.isTasterReady && store.currentGlazeCredentials == nil,
                 "private requests fail locally and guest browsing never restores UI login")
         case "logout-late-open-cache":
             try install(1, "old")
             let oldGate = Gate(), newGate = Gate()
-            WevVGlazeNetworkFoundation.openHandler = { refresh in
+            NertyuChoiceStackLayer.openHandler = { refresh in
                 if refresh == "refresh-old" { return try await oldGate.wait() }
                 return try await newGate.wait()
             }
-            let foundation = WevVGlazeNetworkFoundation.latest!
+            let foundation = NertyuChoiceStackLayer.latest!
             let pending = Task { try await foundation.open(refreshToken: "refresh-old", force: true) }
             try await wait(oldGate)
             runtime.invalidateAuthentication()
@@ -523,10 +523,10 @@ TESTS = r'''
             oldGate.succeed(try openResponse(accessToken: "access-departed"))
             do { _ = try await pending.value; throw NSError(domain: "DepartedOpenAccepted", code: 22) }
             catch is CancellationError { }
-            let calls = WevVGlazeNetworkFoundation.openRefreshTokens.count
+            let calls = NertyuChoiceStackLayer.openRefreshTokens.count
             let coalesced = Task { try await foundation.open(refreshToken: "refresh-new") }
             for _ in 0..<50 { await Task.yield() }
-            try check(WevVGlazeNetworkFoundation.openRefreshTokens.count == calls && foundation.currentOpen?.accessToken == nil,
+            try check(NertyuChoiceStackLayer.openRefreshTokens.count == calls && foundation.currentOpen?.accessToken == nil,
                 "late cancelled Open cannot refill credentials or clear the new account's pending request")
             newGate.succeed(try openResponse(accessToken: "access-new-open"))
             _ = try await newOpen.value; _ = try await coalesced.value
@@ -536,7 +536,7 @@ TESTS = r'''
         case "logout-same-account-relogin":
             try install(1, "old")
             let gate = Gate()
-            WevVGlazeNetworkFoundation.handler = { _, _, token in
+            NertyuChoiceStackLayer.handler = { _, _, token in
                 try check(token == "access-old", "logout must revoke captured departing token")
                 return try await gate.wait()
             }
@@ -547,7 +547,7 @@ TESTS = r'''
             try check(store.currentGlazeCredentials?.maplePecanCoating == "refresh-new", "old logout response cannot clear same-account relogin")
         case "cancelled-login-profile":
             let gate = Gate()
-            WevVGlazeNetworkFoundation.handler = { path, _, _ in
+            NertyuChoiceStackLayer.handler = { path, _, _ in
                 if path == "/_v2/auth/email/login" { return try response(user: 1, suffix: "login", registered: false) }
                 return try await gate.wait()
             }
@@ -557,9 +557,9 @@ TESTS = r'''
             catch is CancellationError { }
             try check(!store.isTasterReady, "late login profile cannot restore a signed-out account")
         case "profile-temporary-failure":
-            WevVGlazeNetworkFoundation.handler = { path, _, _ in
+            NertyuChoiceStackLayer.handler = { path, _, _ in
                 if path == "/_v2/auth/email/login" { return try response(user: 1, suffix: "login", registered: false) }
-                throw WevVGlazeNetworkError.http(503)
+                throw GlazeVaultTradeError.http(503)
             }
             let profile = try await WevVGlazeSessionRepository.pastryTrailDiary.caramelLatteCompanion(saltedCaramelFinish: "offline@example.invalid", cocoaWeekendFestival: "123456")
             try check(profile.ringCutterKey == "1" && store.isTasterReady && store.currentGlazeCredentials?.registered == false, "saved new registration survives temporary profile failure")
@@ -571,7 +571,7 @@ TESTS = r'''
             try check(!store.isTasterReady && store.currentGlazeCredentials == nil, "failed credential persistence must not log in")
         case "late-guest-response":
             let gate = Gate()
-            WevVGlazeNetworkFoundation.handler = { _, _, _ in try await gate.wait() }
+            NertyuChoiceStackLayer.handler = { _, _, _ in try await gate.wait() }
             let pending = Task { try await runtime.browsingSession() }
             try await wait(gate); try install(1, "signed-in"); runtime.clearTransientSessions()
             gate.succeed(try response(user: 999, suffix: "guest"))
@@ -580,14 +580,14 @@ TESTS = r'''
             try check(store.currentGlazeCredentials?.vanillaBeanIcing == 1, "late technical session cannot replace formal identity")
         case "refresh-identity-mismatch":
             try install(1, "old", expiredAccess: true)
-            WevVGlazeNetworkFoundation.handler = { _, _, _ in try response(user: 2, suffix: "wrong-owner") }
+            NertyuChoiceStackLayer.handler = { _, _, _ in try response(user: 2, suffix: "wrong-owner") }
             do { _ = try await runtime.validSignedInSession(); throw NSError(domain: "WrongRefreshOwnerAccepted", code: 9) }
             catch let error as NSError where error.domain == "WrongRefreshOwnerAccepted" { throw error }
             catch { }
             try check(store.currentGlazeCredentials?.vanillaBeanIcing == 1, "refresh cannot change account identity")
         case "refresh-authentication-failure":
             try install(1, "old", expiredAccess: true)
-            WevVGlazeNetworkFoundation.handler = { _, _, _ in throw WevVGlazeNetworkError.http(401) }
+            NertyuChoiceStackLayer.handler = { _, _, _ in throw GlazeVaultTradeError.http(401) }
             do { _ = try await runtime.validSignedInSession(); throw NSError(domain: "RejectedRefreshAccepted", code: 10) }
             catch let error as NSError where error.domain == "RejectedRefreshAccepted" { throw error }
             catch { }
@@ -595,12 +595,12 @@ TESTS = r'''
         case "late-refresh-failure-after-relogin":
             try install(1, "old", expiredAccess: true)
             let gate = Gate()
-            WevVGlazeNetworkFoundation.handler = { _, _, _ in try await gate.wait() }
+            NertyuChoiceStackLayer.handler = { _, _, _ in try await gate.wait() }
             let pending = Task { try await runtime.validSignedInSession() }
             try await wait(gate)
             try install(1, "new", startingNewSession: true)
             runtime.clearTransientSessions()
-            gate.fail(WevVGlazeNetworkError.http(401))
+            gate.fail(GlazeVaultTradeError.http(401))
             do { _ = try await pending.value; throw NSError(domain: "LateRefreshAccepted", code: 12) }
             catch let error as NSError where error.domain == "LateRefreshAccepted" { throw error }
             catch { }
@@ -609,17 +609,17 @@ TESTS = r'''
             try install(1, "old")
             let gate = Gate()
             var businessCalls = 0
-            WevVGlazeNetworkFoundation.handler = { path, _, _ in
+            NertyuChoiceStackLayer.handler = { path, _, _ in
                 if path == "/_v2/auth/token/refresh" { return try response(user: 1, suffix: "renewed") }
                 businessCalls += 1
-                if businessCalls == 1 { throw WevVGlazeNetworkError.http(401) }
+                if businessCalls == 1 { throw GlazeVaultTradeError.http(401) }
                 return try await gate.wait()
             }
             let pending = Task { try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true) }
             try await wait(gate)
             try install(1, "new", startingNewSession: scenario == "late-retry-failure-after-relogin")
             runtime.clearTransientSessions()
-            gate.fail(WevVGlazeNetworkError.http(401))
+            gate.fail(GlazeVaultTradeError.http(401))
             do { _ = try await pending.value; throw NSError(domain: "LateRetryAccepted", code: 13) }
             catch let error as NSError where error.domain == "LateRetryAccepted" { throw error }
             catch { }
@@ -628,15 +628,15 @@ TESTS = r'''
             try install(1, "old")
             let gate = Gate()
             var refreshCalls = 0
-            WevVGlazeNetworkFoundation.handler = { path, _, token in
+            NertyuChoiceStackLayer.handler = { path, _, token in
                 if path == "/_v2/auth/token/refresh" {
                     refreshCalls += 1
-                    guard refreshCalls == 1 else { throw WevVGlazeNetworkError.http(401) }
+                    guard refreshCalls == 1 else { throw GlazeVaultTradeError.http(401) }
                     return try response(user: 1, suffix: "renewed")
                 }
                 if token == "access-renewed" { return try json(["ok": true]) }
                 if path == "/_v2/user/info" { return try await gate.wait() }
-                throw WevVGlazeNetworkError.http(401)
+                throw GlazeVaultTradeError.http(401)
             }
             let pending = Task {
                 if scenario == "late-profile-401-after-refresh" {
@@ -646,41 +646,41 @@ TESTS = r'''
             }
             try await wait(gate)
             _ = try await runtime.opi(path: "/_v2/moments/feed", body: json([:]), authenticated: true)
-            gate.fail(WevVGlazeNetworkError.http(401))
+            gate.fail(GlazeVaultTradeError.http(401))
             _ = try await pending.value
             try check(refreshCalls == 1 && store.isTasterReady && store.currentGlazeCredentials?.brownButterGlaze == "access-renewed",
                 "a late old-token 401 reuses the renewed session instead of refreshing twice or clearing login")
-            try check(WevVGlazeNetworkFoundation.calls.last?.token == "access-renewed", "profile retry uses the latest account token")
+            try check(NertyuChoiceStackLayer.calls.last?.token == "access-renewed", "profile retry uses the latest account token")
         case "sapi-ticket-isolation":
             try install(1, "one")
             _ = try await runtime.voiceList(path: "/sapi/room/list")
             _ = try await runtime.voiceList(path: "/sapi/room/list")
-            try check(WevVGlazeNetworkFoundation.exchangeCount == 1, "same account reuses SAPI ticket")
+            try check(NertyuChoiceStackLayer.exchangeCount == 1, "same account reuses SAPI ticket")
             try install(2, "two")
             _ = try await runtime.voiceList(path: "/sapi/room/list")
-            try check(WevVGlazeNetworkFoundation.exchangeCount == 2, "account switch exchanges a separate SAPI ticket")
-            try check(WevVGlazeNetworkFoundation.calls.last?.token == "ticket-legacy-two", "room list uses current account SAPI ticket")
+            try check(NertyuChoiceStackLayer.exchangeCount == 2, "account switch exchanges a separate SAPI ticket")
+            try check(NertyuChoiceStackLayer.calls.last?.token == "ticket-legacy-two", "room list uses current account SAPI ticket")
         case "sapi-cursor-contract":
             try install(1, "one")
             let recommended = "/sapi/weidou/v1/client/party/room/list"
             let followed = "/sapi/weidou/v1/client/party/room/followed/list"
             _ = try await runtime.voiceList(path: recommended)
-            var body = try JSONSerialization.jsonObject(with: WevVGlazeNetworkFoundation.calls.last!.body) as! [String: Any]
+            var body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check(body["pageSize"] as? Int == 10 && body["languageCode"] as? String == "" && body["version"] as? String == "v2", "recommended first page matches H5 request")
             try check(body["offset"] == nil && body["snapshotId"] == nil && body["ignoreRoomIds"] == nil, "first page omits the cursor and exclusion list")
             _ = try await runtime.voiceList(path: followed)
-            body = try JSONSerialization.jsonObject(with: WevVGlazeNetworkFoundation.calls.last!.body) as! [String: Any]
+            body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check(body["languageCode"] is NSNull && body["offset"] == nil && body["snapshotId"] == nil, "followed first page sends null language and no cursor")
             _ = try await runtime.voiceList(path: recommended, cursor: .init(offset: Int64.min, snapshotID: "cursor-last"), pageSize: 7)
-            body = try JSONSerialization.jsonObject(with: WevVGlazeNetworkFoundation.calls.last!.body) as! [String: Any]
+            body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check((body["offset"] as? NSNumber)?.stringValue == String(Int64.min) && body["snapshotId"] as? String == "cursor-last" && body["pageSize"] as? Int == 7, "next page preserves the exact score and snapshot")
             _ = try await runtime.voiceList(path: followed, cursor: .init(offset: 0, snapshotID: "  "))
-            body = try JSONSerialization.jsonObject(with: WevVGlazeNetworkFoundation.calls.last!.body) as! [String: Any]
+            body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check(body["offset"] as? Int == 0 && body["snapshotId"] == nil && body["ignoreRoomIds"] == nil && body["languageCode"] is NSNull, "zero score remains valid and empty snapshot is omitted")
             _ = try await runtime.voiceList(path: recommended, cursor: .init(offset: Int64.max, snapshotID: nil), pageSize: 0)
-            body = try JSONSerialization.jsonObject(with: WevVGlazeNetworkFoundation.calls.last!.body) as! [String: Any]
+            body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check((body["offset"] as? NSNumber)?.stringValue == String(Int64.max) && body["snapshotId"] == nil && body["pageSize"] as? Int == 1, "score-only pagination keeps integer precision and a valid page size")
-            try check(WevVGlazeNetworkFoundation.exchangeCount == 1 && WevVGlazeNetworkFoundation.calls.last?.token == "ticket-legacy-one", "all pages retain the account-scoped SAPI ticket")
+            try check(NertyuChoiceStackLayer.exchangeCount == 1 && NertyuChoiceStackLayer.calls.last?.token == "ticket-legacy-one", "all pages retain the account-scoped SAPI ticket")
         default: throw NSError(domain: "UnknownScenario", code: 11)
         }
         print("PASS \(scenario)")
@@ -691,10 +691,10 @@ TESTS = r'''
 
 def main():
     model = (SOURCES / "kettleGlazeSequence.swift").read_text()
-    foundation = (SOURCES / "WevEnd/WevVGlazeNetworkFoundation.swift").read_text()
+    foundation = (SOURCES / 'WevEnd/NertyuChoiceStackLayer.swift').read_text()
     # Keep the actual implementations; replace only OS storage and HTTP boundaries.
-    selected = [declaration(foundation, "enum WevVGlazeNetworkError"),
-                (SOURCES / "WevEnd/WevVGlazeServiceAvailability.swift").read_text()]
+    selected = [declaration(foundation, 'enum GlazeVaultTradeError'),
+                (SOURCES / 'WevEnd/glazeNameField.swift').read_text()]
     for marker in ("struct almondPralineGlaze", "struct citrusZestIcing", "struct plumMousse",
                    "private struct mochiCruller", "enum miniRingFritter", "enum filledShellSelection",
                    "final class WevVGlazeTransport", "private struct ricottaFritterRing",
@@ -702,8 +702,8 @@ def main():
                    "final class WevVGlazeSessionRepository"):
         selected.append(declaration(model, marker))
     selected.append((SOURCES / "DoughRingTasterProfile.swift").read_text().replace("UserDefaults.standard", "TestDefaults.shared"))
-    selected.append(declaration((SOURCES / "WevEnd/WevVGlazeVoicePagination.swift").read_text(), "struct WevVGlazeVoiceCursor"))
-    selected.append((SOURCES / "WevEnd/WevVGlazeRuntime.swift").read_text())
+    selected.append(declaration((SOURCES / 'WevEnd/honeyLavenderCombination.swift').read_text(), 'struct glazeVaultHeroLayer'))
+    selected.append((SOURCES / 'WevEnd/BrostingmellowCoconutEssence.swift').read_text())
     scenarios = ("h5-cold-single-open", "h5-cold-concurrent", "h5-cold-open-failure", "h5-cold-account-switch",
                  "h5-cold-refresh-key", "h5-other-account-open-during-refresh", "h5-hot-fresh", "h5-hot-open-failure",
                  "h5-context-cancelled", "h5-context-environment-change", "startup-retry", "test-scope-default", "production-scope-isolation", "production-split-identity-scope", "production-domain-migration", "production-server-selected-domain",

@@ -26,7 +26,7 @@ let index = URL(fileURLWithPath: "/tmp/WevV room dist/index.html")
 let account = "target+im/空 帐&#?%"
 let name = "Alice & Bob + 甜甜圈"
 let avatar = "https://example.com/photo?a=1&b=two+words#crop"
-let fixtures: [(String, WevVGlazeH5Entry)] = [
+let fixtures: [(String, chosenTiles)] = [
     ("messages", .messages), ("systemMessages", .systemMessages), ("likedMessages", .likedMessages),
     ("user", .user(userID: "20002", imAccount: "target-im-account")),
     ("creator", .creator(userID: "10001", imAccount: nil)),
@@ -50,7 +50,7 @@ for (label, entry) in fixtures {
     precondition(entry.requiresFullFeatures == (label == "cpSettings"))
 }
 var rejected = 0
-func rejects(_ entry: WevVGlazeH5Entry) {
+func rejects(_ entry: chosenTiles) {
     precondition(entry.makeURL(indexURL: index) == nil)
     precondition(entry.bridgeEntry == nil)
     rejected += 1
@@ -68,9 +68,9 @@ rejects(.conversation(userID: "2", imAccount: " \n\t", name: nil, avatarURL: nil
 rejects(.conversation(userID: "2", imAccount: String(repeating: "a", count: 2048), name: nil, avatarURL: nil))
 rejects(.conversation(userID: "2", imAccount: "target", name: String(repeating: "a", count: 4097), avatarURL: nil))
 rejects(.conversation(userID: "2", imAccount: "target", name: String(repeating: "🍩", count: 2049), avatarURL: nil))
-precondition(WevVGlazeH5Entry.messages.makeURL(indexURL: URL(string: "https://example.com/index.html")!) == nil)
-precondition(WevVGlazeH5Entry.messages.makeURL(indexURL: URL(string: index.absoluteString + "#old")!) == nil)
-precondition(WevVGlazeH5Entry.messages.makeURL(indexURL: URL(string: index.absoluteString + "?token=old")!) == nil)
+precondition(chosenTiles.messages.makeURL(indexURL: URL(string: "https://example.com/index.html")!) == nil)
+precondition(chosenTiles.messages.makeURL(indexURL: URL(string: index.absoluteString + "#old")!) == nil)
+precondition(chosenTiles.messages.makeURL(indexURL: URL(string: index.absoluteString + "?token=old")!) == nil)
 let payload: [String: Any] = ["records": records, "rejected": rejected + 3]
 print(String(data: try JSONSerialization.data(withJSONObject: payload, options: [.sortedKeys]), encoding: .utf8)!)
 '''
@@ -100,7 +100,7 @@ def main():
         (temp / "main.swift").write_text(SWIFT_FIXTURES)
         process = subprocess.run([
             swiftc, "-module-cache-path", str(temp / "module-cache"),
-            str(temp / "Models.swift"), str(SOURCE / "WevEnd/WevVGlazeH5Entry.swift"), str(temp / "main.swift"),
+            str(temp / "Models.swift"), str(SOURCE / 'WevEnd/chosenTiles.swift'), str(temp / "main.swift"),
             "-o", str(temp / "verify-entries")
         ], text=True, capture_output=True)
         if process.returncode:

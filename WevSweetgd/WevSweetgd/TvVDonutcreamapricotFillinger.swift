@@ -112,21 +112,21 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private weak var profileAvatarImageView: UIImageView?
     private let donutParlorTabBack = UIView()
     private let donutParlorFoot = UIView()
-    private let donutCounterGlazeSheen = WevVGlazeSkeletonPanel(kind: .home)
-    private let tastingParlorGlazeSheen = WevVGlazeSkeletonPanel(kind: .voice)
-    private let tastingJournalGlazeSheen = WevVGlazeSkeletonPanel(kind: .moments)
+    private let donutCounterGlazeSheen = WevVGlazeMessageCell(kind: .home)
+    private let tastingParlorGlazeSheen = WevVGlazeMessageCell(kind: .voice)
+    private let tastingJournalGlazeSheen = WevVGlazeMessageCell(kind: .moments)
     private var bakeryAtlasTimer: Timer?
     private var glazeContentTask: Task<Void, Never>?
     private var glazeContentRequestID = UUID()
     private var glazeContentRefreshOwner: (requestID: UUID, section: WevVDonutParlorSection)?
     private var homeLivePageTask: Task<Void, Never>?
     private var deadline: [String: TimeInterval] = [:]
-    private var homeLivePagination = WevVGlazeLivePagination()
-    private var cocoaWeekendFestival = WevVGlazeCommunityService.tastingPassportPage()
+    private var homeLivePagination = creamPacket()
+    private var cocoaWeekendFestival = LisenNoticepoplater.honeyScout()
     private var strawberryMilkSwirl: Task<Void, Never>?
     private var voicePageTasks: [mascarponeFilling: Task<Void, Never>] = [:]
-    private var voicePaginations: [mascarponeFilling: WevVGlazeVoicePagination] = [
-        .cherryCenter: WevVGlazeVoicePagination(), .apricotCompote: WevVGlazeVoicePagination()
+    private var voicePaginations: [mascarponeFilling: honeyLavenderCombination] = [
+        .cherryCenter: honeyLavenderCombination(), .apricotCompote: honeyLavenderCombination()
     ]
     private var glazeProfileTask: Task<Void, Never>?
     private var glazeProfileRequestID = UUID()
@@ -386,13 +386,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         pendingInitialGlazeSections = [.donutCounter, .tastingParlor, .tastingJournal]
         homeLivePageTask?.cancel()
         homeLivePageTask = nil
-        homeLivePagination = WevVGlazeLivePagination()
+        homeLivePagination = creamPacket()
         strawberryMilkSwirl?.cancel()
         strawberryMilkSwirl = nil
-        cocoaWeekendFestival = WevVGlazeCommunityService.tastingPassportPage()
+        cocoaWeekendFestival = LisenNoticepoplater.honeyScout()
         voicePageTasks.values.forEach { $0.cancel() }
         voicePageTasks.removeAll()
-        voicePaginations = [.cherryCenter: WevVGlazeVoicePagination(), .apricotCompote: WevVGlazeVoicePagination()]
+        voicePaginations = [.cherryCenter: honeyLavenderCombination(), .apricotCompote: honeyLavenderCombination()]
         resetTastingParlorOwnerNames(keepingCachedNames: false)
         glazeRoomItems = []
         glazeRecommendedVoiceRooms = []
@@ -1079,7 +1079,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             // Public user cards supply nickName; roomName remains the room card's title.
             // Attempt once per refresh so rebuilding the row cannot repeat failed requests.
             glazeOwnerNameTasks[userID] = Task { [weak self] in
-                let displayName = try? await WevVGlazeSocialService.shared.displayName(userID: userID)
+                let displayName = try? await WevVGlazeRosterCell.shared.displayName(userID: userID)
                 guard !Task.isCancelled, let self,
                       self.glazeOwnerNameRequestID == requestID,
                       self.currentGlazeContentOwnerKey() == ownerKey else { return }
@@ -1122,7 +1122,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
               let userID = Int64(hostID),
               userID > 0 else { return }
         let room = glazeRoomItems.first { $0.glazeHostID == String(userID) }
-        WevVGlazeH5Navigation.present(
+        GDonutdenCrumbCenterler.present(
             .creator(userID: String(userID), imAccount: room?.glazeIMAccount),
             from: self,
             onClose: { [weak self] in
@@ -1135,7 +1135,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     @objc private func openTastingJournalAuthor(_ sender: UIControl) {
         guard let identifier = sender.accessibilityIdentifier,
               let userID = Int64(identifier), userID > 0 else { return }
-        WevVGlazeH5Navigation.present(
+        GDonutdenCrumbCenterler.present(
             .creator(userID: String(userID), imAccount: nil),
             from: self,
             onClose: { [weak self] in
@@ -1147,7 +1147,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func updateTastingParlorStatus() {
         let rooms = tastingParlorRooms(for: tastingParlorShelf)
-        let pagination = voicePaginations[tastingParlorShelf] ?? WevVGlazeVoicePagination()
+        let pagination = voicePaginations[tastingParlorShelf] ?? honeyLavenderCombination()
         tastingParlorStatusLabel.isHidden = !rooms.isEmpty
         if pagination.isLoading {
             tastingParlorStatusLabel.text = "Loading rooms…"
@@ -2868,7 +2868,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        WevVGlazeH5Navigation.present(.messages, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.present(.messages, from: self, onClose: { [weak self] in
             self?.refreshDonutDiaryPanel()
         })
     }
@@ -2918,7 +2918,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                     self.finishGlazeContentRefresh(for: refresh.section, requestID: contentRequestID)
                 }
             }
-            do { try await WevVGlazeRuntime.shared.prepare() }
+            do { try await BrostingmellowCoconutEssence.shared.prepare() }
             catch {
                 guard !Task.isCancelled else { return }
                 self.homeLivePagination.fail(request: liveRequestID)
@@ -2974,7 +2974,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         var requests: [mascarponeFilling: UUID] = [:]
         for shelf in mascarponeFilling.allCases {
             deadline.removeValue(forKey: "voice-\(shelf.rawValue)")
-            requests[shelf] = voicePaginations[shelf, default: WevVGlazeVoicePagination()].beginRefresh()
+            requests[shelf] = voicePaginations[shelf, default: honeyLavenderCombination()].beginRefresh()
         }
         updateTastingParlorStatus()
         updateVoiceRoomLoadMoreFooter()
@@ -2992,7 +2992,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func loadGlazeLiveContent(owner: String, requestID: UUID, contentRequestID: UUID) async {
         var liveError: Error?
         do {
-            let page = try await glazeContentRepository.livePage(currentPage: 1, pageSize: WevVGlazeLivePagination.pageSize)
+            let page = try await glazeContentRepository.livePage(currentPage: 1, pageSize: creamPacket.pageSize)
             guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner,
                   homeLivePagination.receive(page, request: requestID) else { return }
         } catch {
@@ -3014,7 +3014,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             guard let id = voiceRequestIDs[shelf] else { continue }
             do {
                 let page = try await glazeContentRepository.voicePage(carnivalGlazeShowcase: shelf, cursor: nil,
-                                                                       pageSize: WevVGlazeVoicePagination.pageSize)
+                                                                       pageSize: honeyLavenderCombination.pageSize)
                 guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner,
                       voicePaginations[shelf]?.receive(page, request: id) == true else { return }
             } catch {
@@ -3040,7 +3040,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             guard let self else { return }
             do {
                 let page = try await self.glazeContentRepository.voicePage(carnivalGlazeShowcase: shelf,
-                    cursor: request.cursor, pageSize: WevVGlazeVoicePagination.pageSize)
+                    cursor: request.cursor, pageSize: honeyLavenderCombination.pageSize)
                 guard !Task.isCancelled, self.currentGlazeContentOwnerKey() == owner,
                       self.voicePaginations[shelf]?.receive(page, request: request.id) == true else { return }
                 self.applyVoiceRoomPages()
@@ -3062,7 +3062,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func updateVoiceRoomLoadMoreFooter() {
-        let pagination = voicePaginations[tastingParlorShelf] ?? WevVGlazeVoicePagination()
+        let pagination = voicePaginations[tastingParlorShelf] ?? honeyLavenderCombination()
         voiceLoadMoreFooter.isHidden = activeDonutParlorSection != .tastingParlor || pagination.rooms.isEmpty
             || sprinkleRefresh.isRefreshing
             || (!pagination.isLoading && !pagination.failed && pagination.hasMore && homeLivePullDistance() <= 0)
@@ -3103,7 +3103,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             guard let self else { return }
             do {
                 let page = try await self.glazeContentRepository.livePage(
-                    currentPage: request.page, pageSize: WevVGlazeLivePagination.pageSize)
+                    currentPage: request.page, pageSize: creamPacket.pageSize)
                 guard !Task.isCancelled, self.currentGlazeContentOwnerKey() == owner,
                       self.homeLivePagination.receive(page, request: request.id) else { return }
                 self.mergeGlazeRoomContent(live: self.homeLivePagination.rooms)
@@ -3185,7 +3185,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             do {
                 if shelf == .artisanFrySequence {
                     let page = try await glazeContentRepository.tastingPassportPage(
-                        cursor: 0, pageSize: WevVGlazeCommunityService.tastingPassportPage.pageSize)
+                        cursor: 0, pageSize: LisenNoticepoplater.honeyScout.pageSize)
                     guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner,
                           cocoaWeekendFestival.completeGlaze(page, requestID: requestID) else { return }
                     posts = cocoaWeekendFestival.posts
@@ -3231,7 +3231,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             guard let self else { return }
             do {
                 let page = try await self.glazeContentRepository.tastingPassportPage(
-                    cursor: request.cursor, pageSize: WevVGlazeCommunityService.tastingPassportPage.pageSize)
+                    cursor: request.cursor, pageSize: LisenNoticepoplater.honeyScout.pageSize)
                 guard !Task.isCancelled, self.currentGlazeContentOwnerKey() == owner,
                       self.cocoaWeekendFestival.completeGlaze(page, requestID: request.id) else { return }
                 self.glazeTrendingMomentItems = self.cocoaWeekendFestival.posts
@@ -3367,7 +3367,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let roomID = String(identifier[identifier.index(after: separator)...])
         guard let kind = chocolateCompote(rawValue: kindText),
               let room = glazeRoomItems.first(where: { $0.lemonCurd == kind && $0.passionfruitMousse == roomID }) else { return }
-        WevVGlazeH5Navigation.present(.room(room), from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.present(.room(room), from: self, onClose: { [weak self] in
             self?.refreshDonutDiaryPanel()
             self?.loadGlazeContent(showsLoading: false)
         })
@@ -3553,7 +3553,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        WevVGlazeH5Navigation.present(.editProfile, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.present(.editProfile, from: self, onClose: { [weak self] in
             self?.refreshDonutDiaryPanel()
         })
     }
@@ -3571,13 +3571,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        let entry: WevVGlazeH5Entry
+        let entry: chosenTiles
         switch rubyCocoaSwirl {
         case .brownButterGlaze: entry = .relations(.following)
         case .maplePecanCoating: entry = .relations(.fans)
         case .citrusZestShell: entry = .blocklist
         }
-        WevVGlazeH5Navigation.present(entry, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.present(entry, from: self, onClose: { [weak self] in
             self?.refreshDonutDiaryPanel()
             self?.rebuildDonutSnapshotStack()
             self?.loadGlazeContent(showsLoading: false)
@@ -3657,7 +3657,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        WevVGlazeH5Navigation.present(.diamonds, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.present(.diamonds, from: self, onClose: { [weak self] in
             self?.refreshDonutDiaryPanel()
         })
     }
@@ -3894,7 +3894,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             loadGlazeProfileMoments()
         }
         glazeHomePanels.forEach { $0.isHidden = !showHome }
-        updateHomeLiveStatus(error: homeLivePagination.failed ? WevVGlazeNetworkError.invalidResponse : nil)
+        updateHomeLiveStatus(error: homeLivePagination.failed ? GlazeVaultTradeError.invalidResponse : nil)
         updateHomeLiveLoadMoreFooter()
         updateVoiceRoomLoadMoreFooter()
         tastingParlorPanel.isHidden = section != .tastingParlor
@@ -3949,7 +3949,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         glazePinnedHeaders.accessibilityElementsHidden = hidesContent
         flavorNoteEntryButton.accessibilityElementsHidden = hidesContent
         flavorNoteEntryButton.isAccessibilityElement = !hidesContent
-        let panels: [(WevVDonutParlorSection, WevVGlazeSkeletonPanel)] = [
+        let panels: [(WevVDonutParlorSection, WevVGlazeMessageCell)] = [
             (.donutCounter, donutCounterGlazeSheen),
             (.tastingParlor, tastingParlorGlazeSheen),
             (.tastingJournal, tastingJournalGlazeSheen)

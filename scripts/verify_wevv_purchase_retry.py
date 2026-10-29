@@ -5,7 +5,7 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'WevSweetgd/WevSweetgd/WevEnd/WevVGlazePurchaseCoordinator.swift'
+SOURCE = ROOT / 'WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift'
 
 
 def method(source, marker):
@@ -49,12 +49,12 @@ struct Transaction {
     @MainActor func finish() async { Fixture.finished.insert(id) }
 }
 enum SKPaymentQueue { static func canMakePayments() -> Bool { true } }
-enum WevVGlazeProductRequest {
+enum fallbackMark {
     @MainActor static func lookup(productID: String) async throws -> Product { Product(id: productID) }
 }
-enum WevVGlazeAppReceiptRequest {
+enum glazeAvatar {
     @MainActor static func read() async throws -> String {
-        if Fixture.receiptFails { throw WevVGlazePurchaseError.transactionUnavailable }
+        if Fixture.receiptFails { throw donutDiaryFolio.transactionUnavailable }
         return Data("actual-app-receipt-fixture".utf8).base64EncodedString()
     }
 }
@@ -74,14 +74,14 @@ enum AppStore {
     }
 }
 @MainActor final class RetryProbe {
-    var ledger: WevVGlazePurchaseLedger?
+    var ledger: expectedGlazeProductID?
     var storageDirectory: URL?
     var startupFailure: Error?
     var busy = false
     var receiptTask: Task<String, Error>?
-    var capturing: [String: Task<WevVGlazePurchaseMaterial?, Error>] = [:]
-    var captureFailures: [String: (WevVGlazePurchaseScope, Error)] = [:]
-    init(directory: URL) throws { ledger = try WevVGlazePurchaseLedger(directory: directory) }
+    var capturing: [String: Task<doughSession?, Error>] = [:]
+    var captureFailures: [String: (donutSnapshot, Error)] = [:]
+    init(directory: URL) throws { ledger = try expectedGlazeProductID(directory: directory) }
 '''
 
 TESTS = r'''
@@ -89,14 +89,14 @@ TESTS = r'''
     @MainActor static func main() async throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent("wevv-retry-" + UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: root) }
-        let scope = WevVGlazePurchaseScope(environmentID: "test|https://example.invalid", appID: "app", ownerID: "one")
+        let scope = donutSnapshot(environmentID: "test|https://example.invalid", appID: "app", ownerID: "one")
         let params: [String: Any] = ["ownerId": "one", "orderCode": "order", "productId": "gems", "purpose": "diamonds"]
         var checks = 0
         func check(_ value: @autoclosure () throws -> Bool, _ label: String) throws {
             guard try value() else { throw NSError(domain: label, code: 1) }; checks += 1
         }
-        func rejects(_ expected: WevVGlazePurchaseError, _ operation: () async throws -> [String: Any]) async throws {
-            do { _ = try await operation() } catch let error as WevVGlazePurchaseError where error == expected { checks += 1; return }
+        func rejects(_ expected: donutDiaryFolio, _ operation: () async throws -> [String: Any]) async throws {
+            do { _ = try await operation() } catch let error as donutDiaryFolio where error == expected { checks += 1; return }
             throw NSError(domain: "Expected " + expected.rawValue, code: 2)
         }
         func setup(_ name: String) throws -> RetryProbe { Fixture.reset(); return try RetryProbe(directory: root.appendingPathComponent(name)) }
@@ -213,7 +213,7 @@ TESTS = r'''
 
 def main():
     original = SOURCE.read_text()
-    production = original[original.index('final class WevVGlazePurchaseCoordinator {'):]
+    production = original[original.index('final class DrawcreamScoutSugarStyle {'):]
     markers = ['    func purchase(', '    private static func purchaseFailurePhase(',
                '    private func reconcile(', '    private func capture(',
                '    private func appReceipt(', '    private func readyLedger(']

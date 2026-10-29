@@ -439,11 +439,11 @@ final class LmnTasterCardController: UIViewController {
         wevvActionFoot.isHidden = !isDonutTrailOpen
         if remoteUserID != nil {
             if remoteCard?.backendCanChat == nil {
-                wevvLockedFootLabel.text = WevVGlazeUnavailableFeature.messaging.localizedDescription
+                wevvLockedFootLabel.text = glazeNameField.messaging.localizedDescription
             } else {
                 switch remoteTrailState {
                 case .unknown:
-                    wevvLockedFootLabel.text = WevVGlazeUnavailableFeature.messaging.localizedDescription
+                    wevvLockedFootLabel.text = glazeNameField.messaging.localizedDescription
                 case .notFollowed:
                     wevvLockedFootLabel.text = "You can only send messages and videos to each other once you have followed one another. Please follow the user first and wait for them to follow you back."
                 case .waitingForFollowBack:
@@ -902,7 +902,7 @@ final class LmnTasterCardController: UIViewController {
 
     @objc private func showWevvSugarGuardPrompt() {
         if remoteUserID != nil, remoteCard?.backendCanChat == nil {
-            TinGlazePromptStyler.showSugarToast(in: view, text: WevVGlazeUnavailableFeature.messaging.localizedDescription)
+            TinGlazePromptStyler.showSugarToast(in: view, text: glazeNameField.messaging.localizedDescription)
             return
         }
         let shade = UIControl()
@@ -1139,7 +1139,7 @@ final class LmnTasterCardController: UIViewController {
             guard let self else { return }
             defer { if self.remoteRequestID == requestID { self.remoteTask = nil } }
             do {
-                try await WevVGlazeRuntime.shared.prepare()
+                try await BrostingmellowCoconutEssence.shared.prepare()
             } catch {
                 guard !Task.isCancelled, self.remoteRequestID == requestID else { return }
                 self.hideRemoteSheenPlaceholder()
@@ -1352,7 +1352,7 @@ final class LmnTasterCardController: UIViewController {
     @objc private func openRemoteChat() {
         guard requireRemoteLogin(), let card = remoteCard, remoteActionTask == nil,
               card.vanillaBeanIcing > 0 else { return }
-        let entry: WevVGlazeH5Entry
+        let entry: chosenTiles
         if let imAccount = card.springyFinish?.trimmingCharacters(in: .whitespacesAndNewlines), !imAccount.isEmpty {
             entry = .conversation(userID: String(card.vanillaBeanIcing), imAccount: imAccount,
                                   name: card.gingerHoneyDrizzle, avatarURL: card.cheesecakeMousse)
@@ -1361,7 +1361,7 @@ final class LmnTasterCardController: UIViewController {
             // Never derive an IM account from the business ID or a local badge.
             entry = .user(userID: String(card.vanillaBeanIcing), imAccount: nil)
         }
-        WevVGlazeH5Navigation.present(entry, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.present(entry, from: self, onClose: { [weak self] in
             self?.loadRemoteCard(showsLoading: false)
         })
     }
@@ -1369,7 +1369,7 @@ final class LmnTasterCardController: UIViewController {
     @objc private func openRemoteVideo() {
         guard requireRemoteLogin(), let card = remoteCard, remoteActionTask == nil else { return }
         guard let canChat = card.backendCanChat else {
-            TinGlazePromptStyler.showSugarToast(in: view, text: WevVGlazeUnavailableFeature.messaging.localizedDescription)
+            TinGlazePromptStyler.showSugarToast(in: view, text: glazeNameField.messaging.localizedDescription)
             return
         }
         guard canChat else {
@@ -1489,7 +1489,7 @@ final class LmnTasterCardController: UIViewController {
     private func toggleRemoteSugarGuard() {
         guard let card = remoteCard else {
             if remoteUserID == nil { toggleWevvSugarShield() }
-            else { TinGlazePromptStyler.showSugarToast(in: view, text: WevVGlazeNetworkError.invalidResponse.localizedDescription) }
+            else { TinGlazePromptStyler.showSugarToast(in: view, text: GlazeVaultTradeError.invalidResponse.localizedDescription) }
             return
         }
         guard remoteActionTask == nil else { return }

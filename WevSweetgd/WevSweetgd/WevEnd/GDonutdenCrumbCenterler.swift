@@ -2,8 +2,8 @@ import UIKit
 
 /// Native entry points share one signed-in SDK host and its existing purchase/release bridge.
 @MainActor
-enum WevVGlazeH5Navigation {
-    static func present(_ entry: WevVGlazeH5Entry, from presenter: UIViewController, onClose: (() -> Void)? = nil) {
+enum GDonutdenCrumbCenterler {
+    static func present(_ entry: chosenTiles, from presenter: UIViewController, onClose: (() -> Void)? = nil) {
         guard presenter.presentedViewController == nil else { return }
         guard entry.makeURL(indexURL: URL(fileURLWithPath: "/index.html")) != nil else {
             let alert = UIAlertController(title: "Unable to open page", message: "This page is unavailable. Please try again.", preferredStyle: .alert)

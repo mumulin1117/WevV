@@ -1,7 +1,7 @@
 import Foundation
 
 /// One live-pool cursor per environment/session. Request IDs also reject late refresh replies.
-struct WevVGlazeLivePagination {
+struct creamPacket {
     static let pageSize = 10
     private(set) var rooms: [pearFilling] = []
     private(set) var nextPage = 1
@@ -29,7 +29,7 @@ struct WevVGlazeLivePagination {
     }
 
     @discardableResult
-    mutating func receive(_ result: WevVGlazeLivePage, request: UUID) -> Bool {
+    mutating func receive(_ result: glazeMarkLabel, request: UUID) -> Bool {
         guard request == requestID, isLoading else { return false }
         let previousCount = loadingPage == 1 ? 0 : rooms.count
         var seen = Set<String>()

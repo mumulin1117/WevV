@@ -290,7 +290,7 @@ struct Fixture: Decodable {
                 : fixture.seed
             var accepted = false
             do {
-                let configuration = try WevVGlazeBundleConfiguration(bundle: bundle, seed: seed, hostVersion: fixture.hostVersion)
+                let configuration = try CreamRingDellController(bundle: bundle, seed: seed, hostVersion: fixture.hostVersion)
                 accepted = true
                 precondition(configuration.profile.appID == fixture.expectedAppID)
                 if let routing = fixture.expectedRouting {
@@ -329,7 +329,7 @@ def main():
         probe.write_text(SWIFT_PROBE)
         executable = folder / 'probe'
         # Link the actual loader and OPI parser; fixture generation has no decoder.
-        subprocess.run(['xcrun', 'swiftc', '-parse-as-library', '-swift-version', '5', '-default-isolation', 'MainActor', '-module-cache-path', str(folder / 'modules'), str(SOURCES / 'WevEnd/WevVGlazeNetworkFoundation.swift'), str(SOURCES / 'WevEnd/WevVGlazeBundleConfiguration.swift'), str(probe), '-o', str(executable)], check=True)
+        subprocess.run(['xcrun', 'swiftc', '-parse-as-library', '-swift-version', '5', '-default-isolation', 'MainActor', '-module-cache-path', str(folder / 'modules'), str(SOURCES / 'WevEnd/NertyuChoiceStackLayer.swift'), str(SOURCES / 'WevEnd/CreamRingDellController.swift'), str(probe), '-o', str(executable)], check=True)
         subprocess.run([str(executable), str(case_file)], check=True, timeout=30)
     if arguments.actual:
         print('Actual project thin resource verified; full H5 archive was not read')

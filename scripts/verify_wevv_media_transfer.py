@@ -8,26 +8,26 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMediaTransfer.swift"
+SOURCE = ROOT / 'WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift'
 
 MOCKS = r'''
 import Foundation
-enum WevVGlazeNetworkError: Error { case http(Int) }
+enum GlazeVaultTradeError: Error { case http(Int) }
 struct MediaAccount { let vanillaBeanIcing: Int64 }
 @MainActor final class WevVGlazeSessionStore {
     static let shared = WevVGlazeSessionStore()
     var sessionEpoch = 1
     var currentGlazeCredentials: MediaAccount? = MediaAccount(vanillaBeanIcing: 7)
 }
-@MainActor final class WevVGlazeRuntime {
-    static let shared = WevVGlazeRuntime()
+@MainActor final class BrostingmellowCoconutEssence {
+    static let shared = BrostingmellowCoconutEssence()
     var environmentID = "offline-test-scope"
     var signedData = Data()
     var signCalls = 0
     var signHook: (() async throws -> Data)?
     func prepare() async throws {}
     func validSignedInSession() async throws -> MediaAccount {
-        guard let value = WevVGlazeSessionStore.shared.currentGlazeCredentials else { throw WevVGlazeNetworkError.http(401) }
+        guard let value = WevVGlazeSessionStore.shared.currentGlazeCredentials else { throw GlazeVaultTradeError.http(401) }
         return value
     }
     func assertCurrent(epoch: Int, scope: String) throws {
@@ -53,7 +53,7 @@ struct MediaAccount { let vanillaBeanIcing: Int64 }
 TESTS = r'''
 @main struct MediaVerification {
     @MainActor static func main() async throws {
-        let runtime = WevVGlazeRuntime.shared, store = WevVGlazeSessionStore.shared
+        let runtime = BrostingmellowCoconutEssence.shared, store = WevVGlazeSessionStore.shared
         let jpeg = Data([0xff, 0xd8, 0xff, 0xe0, 0x31, 0x32, 0xff, 0xd9])
         let png = Data([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 0])
         let webp = Data("RIFF0000WEBPsynthetic".utf8)
@@ -82,7 +82,7 @@ TESTS = r'''
         func perform(data: Data? = nil, mime: String = "image/jpeg", fileName: String = "wevv-test.jpg", status: Int = 200,
                      overrideURL: URL? = nil) async throws -> (String, URLRequest, Data) {
             var captured: (URLRequest, Data)?
-            let transfer = WevVGlazeMediaTransfer(sender: { request, body in
+            let transfer = WevVGlazeMessageController(sender: { request, body in
                 uploads += 1; captured = (request, body)
                 return (Data(), response(request, status: status, overrideURL: overrideURL))
             })
@@ -177,7 +177,7 @@ TESTS = r'''
 
         for cancelled in [false, true] {
             try reset(); let uploadGate = Gate()
-            let transfer = WevVGlazeMediaTransfer(sender: { request, _ in
+            let transfer = WevVGlazeMessageController(sender: { request, _ in
                 await uploadGate.wait(); return (Data(), response(request))
             })
             let uploading = Task { try await transfer.upload(data: jpeg, fileName: "test.jpg", mimeType: "image/jpeg") }

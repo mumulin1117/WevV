@@ -16,7 +16,7 @@ declaration = runpy.run_path(str(ROOT / "scripts/verify_wevv_session_runtime.py"
 
 MOCKS = r'''
 import Foundation
-enum WevVGlazeNetworkError: Error { case invalidResponse, http(Int) }
+enum GlazeVaultTradeError: Error { case invalidResponse, http(Int) }
 struct OfflineAccount { let vanillaBeanIcing: Int64 }
 @MainActor final class WevVGlazeSessionStore {
     static let shared = WevVGlazeSessionStore()
@@ -25,8 +25,8 @@ struct OfflineAccount { let vanillaBeanIcing: Int64 }
     var isTasterReady = true
     var currentGlazeCredentials: OfflineAccount? = OfflineAccount(vanillaBeanIcing: 7)
 }
-@MainActor final class WevVGlazeRuntime {
-    static let shared = WevVGlazeRuntime()
+@MainActor final class BrostingmellowCoconutEssence {
+    static let shared = BrostingmellowCoconutEssence()
     var environmentID = "test"
     var paths: [String] = []
     var requestBodies: [[String: Any]] = []
@@ -40,80 +40,80 @@ struct OfflineAccount { let vanillaBeanIcing: Int64 }
     func browsingOPI(path: String, body: [String: Any]) async throws -> Data {
         paths.append(path); requestBodies.append(body); return browsingResponse
     }
-    func voiceList(path: String, cursor: WevVGlazeVoiceCursor? = nil, pageSize: Int = 10) async throws -> Data {
+    func voiceList(path: String, cursor: glazeVaultHeroLayer? = nil, pageSize: Int = 10) async throws -> Data {
         paths.append(path); return Data("[]".utf8)
     }
 }
-@MainActor final class WevVGlazeMediaTransfer {
-    static let shared = WevVGlazeMediaTransfer()
+@MainActor final class WevVGlazeMessageController {
+    static let shared = WevVGlazeMessageController()
     var calls: [(Data, String, String)] = []
     func upload(data: Data, fileName: String, mimeType: String) async throws -> String {
         calls.append((data, fileName, mimeType)); return "https://synthetic.invalid/image.jpg"
     }
 }
-@MainActor final class WevVGlazeCommunityService {
-    struct Post { let card: butteryTexture; var allowsInteraction = true }
-    struct FeedPage { let posts: [Post]; let nextCursor: Int64?; let isLastPage: Bool }
+@MainActor final class LisenNoticepoplater {
+    struct caramelPecanMedley { let card: butteryTexture; var allowsInteraction = true }
+    struct choiceStackPacket { let posts: [caramelPecanMedley]; let nextCursor: Int64?; let isLastPage: Bool }
     struct Comments { let comments: [featherlightBite] }
     struct Configuration { let publishEnabled: Bool; let imageUploadEnabled: Bool }
-    enum PublishOutcome { case published(Int64), pendingReview }
-    enum CommunityError: Error { case publicationRejected(currentLevel: Int?, targetLevel: Int?, validImageURLs: [String]?) }
-    static let shared = WevVGlazeCommunityService()
+    enum chosenAssetPacket { case published(Int64), pendingReview }
+    enum chosenDonutAvatarAsset: Error { case publicationRejected(currentLevel: Int?, targetLevel: Int?, validImageURLs: [String]?) }
+    static let shared = LisenNoticepoplater()
     var calls: [String] = []
-    var posts: [Post] = []
-    var outcome: PublishOutcome = .pendingReview
+    var posts: [caramelPecanMedley] = []
+    var outcome: chosenAssetPacket = .pendingReview
     var enabled = true
     var configHook: (() -> Void)?
     var imageHook: (() -> Void)?
     var momentHook: (() -> Void)?
     var commentsHook: (() -> Void)?
-    func timeline(followedOnly: Bool = false, maxPages: Int = 5) async throws -> [Post] {
+    func timeline(followedOnly: Bool = false, maxPages: Int = 5) async throws -> [caramelPecanMedley] {
         calls.append(followedOnly ? "followed" : "feed"); return posts
     }
-    func feed(cursorID: Int64 = 0, size: Int = 20) async throws -> FeedPage {
-        FeedPage(posts: posts, nextCursor: nil, isLastPage: true)
+    func feed(cursorID: Int64 = 0, size: Int = 20) async throws -> choiceStackPacket {
+        choiceStackPacket(posts: posts, nextCursor: nil, isLastPage: true)
     }
     func publishConfig() async throws -> Configuration {
         calls.append("config"); configHook?(); return Configuration(publishEnabled: enabled, imageUploadEnabled: enabled)
     }
     func imageCheck(urls: [String]) async throws { calls.append("images"); imageHook?() }
-    func create(content: String, imageURLs: [String]) async throws -> PublishOutcome { calls.append("create"); return outcome }
-    func moment(id: Int64) async throws -> Post { calls.append("moment"); momentHook?(); return Post(card: postValue(id)) }
+    func create(content: String, imageURLs: [String]) async throws -> chosenAssetPacket { calls.append("create"); return outcome }
+    func moment(id: Int64) async throws -> caramelPecanMedley { calls.append("moment"); momentHook?(); return caramelPecanMedley(card: postValue(id)) }
     func comments(momentID: Int64) async throws -> Comments { calls.append("comments"); commentsHook?(); return Comments(comments: []) }
 }
-@MainActor final class WevVGlazeSocialService {
-    static let shared = WevVGlazeSocialService()
+@MainActor final class WevVGlazeRosterCell {
+    static let shared = WevVGlazeRosterCell()
     var reportCalls = 0
     var reportHook: (() -> Void)?
     func report(userID: Int64, type: String, detail: String?, momentID: Int64) async throws { reportCalls += 1; reportHook?() }
 }
 @MainActor final class OfflineRepository {
     var live: () async throws -> [pearFilling] = { [] }
-    var paginatedLive: ((Int, Int) async throws -> WevVGlazeLivePage)?
+    var paginatedLive: ((Int, Int) async throws -> glazeMarkLabel)?
     var voice: (mascarponeFilling) async throws -> [pearFilling] = { _ in [] }
-    var paginatedVoice: ((mascarponeFilling, WevVGlazeVoiceCursor?, Int) async throws -> WevVGlazeVoicePage)?
-    var paginatedMoments: ((Int64, Int) async throws -> WevVGlazeCommunityService.FeedPage)?
+    var paginatedVoice: ((mascarponeFilling, glazeVaultHeroLayer?, Int) async throws -> glazeVaultHeroView)?
+    var paginatedMoments: ((Int64, Int) async throws -> LisenNoticepoplater.choiceStackPacket)?
     var moments: (goldenCrumbDough) async throws -> [butteryTexture] = { _ in [] }
     var profile: (Int64) async throws -> meltawayCrumb = { profileValue($0) }
     var userMoments: (Int64) async throws -> [butteryTexture] = { _ in [] }
     var follow: (Int64, Bool) async throws -> Void = { _, _ in }
     func steamExpansionStudy() async throws -> [pearFilling] { try await live() }
-    func livePage(currentPage: Int, pageSize: Int = 10) async throws -> WevVGlazeLivePage {
+    func livePage(currentPage: Int, pageSize: Int = 10) async throws -> glazeMarkLabel {
         if let paginatedLive { return try await paginatedLive(currentPage, pageSize) }
         let rooms = try await live()
-        return WevVGlazeLivePage(rooms: rooms, total: rooms.count, rawCount: rooms.count)
+        return glazeMarkLabel(rooms: rooms, total: rooms.count, rawCount: rooms.count)
     }
     func batterConsistencyDetail(carnivalGlazeShowcase: mascarponeFilling) async throws -> [pearFilling] { try await voice(carnivalGlazeShowcase) }
-    func voicePage(carnivalGlazeShowcase: mascarponeFilling, cursor: WevVGlazeVoiceCursor? = nil,
-                   pageSize: Int = 10) async throws -> WevVGlazeVoicePage {
+    func voicePage(carnivalGlazeShowcase: mascarponeFilling, cursor: glazeVaultHeroLayer? = nil,
+                   pageSize: Int = 10) async throws -> glazeVaultHeroView {
         if let paginatedVoice { return try await paginatedVoice(carnivalGlazeShowcase, cursor, pageSize) }
         let rooms = try await voice(carnivalGlazeShowcase)
-        return WevVGlazeVoicePage(rooms: rooms, rawCount: rooms.count, nextCursor: nil)
+        return glazeVaultHeroView(rooms: rooms, rawCount: rooms.count, nextCursor: nil)
     }
     func starchGelatinizationStudy(carnivalGlazeShowcase: goldenCrumbDough) async throws -> [butteryTexture] { try await moments(carnivalGlazeShowcase) }
-    func tastingPassportPage(cursor: Int64 = 0, pageSize: Int = 20) async throws -> WevVGlazeCommunityService.FeedPage {
+    func tastingPassportPage(cursor: Int64 = 0, pageSize: Int = 20) async throws -> LisenNoticepoplater.choiceStackPacket {
         if let paginatedMoments { return try await paginatedMoments(cursor, pageSize) }
-        return WevVGlazeCommunityService.FeedPage(posts: try await moments(.artisanFrySequence).map { .init(card: $0) }, nextCursor: nil, isLastPage: true)
+        return LisenNoticepoplater.choiceStackPacket(posts: try await moments(.artisanFrySequence).map { .init(card: $0) }, nextCursor: nil, isLastPage: true)
     }
     func smallBatchKitchen(vanillaBeanIcing: Int64) async throws -> meltawayCrumb { try await profile(vanillaBeanIcing) }
     func heritageMap(vanillaBeanIcing: Int64) async throws -> [butteryTexture] { try await userMoments(vanillaBeanIcing) }
@@ -179,7 +179,7 @@ typealias UIControl = UIButton
     func endRefreshing() { ended = true; isRefreshing = false; endCount += 1 }
 }
 enum WevVDonutParlorSection: Hashable { case donutCounter, tastingParlor, tastingJournal, zestyOrangeHarmony }
-@MainActor final class WevVGlazeSkeletonPanel {
+@MainActor final class WevVGlazeMessageCell {
     var isLoadingVisible = false
     var visibilityChanges: [(Bool, Bool)] = []
     func setLoadingVisible(_ visible: Bool, animated: Bool) {
@@ -229,21 +229,21 @@ MAIN_STATE = r'''
     var glazeContentRequestID = UUID()
     var glazeContentRefreshOwner: (requestID: UUID, section: WevVDonutParlorSection)?
     var homeLivePageTask: Task<Void, Never>?
-    var homeLivePagination = WevVGlazeLivePagination()
-    var cocoaWeekendFestival = WevVGlazeCommunityService.tastingPassportPage()
+    var homeLivePagination = creamPacket()
+    var cocoaWeekendFestival = LisenNoticepoplater.honeyScout()
     var strawberryMilkSwirl: Task<Void, Never>?
     var voicePageTasks: [mascarponeFilling: Task<Void, Never>] = [:]
-    var voicePaginations: [mascarponeFilling: WevVGlazeVoicePagination] = [
-        .cherryCenter: WevVGlazeVoicePagination(), .apricotCompote: WevVGlazeVoicePagination()
+    var voicePaginations: [mascarponeFilling: honeyLavenderCombination] = [
+        .cherryCenter: honeyLavenderCombination(), .apricotCompote: honeyLavenderCombination()
     ]
     var tastingParlorShelf = mascarponeFilling.apricotCompote
     var tastingJournalShelf = goldenCrumbDough.artisanFrySequence
     var activeDonutParlorSection: WevVDonutParlorSection = .donutCounter
     var pendingInitialGlazeSections: Set<WevVDonutParlorSection> = [.donutCounter, .tastingParlor, .tastingJournal]
     var isGlazeContentVisible = true
-    let donutCounterGlazeSheen = WevVGlazeSkeletonPanel()
-    let tastingParlorGlazeSheen = WevVGlazeSkeletonPanel()
-    let tastingJournalGlazeSheen = WevVGlazeSkeletonPanel()
+    let donutCounterGlazeSheen = WevVGlazeMessageCell()
+    let tastingParlorGlazeSheen = WevVGlazeMessageCell()
+    let tastingJournalGlazeSheen = WevVGlazeMessageCell()
     let pastryTrailScroll = Label(), flavorNoteEntryButton = Label(), glazePinnedHeaders = Label()
     var visibleInitialGlazeSections: Set<WevVDonutParlorSection> {
         var visible = Set<WevVDonutParlorSection>()
@@ -336,8 +336,8 @@ REMOTE_STATE = r'''
 TESTS = r'''
 @main struct NativeIntegrationVerification {
     @MainActor static func main() async throws {
-        let store = WevVGlazeSessionStore.shared, runtime = WevVGlazeRuntime.shared
-        let community = WevVGlazeCommunityService.shared
+        let store = WevVGlazeSessionStore.shared, runtime = BrostingmellowCoconutEssence.shared
+        let community = LisenNoticepoplater.shared
         var cases = 0
         func check(_ value: Bool, _ label: String) throws {
             if !value { throw NSError(domain: "NativeIntegrationRegression", code: 1, userInfo: [NSLocalizedDescriptionKey: label]) }
@@ -353,16 +353,16 @@ TESTS = r'''
         func owner() -> String { (store.activeEnvironmentID ?? "unprepared") + "|" + String(store.sessionEpoch) }
         func seedLive(_ page: MainPage, ids: [Int], total: Int? = nil) {
             let request = page.homeLivePagination.beginRefresh()
-            page.homeLivePagination.receive(WevVGlazeLivePage(rooms: ids.map(roomValue), total: total ?? ids.count, rawCount: ids.count), request: request)
+            page.homeLivePagination.receive(glazeMarkLabel(rooms: ids.map(roomValue), total: total ?? ids.count, rawCount: ids.count), request: request)
             page.mergeGlazeRoomContent(live: page.homeLivePagination.rooms)
         }
-        func voicePage(_ ids: [Int], offset: Int64, snapshot: String = "synthetic-snapshot") -> WevVGlazeVoicePage {
-            WevVGlazeVoicePage(rooms: ids.map(voiceRoomValue), rawCount: ids.count,
-                              nextCursor: WevVGlazeVoiceCursor(offset: offset, snapshotID: snapshot))
+        func voicePage(_ ids: [Int], offset: Int64, snapshot: String = "synthetic-snapshot") -> glazeVaultHeroView {
+            glazeVaultHeroView(rooms: ids.map(voiceRoomValue), rawCount: ids.count,
+                              nextCursor: glazeVaultHeroLayer(offset: offset, snapshotID: snapshot))
         }
         func seedVoice(_ page: MainPage, shelf: mascarponeFilling = .apricotCompote,
                        ids: [Int], offset: Int64) {
-            var state = page.voicePaginations[shelf] ?? WevVGlazeVoicePagination()
+            var state = page.voicePaginations[shelf] ?? honeyLavenderCombination()
             let request = state.beginRefresh()
             state.receive(voicePage(ids, offset: offset), request: request)
             page.voicePaginations[shelf] = state
@@ -388,7 +388,7 @@ TESTS = r'''
         try check(own.count == 1 && own[0].vanillaBeanIcing == 7, "user timeline filters real owners without inventing a user-feed route")
         cases += 1
         _ = try await social.boutiqueStudio(Data([1, 2, 3]), pastryCompendiumSeries: "original.jpg")
-        let media = WevVGlazeMediaTransfer.shared.calls
+        let media = WevVGlazeMessageController.shared.calls
         try check(media.count == 1 && media[0].0 == Data([1, 2, 3]) && media[0].1 == "original.jpg" && media[0].2 == "image/jpeg", "unchanged composer upload facade reaches new native media service")
         cases += 1
         community.calls = []
@@ -407,26 +407,26 @@ TESTS = r'''
         }
 
         for reporting in [false, true] {
-            community.calls = []; WevVGlazeSocialService.shared.reportCalls = 0
+            community.calls = []; WevVGlazeRosterCell.shared.reportCalls = 0
             community.momentHook = { store.sessionEpoch += 1 }
             do {
                 if reporting { try await social.crustSnapIndex(yeastBloomSequence: 1, roseTintDesign: "SPAM") }
                 else { _ = try await social.glazeSheenNotes(yeastBloomSequence: 1) }
                 throw NSError(domain: "OldOwnerContinuedSecondStep", code: 8)
             } catch is CancellationError {}
-            try check(community.calls == ["moment"] && WevVGlazeSocialService.shared.reportCalls == 0, "account change after detail prevents comments/report from running as the next account")
+            try check(community.calls == ["moment"] && WevVGlazeRosterCell.shared.reportCalls == 0, "account change after detail prevents comments/report from running as the next account")
             community.momentHook = nil
             cases += 1
         }
         for reporting in [false, true] {
             community.commentsHook = reporting ? nil : { store.sessionEpoch += 1 }
-            WevVGlazeSocialService.shared.reportHook = reporting ? { store.sessionEpoch += 1 } : nil
+            WevVGlazeRosterCell.shared.reportHook = reporting ? { store.sessionEpoch += 1 } : nil
             do {
                 if reporting { try await social.crustSnapIndex(yeastBloomSequence: 1, roseTintDesign: "SPAM") }
                 else { _ = try await social.glazeSheenNotes(yeastBloomSequence: 1) }
                 throw NSError(domain: "OldOwnerReturnedCompositeResponse", code: 9)
             } catch is CancellationError {}
-            community.commentsHook = nil; WevVGlazeSocialService.shared.reportHook = nil
+            community.commentsHook = nil; WevVGlazeRosterCell.shared.reportHook = nil
             cases += 1
         }
         for operation in [
@@ -441,7 +441,7 @@ TESTS = r'''
         ] {
             let before = runtime.paths.count
             do { try await operation(); throw NSError(domain: "UnavailableReportedSuccess", code: 5) }
-            catch is WevVGlazeUnavailableFeature { cases += 1 }
+            catch is glazeNameField { cases += 1 }
             try check(runtime.paths.count == before, "unavailable contract never sends a legacy request")
         }
 
@@ -525,13 +525,13 @@ TESTS = r'''
             let terminal = MainPage()
             terminal.resetGlazeContentOwner(owner())
             terminal.glazeContentRepository.live = {
-                if fail { throw WevVGlazeNetworkError.http(503) }; return []
+                if fail { throw GlazeVaultTradeError.http(503) }; return []
             }
             terminal.glazeContentRepository.voice = { _ in
-                if fail { throw WevVGlazeNetworkError.http(503) }; return []
+                if fail { throw GlazeVaultTradeError.http(503) }; return []
             }
             terminal.glazeContentRepository.moments = { _ in
-                if fail { throw WevVGlazeNetworkError.http(503) }; return []
+                if fail { throw GlazeVaultTradeError.http(503) }; return []
             }
             terminal.loadGlazeContent(); await terminal.glazeContentTask?.value
             try check(terminal.pendingInitialGlazeSections.isEmpty && terminal.visibleInitialGlazeSections.isEmpty,
@@ -542,7 +542,7 @@ TESTS = r'''
         }
 
         let prepareFailure = MainPage()
-        runtime.prepareHook = { throw WevVGlazeNetworkError.http(503) }
+        runtime.prepareHook = { throw GlazeVaultTradeError.http(503) }
         prepareFailure.resetGlazeContentOwner(owner())
         prepareFailure.sprinkleRefresh.beginRefreshing()
         prepareFailure.loadGlazeContent(); await prepareFailure.glazeContentTask?.value
@@ -580,7 +580,7 @@ TESTS = r'''
 
         let preparingOwner = MainPage(), oldPrepareGate = Gate(), currentPrepareLiveGate = Gate()
         preparingOwner.resetGlazeContentOwner(owner())
-        runtime.prepareHook = { await oldPrepareGate.wait(); throw WevVGlazeNetworkError.http(503) }
+        runtime.prepareHook = { await oldPrepareGate.wait(); throw GlazeVaultTradeError.http(503) }
         preparingOwner.loadGlazeContent(showsLoading: false)
         let oldPreparingTask = preparingOwner.glazeContentTask
         try await entered(oldPrepareGate)
@@ -633,7 +633,7 @@ TESTS = r'''
         voiceGate.release(); await page.glazeContentTask?.value; cases += 1
 
         page.glazeContentRepository.live = { [] }
-        page.glazeContentRepository.voice = { _ in throw WevVGlazeNetworkError.http(503) }
+        page.glazeContentRepository.voice = { _ in throw GlazeVaultTradeError.http(503) }
         page.loadGlazeContent(showsLoading: false); await page.glazeContentTask?.value
         try check(!page.homeLiveStatusLabel.isHidden && page.homeLiveStatusLabel.text == "No live rooms are open right now.",
             "a real empty live pool shows its empty state even when voice requests fail")
@@ -641,7 +641,7 @@ TESTS = r'''
             "independent voice failures keep their original failure feedback")
         cases += 1
 
-        page.glazeContentRepository.live = { throw WevVGlazeNetworkError.http(503) }
+        page.glazeContentRepository.live = { throw GlazeVaultTradeError.http(503) }
         page.glazeContentRepository.voice = { _ in [] }
         page.loadGlazeContent(showsLoading: false); await page.glazeContentTask?.value
         try check(!page.homeLiveStatusLabel.isHidden && page.homeLiveStatusLabel.text == "Rooms could not be loaded. Pull down to retry.",
@@ -649,9 +649,9 @@ TESTS = r'''
         cases += 1
 
         seedLive(page, ids: [1]); page.glazeTrendingMomentItems = [postValue()]
-        page.glazeContentRepository.live = { throw WevVGlazeNetworkError.http(503) }
-        page.glazeContentRepository.voice = { _ in throw WevVGlazeNetworkError.http(503) }
-        page.glazeContentRepository.moments = { _ in throw WevVGlazeNetworkError.http(503) }
+        page.glazeContentRepository.live = { throw GlazeVaultTradeError.http(503) }
+        page.glazeContentRepository.voice = { _ in throw GlazeVaultTradeError.http(503) }
+        page.glazeContentRepository.moments = { _ in throw GlazeVaultTradeError.http(503) }
         page.loadGlazeContent(showsLoading: false); await page.glazeContentTask?.value
         try check(page.glazeRoomItems.count == 1 && page.glazeTrendingMomentItems.count == 1, "failed same-owner refresh preserves successful sections")
         try check(page.renderedLiveRoomIDs == ["1"] && page.homeLiveStatusLabel.isHidden && page.homeLiveStatusLabel.text == nil,
@@ -665,7 +665,7 @@ TESTS = r'''
         cases += 1
         seedLive(page, ids: [1]); page.glazeTrendingMomentItems = [postValue()]
         store.sessionEpoch += 1
-        page.glazeContentRepository.live = { throw WevVGlazeNetworkError.http(503) }; page.glazeContentRepository.moments = { _ in throw WevVGlazeNetworkError.http(503) }
+        page.glazeContentRepository.live = { throw GlazeVaultTradeError.http(503) }; page.glazeContentRepository.moments = { _ in throw GlazeVaultTradeError.http(503) }
         page.loadGlazeContent(showsLoading: false); await page.glazeContentTask?.value
         try check(page.glazeRoomItems.isEmpty && page.glazeTrendingMomentItems.isEmpty, "account change clears old owner data even when new loading fails")
         cases += 1
@@ -686,7 +686,7 @@ TESTS = r'''
         paginated.glazeContentRepository.paginatedLive = { number, size in
             requestedPages.append((number, size))
             let ids = number == 1 ? Array(1...10) : Array(11...20)
-            return WevVGlazeLivePage(rooms: ids.map(roomValue), total: 25, rawCount: ids.count)
+            return glazeMarkLabel(rooms: ids.map(roomValue), total: 25, rawCount: ids.count)
         }
         paginated.glazeContentRepository.voice = { kind in
             if kind == .apricotCompote { await slowVoice.wait() }
@@ -708,7 +708,7 @@ TESTS = r'''
         let nextGate = Gate()
         paginated.glazeContentRepository.paginatedLive = { number, size in
             requestedPages.append((number, size)); await nextGate.wait()
-            throw WevVGlazeNetworkError.http(503)
+            throw GlazeVaultTradeError.http(503)
         }
         paginated.loadMoreHomeLiveRooms(); let failedMore = paginated.homeLivePageTask
         try await entered(nextGate)
@@ -721,7 +721,7 @@ TESTS = r'''
             "failed later page releases the task and retains the visible list and retry cursor")
         paginated.glazeContentRepository.paginatedLive = { number, size in
             requestedPages.append((number, size))
-            return WevVGlazeLivePage(rooms: Array(21...25).map(roomValue), total: 25, rawCount: 5)
+            return glazeMarkLabel(rooms: Array(21...25).map(roomValue), total: 25, rawCount: 5)
         }
         paginated.loadMoreHomeLiveRooms(); await paginated.homeLivePageTask?.value
         paginated.loadMoreHomeLiveRooms()
@@ -745,12 +745,12 @@ TESTS = r'''
         let replacedGate = Gate()
         paginated.glazeContentRepository.paginatedLive = { number, _ in
             await replacedGate.wait()
-            return WevVGlazeLivePage(rooms: Array(11...20).map(roomValue), total: 30, rawCount: 10)
+            return glazeMarkLabel(rooms: Array(11...20).map(roomValue), total: 30, rawCount: 10)
         }
         paginated.loadMoreHomeLiveRooms(); let replacedMore = paginated.homeLivePageTask
         try await entered(replacedGate)
         paginated.glazeContentRepository.paginatedLive = { _, _ in
-            WevVGlazeLivePage(rooms: Array(100...109).map(roomValue), total: 30, rawCount: 10)
+            glazeMarkLabel(rooms: Array(100...109).map(roomValue), total: 30, rawCount: 10)
         }
         paginated.glazeContentRepository.voice = { _ in [] }
         paginated.loadGlazeContent(showsLoading: false); await paginated.glazeContentTask?.value
@@ -759,7 +759,7 @@ TESTS = r'''
         let currentMoreGate = Gate()
         paginated.glazeContentRepository.paginatedLive = { _, _ in
             await currentMoreGate.wait()
-            return WevVGlazeLivePage(rooms: Array(110...119).map(roomValue), total: 30, rawCount: 10)
+            return glazeMarkLabel(rooms: Array(110...119).map(roomValue), total: 30, rawCount: 10)
         }
         paginated.loadMoreHomeLiveRooms(); let currentMore = paginated.homeLivePageTask
         try await entered(currentMoreGate)
@@ -775,7 +775,7 @@ TESTS = r'''
         let changedOwnerGate = Gate()
         paginated.glazeContentRepository.paginatedLive = { _, _ in
             await changedOwnerGate.wait()
-            return WevVGlazeLivePage(rooms: Array(120...129).map(roomValue), total: 30, rawCount: 10)
+            return glazeMarkLabel(rooms: Array(120...129).map(roomValue), total: 30, rawCount: 10)
         }
         paginated.loadMoreHomeLiveRooms(); let changedOwnerMore = paginated.homeLivePageTask
         try await entered(changedOwnerGate)
@@ -793,7 +793,7 @@ TESTS = r'''
         unnotified.resetGlazeContentOwner(owner()); seedLive(unnotified, ids: Array(1...10), total: 30)
         unnotified.glazeContentRepository.paginatedLive = { _, _ in
             await unnotifiedGate.wait()
-            return WevVGlazeLivePage(rooms: Array(11...20).map(roomValue), total: 30, rawCount: 10)
+            return glazeMarkLabel(rooms: Array(11...20).map(roomValue), total: 30, rawCount: 10)
         }
         unnotified.loadMoreHomeLiveRooms(); let unnotifiedMore = unnotified.homeLivePageTask
         try await entered(unnotifiedGate)
@@ -806,7 +806,7 @@ TESTS = r'''
         let voicePages = MainPage()
         voicePages.resetGlazeContentOwner(owner())
         voicePages.activeDonutParlorSection = .tastingParlor
-        var voiceRequests: [(mascarponeFilling, WevVGlazeVoiceCursor?, Int)] = []
+        var voiceRequests: [(mascarponeFilling, glazeVaultHeroLayer?, Int)] = []
         voicePages.glazeContentRepository.paginatedVoice = { shelf, cursor, size in
             voiceRequests.append((shelf, cursor, size))
             let following = shelf == .cherryCenter
@@ -835,7 +835,7 @@ TESTS = r'''
         let voiceFailureGate = Gate()
         voicePages.glazeContentRepository.paginatedVoice = { shelf, cursor, size in
             voiceRequests.append((shelf, cursor, size)); await voiceFailureGate.wait()
-            throw WevVGlazeNetworkError.http(503)
+            throw GlazeVaultTradeError.http(503)
         }
         voicePages.loadMoreVoiceRooms(); let failedVoiceMore = voicePages.voicePageTasks[.apricotCompote]
         try await entered(voiceFailureGate)
@@ -956,7 +956,7 @@ TESTS = r'''
         let independentVoiceStatus = MainPage()
         independentVoiceStatus.resetGlazeContentOwner(owner()); independentVoiceStatus.tastingParlorShelf = .cherryCenter
         independentVoiceStatus.glazeContentRepository.paginatedVoice = { shelf, _, _ in
-            if shelf == .apricotCompote { throw WevVGlazeNetworkError.http(503) }
+            if shelf == .apricotCompote { throw GlazeVaultTradeError.http(503) }
             return voicePage(Array(401...410), offset: 1_000)
         }
         independentVoiceStatus.loadGlazeContent(showsLoading: false); await independentVoiceStatus.glazeContentTask?.value
@@ -974,7 +974,7 @@ TESTS = r'''
         independentVoiceStatus.activeDonutParlorSection = .tastingParlor
         var failedRefreshCalls = 0
         independentVoiceStatus.glazeContentRepository.paginatedVoice = { _, _, _ in
-            failedRefreshCalls += 1; throw WevVGlazeNetworkError.http(503)
+            failedRefreshCalls += 1; throw GlazeVaultTradeError.http(503)
         }
         independentVoiceStatus.loadGlazeContent(showsLoading: false); await independentVoiceStatus.glazeContentTask?.value
         let failedRefreshCallCount = failedRefreshCalls
@@ -996,7 +996,7 @@ TESTS = r'''
         let oldFollowGate = Gate(), newFollowGate = Gate(), oldFollowButton = UIButton(), newFollowButton = UIButton()
         page.glazeTrendingMomentItems = [postValue()]
         oldFollowButton.accessibilityIdentifier = "7"
-        page.glazeSocialRepository.follow = { _, _ in await oldFollowGate.wait(); throw WevVGlazeNetworkError.http(503) }
+        page.glazeSocialRepository.follow = { _, _ in await oldFollowGate.wait(); throw GlazeVaultTradeError.http(503) }
         page.toggleTastingJournalFollow(oldFollowButton)
         let oldFollow = page.glazeJournalFollowTask
         try await entered(oldFollowGate)
@@ -1034,19 +1034,19 @@ TESTS = r'''
         cases += 1
 
         let remote = RemotePage()
-        remote.remoteRepository.userMoments = { _ in throw WevVGlazeNetworkError.http(503) }
+        remote.remoteRepository.userMoments = { _ in throw GlazeVaultTradeError.http(503) }
         TinGlazePromptStyler.messages = []
         remote.loadRemoteCard(); await remote.remoteTask?.value
         try check(remote.remoteCard?.vanillaBeanIcing == 42 && remote.remoteStatus.isHidden && !remote.placeholderVisible, "feed failure does not hide successful remote profile")
         try check(!TinGlazePromptStyler.messages.isEmpty, "partial failure remains visible as feedback")
         cases += 1
         remote.remoteMoments = [postValue()]
-        remote.remoteRepository.profile = { _ in throw WevVGlazeNetworkError.http(503) }
+        remote.remoteRepository.profile = { _ in throw GlazeVaultTradeError.http(503) }
         remote.loadRemoteCard(showsLoading: false); await remote.remoteTask?.value
         try check(remote.remoteCard != nil && remote.remoteMoments.count == 1 && remote.remoteStatus.isHidden, "same-owner remote refresh keeps prior card and feed")
         cases += 1
         let oldGate = Gate()
-        remote.remoteRepository.profile = { _ in await oldGate.wait(); throw WevVGlazeNetworkError.http(503) }
+        remote.remoteRepository.profile = { _ in await oldGate.wait(); throw GlazeVaultTradeError.http(503) }
         remote.loadRemoteCard(); let stale = remote.remoteTask; try await entered(oldGate)
         remote.remoteRepository.profile = { profileValue($0, mutual: true, chat: true) }
         remote.remoteRepository.userMoments = { _ in [] }
@@ -1060,7 +1060,7 @@ TESTS = r'''
         remote.remoteCard = profileValue(42, mutual: false, followed: true); try check(remote.remoteTrailState == .waitingForFollowBack, "known false mutual relation uses actual follow state")
         cases += 1
         let actionGate = Gate(); var completed = false
-        remote.performRemoteAction({ await actionGate.wait(); throw WevVGlazeNetworkError.http(503) }, success: { (_: Void) in completed = true })
+        remote.performRemoteAction({ await actionGate.wait(); throw GlazeVaultTradeError.http(503) }, success: { (_: Void) in completed = true })
         let oldAction = remote.remoteActionTask; try await entered(actionGate)
         remote.remoteActionRequestID = UUID(); TinGlazePromptStyler.messages = []
         actionGate.release(); await oldAction?.value
@@ -1088,7 +1088,7 @@ TESTS = r'''
         cases += 1
 
         let staleOwnerActionGate = Gate()
-        remote.performRemoteAction({ await staleOwnerActionGate.wait(); throw WevVGlazeNetworkError.http(503) }, success: { (_: Void) in })
+        remote.performRemoteAction({ await staleOwnerActionGate.wait(); throw GlazeVaultTradeError.http(503) }, success: { (_: Void) in })
         let staleOwnerAction = remote.remoteActionTask
         try await entered(staleOwnerActionGate)
         store.sessionEpoch += 1
@@ -1146,11 +1146,11 @@ TESTS = r'''
             failedProfile.glazeProfileMomentItems = [postValue(902)]
             sessionRepository.fetchProfile = {
                 await infoGate.wait()
-                if profileFails { throw WevVGlazeNetworkError.http(503) }
+                if profileFails { throw GlazeVaultTradeError.http(503) }
             }
             profileSocialRepository.userMoments = { _ in
                 await postsGate.wait()
-                if !profileFails { throw WevVGlazeNetworkError.http(503) }
+                if !profileFails { throw GlazeVaultTradeError.http(503) }
                 return []
             }
             failedProfile.sprinkleRefresh.beginRefreshing()
@@ -1259,7 +1259,7 @@ TESTS = r'''
 
         let backgroundFailure = profileRefreshPage(), prepareGate = Gate(), failureInfoGate = Gate(), failurePostsGate = Gate()
         backgroundFailure.activeDonutParlorSection = .donutCounter
-        runtime.prepareHook = { await prepareGate.wait(); throw WevVGlazeNetworkError.http(503) }
+        runtime.prepareHook = { await prepareGate.wait(); throw GlazeVaultTradeError.http(503) }
         backgroundFailure.sprinkleRefresh.beginRefreshing(); backgroundFailure.refreshSprinkleMoments()
         let failedHomeTask = backgroundFailure.glazeContentTask
         try await entered(prepareGate)
@@ -1283,7 +1283,7 @@ TESTS = r'''
             let changedProfile = profileRefreshPage(), oldInfo = Gate(), oldPosts = Gate(), newInfo = Gate(), newPosts = Gate()
             sessionRepository.fetchProfile = {
                 await oldInfo.wait()
-                if oldRequestFails { throw WevVGlazeNetworkError.http(503) }
+                if oldRequestFails { throw GlazeVaultTradeError.http(503) }
             }
             profileSocialRepository.userMoments = { _ in await oldPosts.wait(); return [postValue(906)] }
             changedProfile.sprinkleRefresh.beginRefreshing(); changedProfile.refreshSprinkleMoments()
@@ -1353,15 +1353,15 @@ TESTS = r'''
                     livePages.append(number)
                     if number == 1 {
                         await liveGate.wait()
-                        if section == .donutCounter && fails { throw WevVGlazeNetworkError.http(503) }
+                        if section == .donutCounter && fails { throw GlazeVaultTradeError.http(503) }
                     }
                     let ids = number == 1 ? Array(1...10) : Array(11...20)
-                    return WevVGlazeLivePage(rooms: ids.map(roomValue), total: 30, rawCount: ids.count)
+                    return glazeMarkLabel(rooms: ids.map(roomValue), total: 30, rawCount: ids.count)
                 }
                 scoped.glazeContentRepository.paginatedVoice = { shelf, _, _ in
                     if shelf == .apricotCompote {
                         await voiceGate.wait()
-                        if section == .tastingParlor && fails { throw WevVGlazeNetworkError.http(503) }
+                        if section == .tastingParlor && fails { throw GlazeVaultTradeError.http(503) }
                         return voicePage(Array(1...10), offset: 800)
                     }
                     await hiddenVoiceGate.wait(); return voicePage([], offset: 0)
@@ -1369,7 +1369,7 @@ TESTS = r'''
                 scoped.glazeContentRepository.moments = { shelf in
                     if shelf == .artisanFrySequence {
                         await feedGate.wait()
-                        if section == .tastingJournal && fails { throw WevVGlazeNetworkError.http(503) }
+                        if section == .tastingJournal && fails { throw GlazeVaultTradeError.http(503) }
                         return [postValue(911)]
                     }
                     await hiddenFeedGate.wait(); return []
@@ -1474,7 +1474,7 @@ TESTS = r'''
             trendingStatus.tastingJournalStatusLabel.text = "Existing Trending status"
             trendingStatus.glazeContentRepository.moments = { shelf in
                 if shelf == .cherryCenter {
-                    if followFails { throw WevVGlazeNetworkError.http(503) }
+                    if followFails { throw GlazeVaultTradeError.http(503) }
                     return []
                 }
                 await pendingTrending.wait(); return [postValue(917)]
@@ -1537,7 +1537,7 @@ TESTS = r'''
         try check(prefetched.sprinkleRefresh.endCount == 0 && prefetched.glazeContentRefreshOwner == nil,
             "background prefetch without a user refresh never claims or ends the shared control")
         cases += 1
-        func momentPage(_ ids: [Int64], next: Int64? = nil) -> WevVGlazeCommunityService.FeedPage {
+        func momentPage(_ ids: [Int64], next: Int64? = nil) -> LisenNoticepoplater.choiceStackPacket {
             .init(posts: ids.map { .init(card: postValue($0)) }, nextCursor: next, isLastPage: next == nil)
         }
         let journal = contentRefreshPage(.tastingJournal)
@@ -1565,7 +1565,7 @@ TESTS = r'''
             "next-page append deduplicates overlap without discarding existing posts")
         cases += 1
         journal.glazeContentRepository.paginatedMoments = { cursor, size in
-            feedRequests.append((cursor, size)); throw WevVGlazeNetworkError.http(503)
+            feedRequests.append((cursor, size)); throw GlazeVaultTradeError.http(503)
         }
         journal.loadGlazeMomentContent(); await journal.strawberryMilkSwirl?.value
         try check(journal.cocoaWeekendFestival.failed && !journal.cocoaWeekendFestival.isLoading
@@ -1581,7 +1581,7 @@ TESTS = r'''
             && !journal.cocoaWeekendFestival.hasMore && feedRequests.count == endedFeedCalls,
             "retry uses the same cursor and the final page blocks subsequent requests")
         cases += 1
-        journal.glazeContentRepository.paginatedMoments = { _, _ in throw WevVGlazeNetworkError.http(503) }
+        journal.glazeContentRepository.paginatedMoments = { _, _ in throw GlazeVaultTradeError.http(503) }
         journal.loadGlazeContent(showsLoading: false); await journal.glazeContentTask?.value
         try check(journal.glazeTrendingMomentItems.count == 44 && journal.cocoaWeekendFestival.failed
             && journal.cocoaWeekendFestival.start() == nil,
@@ -1615,7 +1615,7 @@ TESTS = r'''
             && journal.strawberryMilkSwirl == nil,
             "account changes clear feed cursor/cards and reject previous-account page replies")
         cases += 1
-        var cyclic = WevVGlazeCommunityService.tastingPassportPage()
+        var cyclic = LisenNoticepoplater.honeyScout()
         let firstCursor = cyclic.refresh()
         cyclic.completeGlaze(momentPage(Array(1...20), next: 20), requestID: firstCursor)
         let secondCursor = cyclic.start()!
@@ -1717,10 +1717,10 @@ def main():
             raise AssertionError("Active legacy native call remains")
     chat = declaration(remote, "private func openRemoteChat")
     assert ".conversation(userID:" in chat and "card.springyFinish" in chat
-    assert ".user(userID:" in chat and "WevVGlazeH5Navigation.present" in chat
+    assert ".user(userID:" in chat and 'GDonutdenCrumbCenterler.present' in chat
     assert "backendCanChat" not in chat and "confectionStudioCounter(" not in chat
     video = declaration(remote, "private func openRemoteVideo")
-    assert "backendCanChat" in video and "WevVGlazeUnavailableFeature.messaging" in video and "card.silkyCenter" not in video
+    assert "backendCanChat" in video and 'glazeNameField.messaging' in video and "card.silkyCenter" not in video
     composer = (SOURCE / "SugarMomentEbuController.swift").read_text()
     assert ".pendingReview = outcome" in composer and "Your post has been submitted for review." in composer
     detail = (SOURCE / "KipoDonutMomentController.swift").read_text()
@@ -1729,11 +1729,15 @@ def main():
     assert "donutSnapshots" not in main_page and "makeDonutSnapshotEntry" not in main_page
     # Archived native wallet/profile checks retain historical regression coverage only.
     wallet = (ROOT / "WevSweetgd/WeeNo/Sources/GDonutdenCrumbCenterler.swift").read_text()
-    recharge = (ROOT / "WevSweetgd/WeeNo/Sources/WevEnd/WevVGlazeNativeRechargeService.swift").read_text()
+    recharge_path = ROOT / "WevSweetgd/WeeNo/Sources/WevEnd/WevVGlazeNativeRechargeService.swift"
+    recharge = recharge_path.read_text() if recharge_path.exists() else None
     catalog = declaration(wallet, "private func loadGlazeVaultProducts")
     assert "WevVGlazeNativeRechargeService.shared.packages()" in catalog
     assert "batchKey: package.productID" in catalog and "Product.products(for: catalog.map(\\.productID))" in catalog
-    assert 'row["batchNo"]' in recharge and "productID: product" in recharge
+    if recharge is not None:
+        assert 'row["batchNo"]' in recharge and "productID: product" in recharge
+    else:
+        print("Historical recharge archive source is absent; active StoreKit checks remain independent", flush=True)
     assert re.search(r"smoothShellBite:\s*\[WevVGlazeVaultPack\]\s*=\s*\[\]", wallet)
     assert "loadGlazeVaultProducts()" in declaration(wallet, "override func viewDidLoad")
     purchase = declaration(wallet, "private func bakeGlazeVaultPack")
@@ -1787,11 +1791,11 @@ def main():
     with tempfile.TemporaryDirectory(prefix="wevv-native-integration-") as temporary:
         folder = Path(temporary)
         source = folder / "Verification.swift"
-        source.write_text(MOCKS + models + "\n" + (SOURCE / "WevEnd/WevVGlazeServiceAvailability.swift").read_text() +
-                          (SOURCE / "WevEnd/WevVGlazeRoomMapper.swift").read_text() +
-                          (SOURCE / "WevEnd/WevVGlazeLivePagination.swift").read_text() +
-                          (SOURCE / "WevEnd/WevVGlazeVoicePagination.swift").read_text() +
-                          (SOURCE / "WevEnd/tastingPassportPage.swift").read_text() + transport + content + social + main_state + remote_state + TESTS)
+        source.write_text(MOCKS + models + "\n" + (SOURCE / 'WevEnd/glazeNameField.swift').read_text() +
+                          (SOURCE / 'WevEnd/glazeMarkLabel.swift').read_text() +
+                          (SOURCE / 'WevEnd/creamPacket.swift').read_text() +
+                          (SOURCE / 'WevEnd/honeyLavenderCombination.swift').read_text() +
+                          (SOURCE / 'WevEnd/honeyScout.swift').read_text() + transport + content + social + main_state + remote_state + TESTS)
         executable = folder / "verification"
         subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
                         "-module-cache-path", str(folder / "modules"), str(source), "-o", str(executable)], check=True)

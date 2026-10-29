@@ -9,7 +9,7 @@ import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "WevSweetgd/WevSweetgd/WevEnd/WevVGlazePurchaseCoordinator.swift"
+SOURCE = ROOT / 'WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift'
 
 SWIFT_TESTS = r'''
 @main
@@ -29,32 +29,32 @@ struct PurchaseLedgerVerification {
             throw NSError(domain: "Verification", code: 2, userInfo: [NSLocalizedDescriptionKey: label])
         }
         let directory = root.appendingPathComponent("ledger")
-        var ledger = try WevVGlazePurchaseLedger(directory: directory)
-        let scope = WevVGlazePurchaseScope(environmentID: "https://test.invalid|REPLICA", appID: "test-app", ownerID: "account-one")
-        let otherOwner = WevVGlazePurchaseScope(environmentID: scope.environmentID, appID: scope.appID, ownerID: "account-two")
-        let otherApp = WevVGlazePurchaseScope(environmentID: scope.environmentID, appID: "other-app", ownerID: scope.ownerID)
-        let otherEnvironment = WevVGlazePurchaseScope(environmentID: "https://other.invalid|REPLICA", appID: scope.appID, ownerID: scope.ownerID)
+        var ledger = try expectedGlazeProductID(directory: directory)
+        let scope = donutSnapshot(environmentID: "https://test.invalid|REPLICA", appID: "test-app", ownerID: "account-one")
+        let otherOwner = donutSnapshot(environmentID: scope.environmentID, appID: scope.appID, ownerID: "account-two")
+        let otherApp = donutSnapshot(environmentID: scope.environmentID, appID: "other-app", ownerID: scope.ownerID)
+        let otherEnvironment = donutSnapshot(environmentID: "https://other.invalid|REPLICA", appID: scope.appID, ownerID: scope.ownerID)
         let receipt = Data("offline-receipt-fixture".utf8).base64EncodedString()
         let purchaseParams: [String: Any] = ["ownerId": scope.ownerID, "orderCode": "order-one", "productId": "gems-one", "purpose": "diamonds"]
-        try check(try WevVGlazePurchaseParameters.scope(params: purchaseParams, ownerID: scope.ownerID, appID: scope.appID, environmentID: scope.environmentID) == scope, "trusted native identity accepted")
-        try rejects("H5 cannot choose another native account") { _ = try WevVGlazePurchaseParameters.scope(params: purchaseParams, ownerID: otherOwner.ownerID, appID: scope.appID, environmentID: scope.environmentID) }
-        try rejects("guest cannot authorize purchase") { _ = try WevVGlazePurchaseParameters.scope(params: purchaseParams, ownerID: "", appID: scope.appID, environmentID: scope.environmentID) }
-        try check(try WevVGlazePurchaseParameters.purchase(purchaseParams).productID == "gems-one", "valid business order accepted")
+        try check(try donutcitrusMixerView.scope(params: purchaseParams, ownerID: scope.ownerID, appID: scope.appID, environmentID: scope.environmentID) == scope, "trusted native identity accepted")
+        try rejects("H5 cannot choose another native account") { _ = try donutcitrusMixerView.scope(params: purchaseParams, ownerID: otherOwner.ownerID, appID: scope.appID, environmentID: scope.environmentID) }
+        try rejects("guest cannot authorize purchase") { _ = try donutcitrusMixerView.scope(params: purchaseParams, ownerID: "", appID: scope.appID, environmentID: scope.environmentID) }
+        try check(try donutcitrusMixerView.purchase(purchaseParams).productID == "gems-one", "valid business order accepted")
         var invalidParams = purchaseParams
         invalidParams["purpose"] = "subscription"
-        try rejects("only diamonds purpose allowed") { _ = try WevVGlazePurchaseParameters.purchase(invalidParams) }
+        try rejects("only diamonds purpose allowed") { _ = try donutcitrusMixerView.purchase(invalidParams) }
         invalidParams = purchaseParams
         invalidParams["ownerId"] = 1
-        try rejects("numeric owner cannot bypass string identity") { _ = try WevVGlazePurchaseParameters.scope(params: invalidParams, ownerID: "1", appID: scope.appID, environmentID: scope.environmentID) }
-        try check(try WevVGlazePurchaseParameters.sync(["ownerId": scope.ownerID]).acknowledged.isEmpty, "sync optional arrays default empty")
-        try check(try WevVGlazePurchaseParameters.sync(["ownerId": scope.ownerID, "acknowledgedTransactionIds": (0..<100).map(String.init)]).acknowledged.count == 100, "100 ACK entries accepted")
-        try rejects("101 ACK entries rejected") { _ = try WevVGlazePurchaseParameters.sync(["ownerId": scope.ownerID, "acknowledgedTransactionIds": (0..<101).map(String.init)]) }
-        try rejects("101 excluded entries rejected") { _ = try WevVGlazePurchaseParameters.sync(["ownerId": scope.ownerID, "excludeTransactionIds": (0..<101).map(String.init)]) }
-        try rejects("null array is not omitted") { _ = try WevVGlazePurchaseParameters.sync(["ownerId": scope.ownerID, "acknowledgedTransactionIds": NSNull()]) }
-        try rejects("mixed transaction array rejected") { _ = try WevVGlazePurchaseParameters.sync(["ownerId": scope.ownerID, "excludeTransactionIds": ["1", 2]]) }
+        try rejects("numeric owner cannot bypass string identity") { _ = try donutcitrusMixerView.scope(params: invalidParams, ownerID: "1", appID: scope.appID, environmentID: scope.environmentID) }
+        try check(try donutcitrusMixerView.sync(["ownerId": scope.ownerID]).acknowledged.isEmpty, "sync optional arrays default empty")
+        try check(try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "acknowledgedTransactionIds": (0..<100).map(String.init)]).acknowledged.count == 100, "100 ACK entries accepted")
+        try rejects("101 ACK entries rejected") { _ = try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "acknowledgedTransactionIds": (0..<101).map(String.init)]) }
+        try rejects("101 excluded entries rejected") { _ = try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "excludeTransactionIds": (0..<101).map(String.init)]) }
+        try rejects("null array is not omitted") { _ = try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "acknowledgedTransactionIds": NSNull()]) }
+        try rejects("mixed transaction array rejected") { _ = try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "excludeTransactionIds": ["1", 2]]) }
         try check(try ledger.pending(scope: scope, excluded: []).isEmpty, "initial empty queue")
         let token = try ledger.begin(scope: scope, orderCode: "order-one", productID: "gems-one")
-        ledger = try WevVGlazePurchaseLedger(directory: directory)
+        ledger = try expectedGlazeProductID(directory: directory)
         try check(ledger.scope(for: token) == scope, "purchase context survives relaunch")
         try rejects("legacy submitted is unresolved, not fabricated Ask to Buy") { _ = try ledger.existingResult(scope: scope, orderCode: "order-one", productID: "gems-one") }
         try rejects("same order cannot change product") { _ = try ledger.existingResult(scope: scope, orderCode: "order-one", productID: "different") }
@@ -63,7 +63,7 @@ struct PurchaseLedgerVerification {
         _ = try ledger.capture(token: token, productID: "gems-one", transactionID: "trade-one", receipt: receipt, state: "purchased", purchasedAt: Date(timeIntervalSince1970: 1))
         try ledger.mark(token, phase: "failed")
         try check(try ledger.existingResult(scope: scope, orderCode: "order-one", productID: "gems-one")?["status"] as? String == "purchased", "error result cannot downgrade an earlier verified update")
-        ledger = try WevVGlazePurchaseLedger(directory: directory)
+        ledger = try expectedGlazeProductID(directory: directory)
         let recovered = try ledger.pending(scope: scope, excluded: [])
         try check(recovered.count == 1 && recovered[0]["receipt"] as? String == receipt && recovered[0]["orderCode"] as? String == "order-one", "late purchase materials survive restart")
         try check(try ledger.pending(scope: otherOwner, excluded: []).isEmpty && ledger.pending(scope: otherApp, excluded: []).isEmpty && ledger.pending(scope: otherEnvironment, excluded: []).isEmpty, "account App service isolation")
@@ -76,7 +76,7 @@ struct PurchaseLedgerVerification {
         try rejects("transaction cannot be reassigned across accounts") { _ = try ledger.capture(token: alienToken, productID: "gems-one", transactionID: "trade-one", receipt: receipt, state: "purchased", purchasedAt: Date()) }
         try ledger.acknowledge(scope: scope, transactionIDs: ["trade-one", "unknown"])
         try ledger.acknowledge(scope: scope, transactionIDs: ["trade-one"])
-        ledger = try WevVGlazePurchaseLedger(directory: directory)
+        ledger = try expectedGlazeProductID(directory: directory)
         try check(try ledger.pending(scope: scope, excluded: []).isEmpty && ledger.isAcknowledged(token: token, transactionID: "trade-one"), "ACK removes material and survives relaunch")
         try rejects("ACKed transaction cannot reappear") { _ = try ledger.capture(token: token, productID: "gems-one", transactionID: "trade-one", receipt: receipt, state: "purchased", purchasedAt: Date()) }
         try rejects("delivered order cannot charge again") { _ = try ledger.existingResult(scope: scope, orderCode: "order-one", productID: "gems-one") }
@@ -87,7 +87,7 @@ struct PurchaseLedgerVerification {
         try check(try ledger.pending(scope: scope, excluded: []).isEmpty, "invalid capture leaves queue intact")
         let failed = try ledger.begin(scope: scope, orderCode: "failed-order", productID: "gems-one")
         try ledger.mark(failed, phase: "failed")
-        ledger = try WevVGlazePurchaseLedger(directory: directory)
+        ledger = try expectedGlazeProductID(directory: directory)
         try check(try ledger.existingResult(scope: scope, orderCode: "failed-order", productID: "gems-one") == nil, "explicit rejected attempt can retry after restart")
         _ = try ledger.capture(token: failed, productID: "gems-one", transactionID: "late-failed-trade", receipt: receipt, state: "purchased", purchasedAt: Date())
         try check(try ledger.existingResult(scope: scope, orderCode: "failed-order", productID: "gems-one")?["status"] as? String == "purchased", "late transaction keeps original rejected token ownership")
@@ -96,7 +96,7 @@ struct PurchaseLedgerVerification {
         try rejects("error result cannot downgrade durable ACK") { _ = try ledger.existingResult(scope: scope, orderCode: "failed-order", productID: "gems-one") }
         let uncertain = try ledger.begin(scope: scope, orderCode: "uncertain-order", productID: "gems-one")
         try ledger.mark(uncertain, phase: "uncertain")
-        ledger = try WevVGlazePurchaseLedger(directory: directory)
+        ledger = try expectedGlazeProductID(directory: directory)
         try rejects("ambiguous outcome remains blocked after restart") { _ = try ledger.existingResult(scope: scope, orderCode: "uncertain-order", productID: "gems-one") }
         for index in 0..<25 {
             let context = try ledger.begin(scope: scope, orderCode: "batch-\(index)", productID: "gems-one")
@@ -106,14 +106,14 @@ struct PurchaseLedgerVerification {
         try check(batch.count == 20 && batch[0]["state"] as? String == "restored", "maximum batch size and exact stored state")
         let exclusion = (0..<20).map { "batch-trade-\($0)" }
         try check(try ledger.pending(scope: scope, excluded: exclusion).count == 5, "exclude permits pagination without deletion")
-        let largeScope = WevVGlazePurchaseScope(environmentID: scope.environmentID, appID: scope.appID, ownerID: "large-receipts")
+        let largeScope = donutSnapshot(environmentID: scope.environmentID, appID: scope.appID, ownerID: "large-receipts")
         let largeReceipt = Data(repeating: 42, count: 1_100_000).base64EncodedString()
         for index in 0..<2 {
             let context = try ledger.begin(scope: largeScope, orderCode: "large-\(index)", productID: "gems-one")
             _ = try ledger.capture(token: context, productID: "gems-one", transactionID: "large-trade-\(index)", receipt: largeReceipt, state: "purchased", purchasedAt: Date(timeIntervalSince1970: Double(index)))
         }
         try check(try ledger.pending(scope: largeScope, excluded: []).count == 1, "aggregate receipt character bound")
-        let hugeScope = WevVGlazePurchaseScope(environmentID: scope.environmentID, appID: scope.appID, ownerID: "oversize-receipt")
+        let hugeScope = donutSnapshot(environmentID: scope.environmentID, appID: scope.appID, ownerID: "oversize-receipt")
         let hugeToken = try ledger.begin(scope: hugeScope, orderCode: "huge-order", productID: "gems-one")
         _ = try ledger.capture(token: hugeToken, productID: "gems-one", transactionID: "huge-trade", receipt: Data(repeating: 7, count: 2_100_000).base64EncodedString(), state: "purchased", purchasedAt: Date())
         try rejects("oversize receipt fails instead of pretending queue empty") { _ = try ledger.pending(scope: hugeScope, excluded: []) }
@@ -123,7 +123,7 @@ struct PurchaseLedgerVerification {
         try rejects("failed persistence is surfaced") { _ = try ledger.begin(scope: scope, orderCode: "disk-failure", productID: "gems-one") }
         try FileManager.default.removeItem(at: directory)
         try FileManager.default.moveItem(at: backupDirectory, to: directory)
-        ledger = try WevVGlazePurchaseLedger(directory: directory)
+        ledger = try expectedGlazeProductID(directory: directory)
         try check(try ledger.existingResult(scope: scope, orderCode: "disk-failure", productID: "gems-one") == nil && ledger.pending(scope: scope, excluded: []).count == 20, "failed write preserves prior durable state")
         let file = directory.appendingPathComponent(scope.storageKey + ".json")
         let fileAttributes = try FileManager.default.attributesOfItem(atPath: file.path)
@@ -150,10 +150,10 @@ struct PurchaseLedgerVerification {
         let corruptDirectory = root.appendingPathComponent("corrupt")
         try FileManager.default.createDirectory(at: corruptDirectory, withIntermediateDirectories: true)
         try Data("broken".utf8).write(to: corruptDirectory.appendingPathComponent(scope.storageKey + ".json"))
-        try rejects("corrupt persistent data is not an empty queue") { _ = try WevVGlazePurchaseLedger(directory: corruptDirectory) }
+        try rejects("corrupt persistent data is not an empty queue") { _ = try expectedGlazeProductID(directory: corruptDirectory) }
         let symlink = root.appendingPathComponent("symlink-ledger")
         try FileManager.default.createSymbolicLink(at: symlink, withDestinationURL: directory)
-        try rejects("symlink store rejected") { _ = try WevVGlazePurchaseLedger(directory: symlink) }
+        try rejects("symlink store rejected") { _ = try expectedGlazeProductID(directory: symlink) }
         print("SDK2 purchase ledger: \(passed) offline checks passed; no StoreKit purchase or server request performed.")
     }
 }

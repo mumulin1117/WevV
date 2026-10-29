@@ -14,8 +14,8 @@ SOURCES = ROOT / 'WevSweetgd/WevSweetgd'
 
 
 def main():
-    navigation = (SOURCES / 'WevEnd/WevVGlazeH5Navigation.swift').read_text().replace('import UIKit', '')
-    entry = (SOURCES / 'WevEnd/WevVGlazeH5Entry.swift').read_text().replace('import Foundation', '')
+    navigation = (SOURCES / 'WevEnd/GDonutdenCrumbCenterler.swift').read_text().replace('import UIKit', '')
+    entry = (SOURCES / 'WevEnd/chosenTiles.swift').read_text().replace('import Foundation', '')
     host = (SOURCES / 'UKGlazeActortroller.swift').read_text()
     start = host.index('    private func performGlazeExit(target: Int) {')
     end = host.index('    private func showGlazeReleaseFailure()', start)
@@ -130,9 +130,9 @@ struct pearFilling: Sendable {
 }
 ''' + entry + r'''
 @MainActor final class UKGlazeActortroller: UIViewController {
-    static func entryController(for entry: WevVGlazeH5Entry) -> UKGlazeActortroller? { UKGlazeActortroller(entry: entry) }
+    static func entryController(for entry: chosenTiles) -> UKGlazeActortroller? { UKGlazeActortroller(entry: entry) }
     static func prewarmGlazeWebView() {}
-    let entry: WevVGlazeH5Entry
+    let entry: chosenTiles
     var onGlazeClosed: (() -> Void)?
     private var glazeCloseCompletionDelivered = false
     private var glazeExiting = false
@@ -140,7 +140,7 @@ struct pearFilling: Sendable {
     var glazePreviousPopEnabled: Bool?
     var teardownCount = 0
     var teardownPresentationStates: [Bool] = []
-    init(entry: WevVGlazeH5Entry) { self.entry = entry; super.init() }
+    init(entry: chosenTiles) { self.entry = entry; super.init() }
     func close(target: Int = 0) { performGlazeExit(target: target) }
     func applyGlazeNavigation(_ target: Int) { Events.values.append("navigation.disabled") }
     func tearDownGlaze() {
@@ -180,7 +180,7 @@ struct pearFilling: Sendable {
     }
     static func open(_ proposedPresenter: UIViewController? = nil, onClose: (() -> Void)? = nil) -> (UIViewController, UKGlazeActortroller) {
         let presenter = proposedPresenter ?? UIViewController()
-        WevVGlazeH5Navigation.present(.messages, from: presenter, onClose: onClose)
+        GDonutdenCrumbCenterler.present(.messages, from: presenter, onClose: onClose)
         guard let host = presenter.presentedViewController as? UKGlazeActortroller else { fatalError("Missing H5 host") }
         return (presenter, host)
     }
@@ -188,19 +188,19 @@ struct pearFilling: Sendable {
         reset()
         let blocked = UIViewController()
         blocked.present(UIViewController(), animated: false)
-        WevVGlazeH5Navigation.present(.messages, from: blocked)
+        GDonutdenCrumbCenterler.present(.messages, from: blocked)
         expect(blocked.presentationCount == 1, "An existing modal prevents duplicate presentation")
 
         reset()
         let invalid = UIViewController()
-        WevVGlazeH5Navigation.present(.user(userID: "0", imAccount: nil), from: invalid)
+        GDonutdenCrumbCenterler.present(.user(userID: "0", imAccount: nil), from: invalid)
         expect(invalid.presentedViewController is UIAlertController, "Invalid business IDs show the existing alert")
         expect(repository.refreshes == 0, "Invalid entries do not prepare sessions")
 
         reset()
         store.isTasterReady = false
         let guest = UIViewController()
-        WevVGlazeH5Navigation.present(.messages, from: guest)
+        GDonutdenCrumbCenterler.present(.messages, from: guest)
         guard let gate = guest.presentedViewController as? UBakerytropicalMangoEssence else { fatalError("Missing login gate") }
         expect(repository.refreshes == 0, "Guests enter the native welcome without session refresh")
         gate.onWevvDonutReady?()

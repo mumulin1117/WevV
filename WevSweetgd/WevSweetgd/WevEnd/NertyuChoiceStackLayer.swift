@@ -3,7 +3,7 @@ import CoreFoundation
 import CommonCrypto
 
 /// Failures retain only contract/error metadata. Request bodies, credentials and keys are never logged.
-enum WevVGlazeNetworkError: Error, LocalizedError, Sendable {
+enum GlazeVaultTradeError: Error, LocalizedError, Sendable {
     case http(Int)
     case business(code: String, message: String)
     case invalidConfiguration
@@ -30,7 +30,7 @@ enum WevVGlazeNetworkError: Error, LocalizedError, Sendable {
 }
 
 @MainActor
-struct WevVGlazeOPIProfile {
+struct WevVGlazeVaultPack {
     let appID: String
     let bootstrapAppID: String
     let environment: String
@@ -69,7 +69,7 @@ struct WevVGlazeOPIProfile {
               let paths = aliases["path"] as? [String: String], !paths.isEmpty,
               let fields = aliases["field"] as? [String: String], !fields.isEmpty,
               let headers = aliases["header"] as? [String: String] else {
-            throw WevVGlazeNetworkError.invalidConfiguration
+            throw GlazeVaultTradeError.invalidConfiguration
         }
         let routing: [String: Any]
         if let nativeRouting {
@@ -79,14 +79,14 @@ struct WevVGlazeOPIProfile {
                   !bootstrapID.isEmpty,
                   bootstrapID.utf8.allSatisfy({ (48...57).contains($0) }),
                   Self.secureURL(nativeRouting["bootstrapBaseUrl"], scheme: "https") != nil else {
-                throw WevVGlazeNetworkError.invalidConfiguration
+                throw GlazeVaultTradeError.invalidConfiguration
             }
             routing = nativeRouting
         } else { routing = services }
         let environment: String
         if let rawEnvironment = routing["environment"] {
             guard let value = rawEnvironment as? String, ["test", "production"].contains(value) else {
-                throw WevVGlazeNetworkError.invalidConfiguration
+                throw GlazeVaultTradeError.invalidConfiguration
             }
             environment = value
         } else { environment = "test" }
@@ -94,30 +94,30 @@ struct WevVGlazeOPIProfile {
         if let rawBootstrapAppID = routing["bootstrapAppId"] {
             guard let value = rawBootstrapAppID as? String,
                   !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                throw WevVGlazeNetworkError.invalidConfiguration
+                throw GlazeVaultTradeError.invalidConfiguration
             }
             bootstrapAppID = value
         } else { bootstrapAppID = appID }
         let bootstrapURL: URL
         if let rawBootstrapURL = routing["bootstrapBaseUrl"] {
             guard let value = Self.secureURL(rawBootstrapURL, scheme: "https") else {
-                throw WevVGlazeNetworkError.invalidConfiguration
+                throw GlazeVaultTradeError.invalidConfiguration
             }
             bootstrapURL = value
         } else { bootstrapURL = initialURL }
         var reverseFields: [String: String] = [:]
         for (original, alias) in fields {
             guard !original.isEmpty, !alias.isEmpty, reverseFields[alias] == nil else {
-                throw WevVGlazeNetworkError.invalidConfiguration
+                throw GlazeVaultTradeError.invalidConfiguration
             }
             reverseFields[alias] = original
         }
         for required in ["appId", "appVersion", "deviceNo", "language", "refreshToken"] {
             guard let value = headers[required], !value.isEmpty else {
-                throw WevVGlazeNetworkError.missingContract("Profile header \(required)")
+                throw GlazeVaultTradeError.missingContract("Profile header \(required)")
             }
         }
-        guard paths["/_v2/config/open"] != nil else { throw WevVGlazeNetworkError.missingContract("config/open") }
+        guard paths["/_v2/config/open"] != nil else { throw GlazeVaultTradeError.missingContract("config/open") }
         self.appID = appID
         self.bootstrapAppID = bootstrapAppID
         self.environment = environment
@@ -144,7 +144,7 @@ struct WevVGlazeOPIProfile {
 }
 
 @MainActor
-struct WevVGlazeLaunchRoute {
+struct crumbBioView {
     let apiBaseURL: URL
     let fullFeaturesEnabled: Bool
     let revision: Int
@@ -152,7 +152,7 @@ struct WevVGlazeLaunchRoute {
 }
 
 @MainActor
-struct WevVGlazeRuntimeConfiguration {
+struct donutAvatarChoiceTitles {
     let imAppKey: String
     let noticeAccount: String
     let rtcAppId: String
@@ -166,7 +166,7 @@ struct WevVGlazeRuntimeConfiguration {
     init(dictionary: [String: Any]) throws {
         func required(_ name: String) throws -> String {
             guard let value = dictionary[name] as? String, !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                throw WevVGlazeNetworkError.missingContract("runtimeConfig.\(name)")
+                throw GlazeVaultTradeError.missingContract("runtimeConfig.\(name)")
             }
             return value
         }
@@ -179,9 +179,9 @@ struct WevVGlazeRuntimeConfiguration {
         guard imKey.count == 32, imKey.unicodeScalars.allSatisfy({ hex.contains($0) }),
               rtcID.count == 32, rtcID.unicodeScalars.allSatisfy({ hex.contains($0) }),
               notice.count <= 64, key.utf8.count == kCCKeySizeAES128, iv.utf8.count == kCCBlockSizeAES128,
-              let sapi = WevVGlazeOPIProfile.secureURL(dictionary["sapiBaseUrl"], scheme: "https"),
-              let socket = WevVGlazeOPIProfile.secureURL(dictionary["socketUrl"], scheme: "wss") else {
-            throw WevVGlazeNetworkError.invalidConfiguration
+              let sapi = WevVGlazeVaultPack.secureURL(dictionary["sapiBaseUrl"], scheme: "https"),
+              let socket = WevVGlazeVaultPack.secureURL(dictionary["socketUrl"], scheme: "wss") else {
+            throw GlazeVaultTradeError.invalidConfiguration
         }
         imAppKey = imKey
         noticeAccount = notice
@@ -195,37 +195,37 @@ struct WevVGlazeRuntimeConfiguration {
 }
 
 @MainActor
-struct WevVGlazeOpenContext {
-    let runtimeConfig: WevVGlazeRuntimeConfiguration
+struct donutAvatarChoices {
+    let runtimeConfig: donutAvatarChoiceTitles
     let cdnDomainConfig: String?
     let accessToken: String?
     let expiresIn: Int?
 }
 
 @MainActor
-struct WevVGlazeSAPITicket {
+struct donutCameraButton {
     let tokenValue: String
     let expiresAt: Date
 }
 
 /// OPI and SAPI deliberately have separate codecs and credentials. Session renewal belongs to the caller.
 @MainActor
-final class WevVGlazeNetworkFoundation {
-    let profile: WevVGlazeOPIProfile
+final class NertyuChoiceStackLayer {
+    let profile: WevVGlazeVaultPack
     private let deviceNo: String
     private let hostVersion: String
     private let language: String
     private let session: URLSession
-    private(set) var currentRoute: WevVGlazeLaunchRoute?
-    private(set) var currentOpen: WevVGlazeOpenContext?
+    private(set) var currentRoute: crumbBioView?
+    private(set) var currentOpen: donutAvatarChoices?
     private(set) var openRevision = 0
-    private var routeTask: Task<WevVGlazeLaunchRoute, Error>?
-    private var openTask: Task<WevVGlazeOpenContext, Error>?
+    private var routeTask: Task<crumbBioView, Error>?
+    private var openTask: Task<donutAvatarChoices, Error>?
     private var openTaskRefreshToken: String?
     private var currentOpenRefreshToken: String?
     private var sessionEpoch = 0
 
-    init(profile: WevVGlazeOPIProfile, deviceNo: String, hostVersion: String, language: String, session: URLSession = .shared) {
+    init(profile: WevVGlazeVaultPack, deviceNo: String, hostVersion: String, language: String, session: URLSession = .shared) {
         self.profile = profile
         self.deviceNo = deviceNo
         self.hostVersion = hostVersion
@@ -234,7 +234,7 @@ final class WevVGlazeNetworkFoundation {
     }
 
     /// The startup contract prohibits disk/HTTP caching. A completed route is reused only in this process.
-    func bootstrap(force: Bool = false) async throws -> WevVGlazeLaunchRoute {
+    func bootstrap(force: Bool = false) async throws -> crumbBioView {
         if let routeTask { return try await routeTask.value }
         if !force, let currentRoute { return currentRoute }
         let task = Task { @MainActor in
@@ -253,7 +253,7 @@ final class WevVGlazeNetworkFoundation {
 
     /// Established H5 entries force a fresh Open; startup may reuse one completed during preparation.
     /// Concurrent calls for the same credential share one request.
-    func open(refreshToken: String? = nil, force: Bool = false) async throws -> WevVGlazeOpenContext {
+    func open(refreshToken: String? = nil, force: Bool = false) async throws -> donutAvatarChoices {
         if let openTask {
             if openTaskRefreshToken == refreshToken { return try await openTask.value }
             // A different account must never receive an older account's Open result.
@@ -262,7 +262,7 @@ final class WevVGlazeNetworkFoundation {
         }
         if !force, currentOpenRefreshToken == refreshToken, let currentOpen {
             #if DEBUG
-            WevVGlazeIMDiagnostics.openSucceeded(appID: profile.appID, imAppKeyLength: currentOpen.runtimeConfig.imAppKey.utf8.count,
+            conversationAvatar.openSucceeded(appID: profile.appID, imAppKeyLength: currentOpen.runtimeConfig.imAppKey.utf8.count,
                                                 imAppKeyValid: true, cached: true)
             #endif
             return currentOpen
@@ -279,27 +279,27 @@ final class WevVGlazeNetworkFoundation {
                 guard self.sessionEpoch == epoch else { throw CancellationError() }
                 guard let object = try JSONSerialization.jsonObject(with: response) as? [String: Any],
                       let runtime = object["runtimeConfig"] as? [String: Any] else {
-                    throw WevVGlazeNetworkError.missingContract("runtimeConfig")
+                    throw GlazeVaultTradeError.missingContract("runtimeConfig")
                 }
                 let cdn: String?
                 if let raw = object["cdnDomainConfig"], !(raw is NSNull) {
-                    guard let string = raw as? String else { throw WevVGlazeNetworkError.invalidResponse }
+                    guard let string = raw as? String else { throw GlazeVaultTradeError.invalidResponse }
                     cdn = string
                 } else { cdn = nil }
-                let context = WevVGlazeOpenContext(runtimeConfig: try WevVGlazeRuntimeConfiguration(dictionary: runtime),
+                let context = donutAvatarChoices(runtimeConfig: try donutAvatarChoiceTitles(dictionary: runtime),
                                                   cdnDomainConfig: cdn, accessToken: object["accessToken"] as? String,
                                                   expiresIn: Self.integer(object["expiresIn"]))
                 self.currentOpen = context
                 self.currentOpenRefreshToken = refreshToken
                 self.openRevision &+= 1
                 #if DEBUG
-                WevVGlazeIMDiagnostics.openSucceeded(appID: self.profile.appID, imAppKeyLength: context.runtimeConfig.imAppKey.utf8.count,
+                conversationAvatar.openSucceeded(appID: self.profile.appID, imAppKeyLength: context.runtimeConfig.imAppKey.utf8.count,
                                                     imAppKeyValid: true, cached: false)
                 #endif
                 return context
             } catch {
                 #if DEBUG
-                WevVGlazeIMDiagnostics.failure(stage: .open, error: error)
+                conversationAvatar.failure(stage: .open, error: error)
                 #endif
                 throw error
             }
@@ -317,7 +317,7 @@ final class WevVGlazeNetworkFoundation {
         currentOpenRefreshToken = nil
         // App-level routing/configuration remains usable for browsing; account tokens do not.
         if let currentOpen {
-            self.currentOpen = WevVGlazeOpenContext(runtimeConfig: currentOpen.runtimeConfig,
+            self.currentOpen = donutAvatarChoices(runtimeConfig: currentOpen.runtimeConfig,
                 cdnDomainConfig: currentOpen.cdnDomainConfig, accessToken: nil, expiresIn: nil)
         }
     }
@@ -325,7 +325,7 @@ final class WevVGlazeNetworkFoundation {
     func opi(path: String, body: Data, accessToken: String? = nil, refreshToken: String? = nil) async throws -> Data {
         let epoch = sessionEpoch
         guard let mappedPath = profile.paths[path], mappedPath.hasPrefix("/"), !mappedPath.hasPrefix("//") else {
-            throw WevVGlazeNetworkError.missingContract("OPI path \(path)")
+            throw GlazeVaultTradeError.missingContract("OPI path \(path)")
         }
         let route = try await bootstrap()
         try Task.checkCancellation()
@@ -341,9 +341,9 @@ final class WevVGlazeNetworkFoundation {
         request.setValue("no-store", forHTTPHeaderField: "Cache-Control")
         request.httpShouldHandleCookies = false
         func header(_ name: String, _ value: String) throws {
-            guard !value.isEmpty else { throw WevVGlazeNetworkError.invalidConfiguration }
+            guard !value.isEmpty else { throw GlazeVaultTradeError.invalidConfiguration }
             let actual = semantic ? name : profile.headers[name]
-            guard let actual, !actual.isEmpty else { throw WevVGlazeNetworkError.missingContract("Profile header \(name)") }
+            guard let actual, !actual.isEmpty else { throw GlazeVaultTradeError.missingContract("Profile header \(name)") }
             request.setValue(value, forHTTPHeaderField: actual)
         }
         // SDK 2.0 compatibility: preserve the plain appId in addition to its published alias.
@@ -357,7 +357,7 @@ final class WevVGlazeNetworkFoundation {
         let envelope = try await send(request)
         try Task.checkCancellation()
         guard sessionEpoch == epoch else { throw CancellationError() }
-        guard let code = envelope["code"] as? NSNumber, CFGetTypeID(code) != CFBooleanGetTypeID() else { throw WevVGlazeNetworkError.invalidResponse }
+        guard let code = envelope["code"] as? NSNumber, CFGetTypeID(code) != CFBooleanGetTypeID() else { throw GlazeVaultTradeError.invalidResponse }
         guard code.doubleValue == 0 else { throw Self.business(envelope, code: code.stringValue) }
         let decoded = try Self.payload(envelope, key: profile.encryptionKey, iv: profile.encryptionIV)
         #if DEBUG
@@ -394,7 +394,7 @@ final class WevVGlazeNetworkFoundation {
 
     func sapi(path: String, body: Data, authToken: String) async throws -> Data {
         guard path.hasPrefix("/sapi/"), !path.contains("?"), !path.contains("#"),
-              let runtime = currentOpen?.runtimeConfig else { throw WevVGlazeNetworkError.missingContract("current Open / SAPI path") }
+              let runtime = currentOpen?.runtimeConfig else { throw GlazeVaultTradeError.missingContract("current Open / SAPI path") }
         _ = try JSONSerialization.jsonObject(with: body, options: [.fragmentsAllowed])
         let key = Data(runtime.sapiAesKey.utf8)
         let iv = Data(runtime.sapiAesIv.utf8)
@@ -410,27 +410,27 @@ final class WevVGlazeNetworkFoundation {
         request.setValue(authToken, forHTTPHeaderField: "auth_token")
         request.setValue(language, forHTTPHeaderField: "Accept-Language")
         let envelope = try await send(request)
-        guard let code = envelope["code"] as? String else { throw WevVGlazeNetworkError.invalidResponse }
+        guard let code = envelope["code"] as? String else { throw GlazeVaultTradeError.invalidResponse }
         guard code == "200" else { throw Self.business(envelope, code: code) }
         return try Self.jsonData(Self.payload(envelope, key: key, iv: iv))
     }
 
     /// No ticket is cached here: the session owner keys its cache by account, service and environment.
-    func exchange(legacyToken: String) async throws -> WevVGlazeSAPITicket {
-        guard !legacyToken.isEmpty else { throw WevVGlazeNetworkError.missingContract("legacyToken") }
+    func exchange(legacyToken: String) async throws -> donutCameraButton {
+        guard !legacyToken.isEmpty else { throw GlazeVaultTradeError.missingContract("legacyToken") }
         let body = try JSONSerialization.data(withJSONObject: ["token": legacyToken])
         let result = try await sapi(path: "/sapi/auth/v1/client/auth/exchangeToken", body: body, authToken: "")
         guard let object = try JSONSerialization.jsonObject(with: result) as? [String: Any],
-              let value = object["tokenValue"] as? String, !value.isEmpty else { throw WevVGlazeNetworkError.missingContract("tokenValue") }
+              let value = object["tokenValue"] as? String, !value.isEmpty else { throw GlazeVaultTradeError.missingContract("tokenValue") }
         let suppliedTimeout = Self.integer(object["tokenTimeout"]) ?? 0
         let timeout = suppliedTimeout > 0 ? suppliedTimeout : 1800
-        return WevVGlazeSAPITicket(tokenValue: value, expiresAt: Date().addingTimeInterval(TimeInterval(timeout)))
+        return donutCameraButton(tokenValue: value, expiresAt: Date().addingTimeInterval(TimeInterval(timeout)))
     }
 
-    private func fetchLaunchRoute() async throws -> WevVGlazeLaunchRoute {
+    private func fetchLaunchRoute() async throws -> crumbBioView {
         var components = URLComponents(url: try Self.endpoint(base: profile.bootstrapBaseURL, path: "/sugary9/crumb/voice"), resolvingAgainstBaseURL: false)
         components?.queryItems = [URLQueryItem(name: "treatWarmDelight", value: profile.bootstrapAppID)]
-        guard let url = components?.url else { throw WevVGlazeNetworkError.invalidConfiguration }
+        guard let url = components?.url else { throw GlazeVaultTradeError.invalidConfiguration }
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 3)
         request.httpMethod = "GET"
         request.httpShouldHandleCookies = false
@@ -439,9 +439,9 @@ final class WevVGlazeNetworkFoundation {
         let response = try await send(request)
         // The deployed infrastructure endpoint may omit the business envelope entirely.
         if let rawCode = response["treatRecommendationPhoto"] {
-            guard let code = rawCode as? NSNumber, CFGetTypeID(code) != CFBooleanGetTypeID() else { throw WevVGlazeNetworkError.invalidResponse }
+            guard let code = rawCode as? NSNumber, CFGetTypeID(code) != CFBooleanGetTypeID() else { throw GlazeVaultTradeError.invalidResponse }
             guard code.doubleValue == 0 else {
-                throw WevVGlazeNetworkError.business(code: code.stringValue, message: response["sweetnessVisitRing"] as? String ?? "Startup failed. Please retry.")
+                throw GlazeVaultTradeError.business(code: code.stringValue, message: response["sweetnessVisitRing"] as? String ?? "Startup failed. Please retry.")
             }
         }
         let routeAppID: String?
@@ -456,26 +456,26 @@ final class WevVGlazeNetworkFoundation {
               !target.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
               let revision = Self.integer(response["visitFillingCheckin"]), revision > 0,
               let enabled = response["conversationTastingVisit"] as? NSNumber, CFGetTypeID(enabled) == CFBooleanGetTypeID(),
-              let apiURL = WevVGlazeOPIProfile.secureURL(response["cozySeasonalGlaze"], scheme: "https") else {
-            throw WevVGlazeNetworkError.invalidConfiguration
+              let apiURL = WevVGlazeVaultPack.secureURL(response["cozySeasonalGlaze"], scheme: "https") else {
+            throw GlazeVaultTradeError.invalidConfiguration
         }
-        return WevVGlazeLaunchRoute(apiBaseURL: apiURL,
+        return crumbBioView(apiBaseURL: apiURL,
                                    fullFeaturesEnabled: enabled.boolValue, revision: revision, target: target)
     }
 
     private func send(_ request: URLRequest) async throws -> [String: Any] {
         try Task.checkCancellation()
         let (data, response) = try await session.data(for: request)
-        guard let http = response as? HTTPURLResponse else { throw WevVGlazeNetworkError.invalidResponse }
-        guard (200..<300).contains(http.statusCode) else { throw WevVGlazeNetworkError.http(http.statusCode) }
-        guard let object = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw WevVGlazeNetworkError.invalidResponse }
+        guard let http = response as? HTTPURLResponse else { throw GlazeVaultTradeError.invalidResponse }
+        guard (200..<300).contains(http.statusCode) else { throw GlazeVaultTradeError.http(http.statusCode) }
+        guard let object = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw GlazeVaultTradeError.invalidResponse }
         return object
     }
 
     private static func endpoint(base: URL, path: String, sapi: Bool = false) throws -> URL {
         guard path.hasPrefix("/"), !path.hasPrefix("//"), !path.contains("?"), !path.contains("#"),
               !path.split(separator: "/").contains(".."),
-              var components = URLComponents(url: base, resolvingAgainstBaseURL: false) else { throw WevVGlazeNetworkError.invalidConfiguration }
+              var components = URLComponents(url: base, resolvingAgainstBaseURL: false) else { throw GlazeVaultTradeError.invalidConfiguration }
         var prefix = components.path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
         if sapi, path.hasPrefix("/sapi/") {
             let parts = prefix.split(separator: "/")
@@ -484,11 +484,11 @@ final class WevVGlazeNetworkFoundation {
         components.path = (prefix.isEmpty ? "" : "/" + prefix) + path
         components.query = nil
         components.fragment = nil
-        guard let url = components.url else { throw WevVGlazeNetworkError.invalidConfiguration }
+        guard let url = components.url else { throw GlazeVaultTradeError.invalidConfiguration }
         return url
     }
 
-    private static func business(_ envelope: [String: Any], code: String) -> WevVGlazeNetworkError {
+    private static func business(_ envelope: [String: Any], code: String) -> GlazeVaultTradeError {
         .business(code: code, message: envelope["message"] as? String ?? "The service could not complete the request.")
     }
 
@@ -512,15 +512,15 @@ final class WevVGlazeNetworkFoundation {
 
     private static func jsonData(_ value: Any) throws -> Data {
         do { return try JSONSerialization.data(withJSONObject: value, options: [.fragmentsAllowed, .sortedKeys]) }
-        catch { throw WevVGlazeNetworkError.invalidResponse }
+        catch { throw GlazeVaultTradeError.invalidResponse }
     }
 
     private static func payload(_ envelope: [String: Any], key: Data, iv: Data) throws -> Any {
-        guard let result = envelope["result"] else { throw WevVGlazeNetworkError.invalidResponse }
+        guard let result = envelope["result"] else { throw GlazeVaultTradeError.invalidResponse }
         if let ciphertext = result as? String {
             let plain = try crypt(try unhex(ciphertext), key: key, iv: iv, encrypt: false)
             do { return try JSONSerialization.jsonObject(with: plain, options: [.fragmentsAllowed]) }
-            catch { throw WevVGlazeNetworkError.invalidResponse }
+            catch { throw GlazeVaultTradeError.invalidResponse }
         }
         // Some endpoints return a structured result directly; never interpret a failure result here.
         return result
@@ -530,7 +530,7 @@ final class WevVGlazeNetworkFoundation {
 
     private static func unhex(_ string: String) throws -> Data {
         let bytes = Array(string.utf8)
-        guard !bytes.isEmpty, bytes.count.isMultiple(of: 2), bytes.count.isMultiple(of: kCCBlockSizeAES128 * 2) else { throw WevVGlazeNetworkError.invalidResponse }
+        guard !bytes.isEmpty, bytes.count.isMultiple(of: 2), bytes.count.isMultiple(of: kCCBlockSizeAES128 * 2) else { throw GlazeVaultTradeError.invalidResponse }
         func nibble(_ value: UInt8) -> UInt8? {
             switch value {
             case 48...57: return value - 48
@@ -541,14 +541,14 @@ final class WevVGlazeNetworkFoundation {
         }
         var data = Data(capacity: bytes.count / 2)
         for i in stride(from: 0, to: bytes.count, by: 2) {
-            guard let high = nibble(bytes[i]), let low = nibble(bytes[i + 1]) else { throw WevVGlazeNetworkError.invalidResponse }
+            guard let high = nibble(bytes[i]), let low = nibble(bytes[i + 1]) else { throw GlazeVaultTradeError.invalidResponse }
             data.append(high << 4 | low)
         }
         return data
     }
 
     private static func crypt(_ input: Data, key: Data, iv: Data, encrypt: Bool) throws -> Data {
-        guard key.count == kCCKeySizeAES128, iv.count == kCCBlockSizeAES128 else { throw WevVGlazeNetworkError.invalidConfiguration }
+        guard key.count == kCCKeySizeAES128, iv.count == kCCBlockSizeAES128 else { throw GlazeVaultTradeError.invalidConfiguration }
         let capacity = input.count + kCCBlockSizeAES128
         var output = Data(count: capacity)
         var count = 0
@@ -563,7 +563,7 @@ final class WevVGlazeNetworkFoundation {
                 }
             }
         }
-        guard status == kCCSuccess else { throw WevVGlazeNetworkError.invalidResponse }
+        guard status == kCCSuccess else { throw GlazeVaultTradeError.invalidResponse }
         output.count = count
         return output
     }

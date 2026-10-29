@@ -12,8 +12,8 @@ def main():
     source = (APP / 'kettleGlazeSequence.swift').read_text()
     models = source[source.index('struct butteryTexture:'):source.index('struct meltawayCrumb:')]
     stubs = '''import Foundation
-@MainActor final class WevVGlazeRuntime {
- static let shared = WevVGlazeRuntime(); var environmentID = "fixture"
+@MainActor final class BrostingmellowCoconutEssence {
+ static let shared = BrostingmellowCoconutEssence(); var environmentID = "fixture"
  func prepare() async throws {}
  func opi(path:String, body:Data, authenticated:Bool) async throws -> Data { fatalError("Unexpected real transport") }
  func browsingOPI(path:String, body:[String:Any]) async throws -> Data { fatalError("Unexpected real transport") }
@@ -43,8 +43,8 @@ def main():
   precondition(!replies.isEmpty, "Unexpected extra request")
   return try replies.removeFirst().get()
  }
- func service() -> WevVGlazeCommunityService {
-  WevVGlazeCommunityService(request: { try await self.send($0,$1,$2) }, isSignedIn: { self.signedIn }, scope: { self.environment }, prepare: { try await self.prepare() })
+ func service() -> LisenNoticepoplater {
+  LisenNoticepoplater(request: { try await self.send($0,$1,$2) }, isSignedIn: { self.signedIn }, scope: { self.environment }, prepare: { try await self.prepare() })
  }
 }
 @main struct VerifyCommunity {
@@ -65,8 +65,8 @@ def main():
   precondition(feed.posts[1].card.vanillaBeanIcing==Int64.max && feed.posts[1].card.limeCream==3 && feed.posts[1].card.cherryCompote)
   precondition(probe.requests[0].path=="/_v2/moments/feed" && Set(probe.requests[0].body.keys)==["cursorId","size"] && !probe.requests[0].signedIn)
   let count = probe.requests.count
-  do { try await service.like(momentID:1,liked:true); fatalError("Official like allowed") } catch WevVGlazeCommunityService.CommunityError.interactionUnavailable {}
-  do { try await service.comment(momentID:1,content:"Hello"); fatalError("Official comment allowed") } catch WevVGlazeCommunityService.CommunityError.interactionUnavailable {}
+  do { try await service.like(momentID:1,liked:true); fatalError("Official like allowed") } catch LisenNoticepoplater.chosenDonutAvatarAsset.interactionUnavailable {}
+  do { try await service.comment(momentID:1,content:"Hello"); fatalError("Official comment allowed") } catch LisenNoticepoplater.chosenDonutAvatarAsset.interactionUnavailable {}
   precondition(probe.requests.count==count)
   probe.replies=[.success(try data(["success":true])),.success(try page(fixtures)),.success(try data(["success":true]))]
   try await service.like(momentID:2,liked:false)
@@ -80,7 +80,7 @@ def main():
   let config = try await service.publishConfig(); precondition(config.publishEnabled && !config.imageUploadEnabled)
   try await service.imageCheck(urls:["https://example.invalid/upload.png"])
   precondition(probe.requests.last!.path=="/_v2/moments/imgCheck" && Set(probe.requests.last!.body.keys)==["imgUrls"])
-  probe.replies=[.failure(WevVGlazeNetworkError.business(code:"2066",message:"Saved for review"))]
+  probe.replies=[.failure(GlazeVaultTradeError.business(code:"2066",message:"Saved for review"))]
   guard case .pendingReview = try await service.create(content:"My tasting note",imageURLs:[]) else { fatalError("Review status misclassified") }
   precondition(probe.requests.last!.path=="/_v2/moments/create" && Set(probe.requests.last!.body.keys)==["textContent","imgUrls","displayRange"])
   probe.replies=[.success(try data(["published":true,"friendsCircleId":"9007199254740993"]))]
@@ -88,12 +88,12 @@ def main():
   precondition(id==9_007_199_254_740_993)
   probe.replies=[.success(try data(["published":false,"currentLevel":1,"targetLevel":3]))]
   do { _ = try await service.create(content:"Level required",imageURLs:[]); fatalError("Rejected post accepted") }
-  catch WevVGlazeCommunityService.CommunityError.publicationRejected(let current,let target,_) { precondition(current==1 && target==3) }
-  probe.replies=[.failure(WevVGlazeNetworkError.business(code:"2065",message:"Rejected"))]
-  do { _ = try await service.create(content:"Rejected",imageURLs:[]); fatalError("Ordinary error swallowed") } catch WevVGlazeNetworkError.business(let code,_) { precondition(code=="2065") }
+  catch LisenNoticepoplater.chosenDonutAvatarAsset.publicationRejected(let current,let target,_) { precondition(current==1 && target==3) }
+  probe.replies=[.failure(GlazeVaultTradeError.business(code:"2065",message:"Rejected"))]
+  do { _ = try await service.create(content:"Rejected",imageURLs:[]); fatalError("Ordinary error swallowed") } catch GlazeVaultTradeError.business(let code,_) { precondition(code=="2065") }
   let beforeInvalid=probe.requests.count
-  do { try await service.imageCheck(urls:Array(repeating:"https://example.invalid/x",count:10)); fatalError("Image limit ignored") } catch WevVGlazeCommunityService.CommunityError.invalidParameters {}
-  do { try await service.comment(momentID:2,content:"   "); fatalError("Empty comment accepted") } catch WevVGlazeCommunityService.CommunityError.invalidParameters {}
+  do { try await service.imageCheck(urls:Array(repeating:"https://example.invalid/x",count:10)); fatalError("Image limit ignored") } catch LisenNoticepoplater.chosenDonutAvatarAsset.invalidParameters {}
+  do { try await service.comment(momentID:2,content:"   "); fatalError("Empty comment accepted") } catch LisenNoticepoplater.chosenDonutAvatarAsset.invalidParameters {}
   precondition(probe.requests.count==beforeInvalid)
   let followProbe=SemanticProbe();let followService=followProbe.service()
   let first=(100..<120).map { row(Int64($0),follow:$0==103 || $0==117) }
@@ -102,20 +102,20 @@ def main():
   precondition(followed.map(\.card.coconutCenter)==[103,117,120] && followProbe.requests.count==2)
   precondition(followProbe.requests[1].body["cursorId"] as? Int64==119 && followProbe.requests.allSatisfy{ Set($0.body.keys)==["cursorId","size"] })
   let guest=SemanticProbe(); guest.signedIn=false
-  do { _ = try await guest.service().timeline(followedOnly:true); fatalError("Guest Follow requested") } catch WevVGlazeCommunityService.CommunityError.loginRequired {}
+  do { _ = try await guest.service().timeline(followedOnly:true); fatalError("Guest Follow requested") } catch LisenNoticepoplater.chosenDonutAvatarAsset.loginRequired {}
   precondition(guest.requests.isEmpty)
   let broken=SemanticProbe();let brokenService=broken.service()
-  broken.replies=[.success(try page(first,next:119)),.failure(WevVGlazeNetworkError.http(500))]
-  do { _ = try await brokenService.timeline(followedOnly:true,maxPages:2); fatalError("Partial follow feed swallowed failure") } catch WevVGlazeNetworkError.http(500) {}
+  broken.replies=[.success(try page(first,next:119)),.failure(GlazeVaultTradeError.http(500))]
+  do { _ = try await brokenService.timeline(followedOnly:true,maxPages:2); fatalError("Partial follow feed swallowed failure") } catch GlazeVaultTradeError.http(500) {}
   broken.replies=[.success(try data(["rows":[]]))]
-  do { _ = try await brokenService.feed(); fatalError("Invalid feed treated as empty") } catch WevVGlazeNetworkError.invalidResponse {}
+  do { _ = try await brokenService.feed(); fatalError("Invalid feed treated as empty") } catch GlazeVaultTradeError.invalidResponse {}
   broken.replies=[.success(try page([]))]
   let empty=try await brokenService.feed(); precondition(empty.posts.isEmpty && empty.isLastPage)
   let switched=SemanticProbe();let switchedService=switched.service()
   switched.replies=[.success(try page([row(1)]))];switched.changeEnvironment=true
   do { _ = try await switchedService.feed(); fatalError("Cross-account response accepted") } catch is CancellationError {}
   probe.environment="other|2";probe.replies=[.success(try page([]))]
-  do { _ = try await service.moment(id:2); fatalError("Previous account cache leaked") } catch WevVGlazeCommunityService.CommunityError.momentUnavailable {}
+  do { _ = try await service.moment(id:2); fatalError("Previous account cache leaked") } catch LisenNoticepoplater.chosenDonutAvatarAsset.momentUnavailable {}
   // Authenticated send must bind the initiating account before its first prepare.
   for operation in 0..<3 {
    let preparing=SemanticProbe();let preparingService=preparing.service()
@@ -160,7 +160,7 @@ def main():
         (root / 'RuntimeStubs.swift').write_text(stubs)
         (root / 'Verify.swift').write_text(tests)
         binary = root / 'Verify'
-        subprocess.run(['xcrun','swiftc','-swift-version','5','-default-isolation','MainActor','-parse-as-library','-module-cache-path','/private/tmp/wevv-community-module-cache',str(root/'Models.swift'),str(root/'RuntimeStubs.swift'),str(APP/'WevEnd/WevVGlazeNetworkFoundation.swift'),str(APP/'WevEnd/WevVGlazeCommunityService.swift'),str(root/'Verify.swift'),'-o',str(binary)],check=True)
+        subprocess.run(['xcrun','swiftc','-swift-version','5','-default-isolation','MainActor','-parse-as-library','-module-cache-path','/private/tmp/wevv-community-module-cache',str(root/'Models.swift'),str(root/'RuntimeStubs.swift'),str(APP/'WevEnd/NertyuChoiceStackLayer.swift'),str(APP/'WevEnd/LisenNoticepoplater.swift'),str(root/'Verify.swift'),'-o',str(binary)],check=True)
         subprocess.run([str(binary)],check=True)
 
 

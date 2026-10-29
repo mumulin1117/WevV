@@ -12,8 +12,8 @@ def main():
     stubs='''import Foundation
 struct RechargeAccount { let vanillaBeanIcing:Int64 }
 struct RechargeProfile { let glazeVaultCount:Int }
-@MainActor final class WevVGlazeRuntime {
- static let shared=WevVGlazeRuntime();var appID="fixture";var environmentID="fixture"
+@MainActor final class BrostingmellowCoconutEssence {
+ static let shared=BrostingmellowCoconutEssence();var appID="fixture";var environmentID="fixture"
  func validSignedInSession()async throws->RechargeAccount{fatalError("Unexpected real session")}
  func opi(path:String,body:Data,authenticated:Bool)async throws->Data{fatalError("Unexpected real transport")}
 }
@@ -24,8 +24,8 @@ struct RechargeProfile { let glazeVaultCount:Int }
  static let pastryTrailDiary=WevVGlazeSessionRepository()
  func coldBrewTasting()async throws->RechargeProfile{fatalError("Unexpected real balance")}
 }
-@MainActor final class WevVGlazePurchaseCoordinator {
- static let shared=WevVGlazePurchaseCoordinator()
+@MainActor final class DrawcreamScoutSugarStyle {
+ static let shared=DrawcreamScoutSugarStyle()
  func purchase(params:[String:Any],ownerID:String,appID:String,environmentID:String,allowStoreSyncRetry:Bool=false)async throws->[String:Any]{fatalError("Unexpected StoreKit purchase")}
  func syncTransactions(params:[String:Any],ownerID:String,appID:String,environmentID:String)async throws->[String:Any]{fatalError("Unexpected StoreKit sync")}
 }
@@ -62,7 +62,7 @@ struct RechargeProfile { let glazeVaultCount:Int }
    verifyCalls+=1;precondition(Set(body.keys)==["transactionId","payload","callbackResult"] && body["payload"] as? String==receipt)
    let callback=try JSONSerialization.jsonObject(with:Data((body["callbackResult"] as! String).utf8)) as! [String:Any]
    precondition(Set(callback.keys)==["orderCode"] && !(callback["orderCode"] as! String).hasPrefix("H5-"))
-   if failVerify{throw WevVGlazeNetworkError.business(code:"999",message:"Fixture verification failure")}
+   if failVerify{throw GlazeVaultTradeError.business(code:"999",message:"Fixture verification failure")}
    states[callback["orderCode"] as! String]=orderPendingAfterVerify ? 1:2
    value=["success":true]
   case "/_v2/pay/orderStatus":value=["state":states[body["orderCode"] as! String] ?? 1]
@@ -93,12 +93,12 @@ struct RechargeProfile { let glazeVaultCount:Int }
  func sync(_ params:[String:Any],_ context:Service.Context)async throws->[String:Any]{
   let a=params["acknowledgedTransactionIds"] as! [String],e=params["excludeTransactionIds"] as! [String]
   precondition(a.allSatisfy{!$0.hasPrefix("h5-")})
-  if failACK && !a.isEmpty{failACK=false;throw WevVGlazePurchaseError.nativeFailed}
+  if failACK && !a.isEmpty{failACK=false;throw donutDiaryFolio.nativeFailed}
   acknowledgements.append(contentsOf:a);inbox.removeAll{a.contains($0["transactionId"] as! String)}
   return ["transactions":Array(inbox.filter{!e.contains($0["transactionId"] as! String)}.prefix(20))]
  }
  func balance()async throws->Int{
-  balanceCalls+=1;if failBalance{failBalance=false;throw WevVGlazeNetworkError.http(503)}
+  balanceCalls+=1;if failBalance{failBalance=false;throw GlazeVaultTradeError.http(503)}
   return 901 // Deliberately unrelated to the client's package amount.
  }
  func service()->Service{
@@ -118,12 +118,12 @@ struct RechargeProfile { let glazeVaultCount:Int }
   let recovered=try await p.service().recoverPending()
   precondition(recovered.skippedForeignTransactions==1 && recovered.failedCodes.isEmpty && p.verifyCalls==1 && p.acknowledgements==["native-tx-1"])
   let balanceFailure=try RechargeProbe("balance");defer{balanceFailure.cleanup()};let b=balanceFailure.service();balanceFailure.failBalance=true
-  do{_=try await b.purchase(productID:"fixture.100");fatalError("Balance failure swallowed")}catch WevVGlazeNetworkError.http(503){}
+  do{_=try await b.purchase(productID:"fixture.100");fatalError("Balance failure swallowed")}catch GlazeVaultTradeError.http(503){}
   precondition(balanceFailure.acknowledgements.isEmpty && balanceFailure.inbox.count==1)
   guard case .credited(let balance)=try await balanceFailure.service().purchase(productID:"fixture.100")else{fatalError("Verified retry failed")}
   precondition(balance==901 && balanceFailure.creates==1 && balanceFailure.storePurchases==1 && balanceFailure.verifyCalls==1)
   let ackFailure=try RechargeProbe("ack");defer{ackFailure.cleanup()};ackFailure.failACK=true
-  do{_=try await ackFailure.service().purchase(productID:"fixture.100");fatalError("ACK failure swallowed")}catch WevVGlazePurchaseError.nativeFailed{}
+  do{_=try await ackFailure.service().purchase(productID:"fixture.100");fatalError("ACK failure swallowed")}catch donutDiaryFolio.nativeFailed{}
   _=try await ackFailure.service().purchase(productID:"fixture.100")
   precondition(ackFailure.creates==1 && ackFailure.storePurchases==1 && ackFailure.verifyCalls==1 && ackFailure.inbox.isEmpty)
   let cancelled=try RechargeProbe("cancel");defer{cancelled.cleanup()};cancelled.mode="cancelled"
@@ -142,7 +142,7 @@ struct RechargeProfile { let glazeVaultCount:Int }
   switched.context=WevVGlazeNativeRechargeService.Context(ownerID:"7",appID:"fixture",environmentID:switched.context.environmentID,sessionEpoch:3)
   let original=try await switched.service().recoverPending();precondition(original.creditedTransactions==1 && switched.inbox.isEmpty)
   let rejected=try RechargeProbe("verify");defer{rejected.cleanup()};rejected.failVerify=true
-  do{_=try await rejected.service().purchase(productID:"fixture.100");fatalError("Verification failure accepted")}catch WevVGlazeNetworkError.business("999",_){}
+  do{_=try await rejected.service().purchase(productID:"fixture.100");fatalError("Verification failure accepted")}catch GlazeVaultTradeError.business("999",_){}
   precondition(rejected.acknowledgements.isEmpty && rejected.inbox.count==1)
   let retry=try await rejected.service().recoverPending();precondition(!retry.failedCodes.isEmpty && rejected.inbox.count==1 && rejected.acknowledgements.isEmpty)
   rejected.failVerify=false
@@ -161,7 +161,7 @@ struct RechargeProfile { let glazeVaultCount:Int }
     with tempfile.TemporaryDirectory(prefix='wevv-native-recharge-test-') as d:
         path=Path(d);(path/'Stubs.swift').write_text(stubs);(path/'Verify.swift').write_text(tests)
         exe=path/'Verify'
-        subprocess.run(['xcrun','swiftc','-D','WEVV_PURCHASE_TESTING','-swift-version','5','-default-isolation','MainActor','-parse-as-library','-module-cache-path','/private/tmp/wevv-native-recharge-module-cache',str(path/'Stubs.swift'),str(APP/'WevEnd/WevVGlazeNetworkFoundation.swift'),str(APP/'WevEnd/WevVGlazePurchaseCoordinator.swift'),str(APP.parent/'WeeNo/Sources/WevEnd/WevVGlazeNativeRechargeService.swift'),str(path/'Verify.swift'),'-o',str(exe)],check=True)
+        subprocess.run(['xcrun','swiftc','-D','WEVV_PURCHASE_TESTING','-swift-version','5','-default-isolation','MainActor','-parse-as-library','-module-cache-path','/private/tmp/wevv-native-recharge-module-cache',str(path/'Stubs.swift'),str(APP/'WevEnd/NertyuChoiceStackLayer.swift'),str(APP/'WevEnd/DrawcreamScoutSugarStyle.swift'),str(APP.parent/'WeeNo/Sources/WevEnd/WevVGlazeNativeRechargeService.swift'),str(path/'Verify.swift'),'-o',str(exe)],check=True)
         subprocess.run([str(exe)],check=True)
 
 

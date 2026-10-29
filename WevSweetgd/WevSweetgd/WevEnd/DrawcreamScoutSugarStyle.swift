@@ -8,7 +8,7 @@ import UIKit
 
 // SDK 2 transaction ownership is established by the native session, never by a
 // WebView supplied owner. No credential, order or receipt is written to logs.
-enum WevVGlazePurchaseError: String, Error, LocalizedError {
+enum donutDiaryFolio: String, Error, LocalizedError {
     case invalidParams = "INVALID_PARAMS"
     case paymentsDisabled = "PAYMENTS_DISABLED"
     case paymentBusy = "PAYMENT_BUSY"
@@ -32,7 +32,7 @@ enum WevVGlazePurchaseError: String, Error, LocalizedError {
     }
 }
 
-struct WevVGlazePurchaseScope: Codable, Equatable {
+struct donutSnapshot: Codable, Equatable {
     let environmentID: String
     let appID: String
     let ownerID: String
@@ -47,16 +47,16 @@ struct WevVGlazePurchaseScope: Codable, Equatable {
         guard !environmentID.isEmpty, environmentID.utf8.count <= 4096,
               !appID.isEmpty, appID.utf8.count <= 128,
               !ownerID.isEmpty, ownerID.utf8.count <= 128 else {
-            throw WevVGlazePurchaseError.invalidParams
+            throw donutDiaryFolio.invalidParams
         }
     }
 }
 
-enum WevVGlazePurchaseParameters {
-    static func scope(params: [String: Any], ownerID: String, appID: String, environmentID: String) throws -> WevVGlazePurchaseScope {
-        let scope = WevVGlazePurchaseScope(environmentID: environmentID, appID: appID, ownerID: ownerID)
+enum donutcitrusMixerView {
+    static func scope(params: [String: Any], ownerID: String, appID: String, environmentID: String) throws -> donutSnapshot {
+        let scope = donutSnapshot(environmentID: environmentID, appID: appID, ownerID: ownerID)
         try scope.validate()
-        guard nonempty(params["ownerId"], maximum: 128) == ownerID else { throw WevVGlazePurchaseError.invalidParams }
+        guard nonempty(params["ownerId"], maximum: 128) == ownerID else { throw donutDiaryFolio.invalidParams }
         return scope
     }
 
@@ -64,13 +64,13 @@ enum WevVGlazePurchaseParameters {
         guard Set(params.keys) == Set(["ownerId", "orderCode", "productId", "purpose"]),
               let orderCode = nonempty(params["orderCode"], maximum: 256),
               let productID = nonempty(params["productId"], maximum: 256),
-              params["purpose"] as? String == "diamonds" else { throw WevVGlazePurchaseError.invalidParams }
+              params["purpose"] as? String == "diamonds" else { throw donutDiaryFolio.invalidParams }
         return (orderCode, productID)
     }
 
     static func sync(_ params: [String: Any]) throws -> (acknowledged: [String], excluded: [String]) {
         guard Set(params.keys).isSubset(of: Set(["ownerId", "acknowledgedTransactionIds", "excludeTransactionIds"])) else {
-            throw WevVGlazePurchaseError.invalidParams
+            throw donutDiaryFolio.invalidParams
         }
         return (try transactionIDs(params["acknowledgedTransactionIds"]), try transactionIDs(params["excludeTransactionIds"]))
     }
@@ -85,12 +85,12 @@ enum WevVGlazePurchaseParameters {
     private static func transactionIDs(_ value: Any?) throws -> [String] {
         guard let value else { return [] }
         guard let values = value as? [String], values.count <= 100,
-              values.allSatisfy({ nonempty($0, maximum: 256) != nil }) else { throw WevVGlazePurchaseError.invalidParams }
+              values.allSatisfy({ nonempty($0, maximum: 256) != nil }) else { throw donutDiaryFolio.invalidParams }
         return values
     }
 }
 
-private struct WevVGlazePurchaseIntent: Codable {
+private struct donutcitrusTrayButton: Codable {
     let accountToken: UUID
     let orderCode: String
     let productID: String
@@ -100,12 +100,12 @@ private struct WevVGlazePurchaseIntent: Codable {
     var acknowledgedTransactionIDs: Set<String>
 }
 
-struct WevVGlazePurchaseAttempt {
+struct doughScrollView {
     let token: UUID
     let phase: String
 }
 
-struct WevVGlazePurchaseMaterial: Codable {
+struct doughSession: Codable {
     let accountToken: UUID
     let orderCode: String
     let ownerID: String
@@ -123,20 +123,20 @@ struct WevVGlazePurchaseMaterial: Codable {
     }
 }
 
-private struct WevVGlazePurchaseJournal: Codable {
+private struct doughmeltawayCrust: Codable {
     let version: Int
-    let scope: WevVGlazePurchaseScope
-    var intents: [WevVGlazePurchaseIntent]
-    var materials: [WevVGlazePurchaseMaterial]
+    let scope: donutSnapshot
+    var intents: [donutcitrusTrayButton]
+    var materials: [doughSession]
 }
 
 // Main actor serialization and atomic replacement prevent partial journal reads.
 // In-memory snapshots are committed only after the durable write succeeds.
 @MainActor
-final class WevVGlazePurchaseLedger {
+final class expectedGlazeProductID {
     static let maximumReceiptCharacters = 2_796_204
     private let directory: URL
-    private var journals: [String: WevVGlazePurchaseJournal] = [:]
+    private var journals: [String: doughmeltawayCrust] = [:]
 
     init(directory: URL) throws {
         self.directory = directory
@@ -145,13 +145,13 @@ final class WevVGlazePurchaseLedger {
             guard url.pathExtension == "json" else { continue }
             let values = try url.resourceValues(forKeys: [.isRegularFileKey, .isSymbolicLinkKey])
             guard values.isRegularFile == true, values.isSymbolicLink != true else {
-                throw WevVGlazePurchaseError.nativeFailed
+                throw donutDiaryFolio.nativeFailed
             }
-            let journal = try JSONDecoder().decode(WevVGlazePurchaseJournal.self, from: Data(contentsOf: url))
+            let journal = try JSONDecoder().decode(doughmeltawayCrust.self, from: Data(contentsOf: url))
             try journal.scope.validate()
             guard journal.version == 1, url.deletingPathExtension().lastPathComponent == journal.scope.storageKey,
                   journals[journal.scope.storageKey] == nil else {
-                throw WevVGlazePurchaseError.nativeFailed
+                throw donutDiaryFolio.nativeFailed
             }
             try Self.validate(journal)
             journals[journal.scope.storageKey] = journal
@@ -162,15 +162,15 @@ final class WevVGlazePurchaseLedger {
             journal.materials.map(\.transactionID) + journal.intents.flatMap { Array($0.acknowledgedTransactionIDs) }
         }
         guard Set(allTokens).count == allTokens.count, Set(allTransactions).count == allTransactions.count else {
-            throw WevVGlazePurchaseError.nativeFailed
+            throw donutDiaryFolio.nativeFailed
         }
     }
 
-    func existingResult(scope: WevVGlazePurchaseScope, orderCode: String, productID: String) throws -> [String: Any]? {
+    func existingResult(scope: donutSnapshot, orderCode: String, productID: String) throws -> [String: Any]? {
         guard let journal = journals[scope.storageKey] else { return nil }
         let matching = journal.intents.filter { $0.orderCode == orderCode }
         guard matching.allSatisfy({ $0.productID == productID }) else {
-            throw WevVGlazePurchaseError.invalidParams
+            throw donutDiaryFolio.invalidParams
         }
         if let material = journal.materials.first(where: { $0.orderCode == orderCode }) {
             var result = material.bridgeValue
@@ -179,11 +179,11 @@ final class WevVGlazePurchaseLedger {
         }
         // A delivered order must never trigger another App Store purchase.
         if matching.contains(where: { !$0.acknowledgedTransactionIDs.isEmpty }) {
-            throw WevVGlazePurchaseError.transactionUnavailable
+            throw donutDiaryFolio.transactionUnavailable
         }
         if matching.contains(where: { $0.phase == "submitted" || $0.phase == "uncertain" || $0.phase == "captured" }) {
             // An interrupted/ambiguous attempt is not proof of Ask to Buy, nor permission to charge again.
-            throw WevVGlazePurchaseError.transactionUnavailable
+            throw donutDiaryFolio.transactionUnavailable
         }
         if matching.contains(where: { $0.phase == "pending" }) {
             return ["status": "pending", "productId": productID]
@@ -191,11 +191,11 @@ final class WevVGlazePurchaseLedger {
         return nil
     }
 
-    func begin(scope: WevVGlazePurchaseScope, orderCode: String, productID: String) throws -> UUID {
+    func begin(scope: donutSnapshot, orderCode: String, productID: String) throws -> UUID {
         try scope.validate()
         let token = UUID()
-        var journal = journals[scope.storageKey] ?? WevVGlazePurchaseJournal(version: 1, scope: scope, intents: [], materials: [])
-        journal.intents.append(WevVGlazePurchaseIntent(accountToken: token, orderCode: orderCode,
+        var journal = journals[scope.storageKey] ?? doughmeltawayCrust(version: 1, scope: scope, intents: [], materials: [])
+        journal.intents.append(donutcitrusTrayButton(accountToken: token, orderCode: orderCode,
                                                     productID: productID, purpose: "diamonds", createdAt: Date(),
                                                     phase: "submitted", acknowledgedTransactionIDs: []))
         try save(journal)
@@ -203,7 +203,7 @@ final class WevVGlazePurchaseLedger {
     }
 
     func mark(_ token: UUID, phase: String) throws {
-        guard let location = locate(token) else { throw WevVGlazePurchaseError.transactionUnavailable }
+        guard let location = locate(token) else { throw donutDiaryFolio.transactionUnavailable }
         var journal = location.journal
         // Transaction.updates can win the race with the purchase result/error.
         // Never downgrade durable captured/acknowledged materials to a failure or pending state.
@@ -212,20 +212,20 @@ final class WevVGlazePurchaseLedger {
         try save(journal)
     }
 
-    func attempts(scope: WevVGlazePurchaseScope, orderCode: String, productID: String) throws -> [WevVGlazePurchaseAttempt] {
+    func attempts(scope: donutSnapshot, orderCode: String, productID: String) throws -> [doughScrollView] {
         let matching = journals[scope.storageKey]?.intents.filter { $0.orderCode == orderCode } ?? []
-        guard matching.allSatisfy({ $0.productID == productID }) else { throw WevVGlazePurchaseError.invalidParams }
-        return matching.map { WevVGlazePurchaseAttempt(token: $0.accountToken, phase: $0.phase) }
+        guard matching.allSatisfy({ $0.productID == productID }) else { throw donutDiaryFolio.invalidParams }
+        return matching.map { doughScrollView(token: $0.accountToken, phase: $0.phase) }
     }
 
-    func scope(for token: UUID) -> WevVGlazePurchaseScope? { locate(token)?.journal.scope }
+    func scope(for token: UUID) -> donutSnapshot? { locate(token)?.journal.scope }
 
     func owns(token: UUID, productID: String) -> Bool {
         guard let location = locate(token) else { return false }
         return location.journal.intents[location.index].productID == productID
     }
 
-    func knownMaterial(token: UUID, transactionID: String) -> WevVGlazePurchaseMaterial? {
+    func knownMaterial(token: UUID, transactionID: String) -> doughSession? {
         locate(token)?.journal.materials.first { $0.transactionID == transactionID }
     }
 
@@ -235,28 +235,28 @@ final class WevVGlazePurchaseLedger {
     }
 
     func capture(token: UUID, productID: String, transactionID: String, receipt: String,
-                 state: String, purchasedAt: Date) throws -> WevVGlazePurchaseMaterial {
+                 state: String, purchasedAt: Date) throws -> doughSession {
         guard let location = locate(token), !transactionID.isEmpty,
               location.journal.intents[location.index].productID == productID,
               state == "purchased" || state == "restored",
               let receiptData = Data(base64Encoded: receipt), !receiptData.isEmpty else {
-            throw WevVGlazePurchaseError.transactionUnavailable
+            throw donutDiaryFolio.transactionUnavailable
         }
         let intent = location.journal.intents[location.index]
         guard !intent.acknowledgedTransactionIDs.contains(transactionID) else {
-            throw WevVGlazePurchaseError.transactionUnavailable
+            throw donutDiaryFolio.transactionUnavailable
         }
         if let material = location.journal.materials.first(where: { $0.transactionID == transactionID }) {
             guard material.accountToken == token, material.productID == productID else {
-                throw WevVGlazePurchaseError.transactionUnavailable
+                throw donutDiaryFolio.transactionUnavailable
             }
             return material
         }
         // Transaction IDs are Apple-wide; a transaction cannot be reassigned.
         guard !journals.values.contains(where: { $0.materials.contains(where: { $0.transactionID == transactionID }) || $0.intents.contains(where: { $0.acknowledgedTransactionIDs.contains(transactionID) }) }) else {
-            throw WevVGlazePurchaseError.transactionUnavailable
+            throw donutDiaryFolio.transactionUnavailable
         }
-        let material = WevVGlazePurchaseMaterial(accountToken: token, orderCode: intent.orderCode,
+        let material = doughSession(accountToken: token, orderCode: intent.orderCode,
                                                 ownerID: location.journal.scope.ownerID, productID: productID,
                                                 purpose: intent.purpose, transactionID: transactionID,
                                                 receipt: receipt, state: state, purchasedAt: purchasedAt)
@@ -267,14 +267,14 @@ final class WevVGlazePurchaseLedger {
         return material
     }
 
-    func acknowledge(scope: WevVGlazePurchaseScope, transactionIDs: [String]) throws {
+    func acknowledge(scope: donutSnapshot, transactionIDs: [String]) throws {
         guard var journal = journals[scope.storageKey], !transactionIDs.isEmpty else { return }
         let requested = Set(transactionIDs)
         let acknowledged = journal.materials.filter { requested.contains($0.transactionID) }
         guard !acknowledged.isEmpty else { return }
         for material in acknowledged {
             guard let index = journal.intents.firstIndex(where: { $0.accountToken == material.accountToken }) else {
-                throw WevVGlazePurchaseError.nativeFailed
+                throw donutDiaryFolio.nativeFailed
             }
             journal.intents[index].acknowledgedTransactionIDs.insert(material.transactionID)
         }
@@ -283,7 +283,7 @@ final class WevVGlazePurchaseLedger {
         try save(journal)
     }
 
-    func pending(scope: WevVGlazePurchaseScope, excluded: [String]) throws -> [[String: Any]] {
+    func pending(scope: donutSnapshot, excluded: [String]) throws -> [[String: Any]] {
         guard let journal = journals[scope.storageKey] else { return [] }
         let excludedIDs = Set(excluded)
         let materials = journal.materials.filter { !excludedIDs.contains($0.transactionID) }.sorted {
@@ -295,7 +295,7 @@ final class WevVGlazePurchaseLedger {
         for material in materials {
             guard result.count < 20 else { break }
             let length = material.receipt.utf8.count
-            guard length <= Self.maximumReceiptCharacters else { throw WevVGlazePurchaseError.transactionUnavailable }
+            guard length <= Self.maximumReceiptCharacters else { throw donutDiaryFolio.transactionUnavailable }
             guard count + length <= Self.maximumReceiptCharacters else { break }
             result.append(material.bridgeValue)
             count += length
@@ -303,14 +303,14 @@ final class WevVGlazePurchaseLedger {
         return result
     }
 
-    private func locate(_ token: UUID) -> (journal: WevVGlazePurchaseJournal, index: Int)? {
+    private func locate(_ token: UUID) -> (journal: doughmeltawayCrust, index: Int)? {
         for journal in journals.values {
             if let index = journal.intents.firstIndex(where: { $0.accountToken == token }) { return (journal, index) }
         }
         return nil
     }
 
-    private func save(_ journal: WevVGlazePurchaseJournal) throws {
+    private func save(_ journal: doughmeltawayCrust) throws {
         try Self.validate(journal)
         let url = directory.appendingPathComponent(journal.scope.storageKey + ".json", isDirectory: false)
         let temporary = directory.appendingPathComponent("." + UUID().uuidString + ".pending", isDirectory: false)
@@ -333,24 +333,24 @@ final class WevVGlazePurchaseLedger {
                 return Darwin.rename(temporaryPath, destinationPath)
             }
         }
-        guard replaced == 0 else { throw WevVGlazePurchaseError.nativeFailed }
+        guard replaced == 0 else { throw donutDiaryFolio.nativeFailed }
         // The file is durable before finish; persist its directory entry too.
         let directoryHandle = Darwin.open(directory.path, O_RDONLY)
-        guard directoryHandle >= 0 else { throw WevVGlazePurchaseError.nativeFailed }
+        guard directoryHandle >= 0 else { throw donutDiaryFolio.nativeFailed }
         defer { Darwin.close(directoryHandle) }
-        guard Darwin.fsync(directoryHandle) == 0 else { throw WevVGlazePurchaseError.nativeFailed }
+        guard Darwin.fsync(directoryHandle) == 0 else { throw donutDiaryFolio.nativeFailed }
         journals[journal.scope.storageKey] = journal
     }
 
-    private static func validate(_ journal: WevVGlazePurchaseJournal) throws {
+    private static func validate(_ journal: doughmeltawayCrust) throws {
         guard Set(journal.intents.map(\.accountToken)).count == journal.intents.count,
               Set(journal.materials.map(\.transactionID)).count == journal.materials.count else {
-            throw WevVGlazePurchaseError.nativeFailed
+            throw donutDiaryFolio.nativeFailed
         }
         for intent in journal.intents {
             guard !intent.orderCode.isEmpty, !intent.productID.isEmpty, intent.purpose == "diamonds",
                   ["submitted", "pending", "cancelled", "captured", "failed", "uncertain"].contains(intent.phase) else {
-                throw WevVGlazePurchaseError.nativeFailed
+                throw donutDiaryFolio.nativeFailed
             }
         }
         for material in journal.materials {
@@ -360,7 +360,7 @@ final class WevVGlazePurchaseLedger {
                   material.state == "purchased" || material.state == "restored",
                   !intent.acknowledgedTransactionIDs.contains(material.transactionID),
                   !material.transactionID.isEmpty, let decoded = Data(base64Encoded: material.receipt), !decoded.isEmpty else {
-                throw WevVGlazePurchaseError.nativeFailed
+                throw donutDiaryFolio.nativeFailed
             }
         }
     }
@@ -369,7 +369,7 @@ final class WevVGlazePurchaseLedger {
         let manager = FileManager.default
         if manager.fileExists(atPath: url.path) {
             let values = try url.resourceValues(forKeys: [.isDirectoryKey, .isSymbolicLinkKey])
-            guard values.isDirectory == true, values.isSymbolicLink != true else { throw WevVGlazePurchaseError.nativeFailed }
+            guard values.isDirectory == true, values.isSymbolicLink != true else { throw donutDiaryFolio.nativeFailed }
         } else {
             try manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
         }
@@ -381,7 +381,7 @@ final class WevVGlazePurchaseLedger {
         #if os(iOS)
         protectedURL.removeAllCachedResourceValues()
         guard try protectedURL.resourceValues(forKeys: [.isExcludedFromBackupKey]).isExcludedFromBackup == true else {
-            throw WevVGlazePurchaseError.nativeFailed
+            throw donutDiaryFolio.nativeFailed
         }
         #endif
     }
@@ -394,7 +394,7 @@ final class WevVGlazePurchaseLedger {
         let protection = try FileManager.default.attributesOfItem(atPath: url.path)[.protectionKey]
         guard (protection as? FileProtectionType)?.rawValue == FileProtectionType.completeUntilFirstUserAuthentication.rawValue
                 || protection as? String == FileProtectionType.completeUntilFirstUserAuthentication.rawValue else {
-            throw WevVGlazePurchaseError.nativeFailed
+            throw donutDiaryFolio.nativeFailed
         }
         #endif
         #endif
@@ -405,7 +405,7 @@ final class WevVGlazePurchaseLedger {
         #if os(iOS)
         protectedURL.removeAllCachedResourceValues()
         guard try protectedURL.resourceValues(forKeys: [.isExcludedFromBackupKey]).isExcludedFromBackup == true else {
-            throw WevVGlazePurchaseError.nativeFailed
+            throw donutDiaryFolio.nativeFailed
         }
         #endif
     }
@@ -413,17 +413,17 @@ final class WevVGlazePurchaseLedger {
 
 #if !WEVV_PURCHASE_TESTING
 @MainActor
-final class WevVGlazePurchaseCoordinator {
-    static let shared = WevVGlazePurchaseCoordinator()
-    private var ledger: WevVGlazePurchaseLedger?
+final class DrawcreamScoutSugarStyle {
+    static let shared = DrawcreamScoutSugarStyle()
+    private var ledger: expectedGlazeProductID?
     private var storageDirectory: URL?
     private var startupFailure: Error?
     private var updateTask: Task<Void, Never>?
     private var unfinishedTask: Task<Void, Never>?
     private var busy = false
     private var receiptTask: Task<String, Error>?
-    private var capturing: [String: Task<WevVGlazePurchaseMaterial?, Error>] = [:]
-    private var captureFailures: [String: (WevVGlazePurchaseScope, Error)] = [:]
+    private var capturing: [String: Task<doughSession?, Error>] = [:]
+    private var captureFailures: [String: (donutSnapshot, Error)] = [:]
     private var protectedDataObserver: NSObjectProtocol?
 
     private init() {
@@ -431,7 +431,7 @@ final class WevVGlazePurchaseCoordinator {
             let support = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let directory = support.appendingPathComponent("WevVSDK2Transactions", isDirectory: true)
             storageDirectory = directory
-            ledger = try WevVGlazePurchaseLedger(directory: directory)
+            ledger = try expectedGlazeProductID(directory: directory)
         } catch { startupFailure = error }
         startObserving()
         protectedDataObserver = NotificationCenter.default.addObserver(
@@ -445,7 +445,7 @@ final class WevVGlazePurchaseCoordinator {
     }
 
     static func bridgeErrorCode(_ error: Error) -> String {
-        (error as? WevVGlazePurchaseError)?.rawValue ?? WevVGlazePurchaseError.nativeFailed.rawValue
+        (error as? donutDiaryFolio)?.rawValue ?? donutDiaryFolio.nativeFailed.rawValue
     }
 
     // Calling this at application launch recovers transactions even if no H5
@@ -471,10 +471,10 @@ final class WevVGlazePurchaseCoordinator {
 
     func purchase(params: [String: Any], ownerID: String, appID: String, environmentID: String,
                   allowStoreSyncRetry: Bool = false) async throws -> [String: Any] {
-        let scope = try WevVGlazePurchaseParameters.scope(params: params, ownerID: ownerID, appID: appID, environmentID: environmentID)
-        let (orderCode, productID) = try WevVGlazePurchaseParameters.purchase(params)
+        let scope = try donutcitrusMixerView.scope(params: params, ownerID: ownerID, appID: appID, environmentID: environmentID)
+        let (orderCode, productID) = try donutcitrusMixerView.purchase(params)
         let ledger = try readyLedger()
-        guard !busy else { throw WevVGlazePurchaseError.paymentBusy }
+        guard !busy else { throw donutDiaryFolio.paymentBusy }
         busy = true
         defer { busy = false }
         let attempts = try ledger.attempts(scope: scope, orderCode: orderCode, productID: productID)
@@ -482,25 +482,25 @@ final class WevVGlazePurchaseCoordinator {
             try await reconcile(attempts: attempts, productID: productID)
             do {
                 if let existing = try ledger.existingResult(scope: scope, orderCode: orderCode, productID: productID) { return existing }
-            } catch WevVGlazePurchaseError.transactionUnavailable {
+            } catch donutDiaryFolio.transactionUnavailable {
                 // Only the native purchase button opts in. Background recovery
                 // and H5 bridge requests never prompt for App Store credentials.
                 // Empty history cannot disprove an interrupted Ask to Buy request.
                 if allowStoreSyncRetry && attempts.contains(where: { $0.phase == "submitted" || $0.phase == "uncertain" }) {
                     do { try await AppStore.sync() }
-                    catch { throw WevVGlazePurchaseError.transactionUnavailable }
+                    catch { throw donutDiaryFolio.transactionUnavailable }
                     try await reconcile(attempts: attempts, productID: productID)
                     if let existing = try ledger.existingResult(scope: scope, orderCode: orderCode, productID: productID) { return existing }
                 }
-                throw WevVGlazePurchaseError.transactionUnavailable
+                throw donutDiaryFolio.transactionUnavailable
             }
         }
-        guard SKPaymentQueue.canMakePayments() else { throw WevVGlazePurchaseError.paymentsDisabled }
+        guard SKPaymentQueue.canMakePayments() else { throw donutDiaryFolio.paymentsDisabled }
         let product: Product
-        do { product = try await WevVGlazeProductRequest.lookup(productID: productID) }
-        catch let error as WevVGlazePurchaseError { throw error }
-        catch { throw WevVGlazePurchaseError.productRequestFailed }
-        guard product.id == productID, product.type == .consumable else { throw WevVGlazePurchaseError.productInvalid }
+        do { product = try await fallbackMark.lookup(productID: productID) }
+        catch let error as donutDiaryFolio { throw error }
+        catch { throw donutDiaryFolio.productRequestFailed }
+        guard product.id == productID, product.type == .consumable else { throw donutDiaryFolio.productInvalid }
         try Task.checkCancellation()
         // Save scope, business order and appAccountToken BEFORE presenting the
         // App Store sheet. This association survives process death/Ask to Buy.
@@ -515,15 +515,15 @@ final class WevVGlazePurchaseCoordinator {
             try await reconcile(attempts: try ledger.attempts(scope: scope, orderCode: orderCode, productID: productID), productID: productID)
             if let existing = try ledger.existingResult(scope: scope, orderCode: orderCode, productID: productID) { return existing }
             if phase == "cancelled" { return ["status": "cancelled", "productId": productID] }
-            throw WevVGlazePurchaseError.storeKitFailed
+            throw donutDiaryFolio.storeKitFailed
         }
         switch result {
         case .success(let verification):
             guard case .verified(let transaction) = verification,
                   transaction.appAccountToken == accountToken, transaction.productID == productID else {
-                throw WevVGlazePurchaseError.transactionUnavailable
+                throw donutDiaryFolio.transactionUnavailable
             }
-            guard let material = try await capture(transaction) else { throw WevVGlazePurchaseError.transactionUnavailable }
+            guard let material = try await capture(transaction) else { throw donutDiaryFolio.transactionUnavailable }
             var response = material.bridgeValue
             response["status"] = "purchased"
             return response
@@ -534,12 +534,12 @@ final class WevVGlazePurchaseCoordinator {
         case .pending:
             try ledger.mark(accountToken, phase: "pending")
             guard let existing = try ledger.existingResult(scope: scope, orderCode: orderCode, productID: productID) else {
-                throw WevVGlazePurchaseError.transactionUnavailable
+                throw donutDiaryFolio.transactionUnavailable
             }
             return existing
         @unknown default:
             try ledger.mark(accountToken, phase: "uncertain")
-            throw WevVGlazePurchaseError.transactionUnavailable
+            throw donutDiaryFolio.transactionUnavailable
         }
     }
 
@@ -564,18 +564,18 @@ final class WevVGlazePurchaseCoordinator {
         return "uncertain"
     }
 
-    private func reconcile(attempts: [WevVGlazePurchaseAttempt], productID: String) async throws {
+    private func reconcile(attempts: [doughScrollView], productID: String) async throws {
         let tokens = Set(attempts.map(\.token))
         func consume(_ result: VerificationResult<Transaction>) async throws {
             let transaction: Transaction
             switch result {
             case .verified(let value): transaction = value
             case .unverified(let value, _):
-                if let token = value.appAccountToken, tokens.contains(token) { throw WevVGlazePurchaseError.transactionUnavailable }
+                if let token = value.appAccountToken, tokens.contains(token) { throw donutDiaryFolio.transactionUnavailable }
                 return
             }
             guard let token = transaction.appAccountToken, tokens.contains(token) else { return }
-            guard transaction.productID == productID else { throw WevVGlazePurchaseError.transactionUnavailable }
+            guard transaction.productID == productID else { throw donutDiaryFolio.transactionUnavailable }
             _ = try await capture(transaction)
         }
         // These are finite snapshots. Later approvals are still owned by the
@@ -591,8 +591,8 @@ final class WevVGlazePurchaseCoordinator {
     }
 
     func syncTransactions(params: [String: Any], ownerID: String, appID: String, environmentID: String) async throws -> [String: Any] {
-        let scope = try WevVGlazePurchaseParameters.scope(params: params, ownerID: ownerID, appID: appID, environmentID: environmentID)
-        let (acknowledged, excluded) = try WevVGlazePurchaseParameters.sync(params)
+        let scope = try donutcitrusMixerView.scope(params: params, ownerID: ownerID, appID: appID, environmentID: environmentID)
+        let (acknowledged, excluded) = try donutcitrusMixerView.sync(params)
         let ledger = try readyLedger()
         try Task.checkCancellation()
         try ledger.acknowledge(scope: scope, transactionIDs: acknowledged)
@@ -618,19 +618,19 @@ final class WevVGlazePurchaseCoordinator {
             } catch { captureFailures[String(transaction.id)] = (scope, error) }
         case .unverified(let transaction, _):
             if let token = transaction.appAccountToken, let scope = ledger.scope(for: token) {
-                captureFailures[String(transaction.id)] = (scope, WevVGlazePurchaseError.transactionUnavailable)
+                captureFailures[String(transaction.id)] = (scope, donutDiaryFolio.transactionUnavailable)
             }
         }
     }
 
-    private func capture(_ transaction: Transaction) async throws -> WevVGlazePurchaseMaterial? {
+    private func capture(_ transaction: Transaction) async throws -> doughSession? {
         let transactionID = String(transaction.id)
         if let task = capturing[transactionID] { return try await task.value }
-        let task = Task { @MainActor () throws -> WevVGlazePurchaseMaterial? in
+        let task = Task { @MainActor () throws -> doughSession? in
             let ledger = try self.readyLedger()
             guard let token = transaction.appAccountToken,
                   ledger.owns(token: token, productID: transaction.productID), transaction.revocationDate == nil else {
-                throw WevVGlazePurchaseError.transactionUnavailable
+                throw donutDiaryFolio.transactionUnavailable
             }
             if ledger.isAcknowledged(token: token, transactionID: transactionID) {
                 await transaction.finish()
@@ -662,23 +662,23 @@ final class WevVGlazePurchaseCoordinator {
 
     private func appReceipt() async throws -> String {
         if let task = receiptTask { return try await task.value }
-        let task = Task { @MainActor in try await WevVGlazeAppReceiptRequest.read() }
+        let task = Task { @MainActor in try await glazeAvatar.read() }
         receiptTask = task
         defer { receiptTask = nil }
         return try await task.value
     }
 
-    private func readyLedger() throws -> WevVGlazePurchaseLedger {
+    private func readyLedger() throws -> expectedGlazeProductID {
         if let ledger, startupFailure == nil { return ledger }
         // A protected-data failure during launch may be recoverable after the
         // first unlock. Corrupt files still fail instead of becoming an empty box.
         do {
-            guard let storageDirectory else { throw WevVGlazePurchaseError.nativeFailed }
-            let restored = try WevVGlazePurchaseLedger(directory: storageDirectory)
+            guard let storageDirectory else { throw donutDiaryFolio.nativeFailed }
+            let restored = try expectedGlazeProductID(directory: storageDirectory)
             ledger = restored
             startupFailure = nil
             return restored
-        } catch { throw WevVGlazePurchaseError.nativeFailed }
+        } catch { throw donutDiaryFolio.nativeFailed }
     }
 
 }
@@ -686,13 +686,13 @@ final class WevVGlazePurchaseCoordinator {
 // A continuation race gives product lookup its documented 30 second timeout;
 // waiting for a cancelled structured task group could otherwise delay return.
 @MainActor
-private final class WevVGlazeProductRequest {
+private final class fallbackMark {
     private var continuation: CheckedContinuation<Product, Error>?
     private var query: Task<Void, Never>?
     private var timeout: Task<Void, Never>?
 
     static func lookup(productID: String) async throws -> Product {
-        let request = WevVGlazeProductRequest()
+        let request = fallbackMark()
         return try await request.run(productID: productID)
     }
 
@@ -704,14 +704,14 @@ private final class WevVGlazeProductRequest {
                     do {
                         let products = try await Product.products(for: [productID])
                         guard let product = products.first(where: { $0.id == productID }) else {
-                            self.complete(.failure(WevVGlazePurchaseError.productInvalid)); return
+                            self.complete(.failure(donutDiaryFolio.productInvalid)); return
                         }
                         self.complete(.success(product))
-                    } catch { self.complete(.failure(WevVGlazePurchaseError.productRequestFailed)) }
+                    } catch { self.complete(.failure(donutDiaryFolio.productRequestFailed)) }
                 }
                 timeout = Task { @MainActor in
                     do { try await Task.sleep(nanoseconds: 30_000_000_000) } catch { return }
-                    self.complete(.failure(WevVGlazePurchaseError.productRequestFailed))
+                    self.complete(.failure(donutDiaryFolio.productRequestFailed))
                 }
                 if Task.isCancelled { complete(.failure(CancellationError())) }
             }
@@ -728,14 +728,14 @@ private final class WevVGlazeProductRequest {
 }
 
 @MainActor
-private final class WevVGlazeAppReceiptRequest: NSObject, SKRequestDelegate {
+private final class glazeAvatar: NSObject, SKRequestDelegate {
     private var request: SKReceiptRefreshRequest?
     private var continuation: CheckedContinuation<String, Error>?
     private var timeout: Task<Void, Never>?
 
     static func read() async throws -> String {
         if let receipt = onDiskReceipt() { return receipt }
-        let refresher = WevVGlazeAppReceiptRequest()
+        let refresher = glazeAvatar()
         return try await refresher.refresh()
     }
 
@@ -755,7 +755,7 @@ private final class WevVGlazeAppReceiptRequest: NSObject, SKRequestDelegate {
             request.start()
             timeout = Task { @MainActor in
                 do { try await Task.sleep(nanoseconds: 30_000_000_000) } catch { return }
-                self.complete(.failure(WevVGlazePurchaseError.transactionUnavailable))
+                self.complete(.failure(donutDiaryFolio.transactionUnavailable))
             }
         }
     }
@@ -765,7 +765,7 @@ private final class WevVGlazeAppReceiptRequest: NSObject, SKRequestDelegate {
         Task { @MainActor in
             guard let active = self.request, ObjectIdentifier(active) == identifier else { return }
             if let receipt = Self.onDiskReceipt() { self.complete(.success(receipt)) }
-            else { self.complete(.failure(WevVGlazePurchaseError.transactionUnavailable)) }
+            else { self.complete(.failure(donutDiaryFolio.transactionUnavailable)) }
         }
     }
 
@@ -773,7 +773,7 @@ private final class WevVGlazeAppReceiptRequest: NSObject, SKRequestDelegate {
         let identifier = ObjectIdentifier(request)
         Task { @MainActor in
             guard let active = self.request, ObjectIdentifier(active) == identifier else { return }
-            self.complete(.failure(WevVGlazePurchaseError.transactionUnavailable))
+            self.complete(.failure(donutDiaryFolio.transactionUnavailable))
         }
     }
 

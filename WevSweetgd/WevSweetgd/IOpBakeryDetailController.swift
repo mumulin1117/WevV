@@ -14,7 +14,7 @@ final class IOpBakeryDetailController: UIViewController {
         wevvActiveGlazeColors: [UIColor.pastryHex("FF4BA9").cgColor, UIColor.pastryHex("FF4BA9").cgColor]
     )
     private var tastingSuccessLayer: VunBakeryShelfToastView?
-    private let glazeSheenPlaceholder = WevVGlazeSkeletonPanel(kind: .pastryFolio)
+    private let glazeSheenPlaceholder = WevVGlazeMessageCell(kind: .pastryFolio)
 
     var pastryShelfChanged: (() -> Void)?
 

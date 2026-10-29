@@ -43,28 +43,28 @@ SWIFT = r'''import Foundation
             precondition(condition)
             cases += 1
         }
-        check(WevVGlazeIMDiagnostics.safeIdentifier("39114002_554") == "39114002_554")
+        check(conversationAvatar.safeIdentifier("39114002_554") == "39114002_554")
         for raw in ["https://example.invalid?token=secret", "bad\nmessage", "", String(repeating: "x", count: 65)] {
-            check(WevVGlazeIMDiagnostics.safeIdentifier(raw) == "redacted")
+            check(conversationAvatar.safeIdentifier(raw) == "redacted")
         }
         for raw in ["", "token-value", "https://invalid", "1234567890123", "401\nsecret"] {
-            check(WevVGlazeIMDiagnostics.safeBusinessCode(raw) == "redacted")
+            check(conversationAvatar.safeBusinessCode(raw) == "redacted")
         }
-        let business = WevVGlazeIMDiagnostics.failureMetadata(WevVGlazeNetworkError.business(code: "40101", message: "SECRET_TOKEN_FULL"))
+        let business = conversationAvatar.failureMetadata(GlazeVaultTradeError.business(code: "40101", message: "SECRET_TOKEN_FULL"))
         check(business.category == "business" && business.code == "40101")
-        let maliciousCode = WevVGlazeIMDiagnostics.failureMetadata(WevVGlazeNetworkError.business(code: "SECRET_TOKEN_FULL", message: "SECRET_APPKEY"))
+        let maliciousCode = conversationAvatar.failureMetadata(GlazeVaultTradeError.business(code: "SECRET_TOKEN_FULL", message: "SECRET_APPKEY"))
         check(maliciousCode.code == "redacted")
-        let contract = WevVGlazeIMDiagnostics.failureMetadata(WevVGlazeNetworkError.missingContract("SECRET_TOKEN_FULL"))
+        let contract = conversationAvatar.failureMetadata(GlazeVaultTradeError.missingContract("SECRET_TOKEN_FULL"))
         check(contract.category == "missing-contract" && contract.code == "none")
-        let unknown = WevVGlazeIMDiagnostics.failureMetadata(NSError(domain: "SECRET_TOKEN_FULL", code: 123, userInfo: [NSLocalizedDescriptionKey: "SECRET_APPKEY"]))
+        let unknown = conversationAvatar.failureMetadata(NSError(domain: "SECRET_TOKEN_FULL", code: 123, userInfo: [NSLocalizedDescriptionKey: "SECRET_APPKEY"]))
         check(unknown.category == "other" && unknown.code == "none")
-        let web = WevVGlazeIMDiagnostics.failureMetadata(NSError(domain: "WKErrorDomain", code: 4, userInfo: [NSLocalizedDescriptionKey: "SECRET_TOKEN_FULL"]))
+        let web = conversationAvatar.failureMetadata(NSError(domain: "WKErrorDomain", code: 4, userInfo: [NSLocalizedDescriptionKey: "SECRET_TOKEN_FULL"]))
         check(web.category == "webkit" && web.code == "4")
-        let url = WevVGlazeIMDiagnostics.failureMetadata(URLError(.notConnectedToInternet, userInfo: [NSURLErrorFailingURLErrorKey: "https://invalid?token=SECRET_TOKEN_FULL"]))
+        let url = conversationAvatar.failureMetadata(URLError(.notConnectedToInternet, userInfo: [NSURLErrorFailingURLErrorKey: "https://invalid?token=SECRET_TOKEN_FULL"]))
         check(url.category == "url" && url.code == "-1009")
-        let http = WevVGlazeIMDiagnostics.failureMetadata(WevVGlazeNetworkError.http(401))
+        let http = conversationAvatar.failureMetadata(GlazeVaultTradeError.http(401))
         check(http.category == "http" && http.code == "401")
-        let cancelled = WevVGlazeIMDiagnostics.failureMetadata(CancellationError())
+        let cancelled = conversationAvatar.failureMetadata(CancellationError())
         check(cancelled.category == "cancelled" && cancelled.code == "none")
 
         let success = BridgeProbe()
@@ -104,9 +104,9 @@ def main():
     start = source.index("    @discardableResult\n    private func completeGlaze(")
     end = source.index("    private func respondInvalidGlaze(", start)
     actual = source[start:end]
-    network = (SOURCES / "WevEnd/WevVGlazeNetworkFoundation.swift").read_text()
-    error_start = network.index("enum WevVGlazeNetworkError:")
-    error_end = network.index("\n@MainActor\nstruct WevVGlazeOPIProfile", error_start)
+    network = (SOURCES / 'WevEnd/NertyuChoiceStackLayer.swift').read_text()
+    error_start = network.index('enum GlazeVaultTradeError:')
+    error_end = network.index('\n@MainActor\nstruct WevVGlazeVaultPack', error_start)
     network_error = network[error_start:error_end]
     with tempfile.TemporaryDirectory(prefix="wevv-im-checks-") as directory:
         folder = Path(directory)
@@ -117,7 +117,7 @@ def main():
             command = ["xcrun", "swiftc", "-swift-version", "5", "-default-isolation", "MainActor", "-parse-as-library", "-module-cache-path", str(folder / "modules")]
             if debug:
                 command.extend(["-D", "DEBUG"])
-            command.extend([str(SOURCES / "WevEnd/WevVGlazeIMDiagnostics.swift"), str(probe), "-o", str(binary)])
+            command.extend([str(SOURCES / 'WevEnd/conversationAvatar.swift'), str(probe), "-o", str(binary)])
             subprocess.run(command, check=True)
             result = subprocess.run([str(binary)], check=True, text=True, capture_output=True)
             assert "SECRET_TOKEN_FULL" not in result.stdout + result.stderr

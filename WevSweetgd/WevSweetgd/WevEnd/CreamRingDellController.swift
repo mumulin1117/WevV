@@ -6,11 +6,11 @@ import zlib
 /// Reads only the small startup configuration archive. Complete H5 resources
 /// are prepared independently in the background and reused by their version.
 @MainActor
-struct WevVGlazeBundleConfiguration {
-    let profile: WevVGlazeOPIProfile
+struct CreamRingDellController {
+    let profile: WevVGlazeVaultPack
     let contentVersion: String
 
-    private enum VerificationError: LocalizedError {
+    private enum activeSugarPictureTile: LocalizedError {
         case invalidResource
 
         var errorDescription: String? {
@@ -18,7 +18,7 @@ struct WevVGlazeBundleConfiguration {
         }
     }
 
-    private struct FileRecord: Equatable {
+    private struct activeSugarPictureTilePacket: Equatable {
         let bytes: Int
         let sha256: String
     }
@@ -35,7 +35,7 @@ struct WevVGlazeBundleConfiguration {
 
     init(bundle: Bundle = .main, seed: String, hostVersion: String) throws {
         guard let manifestURL = bundle.url(forResource: Self.manifestName, withExtension: "json") else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
         let manifestData = try Self.read(manifestURL, maximum: Self.maximumManifestBytes)
         let manifest = try Self.jsonObject(manifestData)
@@ -60,39 +60,39 @@ struct WevVGlazeBundleConfiguration {
               archiveBytes > 0, archiveBytes <= Self.maximumEncryptedBytes,
               let archiveDigest = native["archiveSha256"] as? String, Self.isDigest(archiveDigest),
               let archiveURL = bundle.url(forResource: Self.archiveName, withExtension: nil) else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
         let environment = try Self.environment(manifest["environment"])
         let nativeRouting: [String: Any]?
         if let rawRouting = manifest["nativeRouting"] {
             guard let routing = rawRouting as? [String: Any],
                   let routingEnvironment = routing["environment"] as? String,
-                  routingEnvironment == environment else { throw VerificationError.invalidResource }
+                  routingEnvironment == environment else { throw activeSugarPictureTile.invalidResource }
             nativeRouting = routing
         } else { nativeRouting = nil }
         let aliasCounts = try Self.aliasCounts(manifest["profileAliasCounts"])
         let expected = try Self.fileRecords(native["files"], maximumCount: 2, maximumBytes: Self.maximumFileBytes)
-        guard Set(expected.keys) == Self.allowedPaths else { throw VerificationError.invalidResource }
+        guard Set(expected.keys) == Self.allowedPaths else { throw activeSugarPictureTile.invalidResource }
         let completeRecords = try Self.fileRecords(manifest["files"], maximumCount: 20_000, maximumBytes: 256 * 1024 * 1024)
         guard Self.integer(manifest["fileCount"]) == completeRecords.count,
               expected.allSatisfy({ completeRecords[$0.key] == $0.value }) else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
         let encrypted = try Self.read(archiveURL, maximum: Self.maximumEncryptedBytes)
         guard encrypted.count == archiveBytes, Self.digest(encrypted) == archiveDigest else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
         let compressed = try Self.decrypt(encrypted, seed: seed)
         let archive = try Self.expand(Self.expand(compressed))
         let files = try Self.unpack(archive)
-        guard Set(files.keys) == Self.allowedPaths else { throw VerificationError.invalidResource }
+        guard Set(files.keys) == Self.allowedPaths else { throw activeSugarPictureTile.invalidResource }
         for (path, bytes) in files {
             guard let record = expected[path], record.bytes == bytes.count, record.sha256 == Self.digest(bytes) else {
-                throw VerificationError.invalidResource
+                throw activeSugarPictureTile.invalidResource
             }
         }
         guard let appData = files[Self.appPath], let profileData = files[Self.profilePath] else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
         let app = try Self.markedObject(appData, marker: "APP_CONFIG")
         let profileObject = try Self.markedObject(profileData, marker: "OPI_PROFILE")
@@ -111,11 +111,11 @@ struct WevVGlazeBundleConfiguration {
               let bridge = app["bridge"] as? [String: Any],
               let methods = bridge["methods"] as? [String: String],
               Set(methods.keys) == Set(["host.getContext", "host.setNavigation", "host.close", "payment.purchaseProduct", "payment.syncTransactions"]) else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
-        let profile = try WevVGlazeOPIProfile(javaScript: profileData, nativeRouting: nativeRouting)
+        let profile = try WevVGlazeVaultPack(javaScript: profileData, nativeRouting: nativeRouting)
         guard profile.appID == appID, profile.appVersion == hostVersion,
-              profile.environment == environment else { throw VerificationError.invalidResource }
+              profile.environment == environment else { throw activeSugarPictureTile.invalidResource }
         self.profile = profile
         contentVersion = version
     }
@@ -125,7 +125,7 @@ struct WevVGlazeBundleConfiguration {
     private static func environment(_ raw: Any?) throws -> String {
         guard let raw else { return "test" }
         guard let value = raw as? String, ["test", "production"].contains(value) else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
         return value
     }
@@ -133,12 +133,12 @@ struct WevVGlazeBundleConfiguration {
     private static func aliasCounts(_ raw: Any?) throws -> [String: Int] {
         guard let raw else { return ["path": 167, "field": 964, "header": 7] }
         guard let values = raw as? [String: Any], Set(values.keys) == Set(["path", "field", "header"]) else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
         var counts: [String: Int] = [:]
         for (name, rawCount) in values {
             guard let count = integer(rawCount), count > 0, count <= 20_000 else {
-                throw VerificationError.invalidResource
+                throw activeSugarPictureTile.invalidResource
             }
             counts[name] = count
         }
@@ -148,9 +148,9 @@ struct WevVGlazeBundleConfiguration {
     private static func read(_ url: URL, maximum: Int) throws -> Data {
         let values = try url.resourceValues(forKeys: [.isRegularFileKey, .isSymbolicLinkKey, .fileSizeKey])
         guard values.isRegularFile == true, values.isSymbolicLink != true,
-              let size = values.fileSize, size > 0, size <= maximum else { throw VerificationError.invalidResource }
+              let size = values.fileSize, size > 0, size <= maximum else { throw activeSugarPictureTile.invalidResource }
         let data = try Data(contentsOf: url, options: .mappedIfSafe)
-        guard data.count == size, data.count <= maximum else { throw VerificationError.invalidResource }
+        guard data.count == size, data.count <= maximum else { throw activeSugarPictureTile.invalidResource }
         return data
     }
 
@@ -174,23 +174,23 @@ struct WevVGlazeBundleConfiguration {
         return number.intValue
     }
 
-    private static func fileRecords(_ raw: Any?, maximumCount: Int, maximumBytes: Int) throws -> [String: FileRecord] {
+    private static func fileRecords(_ raw: Any?, maximumCount: Int, maximumBytes: Int) throws -> [String: activeSugarPictureTilePacket] {
         guard let array = raw as? [[String: Any]], !array.isEmpty, array.count <= maximumCount else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
-        var records: [String: FileRecord] = [:]
+        var records: [String: activeSugarPictureTilePacket] = [:]
         var folded = Set<String>()
         for value in array {
             guard let path = value["path"] as? String, Self.safePath(path),
                   records[path] == nil, folded.insert(path.folding(options: .caseInsensitive, locale: Locale(identifier: "en_US_POSIX"))).inserted,
                   let bytes = integer(value["bytes"]), bytes <= maximumBytes,
-                  let hash = value["sha256"] as? String, isDigest(hash) else { throw VerificationError.invalidResource }
-            records[path] = FileRecord(bytes: bytes, sha256: hash)
+                  let hash = value["sha256"] as? String, isDigest(hash) else { throw activeSugarPictureTile.invalidResource }
+            records[path] = activeSugarPictureTilePacket(bytes: bytes, sha256: hash)
         }
         for path in records.keys {
             let parts = path.split(separator: "/")
             for count in 1..<parts.count where records[parts.prefix(count).joined(separator: "/")] != nil {
-                throw VerificationError.invalidResource
+                throw activeSugarPictureTile.invalidResource
             }
         }
         return records
@@ -206,7 +206,7 @@ struct WevVGlazeBundleConfiguration {
 
     private static func decrypt(_ data: Data, seed: String) throws -> Data {
         let seedData = Data(seed.utf8)
-        guard seedData.count > 20, data.count % kCCBlockSizeAES128 == 0 else { throw VerificationError.invalidResource }
+        guard seedData.count > 20, data.count % kCCBlockSizeAES128 == 0 else { throw activeSugarPictureTile.invalidResource }
         var material = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
         seedData.withUnsafeBytes { _ = CC_SHA256($0.baseAddress, CC_LONG(seedData.count), &material) }
         let key = Data(material.prefix(kCCKeySizeAES128))
@@ -225,16 +225,16 @@ struct WevVGlazeBundleConfiguration {
                 }
             }
         }
-        guard status == kCCSuccess, written > 0, written <= maximumEncryptedBytes else { throw VerificationError.invalidResource }
+        guard status == kCCSuccess, written > 0, written <= maximumEncryptedBytes else { throw activeSugarPictureTile.invalidResource }
         output.removeSubrange(written..<output.count)
         return output
     }
 
     private static func expand(_ data: Data) throws -> Data {
-        guard !data.isEmpty, data.count <= maximumExpandedBytes else { throw VerificationError.invalidResource }
+        guard !data.isEmpty, data.count <= maximumExpandedBytes else { throw activeSugarPictureTile.invalidResource }
         var stream = z_stream()
         guard inflateInit_(&stream, ZLIB_VERSION, Int32(MemoryLayout<z_stream>.size)) == Z_OK else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
         defer { inflateEnd(&stream) }
         var output = Data(count: maximumExpandedBytes + 1)
@@ -249,68 +249,68 @@ struct WevVGlazeBundleConfiguration {
             }
         }
         guard status == Z_STREAM_END, stream.avail_in == 0,
-              stream.total_out > 0, stream.total_out <= maximumExpandedBytes else { throw VerificationError.invalidResource }
+              stream.total_out > 0, stream.total_out <= maximumExpandedBytes else { throw activeSugarPictureTile.invalidResource }
         output.removeSubrange(Int(stream.total_out)..<output.count)
         return output
     }
 
     private static func unpack(_ data: Data) throws -> [String: Data] {
         let magic = Data("WVVROOM1".utf8)
-        guard data.starts(with: magic), data.count <= maximumExpandedBytes else { throw VerificationError.invalidResource }
+        guard data.starts(with: magic), data.count <= maximumExpandedBytes else { throw activeSugarPictureTile.invalidResource }
         var cursor = magic.count
         var files: [String: Data] = [:]
         var folded = Set<String>()
         while cursor < data.count {
-            guard files.count < 2, data.count - cursor >= 12 else { throw VerificationError.invalidResource }
+            guard files.count < 2, data.count - cursor >= 12 else { throw activeSugarPictureTile.invalidResource }
             let pathLength = (0..<4).reduce(UInt64(0)) { $0 | UInt64(data[cursor + $1]) << ($1 * 8) }
             let length = (0..<8).reduce(UInt64(0)) { $0 | UInt64(data[cursor + 4 + $1]) << ($1 * 8) }
             cursor += 12
             guard pathLength > 0, pathLength <= 4096, length <= maximumFileBytes,
                   pathLength <= UInt64(data.count - cursor),
-                  length <= UInt64(data.count - cursor) - pathLength else { throw VerificationError.invalidResource }
+                  length <= UInt64(data.count - cursor) - pathLength else { throw activeSugarPictureTile.invalidResource }
             let pathEnd = cursor + Int(pathLength)
             guard let path = String(data: data.subdata(in: cursor..<pathEnd), encoding: .utf8), safePath(path),
                   allowedPaths.contains(path), files[path] == nil,
                   folded.insert(path.folding(options: .caseInsensitive, locale: Locale(identifier: "en_US_POSIX"))).inserted else {
-                throw VerificationError.invalidResource
+                throw activeSugarPictureTile.invalidResource
             }
             cursor = pathEnd
             let end = cursor + Int(length)
             files[path] = data.subdata(in: cursor..<end)
             cursor = end
         }
-        guard cursor == data.count, files.count == 2 else { throw VerificationError.invalidResource }
+        guard cursor == data.count, files.count == 2 else { throw activeSugarPictureTile.invalidResource }
         return files
     }
 
     private static func markedObject(_ data: Data, marker: String) throws -> [String: Any] {
-        guard let text = String(data: data, encoding: .utf8) else { throw VerificationError.invalidResource }
+        guard let text = String(data: data, encoding: .utf8) else { throw activeSugarPictureTile.invalidResource }
         let start = "/*__\(marker)_START__*/"
         let end = "/*__\(marker)_END__*/"
         guard text.components(separatedBy: start).count == 2, text.components(separatedBy: end).count == 2,
               let first = text.range(of: start), let last = text.range(of: end), first.upperBound < last.lowerBound,
               let body = String(text[first.upperBound..<last.lowerBound]).data(using: .utf8) else {
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
         return try jsonObject(body)
     }
 
     private static func jsonObject(_ data: Data) throws -> [String: Any] {
-        var scanner = JSONKeyScanner(bytes: Array(data))
+        var scanner = avatarData(bytes: Array(data))
         try scanner.scan()
-        guard let value = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw VerificationError.invalidResource }
+        guard let value = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw activeSugarPictureTile.invalidResource }
         return value
     }
 
     /// Foundation accepts duplicate JSON keys; reject them before decoding config.
-    private struct JSONKeyScanner {
+    private struct avatarData {
         let bytes: [UInt8]
         var cursor = 0
 
         mutating func scan() throws {
             try value(depth: 0)
             whitespace()
-            guard cursor == bytes.count else { throw VerificationError.invalidResource }
+            guard cursor == bytes.count else { throw activeSugarPictureTile.invalidResource }
         }
 
         private mutating func whitespace() {
@@ -327,30 +327,30 @@ struct WevVGlazeBundleConfiguration {
         private mutating func string(decode: Bool) throws -> String {
             whitespace()
             let start = cursor
-            guard take(34) else { throw VerificationError.invalidResource }
+            guard take(34) else { throw activeSugarPictureTile.invalidResource }
             while cursor < bytes.count {
                 let byte = bytes[cursor]
                 cursor += 1
                 if byte == 34 {
                     guard decode else { return "" }
                     guard let key = try JSONSerialization.jsonObject(with: Data(bytes[start..<cursor]), options: .fragmentsAllowed) as? String else {
-                        throw VerificationError.invalidResource
+                        throw activeSugarPictureTile.invalidResource
                     }
                     return key
                 }
                 if byte == 92 {
-                    guard cursor < bytes.count else { throw VerificationError.invalidResource }
+                    guard cursor < bytes.count else { throw activeSugarPictureTile.invalidResource }
                     cursor += 1
                 } else if byte < 32 {
-                    throw VerificationError.invalidResource
+                    throw activeSugarPictureTile.invalidResource
                 }
             }
-            throw VerificationError.invalidResource
+            throw activeSugarPictureTile.invalidResource
         }
 
         private mutating func value(depth: Int) throws {
             whitespace()
-            guard depth < 64, cursor < bytes.count else { throw VerificationError.invalidResource }
+            guard depth < 64, cursor < bytes.count else { throw activeSugarPictureTile.invalidResource }
             switch bytes[cursor] {
             case 123:
                 cursor += 1
@@ -358,11 +358,11 @@ struct WevVGlazeBundleConfiguration {
                 if take(125) { return }
                 repeat {
                     let key = try string(decode: true)
-                    guard keys.insert(key).inserted, take(58) else { throw VerificationError.invalidResource }
+                    guard keys.insert(key).inserted, take(58) else { throw activeSugarPictureTile.invalidResource }
                     try value(depth: depth + 1)
                     if take(125) { return }
                 } while take(44)
-                throw VerificationError.invalidResource
+                throw activeSugarPictureTile.invalidResource
             case 91:
                 cursor += 1
                 if take(93) { return }
@@ -370,13 +370,13 @@ struct WevVGlazeBundleConfiguration {
                     try value(depth: depth + 1)
                     if take(93) { return }
                 } while take(44)
-                throw VerificationError.invalidResource
+                throw activeSugarPictureTile.invalidResource
             case 34:
                 _ = try string(decode: false)
             default:
                 let start = cursor
                 while cursor < bytes.count, ![9, 10, 13, 32, 44, 93, 125].contains(bytes[cursor]) { cursor += 1 }
-                guard cursor > start else { throw VerificationError.invalidResource }
+                guard cursor > start else { throw activeSugarPictureTile.invalidResource }
             }
         }
     }

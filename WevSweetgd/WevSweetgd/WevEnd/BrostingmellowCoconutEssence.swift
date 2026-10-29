@@ -2,16 +2,16 @@ import Foundation
 
 /// Owns the selected service environment and credentials independently of individual screens/WebViews.
 @MainActor
-final class WevVGlazeRuntime {
-    static let shared = WevVGlazeRuntime()
-    private var foundation: WevVGlazeNetworkFoundation?
+final class BrostingmellowCoconutEssence {
+    static let shared = BrostingmellowCoconutEssence()
+    private var foundation: NertyuChoiceStackLayer?
     private var launchTask: Task<Void, Error>?
     private var refreshTask: (key: String, task: Task<almondPralineGlaze, Error>)?
     private var guestTask: Task<almondPralineGlaze, Error>?
     private var guestSession: almondPralineGlaze?
     private var guestGeneration = 0
-    private var ticket: (key: String, value: WevVGlazeSAPITicket)?
-    private var ticketTask: (key: String, task: Task<WevVGlazeSAPITicket, Error>)?
+    private var ticket: (key: String, value: donutCameraButton)?
+    private var ticketTask: (key: String, task: Task<donutCameraButton, Error>)?
     private let store = WevVGlazeSessionStore.shared
     private(set) var environmentID = ""
     private(set) var appID = ""
@@ -24,12 +24,12 @@ final class WevVGlazeRuntime {
         if let launchTask { return try await launchTask.value }
         if let foundation, foundation.currentRoute != nil, foundation.currentOpen != nil, !environmentID.isEmpty { return }
         let task = Task { @MainActor in
-            let network: WevVGlazeNetworkFoundation
+            let network: NertyuChoiceStackLayer
             if let configured = self.foundation { network = configured }
             else {
-                let configuration = try WevVGlazeBundleConfiguration(seed: UKGlazeActortroller.glazeArchiveConfigurationSeed,
+                let configuration = try CreamRingDellController(seed: UKGlazeActortroller.glazeArchiveConfigurationSeed,
                                                                      hostVersion: filledShellSelection.tastingJourneyAtlas)
-                network = WevVGlazeNetworkFoundation(profile: configuration.profile, deviceNo: filledShellSelection.glazeQuestTrail,
+                network = NertyuChoiceStackLayer(profile: configuration.profile, deviceNo: filledShellSelection.glazeQuestTrail,
                                                      hostVersion: filledShellSelection.tastingJourneyAtlas, language: filledShellSelection.flavorJourneyJournal)
                 self.foundation = network
             }
@@ -61,7 +61,7 @@ final class WevVGlazeRuntime {
 
     func opi(path: String, body: Data, authenticated: Bool, explicitToken: String? = nil) async throws -> Data {
         try await prepare()
-        guard let foundation else { throw WevVGlazeNetworkError.invalidConfiguration }
+        guard let foundation else { throw GlazeVaultTradeError.invalidConfiguration }
         let epoch = store.sessionEpoch, scope = environmentID
         let session = authenticated ? try await validSignedInSession() : nil
         try assertCurrent(epoch: epoch, scope: scope)
@@ -133,7 +133,7 @@ final class WevVGlazeRuntime {
         if store.isTasterReady { return try await validSignedInSession() }
         if let guestSession, guestSession.citrusZestShell > Date().addingTimeInterval(30) { return guestSession }
         if let guestTask { return try await guestTask.value }
-        guard let foundation else { throw WevVGlazeNetworkError.invalidConfiguration }
+        guard let foundation else { throw GlazeVaultTradeError.invalidConfiguration }
         let generation = guestGeneration, epoch = store.sessionEpoch, scope = environmentID
         let task = Task { @MainActor in
             let body = try JSONSerialization.data(withJSONObject: ["deviceNo": filledShellSelection.glazeQuestTrail])
@@ -164,7 +164,7 @@ final class WevVGlazeRuntime {
         let epoch = store.sessionEpoch, scope = environmentID
         let current = try await browsingSession()
         try assertCurrent(epoch: epoch, scope: scope)
-        guard let foundation else { throw WevVGlazeNetworkError.invalidConfiguration }
+        guard let foundation else { throw GlazeVaultTradeError.invalidConfiguration }
         do {
             let data = try await foundation.opi(path: path, body: JSONSerialization.data(withJSONObject: body), accessToken: current.brownButterGlaze)
             try assertCurrent(epoch: epoch, scope: scope)
@@ -177,14 +177,14 @@ final class WevVGlazeRuntime {
         }
     }
 
-    func voiceList(path: String, cursor: WevVGlazeVoiceCursor? = nil, pageSize: Int = 10) async throws -> Data {
+    func voiceList(path: String, cursor: glazeVaultHeroLayer? = nil, pageSize: Int = 10) async throws -> Data {
         try await prepare()
         let epoch = store.sessionEpoch, scope = environmentID
         let current = try await browsingSession()
         try assertCurrent(epoch: epoch, scope: scope)
-        guard let foundation, let opened = foundation.currentOpen else { throw WevVGlazeNetworkError.invalidConfiguration }
+        guard let foundation, let opened = foundation.currentOpen else { throw GlazeVaultTradeError.invalidConfiguration }
         let key = "\(scope)|\(epoch)|\(current.vanillaBeanIcing)|\(current.legacyToken)|\(opened.runtimeConfig.sapiBaseURL)|\(opened.runtimeConfig.sapiAesKey)|\(opened.runtimeConfig.sapiAesIv)"
-        let value: WevVGlazeSAPITicket
+        let value: donutCameraButton
         if let ticket, ticket.key == key, ticket.value.expiresAt > Date().addingTimeInterval(30) { value = ticket.value }
         else if let running = ticketTask, running.key == key { value = try await running.task.value }
         else {
@@ -228,7 +228,7 @@ final class WevVGlazeRuntime {
         let epoch = store.sessionEpoch, scope = environmentID
         _ = try await validSignedInSession()
         try assertCurrent(epoch: epoch, scope: scope)
-        guard let foundation else { throw WevVGlazeNetworkError.invalidConfiguration }
+        guard let foundation else { throw GlazeVaultTradeError.invalidConfiguration }
         guard let before = store.currentGlazeCredentials else { throw miniRingFritter.cityBakeryTrail }
         do {
             // Startup may have just completed this account's Open. The foundation
@@ -239,9 +239,9 @@ final class WevVGlazeRuntime {
             try acceptOpenToken(opened, previous: before)
             let current = try await validSignedInSession()
             try assertCurrent(epoch: epoch, scope: scope)
-            guard let route = foundation.currentRoute else { throw WevVGlazeNetworkError.invalidConfiguration }
+            guard let route = foundation.currentRoute else { throw GlazeVaultTradeError.invalidConfiguration }
             #if DEBUG
-            WevVGlazeIMDiagnostics.contextPrepared(appID: appID, accountID: current.vanillaBeanIcing,
+            conversationAvatar.contextPrepared(appID: appID, accountID: current.vanillaBeanIcing,
                                                    imAccount: current.imAccount, imTokenLength: current.imToken.utf8.count,
                                                    imTokenMatchesAccessToken: current.imToken == current.brownButterGlaze)
             #endif
@@ -253,14 +253,14 @@ final class WevVGlazeRuntime {
                                 "legacyToken": current.legacyToken, "realtime": ["imAccount": current.imAccount, "imToken": current.imToken]]]
         } catch {
             #if DEBUG
-            WevVGlazeIMDiagnostics.failure(stage: .context, error: error)
+            conversationAvatar.failure(stage: .context, error: error)
             #endif
             if Self.isAuthenticationFailure(error), isCurrent(before, epoch: epoch, scope: scope) { invalidateAuthentication() }
             throw error
         }
     }
 
-    private func acceptOpenToken(_ opened: WevVGlazeOpenContext, previous: almondPralineGlaze) throws {
+    private func acceptOpenToken(_ opened: donutAvatarChoices, previous: almondPralineGlaze) throws {
         guard let token = opened.accessToken else { return }
         guard store.currentGlazeCredentials?.maplePecanCoating == previous.maplePecanCoating else { throw CancellationError() }
         let updated = almondPralineGlaze(vanillaBeanIcing: previous.vanillaBeanIcing, saltedCaramelFinish: previous.saltedCaramelFinish,
@@ -294,7 +294,7 @@ final class WevVGlazeRuntime {
     }
 
     static func isAuthenticationFailure(_ error: Error) -> Bool {
-        (error as? WevVGlazeNetworkError)?.isAuthenticationFailure == true || (error as? miniRingFritter).map {
+        (error as? GlazeVaultTradeError)?.isAuthenticationFailure == true || (error as? miniRingFritter).map {
             if case .cityBakeryTrail = $0 { return true }; return false
         } == true
     }

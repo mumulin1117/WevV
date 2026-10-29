@@ -1,8 +1,8 @@
 import Foundation
 
-extension WevVGlazeCommunityService {
+extension LisenNoticepoplater {
     /// One raw feed cursor; a refresh invalidates pending older page responses.
-    struct tastingPassportPage {
+    struct honeyScout {
         static let pageSize = 20
         private(set) var posts: [butteryTexture] = []
         private(set) var cursor: Int64 = 0
@@ -31,7 +31,7 @@ extension WevVGlazeCommunityService {
         }
 
         @discardableResult
-        mutating func completeGlaze(_ page: FeedPage, requestID: UUID) -> Bool {
+        mutating func completeGlaze(_ page: choiceStackPacket, requestID: UUID) -> Bool {
             guard self.requestID == requestID, isLoading else { return false }
             let count = currentPage == 0 ? 0 : posts.count
             if currentPage == 0 { restored.removeAll() }

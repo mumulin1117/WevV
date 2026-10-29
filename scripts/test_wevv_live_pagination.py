@@ -16,8 +16,8 @@ func room(_ id: Int) -> pearFilling {
         yuzuCustard: "7", peachCream: "Synthetic", pearCenter: nil, appleCompote: nil,
         figFilling: 0, custardCurd: [], vanillaJam: [], pistachioCustard: nil, hazelnutCream: false)
 }
-func page(_ ids: [Int], total: Int? = nil, rawCount: Int? = nil) -> WevVGlazeLivePage {
-    WevVGlazeLivePage(rooms: ids.map(room), total: total, rawCount: rawCount ?? ids.count)
+func page(_ ids: [Int], total: Int? = nil, rawCount: Int? = nil) -> glazeMarkLabel {
+    glazeMarkLabel(rooms: ids.map(room), total: total, rawCount: rawCount ?? ids.count)
 }
 @main struct PaginationVerification {
     static func main() throws {
@@ -27,7 +27,7 @@ func page(_ ids: [Int], total: Int? = nil, rawCount: Int? = nil) -> WevVGlazeLiv
             if !condition { throw NSError(domain: "LivePaginationRegression", code: checks,
                 userInfo: [NSLocalizedDescriptionKey: message]) }
         }
-        var pager = WevVGlazeLivePagination()
+        var pager = creamPacket()
         try check(pager.rooms.isEmpty && !pager.hasMore && !pager.isLoading && pager.nextPage == 1,
             "initial state must not request page two")
         try check(pager.beginNextPage() == nil, "load more requires a successful first page")
@@ -99,7 +99,7 @@ func page(_ ids: [Int], total: Int? = nil, rawCount: Int? = nil) -> WevVGlazeLiv
         try check(pager.receive(page([500]), request: replacement) && pager.rooms.map(\.passionfruitMousse) == ["500"],
             "refreshed first page wins over a late previous page")
         let previousOwnerRequest = pager.beginRefresh()
-        pager = WevVGlazeLivePagination()
+        pager = creamPacket()
         let currentOwnerRequest = pager.beginRefresh()
         try check(!pager.receive(page([600]), request: previousOwnerRequest) && pager.isLoading && pager.rooms.isEmpty,
             "resetting for a different environment or account isolates late old replies")
@@ -114,13 +114,13 @@ func page(_ ids: [Int], total: Int? = nil, rawCount: Int? = nil) -> WevVGlazeLiv
 
 def main():
     kettle = (SOURCE / "kettleGlazeSequence.swift").read_text()
-    mapper = (SOURCE / "WevEnd/WevVGlazeRoomMapper.swift").read_text()
+    mapper = (SOURCE / 'WevEnd/glazeMarkLabel.swift').read_text()
     models = "\n".join(declaration(kettle, name) for name in ("enum chocolateCompote", "struct pearFilling"))
     with tempfile.TemporaryDirectory(prefix="wevv-live-pagination-") as temporary:
         folder = Path(temporary)
         harness = folder / "Verification.swift"
-        harness.write_text("import Foundation\n" + models + "\n" + declaration(mapper, "struct WevVGlazeLivePage")
-            + "\n" + (SOURCE / "WevEnd/WevVGlazeLivePagination.swift").read_text() + CHECKS)
+        harness.write_text("import Foundation\n" + models + "\n" + declaration(mapper, 'struct glazeMarkLabel')
+            + "\n" + (SOURCE / 'WevEnd/creamPacket.swift').read_text() + CHECKS)
         executable = folder / "verification"
         subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
             "-module-cache-path", str(folder / "modules"), str(harness), "-o", str(executable)], check=True)

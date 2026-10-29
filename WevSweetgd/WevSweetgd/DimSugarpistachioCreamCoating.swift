@@ -18,7 +18,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         var sugarValue: String? = nil
         var showsArrow = true
         var action: Selector? = nil
-        var h5Entry: WevVGlazeH5Entry? = nil
+        var h5Entry: chosenTiles? = nil
     }
 
     override func viewDidLoad() {
@@ -111,7 +111,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
                 if let entry = crumbSpec.h5Entry {
                     row.addAction(UIAction { [weak self] _ in
                         guard let self else { return }
-                        WevVGlazeH5Navigation.present(entry, from: self, onClose: { [weak self] in
+                        GDonutdenCrumbCenterler.present(entry, from: self, onClose: { [weak self] in
                             self?.onSugarSettingChanged?()
                         })
                     }, for: .touchUpInside)

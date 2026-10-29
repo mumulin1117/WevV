@@ -1,0 +1,193 @@
+WevEnd 类型重命名记录
+
+范围：56 个 class/struct/enum（含嵌套和私有类型），17 个 App Swift 文件。
+命名来源：优先使用类名/类型名清单中的 13 个名称，其余 43 个来自归档内声明的自主命名清单。
+未重命名方法、属性、枚举 case、协议/typealias、接口字段、资源名称或持久化键。
+28 份受影响 Swift 源码可通过逆向替换逐字还原为修改前内容。
+
+类型对照：
+WevVGlazeBundleConfiguration -> CreamRingDellController [struct]
+  WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift
+VerificationError -> activeSugarPictureTile [enum]
+  WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift
+FileRecord -> activeSugarPictureTilePacket [struct]
+  WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift
+JSONKeyScanner -> avatarData [struct]
+  WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift
+WevVGlazeCommunityService -> LisenNoticepoplater [class]
+  WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+Post -> caramelPecanMedley [struct]
+  WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+FeedPage -> choiceStackPacket [struct]
+  WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+CommentPage -> choiceTitle [struct]
+  WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+PublishConfiguration -> chosenAsset [struct]
+  WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+PublishOutcome -> chosenAssetPacket [enum]
+  WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+CommunityError -> chosenDonutAvatarAsset [enum]
+  WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+WevVGlazeH5Entry -> chosenTiles [enum]
+  WevSweetgd/WevSweetgd/WevEnd/chosenTiles.swift
+Relation -> cocoaInkTone [enum]
+  WevSweetgd/WevSweetgd/WevEnd/chosenTiles.swift
+WevVGlazeH5Navigation -> GDonutdenCrumbCenterler [enum]
+  WevSweetgd/WevSweetgd/WevEnd/GDonutdenCrumbCenterler.swift
+WevVGlazeIMDiagnostics -> conversationAvatar [enum]
+  WevSweetgd/WevSweetgd/WevEnd/conversationAvatar.swift
+Stage -> creamFormCard [enum]
+  WevSweetgd/WevSweetgd/WevEnd/conversationAvatar.swift
+WevVGlazeLivePagination -> creamPacket [struct]
+  WevSweetgd/WevSweetgd/WevEnd/creamPacket.swift
+WevVGlazeMediaTransfer -> WevVGlazeMessageController [class]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift
+TransferError -> creamScout [enum]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift
+Permission -> crumbAsset [struct]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift
+RedirectGuard -> crumbBioLabel [class]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift
+ImageFormat -> crumbBioPlaceholder [struct]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift
+WevVGlazeNetworkError -> GlazeVaultTradeError [enum]
+  WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevVGlazeOPIProfile -> WevVGlazeVaultPack [struct]
+  WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevVGlazeLaunchRoute -> crumbBioView [struct]
+  WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevVGlazeRuntimeConfiguration -> donutAvatarChoiceTitles [struct]
+  WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevVGlazeOpenContext -> donutAvatarChoices [struct]
+  WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevVGlazeSAPITicket -> donutCameraButton [struct]
+  WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevVGlazeNetworkFoundation -> NertyuChoiceStackLayer [class]
+  WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevVGlazePurchaseError -> donutDiaryFolio [enum]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazePurchaseScope -> donutSnapshot [struct]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazePurchaseParameters -> donutcitrusMixerView [enum]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazePurchaseIntent -> donutcitrusTrayButton [struct]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazePurchaseAttempt -> doughScrollView [struct]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazePurchaseMaterial -> doughSession [struct]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazePurchaseJournal -> doughmeltawayCrust [struct]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazePurchaseLedger -> expectedGlazeProductID [class]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazePurchaseCoordinator -> DrawcreamScoutSugarStyle [class]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazeProductRequest -> fallbackMark [class]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazeAppReceiptRequest -> glazeAvatar [class]
+  WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevVGlazeLivePage -> glazeMarkLabel [struct]
+  WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift
+WevVGlazeRoomMapper -> XunSugarRosterbrownButterDrizzle [enum]
+  WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift
+WevVGlazeRuntime -> BrostingmellowCoconutEssence [class]
+  WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift
+WevVGlazeScriptMessageRelay -> WevVGlazeConversationCell [class]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeConversationCell.swift
+WevVGlazeUnavailableFeature -> glazeNameField [enum]
+  WevSweetgd/WevSweetgd/WevEnd/glazeNameField.swift
+WevVGlazeSkeletonPanel -> WevVGlazeMessageCell [class]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift
+Kind -> glazeNameLabel [enum]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift
+Palette -> glazePackCards [struct]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift
+WevVGlazeSkeletonTile -> glazeSaveTask [class]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift
+WevVGlazeSocialServiceError -> glazeSugarCountLabel [enum]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift
+WevVGlazeSocialBoundary -> glazeVaultGrid [struct]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift
+WevVGlazeSocialService -> WevVGlazeRosterCell [class]
+  WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift
+WevVGlazeVoiceCursor -> glazeVaultHeroLayer [struct]
+  WevSweetgd/WevSweetgd/WevEnd/honeyLavenderCombination.swift
+WevVGlazeVoicePage -> glazeVaultHeroView [struct]
+  WevSweetgd/WevSweetgd/WevEnd/honeyLavenderCombination.swift
+WevVGlazeVoicePagination -> honeyLavenderCombination [struct]
+  WevSweetgd/WevSweetgd/WevEnd/honeyLavenderCombination.swift
+tastingPassportPage -> honeyScout [struct]
+  WevSweetgd/WevSweetgd/WevEnd/honeyScout.swift
+
+文件重命名对照：
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeBundleConfiguration.swift -> WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeCommunityService.swift -> WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeH5Entry.swift -> WevSweetgd/WevSweetgd/WevEnd/chosenTiles.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeH5Navigation.swift -> WevSweetgd/WevSweetgd/WevEnd/GDonutdenCrumbCenterler.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeIMDiagnostics.swift -> WevSweetgd/WevSweetgd/WevEnd/conversationAvatar.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeLivePagination.swift -> WevSweetgd/WevSweetgd/WevEnd/creamPacket.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMediaTransfer.swift -> WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeNetworkFoundation.swift -> WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazePurchaseCoordinator.swift -> WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRoomMapper.swift -> WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRuntime.swift -> WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeScriptMessageRelay.swift -> WevSweetgd/WevSweetgd/WevEnd/WevVGlazeConversationCell.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeServiceAvailability.swift -> WevSweetgd/WevSweetgd/WevEnd/glazeNameField.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeSkeletonPanel.swift -> WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeSocialService.swift -> WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeVoicePagination.swift -> WevSweetgd/WevSweetgd/WevEnd/honeyLavenderCombination.swift
+WevSweetgd/WevSweetgd/WevEnd/tastingPassportPage.swift -> WevSweetgd/WevSweetgd/WevEnd/honeyScout.swift
+
+受影响文件（声明/引用/测试夹具/源码路径同步）：
+WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift
+WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift
+WevSweetgd/WevSweetgd/KipoDonutMomentController.swift
+WevSweetgd/WevSweetgd/LmnTasterCardController.swift
+WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift
+WevSweetgd/WevSweetgd/SugarMomentEbuController.swift
+WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift
+WevSweetgd/WevSweetgd/UKGlazeActortroller.swift
+WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift
+WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift
+WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+WevSweetgd/WevSweetgd/WevEnd/GDonutdenCrumbCenterler.swift
+WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeConversationCell.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift
+WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift
+WevSweetgd/WevSweetgd/WevEnd/chosenTiles.swift
+WevSweetgd/WevSweetgd/WevEnd/conversationAvatar.swift
+WevSweetgd/WevSweetgd/WevEnd/creamPacket.swift
+WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift
+WevSweetgd/WevSweetgd/WevEnd/glazeNameField.swift
+WevSweetgd/WevSweetgd/WevEnd/honeyLavenderCombination.swift
+WevSweetgd/WevSweetgd/WevEnd/honeyScout.swift
+WevSweetgd/WevSweetgd/WevVGlazeApplication.swift
+WevSweetgd/WevSweetgd/kettleGlazeSequence.swift
+scripts/WevVGlazeNetworkVerification.swift
+scripts/test_wevv_live_pagination.py
+scripts/test_wevv_room_mapper.py
+scripts/test_wevv_voice_pagination.py
+scripts/verify_wevv_bundle_configuration.py
+scripts/verify_wevv_community_service.py
+scripts/verify_wevv_h5_entries.py
+scripts/verify_wevv_h5_navigation.py
+scripts/verify_wevv_im_diagnostics.py
+scripts/verify_wevv_media_transfer.py
+scripts/verify_wevv_native_integration.py
+scripts/verify_wevv_native_recharge.py
+scripts/verify_wevv_network_foundation.py
+scripts/verify_wevv_purchase_coordinator.py
+scripts/verify_wevv_purchase_retry.py
+scripts/verify_wevv_session_runtime.py
+scripts/verify_wevv_social_service.py
+scripts/verify_wevv_unused_archive.py
+
+额外验证维护：原生集成脚本中不存在的历史归档充值文件改为可选历史检查；当前购买逻辑仍由独立实际代码回归覆盖。
+归档检查允许有明确对照记录的类型名复用，仍禁止归档文件参与 App 编译。
+未删除或修改 WeeNo 归档及命名提取原始清单。
+
+验证结果：当前工作区 Debug iOS Simulator 全量构建成功（arm64、x86_64）；会话 35 项、原生集成 103 项、配置 101 项，以及网络、映射、动态、媒体、购买、导航、Bridge 和 H5 资源恢复等专项检查通过。
+未进行真机页面操作或真实账号/购买请求。

@@ -1,8 +1,8 @@
 import Foundation
 
 /// The SDK's documented standalone entries. Credentials belong in Bridge context only.
-enum WevVGlazeH5Entry: Sendable {
-    enum Relation: String, CaseIterable, Sendable {
+enum chosenTiles: Sendable {
+    enum cocoaInkTone: String, CaseIterable, Sendable {
         case friends = "1"
         case fans = "2"
         case following = "3"
@@ -14,7 +14,7 @@ enum WevVGlazeH5Entry: Sendable {
     case creator(userID: String, imAccount: String?)
     case conversation(userID: String, imAccount: String, name: String?, avatarURL: String?)
     case editProfile, diamonds, diamondRecords, blocklist, feedback, level, store, backpack
-    case relations(Relation)
+    case relations(cocoaInkTone)
     case liveSearch, liveRanking, partyCreate, partySearch, partyRanking, cpSettings
 
     var requiresFullFeatures: Bool {

@@ -16,11 +16,11 @@ func room(_ id: Int, owner: String = "7") -> pearFilling {
         yuzuCustard: owner, peachCream: "Synthetic", pearCenter: nil, appleCompote: nil,
         figFilling: 0, custardCurd: [], vanillaJam: [], pistachioCustard: nil, hazelnutCream: false)
 }
-func cursor(_ score: Int64, _ snapshot: String? = "synthetic-snapshot") -> WevVGlazeVoiceCursor {
-    WevVGlazeVoiceCursor(offset: score, snapshotID: snapshot)
+func cursor(_ score: Int64, _ snapshot: String? = "synthetic-snapshot") -> glazeVaultHeroLayer {
+    glazeVaultHeroLayer(offset: score, snapshotID: snapshot)
 }
-func page(_ ids: [Int], rawCount: Int? = nil, next: WevVGlazeVoiceCursor? = nil) -> WevVGlazeVoicePage {
-    WevVGlazeVoicePage(rooms: ids.map { room($0) }, rawCount: rawCount ?? ids.count, nextCursor: next)
+func page(_ ids: [Int], rawCount: Int? = nil, next: glazeVaultHeroLayer? = nil) -> glazeVaultHeroView {
+    glazeVaultHeroView(rooms: ids.map { room($0) }, rawCount: rawCount ?? ids.count, nextCursor: next)
 }
 @main struct VoicePaginationVerification {
     static func main() throws {
@@ -30,8 +30,8 @@ func page(_ ids: [Int], rawCount: Int? = nil, next: WevVGlazeVoiceCursor? = nil)
             if !condition { throw NSError(domain: "VoicePaginationRegression", code: checks,
                 userInfo: [NSLocalizedDescriptionKey: message]) }
         }
-        var pager = WevVGlazeVoicePagination()
-        try check(WevVGlazeVoicePagination.pageSize == 10, "voice page size must match delivered H5")
+        var pager = honeyLavenderCombination()
+        try check(honeyLavenderCombination.pageSize == 10, "voice page size must match delivered H5")
         try check(pager.rooms.isEmpty && pager.nextCursor == nil && !pager.hasMore && !pager.isLoading && !pager.failed && !pager.failedRefresh,
             "initial request has neither offset nor snapshot")
         try check(pager.beginNextPage() == nil, "load more cannot run before first page succeeds")
@@ -114,7 +114,7 @@ func page(_ ids: [Int], rawCount: Int? = nil, next: WevVGlazeVoiceCursor? = nil)
             && pager.hasMore && pager.nextCursor?.offset == Int64.min,
             "cursor transport does not impose a positive score or increment Long values")
         let sameOwner = pager.beginRefresh()
-        let sameOwnerPage = WevVGlazeVoicePage(rooms: [room(1000, owner: "77"), room(1001, owner: "77")],
+        let sameOwnerPage = glazeVaultHeroView(rooms: [room(1000, owner: "77"), room(1001, owner: "77")],
             rawCount: 10, nextCursor: cursor(999))
         try check(pager.receive(sameOwnerPage, request: sameOwner) && pager.rooms.count == 2 && pager.hasMore,
             "rooms sharing an owner remain distinct: deduplication uses room ID rather than business user ID")
@@ -140,7 +140,7 @@ func page(_ ids: [Int], rawCount: Int? = nil, next: WevVGlazeVoiceCursor? = nil)
         try check(pager.receive(page([500]), request: replacement) && pager.rooms.map(\.passionfruitMousse) == ["500"],
             "successful replacement wins over prior pages")
         let previousOwner = pager.beginRefresh()
-        pager = WevVGlazeVoicePagination()
+        pager = honeyLavenderCombination()
         let currentOwner = pager.beginRefresh()
         try check(!pager.receive(page([600]), request: previousOwner) && !pager.fail(request: previousOwner)
             && pager.rooms.isEmpty && pager.isLoading,
@@ -148,7 +148,7 @@ func page(_ ids: [Int], rawCount: Int? = nil, next: WevVGlazeVoiceCursor? = nil)
         try check(pager.receive(page([]), request: currentOwner) && pager.rooms.isEmpty && !pager.hasMore && !pager.failed && !pager.failedRefresh,
             "new owner accepts an actual empty success")
 
-        var recommend = WevVGlazeVoicePagination(), followed = WevVGlazeVoicePagination()
+        var recommend = honeyLavenderCombination(), followed = honeyLavenderCombination()
         let recommendRequest = recommend.beginRefresh(), followedRequest = followed.beginRefresh()
         try check(recommend.receive(page(Array(1...10), next: cursor(44, "recommended")), request: recommendRequest)
             && followed.receive(page([77]), request: followedRequest), "both filters load independently")
@@ -174,7 +174,7 @@ def main():
         folder = Path(temporary)
         harness = folder / "Verification.swift"
         harness.write_text("import Foundation\n" + models + "\n"
-            + (SOURCE / "WevEnd/WevVGlazeVoicePagination.swift").read_text() + CHECKS)
+            + (SOURCE / 'WevEnd/honeyLavenderCombination.swift').read_text() + CHECKS)
         executable = folder / "verification"
         subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
             "-module-cache-path", str(folder / "modules"), str(harness), "-o", str(executable)], check=True)

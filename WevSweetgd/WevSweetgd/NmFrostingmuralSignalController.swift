@@ -10,7 +10,7 @@ final class NmFrostingmuralSignalController: UIViewController {
     private weak var sprinklePeopleButton: UIControl?
     private let glazeHeroLayer = CAGradientLayer()
     private let sprinklePeopleLayer = CAGradientLayer()
-    private let glazeSheenPlaceholder = WevVGlazeSkeletonPanel(kind: .sprinkleChallenge)
+    private let glazeSheenPlaceholder = WevVGlazeMessageCell(kind: .sprinkleChallenge)
 
     private var frostingGuestKeys: [String] {
         let pralineCrunchTopping = [
@@ -614,7 +614,7 @@ final class NmFrostingmuralSignalController: UIViewController {
 
     @objc private func openVaultFromPopup() {
         butterAromaNotes()
-        WevVGlazeH5Navigation.present(.diamonds, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.present(.diamonds, from: self, onClose: { [weak self] in
             self?.cocoaDiarydonutChanged?()
         })
     }

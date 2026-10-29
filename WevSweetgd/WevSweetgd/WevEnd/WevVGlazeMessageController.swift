@@ -4,12 +4,12 @@ import Foundation
 /// Uses the same OSS PostObject contract as the delivered H5 MediaRepository.
 /// The OPI client signs each upload; OSS receives only its own multipart fields.
 @MainActor
-final class WevVGlazeMediaTransfer {
-    static let shared = WevVGlazeMediaTransfer()
+final class WevVGlazeMessageController {
+    static let shared = WevVGlazeMessageController()
 
     typealias UploadSender = @MainActor (URLRequest, Data) async throws -> (Data, URLResponse)
 
-    enum TransferError: LocalizedError {
+    enum creamScout: LocalizedError {
         case invalidImage
         case invalidSignature
         case expiredSignature
@@ -23,7 +23,7 @@ final class WevVGlazeMediaTransfer {
         }
     }
 
-    private struct Permission {
+    private struct crumbAsset {
         let accessID: String
         let policy: String
         let signature: String
@@ -34,11 +34,11 @@ final class WevVGlazeMediaTransfer {
 
         init(data: Data) throws {
             guard let value = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                throw TransferError.invalidSignature
+                throw creamScout.invalidSignature
             }
             func field(_ key: String, maximum: Int) throws -> String {
                 guard let text = value[key] as? String, !text.isEmpty, text.utf8.count <= maximum,
-                      !text.utf8.contains(where: { $0 == 13 || $0 == 10 || $0 == 0 }) else { throw TransferError.invalidSignature }
+                      !text.utf8.contains(where: { $0 == 13 || $0 == 10 || $0 == 0 }) else { throw creamScout.invalidSignature }
                 return text
             }
             accessID = try field("accessid", maximum: 1024)
@@ -48,24 +48,24 @@ final class WevVGlazeMediaTransfer {
                   let policyObject = try JSONSerialization.jsonObject(with: policyData) as? [String: Any],
                   let expiration = policyObject["expiration"] as? String,
                   let conditions = policyObject["conditions"] as? [Any], !conditions.isEmpty, conditions.count <= 64 else {
-                throw TransferError.invalidSignature
+                throw creamScout.invalidSignature
             }
             let formatter = ISO8601DateFormatter()
             formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
             let fractionalExpiration = formatter.date(from: expiration)
             formatter.formatOptions = [.withInternetDateTime]
-            guard let policyExpiration = fractionalExpiration ?? formatter.date(from: expiration) else { throw TransferError.invalidSignature }
+            guard let policyExpiration = fractionalExpiration ?? formatter.date(from: expiration) else { throw creamScout.invalidSignature }
             self.conditions = conditions
-            guard let host = Self.secureURL(try field("host", maximum: 2048)) else { throw TransferError.invalidSignature }
+            guard let host = Self.secureURL(try field("host", maximum: 2048)) else { throw creamScout.invalidSignature }
             self.host = host
             let rawCDN: String
             if let raw = value["cdnUrl"], !(raw is NSNull) {
-                guard let text = raw as? String else { throw TransferError.invalidSignature }
+                guard let text = raw as? String else { throw creamScout.invalidSignature }
                 rawCDN = text.trimmingCharacters(in: .whitespacesAndNewlines)
             } else { rawCDN = "" }
             if rawCDN.isEmpty { publicBase = host }
             else {
-                guard let cdn = Self.secureURL(rawCDN) else { throw TransferError.invalidSignature }
+                guard let cdn = Self.secureURL(rawCDN) else { throw creamScout.invalidSignature }
                 publicBase = cdn
             }
             if let raw = value["expire"], !(raw is NSNull) {
@@ -73,23 +73,23 @@ final class WevVGlazeMediaTransfer {
                 if let text = raw as? String { seconds = Double(text) }
                 else if let number = raw as? NSNumber, CFGetTypeID(number) != CFBooleanGetTypeID() { seconds = number.doubleValue }
                 else { seconds = nil }
-                guard let seconds, seconds.isFinite, seconds > 0 else { throw TransferError.invalidSignature }
+                guard let seconds, seconds.isFinite, seconds > 0 else { throw creamScout.invalidSignature }
                 expiresAt = min(Date(timeIntervalSince1970: seconds), policyExpiration)
             } else { expiresAt = policyExpiration }
         }
 
         func checkExpiration() throws {
-            if let expiresAt, expiresAt <= Date().addingTimeInterval(5) { throw TransferError.expiredSignature }
+            if let expiresAt, expiresAt <= Date().addingTimeInterval(5) { throw creamScout.expiredSignature }
         }
 
         func validate(key: String, bytes: Int) throws {
             for condition in conditions {
                 if let fields = condition as? [String: String], !fields.isEmpty {
-                    if let expected = fields["key"], expected != key { throw TransferError.invalidSignature }
+                    if let expected = fields["key"], expected != key { throw creamScout.invalidSignature }
                     continue
                 }
                 guard let values = condition as? [Any], values.count == 3,
-                      let operation = values[0] as? String else { throw TransferError.invalidSignature }
+                      let operation = values[0] as? String else { throw creamScout.invalidSignature }
                 if operation == "content-length-range" {
                     func count(_ raw: Any) -> Int? {
                         guard let number = raw as? NSNumber, CFGetTypeID(number) != CFBooleanGetTypeID(),
@@ -98,15 +98,15 @@ final class WevVGlazeMediaTransfer {
                         return number.intValue
                     }
                     guard let minimum = count(values[1]), let maximum = count(values[2]),
-                          minimum <= bytes, bytes <= maximum else { throw TransferError.invalidSignature }
+                          minimum <= bytes, bytes <= maximum else { throw creamScout.invalidSignature }
                 } else {
-                    guard let field = values[1] as? String, field.hasPrefix("$") else { throw TransferError.invalidSignature }
+                    guard let field = values[1] as? String, field.hasPrefix("$") else { throw creamScout.invalidSignature }
                     guard field == "$key" else { continue } // OSS enforces any other signed form constraints.
-                    guard let expected = values[2] as? String else { throw TransferError.invalidSignature }
+                    guard let expected = values[2] as? String else { throw creamScout.invalidSignature }
                     if operation == "eq", key == expected { continue }
                     if operation == "starts-with", key.hasPrefix(expected) { continue }
                     // Do not invent a different directory or ignore a key restriction.
-                    throw TransferError.invalidSignature
+                    throw creamScout.invalidSignature
                 }
             }
         }
@@ -120,7 +120,7 @@ final class WevVGlazeMediaTransfer {
         }
     }
 
-    private final class RedirectGuard: NSObject, URLSessionTaskDelegate {
+    private final class crumbBioLabel: NSObject, URLSessionTaskDelegate {
         nonisolated func urlSession(_ session: URLSession, task: URLSessionTask,
                                     willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest,
                                     completionHandler: @escaping (URLRequest?) -> Void) {
@@ -130,7 +130,7 @@ final class WevVGlazeMediaTransfer {
 
     private let session: URLSession
     private let sender: UploadSender?
-    private let runtime = WevVGlazeRuntime.shared
+    private let runtime = BrostingmellowCoconutEssence.shared
     private let store = WevVGlazeSessionStore.shared
     private static let maximumImageBytes = 25 * 1024 * 1024
 
@@ -143,20 +143,20 @@ final class WevVGlazeMediaTransfer {
         configuration.httpShouldSetCookies = false
         configuration.httpCookieAcceptPolicy = .never
         configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        session = URLSession(configuration: configuration, delegate: RedirectGuard(), delegateQueue: nil)
+        session = URLSession(configuration: configuration, delegate: crumbBioLabel(), delegateQueue: nil)
     }
 
     func upload(data: Data, fileName: String, mimeType: String) async throws -> String {
         let format = try Self.imageFormat(data: data, mimeType: mimeType)
         guard !fileName.isEmpty, fileName.utf8.count <= 255,
-              !fileName.utf8.contains(where: { $0 == 13 || $0 == 10 || $0 == 0 }) else { throw TransferError.invalidImage }
+              !fileName.utf8.contains(where: { $0 == 13 || $0 == 10 || $0 == 0 }) else { throw creamScout.invalidImage }
         try await runtime.prepare()
         let epoch = store.sessionEpoch, scope = runtime.environmentID
         let account = try await runtime.validSignedInSession()
         try checkIdentity(account.vanillaBeanIcing, epoch: epoch, scope: scope)
         let signed = try await runtime.opi(path: "/_v2/user/ossParam", body: JSONSerialization.data(withJSONObject: [:]), authenticated: true)
         try checkIdentity(account.vanillaBeanIcing, epoch: epoch, scope: scope)
-        let permission = try Permission(data: signed)
+        let permission = try crumbAsset(data: signed)
         try permission.checkExpiration()
         let key = Self.objectKey(accountID: account.vanillaBeanIcing, extension: format.extension)
         try permission.validate(key: key, bytes: data.count)
@@ -175,8 +175,8 @@ final class WevVGlazeMediaTransfer {
         if let sender { (_, response) = try await sender(request, multipart) }
         else { (_, response) = try await session.upload(for: request, from: multipart) }
         try checkIdentity(account.vanillaBeanIcing, epoch: epoch, scope: scope)
-        guard let http = response as? HTTPURLResponse, http.url == permission.host else { throw TransferError.invalidSignature }
-        guard (200..<300).contains(http.statusCode) else { throw WevVGlazeNetworkError.http(http.statusCode) }
+        guard let http = response as? HTTPURLResponse, http.url == permission.host else { throw creamScout.invalidSignature }
+        guard (200..<300).contains(http.statusCode) else { throw GlazeVaultTradeError.http(http.statusCode) }
         return permission.publicBase.appendingPathComponent(key).absoluteString
     }
 
@@ -185,22 +185,22 @@ final class WevVGlazeMediaTransfer {
         guard store.currentGlazeCredentials?.vanillaBeanIcing == accountID else { throw CancellationError() }
     }
 
-    private struct ImageFormat {
+    private struct crumbBioPlaceholder {
         let mimeType: String
         let `extension`: String
     }
 
-    private static func imageFormat(data: Data, mimeType: String) throws -> ImageFormat {
-        guard !data.isEmpty, data.count <= maximumImageBytes else { throw TransferError.invalidImage }
+    private static func imageFormat(data: Data, mimeType: String) throws -> crumbBioPlaceholder {
+        guard !data.isEmpty, data.count <= maximumImageBytes else { throw creamScout.invalidImage }
         let prefix = Array(data.prefix(12))
         switch mimeType.lowercased() {
         case "image/jpeg" where prefix.count >= 4 && prefix.starts(with: [0xff, 0xd8, 0xff]):
-            return ImageFormat(mimeType: "image/jpeg", extension: "jpg")
+            return crumbBioPlaceholder(mimeType: "image/jpeg", extension: "jpg")
         case "image/png" where prefix.starts(with: [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]):
-            return ImageFormat(mimeType: "image/png", extension: "png")
+            return crumbBioPlaceholder(mimeType: "image/png", extension: "png")
         case "image/webp" where prefix.count == 12 && Array(prefix.prefix(4)) == Array("RIFF".utf8) && Array(prefix.suffix(4)) == Array("WEBP".utf8):
-            return ImageFormat(mimeType: "image/webp", extension: "webp")
-        default: throw TransferError.invalidImage
+            return crumbBioPlaceholder(mimeType: "image/webp", extension: "webp")
+        default: throw creamScout.invalidImage
         }
     }
 
@@ -214,7 +214,7 @@ final class WevVGlazeMediaTransfer {
         return "\(accountID)/\(formatter.string(from: Date()))/\(identifier).\(suffix)"
     }
 
-    private static func multipart(data: Data, fields: [(String, String)], boundary: String, format: ImageFormat) -> Data {
+    private static func multipart(data: Data, fields: [(String, String)], boundary: String, format: crumbBioPlaceholder) -> Data {
         var body = Data()
         body.reserveCapacity(data.count + fields.reduce(1024) { $0 + $1.1.utf8.count })
         func append(_ text: String) { body.append(Data(text.utf8)) }

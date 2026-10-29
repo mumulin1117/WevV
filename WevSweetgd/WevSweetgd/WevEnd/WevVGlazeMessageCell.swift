@@ -2,13 +2,13 @@ import UIKit
 
 /// A temporary representation of feed requests or a detail page's first presentation.
 /// The host decides when a request has settled; this view owns only presentation.
-final class WevVGlazeSkeletonPanel: UIView {
-    enum Kind {
+final class WevVGlazeMessageCell: UIView {
+    enum glazeNameLabel {
         case home, voice, moments
         case sprinkleChallenge, pastryFolio
     }
 
-    private struct Palette {
+    private struct glazePackCards {
         let backdrop: [UIColor]
         let surface: UIColor
         let block: UIColor
@@ -16,7 +16,7 @@ final class WevVGlazeSkeletonPanel: UIView {
         let highlight: UIColor
 
         // Match the packaged H5's sRGB color-mix skeleton tokens.
-        static let shared = Palette(
+        static let shared = glazePackCards(
             backdrop: [UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1), UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1)],
             surface: UIColor(red: 6.4 / 255.0, green: 5.44 / 255.0, blue: 38.12 / 255.0, alpha: 1),
             block: UIColor(red: 35.2 / 255.0, green: 29.92 / 255.0, blue: 61.16 / 255.0, alpha: 1),
@@ -25,17 +25,17 @@ final class WevVGlazeSkeletonPanel: UIView {
         )
     }
 
-    private let kind: Kind
-    private let palette: Palette
+    private let kind: glazeNameLabel
+    private let palette: glazePackCards
     private let backdrop = CAGradientLayer()
     private let scrollView = UIScrollView()
     private let content = UIStackView()
-    private var tiles: [WevVGlazeSkeletonTile] = []
+    private var tiles: [glazeSaveTask] = []
     private var loadingVisible = false
     private var transitionID: UInt = 0
     private var applicationActive = UIApplication.shared.applicationState == .active
 
-    init(kind: Kind) {
+    init(kind: glazeNameLabel) {
         self.kind = kind
         self.palette = .shared
         super.init(frame: .zero)
@@ -509,8 +509,8 @@ final class WevVGlazeSkeletonPanel: UIView {
         return view
     }
 
-    private func tile(radius: CGFloat, detail: Bool = false) -> WevVGlazeSkeletonTile {
-        let view = WevVGlazeSkeletonTile(base: detail ? palette.detail : palette.block,
+    private func tile(radius: CGFloat, detail: Bool = false) -> glazeSaveTask {
+        let view = glazeSaveTask(base: detail ? palette.detail : palette.block,
                                         highlight: palette.highlight, radius: radius)
         view.translatesAutoresizingMaskIntoConstraints = false
         tiles.append(view)
@@ -536,7 +536,7 @@ final class WevVGlazeSkeletonPanel: UIView {
     }
 }
 
-private final class WevVGlazeSkeletonTile: UIView {
+private final class glazeSaveTask: UIView {
     private let shimmer = CAGradientLayer()
     private let preferredCornerRadius: CGFloat
 

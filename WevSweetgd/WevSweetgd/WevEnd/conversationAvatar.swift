@@ -4,8 +4,8 @@ import OSLog
 /// Native preparation diagnostics only. H5 owns the NIM instance and its connection state.
 /// The public API deliberately accepts credential lengths/flags instead of tokens or keys.
 @MainActor
-enum WevVGlazeIMDiagnostics {
-    enum Stage: String {
+enum conversationAvatar {
+    enum creamFormCard: String {
         case open, context, bridge
     }
 
@@ -37,7 +37,7 @@ enum WevVGlazeIMDiagnostics {
         #endif
     }
 
-    static func failure(stage: Stage, error: Error) {
+    static func failure(stage: creamFormCard, error: Error) {
         #if DEBUG
         let metadata = failureMetadata(error)
         logger.error("native.\(stage.rawValue, privacy: .public) failed category=\(metadata.category, privacy: .public) code=\(metadata.code, privacy: .public)")
@@ -62,7 +62,7 @@ enum WevVGlazeIMDiagnostics {
     /// Never uses an error's description, response body, URL or userInfo.
     static func failureMetadata(_ error: Error) -> (category: String, code: String) {
         if error is CancellationError { return ("cancelled", "none") }
-        if let network = error as? WevVGlazeNetworkError {
+        if let network = error as? GlazeVaultTradeError {
             switch network {
             case .http(let status): return ("http", String(status))
             case .business(let code, _): return ("business", safeBusinessCode(code))

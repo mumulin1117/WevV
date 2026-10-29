@@ -1,7 +1,7 @@
 import Foundation
 
 /// Explicit gaps in the supplied test service, rather than a fake empty/success response.
-enum WevVGlazeUnavailableFeature: Error, LocalizedError, Sendable {
+enum glazeNameField: Error, LocalizedError, Sendable {
     case messaging, shortVideos, savedPosts, accountDeletion, activityPayment, postReporting
     nonisolated var errorDescription: String? {
         switch self {

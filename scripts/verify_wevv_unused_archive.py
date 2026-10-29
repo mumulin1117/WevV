@@ -25,6 +25,10 @@ def main():
             r'"([^"\n]*)"\.wevVPastryCrumbBloomRestored', runtime
         )
     )
+    rename_file = ROOT / "WevEnd类型重命名记录.json"
+    reused = {}
+    if rename_file.exists():
+        reused = {entry["new"]: entry for entry in json.loads(rename_file.read_text())["rules"]}
     for entry in entries:
         path = ROOT / entry["archived"]
         assert path.is_file(), path
@@ -37,7 +41,12 @@ def main():
                 path.read_text(), re.MULTILINE,
             )
             for name in types:
-                assert not re.search(r"\b" + re.escape(name) + r"\b", runtime), name
+                if name in reused:
+                    # A retired name may now identify a different, explicitly renamed active type.
+                    source = (ROOT / reused[name]["currentFile"]).read_text()
+                    assert re.search(r"\b(?:class|struct|enum)\s+" + re.escape(name) + r"\b", source), name
+                else:
+                    assert not re.search(r"\b" + re.escape(name) + r"\b", runtime), name
         elif path.name == "Contents.json" and path.parent.suffix == ".imageset":
             assert path.parent.stem not in runtime, path.parent.stem
     project = (ROOT / "WevSweetgd/WevSweetgd.xcodeproj/project.pbxproj").read_text()
@@ -52,7 +61,7 @@ def main():
         assert route in settings, route
     for route in (".diamonds", ".messages"):
         assert route in home, route
-    assert "WevVGlazePurchaseCoordinator.shared.startObserving()" in (
+    assert 'DrawcreamScoutSugarStyle.shared.startObserving()' in (
         APP / "WevVGlazeApplication.swift"
     ).read_text()
     if len(sys.argv) > 1:

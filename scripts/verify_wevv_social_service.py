@@ -7,7 +7,7 @@ import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "WevSweetgd/WevSweetgd/WevEnd/WevVGlazeSocialService.swift"
+SOURCE = ROOT / 'WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift'
 MODELS = ROOT / "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift"
 
 TESTS = r'''
@@ -16,13 +16,13 @@ enum FixtureError: Error { case failed, noSession }
 @MainActor
 final class SocialFixture {
     struct Call { let path: String; let body: [String: Any]; let browsing: Bool }
-    var boundary = WevVGlazeSocialBoundary(epoch: 1, environmentID: "test-fixture", ownerID: 7)
+    var boundary = glazeVaultGrid(epoch: 1, environmentID: "test-fixture", ownerID: 7)
     var calls: [Call] = []
     var responses: [Data] = []
     var action: ((String, [String: Any], Bool) throws -> Data)?
     func json(_ object: Any) throws -> Data { try JSONSerialization.data(withJSONObject: object, options: [.fragmentsAllowed]) }
-    func service() -> WevVGlazeSocialService {
-        WevVGlazeSocialService(begin: { authenticated in
+    func service() -> WevVGlazeRosterCell {
+        WevVGlazeRosterCell(begin: { authenticated in
             if authenticated, self.boundary.ownerID == nil { throw FixtureError.noSession }
             return self.boundary
         }, send: { path, body, browsing in
@@ -170,28 +170,28 @@ struct SocialServiceVerification {
         try await rejects("invalid Post ID rejected") { try await service.report(userID: 21, type: "OTHER", detail: nil, momentID: -1) }
         fixture.action = { path, _, _ in
             if path == "/_v2/user/personalCard" { return try fixture.json(["userId": 21]) }
-            fixture.boundary = WevVGlazeSocialBoundary(epoch: 1, environmentID: "test-fixture", ownerID: 8)
+            fixture.boundary = glazeVaultGrid(epoch: 1, environmentID: "test-fixture", ownerID: 8)
             return try fixture.json(["rows": []])
         }
         try await rejects("account change during auxiliary friends read cannot return old card", cancellation: true) { _ = try await service.profile(userID: 21) }
         fixture.action = { _, _, _ in
-            fixture.boundary = WevVGlazeSocialBoundary(epoch: 2, environmentID: "test-fixture", ownerID: 8)
+            fixture.boundary = glazeVaultGrid(epoch: 2, environmentID: "test-fixture", ownerID: 8)
             return try fixture.json(["userId": 21])
         }
         try await rejects("late profile from old account rejected", cancellation: true) { _ = try await service.profile(userID: 21) }
         fixture.action = { _, _, _ in
-            fixture.boundary = WevVGlazeSocialBoundary(epoch: 3, environmentID: "another-environment", ownerID: 8)
+            fixture.boundary = glazeVaultGrid(epoch: 3, environmentID: "another-environment", ownerID: 8)
             throw FixtureError.failed
         }
         try await rejects("stale network failure also observes identity boundary", cancellation: true) { _ = try await service.profile(userID: 21) }
         fixture.action = nil
-        fixture.boundary = WevVGlazeSocialBoundary(epoch: 4, environmentID: "test-fixture", ownerID: nil)
+        fixture.boundary = glazeVaultGrid(epoch: 4, environmentID: "test-fixture", ownerID: nil)
         fixture.responses = [try fixture.json(["userId": 21, "nickName": "Public user"])]
         let guestDisplayName = try await service.displayName(userID: 21)
         try check(guestDisplayName == "Public user" && fixture.calls.last?.browsing == true, "guest recommendation names remain technical browsing")
         var appliedDisplayName = "Current list name"
         fixture.action = { _, _, _ in
-            fixture.boundary = WevVGlazeSocialBoundary(epoch: 5, environmentID: "test-fixture", ownerID: 8)
+            fixture.boundary = glazeVaultGrid(epoch: 5, environmentID: "test-fixture", ownerID: 8)
             return try fixture.json(["userId": 21, "nickName": "Late previous account name"])
         }
         try await rejects("late display name cannot cross account boundary", cancellation: true) {
@@ -199,12 +199,12 @@ struct SocialServiceVerification {
         }
         try check(appliedDisplayName == "Current list name", "late account result never reaches caller writeback")
         fixture.action = { _, _, _ in
-            fixture.boundary = WevVGlazeSocialBoundary(epoch: 6, environmentID: "another-environment", ownerID: 8)
+            fixture.boundary = glazeVaultGrid(epoch: 6, environmentID: "another-environment", ownerID: 8)
             return try fixture.json(["userId": 21, "nickName": "Late other environment name"])
         }
         try await rejects("display name observes environment boundary", cancellation: true) { _ = try await service.displayName(userID: 21) }
         fixture.action = nil
-        fixture.boundary = WevVGlazeSocialBoundary(epoch: 7, environmentID: "test-fixture", ownerID: nil)
+        fixture.boundary = glazeVaultGrid(epoch: 7, environmentID: "test-fixture", ownerID: nil)
         let beforeNameCancellation = fixture.calls.count
         let cancelledName = Task { @MainActor in try await service.displayName(userID: 21) }
         cancelledName.cancel()
