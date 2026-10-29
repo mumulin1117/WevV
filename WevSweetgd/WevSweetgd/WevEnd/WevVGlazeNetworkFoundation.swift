@@ -223,6 +223,7 @@ final class WevVGlazeNetworkFoundation {
     private var openTask: Task<WevVGlazeOpenContext, Error>?
     private var openTaskRefreshToken: String?
     private var currentOpenRefreshToken: String?
+    private var sessionEpoch = 0
 
     init(profile: WevVGlazeOPIProfile, deviceNo: String, hostVersion: String, language: String, session: URLSession = .shared) {
         self.profile = profile
@@ -266,11 +267,16 @@ final class WevVGlazeNetworkFoundation {
             #endif
             return currentOpen
         }
+        let epoch = sessionEpoch
         let task = Task { @MainActor in
-            defer { self.openTask = nil; self.openTaskRefreshToken = nil }
+            defer {
+                if self.sessionEpoch == epoch { self.openTask = nil; self.openTaskRefreshToken = nil }
+            }
             do {
                 let body = try JSONSerialization.data(withJSONObject: ["language": [self.language], "timezone": TimeZone.current.identifier])
                 let response = try await self.opi(path: "/_v2/config/open", body: body, refreshToken: refreshToken)
+                try Task.checkCancellation()
+                guard self.sessionEpoch == epoch else { throw CancellationError() }
                 guard let object = try JSONSerialization.jsonObject(with: response) as? [String: Any],
                       let runtime = object["runtimeConfig"] as? [String: Any] else {
                     throw WevVGlazeNetworkError.missingContract("runtimeConfig")
@@ -303,11 +309,27 @@ final class WevVGlazeNetworkFoundation {
         return try await task.value
     }
 
+    func clearSugarCrumbs() {
+        sessionEpoch &+= 1
+        openTask?.cancel()
+        openTask = nil
+        openTaskRefreshToken = nil
+        currentOpenRefreshToken = nil
+        // App-level routing/configuration remains usable for browsing; account tokens do not.
+        if let currentOpen {
+            self.currentOpen = WevVGlazeOpenContext(runtimeConfig: currentOpen.runtimeConfig,
+                cdnDomainConfig: currentOpen.cdnDomainConfig, accessToken: nil, expiresIn: nil)
+        }
+    }
+
     func opi(path: String, body: Data, accessToken: String? = nil, refreshToken: String? = nil) async throws -> Data {
+        let epoch = sessionEpoch
         guard let mappedPath = profile.paths[path], mappedPath.hasPrefix("/"), !mappedPath.hasPrefix("//") else {
             throw WevVGlazeNetworkError.missingContract("OPI path \(path)")
         }
         let route = try await bootstrap()
+        try Task.checkCancellation()
+        guard sessionEpoch == epoch else { throw CancellationError() }
         let semantic = profile.protocolName == "opi-v2-aes-semantic"
         let original = try JSONSerialization.jsonObject(with: body, options: [.fragmentsAllowed])
         let encoded = try Self.jsonData(semantic ? original : Self.mapFields(original, mapping: profile.fields))
@@ -333,6 +355,8 @@ final class WevVGlazeNetworkFoundation {
         if let token = accessToken, !token.isEmpty { request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization") }
         if let token = refreshToken, !token.isEmpty { try header("refreshToken", token) }
         let envelope = try await send(request)
+        try Task.checkCancellation()
+        guard sessionEpoch == epoch else { throw CancellationError() }
         guard let code = envelope["code"] as? NSNumber, CFGetTypeID(code) != CFBooleanGetTypeID() else { throw WevVGlazeNetworkError.invalidResponse }
         guard code.doubleValue == 0 else { throw Self.business(envelope, code: code.stringValue) }
         let decoded = try Self.payload(envelope, key: profile.encryptionKey, iv: profile.encryptionIV)
@@ -440,6 +464,7 @@ final class WevVGlazeNetworkFoundation {
     }
 
     private func send(_ request: URLRequest) async throws -> [String: Any] {
+        try Task.checkCancellation()
         let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse else { throw WevVGlazeNetworkError.invalidResponse }
         guard (200..<300).contains(http.statusCode) else { throw WevVGlazeNetworkError.http(http.statusCode) }

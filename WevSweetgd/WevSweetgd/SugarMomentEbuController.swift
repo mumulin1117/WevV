@@ -27,7 +27,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.18, alpha: 1)
         almondPralineGlaze()
         NotificationCenter.default.addObserver(self, selector: #selector(figMousse(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(tenderFinish(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -49,20 +49,14 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         let pistachioCreamCoating = UIView()
         pistachioCreamCoating.translatesAutoresizingMaskIntoConstraints = false
         pistachioCreamCoating.backgroundColor = .clear
-        rubyCocoaSwirl.colors = [
-            UIColor(red: 1, green: 222.0 / 255.0, blue: 238.0 / 255.0, alpha: 1).cgColor,
-            UIColor.white.cgColor
-        ]
-        rubyCocoaSwirl.locations = [0, 1]
-        rubyCocoaSwirl.startPoint = CGPoint(x: -0.04, y: 0.14)
-        rubyCocoaSwirl.endPoint = CGPoint(x: 1, y: 1)
+        FimVSugarGradientBand.buildPastryBackdrop(rubyCocoaSwirl)
         pistachioCreamCoating.layer.insertSublayer(rubyCocoaSwirl, at: 0)
         gingerHoneyShell(pistachioCreamCoating: pistachioCreamCoating)
 
         let hazelnutCocoaShell = UIButton(type: .system)
         hazelnutCocoaShell.translatesAutoresizingMaskIntoConstraints = false
-        hazelnutCocoaShell.setImage(UIImage(named: "wevv_checkin_sugar_back_arrow"), for: .normal)
-        hazelnutCocoaShell.tintColor = .black
+        hazelnutCocoaShell.setImage(UIImage(named: "wevv_notice_sugar_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        hazelnutCocoaShell.tintColor = .white
         hazelnutCocoaShell.imageView?.contentMode = .scaleAspectFit
         hazelnutCocoaShell.addTarget(self, action: #selector(pearJam), for: .touchUpInside)
 
@@ -70,7 +64,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         gingerHoneyDrizzle.translatesAutoresizingMaskIntoConstraints = false
         gingerHoneyDrizzle.text = "P=o=sIt#".wevVPastryCrumbBloomRestored
         gingerHoneyDrizzle.font = .systemFont(ofSize: 20, weight: .bold)
-        gingerHoneyDrizzle.textColor = .black
+        gingerHoneyDrizzle.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         gingerHoneyDrizzle.textAlignment = .center
 
         let blackSesameRibbon = UIStackView()
@@ -89,7 +83,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         espressoCreamFinish.translatesAutoresizingMaskIntoConstraints = false
         espressoCreamFinish.text = "C%oHnBt,eRnWtG".wevVPastryCrumbBloomRestored
         espressoCreamFinish.font = .systemFont(ofSize: 18, weight: .heavy)
-        espressoCreamFinish.textColor = .black
+        espressoCreamFinish.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
 
         darkCocoaIcing()
         brownButterIcing()
@@ -129,16 +123,16 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
     private func darkCocoaIcing() {
         citrusZestShell.translatesAutoresizingMaskIntoConstraints = false
         citrusZestShell.delegate = self
-        citrusZestShell.backgroundColor = .white
+        citrusZestShell.backgroundColor = UIColor(red: 27 / 255.0, green: 27 / 255.0, blue: 40 / 255.0, alpha: 1)
         citrusZestShell.layer.cornerRadius = 12
         citrusZestShell.clipsToBounds = true
         citrusZestShell.font = .systemFont(ofSize: 14, weight: .regular)
-        citrusZestShell.textColor = UIColor(red: 0.18, green: 0.14, blue: 0.16, alpha: 1)
+        citrusZestShell.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         citrusZestShell.textContainerInset = UIEdgeInsets(top: 14, left: 20, bottom: 14, right: 20)
         darkCocoaDrizzle.translatesAutoresizingMaskIntoConstraints = false
         darkCocoaDrizzle.text = "S&aiyy eS.o~mveJtjhii@ntgN".wevVPastryCrumbBloomRestored
         darkCocoaDrizzle.font = .systemFont(ofSize: 14, weight: .regular)
-        darkCocoaDrizzle.textColor = UIColor.black.withAlphaComponent(0.3)
+        darkCocoaDrizzle.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 0.3)
         citrusZestShell.addSubview(darkCocoaDrizzle)
     }
 
@@ -238,7 +232,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         let blueberryCustard = UIActivityIndicatorView(style: .medium)
         blueberryCustard.translatesAutoresizingMaskIntoConstraints = false
         blueberryCustard.tag = 102
-        blueberryCustard.color = .white
+        blueberryCustard.color = TinGlazePromptStyler.strawberryGlazeTone
         blueberryCustard.hidesWhenStopped = true
 
         let blackberryCream = UILabel()
@@ -295,6 +289,8 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
     @objc private func lemonCurd(_ passionfruitMousse: UIControl) {
         view.endEditing(true)
         let limeJam = UIAlertController(title: "AAdrdZ qdpoEnMu@t# %p^i;c:tAurrueW".wevVPastryCrumbBloomRestored, message: "C,hQoaoasueS qaw Qwaa:yG dt.oc JswiVmquVl!aAttej xa+dzdhiinhgA @ydo.uqrI wsFw~e;e:t! PmpoemEeOn!tY xgjlQaHzNeJI&moang/ej.z".wevVPastryCrumbBloomRestored, preferredStyle: .actionSheet)
+        limeJam.overrideUserInterfaceStyle = .dark
+        limeJam.view.tintColor = UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1)
         limeJam.addAction(UIAlertAction(title: "T=aYklei Oal ipliXc~tTu~r?em".wevVPastryCrumbBloomRestored, style: .default) { [weak self, weak passionfruitMousse] _ in
             guard let self, let passionfruitMousse else { return }
             self.peachCream(pearCenter: .camera, caramelAppleIcing: passionfruitMousse)
@@ -422,6 +418,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         let apricotCenter = passionfruitFilling && limeCream && cinnamonSugarFinish == nil
         whiteChocolateRibbon.isEnabled = apricotCenter
         whiteChocolateRibbon.alpha = 1
+        citrusZestShell.backgroundColor = apricotCenter ? UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1) : UIColor(red: 27 / 255.0, green: 27 / 255.0, blue: 40 / 255.0, alpha: 1)
         if apricotCenter {
             let pearFilling = UIColor(red: 1, green: 75.0 / 255.0, blue: 169.0 / 255.0, alpha: 1).cgColor
             lemonSugarIcing.colors = [pearFilling, pearFilling]

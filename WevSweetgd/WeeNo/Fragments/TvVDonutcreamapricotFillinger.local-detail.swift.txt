@@ -1,0 +1,236 @@
+// Retired source fragments; restore into original scopes only. Not an App source file.
+
+private func makeDonutTasterEntry(_ donutPinKey: String, _ name: String, _ donutFrameAsset: String) -> WevVDonutTaster {
+    WevVDonutTaster(donutPinKey: donutPinKey, name: name, donutFrameAsset: donutFrameAsset)
+}
+
+private func makeDonutSnapshotEntry(_ sprinkleJarKey: String, author: WevVDonutTaster, donutBackdropAsset: String, tastingText: String, hasSprinkleDust: Bool, hasBakeryShelf: Bool, freshnessTagText: String) -> WevVDonutSnapshot {
+    WevVDonutSnapshot(sprinkleJarKey: sprinkleJarKey, tasterBloom: author, donutBackdropAsset: donutBackdropAsset, tastingText: tastingText, hasSprinkleDust: hasSprinkleDust, hasBakeryShelf: hasBakeryShelf, freshnessTagText: freshnessTagText)
+}
+
+    private func makeSprinkleMomentHeroImage(_ donutSnapshot: WevVDonutSnapshot) -> UIImageView {
+        let glazeImage = UIImageView(image: DucerPastryImageVault.watercolorIcingDesign(for: donutSnapshot.donutBackdropAsset) ?? makeFrostingHeroImage(seed: donutSnapshot.donutBackdropAsset))
+        glazeImage.translatesAutoresizingMaskIntoConstraints = false
+        glazeImage.contentMode = .scaleAspectFill
+        glazeImage.clipsToBounds = true
+        return glazeImage
+    }
+
+    private func makeSprinkleMomentTextBand() -> UIView {
+        let glazeBand = FimVSugarGradientBand()
+        glazeBand.translatesAutoresizingMaskIntoConstraints = false
+        glazeBand.isUserInteractionEnabled = false
+        return glazeBand
+    }
+
+    private func makeSprinkleMomentCaption(_ sugarText: String) -> UILabel {
+        let sugarDustLabel = UILabel()
+        sugarDustLabel.translatesAutoresizingMaskIntoConstraints = false
+        sugarDustLabel.text = sugarText
+        sugarDustLabel.font = .systemFont(ofSize: 15, weight: .semibold)
+        sugarDustLabel.textColor = .white
+        sugarDustLabel.numberOfLines = 2
+        sugarDustLabel.adjustsFontSizeToFitWidth = true
+        sugarDustLabel.minimumScaleFactor = 0.82
+        return sugarDustLabel
+    }
+
+    private func makeSprinkleMomentAvatar(_ donutSnapshot: WevVDonutSnapshot) -> UIImageView {
+        let glazeAvatar = UIImageView(image: makeSprinkleAuthorAvatar(for: donutSnapshot))
+        glazeAvatar.translatesAutoresizingMaskIntoConstraints = false
+        glazeAvatar.contentMode = .scaleAspectFill
+        glazeAvatar.clipsToBounds = true
+        glazeAvatar.layer.cornerRadius = 15
+        glazeAvatar.layer.borderWidth = 1.5
+        glazeAvatar.layer.borderColor = UIColor.white.cgColor
+        return glazeAvatar
+    }
+
+    private func makeSprinkleMomentName(_ sugarName: String) -> UILabel {
+        let sugarDustLabel = UILabel()
+        sugarDustLabel.translatesAutoresizingMaskIntoConstraints = false
+        sugarDustLabel.text = sugarName
+        sugarDustLabel.font = .systemFont(ofSize: 15, weight: .semibold)
+        sugarDustLabel.textColor = .white
+        sugarDustLabel.adjustsFontSizeToFitWidth = true
+        sugarDustLabel.minimumScaleFactor = 0.76
+        return sugarDustLabel
+    }
+
+    private func makeSprinkleMomentSafetyButton(_ sugarDustKey: String) -> UIButton {
+        let sprinkleButton = UIButton(type: .system)
+        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
+        sprinkleButton.accessibilityIdentifier = sugarDustKey
+        sprinkleButton.setImage(UIImage(systemName: "exclamationmark.triangle.fill"), for: .normal)
+        sprinkleButton.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.58, alpha: 1)
+        sprinkleButton.backgroundColor = UIColor.white.withAlphaComponent(0.9)
+        sprinkleButton.layer.cornerRadius = 17
+        sprinkleButton.addTarget(self, action: #selector(openSprinkleMomentSafety(_:)), for: .touchUpInside)
+        return sprinkleButton
+    }
+
+    private func placeSprinkleMomentCardViews(treatCaseCard: UIControl, heroImage: UIImageView, textBand: UIView, captionLabel: UILabel, avatar: UIImageView, tasterNameLabel: UILabel, safetyButton: UIButton) {
+        treatCaseCard.addSubview(heroImage)
+        treatCaseCard.addSubview(textBand)
+        textBand.addSubview(captionLabel)
+        treatCaseCard.addSubview(avatar)
+        treatCaseCard.addSubview(tasterNameLabel)
+        treatCaseCard.addSubview(safetyButton)
+    }
+
+    private func pinSprinkleMomentCardLayout(treatCaseCard: UIControl, heroImage: UIImageView, textBand: UIView, captionLabel: UILabel, avatar: UIImageView, tasterNameLabel: UILabel, safetyButton: UIButton) {
+        NSLayoutConstraint.activate([
+            treatCaseCard.heightAnchor.constraint(equalTo: treatCaseCard.widthAnchor, multiplier: 182.0 / 345.0),
+            heroImage.topAnchor.constraint(equalTo: treatCaseCard.topAnchor),
+            heroImage.leadingAnchor.constraint(equalTo: treatCaseCard.leadingAnchor),
+            heroImage.trailingAnchor.constraint(equalTo: treatCaseCard.trailingAnchor),
+            heroImage.bottomAnchor.constraint(equalTo: textBand.topAnchor),
+            textBand.leadingAnchor.constraint(equalTo: treatCaseCard.leadingAnchor),
+            textBand.trailingAnchor.constraint(equalTo: treatCaseCard.trailingAnchor),
+            textBand.bottomAnchor.constraint(equalTo: treatCaseCard.bottomAnchor),
+            textBand.heightAnchor.constraint(equalToConstant: 50),
+            captionLabel.topAnchor.constraint(equalTo: textBand.topAnchor, constant: 8),
+            captionLabel.leadingAnchor.constraint(equalTo: textBand.leadingAnchor, constant: 22),
+            captionLabel.trailingAnchor.constraint(equalTo: textBand.trailingAnchor, constant: -18),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: textBand.bottomAnchor, constant: -7),
+            avatar.topAnchor.constraint(equalTo: heroImage.topAnchor, constant: 16),
+            avatar.leadingAnchor.constraint(equalTo: heroImage.leadingAnchor, constant: 16),
+            avatar.widthAnchor.constraint(equalToConstant: 30),
+            avatar.heightAnchor.constraint(equalToConstant: 30),
+            tasterNameLabel.centerYAnchor.constraint(equalTo: avatar.centerYAnchor),
+            tasterNameLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
+            tasterNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: safetyButton.leadingAnchor, constant: -10),
+            safetyButton.topAnchor.constraint(equalTo: heroImage.topAnchor, constant: 15),
+            safetyButton.trailingAnchor.constraint(equalTo: heroImage.trailingAnchor, constant: -15),
+            safetyButton.widthAnchor.constraint(equalToConstant: 34),
+            safetyButton.heightAnchor.constraint(equalToConstant: 34)
+        ])
+    }
+
+    private func makeSprinkleAuthorAvatar(for donutSnapshot: WevVDonutSnapshot) -> UIImage {
+        if let profile = bakeryTasterStore.allProfiles.first(where: { $0.donutPinKey == donutSnapshot.tasterBloom.donutPinKey }),
+           let glazeImage = UIImage(named: profile.donutFrameAsset) {
+            return glazeImage
+        }
+        if let glazeImage = UIImage(named: donutSnapshot.tasterBloom.donutFrameAsset) {
+            return glazeImage
+        }
+        return makeFrostingAvatarImage(seed: donutSnapshot.tasterBloom.donutFrameAsset)
+    }
+
+    @objc private func openSprinkleMomentSafety(_ sender: UIControl) {
+        guard donutJournalStore.isTasterReady else {
+            presentProtectedGate()
+            return
+        }
+        let sprinkleJarKey = sender.accessibilityIdentifier ?? ""
+        guard let moment = donutSnapshots.first(where: { $0.sprinkleJarKey == sprinkleJarKey }) else { return }
+        presentSprinkleSafetySheet(for: moment)
+    }
+
+    private func presentSprinkleSafetySheet(for moment: WevVDonutSnapshot) {
+        let sheet = WevVGlazeSafetySheet(shopPinKey: moment.tasterBloom.donutPinKey, flavorChoices: sprinkleSafetyChoices())
+        sheet.pralineDismissAction = { [weak self, weak sheet] in
+            self?.hideSprinkleSafetySheet(sheet)
+        }
+        sheet.pralineSubmitAction = { [weak self, weak sheet] packet in
+            guard let self else { return }
+            self.donutJournalStore.placeGlazeSafetyCrumb(packet)
+            self.placeSprinkleShield(for: moment.tasterBloom.donutPinKey)
+            self.hideSprinkleSafetySheet(sheet)
+            self.rebuildDonutSnapshotStack()
+            self.showRootSugarHint("Hyild%dXe^nF Cf^rPoFm/ eysocu^r* OfJeaezdQ".wevVPastryCrumbBloomRestored)
+        }
+        view.addSubview(sheet)
+        NSLayoutConstraint.activate([
+            sheet.topAnchor.constraint(equalTo: view.topAnchor),
+            sheet.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            sheet.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            sheet.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+
+    private func placeSprinkleShield(for donutPinKey: String) {
+        guard bakeryTasterStore.allProfiles.contains(where: { $0.donutPinKey == donutPinKey }) else { return }
+        if !bakeryTasterStore.profile(for: donutPinKey).sugarTie.isSugarShielded {
+            _ = bakeryTasterStore.toggleSugarShield(for: donutPinKey)
+        }
+    }
+
+    private var donutSnapshots: [WevVDonutSnapshot] = [
+        makeDonutSnapshotEntry(
+            "o=nFeuBmiQtwe~VViHb;e/sf".wevVPastryCrumbBloomRestored,
+            author: makeDonutTasterEntry("lAoKuoipspepSMa@nvtko#sq".wevVPastryCrumbBloomRestored, "LeoTujiQsUez #Spatnet^oNss".wevVPastryCrumbBloomRestored, "louiseCream"),
+            donutBackdropAsset: "wevv_moment_one_bite_vibes",
+            tastingText: "OlnzeJ =bxiFtieM,@ paw Kw^h;ofl&eT %ddamyN aocf! cg=oBoAdz ,vbiWb#e#sE".wevVPastryCrumbBloomRestored,
+            hasSprinkleDust: false,
+            hasBakeryShelf: false,
+            freshnessTagText: "BBeTrkrsy; tnxo=tgec".wevVPastryCrumbBloomRestored
+        ),
+        makeDonutSnapshotEntry(
+            "fBrYevsihvDroFnFu:tSSccwern,tu".wevVPastryCrumbBloomRestored,
+            author: makeDonutTasterEntry("m.aAssoFnPGHlxagz!e!SRm?iNldek".wevVPastryCrumbBloomRestored, "M/aCsyoBnj fC.oclXes".wevVPastryCrumbBloomRestored, "masonSugar"),
+            donutBackdropAsset: "wevv_moment_fresh_donut_scent",
+            tastingText: "F@rkexsoh^ gdPo~n?uztssB wsgmEevlWl= raJm%aWzlisndgE.S".wevVPastryCrumbBloomRestored,
+            hasSprinkleDust: true,
+            hasBakeryShelf: false,
+            freshnessTagText: "Fsrferschd @boaotqcUhn".wevVPastryCrumbBloomRestored
+        ),
+        makeDonutSnapshotEntry(
+            "c~hRohcaoQlnaYtkerDPoRn.uvtRD!aHym".wevVPastryCrumbBloomRestored,
+            author: makeDonutTasterEntry("aZvmaBCyopc!oPaXR,iSn,g/".wevVPastryCrumbBloomRestored, "AIvraQ BBHrHoYwqnS".wevVPastryCrumbBloomRestored, "avaCocoa"),
+            donutBackdropAsset: "wevv_moment_chocolate_donut_day",
+            tastingText: "CQhjo!cyoFlsastfeF .d;ounauNtQsA ^mRaBdsew CmEyT Gdzagyt.f".wevVPastryCrumbBloomRestored,
+            hasSprinkleDust: false,
+            hasBakeryShelf: true,
+            freshnessTagText: "Cmo?c;ora: RmZo=oLdC".wevVPastryCrumbBloomRestored
+        ),
+        makeDonutSnapshotEntry(
+            "wge:e,kYe%nJd.DtoenTuTtFSYt;aCrxtw".wevVPastryCrumbBloomRestored,
+            author: makeDonutTasterEntry("bFeilhlGarSlporvi~nUk+ller".wevVPastryCrumbBloomRestored, "BKeXlElvaR ZHla=r&tJ".wevVPastryCrumbBloomRestored, "bellaCream"),
+            donutBackdropAsset: "wevv_moment_weekend_donut_start",
+            tastingText: "S^ttatretdi~nYgh ~tqhAeD ZwPeCeKkfeLnpdG mwqiXtoho .dPoSnEuet+sA.q".wevVPastryCrumbBloomRestored,
+            hasSprinkleDust: false,
+            hasBakeryShelf: false,
+            freshnessTagText: "Wre?eUk:eUnwd% jpQi~cAkC".wevVPastryCrumbBloomRestored
+        ),
+        makeDonutSnapshotEntry(
+            "p=i.nTk/S.w@eneVtGnDeEskstTUowdPasyQ".wevVPastryCrumbBloomRestored,
+            author: makeDonutTasterEntry("mpiNauPZifn.kfS!ujgVagr@".wevVPastryCrumbBloomRestored, "MKiuaM !Rce;eddq".wevVPastryCrumbBloomRestored, "miaPink"),
+            donutBackdropAsset: "wevv_moment_pink_sweetness",
+            tastingText: "Ai hl:iJtrtdl#e! QpoiEnmk= csIw%exeStjn;ewsyst JtSoYdiaQyc.T".wevVPastryCrumbBloomRestored,
+            hasSprinkleDust: true,
+            hasBakeryShelf: true,
+            freshnessTagText: "P%ignlkX EsepprfiunGkzlaee".wevVPastryCrumbBloomRestored
+        ),
+        makeDonutSnapshotEntry(
+            "cYrneKaEmrF.i,lNleeWdwUYn.iKtje%".wevVPastryCrumbBloomRestored,
+            author: makeDonutTasterEntry("nfoCrvaBC,rBeSaKmgR#i?nngx".wevVPastryCrumbBloomRestored, "NroErbaC uL~abnCeI".wevVPastryCrumbBloomRestored, "noraCream"),
+            donutBackdropAsset: "wevv_moment_cream_filled_unite",
+            tastingText: "C@rNePaumW-#fki,l^lIeKde CdVoon=uUtW ;lPoav#e,rYsm,K Ku=nMitt!ee.n".wevVPastryCrumbBloomRestored,
+            hasSprinkleDust: false,
+            hasBakeryShelf: false,
+            freshnessTagText: "C&r=eVaSmB ,cViarpcYlXez".wevVPastryCrumbBloomRestored
+        )
+    ]
+
+
+
+    @objc private func openDonutSnapshotDetail(_ sender: UIControl) {
+        if let identifier = sender.accessibilityIdentifier,
+           let momentID = Int64(identifier),
+           let moment = (glazeTrendingMomentItems + glazeFollowedMomentItems + glazeProfileMomentItems).first(where: { $0.coconutCenter == momentID }) {
+            let controller = KipoDonutMomentController(richCocoaFlavor: moment)
+            controller.cocoaKissExperience = { [weak self] in self?.loadGlazeContent() }
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: true)
+            return
+        }
+        guard let donutSnapshot = donutSnapshots.first else { return }
+        let controller = KipoDonutMomentController(vanillaStrawberryDuet: donutSnapshot)
+        controller.cocoaKissExperience = { [weak self] in
+            self?.rebuildDonutSnapshotStack()
+        }
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
+    }

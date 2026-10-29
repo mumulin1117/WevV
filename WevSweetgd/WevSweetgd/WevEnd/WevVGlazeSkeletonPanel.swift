@@ -1,10 +1,11 @@
 import UIKit
 
-/// A temporary representation of each primary feed while its first request is pending.
+/// A temporary representation of feed requests or a detail page's first presentation.
 /// The host decides when a request has settled; this view owns only presentation.
 final class WevVGlazeSkeletonPanel: UIView {
     enum Kind {
         case home, voice, moments
+        case sprinkleChallenge, pastryFolio
     }
 
     private struct Palette {
@@ -14,23 +15,13 @@ final class WevVGlazeSkeletonPanel: UIView {
         let detail: UIColor
         let highlight: UIColor
 
-        static let light = Palette(
-            backdrop: [UIColor(red: 1, green: 0.89, blue: 0.94, alpha: 1),
-                       UIColor(red: 0.96, green: 0.86, blue: 1, alpha: 1),
-                       UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)],
-            surface: UIColor(red: 1, green: 0.96, blue: 0.99, alpha: 0.78),
-            block: UIColor(red: 0.89, green: 0.75, blue: 0.91, alpha: 1),
-            detail: UIColor(red: 0.97, green: 0.87, blue: 0.96, alpha: 1),
-            highlight: UIColor(red: 1, green: 0.97, blue: 1, alpha: 1)
-        )
-        static let voice = Palette(
-            backdrop: [UIColor(red: 0.19, green: 0.04, blue: 0.37, alpha: 1),
-                       UIColor(red: 0.11, green: 0.01, blue: 0.25, alpha: 1),
-                       UIColor(red: 0.15, green: 0.02, blue: 0.32, alpha: 1)],
-            surface: UIColor(red: 0.33, green: 0.16, blue: 0.52, alpha: 1),
-            block: UIColor(red: 0.43, green: 0.29, blue: 0.60, alpha: 1),
-            detail: UIColor(red: 0.58, green: 0.39, blue: 0.72, alpha: 1),
-            highlight: UIColor(red: 0.76, green: 0.60, blue: 0.86, alpha: 1)
+        // Match the packaged H5's sRGB color-mix skeleton tokens.
+        static let shared = Palette(
+            backdrop: [UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1), UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1)],
+            surface: UIColor(red: 6.4 / 255.0, green: 5.44 / 255.0, blue: 38.12 / 255.0, alpha: 1),
+            block: UIColor(red: 35.2 / 255.0, green: 29.92 / 255.0, blue: 61.16 / 255.0, alpha: 1),
+            detail: UIColor(red: 35.2 / 255.0, green: 29.92 / 255.0, blue: 61.16 / 255.0, alpha: 1),
+            highlight: UIColor(red: 78.3 / 255.0, green: 47.38 / 255.0, blue: 112.42 / 255.0, alpha: 1)
         )
     }
 
@@ -46,7 +37,7 @@ final class WevVGlazeSkeletonPanel: UIView {
 
     init(kind: Kind) {
         self.kind = kind
-        self.palette = kind == .voice ? .voice : .light
+        self.palette = .shared
         super.init(frame: .zero)
         isHidden = true
         clipsToBounds = true
@@ -56,15 +47,12 @@ final class WevVGlazeSkeletonPanel: UIView {
         case .home: accessibilityLabel = "Loading live rooms"
         case .voice: accessibilityLabel = "Loading voice rooms"
         case .moments: accessibilityLabel = "Loading community posts"
+        case .sprinkleChallenge: accessibilityLabel = "Loading challenge details"
+        case .pastryFolio: accessibilityLabel = "Loading shop details"
         }
         accessibilityIdentifier = "wevv.initialLoading.\(kind)"
         backgroundColor = palette.backdrop.first
         backdrop.colors = palette.backdrop.map(\.cgColor)
-        if kind == .moments {
-            backdrop.colors = [UIColor(red: 1, green: 0.93, blue: 0.99, alpha: 1).cgColor,
-                               UIColor.white.cgColor,
-                               UIColor(red: 1, green: 0.78, blue: 0.98, alpha: 1).cgColor]
-        }
         backdrop.startPoint = CGPoint(x: 0.15, y: 0)
         backdrop.endPoint = CGPoint(x: 0.9, y: 1)
         layer.insertSublayer(backdrop, at: 0)
@@ -155,17 +143,107 @@ final class WevVGlazeSkeletonPanel: UIView {
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            content.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 24),
+            content.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor,
+                constant: kind == .sprinkleChallenge || kind == .pastryFolio ? 0 : 24),
             content.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 15),
             content.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -15),
             content.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -24),
             content.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -30)
         ])
-        buildHeader()
+        if kind != .sprinkleChallenge && kind != .pastryFolio { buildHeader() }
         switch kind {
         case .home: buildHome()
         case .voice: buildVoice()
         case .moments: buildMoments()
+        case .sprinkleChallenge: buildChallengeContent()
+        case .pastryFolio: buildPastryDetailContent()
+        }
+    }
+
+    private func buildChallengeContent() {
+        let hero = tile(radius: 18)
+        content.addArrangedSubview(hero)
+        hero.heightAnchor.constraint(equalToConstant: 173).isActive = true
+        addSectionLine(fraction: 0.25)
+        let progressCard = surface(radius: 18)
+        let title = tile(radius: 6)
+        let sub = tile(radius: 6)
+        [title, sub].forEach(progressCard.addSubview)
+        content.addArrangedSubview(progressCard)
+        NSLayoutConstraint.activate([
+            progressCard.heightAnchor.constraint(equalToConstant: 61),
+            title.leadingAnchor.constraint(equalTo: progressCard.leadingAnchor, constant: 26),
+            title.topAnchor.constraint(equalTo: progressCard.topAnchor, constant: 14),
+            title.widthAnchor.constraint(equalTo: progressCard.widthAnchor, multiplier: 0.62),
+            title.heightAnchor.constraint(equalToConstant: 12),
+            sub.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            sub.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 9),
+            sub.widthAnchor.constraint(equalTo: progressCard.widthAnchor, multiplier: 0.46),
+            sub.heightAnchor.constraint(equalToConstant: 12)
+        ])
+        addSectionLine(fraction: 0.22)
+        let avatar = tile(radius: 24)
+        let name = tile(radius: 6)
+        let card = UIView()
+        card.translatesAutoresizingMaskIntoConstraints = false
+        [avatar, name].forEach(card.addSubview)
+        content.addArrangedSubview(card)
+        NSLayoutConstraint.activate([
+            card.heightAnchor.constraint(equalToConstant: 48),
+            avatar.leadingAnchor.constraint(equalTo: card.leadingAnchor),
+            avatar.topAnchor.constraint(equalTo: card.topAnchor),
+            avatar.widthAnchor.constraint(equalToConstant: 48),
+            avatar.heightAnchor.constraint(equalTo: avatar.widthAnchor),
+            name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 20),
+            name.centerYAnchor.constraint(equalTo: avatar.centerYAnchor),
+            name.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.46),
+            name.heightAnchor.constraint(equalToConstant: 16)
+        ])
+        let detail = tile(radius: 6)
+        content.addArrangedSubview(detail)
+        detail.heightAnchor.constraint(equalToConstant: 38).isActive = true
+        let peopleButton = tile(radius: 14)
+        content.addArrangedSubview(peopleButton)
+        peopleButton.heightAnchor.constraint(equalToConstant: 58).isActive = true
+    }
+
+    private func buildPastryDetailContent() {
+        let card = surface(radius: 16)
+        let cover = tile(radius: 12)
+        let title = tile(radius: 6)
+        let sub = tile(radius: 6)
+        let detail = tile(radius: 6)
+        [cover, title, sub, detail].forEach(card.addSubview)
+        content.addArrangedSubview(card)
+        NSLayoutConstraint.activate([
+            cover.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 15),
+            cover.topAnchor.constraint(equalTo: card.topAnchor, constant: 15),
+            cover.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -15),
+            cover.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.38),
+            cover.heightAnchor.constraint(equalTo: cover.widthAnchor),
+            title.leadingAnchor.constraint(equalTo: cover.trailingAnchor, constant: 12),
+            title.topAnchor.constraint(equalTo: cover.topAnchor, constant: 4),
+            title.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -15),
+            title.heightAnchor.constraint(equalToConstant: 17),
+            sub.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            sub.trailingAnchor.constraint(equalTo: title.trailingAnchor),
+            sub.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 12),
+            sub.heightAnchor.constraint(equalToConstant: 13),
+            detail.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+            detail.trailingAnchor.constraint(equalTo: title.trailingAnchor),
+            detail.topAnchor.constraint(equalTo: sub.bottomAnchor, constant: 16),
+            detail.heightAnchor.constraint(equalToConstant: 34)
+        ])
+        addSectionLine(fraction: 0.38)
+        let row = horizontalStack(spacing: 10)
+        for _ in 0..<3 { row.addArrangedSubview(tile(radius: 16)) }
+        content.addArrangedSubview(row)
+        row.heightAnchor.constraint(equalToConstant: 140).isActive = true
+        addSectionLine(fraction: 0.32)
+        for _ in 0..<2 {
+            let card = tile(radius: 16)
+            content.addArrangedSubview(card)
+            card.heightAnchor.constraint(equalToConstant: 80).isActive = true
         }
     }
 
@@ -470,7 +548,7 @@ private final class WevVGlazeSkeletonTile: UIView {
         clipsToBounds = true
         isAccessibilityElement = false
         isUserInteractionEnabled = false
-        shimmer.colors = [base.cgColor, highlight.cgColor, base.cgColor]
+        shimmer.colors = [UIColor.clear.cgColor, highlight.cgColor, UIColor.clear.cgColor]
         shimmer.locations = [-1, -0.5, 0]
         shimmer.startPoint = CGPoint(x: 0, y: 0.25)
         shimmer.endPoint = CGPoint(x: 1, y: 0.75)

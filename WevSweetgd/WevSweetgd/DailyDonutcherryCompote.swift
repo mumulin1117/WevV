@@ -4,7 +4,10 @@ final class DailyDonutcherryCompote: UIViewController {
     private let donutJournalStore = WevVGlazeSessionStore.shared
     private let dailyDonutKey = "jru=loyg_f2g0U2U6X_dd&aRyX_E2+0O".wevVPastryCrumbBloomRestored
     private let selectedDonutDay = 20
-    private let donutStampButton = OumMaplePillButton(title: "C.hveUcTkR-?ibns".wevVPastryCrumbBloomRestored)
+    private let donutStampButton = OumMaplePillButton(
+        title: "C.hveUcTkR-?ibns".wevVPastryCrumbBloomRestored,
+        wevvActiveGlazeColors: [UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1).cgColor, UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1).cgColor]
+    )
     private var donutMoodButtons: [UIControl] = []
     private var selectedDonutMood = "AvmaaCzhienVgQ".wevVPastryCrumbBloomRestored
     private var bakeryDayDots: [Int: UILabel] = [:]
@@ -19,7 +22,7 @@ final class DailyDonutcherryCompote: UIViewController {
     }
 
     private func buildDailyDonutBackdrop() {
-        view.backgroundColor = UIColor(red: 1, green: 0.93, blue: 0.97, alpha: 1)
+        FimVSugarGradientBand.buildPastryBackdrop(view)
     }
 
     private func buildDonutStampContent() {
@@ -33,16 +36,16 @@ final class DailyDonutcherryCompote: UIViewController {
 
         let doughBackButton = UIButton(type: .system)
         doughBackButton.translatesAutoresizingMaskIntoConstraints = false
-        doughBackButton.setImage(UIImage(named: "wevv_checkin_sugar_back_arrow"), for: .normal)
-        doughBackButton.tintColor = UIColor(red: 0.15, green: 0.09, blue: 0.18, alpha: 1)
+        doughBackButton.setImage(UIImage(named: "wevv_notice_sugar_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        doughBackButton.tintColor = .white
         doughBackButton.addTarget(self, action: #selector(closeDailyDonut), for: .touchUpInside)
 
-        let donutStampTitle = makeDonutStampLabel("C~hbeNc~k%-eiGnM".wevVPastryCrumbBloomRestored, size: 17, weight: .heavy, color: UIColor(red: 0.13, green: 0.08, blue: 0.18, alpha: 1))
+        let donutStampTitle = makeDonutStampLabel("C~hbeNc~k%-eiGnM".wevVPastryCrumbBloomRestored, size: 17, weight: .heavy, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1))
         donutStampTitle.textAlignment = .center
 
         let donutStreakCard = makeDonutStreakCard()
         let bakeryCalendarCard = makeBakeryCalendarCard()
-        let donutMoodTitle = makeDonutStampLabel("HcoewQ ~skw?eueZtm Xw*a&sp Eywovu!r, Dd&aAyG?T".wevVPastryCrumbBloomRestored, size: 14, weight: .heavy, color: UIColor(red: 0.16, green: 0.1, blue: 0.18, alpha: 1))
+        let donutMoodTitle = makeDonutStampLabel("HcoewQ ~skw?eueZtm Xw*a&sp Eywovu!r, Dd&aAyG?T".wevVPastryCrumbBloomRestored, size: 14, weight: .heavy, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1))
         let donutMoodRow = UIStackView(arrangedSubviews: [
             makeDonutMoodOption(wevvcookieFlavor: "Sgo*fDtO".wevVPastryCrumbBloomRestored, wevvbakeryAtlas: 0.78, opacity: 0.9),
             makeDonutMoodOption(wevvcookieFlavor: "GCo:o:d@".wevVPastryCrumbBloomRestored, wevvbakeryAtlas: 0.84, opacity: 0.95),
@@ -116,19 +119,19 @@ final class DailyDonutcherryCompote: UIViewController {
 
         let glazeSheenLayer = CAGradientLayer()
         glazeSheenLayer.colors = [
-            UIColor(red: 0.98, green: 0.45, blue: 0.69, alpha: 1).cgColor,
-            UIColor(red: 1, green: 0.26, blue: 0.6, alpha: 1).cgColor
+            UIColor(red: 255 / 255.0, green: 143 / 255.0, blue: 193 / 255.0, alpha: 1).cgColor,
+            UIColor(red: 255 / 255.0, green: 79 / 255.0, blue: 152 / 255.0, alpha: 1).cgColor
         ]
-        glazeSheenLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        glazeSheenLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        glazeSheenLayer.startPoint = CGPoint(x: 0, y: 0)
+        glazeSheenLayer.endPoint = CGPoint(x: 1, y: 1)
         treatCaseCard.layer.insertSublayer(glazeSheenLayer, at: 0)
 
         let donutRingImage = UIImageView(image: UIImage(named: "wevv_checkin_amazing_glaze_ring"))
         donutRingImage.translatesAutoresizingMaskIntoConstraints = false
         donutRingImage.contentMode = .scaleAspectFit
-        let small = makeDonutStampLabel("J?uZljy; tsLt*rQehank&".wevVPastryCrumbBloomRestored, size: 15, weight: .heavy, color: UIColor.white.withAlphaComponent(0.92))
+        let small = makeDonutStampLabel("J?uZljy; tsLt*rQehank&".wevVPastryCrumbBloomRestored, size: 15, weight: .heavy, color: .white)
         let days = makeDonutStampLabel("1E2Z qddaryosv".wevVPastryCrumbBloomRestored, size: 30, weight: .heavy, color: .white)
-        let best = makeDonutStampLabel("BLehsLtg ;sBtKrmeKajkC:A r1E9U Sd:aoyqsJ".wevVPastryCrumbBloomRestored, size: 14, weight: .medium, color: UIColor.white.withAlphaComponent(0.88))
+        let best = makeDonutStampLabel("BLehsLtg ;sBtKrmeKajkC:A r1E9U Sd:aoyqsJ".wevVPastryCrumbBloomRestored, size: 14, weight: .medium, color: .white)
 
         treatCaseCard.addSubview(donutRingImage)
         treatCaseCard.addSubview(small)
@@ -157,13 +160,13 @@ final class DailyDonutcherryCompote: UIViewController {
     private func makeBakeryCalendarCard() -> UIView {
         let treatCaseCard = UIView()
         treatCaseCard.translatesAutoresizingMaskIntoConstraints = false
-        treatCaseCard.backgroundColor = .white
+        treatCaseCard.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         treatCaseCard.layer.cornerRadius = 26
 
-        let month = makeDonutStampLabel("J^uElHye ^2X0R2X6f".wevVPastryCrumbBloomRestored, size: 17, weight: .heavy, color: UIColor(red: 0.17, green: 0.1, blue: 0.19, alpha: 1))
-        let neonSignal = makeDonutStampLabel("Tuo!dOa@yz".wevVPastryCrumbBloomRestored, size: 12, weight: .heavy, color: UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1))
+        let month = makeDonutStampLabel("J^uElHye ^2X0R2X6f".wevVPastryCrumbBloomRestored, size: 17, weight: .heavy, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1))
+        let neonSignal = makeDonutStampLabel("Tuo!dOa@yz".wevVPastryCrumbBloomRestored, size: 12, weight: .heavy, color: UIColor(red: 255 / 255.0, green: 95 / 255.0, blue: 162 / 255.0, alpha: 1))
         neonSignal.textAlignment = .center
-        neonSignal.backgroundColor = UIColor(red: 1, green: 0.88, blue: 0.95, alpha: 1)
+        neonSignal.backgroundColor = .clear
         neonSignal.layer.cornerRadius = 18
         neonSignal.clipsToBounds = true
 
@@ -213,7 +216,7 @@ final class DailyDonutcherryCompote: UIViewController {
     private func makeBakeryDaySlot(_ text: String) -> UIView {
         let bakeryDaySlot = UIView()
         bakeryDaySlot.translatesAutoresizingMaskIntoConstraints = false
-        let sugarDustLabel = makeDonutStampLabel(text, size: 12, weight: .heavy, color: UIColor(red: 0.51, green: 0.42, blue: 0.49, alpha: 1))
+        let sugarDustLabel = makeDonutStampLabel(text, size: 12, weight: .heavy, color: UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1))
         sugarDustLabel.textAlignment = .center
         sugarDustLabel.layer.cornerRadius = 17
         sugarDustLabel.clipsToBounds = true
@@ -234,15 +237,15 @@ final class DailyDonutcherryCompote: UIViewController {
 
     private func applyDonutDayStyle(_ sugarDustLabel: UILabel, value: Int) {
         sugarDustLabel.backgroundColor = .clear
-        sugarDustLabel.textColor = UIColor(red: 0.51, green: 0.42, blue: 0.49, alpha: 1)
+        sugarDustLabel.textColor = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
         sugarDustLabel.layer.borderWidth = 0
         if value <= 12 || (value == selectedDonutDay && donutJournalStore.hasDailyDonutStamp(dayKey: dailyDonutKey)) {
-            sugarDustLabel.backgroundColor = UIColor(red: 1, green: 0.31, blue: 0.63, alpha: 1)
+            sugarDustLabel.backgroundColor = UIColor(red: 255 / 255.0, green: 95 / 255.0, blue: 162 / 255.0, alpha: 1)
             sugarDustLabel.textColor = .white
         } else if value == selectedDonutDay {
-            sugarDustLabel.layer.borderColor = UIColor(red: 1, green: 0.31, blue: 0.63, alpha: 1).cgColor
+            sugarDustLabel.layer.borderColor = UIColor(red: 255 / 255.0, green: 95 / 255.0, blue: 162 / 255.0, alpha: 1).cgColor
             sugarDustLabel.layer.borderWidth = 1.1
-            sugarDustLabel.textColor = UIColor(red: 1, green: 0.31, blue: 0.63, alpha: 1)
+            sugarDustLabel.textColor = UIColor(red: 255 / 255.0, green: 95 / 255.0, blue: 162 / 255.0, alpha: 1)
         }
     }
 
@@ -258,7 +261,7 @@ final class DailyDonutcherryCompote: UIViewController {
         donutMoodRing.contentMode = .scaleAspectFit
         donutMoodRing.alpha = opacity
         donutMoodRing.transform = CGAffineTransform(scaleX: wevvbakeryAtlas, y: wevvbakeryAtlas)
-        let sugarDustLabel = makeDonutStampLabel(wevvcookieFlavor, size: 12, weight: .heavy, color: UIColor(red: 0.53, green: 0.43, blue: 0.51, alpha: 1))
+        let sugarDustLabel = makeDonutStampLabel(wevvcookieFlavor, size: 12, weight: .heavy, color: UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1))
         sugarDustLabel.textAlignment = .center
         donutMoodButton.addSubview(donutMoodRing)
         donutMoodButton.addSubview(sugarDustLabel)
@@ -298,8 +301,11 @@ final class DailyDonutcherryCompote: UIViewController {
         for custardMousse in donutMoodButtons {
             let active = custardMousse.accessibilityIdentifier == selectedDonutMood
             custardMousse.layer.borderWidth = active ? 1.2 : 0
-            custardMousse.layer.borderColor = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1).cgColor
-            custardMousse.backgroundColor = active ? UIColor(red: 1, green: 0.96, blue: 0.99, alpha: 1) : .clear
+            custardMousse.layer.borderColor = UIColor(red: 255 / 255.0, green: 95 / 255.0, blue: 162 / 255.0, alpha: 1).cgColor
+            custardMousse.backgroundColor = .clear
+            for case let sugarDustLabel as UILabel in custardMousse.subviews {
+                sugarDustLabel.textColor = (active ? UIColor(red: 255 / 255.0, green: 95 / 255.0, blue: 162 / 255.0, alpha: 1) : UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1))
+            }
         }
     }
 

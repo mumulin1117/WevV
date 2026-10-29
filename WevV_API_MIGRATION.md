@@ -2,6 +2,206 @@
 
 更新：2026-10-29。当前资源已经切换正式项目；下方折叠保留此前测试环境接入证据，不代表当前运行配置。原生一级页面、布局、样式和键盘逻辑保留；按用户最新要求，将有公开 H5 合同的现有二级入口切换到 SDK2。
 
+## SDK2 加载 SVG 原样替换（2026-10-29）
+
+将 `/Users/linqian/Downloads/app-loading.svg`、`app-loading-still.svg` 原始字节替换至加密资源 `vanillaBeanIcingSdk2.data` 内同名 `assets/common/` 路径。同步更新包内 `webapp-manifest.json` 中这两项的大小与 SHA256，并沿用自定义归档、双层 zlib、AES-128-CBC 链路重新封包，更新外 manifest 的文件记录、包校验和内容版本：`sdk2-4cba3159858ca818b451398248cda8a05c74080e24acf180bdc14b1a0abe5def`。
+
+包内只有两张 SVG 及其校验清单发生变化，其余 1171 文件逐字节保持原样，包括 index、正式配置、Profile；原生薄配置包 `vanillaBeanIcingSdk2Network.data` 逐字节未变。不修改仓库另一个 `room-shell-h5` 工程的加载资源、不修改 Swift／Bridge／启动和缓存逻辑。版本变化会让原生使用新的解包目录。XML 格式、包内完整 managedFiles 大小／SHA256、1174 文件加密往返和实际 Native Swift 解包验证通过。备份与验证日志位于 `/private/tmp/wevv-loading-replacement-bw52ef_l/`。本轮未安装／重启 App，未进行加载动画实机视觉验收。
+
+## 原生刷新、Toast 与 Loading 统一深色主题（2026-10-29）
+
+结合蓝湖深色设置／确认弹窗的通用色板和当前紫色主题，统一反馈色：深紫卡片 `#252540`、低对比边框 `#33334D`、主文字 `#EFEFF3`、辅助文字 `#A0A0B0`、强调／转圈 `#FF4BA9`。蓝湖“提示”稿 1 还保留特定插画与粉色大面板，此轮采用其粉色强调元素，不将该特定插画弹窗结构套用到普通 Toast／Loading。
+
+- `TinGlazePromptStyler.swift`：统一语义色板；Toast 为 16pt 圆角深色卡片、细暗边框、黑色阴影及 14pt Semibold 主文字，粉色小标记；Loading 为 20pt 圆角深色卡片、同色边框／转圈／主文字，遮罩黑色 24%。增加沿用现有命名的 refresh 配色方法：粉色转圈、透明底、13pt Medium 灰紫 Pull to refresh。使用这套语义色板的其他原生通用提示也自然使用深色正文／面板；已有删除／退出的显式配色不改。
+- `AoVGlazeCrackleOverlay.swift`：操作等待卡片统一深色 20pt 圆角、细暗边框、粉色转圈、14pt Semibold 近白文字及黑色 24% 遮罩；原延迟和完成回调保留。
+- `NOticeNertyuSugartastingCard.swift`：窗口式提示／Loading 使用相同深色卡片、边框、14pt Semibold 主文字、粉色图标／中号转圈，黑色 24% 遮罩。原自动结束／手动 clear 规则及窗口触摸行为保持不变。
+- `TvVDonutcreamapricotFillinger.swift`：四个一级页共用刷新按新规范，首页和语聊上拉均透明底、粉色转圈和 13pt Medium 灰紫文案；移除尾部原先分开的 tint／background 参数；状态文字同辅助色，不改控件尺寸和约束。
+- `GDonutdenCrumbCenterler.swift`、`LisenNoticepoplater.swift`、`XunSugarRosterbrownButterDrizzle.swift`：现有原生充值／消息／关系列表／收藏列表的刷新控件调用同一配色方法，加载／空态文字调为可读的灰紫辅助色。
+- `SugarMomentEbuController.swift`：图片上传原有小转圈改为同一粉色；图片、上传文字和状态流程不变。
+
+没有新增类、Swift 文件或资源，没有修改 UIKit 布局约束、请求／回调、刷新结束、Toast 停留时间、No more 两秒到期、失败重试或登录持久化；不修改 H5 宿主、资源包和 H5 UI。Debug Simulator（arm64／x86_64）编译及 `git diff --check` 通过；逐文件约束／按钮事件／动画时长／延迟回调语句核对一致，实际 No more 方法回归脚本通过（两秒隐藏、反复滚动、独立分类、刷新及旧回调、失败重试）。源码快照 `/private/tmp/wevv-native-feedback-dark-ywfk67p0/`，构建日志 `/private/tmp/wevv-feedback-dark-build.log`。
+
+手动回归：在各一级页下拉刷新，首页／语聊上拉至有数据、失败及无更多状态；在原生页面触发普通提示、等待提示和上传转圈，检查颜色／圆角／遮罩及原结束时机。本轮未安装／重启 App，未做新的大小屏实机、键盘及视觉验收。
+
+## 原生骨骼加载统一当前 H5 配色（2026-10-29）
+
+以实际 `vanillaBeanIcingSdk2.data` 中 index 的通用 skeleton CSS 为准，不使用另一份 H5 源码推测：page-deep `#000021`、surface `#282241`、surface-raised `#35294d`、accent `#a846ee`。按 CSS 指定 sRGB 混色原比例计算，不先取整：base 为 `(35.2,29.92,61.16)/255`（surface 88% + page-deep 12%），highlight 为 `(78.3,47.38,112.42)/255`（raised 78% + accent 22%），skeleton-surface 为 `(6.4,5.44,38.12)/255`（page-deep 84% + surface 16%）。扫光两端透明，中间为该 highlight。
+
+- `WevEnd/WevVGlazeSkeletonPanel.swift`：首页直播、语聊列表、Explore 共用相同深色 palette，移除原 light／voice 两套及动态页粉白渐变覆盖；占位块、细节块、卡片底和页面底分别对应上述 H5 颜色。
+- `TvVDonutcreamapricotFillinger.swift` 中既有 `WevVGlazeSheenView`：二级页共用占位块改为相同 base 与 highlight，替换白色扫光。
+- `KipoDonutMomentController.swift`、`LmnTasterCardController.swift`：仅更改动态详情／资料页骨骼遮挡层的背景为 page-deep，正常页面已设配色不改。
+
+没有新增类、资源、动画或加载逻辑，不修改 H5 资源包、接口、加载显示／隐藏时机、布局、扫光速度、Reduce Motion 和前后台处理。Debug Simulator（arm64／x86_64）构建、`git diff --check` 及所有约束／动画时长／主页面加载状态与生命周期差异核对通过。修改前源码与混色计算在 `/private/tmp/wevv-skeleton-h5-palette-ff55d4bm/`，构建日志 `/private/tmp/wevv-skeleton-palette-build.log`。手动回归：首次加载首页／语聊／Explore、原生动态详情与资料页时，对比 H5 占位块底色和扫光色；数据到达后仍按原条件结束。本轮未安装或重启 App，未做新的实机视觉验收。
+
+## 个人中心用户名／Wallet 和 Save shop 迁移（2026-10-29）
+
+参考蓝湖深色分组“我的”图 103，设计 ID `9819cc37-4370-47e1-b7dc-d62fc74bee1e`，对应本轮用户要求的我的版本。用户名按 CSS 为 25pt Bold、白色、居中，置于头像下方，长昵称缩放／截尾；仍绑定真实昵称，未登录保留 Please Log in 和欢迎入口。微调头像相对统计条位置，使昵称及 Wallet 按稿衔接。
+
+`TvVDonutcreamapricotFillinger.swift` 移除旧 Save shop 卡片及其计数／约束／根页面入口方法；Wallet 改为左右 17／18pt、宽高比 340:85 的横向圆角条，左侧使用原有 `oldgem` 资源（等比显示），标题 20pt Bold，余额 20pt Semibold 位于右侧。余额继续读取真实 `donutArchiveTotal`，点击继续原 `openDonutArchive`，不改充值／登录逻辑。渐变 CSS 未提供具体端点，按当前原图顶部／底部采样近似 `(167,169,255,1)` 到 `(110,112,255,1)`，垂直渐变。`FimVSugarGradientBand.swift` 仅增加可选颜色初始化器，原默认及背景初始化路径保持不变。Wallet 的 VoiceOver 值同步余额。个人中心其他入口、My Post 数据和布局流程保留。
+
+`DimSugarpistachioCreamCoating.swift` 第二组为 Store、Backpack、Diamond Records、Save shop，原列表样式不变；根页面创建设置时传入同一店铺详情列表，设置的新收藏入口打开原 `CunBakerfvanillaBeanIcing`，沿用收藏更新回调，不重写存储或变成 H5 页面。没有新增类、文件或资源，旧单项资源文件未擅自删除。
+
+Debug Simulator（arm64／x86_64）构建和 `git diff --check` 通过；源码核对真实昵称／余额、未登录文案、编辑资料／Wallet／关注粉丝动作及删除退出处理保持原逻辑。设计标注、原图、修改前源码及日志在 `/private/tmp/wevv-profile-dark-isVepN/`。手动回归：登录／未登录分别查看用户名，核对 Wallet 使用 oldgem 及真实余额并进入原充值页；设置第二组点击 Save shop，查看收藏、打开店铺详情并返回，核对列表和回调。本轮未安装／重启 App，未做新的大小屏实机视觉或键盘验收。
+
+## 首页直播和语聊上拉加载尾部状态（2026-10-29）
+
+`TvVDonutcreamapricotFillinger.swift` 统一首页直播、语聊 Follow／Recommend 尾部展示：上拉时按原阈值提示松手加载，请求中保留原刷新同款转圈和加载文案；成功且还有下一页时，回弹后隐藏闲置提示；无下一页时显示原 No more 文案，两秒后隐藏，保留 hasMore=false 防止重复请求；失败仍保留重试提示。下拉刷新期间不叠加底部提示。未修改接口、分页游标、页大小、去重和房间数据。
+
+使用已有项目命名 `deadline` 和 `hideSugarLoading` 管理单调时钟到期时间。三个列表使用独立键，重复滚动不重置两秒；账户／环境重置和下拉刷新清除对应到期状态，延迟回调核对到期值，旧计时不会隐藏新请求；闭包弱引用控制器。沿用现有尾部布局空间，不新增动画样式或业务类型。
+
+新增仓库级回归脚本 `scripts/test_wevv_load_more_footer.py`，提取实际生产计时方法并运行 Swift 假视图验证：两秒后无需滚动即隐藏、连续滚动不续时、独立语聊分类、加载时废弃旧计时、已过期分类不重播、下一轮重置以及失败可重试。脚本通过，原直播分页 31 项、语聊分页 43 项检查通过，Debug Simulator（arm64／x86_64）构建及 `git diff --check` 通过。日志 `/private/tmp/wevv-load-more-build.log`。不影响登录注册和本地用户数据；本轮未安装／重启 App，未做新的实机上拉验收。
+
+## Explore 与动态详情作者头像统一主播主页（2026-10-29）
+
+`TvVDonutcreamapricotFillinger.openTastingJournalAuthor` 和 `KipoDonutMomentController.worldDoughnutNotebook` 的业务用户 H5 入口从 `.user` 改为 `.creator`，与语聊房推荐用户 `openTastingParlorOwner` 使用相同入口枚举，实际路由 `index.html#/creator/{userID}`。继续传作者业务用户 ID，不传动态 ID／房间 ID；无已知 IM 账号时仍传 nil，不自行拼接。Explore 的头像共用入口及动态详情顶部头像均覆盖；本地旧资料分支保留，H5 内部头像不修改。
+
+不修改登录拦截、凭据、Bridge、页面样式和原有关闭回调。Debug Simulator（arm64／x86_64）编译与 `git diff --check` 通过；构建日志 `/private/tmp/wevv-author-creator-route-build.log`。手动核对：语聊推荐用户、Explore 推荐／New Post 作者头像、原生动态详情顶部头像应打开同类 H5 主播主页，用户 ID 对应所点作者。本轮未安装／重启 App，未进行登录后实机跳转验收。
+
+## 收藏成功弹窗改为用户提供整图（2026-10-29）
+
+`VunBakeryShelfToastView.swift` 删除原有拼装标题、正文、渐变、勾选和独立按钮，替换为单张 UIImageView，原始 2x／3x PNG 字节不变。新增资源位于 `WevEnd/Assets.xcassets/tastingSuccessLayer.imageset/`，名称取自工程已有自定义属性。图片保持 263:292 比例、完整显示，在 SafeArea 中居中并按可用空间缩小。整图不拦截触摸，根 UIControl 覆盖全屏，点击图片或外围遮罩均触发原 `firstGlazeDelight` 回调，沿用详情页原有淡出移除逻辑；无其他按钮或重叠文字。
+
+2x／3x 源文件逐字节一致性、Debug Simulator 构建和 `git diff --check` 通过。构建日志 `/private/tmp/wevv-saved-image-build.log`。不修改收藏保存、账号、登录、H5 或其他弹窗。本轮未安装／重启 App；可收藏店铺后分别点击图片中部、OK 图案和外围确认关闭。
+
+## Explore 发现页深色配色（2026-10-29）
+
+参考当前蓝湖深色分组中“发现”图 104，设计 ID `b8342be8-c656-48f3-a3b5-0a6006bb870f`，即本轮所依据的发现版本；取得 HTML／CSS 标注及原图。该分组当前未另列名为“发现版本1”的同名条目。
+
+仅修改 `TvVDonutcreamapricotFillinger.swift` 中 Explore 对应配色：Trending／Follow、New Post、推荐作者名、动态正文 `(255,248,255,1)`；选中横条 `(255,76,192,1)`；推荐卡片／右栏／New Post 卡片 `(50,23,123,1)`，图片加载底色 `(65,33,153,1)`；未关注 `(255,37,153,1)`、已关注 `(104,30,104,1)`；标签采用标注的粉 `(255,91,255,1)`／紫 `(103,47,255,1)`，Hot 文字 `(191,178,222,1)`。无数据文案改用现有深色主题次级色 `(160,160,176,1)`。沿用原首页统一的语聊背景资源、TabBar、Explore Logo、通知及发布按钮图片；不更换图片或调整尺寸、层级和布局。
+
+New Post 卡片和关注组件由个人中心共用，增加可选现有命名 `color` 参数，只在 Explore 的调用显式传入浅色；个人中心原调用保留 nil 默认值，继续原配色。不改变数据、标签生成、热门判断、关注状态、按钮文案、刷新／分页、吸顶／滑动切换、登录拦截或 H5 跳转。
+
+Debug Simulator（arm64／x86_64）构建、`git diff --check` 及全部约束／字体／切换关注动作差异核对通过。标注、修改前源码及日志在 `/private/tmp/wevv-explore-dark-DB7jHK/`。手动回归：进入 Explore，切换 Trending／Follow、滚动 New Post，核对作者名／正文／标签及关注状态颜色，再进入个人中心核对共用卡片仍保持原样。本轮未安装／重启 App，未做新的大小屏实机视觉验收。
+
+## 删除账户和退出确认弹窗深色配色（2026-10-29）
+
+参考深色版退出 73（`a90e2d8b-3de6-47f0-94fc-6d9480ee1d1d`）、删除账户 74（`92c62cf8-6c04-47c7-83cb-ac7b8c1b07a4`）精确 CSS：遮罩黑色 0.87 alpha，面板 `(37,37,64,1)`，标题 `(239,239,243,1)`，正文 `(160,160,176,1)`，深色按钮 `(51,51,77,1)`，粉色按钮 `(255,75,169,1)`，按钮白字，删除警示 `(255,86,86,1)`。
+
+`TinGlazePromptStyler.showSugarConfirm` 当前仅由设置页调用。调整其颜色，顶部粉色装饰设为透明并保留尺寸和层级；增加可选取消按钮颜色和正文警示配色参数，使用已有项目命名。`DimSugarpistachioCreamCoating.swift` 为删除弹窗传入深色 Delete、粉色 Cancel 和已有警示句；退出保持深色 Cancel、粉色 Log out。保留原按钮位置、文案、字体、约束和事件，未为匹配设计稿调换按钮位置。
+
+没有修改账号操作方法、登录态、持久化、删除／退出接口、其他提示／通知／加载弹窗或 H5，没有新增类或资源。Debug Simulator（arm64／x86_64）编译、`git diff --check` 及约束／文案／回调差异核对通过。标注、修改前源码及日志位于 `/private/tmp/wevv-account-prompts-dark-A53QJp/`。手动回归：分别打开 Delete Account、Log out，核对标题／正文／警示／按钮颜色，点击 Cancel 关闭。本轮未安装／重启 App，未执行实际删除或退出，未做新的实机视觉验收。
+
+## 挑战详情、人员展开与设置深色配色（2026-10-29）
+
+参考深色版设置 75（`e6990865-b37f-4922-9950-e2b4c445b009`）、人员展开 85（`a4855530-a0cc-47b0-bbd1-2b1ba4f29db5`）、挑战详情 87（`60aa0598-67c6-45f4-9d36-fcba9aa17eeb`）的 HTML／CSS 标注及原图。
+
+- `NmFrostingmuralSignalController.swift` 是首页当前调用的详情实现。调整标题／简介／主持人名／人员名单近白色，时间地点卡 `(51,51,77,1)`、说明文字 `(160,160,176,1)`、小图标 `(125,116,138,1)`；主持人 Follow `(255,95,162,1)`，参与按钮／限时免费底色 `(37,37,64,1)`，参与按钮文字 `(141,114,241,1)`，人员数 `(187,162,254,1)`；人员展开底色 `(37,37,64,1)`，标题／姓名近白色，关闭图标白色。保留既有紫色渐变、头像、限时免费文案及已参与禁用样式。
+- `DimSugarpistachioCreamCoating.swift`：分组／行底色 `(37,37,64,1)`，分隔线 `(47,47,71,1)`，标题／行名 `(239,239,243,1)`，副值 `(160,160,176,1)`，箭头 `(176,176,184,1)`；删除按钮深色底、边框 `(51,51,77,1)`、红字 `(255,61,61,1)`；退出按钮 `(255,75,169,1)`。保留现有栏目和分组，未采用设计稿旧功能清单。
+
+不修改未被当前入口使用的旧挑战控制器，不修改参与、人员跳转、H5 入口、设置确认弹窗、账号删除或退出逻辑，不新增类或资源。Debug Simulator（arm64／x86_64）构建、`git diff --check` 及约束／文案／字体／非颜色业务语句差异核对通过。标注、修改前源码和构建日志在 `/private/tmp/wevv-challenge-settings-dark-wBjLnO/`。手动回归：从首页打开挑战，核对信息卡、主持人和名单；展开／关闭名单并点击人员；设置页滚动各组、核对删除和退出按钮。本轮未安装或重启 App，未做新的大小屏实机视觉验收。
+
+## 动态详情、发布动态和上传入口深色配色（2026-10-29）
+
+参考蓝湖深色分组 88 上传图片弹窗（`1579ee4a-7201-4ec1-8131-fa832b106b7f`）、89 编辑（`cdc3d848-b0af-4439-abdf-25ab3f347b55`）、90 发布（`b3fa39fc-acbe-4f73-a486-ab4b736af2bf`）、91 动态详情（`664e21ef-4955-4f1c-a5f9-910241169122`），本轮取得 CSS 标注及原图。
+
+`KipoDonutMomentController.swift`：评论卡片／底栏／输入底色 `(37,37,64,1)`；评论用户名及输入文字 `(239,239,243,1)`，作者名称／动态正文／评论正文／时间分别使用该文字色的 0.9／0.8／0.5／0.3 alpha；Follow 使用 `(255,37,166,1)`，Following `(51,51,77,1)`，举报及点赞强调色 `(255,75,169,1)`。本地原生动态详情保持既有数据和操作；H5 动态详情不修改。
+
+`SugarMomentEbuController.swift`：标题及正文 `(239,239,243,1)`，提示同色 0.3 alpha；初始输入区 `(27,27,40,1)`，可发布态输入区 `(37,37,64,1)`。原有可用按钮粉色及禁用渐变保持原样，状态判断不变。上传入口沿用系统 UIAlertController 的相机／相册／移除／取消结构，仅使用公开 API 固定深色外观、粉色 tint；未重写为设计稿的独立按钮面板，因此系统弹窗的分项底色和取消按钮背景受系统控制。图片占位资源、相机／相册、上传、移除与发布逻辑均保留。
+
+没有新增文件、类或资源，不修改登录注册、本地存储、导航、布局、字号、键盘处理和 H5。原图标注及修改前源码、构建日志在 `/private/tmp/wevv-post-dark-7FuL2W/`。Debug Simulator（arm64／x86_64）构建及 `git diff --check` 通过；源码检查确认除颜色／外观赋值以外无变动。手动回归：动态详情查看正文及评论、输入评论；发布页选择相机／相册、取消、选择并移除图片，输入内容检查可用／禁用状态及键盘避让，再验证原发布流程。本轮未安装或重启 App，未做新的实机视觉验收。
+
+## 店铺详情、收藏成功弹窗及发布评价配色复核（2026-10-29）
+
+重新读取深色分组店铺详情 78／80、收藏成功 79、发布评价 94。设计 ID：`d5c3a91e-83f4-46d4-a601-374332ce5190`／`fd166dd2-42fc-4317-8bdc-8fb3028eafc5`、`6d6381d0-e2a2-4905-ae34-b84d7221d714`、`e1724f6e-ca83-4237-90bb-34e40f35a9ce`。本轮 78／79／94 可取得 CSS 标注，80 仍仅有原图。
+
+- `IOpBakeryDetailController.swift`：既有深色配色大部分已匹配，仅按新取得 CSS 将店铺标签底色修正为 `(37,37,64,1)`。不添加原实现不存在的房间卡片。
+- `VunBakeryShelfToastView.swift`：遮罩改为黑色 50%，标题／正文黑色，OK 按钮按 CSS `(128,102,255,1)`；弹窗面板的渐变未在 CSS 中给出，按当前原图采样近似为上粉 `(255,124,192,1)` 到下浅粉 `(255,224,223,1)`。保留现有勾选图形、尺寸、阴影及点击关闭事件，仅增加面板颜色层随 bounds 更新。注意 OK 按钮 CSS 为紫色而原图为粉色，本轮优先使用精确标注；面板渐变仍为图片采样近似。
+- `EFlavorNoteController.swift`：输入背景 `(37,37,64,1)`，标题／正文／提示按 CSS `(239,239,243,1)`，选中星 `(255,201,41,1)`，未选星按 CSS `(113,113,113,1)`，Post `(255,75,169,1)`。保留评分缩放、默认分数、提示显隐、输入、键盘避让、保存和完成回调。
+
+Debug Simulator（arm64／x86_64）构建、`git diff --check` 及全部现有约束、字体和按钮动作差异检查通过。不修改登录注册、本地数据结构、H5、图片资源或页面功能，没有新增独立类。标注、参考图、修改前源码及编译日志位于 `/private/tmp/wevv-shop-review-dark-8sT9lt/`。手动回归：打开店铺详情核对标签与评论，收藏后检查成功弹窗和关闭；进入 Review，输入与清空文字、切换 1–5 星、弹出／收起键盘，再检查原发布流程。本轮未安装／重启 App，未进行新的大小屏实机视觉验收。
+
+## 收藏页参照蓝湖深色版调整配色（2026-10-29）
+
+参考“深色版本”收藏图 99，设计 ID `369fc240-69ad-4da9-9401-a7717ac0f76f`，本轮取得该图 HTML／CSS 精确标注。仅调整 `CunBakerfvanillaBeanIcing.swift` 配色：列表卡片 `(37,37,64,1)`；页面标题、店名和评分 `(239,239,243,1)`；副标题、评论数量及地址 `(160,160,176,1)`；星形 `(255,181,47,1)`；定位图标 `(255,106,174,1)`；标签背景 `(54,54,137,1)`，既有粉／金／紫标签文字分别 `(212,94,150,1)`／`(208,138,48,1)`／`(126,116,216,1)`。未知标签色仍走现有次级文字色分支。保留页面原有深色背景及白色返回按钮。
+
+不更改卡片尺寸、布局、字体、图片、数据筛选、空态、收藏读写、详情跳转或返回回调；不新增类与资源，不修改 H5。设计标注、修改前源码与构建日志保存在 `/private/tmp/wevv-saved-dark-HVcaS4/`。手动回归可从个人中心进入收藏，核对卡片／评分／地址／标签颜色，再进入店铺详情返回，检查列表更新；无收藏时核对原空态。Debug Simulator（arm64／x86_64）构建及 `git diff --check` 通过；源码检查确认布局、筛选和导航方法未变。本轮未安装或重启 App，未做新的大小屏实机视觉验收。
+
+## 发布挑战参照蓝湖深色版调整配色（2026-10-29）
+
+参考“深色版本”发布挑战图 98，设计 ID `ba2229bf-cb3e-4853-b92b-76b93cf0f3d8`。本轮成功取得该深色图的 HTML／CSS 标注，按原始 RGBA 值映射 UIKit：表单卡片／输入背景 `(37,37,64,1)`；输入边框 `(51,51,77,1)`；标题与输入正文 `(239,239,243,1)`；TITLE、占位提示、字数、时间与地点 `(160,160,176,1)`；金额选中项／Post 按钮 `(255,75,169,1)`；选中项与按钮文字白色。原页面背景及此前要求的白色返回按钮保留。
+
+仅修改 `GemTastingQuestComposerController.swift` 中的配色赋值，包含输入开始／结束和金额切换后的颜色更新。沿用现有 Free 文案及数值，不采用设计图旧的 50 选项。保留布局、字体、封面图片流程、180 字限制、登录拦截、表单校验、发布保存、成功弹层及键盘处理；未新增类或资源，未修改 H5。原图不涉及的成功弹层与未使用封面构建方法未调整。
+
+Debug Simulator（arm64／x86_64）编译和 `git diff --check` 通过；源码差异检查确认仅颜色相关赋值变化。设计标注、修改前源码及构建日志保存于 `/private/tmp/wevv-quest-dark-f5yPY5/`。本轮未安装或重启 App，未做新的大小屏视觉验收。手动回归：打开发布挑战，核对卡片／提示文字；切换 Free、100、300、500；输入标题／简介／时间／地点，清空简介后失焦，再检查提示色和计数；核对原有校验、键盘避让及发布结果。
+
+## 签到详情参照蓝湖深色版两张稿调整配色（2026-10-29）
+
+参考“深色版本”签到图 100／101，设计 ID 为 `5f227d3b-c5b1-47d2-947b-9a92e3a5239d`／`81823c58-7dfc-4579-8f31-e058fb0f3149`。两张设计图片读取成功；HTML／CSS 生成因登录权限校验失败不可用，按当前原图核对纯色区域，渐变端点为图片采样近似值。参考图、颜色统计、修改前源码及构建日志在 `/private/tmp/wevv-checkin-dark-BK2ejL/`。
+
+仅修改 `DailyDonutcherryCompote.swift`：日历底色 `#252540`，标题 `#EFEFF3`，普通日期／星期／未选中心情 `#A0A0B0`，已签到日期／今日描边／选中心情 `#FF5FA2`，签到按钮可用态 `#FF4BA9`；Today 和心情选中底色改为透明。连续签到卡改为粉色斜向渐变，文案白色。页面原有深色背景和白色返回图标保留；禁用按钮继续沿用现有灰色样式。
+
+没有新增类或资源，没有修改布局、字体、图片、日期判断、心情选择、签到保存、登录注册、H5 或导航逻辑。手动回归：进入签到页，对照设计核对日历与文案；依次切换三种心情检查文字／边框同步；签到后核对日期填色、按钮禁用和重新进入后的保存状态。Debug Simulator（arm64／x86_64）构建、约束／事件／持久化键差异检查和 `git diff --check` 通过。本轮不安装／重启 App，不进行新的大小屏实机视觉验收。
+
+## Donut Shops 详情页参照蓝湖深色版调整配色（2026-10-29）
+
+参考蓝湖项目“深色版本”分组中的店铺详情稿，当前列表索引为 78／80，图 ID 分别为 `d5c3a91e-83f4-46d4-a601-374332ce5190`／`fd166dd2-42fc-4317-8bdc-8fb3028eafc5`。设计图片读取成功；HTML 生成接口未提供可用代码，切图／标注接口按同名页面返回旧版设计 ID，因此没有采用旧版标注。此处色值从当前已读取的深色原图纯色区域核对，参考图、区域色值统计、修改前快照及构建日志保存在 `/private/tmp/wevv-donut-dark-palette-XqeDPI/`。
+
+- 页面背景：`#1A1A2E`；店铺／评论／更多店铺卡片及底部栏：`#252540`。
+- 页面与店铺标题：`#EFEFF3`；副标题、地址、评论正文及次级评分：`#A0A0B0`；评论者名称：`#8D4E72`。
+- 标签底色：`#37376A`；原粉／金／紫标签映射为 `#D45E96`／`#D08A30`／`#7E74D8`，未知标签色继续使用原数据值；标签内容不变。
+- 评分星形：`#FFB52F`；地址图标：`#FF6AAE`；Review：`#C67BFF`；Save：`#FF4BA9`；按钮文字保持白色。
+- 返回图标保留用户此前明确要求的白色。原有布局、圆角、尺寸、字体、图片内容及未涉及的弹窗样式保持原样，本轮仅将已有页面元素对应到深色稿配色。
+
+本轮源文件为 `WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift`（页面、各类卡片与标签配色）和 `WevSweetgd/WevSweetgd/OumMaplePillButton.swift`（初始化时可选传入现有 `wevvActiveGlazeColors`）。仅详情页两个按钮显式使用新色，其他页面仍走原有默认配色；灰色禁用状态、Saved 文案和可点击状态继续使用原逻辑。评论仍按原顺序取前两条，序号只用于粉／金徽标配色。
+
+差异核对确认全部约束块、字体设置、按钮 action、收藏状态处理、评论数据读取、登录拦截和导航方法未变；没有修改登录注册、用户数据、H5 或图片资源，没有新增类或资源。无签名 Debug Simulator、Release iOS 构建及 `git diff --check` 均通过；本轮未安装／重启用户 App，未进行新的大小屏视觉或键盘实机验收。手动核对可打开店铺详情、查看评论及更多店铺，再分别打开评价、收藏并返回，确认颜色和原有动作。
+
+## 原生二级页标题及返回按钮统一白色（2026-10-29）
+
+将深色页面背景上的大标题、分区小标题、资料页的主副标题和统计标题，以及原生二级页返回／登录注册关闭按钮统一为白色。消息聊天标题、收藏页标题原来没有明确设置颜色，本轮补上白色；收藏页切换标题保留原有选中／未选中透明度。签到、动态发布和消息页面的资源图返回按钮使用 `.alwaysTemplate` 配合白色 tint，保证资源图片可正确着色。原生视频呼叫页原本已经使用白色标题和返回图标，保持原样。
+
+本轮修改 17 个 Swift 文件，目录均为 `WevSweetgd/WevSweetgd/`：
+
+- `BrostingmellowCoconutEssence.swift`、`NmFrostingmuralSignalController.swift`：活动导航标题、进度／主持人等分区标题及返回图标。
+- `CreamRingDellController.swift`：编辑资料及 Basic Info 标题、返回图标。
+- `CunBakerfvanillaBeanIcing.swift`：收藏店铺页面标题及返回图标。
+- `DailyDonutcherryCompote.swift`：签到主标题、心情分区标题及返回图标。
+- `DimSugarpistachioCreamCoating.swift`：设置页标题及返回图标。
+- `EFlavorNoteController.swift`：评论页导航、Review／Rating 分区标题及返回图标。
+- `GDonutdenCrumbCenterler.swift`：钱包页标题及返回图标。
+- `GemTastingQuestComposerController.swift`：挑战发布主标题、各分区标题及返回图标；白色输入卡片中单独设置颜色的字段提示保留原色。
+- `IOpBakeryDetailController.swift`：店铺详情导航及分区标题、返回图标。
+- `KipoDonutMomentController.swift`：动态详情导航和评论分区标题、返回图标。
+- `LisenNoticepoplater.swift`：消息列表及聊天导航标题、两个返回图标。
+- `LmnTasterCardController.swift`：他人资料页导航、主副标题、统计标题及返回图标。
+- `SugarMomentEbuController.swift`：动态发布主标题、Content 分区标题及返回图标。
+- `UBakerytropicalMangoEssence.swift`：登录、注册的主副标题及关闭按钮；欢迎页图片、欢迎按钮文字及 EULA 卡片保留原样。
+- `XunSugarRosterbrownButterDrizzle.swift`：收藏列表、Saved Posts 导航标题和返回图标，以及列表切换标题。
+- `ZunugarPlainblackberryCreamler.swift`：隐私、条款等文本页标题及返回图标。
+
+只修改文本／图标颜色和图片渲染模式，没有新增标识符、类型、文件或资源。白底卡片内的正文、输入文字、表单提示和业务操作颜色保留原样。差异核对确认约束、字体、文案、selector、手势、登录注册业务、键盘处理和数据存储均未改动；H5 宿主与加密资源、一级页控制器、全部图片资源及启动页的哈希与修改前一致。前置快照、修改清单和构建日志位于 `/private/tmp/wevv-native-white-headings-ivx3j65g/`。
+
+无签名 Debug Simulator、Release iOS 构建及 `git diff --check` 均通过。未安装／重启用户 App，也未进行新的大小屏视觉或键盘实机验收；手动可进入设置、活动详情、发布、资料、收藏、消息及登录／注册页，核对主副标题和返回图标为白色，并确认输入框和白底内容可读、返回动作保持原样。
+
+## 其余原生二级页及登录注册统一深色背景（2026-10-29）
+
+在此前已替换旧背景图的 6 个页面基础上，本轮将其余 14 个原生页面控制器（含登录注册控制器）统一为 `(0.1, 0.1, 0.18, 1)` 的双同色标渐变，locations 为 `[0, 1]`，起点 `(-0.04, 0.14)`、终点 `(1, 1)`。现有背景图层按原来的 `viewDidLayoutSubviews` 更新 bounds；普通背景复用 `FimVSugarGradientBand` 并约束到根视图四边，由其 `layoutSubviews` 更新图层，背景不接收触摸。没有全局修改系统控件 appearance，也没有修改卡片、按钮或输入框样式。
+
+本轮修改的 App 源文件（均在 `WevSweetgd/WevSweetgd/`）：
+
+- `FimVSugarGradientBand.swift`：复用已存在的项目自定义名称 `buildPastryBackdrop`，集中配置渐变图层或安装全屏背景视图；默认按钮渐变保持原配置。
+- `BrostingmellowCoconutEssence.swift`、`NmFrostingmuralSignalController.swift`：活动详情页底层背景。
+- `CreamRingDellController.swift`、`LmnTasterCardController.swift`：编辑资料／他人资料背景。
+- `CunBakerfvanillaBeanIcing.swift`、`IOpBakeryDetailController.swift`：店铺收藏内容／店铺详情背景。
+- `DailyDonutcherryCompote.swift`：签到页背景。
+- `DimSugarpistachioCreamCoating.swift`：设置页背景。
+- `ZunugarPlainblackberryCreamler.swift`：条款、隐私等共用文本页背景。
+- `GemTastingQuestComposerController.swift`、`SugarMomentEbuController.swift`、`EFlavorNoteController.swift`：挑战发布／动态发布／意见反馈背景，保留各自已有背景图层尺寸更新及键盘处理。
+- `UBakerytropicalMangoEssence.swift`：欢迎、登录、注册共用底层渐变；欢迎页 `welcomebglaunch` 图片及其全屏约束、登录注册动作不变。
+- `WevVGlazeVideoDialController.swift`：视频呼叫页底层替换为统一渐变，移除原全屏装饰头像背景及配套遮罩；本地预览头像、呼叫控件和动作不变。
+
+移除 3 个仅被旧背景使用的私有颜色常量。此前 6 个页面继续使用同一渐变配置；四个一级页保持此前确认的语聊背景图及 TabBar 色值。H5 宿主 `UKGlazeActortroller.swift`、加密资源包和清单、`LaunchScreen.storyboard`、启动图 `welaoing`、欢迎图 `welcomebglaunch` 的内容校验均与本轮修改前一致。没有新增类、Swift 文件或资源，没有修改网络、Token、登录注册业务流程或本地数据结构。
+
+修改前快照、受保护文件哈希、当前修改清单及构建日志位于 `/private/tmp/wevv-native-dark-theme-07xur_qx/`。无签名 Debug Simulator 和 Release iOS 构建、源码范围及差异检查均通过；没有安装／重启设备 App 或操作真实账号，未做新的大小屏视觉和键盘实机验收。手动核对可依次进入设置／条款／发布／编辑资料等原生页面，并在欢迎→登录→注册间切换：内容后方为同一深色，欢迎和启动仍显示旧全屏背景图，H5 外观保持原样。
+
+## 一级页面统一背景及后续命名规则（2026-10-29）
+
+Home、动态和个人中心与语音聊天室列表共用现有 `wevv_voice_version4_backdrop` 全屏背景图及深紫色兜底色。复用 `TvVDonutcreamapricotFillinger.swift` 中原有 `voicePinnedBackdrop`，在原背景构建阶段只添加一次并约束到根视图四边；切换一级页时保持可见，随页面内容滚动的视图、吸顶头部及 TabBar 继续使用原有布局和样式。移除原 Home 背景层及动态页专用渐变视图、图层、尺寸更新和切页显隐代码，没有新增资源或自定义标识符。
+
+`AGENTS.md` 和 `.cursor/rules/ios-naming.mdc` 记录：后续新增代码的自主命名先从 `WevEnd` 外现有 Swift 代码中的非系统自定义命名选取，避免重名，保留系统／协议和外部接口契约原名；新增文件仍放入 `WevEnd`。本轮没有修改登录注册、接口请求、凭据或本地数据结构。修改前快照与构建日志在 `/private/tmp/wevv-main-background-nw1a4njg/`。
+
+无签名 Debug Simulator（arm64、x86_64）构建及 `git diff --check` 通过；背景使用根视图四边约束，内容安全区和键盘处理未改。本轮没有安装或重启设备 App，未作新的大小屏视觉实测。手动验收可依次切换 Home、语音、动态、个人中心并上下滚动，确认四页背景一致且切换时不出现原粉色背景。
+
 ## 相对指定提交整理新增 iOS 文件（2026-10-29）
 
 以 `8ad28ed6fa96816982d171d25811abeabd8f008c` 为基线，对照当前工作区（包含整理前尚未提交的修改）核对文件和 Swift 编译器解析出的类型声明。全部新增 Swift 文件和 SDK2 资源现集中到 `WevSweetgd/WevSweetgd/WevEnd/`；后文历史记录中的旧源路径保留为当时证据，当前源路径以本节为准。
@@ -947,3 +1147,18 @@ python3 -m unittest discover -s scripts -p 'test_wevv_room_bundle.py' -v
 </details>
 
 </details>
+
+### Discover 动态列表游标分页
+
+- New Post 使用 `/_v2/moments/feed`，首屏 `cursorId=0`、`size=20`，后续请求使用上一页返回的 `nextCursor`。原生内容仓库新增单页读取方法，不再为首屏连续预拉最多五页；顶部 Follow 仍按服务端真实关注标记从首屏数据筛选，已有页面布局不变。
+- 分页状态位于 `WevEnd/tastingPassportPage.swift`（`WevVGlazeCommunityService.tastingPassportPage`）。按动态 ID 合并去重，拒绝重复并发请求、已结束列表和游标循环。失败保留已有卡片及重试游标；刷新期间拒绝旧分页结果，账号／环境变化清空分页状态。
+- New Post 底部沿用首页加载更多组件、52 点释放阈值、粉色加载动画和两秒隐藏的 No more 提示。下拉刷新取消待完成分页并从首屏重建游标；刷新失败保留卡片，但不沿用旧快照继续翻页。
+- 回归：95 项离线原生数据检查通过，含 7 组新增分页场景；动态接口语义解析和首页／语聊／动态共享尾部计时回归通过。Debug 模拟器构建及 WeeNo 排除检查通过；未进行真机手势回归。
+
+### 退出登录的凭据清理与请求隔离
+
+- 退出首先清除当前环境 Keychain 中的登录凭据包（accessToken、refreshToken、legacyToken、云信账号及 imToken），清空内存用户资料和旧兼容登录字段，并清理旧版未分环境的凭据记录。Keychain 删除失败时仍保留已有 revoked 标志，防止重启误恢复。
+- Runtime 同步释放游客会话、续期任务及 SAPI ticket；网络层清除 Open 缓存中的账号 accessToken、refreshToken 缓存键及待完成 Open。保留不含账号令牌的 App 级运行配置，供游客列表正常浏览。
+- Open 和 OPI 增加会话代次校验。旧 Open 不能回填 Token，也不能清掉新账号正在执行的 Open；等待启动路由的旧业务请求会在发送前被拒绝。退出前已发出的请求返回后，不能恢复登录或覆盖新账号。
+- 仅退出接口本身使用预先捕获的旧 accessToken 向服务器注销；后续公开列表使用新建、仅驻留内存的游客设备会话，敏感接口在本地拒绝未登录状态。没有删除设备标识、解包资源和待补单交易材料。
+- 验证：Debug 模拟器构建通过；33 项离线会话回归覆盖凭据清理、重建 Store 无法恢复、游客 OPI/SAPI 隔离、迟到 Open、同账号重新登录等场景。真实网络层 URLProtocol 离线回归验证退出前等待启动的请求不携带旧令牌发送，以及新匿名请求没有继承认证 Header。未操作用户的真实账号。

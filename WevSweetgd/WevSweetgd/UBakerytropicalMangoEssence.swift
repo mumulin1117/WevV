@@ -68,15 +68,8 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     }
 
     private func buildWevvBakeryGateCanvas() {
-        view.backgroundColor = .white
-        wevvGateBackdropLayer.colors = [
-            UIColor(red: 1, green: 0.88, blue: 0.95, alpha: 1).cgColor,
-            UIColor(red: 1, green: 0.95, blue: 0.98, alpha: 1).cgColor,
-            UIColor.white.cgColor
-        ]
-        wevvGateBackdropLayer.locations = [0, 0.52, 1]
-        wevvGateBackdropLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        wevvGateBackdropLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.18, alpha: 1)
+        FimVSugarGradientBand.buildPastryBackdrop(wevvGateBackdropLayer)
         view.layer.insertSublayer(wevvGateBackdropLayer, at: 0)
 
         wevvFritterScroll.translatesAutoresizingMaskIntoConstraints = false
@@ -166,8 +159,8 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
             aerosolSpark.bottomAnchor.constraint(equalTo: wevvGlazeCanvas.bottomAnchor),
             paintCascade.trailingAnchor.constraint(equalTo: wevvGlazeCanvas.trailingAnchor, constant: -38),
             paintCascade.topAnchor.constraint(equalTo: wevvGlazeCanvas.safeAreaLayoutGuide.topAnchor, constant: 34),
-            paintCascade.widthAnchor.constraint(equalToConstant: 92),
-            paintCascade.heightAnchor.constraint(equalToConstant: 36),
+            paintCascade.widthAnchor.constraint(equalToConstant: 69),
+            paintCascade.heightAnchor.constraint(equalToConstant: 31),
             seasonalMenuNotes.centerXAnchor.constraint(equalTo: wevvGlazeCanvas.centerXAnchor),
             seasonalMenuNotes.topAnchor.constraint(equalTo: wevvGlazeCanvas.safeAreaLayoutGuide.topAnchor, constant: 142),
             seasonalMenuNotes.widthAnchor.constraint(equalTo: wevvGlazeCanvas.widthAnchor, multiplier: 0.78),
@@ -189,8 +182,8 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
 
     private func pastryDisplayNotesWevvMapleEntry() {
         let doughClose = cardamomPearCombination()
-        let glazeTitle = makeWevvGateCrumbLabel("WDe:lTcmoEmSe+ sbjamcakL".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 22, pastryAlchemyAtelier: .bold, afternoonTreatJourney: .black)
-        let crumbNote = makeWevvGateCrumbLabel("Luoegz oilne waqnfdj ycjoxnjtzignlumet vyuogupre rdwoonpubtk gcyhiaplclpeonhgnez.q".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 11, pastryAlchemyAtelier: .regular, afternoonTreatJourney: wevvSoftCrumbTone)
+        let glazeTitle = makeWevvGateCrumbLabel("WDe:lTcmoEmSe+ sbjamcakL".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 22, pastryAlchemyAtelier: .bold, afternoonTreatJourney: .white)
+        let crumbNote = makeWevvGateCrumbLabel("Luoegz oilne waqnfdj ycjoxnjtzignlumet vyuogupre rdwoonpubtk gcyhiaplclpeonhgnez.q".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 11, pastryAlchemyAtelier: .regular, afternoonTreatJourney: UIColor(red: 0.6, green: 0.6, blue: 0.66, alpha: 1))
         crumbNote.numberOfLines = 2
 
         let         fencePiece = makeWevvCustardPanel()
@@ -268,8 +261,8 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
 
     private func buildWevvSprinkleJoin() {
         let doughClose = cardamomPearCombination()
-        let glazeTitle = makeWevvGateCrumbLabel("JGo~i%nh &t;hrem gdTo&nCultU HcAl,uxbJ".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 32, pastryAlchemyAtelier: .heavy, afternoonTreatJourney: wevvCocoaTone)
-        let crumbNote = makeWevvGateCrumbLabel("CcrMeVactbeA =yeoBuarO Na~cmctoHuOnOt% Ya^nid: rs,tOabr:t~ #eYxNp~lqoSrgiinggU UsZweeqeztJ Ycqi!rpcVlZeAs+.&".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 19, pastryAlchemyAtelier: .regular, afternoonTreatJourney: wevvSoftCrumbTone)
+        let glazeTitle = makeWevvGateCrumbLabel("JGo~i%nh &t;hrem gdTo&nCultU HcAl,uxbJ".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 32, pastryAlchemyAtelier: .heavy, afternoonTreatJourney: .white)
+        let crumbNote = makeWevvGateCrumbLabel("CcrMeVactbeA =yeoBuarO Na~cmctoHuOnOt% Ya^nid: rs,tOabr:t~ #eYxNp~lqoSrgiinggU UsZweeqeztJ Ycqi!rpcVlZeAs+.&".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 19, pastryAlchemyAtelier: .regular, afternoonTreatJourney: UIColor(red: 0.6, green: 0.6, blue: 0.66, alpha: 1))
         crumbNote.numberOfLines = 2
 
         let glazeSelectionCollection = makeWevvCustardPanel()
@@ -362,13 +355,11 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     }
 
     private func artisanDoughAtelier() -> UIButton {
-        let sprinkleButton = UIButton(type: .system)
+        let sprinkleButton = UIButton(type: .custom)
         sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
-        sprinkleButton.setTitle("EqUeL~AD".wevVPastryCrumbBloomRestored, for: .normal)
-        sprinkleButton.setTitleColor(wevvSoftCrumbTone, for: .normal)
-        sprinkleButton.titleLabel?.font = UIFont(name: "Inter-Bold", size: 15) ?? UIFont.systemFont(ofSize: 15, weight: .bold)
-        sprinkleButton.backgroundColor = .white
-        sprinkleButton.layer.cornerRadius = 18
+        sprinkleButton.setImage(UIImage(named: "artisanDoughAtelier")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        sprinkleButton.imageView?.contentMode = .scaleAspectFit
+        sprinkleButton.accessibilityLabel = "EqUeL~AD".wevVPastryCrumbBloomRestored
         sprinkleButton.addTarget(self, action: #selector(openWevvEulaButton), for: .touchUpInside)
         return sprinkleButton
     }
@@ -430,7 +421,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
 //    }
 
     private func makevanillaStrawberryDuet(_ text: String) -> UILabel {
-        let crumbLabel = makeWevvGateCrumbLabel(text, warmBakeryHandbook: 13, pastryAlchemyAtelier: .regular, afternoonTreatJourney: wevvCocoaTone)
+        let crumbLabel = makeWevvGateCrumbLabel(text, warmBakeryHandbook: 13, pastryAlchemyAtelier: .regular, afternoonTreatJourney: UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1))
         crumbLabel.textAlignment = .center
         return crumbLabel
     }
@@ -449,7 +440,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         let coconutMangoMedley = UIButton(type: .system)
         coconutMangoMedley.translatesAutoresizingMaskIntoConstraints = false
         coconutMangoMedley.setImage(UIImage(systemName: "xmark"), for: .normal)
-        coconutMangoMedley.tintColor = wevvCocoaTone
+        coconutMangoMedley.tintColor = .white
         coconutMangoMedley.addTarget(self, action: #selector(closeWevvBakeryGate), for: .touchUpInside)
         return coconutMangoMedley
     }
@@ -457,7 +448,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     private func makeWevvCustardPanel() -> UIView {
         let rosemaryHoneyMedley = UIView()
         rosemaryHoneyMedley.translatesAutoresizingMaskIntoConstraints = false
-        rosemaryHoneyMedley.backgroundColor = .white
+        rosemaryHoneyMedley.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.25, alpha: 1)
         rosemaryHoneyMedley.layer.cornerRadius = 18
         return rosemaryHoneyMedley
     }
@@ -474,7 +465,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     }
 
     private func makeWevvFieldCrumbTitle(_ text: String) -> UILabel {
-        makeWevvGateCrumbLabel(text, warmBakeryHandbook: 10, pastryAlchemyAtelier: .bold, afternoonTreatJourney: UIColor(red: 0.68, green: 0.57, blue: 0.69, alpha: 1))
+        makeWevvGateCrumbLabel(text, warmBakeryHandbook: 10, pastryAlchemyAtelier: .bold, afternoonTreatJourney: UIColor(red: 0.6, green: 0.6, blue: 0.66, alpha: 1))
     }
 
     private func makeWevvFillingField(placeholder: String) -> UITextField {
@@ -484,18 +475,18 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         vanillaStrawberryHarmony.autocapitalizationType = .none
         vanillaStrawberryHarmony.autocorrectionType = .no
         vanillaStrawberryHarmony.font = .systemFont(ofSize: 13, weight: .regular)
-        vanillaStrawberryHarmony.textColor = wevvCocoaTone
+        vanillaStrawberryHarmony.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.66, alpha: 1)
         vanillaStrawberryHarmony.attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [
-                .foregroundColor: UIColor(red: 0.55, green: 0.49, blue: 0.58, alpha: 1),
+                .foregroundColor: UIColor(red: 0.6, green: 0.6, blue: 0.66, alpha: 1),
                 .font: UIFont.systemFont(ofSize: 13, weight: .regular)
             ]
         )
-        vanillaStrawberryHarmony.backgroundColor = UIColor(red: 1, green: 0.97, blue: 0.99, alpha: 1)
+        vanillaStrawberryHarmony.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.25, alpha: 1)
         vanillaStrawberryHarmony.layer.cornerRadius = 11
         vanillaStrawberryHarmony.layer.borderWidth = 1
-        vanillaStrawberryHarmony.layer.borderColor = wevvSugarLineTone.cgColor
+        vanillaStrawberryHarmony.layer.borderColor = UIColor(red: 0.2, green: 0.2, blue: 0.28, alpha: 1).cgColor
         vanillaStrawberryHarmony.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
         vanillaStrawberryHarmony.leftViewMode = .always
         return vanillaStrawberryHarmony
@@ -513,7 +504,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         let cherryAlmondFusion = UIButton(type: .system)
         cherryAlmondFusion.translatesAutoresizingMaskIntoConstraints = false
         cherryAlmondFusion.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-        cherryAlmondFusion.tintColor = UIColor(red: 0.45, green: 0.42, blue: 0.46, alpha: 1)
+        cherryAlmondFusion.tintColor = UIColor(red: 0.6, green: 0.6, blue: 0.66, alpha: 1)
         cherryAlmondFusion.addAction(UIAction { [weak confectionCraftWorkshop] _ in
             confectionCraftWorkshop?.isSecureTextEntry.toggle()
         }, for: .touchUpInside)
@@ -654,13 +645,13 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
 
         let morningBiteNotebook = UIView()
         morningBiteNotebook.translatesAutoresizingMaskIntoConstraints = false
-        morningBiteNotebook.backgroundColor = .white
+        morningBiteNotebook.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.25, alpha: 1)
         morningBiteNotebook.layer.cornerRadius = 32
         morningBiteNotebook.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         morningBiteNotebook.clipsToBounds = true
         caramelMeltJourney.addSubview(morningBiteNotebook)
 
-        let warmGlazeDelight = makeWevvGateCrumbLabel("EVUwLBAo".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 24, pastryAlchemyAtelier: .heavy, afternoonTreatJourney: .black)
+        let warmGlazeDelight = makeWevvGateCrumbLabel("EVUwLBAo".wevVPastryCrumbBloomRestored, warmBakeryHandbook: 24, pastryAlchemyAtelier: .heavy, afternoonTreatJourney: UIColor(red: 0.94, green: 0.94, blue: 0.95, alpha: 1))
         warmGlazeDelight.textAlignment = .center
 
         let pastryCloseButton = UIButton(type: .system)
@@ -678,7 +669,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         let bakeryShelfGuide = UIView()
         bakeryShelfGuide.translatesAutoresizingMaskIntoConstraints = false
 
-        let donutCaseJournal = makeWevvGateCrumbLabel(wevvEulaText(), warmBakeryHandbook: 16, pastryAlchemyAtelier: .regular, afternoonTreatJourney: UIColor(red: 0.34, green: 0.32, blue: 0.36, alpha: 1))
+        let donutCaseJournal = makeWevvGateCrumbLabel(wevvEulaText(), warmBakeryHandbook: 16, pastryAlchemyAtelier: .regular, afternoonTreatJourney: UIColor(red: 0.94, green: 0.94, blue: 0.95, alpha: 1))
         donutCaseJournal.numberOfLines = 0
         donutCaseJournal.textAlignment = .left
         donutCaseJournal.adjustsFontSizeToFitWidth = false
@@ -689,7 +680,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
             string: wevvEulaText(),
             attributes: [
                 .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                .foregroundColor: UIColor(red: 0.34, green: 0.32, blue: 0.36, alpha: 1),
+                .foregroundColor: UIColor(red: 0.94, green: 0.94, blue: 0.95, alpha: 1),
                 .paragraphStyle: eulaBodyStyle
             ]
         )

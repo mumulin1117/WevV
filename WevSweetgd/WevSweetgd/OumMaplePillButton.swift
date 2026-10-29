@@ -12,8 +12,11 @@ final class OumMaplePillButton: UIControl {
         UIColor(red: 0.72, green: 0.72, blue: 0.72, alpha: 1).cgColor
     ]
 
-    init(title: String) {
+    init(title: String, wevvActiveGlazeColors: [CGColor]? = nil) {
         super.init(frame: .zero)
+        if let wevvActiveGlazeColors {
+            self.wevvActiveGlazeColors = wevvActiveGlazeColors
+        }
         translatesAutoresizingMaskIntoConstraints = false
         layer.insertSublayer(wevvMapleLayer, at: 0)
         layer.cornerRadius = 14

@@ -40,13 +40,15 @@ final class NOticeNertyuSugartastingCard {
             glazeBowl = UIWindow(frame: UIScreen.main.bounds)
         }
         glazeBowl.windowLevel = .alert + 1
-        glazeBowl.backgroundColor = .clear
+        glazeBowl.backgroundColor = UIColor.black.withAlphaComponent(0.24)
         glazeBowl.rootViewController = UIViewController()
 
         let pastryCard = UIView()
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
-        pastryCard.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        pastryCard.layer.cornerRadius = 14
+        pastryCard.backgroundColor = TinGlazePromptStyler.creamTone.withAlphaComponent(0.98)
+        pastryCard.layer.cornerRadius = 20
+        pastryCard.layer.borderWidth = 1
+        pastryCard.layer.borderColor = TinGlazePromptStyler.softPinkTone.cgColor
 
         let sugarRowsStack = UIStackView()
         sugarRowsStack.translatesAutoresizingMaskIntoConstraints = false
@@ -54,10 +56,10 @@ final class NOticeNertyuSugartastingCard {
         sugarRowsStack.alignment = .center
         sugarRowsStack.spacing = 12
 
-        let sprinkleButton = UIActivityIndicatorView(style: .large)
-        sprinkleButton.color = .white
+        let sprinkleButton = UIActivityIndicatorView(style: .medium)
+        sprinkleButton.color = TinGlazePromptStyler.strawberryGlazeTone
         let glazeImageView = UIImageView(image: glazeImage)
-        glazeImageView.tintColor = .white
+        glazeImageView.tintColor = TinGlazePromptStyler.strawberryGlazeTone
         glazeImageView.contentMode = .scaleAspectFit
         glazeImageView.translatesAutoresizingMaskIntoConstraints = false
         glazeImageView.widthAnchor.constraint(equalToConstant: 36).isActive = true
@@ -65,8 +67,8 @@ final class NOticeNertyuSugartastingCard {
 
         let crumbLabel = UILabel()
         crumbLabel.text = sugarTitle
-        crumbLabel.textColor = .white
-        crumbLabel.font = .systemFont(ofSize: 15, weight: .medium)
+        crumbLabel.textColor = TinGlazePromptStyler.inkTone
+        crumbLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         crumbLabel.numberOfLines = 2
         crumbLabel.textAlignment = .center
 

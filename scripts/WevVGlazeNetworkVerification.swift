@@ -37,6 +37,7 @@ final class Probe: @unchecked Sendable {
     nonisolated(unsafe) var routeTarget = "REPLICA"
     nonisolated(unsafe) var routeOverrides: [String: Any] = [:]
     nonisolated(unsafe) var bootstrapHTTPStatus: Int?
+    nonisolated(unsafe) var bootstrapGate: DispatchSemaphore?
     nonisolated func statusCode(_ request: URLRequest) -> Int {
         lock.lock(); defer { lock.unlock() }
         if request.url?.path == "/sugary9/crumb/voice", let status = bootstrapHTTPStatus {
@@ -55,9 +56,11 @@ final class Probe: @unchecked Sendable {
         let openFailure = failOpen, invalidOpen = malformedOpen
         if ["/mapped/open", "/production/open"].contains(request.url!.path) { failOpen = false; malformedOpen = false }
         let apiBaseURL = routeAPIBaseURL, target = routeTarget, appID = routeAppID, overrides = routeOverrides
+        let gate = bootstrapGate
         lock.unlock()
         switch request.url!.path {
         case "/sugary9/crumb/voice":
+            if let gate { precondition(gate.wait(timeout: .now() + 5) == .success) }
             if routeFailure { return try json(["treatRecommendationPhoto": 5]) }
             var value: [String: Any] = ["treatWarmDelight": appID, "seasonalRingPhoto": target, "visitFillingCheckin": 3, "cozySeasonalGlaze": apiBaseURL, "conversationTastingVisit": true]
             value.merge(overrides) { _, replacement in replacement }
@@ -350,7 +353,32 @@ final class MockProtocol: URLProtocol, @unchecked Sendable {
             do { _ = try parseProfile(invalidFixture); fatalError("invalid bootstrap identity accepted") }
             catch WevVGlazeNetworkError.invalidConfiguration {}
         }
-        print("PASS: obfuscated bootstrap contract, server-selected HTTPS business routes, independent startup/business identity, SOURCE/REPLICA metadata, preserved false feature flag, route/revision Open invalidation, request isolation, concurrency, recursive aliases, Hex/Base64 separation, strict code/flag types, auth failures, SAPI prefix/default expiry, retry, account-separated Open, HTTP/business/invalid route failures without Open/fallback, split startup/business compatibility, environment validation")
+        probe.routeAppID = "fixture"
+        probe.routeAPIBaseURL = "https://unit.example"
+        probe.routeOverrides = [:]
+        let waitingNetwork = fresh()
+        let gate = DispatchSemaphore(value: 0)
+        probe.bootstrapGate = gate
+        let initialRouteCalls = probe.count("/sugary9/crumb/voice")
+        let initialBusinessCalls = probe.count("/mapped/business")
+        let pending = Task { try await waitingNetwork.opi(path: "/_v2/business", body: json([:]), accessToken: "departing-token") }
+        for _ in 0..<10000 {
+            if probe.count("/sugary9/crumb/voice") > initialRouteCalls { break }
+            await Task.yield()
+        }
+        precondition(probe.count("/sugary9/crumb/voice") == initialRouteCalls + 1)
+        waitingNetwork.clearSugarCrumbs()
+        gate.signal()
+        do { _ = try await pending.value; fatalError("departing token was sent after session cleanup") }
+        catch is CancellationError {}
+        precondition(probe.count("/mapped/business") == initialBusinessCalls,
+                     "a request waiting for startup cannot send its old Authorization after logout")
+        probe.bootstrapGate = nil
+        _ = try await waitingNetwork.opi(path: "/_v2/business", body: json([:]))
+        precondition(probe.last("/mapped/business").value(forHTTPHeaderField: "Authorization") == nil
+                     && probe.last("/mapped/business").value(forHTTPHeaderField: "X-Refresh") == nil,
+                     "new anonymous requests cannot inherit the departing user's credentials")
+        print("PASS: obfuscated bootstrap contract, server-selected HTTPS business routes, independent startup/business identity, SOURCE/REPLICA metadata, preserved false feature flag, route/revision Open invalidation, request isolation, concurrency, recursive aliases, Hex/Base64 separation, strict code/flag types, auth failures, SAPI prefix/default expiry, retry, account-separated Open, HTTP/business/invalid route failures without Open/fallback, split startup/business compatibility, environment validation, logout pre-send credential isolation")
         session.invalidateAndCancel()
     }
 }

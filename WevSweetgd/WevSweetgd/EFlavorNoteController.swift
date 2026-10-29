@@ -47,15 +47,8 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
     }
 
     private func buildFlavorBackdrop() {
-        view.backgroundColor = UIColor(red: 1, green: 0.97, blue: 0.99, alpha: 1)
-        flavorBackdropLayer.colors = [
-            UIColor(red: 1.0, green: 0.87, blue: 0.95, alpha: 1).cgColor,
-            UIColor(red: 1.0, green: 0.94, blue: 0.98, alpha: 1).cgColor,
-            UIColor(red: 1.0, green: 0.99, blue: 1.0, alpha: 1).cgColor
-        ]
-        flavorBackdropLayer.locations = [0, 0.5, 1]
-        flavorBackdropLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        flavorBackdropLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.18, alpha: 1)
+        FimVSugarGradientBand.buildPastryBackdrop(flavorBackdropLayer)
         view.layer.insertSublayer(flavorBackdropLayer, at: 0)
     }
 
@@ -88,15 +81,15 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
         let doughBackButton = UIButton(type: .system)
         doughBackButton.translatesAutoresizingMaskIntoConstraints = false
         doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        doughBackButton.tintColor = .black
+        doughBackButton.tintColor = .white
         doughBackButton.addTarget(self, action: #selector(closeFlavorNoteForm), for: .touchUpInside)
 
-        let navdonutTitle = makeTastingLabel("Rselvqi*ewwW".wevVPastryCrumbBloomRestored, size: 22, weight: .bold, color: .black)
+        let navdonutTitle = makeTastingLabel("Rselvqi*ewwW".wevVPastryCrumbBloomRestored, size: 22, weight: .bold, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1))
         navdonutTitle.textAlignment = .center
 
-        let sectionTitle = makeTastingLabel("RHegvmiAeqwV".wevVPastryCrumbBloomRestored, size: 16, weight: .bold, color: .black)
+        let sectionTitle = makeTastingLabel("RHegvmiAeqwV".wevVPastryCrumbBloomRestored, size: 16, weight: .bold, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1))
         tuneFlavorTextBox()
-        let ratingTitle = makeTastingLabel("R!aNtGi,n~gs".wevVPastryCrumbBloomRestored, size: 16, weight: .bold, color: .black)
+        let ratingTitle = makeTastingLabel("R!aNtGi,n~gs".wevVPastryCrumbBloomRestored, size: 16, weight: .bold, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1))
         let starRow = makeCrumbScoreRow()
         placeFlavorNoteViews(doughBackButton: doughBackButton, navdonutTitle: navdonutTitle, sectiondonutTitle: sectionTitle, ratingdonutTitle: ratingTitle, starRow: starRow)
         pinFlavorNoteLayout(doughBackButton: doughBackButton, navTitle: navdonutTitle, sectionTitle: sectionTitle, ratingTitle: ratingTitle, starRow: starRow)
@@ -105,17 +98,17 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
 
     private func tuneFlavorTextBox() {
         flavorTextBox.translatesAutoresizingMaskIntoConstraints = false
-        flavorTextBox.backgroundColor = .white
+        flavorTextBox.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         flavorTextBox.layer.cornerRadius = 15
         flavorTextBox.font = .systemFont(ofSize: 16, weight: .regular)
-        flavorTextBox.textColor = UIColor(red: 0.16, green: 0.09, blue: 0.19, alpha: 1)
+        flavorTextBox.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         flavorTextBox.textContainerInset = UIEdgeInsets(top: 20, left: 25, bottom: 16, right: 16)
         flavorTextBox.delegate = self
 
         flavorHintLabel.translatesAutoresizingMaskIntoConstraints = false
         flavorHintLabel.text = "S;aqyA iS,oam!eHt%hmihnRgG".wevVPastryCrumbBloomRestored
         flavorHintLabel.font = .systemFont(ofSize: 12, weight: .regular)
-        flavorHintLabel.textColor = UIColor(red: 0.7, green: 0.68, blue: 0.7, alpha: 1)
+        flavorHintLabel.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         flavorTextBox.addSubview(flavorHintLabel)
     }
 
@@ -132,7 +125,7 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
             star.tag = index
             star.setImage(UIImage(systemName: "star.fill"), for: .normal)
             star.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 46, weight: .regular), forImageIn: .normal)
-            star.tintColor = UIColor(red: 0.81, green: 0.78, blue: 0.8, alpha: 1)
+            star.tintColor = UIColor(red: 113 / 255.0, green: 113 / 255.0, blue: 113 / 255.0, alpha: 1)
             star.addTarget(self, action: #selector(selectCrumbScore(_:)), for: .touchUpInside)
             starRow.addArrangedSubview(star)
             star.widthAnchor.constraint(equalToConstant: 48).isActive = true
@@ -193,14 +186,16 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
         markerRhythm.backgroundColor = .clear
         view.addSubview(markerRhythm)
 
+        flavorSaveButton.translatesAutoresizingMaskIntoConstraints = false
+        flavorSaveButton.backgroundColor = UIColor(red: 1, green: 0.29, blue: 0.66, alpha: 1)
         flavorSaveButton.setTitle("P#oWsqtc".wevVPastryCrumbBloomRestored, for: .normal)
         flavorSaveButton.setTitleColor(.white, for: .normal)
         flavorSaveButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         flavorSaveButton.layer.cornerRadius = 26
         flavorSaveButton.clipsToBounds = true
         flavorSaveGradientLayer.colors = [
-            UIColor(red: 1.0, green: 0.27, blue: 0.65, alpha: 1).cgColor,
-            UIColor(red: 1.0, green: 0.27, blue: 0.65, alpha: 1).cgColor
+            UIColor(red: 1, green: 0.29, blue: 0.66, alpha: 1).cgColor,
+            UIColor(red: 1, green: 0.29, blue: 0.66, alpha: 1).cgColor
         ]
         flavorSaveGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         flavorSaveGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
@@ -234,8 +229,8 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
     private func refreshFlavorMarks() {
         for chromeNoise in crumbScoreButtons {
             chromeNoise.tintColor = chromeNoise.tag <= crumbScoreValue
-                ? UIColor(red: 1, green: 0.9, blue: 0.02, alpha: 1)
-                : UIColor(red: 0.81, green: 0.78, blue: 0.8, alpha: 1)
+                ? UIColor(red: 255 / 255.0, green: 201 / 255.0, blue: 41 / 255.0, alpha: 1)
+                : UIColor(red: 113 / 255.0, green: 113 / 255.0, blue: 113 / 255.0, alpha: 1)
             chromeNoise.transform = chromeNoise.tag <= crumbScoreValue ? CGAffineTransform(scaleX: 1.06, y: 1.06) : .identity
         }
     }

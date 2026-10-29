@@ -115,7 +115,7 @@ final class LmnTasterCardController: UIViewController {
     }
 
     private func buildWevvTasterCardPage() {
-        view.backgroundColor = wevvBlushCreamTone
+        FimVSugarGradientBand.buildPastryBackdrop(view)
         buildWevvTasterTopBar()
         buildWevvTasterScrollLayer()
         buildWevvLockedFoot()
@@ -125,14 +125,14 @@ final class LmnTasterCardController: UIViewController {
     private func buildWevvTasterTopBar() {
         let back = UIButton(type: .system)
         back.translatesAutoresizingMaskIntoConstraints = false
-        back.tintColor = .black
+        back.tintColor = .white
         back.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         back.addTarget(self, action: #selector(closeWevvTasterCard), for: .touchUpInside)
 
         wevvNameTitle.translatesAutoresizingMaskIntoConstraints = false
         wevvNameTitle.font = .systemFont(ofSize: 16, weight: .bold)
         wevvNameTitle.textAlignment = .center
-        wevvNameTitle.textColor = .black
+        wevvNameTitle.textColor = .white
         wevvNameTitle.adjustsFontSizeToFitWidth = true
         wevvNameTitle.minimumScaleFactor = 0.72
 
@@ -213,19 +213,19 @@ final class LmnTasterCardController: UIViewController {
 
         wevvNameHero.translatesAutoresizingMaskIntoConstraints = false
         wevvNameHero.font = .systemFont(ofSize: 21, weight: .bold)
-        wevvNameHero.textColor = .black
+        wevvNameHero.textColor = .white
         wevvNameHero.adjustsFontSizeToFitWidth = true
         wevvNameHero.minimumScaleFactor = 0.68
 
         wevvFlavorLine.translatesAutoresizingMaskIntoConstraints = false
         wevvFlavorLine.font = .systemFont(ofSize: 13, weight: .semibold)
-        wevvFlavorLine.textColor = wevvSoftCrumbTone
+        wevvFlavorLine.textColor = .white
         wevvFlavorLine.adjustsFontSizeToFitWidth = true
         wevvFlavorLine.minimumScaleFactor = 0.68
 
         wevvBakeryLine.translatesAutoresizingMaskIntoConstraints = false
         wevvBakeryLine.font = .systemFont(ofSize: 12, weight: .medium)
-        wevvBakeryLine.textColor = wevvSoftCrumbTone
+        wevvBakeryLine.textColor = .white
         wevvBakeryLine.adjustsFontSizeToFitWidth = true
         wevvBakeryLine.minimumScaleFactor = 0.68
     }
@@ -779,9 +779,9 @@ final class LmnTasterCardController: UIViewController {
         holder.translatesAutoresizingMaskIntoConstraints = false
         value.translatesAutoresizingMaskIntoConstraints = false
         value.font = .systemFont(ofSize: 18, weight: .bold)
-        value.textColor = .black
+        value.textColor = .white
         value.textAlignment = .center
-        let crumbLabel = makeWevvGlazeLabel(title, size: 12, weight: .regular, color: wevvSoftCrumbTone)
+        let crumbLabel = makeWevvGlazeLabel(title, size: 12, weight: .regular, color: .white)
         crumbLabel.textAlignment = .center
         holder.addSubview(value)
         holder.addSubview(crumbLabel)
@@ -1029,7 +1029,7 @@ final class LmnTasterCardController: UIViewController {
 
         let placeholder = UIView()
         placeholder.translatesAutoresizingMaskIntoConstraints = false
-        placeholder.backgroundColor = wevvBlushCreamTone
+        placeholder.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1)
 
         let avatar = WevVGlazeSheenView()
         avatar.translatesAutoresizingMaskIntoConstraints = false

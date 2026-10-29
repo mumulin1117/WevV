@@ -6,7 +6,6 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
     private let tangyCitrusAroma = WevVGlazeSocialRepository.pastryTrailDiary
     private let mellowVanillaContrast = WevVGlazeSessionStore.shared
     private var richCocoaFlavor: butteryTexture
-    private let localAuthorKey: String?
     private var fragrantJasmineFlavor: [featherlightBite] = []
     private var herbalLavenderEssence: Task<Void, Never>?
 
@@ -28,28 +27,6 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
 
     init(richCocoaFlavor: butteryTexture) {
         self.richCocoaFlavor = richCocoaFlavor
-        localAuthorKey = nil
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    init(vanillaStrawberryDuet: WevVDonutSnapshot) {
-        localAuthorKey = vanillaStrawberryDuet.tasterBloom.donutPinKey
-        richCocoaFlavor = butteryTexture(
-            coconutCenter: Int64(vanillaStrawberryDuet.sprinkleJarKey) ?? 0,
-            vanillaBeanIcing: Int64(vanillaStrawberryDuet.tasterBloom.donutPinKey) ?? 0,
-            gingerHoneyDrizzle: vanillaStrawberryDuet.tasterBloom.name,
-            cheesecakeMousse: vanillaStrawberryDuet.tasterBloom.donutFrameAsset,
-            caramelCurd: vanillaStrawberryDuet.tastingText,
-            passionfruitFilling: [vanillaStrawberryDuet.donutBackdropAsset],
-            limeCream: 0,
-            apricotCenter: 0,
-            figCustard: vanillaStrawberryDuet.freshnessTagText,
-            mascarponeCream: false,
-            cherryCompote: false,
-            custardMousse: false,
-            peachFilling: nil,
-            pearJam: nil
-        )
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -70,10 +47,9 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
     }
 
     private func artisanShowcase() {
-        view.backgroundColor = UIColor(red: 1, green: 0.92, blue: 0.96, alpha: 1)
-        let pastelBackdropGallery = UIImageView(image: UIImage(named: "wevv_donut_sprinkle_backdrop"))
+        view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.18, alpha: 1)
+        let pastelBackdropGallery = FimVSugarGradientBand.pastelBackdropGallery()
         pastelBackdropGallery.translatesAutoresizingMaskIntoConstraints = false
-        pastelBackdropGallery.contentMode = .scaleAspectFill
         view.addSubview(pastelBackdropGallery)
 
         goldenHourFrame.translatesAutoresizingMaskIntoConstraints = false
@@ -89,11 +65,11 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
         goldenHourFrame.addSubview(frostingDetailFrame)
 
         rimLightingGallery(daylightDisplayScene, cornerRadius: 16)
-        daylightDisplayScene.backgroundColor = UIColor(red: 0.97, green: 0.84, blue: 0.93, alpha: 1)
+        daylightDisplayScene.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         tastingTrayNotes.translatesAutoresizingMaskIntoConstraints = false
         tastingTrayNotes.numberOfLines = 0
         tastingTrayNotes.font = .systemFont(ofSize: 13, weight: .regular)
-        tastingTrayNotes.textColor = UIColor(red: 0.16, green: 0.12, blue: 0.13, alpha: 1)
+        tastingTrayNotes.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 0.8)
 
         let tastingFlightShowcase = UIStackView(arrangedSubviews: [berryBurstNotebook, donutDiarySelection, UIView()])
         tastingFlightShowcase.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +80,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
 
         butterAromaNotes.translatesAutoresizingMaskIntoConstraints = false
         butterAromaNotes.font = .systemFont(ofSize: 16, weight: .bold)
-        butterAromaNotes.textColor = UIColor(red: 0.12, green: 0.08, blue: 0.1, alpha: 1)
+        butterAromaNotes.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         textureContrastNotes.translatesAutoresizingMaskIntoConstraints = false
         textureContrastNotes.axis = .vertical
         textureContrastNotes.spacing = 10
@@ -143,7 +119,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
         let doughScraperGuide = UIButton(type: .system)
         doughScraperGuide.translatesAutoresizingMaskIntoConstraints = false
         doughScraperGuide.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
-        doughScraperGuide.tintColor = .black
+        doughScraperGuide.tintColor = .white
         doughScraperGuide.addTarget(self, action: #selector(slowRiseSequence), for: .touchUpInside)
 
         rimLightingGallery(portraitPastryGallery, cornerRadius: 16)
@@ -151,7 +127,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
         portraitPastryGallery.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(worldDoughnutNotebook)))
         flavorMenuGuide.translatesAutoresizingMaskIntoConstraints = false
         flavorMenuGuide.font = .systemFont(ofSize: 14, weight: .bold)
-        flavorMenuGuide.textColor = UIColor(red: 0.12, green: 0.05, blue: 0.08, alpha: 1)
+        flavorMenuGuide.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 0.9)
         flavorMenuGuide.adjustsFontSizeToFitWidth = true
         flavorMenuGuide.minimumScaleFactor = 0.75
 
@@ -164,7 +140,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
         let citrusPeelGarnish = UIButton(type: .system)
         citrusPeelGarnish.translatesAutoresizingMaskIntoConstraints = false
         citrusPeelGarnish.setImage(UIImage(systemName: "exclamationmark.triangle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)), for: .normal)
-        citrusPeelGarnish.tintColor = UIColor(red: 1, green: 0.25, blue: 0.58, alpha: 1)
+        citrusPeelGarnish.tintColor = UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1)
         citrusPeelGarnish.addTarget(self, action: #selector(heritageBakingNotebook), for: .touchUpInside)
 
         [doughScraperGuide, portraitPastryGallery, flavorMenuGuide, citrusPeelGarnish, honeyCrullerCruller].forEach(bakeryWindowAtelier.addSubview)
@@ -195,15 +171,17 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
 
     private func pastryWorkshopCounter() {
         pastryCounterCollection.translatesAutoresizingMaskIntoConstraints = false
-        pastryCounterCollection.backgroundColor = .clear
+        pastryCounterCollection.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         view.addSubview(pastryCounterCollection)
         crispEdgeCrust = pastryCounterCollection.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         cocoaDrinkComplement.translatesAutoresizingMaskIntoConstraints = false
         cocoaDrinkComplement.delegate = self
         cocoaDrinkComplement.placeholder = "Write a comment"
+        cocoaDrinkComplement.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
+        cocoaDrinkComplement.attributedPlaceholder = NSAttributedString(string: "Write a comment", attributes: [.foregroundColor: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)])
         cocoaDrinkComplement.returnKeyType = .done
         cocoaDrinkComplement.font = .systemFont(ofSize: 12, weight: .regular)
-        cocoaDrinkComplement.backgroundColor = UIColor(red: 0.95, green: 0.96, blue: 0.97, alpha: 1)
+        cocoaDrinkComplement.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         cocoaDrinkComplement.layer.cornerRadius = 20
         cocoaDrinkComplement.clipsToBounds = true
         cocoaDrinkComplement.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 14, height: 1))
@@ -241,14 +219,14 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
         if let first = richCocoaFlavor.passionfruitFilling.first { daylightDisplayFrame(first, on: daylightDisplayScene, fallback: "photo.fill") }
         daylightDisplayScene.isHidden = richCocoaFlavor.passionfruitFilling.isEmpty
         honeyCrullerCruller.setTitle(richCocoaFlavor.mascarponeCream ? "Following" : "Follow", for: .normal)
-        honeyCrullerCruller.backgroundColor = richCocoaFlavor.mascarponeCream ? UIColor(white: 0.69, alpha: 1) : UIColor(red: 1, green: 0.12, blue: 0.58, alpha: 1)
+        honeyCrullerCruller.backgroundColor = richCocoaFlavor.mascarponeCream ? UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1) : UIColor(red: 255 / 255.0, green: 37 / 255.0, blue: 166 / 255.0, alpha: 1)
         honeyCrullerCruller.setTitleColor(.white, for: .normal)
         berryBurstNotebook.setImage(UIImage(systemName: richCocoaFlavor.cherryCompote ? "heart.fill" : "heart"), for: .normal)
         berryBurstNotebook.setTitle("  \(richCocoaFlavor.limeCream)", for: .normal)
-        berryBurstNotebook.tintColor = UIColor(red: 1, green: 0.15, blue: 0.57, alpha: 1)
+        berryBurstNotebook.tintColor = UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1)
         donutDiarySelection.setImage(UIImage(systemName: richCocoaFlavor.custardMousse ? "bookmark.fill" : "bookmark"), for: .normal)
         donutDiarySelection.setTitle("  Save", for: .normal)
-        donutDiarySelection.tintColor = UIColor(red: 0.18, green: 0.12, blue: 0.2, alpha: 1)
+        donutDiarySelection.tintColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         butterAromaNotes.text = "Comments"
         seasonalMenuGuide()
     }
@@ -259,7 +237,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
             $0.removeFromSuperview()
         }
         guard !fragrantJasmineFlavor.isEmpty else {
-            let airyCenter = doughTendernessNotes("No comments yet. Be the first to share a sweet thought.", size: 12, weight: .regular, color: UIColor(white: 0.48, alpha: 1))
+            let airyCenter = doughTendernessNotes("No comments yet. Be the first to share a sweet thought.", size: 12, weight: .regular, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 0.5))
             airyCenter.numberOfLines = 0
             textureContrastNotes.addArrangedSubview(airyCenter)
             return
@@ -267,21 +245,21 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
         fragrantJasmineFlavor.forEach { comment in
             let softCloudDough = UIControl()
             softCloudDough.translatesAutoresizingMaskIntoConstraints = false
-            softCloudDough.backgroundColor = .white
+            softCloudDough.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
             softCloudDough.layer.cornerRadius = 16
             softCloudDough.clipsToBounds = true
             softCloudDough.addTarget(self, action: #selector(heritageBakingNotebook), for: .touchUpInside)
             let portraitPastryGallery = UIImageView()
             rimLightingGallery(portraitPastryGallery, cornerRadius: 14)
             daylightDisplayFrame(comment.cheesecakeMousse, on: portraitPastryGallery, fallback: "person.crop.circle.fill")
-            let signatureSelectionNotes = doughTendernessNotes(comment.gingerHoneyDrizzle, size: 13, weight: .semibold, color: UIColor(red: 0.12, green: 0.08, blue: 0.1, alpha: 1))
-            let text = doughTendernessNotes(comment.figMousse, size: 13, weight: .regular, color: UIColor(red: 0.48, green: 0.46, blue: 0.49, alpha: 1))
+            let signatureSelectionNotes = doughTendernessNotes(comment.gingerHoneyDrizzle, size: 13, weight: .semibold, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1))
+            let text = doughTendernessNotes(comment.figMousse, size: 13, weight: .regular, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 0.5))
             text.numberOfLines = 0
-            let proofingTimeNotes = doughTendernessNotes(comment.figCustard, size: 11, weight: .regular, color: UIColor(red: 0.68, green: 0.66, blue: 0.69, alpha: 1))
+            let proofingTimeNotes = doughTendernessNotes(comment.figCustard, size: 11, weight: .regular, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 0.3))
             let citrusPeelGarnish = UIButton(type: .system)
             citrusPeelGarnish.translatesAutoresizingMaskIntoConstraints = false
             citrusPeelGarnish.setImage(UIImage(systemName: "exclamationmark.triangle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 11, weight: .semibold)), for: .normal)
-            citrusPeelGarnish.tintColor = UIColor(red: 1, green: 0.25, blue: 0.58, alpha: 1)
+            citrusPeelGarnish.tintColor = UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1)
             citrusPeelGarnish.addTarget(self, action: #selector(heritageBakingNotebook), for: .touchUpInside)
             [portraitPastryGallery, signatureSelectionNotes, text, proofingTimeNotes, citrusPeelGarnish].forEach(softCloudDough.addSubview)
             NSLayoutConstraint.activate([
@@ -335,7 +313,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
 
         let placeholder = UIView()
         placeholder.translatesAutoresizingMaskIntoConstraints = false
-        placeholder.backgroundColor = UIColor(red: 1, green: 0.92, blue: 0.96, alpha: 1)
+        placeholder.backgroundColor = UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1)
 
         let header = WevVGlazeSheenView()
         header.translatesAutoresizingMaskIntoConstraints = false
@@ -479,15 +457,9 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
     }
 
     @objc private func worldDoughnutNotebook() {
-        if let localAuthorKey {
-            let controller = LmnTasterCardController(tasterBadgeKey: localAuthorKey)
-            controller.modalPresentationStyle = .fullScreen
-            present(controller, animated: true)
-            return
-        }
         guard richCocoaFlavor.vanillaBeanIcing > 0 else { return }
         WevVGlazeH5Navigation.present(
-            .user(userID: String(richCocoaFlavor.vanillaBeanIcing), imAccount: nil),
+            .creator(userID: String(richCocoaFlavor.vanillaBeanIcing), imAccount: nil),
             from: self
         )
     }
@@ -536,7 +508,7 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
 
     private func carefulCrimpSequence(_ button: UIButton, action: Selector) {
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor(red: 0.18, green: 0.12, blue: 0.2, alpha: 1), for: .normal)
+        button.setTitleColor(UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
         button.addTarget(self, action: action, for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: 28).isActive = true

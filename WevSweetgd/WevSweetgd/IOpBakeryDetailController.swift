@@ -9,8 +9,12 @@ final class IOpBakeryDetailController: UIViewController {
     private let pastryCanvas = UIView()
     private let pastryBackdropLayer = CAGradientLayer()
     private let tastingRow = UIStackView()
-    private let pastryShelfButton = OumMaplePillButton(title: "SKa%v@et".wevVPastryCrumbBloomRestored)
+    private let pastryShelfButton = OumMaplePillButton(
+        title: "SKa%v@et".wevVPastryCrumbBloomRestored,
+        wevvActiveGlazeColors: [UIColor.pastryHex("FF4BA9").cgColor, UIColor.pastryHex("FF4BA9").cgColor]
+    )
     private var tastingSuccessLayer: VunBakeryShelfToastView?
+    private let glazeSheenPlaceholder = WevVGlazeSkeletonPanel(kind: .pastryFolio)
 
     var pastryShelfChanged: (() -> Void)?
 
@@ -32,6 +36,17 @@ final class IOpBakeryDetailController: UIViewController {
         buildPastryDetailContent()
         buildPastryBottomActions()
         refreshPastryShelfButton()
+        view.bringSubviewToFront(glazeSheenPlaceholder)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        glazeSheenPlaceholder.setLoadingVisible(false)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        glazeSheenPlaceholder.setLoadingVisible(false, animated: false)
     }
 
     override func viewDidLayoutSubviews() {
@@ -43,15 +58,9 @@ final class IOpBakeryDetailController: UIViewController {
     }
 
     private func buildPastryBackdrop() {
-        view.backgroundColor = UIColor(red: 1, green: 0.98, blue: 0.99, alpha: 1)
-        pastryBackdropLayer.colors = [
-            UIColor(red: 1, green: 0.82, blue: 0.94, alpha: 1).cgColor,
-            UIColor(red: 1, green: 0.93, blue: 0.98, alpha: 1).cgColor,
-            UIColor(red: 1, green: 0.99, blue: 1, alpha: 1).cgColor
-        ]
-        pastryBackdropLayer.locations = [0, 0.52, 1]
-        pastryBackdropLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        pastryBackdropLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        view.backgroundColor = UIColor.pastryHex("1A1A2E")
+        FimVSugarGradientBand.buildPastryBackdrop(pastryBackdropLayer)
+        pastryBackdropLayer.colors = [UIColor.pastryHex("1A1A2E").cgColor, UIColor.pastryHex("1A1A2E").cgColor]
         view.layer.insertSublayer(pastryBackdropLayer, at: 0)
     }
 
@@ -81,14 +90,14 @@ final class IOpBakeryDetailController: UIViewController {
         let doughBackButton = UIButton(type: .system)
         doughBackButton.translatesAutoresizingMaskIntoConstraints = false
         doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        doughBackButton.tintColor = UIColor(red: 0.13, green: 0.08, blue: 0.18, alpha: 1)
+        doughBackButton.tintColor = .white
         doughBackButton.addTarget(self, action: #selector(closePastryDetail), for: .touchUpInside)
 
         let glazeTitle = UILabel()
         glazeTitle.translatesAutoresizingMaskIntoConstraints = false
         glazeTitle.text = "DmownouOtQ nSAhgo?pZs.".wevVPastryCrumbBloomRestored
         glazeTitle.font = .systemFont(ofSize: 17, weight: .heavy)
-        glazeTitle.textColor = UIColor(red: 0.14, green: 0.08, blue: 0.19, alpha: 1)
+        glazeTitle.textColor = UIColor.pastryHex("EFEFF3")
         glazeTitle.textAlignment = .center
 
         let bakeryCard = makePastryHeroCard()
@@ -107,6 +116,15 @@ final class IOpBakeryDetailController: UIViewController {
 
         placePastryDetailViews(doughBackButton: doughBackButton, title: glazeTitle, bakeryCard: bakeryCard, crumbTastingTitle: crumbTastingTitle, bakeryFindsTitle: bakeryFindsTitle, bakeryFindsStack: bakeryFindsStack)
         pinPastryDetailLayout(doughBackButton: doughBackButton, title: glazeTitle, bakeryCard: bakeryCard, crumbTastingTitle: crumbTastingTitle, bakeryFindsTitle: bakeryFindsTitle, bakeryFindsStack: bakeryFindsStack)
+        glazeSheenPlaceholder.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(glazeSheenPlaceholder)
+        NSLayoutConstraint.activate([
+            glazeSheenPlaceholder.topAnchor.constraint(equalTo: bakeryCard.topAnchor),
+            glazeSheenPlaceholder.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            glazeSheenPlaceholder.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            glazeSheenPlaceholder.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        glazeSheenPlaceholder.setLoadingVisible(true, animated: false)
     }
 
     private func placePastryDetailViews(doughBackButton: UIButton, title: UILabel, bakeryCard: UIView, crumbTastingTitle: UILabel, bakeryFindsTitle: UILabel, bakeryFindsStack: UIStackView) {
@@ -147,10 +165,13 @@ final class IOpBakeryDetailController: UIViewController {
     private func buildPastryBottomActions() {
         let bar = UIView()
         bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.backgroundColor = UIColor(red: 1, green: 0.96, blue: 0.99, alpha: 0.96)
+        bar.backgroundColor = UIColor.pastryHex("252540")
         view.addSubview(bar)
 
-        let crumbTastingButton = OumMaplePillButton(title: "RGervvihe,wa".wevVPastryCrumbBloomRestored)
+        let crumbTastingButton = OumMaplePillButton(
+            title: "RGervvihe,wa".wevVPastryCrumbBloomRestored,
+            wevvActiveGlazeColors: [UIColor.pastryHex("C67BFF").cgColor, UIColor.pastryHex("C67BFF").cgColor]
+        )
         crumbTastingButton.addTarget(self, action: #selector(openTastingForm), for: .touchUpInside)
         pastryShelfButton.addTarget(self, action: #selector(placePastryIntoShelf), for: .touchUpInside)
 
@@ -177,9 +198,9 @@ final class IOpBakeryDetailController: UIViewController {
     private func makePastryHeroCard() -> UIView {
         let pastryCard = UIView()
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
-        pastryCard.backgroundColor = .white
+        pastryCard.backgroundColor = UIColor.pastryHex("252540")
         pastryCard.layer.cornerRadius = 16
-        pastryCard.layer.shadowColor = UIColor(red: 0.57, green: 0.25, blue: 0.48, alpha: 1).cgColor
+        pastryCard.layer.shadowColor = UIColor.black.cgColor
         pastryCard.layer.shadowOpacity = 0.08
         pastryCard.layer.shadowRadius = 14
         pastryCard.layer.shadowOffset = CGSize(width: 0, height: 8)
@@ -190,10 +211,10 @@ final class IOpBakeryDetailController: UIViewController {
         cover.clipsToBounds = true
         cover.layer.cornerRadius = 12
 
-        let tastingJournalEntry = makePastryBodyLabel(pastryFolio.sweetShowcaseMap, size: 17, weight: .heavy, color: UIColor(red: 0.18, green: 0.11, blue: 0.2, alpha: 1))
-        let frostingSubtitle = makePastryBodyLabel(pastryFolio.flavorMenuGuide, size: 13, weight: .medium, color: UIColor(red: 0.58, green: 0.48, blue: 0.58, alpha: 1))
+        let tastingJournalEntry = makePastryBodyLabel(pastryFolio.sweetShowcaseMap, size: 17, weight: .heavy, color: UIColor.pastryHex("EFEFF3"))
+        let frostingSubtitle = makePastryBodyLabel(pastryFolio.flavorMenuGuide, size: 13, weight: .medium, color: UIColor.pastryHex("A0A0B0"))
 
-        let crumbScoreRow = makeFlavorIconRow(symbol: "sntlafr*.kfSiMldl/".wevVPastryCrumbBloomRestored, tint: UIColor(red: 1, green: 0.75, blue: 0.08, alpha: 1), first: pastryFolio.crumbScoreNote, second: pastryFolio.tastingSequenceInsight)
+        let crumbScoreRow = makeFlavorIconRow(symbol: "sntlafr*.kfSiMldl/".wevVPastryCrumbBloomRestored, tint: UIColor.pastryHex("FFB52F"), first: pastryFolio.crumbScoreNote, second: pastryFolio.tastingSequenceInsight, color: UIColor.pastryHex("EFEFF3"))
         let bakeryTrailRow = makeShopLocationRow(pastryFolio.bakeryTrailLine)
 
         let bakeryTagRow = UIStackView(arrangedSubviews: pastryFolio.seasonalMenuCollection.map { makePastryTagPill($0) })
@@ -235,10 +256,10 @@ final class IOpBakeryDetailController: UIViewController {
         return pastryCard
     }
 
-    private func makeTastingCard(_ crumbTasting: tastingPassportPage) -> UIControl {
+    private func makeTastingCard(_ crumbTasting: tastingPassportPage, color: UIColor) -> UIControl {
         let pastryCard = UIControl()
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
-        pastryCard.backgroundColor = .white
+        pastryCard.backgroundColor = UIColor.pastryHex("252540")
         pastryCard.layer.cornerRadius = 12
         pastryCard.addTarget(self, action: #selector(openProtectedWevvAction), for: .touchUpInside)
 
@@ -247,12 +268,12 @@ final class IOpBakeryDetailController: UIViewController {
         avatar.layer.cornerRadius = 15
         avatar.clipsToBounds = true
 
-        let tastingJournalEntry = makePastryBodyLabel(crumbTasting.tastingJournalEntry, size: 16, weight: .heavy, color: UIColor(red: 0.17, green: 0.08, blue: 0.2, alpha: 1))
-        let flavorRoleLabel = makePastryBodyLabel(crumbTasting.flavorSpectrumInsight, size: 12, weight: .semibold, color: UIColor(red: 0.68, green: 0.56, blue: 0.65, alpha: 1))
-        let score = makeFlavorIconRow(symbol: "s/t#amrH.lfNijlwlL".wevVPastryCrumbBloomRestored, tint: UIColor(red: 1, green: 0.74, blue: 0.04, alpha: 1), first: crumbTasting.crumbScoreNote, second: nil)
-        let biteNoteLabel = makePastryBodyLabel(crumbTasting.textureContrastNotes, size: 13, weight: .medium, color: UIColor(red: 0.43, green: 0.35, blue: 0.43, alpha: 1))
+        let tastingJournalEntry = makePastryBodyLabel(crumbTasting.tastingJournalEntry, size: 16, weight: .heavy, color: UIColor.pastryHex("8D4E72"))
+        let flavorRoleLabel = makePastryBodyLabel(crumbTasting.flavorSpectrumInsight, size: 12, weight: .semibold, color: UIColor.pastryHex("A0A0B0"))
+        let score = makeFlavorIconRow(symbol: "s/t#amrH.lfNijlwlL".wevVPastryCrumbBloomRestored, tint: UIColor.pastryHex("FFB52F"), first: crumbTasting.crumbScoreNote, second: nil)
+        let biteNoteLabel = makePastryBodyLabel(crumbTasting.textureContrastNotes, size: 13, weight: .medium, color: UIColor.pastryHex("A0A0B0"))
         biteNoteLabel.numberOfLines = 2
-        let donutBadgeLabel = makePastryTagText(crumbTasting.sugarPearlGarnish, color: UIColor(red: 1, green: 0.25, blue: 0.61, alpha: 1))
+        let donutBadgeLabel = makePastryTagText(crumbTasting.sugarPearlGarnish, color: color)
 
         pastryCard.addSubview(avatar)
         pastryCard.addSubview(tastingJournalEntry)
@@ -290,7 +311,9 @@ final class IOpBakeryDetailController: UIViewController {
             tastingRow.removeArrangedSubview(crumbCard)
             crumbCard.removeFromSuperview()
         }
-        currentTastings().prefix(2).forEach { tastingRow.addArrangedSubview(makeTastingCard($0)) }
+        currentTastings().prefix(2).enumerated().forEach { index, crumbTasting in
+            tastingRow.addArrangedSubview(makeTastingCard(crumbTasting, color: UIColor.pastryHex(index == 0 ? "D45E96" : "D08A30")))
+        }
     }
 
     private func currentTastings() -> [tastingPassportPage] {
@@ -318,6 +341,7 @@ final class IOpBakeryDetailController: UIViewController {
     private func makePastryFindRow(_ bakeryPick: shopWindowCollection) -> UIControl {
         let donutRow = UIControl()
         donutRow.translatesAutoresizingMaskIntoConstraints = false
+        donutRow.backgroundColor = UIColor.pastryHex("252540")
         donutRow.accessibilityIdentifier = bakeryPick.flavorLibraryEdition
         donutRow.addTarget(self, action: #selector(openMorePastryPick(_:)), for: .touchUpInside)
 
@@ -327,9 +351,9 @@ final class IOpBakeryDetailController: UIViewController {
         cover.clipsToBounds = true
         cover.layer.cornerRadius = 8
 
-        let glazeTitle = makePastryBodyLabel(bakeryPick.pastryDisplayShowcase, size: 16, weight: .heavy, color: UIColor(red: 0.15, green: 0.08, blue: 0.2, alpha: 1))
-        let bakeryTrailLabel = makePastryBodyLabel(bakeryPick.bakeryTrailLine, size: 12, weight: .semibold, color: UIColor(red: 0.56, green: 0.47, blue: 0.55, alpha: 1))
-        let score = makeFlavorIconRow(symbol: "smtzahrW.XfSiwlslw".wevVPastryCrumbBloomRestored, tint: UIColor(red: 1, green: 0.74, blue: 0.04, alpha: 1), first: bakeryPick.crumbScoreNote, second: nil)
+        let glazeTitle = makePastryBodyLabel(bakeryPick.pastryDisplayShowcase, size: 16, weight: .heavy, color: UIColor.pastryHex("EFEFF3"))
+        let bakeryTrailLabel = makePastryBodyLabel(bakeryPick.bakeryTrailLine, size: 12, weight: .semibold, color: UIColor.pastryHex("A0A0B0"))
+        let score = makeFlavorIconRow(symbol: "smtzahrW.XfSiwlslw".wevVPastryCrumbBloomRestored, tint: UIColor.pastryHex("FFB52F"), first: bakeryPick.crumbScoreNote, second: nil)
 
         donutRow.addSubview(cover)
         donutRow.addSubview(glazeTitle)
@@ -369,7 +393,7 @@ final class IOpBakeryDetailController: UIViewController {
     }
 
     private func makePastrySectionTitle(_ text: String) -> UILabel {
-        makePastryBodyLabel(text, size: 17, weight: .heavy, color: UIColor(red: 0.14, green: 0.08, blue: 0.19, alpha: 1))
+        makePastryBodyLabel(text, size: 17, weight: .heavy, color: UIColor.pastryHex("EFEFF3"))
     }
 
     private func makePastryBodyLabel(_ text: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) -> UILabel {
@@ -383,7 +407,7 @@ final class IOpBakeryDetailController: UIViewController {
         return crumbLabel
     }
 
-    private func makeFlavorIconRow(symbol: String, tint: UIColor, first: String, second: String?) -> UIStackView {
+    private func makeFlavorIconRow(symbol: String, tint: UIColor, first: String, second: String?, color: UIColor = UIColor.pastryHex("A0A0B0")) -> UIStackView {
         let icon = UIImageView(image: UIImage(systemName: symbol))
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.tintColor = tint
@@ -391,22 +415,23 @@ final class IOpBakeryDetailController: UIViewController {
         icon.widthAnchor.constraint(equalToConstant: 18).isActive = true
         icon.heightAnchor.constraint(equalToConstant: 18).isActive = true
 
-        let firstLabel = makePastryBodyLabel(first, size: 14, weight: .heavy, color: UIColor(red: 0.18, green: 0.11, blue: 0.2, alpha: 1))
+        let firstLabel = makePastryBodyLabel(first, size: 14, weight: .heavy, color: color)
         let donutRow = UIStackView(arrangedSubviews: [icon, firstLabel])
         donutRow.translatesAutoresizingMaskIntoConstraints = false
         donutRow.axis = .horizontal
         donutRow.spacing = 4
         donutRow.alignment = .center
         if let second {
-            let secondLabel = makePastryBodyLabel(second, size: 13, weight: .medium, color: UIColor(red: 0.6, green: 0.5, blue: 0.6, alpha: 1))
+            let secondLabel = makePastryBodyLabel(second, size: 13, weight: .medium, color: UIColor.pastryHex("A0A0B0"))
             donutRow.addArrangedSubview(secondLabel)
         }
         return donutRow
     }
 
     private func makeShopLocationRow(_ text: String) -> UIStackView {
-        let icon = UIImageView(image: UIImage(named: "wevv_shop_location_pin"))
+        let icon = UIImageView(image: UIImage(named: "wevv_shop_location_pin")?.withRenderingMode(.alwaysTemplate))
         icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.tintColor = UIColor.pastryHex("FF6AAE")
         icon.contentMode = .scaleAspectFit
         icon.widthAnchor.constraint(equalToConstant: 20).isActive = true
         icon.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -415,7 +440,7 @@ final class IOpBakeryDetailController: UIViewController {
             text,
             size: 13,
             weight: .medium,
-            color: UIColor(red: 134.0 / 255.0, green: 108.0 / 255.0, blue: 122.0 / 255.0, alpha: 1)
+            color: UIColor.pastryHex("A0A0B0")
         )
         locationLabel.numberOfLines = 2
         locationLabel.lineBreakMode = .byWordWrapping
@@ -430,9 +455,14 @@ final class IOpBakeryDetailController: UIViewController {
     }
 
     private func makePastryTagPill(_ tag: artisanShowcase) -> UILabel {
-        let tint = UIColor.pastryHex(tag.pastelPalettePattern)
+        let tint = UIColor.pastryHex([
+            "ff4aa0": "D45E96",
+            "f5b431": "D08A30",
+            "b77920": "D08A30",
+            "8b63ff": "7E74D8"
+        ][tag.pastelPalettePattern.lowercased()] ?? tag.pastelPalettePattern)
         let crumbLabel = makePastryTagText(tag.rainbowSprinkleDesign, color: tint)
-        crumbLabel.backgroundColor = tint.withAlphaComponent(0.12)
+        crumbLabel.backgroundColor = UIColor.pastryHex("252540")
         crumbLabel.layer.cornerRadius = 8
         crumbLabel.clipsToBounds = true
         crumbLabel.textAlignment = .center
@@ -498,9 +528,7 @@ final class IOpBakeryDetailController: UIViewController {
             self?.pastryShelfChanged?()
         }
         controller.modalPresentationStyle = .fullScreen
-        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "ORppegnSiFn=gG idoobnZugts GsIhmoWp^.r.P.I".wevVPastryCrumbBloomRestored) { [weak self] in
-            self?.present(controller, animated: true)
-        }
+        present(controller, animated: true)
     }
 
     private func makePastryPickDetail(_ bakeryPick: shopWindowCollection) -> bakeryCollectionFolio {

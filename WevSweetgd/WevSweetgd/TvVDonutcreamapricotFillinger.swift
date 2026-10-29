@@ -8,14 +8,6 @@ private func makeDonutVisitEntry(_ ringCutterKey: String, _ sugarTitle: String, 
     WevVDailyDonutVisit(ringCutterKey: ringCutterKey, bakeryFinder: sugarTitle, caption: crumbCaption, cardAsset: cardAsset)
 }
 
-private func makeDonutTasterEntry(_ donutPinKey: String, _ name: String, _ donutFrameAsset: String) -> WevVDonutTaster {
-    WevVDonutTaster(donutPinKey: donutPinKey, name: name, donutFrameAsset: donutFrameAsset)
-}
-
-private func makeDonutSnapshotEntry(_ sprinkleJarKey: String, author: WevVDonutTaster, donutBackdropAsset: String, tastingText: String, hasSprinkleDust: Bool, hasBakeryShelf: Bool, freshnessTagText: String) -> WevVDonutSnapshot {
-    WevVDonutSnapshot(sprinkleJarKey: sprinkleJarKey, tasterBloom: author, donutBackdropAsset: donutBackdropAsset, tastingText: tastingText, hasSprinkleDust: hasSprinkleDust, hasBakeryShelf: hasBakeryShelf, freshnessTagText: freshnessTagText)
-}
-
 private func makeFlavorNoteEntry(_ sugarDustKey: String, _ sugarTitle: String, _ crumbNote: String) -> WevVFlavorNote {
     WevVFlavorNote(sugarDustKey: sugarDustKey, tastingCardTitle: sugarTitle, sweetApricotNuance: crumbNote)
 }
@@ -69,7 +61,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private let journalPinnedHeader = UIView()
     private var glazePinnedHeaderBottomConstraints: [WevVDonutParlorSection: NSLayoutConstraint] = [:]
     private let voicePinnedBackdrop = UIImageView(image: UIImage(named: "wevv_voice_version4_backdrop"))
-    private let journalPinnedBackdrop = UIView()
     private let bakeryAtlasCarousel = UIScrollView()
     private let bakeryAtlasPages = UIStackView()
     private let bakeryAtlasDots = UIPageControl()
@@ -77,7 +68,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private let tastingQuestRow = UIStackView()
     private let donutSnapshotStack = UIStackView()
     private let tastingJournalPanel = UIView()
-    private let tastingJournalBackgroundLayer = CAGradientLayer()
     private let tastingParlorPanel = UIView()
     private let tastingParlorHotScroll = UIScrollView()
     private let tastingParlorHotRow = UIStackView()
@@ -97,6 +87,9 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private let voiceLoadMoreFooter = UIControl()
     private let voiceLoadMoreSpinner = UIActivityIndicatorView(style: .medium)
     private let voiceLoadMoreLabel = UILabel()
+    private let loadingCard = UIControl()
+    private let loadingSpinner = UIActivityIndicatorView(style: .medium)
+    private let loadingLabel = UILabel()
     private let tastingParlorStatusLabel = UILabel()
     private let homeLiveStatusLabel = UILabel()
     private let tastingJournalStatusLabel = UILabel()
@@ -113,7 +106,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private let donutDiaryNameLabel = UILabel()
     private let bakeryTrailCountLabel = UILabel()
     private let tasterTrailCountLabel = UILabel()
-    private let bakeryShelfCountLabel = UILabel()
     private let donutArchiveCountLabel = UILabel()
     private let flavorNoteStack = UIStackView()
     private let emptyFlavorStack = UIStackView()
@@ -128,7 +120,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private var glazeContentRequestID = UUID()
     private var glazeContentRefreshOwner: (requestID: UUID, section: WevVDonutParlorSection)?
     private var homeLivePageTask: Task<Void, Never>?
+    private var deadline: [String: TimeInterval] = [:]
     private var homeLivePagination = WevVGlazeLivePagination()
+    private var cocoaWeekendFestival = WevVGlazeCommunityService.tastingPassportPage()
+    private var strawberryMilkSwirl: Task<Void, Never>?
     private var voicePageTasks: [mascarponeFilling: Task<Void, Never>] = [:]
     private var voicePaginations: [mascarponeFilling: WevVGlazeVoicePagination] = [
         .cherryCenter: WevVGlazeVoicePagination(), .apricotCompote: WevVGlazeVoicePagination()
@@ -272,63 +267,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         )
     ]
 
-    private var donutSnapshots: [WevVDonutSnapshot] = [
-        makeDonutSnapshotEntry(
-            "o=nFeuBmiQtwe~VViHb;e/sf".wevVPastryCrumbBloomRestored,
-            author: makeDonutTasterEntry("lAoKuoipspepSMa@nvtko#sq".wevVPastryCrumbBloomRestored, "LeoTujiQsUez #Spatnet^oNss".wevVPastryCrumbBloomRestored, "louiseCream"),
-            donutBackdropAsset: "wevv_moment_one_bite_vibes",
-            tastingText: "OlnzeJ =bxiFtieM,@ paw Kw^h;ofl&eT %ddamyN aocf! cg=oBoAdz ,vbiWb#e#sE".wevVPastryCrumbBloomRestored,
-            hasSprinkleDust: false,
-            hasBakeryShelf: false,
-            freshnessTagText: "BBeTrkrsy; tnxo=tgec".wevVPastryCrumbBloomRestored
-        ),
-        makeDonutSnapshotEntry(
-            "fBrYevsihvDroFnFu:tSSccwern,tu".wevVPastryCrumbBloomRestored,
-            author: makeDonutTasterEntry("m.aAssoFnPGHlxagz!e!SRm?iNldek".wevVPastryCrumbBloomRestored, "M/aCsyoBnj fC.oclXes".wevVPastryCrumbBloomRestored, "masonSugar"),
-            donutBackdropAsset: "wevv_moment_fresh_donut_scent",
-            tastingText: "F@rkexsoh^ gdPo~n?uztssB wsgmEevlWl= raJm%aWzlisndgE.S".wevVPastryCrumbBloomRestored,
-            hasSprinkleDust: true,
-            hasBakeryShelf: false,
-            freshnessTagText: "Fsrferschd @boaotqcUhn".wevVPastryCrumbBloomRestored
-        ),
-        makeDonutSnapshotEntry(
-            "c~hRohcaoQlnaYtkerDPoRn.uvtRD!aHym".wevVPastryCrumbBloomRestored,
-            author: makeDonutTasterEntry("aZvmaBCyopc!oPaXR,iSn,g/".wevVPastryCrumbBloomRestored, "AIvraQ BBHrHoYwqnS".wevVPastryCrumbBloomRestored, "avaCocoa"),
-            donutBackdropAsset: "wevv_moment_chocolate_donut_day",
-            tastingText: "CQhjo!cyoFlsastfeF .d;ounauNtQsA ^mRaBdsew CmEyT Gdzagyt.f".wevVPastryCrumbBloomRestored,
-            hasSprinkleDust: false,
-            hasBakeryShelf: true,
-            freshnessTagText: "Cmo?c;ora: RmZo=oLdC".wevVPastryCrumbBloomRestored
-        ),
-        makeDonutSnapshotEntry(
-            "wge:e,kYe%nJd.DtoenTuTtFSYt;aCrxtw".wevVPastryCrumbBloomRestored,
-            author: makeDonutTasterEntry("bFeilhlGarSlporvi~nUk+ller".wevVPastryCrumbBloomRestored, "BKeXlElvaR ZHla=r&tJ".wevVPastryCrumbBloomRestored, "bellaCream"),
-            donutBackdropAsset: "wevv_moment_weekend_donut_start",
-            tastingText: "S^ttatretdi~nYgh ~tqhAeD ZwPeCeKkfeLnpdG mwqiXtoho .dPoSnEuet+sA.q".wevVPastryCrumbBloomRestored,
-            hasSprinkleDust: false,
-            hasBakeryShelf: false,
-            freshnessTagText: "Wre?eUk:eUnwd% jpQi~cAkC".wevVPastryCrumbBloomRestored
-        ),
-        makeDonutSnapshotEntry(
-            "p=i.nTk/S.w@eneVtGnDeEskstTUowdPasyQ".wevVPastryCrumbBloomRestored,
-            author: makeDonutTasterEntry("mpiNauPZifn.kfS!ujgVagr@".wevVPastryCrumbBloomRestored, "MKiuaM !Rce;eddq".wevVPastryCrumbBloomRestored, "miaPink"),
-            donutBackdropAsset: "wevv_moment_pink_sweetness",
-            tastingText: "Ai hl:iJtrtdl#e! QpoiEnmk= csIw%exeStjn;ewsyst JtSoYdiaQyc.T".wevVPastryCrumbBloomRestored,
-            hasSprinkleDust: true,
-            hasBakeryShelf: true,
-            freshnessTagText: "P%ignlkX EsepprfiunGkzlaee".wevVPastryCrumbBloomRestored
-        ),
-        makeDonutSnapshotEntry(
-            "cYrneKaEmrF.i,lNleeWdwUYn.iKtje%".wevVPastryCrumbBloomRestored,
-            author: makeDonutTasterEntry("nfoCrvaBC,rBeSaKmgR#i?nngx".wevVPastryCrumbBloomRestored, "NroErbaC uL~abnCeI".wevVPastryCrumbBloomRestored, "noraCream"),
-            donutBackdropAsset: "wevv_moment_cream_filled_unite",
-            tastingText: "C@rNePaumW-#fki,l^lIeKde CdVoon=uUtW ;lPoav#e,rYsm,K Ku=nMitt!ee.n".wevVPastryCrumbBloomRestored,
-            hasSprinkleDust: false,
-            hasBakeryShelf: false,
-            freshnessTagText: "C&r=eVaSmB ,cViarpcYlXez".wevVPastryCrumbBloomRestored
-        )
-    ]
-
     private let defaultDonutDiaryTaster = WevVDonutDiaryTaster(
         ringCutterKey: "wpeCvavbS@ulgTaJrUTOalsutaepr&".wevVPastryCrumbBloomRestored,
         warmGingerFlavor: "wHeRvcvh@rgamoaHiLls.gcSoom?".wevVPastryCrumbBloomRestored,
@@ -377,7 +315,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tastingJournalBackgroundLayer.frame = journalPinnedBackdrop.bounds
         if !didPlaceTastingParlorRoomPager, tastingParlorRoomPager.bounds.width > 0 {
             didPlaceTastingParlorRoomPager = true
             tastingParlorRoomPager.setContentOffset(
@@ -407,6 +344,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         glazeContentTask?.cancel()
         homeLivePageTask?.cancel()
         voicePageTasks.values.forEach { $0.cancel() }
+        strawberryMilkSwirl?.cancel()
         glazeProfileTask?.cancel()
         glazeJournalFollowTask?.cancel()
         glazeOwnerNameTasks.values.forEach { $0.cancel() }
@@ -433,11 +371,15 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func resetGlazeContentOwner(_ owner: String) {
+        deadline.removeAll()
         glazeContentOwnerKey = owner
         pendingInitialGlazeSections = [.donutCounter, .tastingParlor, .tastingJournal]
         homeLivePageTask?.cancel()
         homeLivePageTask = nil
         homeLivePagination = WevVGlazeLivePagination()
+        strawberryMilkSwirl?.cancel()
+        strawberryMilkSwirl = nil
+        cocoaWeekendFestival = WevVGlazeCommunityService.tastingPassportPage()
         voicePageTasks.values.forEach { $0.cancel() }
         voicePageTasks.removeAll()
         voicePaginations = [.cherryCenter: WevVGlazeVoicePagination(), .apricotCompote: WevVGlazeVoicePagination()]
@@ -456,18 +398,17 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func buildDonutParlorBackdrop() {
-        view.backgroundColor = UIColor(red: 1, green: 0.78, blue: 0.85, alpha: 1)
-
-        let backdonutdrop = UIImageView(image: UIImage(named: "wevv_home_version7_backdrop"))
-        backdonutdrop.translatesAutoresizingMaskIntoConstraints = false
-        backdonutdrop.contentMode = .scaleToFill
-        view.addSubview(backdonutdrop)
+        view.backgroundColor = UIColor(red: 0.10, green: 0.0, blue: 0.23, alpha: 1)
+        voicePinnedBackdrop.translatesAutoresizingMaskIntoConstraints = false
+        voicePinnedBackdrop.backgroundColor = view.backgroundColor
+        voicePinnedBackdrop.contentMode = .scaleToFill
+        view.addSubview(voicePinnedBackdrop)
 
         NSLayoutConstraint.activate([
-            backdonutdrop.topAnchor.constraint(equalTo: view.topAnchor),
-            backdonutdrop.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backdonutdrop.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backdonutdrop.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            voicePinnedBackdrop.topAnchor.constraint(equalTo: view.topAnchor),
+            voicePinnedBackdrop.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            voicePinnedBackdrop.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            voicePinnedBackdrop.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
@@ -498,15 +439,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         pastryTrailScroll.contentInsetAdjustmentBehavior = .never
         pastryTrailScroll.contentInset.bottom = 110
         pastryTrailScroll.verticalScrollIndicatorInsets.bottom = 110
-        sprinkleRefresh.tintColor = UIColor(red: 0.18, green: 0.02, blue: 0.32, alpha: 1)
-        sprinkleRefresh.backgroundColor = UIColor.white.withAlphaComponent(0.32)
-        sprinkleRefresh.attributedTitle = NSAttributedString(
-            string: "P#u#l#l# #t#o# #r#e#f#r#e#s#h#".wevVPastryCrumbBloomRestored,
-            attributes: [
-                .foregroundColor: UIColor(red: 0.18, green: 0.02, blue: 0.32, alpha: 1),
-                .font: UIFont.systemFont(ofSize: 13, weight: .semibold)
-            ]
-        )
+        TinGlazePromptStyler.configureGlazeStatusLabel(sprinkleRefresh)
         sprinkleRefresh.addTarget(self, action: #selector(refreshSprinkleMoments), for: .valueChanged)
         pastryTrailScroll.refreshControl = sprinkleRefresh
         view.addSubview(pastryTrailScroll)
@@ -660,16 +593,16 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func configureGlazeLoadMoreFooter(_ footer: UIControl, spinner: UIActivityIndicatorView,
-                                              label: UILabel, tint: UIColor, background: UIColor, action: Selector) {
+                                              label: UILabel, action: Selector) {
         footer.translatesAutoresizingMaskIntoConstraints = false
-        footer.backgroundColor = background
+        footer.backgroundColor = .clear
         footer.addTarget(self, action: action, for: .touchUpInside)
         footer.isAccessibilityElement = true
         footer.accessibilityTraits = .button
-        spinner.color = tint
+        spinner.color = TinGlazePromptStyler.strawberryGlazeTone
         spinner.hidesWhenStopped = true
-        label.textColor = tint
-        label.font = .systemFont(ofSize: 13, weight: .semibold)
+        label.textColor = TinGlazePromptStyler.mutedTone
+        label.font = .systemFont(ofSize: 13, weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 0
         let row = UIStackView(arrangedSubviews: [spinner, label])
@@ -707,8 +640,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         donutCaseContent.addSubview(homeLiveRoomStack)
         donutCaseContent.addSubview(homeLiveStatusLabel)
         configureGlazeLoadMoreFooter(homeLiveLoadMoreFooter, spinner: homeLiveLoadMoreSpinner,
-                                     label: homeLiveLoadMoreLabel, tint: sprinkleRefresh.tintColor ?? .black,
-                                     background: sprinkleRefresh.backgroundColor ?? .clear,
+                                     label: homeLiveLoadMoreLabel,
                                      action: #selector(loadMoreHomeLiveRooms))
         donutCaseContent.addSubview(homeLiveLoadMoreFooter)
         glazeHomePanels.append(contentsOf: [title, homeLiveRoomStack, homeLiveStatusLabel, homeLiveLoadMoreFooter])
@@ -736,12 +668,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         tastingParlorPanel.backgroundColor = .clear
         tastingParlorPanel.isHidden = true
         donutCaseContent.addSubview(tastingParlorPanel)
-
-        voicePinnedBackdrop.translatesAutoresizingMaskIntoConstraints = false
-        voicePinnedBackdrop.backgroundColor = UIColor(red: 0.10, green: 0.0, blue: 0.23, alpha: 1)
-        voicePinnedBackdrop.contentMode = .scaleToFill
-        voicePinnedBackdrop.isHidden = true
-        view.insertSubview(voicePinnedBackdrop, belowSubview: glazePinnedHeaders)
 
         let title = UIImageView(image: UIImage(named: "wevv_voice_live_glaze_logo"))
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -822,10 +748,9 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         recommendPage.addSubview(tastingParlorRoomStack)
 
         configureGlazeStatusLabel(tastingParlorStatusLabel, text: "Loading rooms…")
-        tastingParlorStatusLabel.textColor = UIColor.white.withAlphaComponent(0.78)
+        tastingParlorStatusLabel.textColor = TinGlazePromptStyler.mutedTone
         configureGlazeLoadMoreFooter(voiceLoadMoreFooter, spinner: voiceLoadMoreSpinner,
-                                     label: voiceLoadMoreLabel, tint: .white,
-                                     background: UIColor.white.withAlphaComponent(0.12),
+                                     label: voiceLoadMoreLabel,
                                      action: #selector(loadMoreVoiceRooms))
 
         [title, profileButton, tastingParlorHotScroll, tastingParlorFollowButton,
@@ -845,10 +770,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             tastingParlorPanel.topAnchor.constraint(equalTo: donutCaseContent.topAnchor),
             tastingParlorPanel.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor),
             tastingParlorPanel.trailingAnchor.constraint(equalTo: donutCaseContent.trailingAnchor),
-            voicePinnedBackdrop.topAnchor.constraint(equalTo: view.topAnchor),
-            voicePinnedBackdrop.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            voicePinnedBackdrop.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            voicePinnedBackdrop.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             title.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             title.leadingAnchor.constraint(equalTo: voicePinnedHeader.leadingAnchor, constant: 15),
             title.widthAnchor.constraint(equalToConstant: 86),
@@ -1003,7 +924,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             tastingParlorHotRow.removeArrangedSubview($0)
             $0.removeFromSuperview()
         }
-        for (index, room) in glazeRecommendedVoiceRooms.prefix(6).enumerated() {
+        for (index, room) in glazeRecommendedVoiceRooms.shuffled().prefix(6).enumerated() {
             tastingParlorHotRow.addArrangedSubview(makeTastingParlorHotRoom(room, style: index))
         }
     }
@@ -1036,6 +957,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let avatarRow = UIStackView()
         avatarRow.translatesAutoresizingMaskIntoConstraints = false
+        avatarRow.isUserInteractionEnabled = false
         avatarRow.axis = .horizontal
         avatarRow.spacing = -5
         let avatarURLs = room.custardCurd.isEmpty
@@ -1169,6 +1091,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         ]
         let avatar = UIImageView(image: UIImage(named: fallbackAssets[fallback % fallbackAssets.count]))
         avatar.translatesAutoresizingMaskIntoConstraints = false
+        avatar.isUserInteractionEnabled = false
         avatar.contentMode = .scaleAspectFill
         avatar.clipsToBounds = true
         avatar.layer.cornerRadius = diameter / 2
@@ -1203,7 +1126,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         guard let identifier = sender.accessibilityIdentifier,
               let userID = Int64(identifier), userID > 0 else { return }
         WevVGlazeH5Navigation.present(
-            .user(userID: String(userID), imAccount: nil),
+            .creator(userID: String(userID), imAccount: nil),
             from: self,
             onClose: { [weak self] in
                 self?.refreshDonutDiaryPanel()
@@ -1230,8 +1153,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func configureGlazeStatusLabel(_ label: UILabel, text: String) {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = text
-        label.textColor = UIColor(red: 0.34, green: 0.24, blue: 0.39, alpha: 1)
-        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        label.textColor = TinGlazePromptStyler.mutedTone
+        label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 0
     }
@@ -1240,19 +1163,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         bakeryAtlasPanel.translatesAutoresizingMaskIntoConstraints = false
         bakeryAtlasPanel.isHidden = true
         bakeryAtlasPanel.backgroundColor = .clear
-        tastingJournalBackgroundLayer.colors = [
-            UIColor(red: 1, green: 0.93, blue: 0.99, alpha: 1).cgColor,
-            UIColor(red: 1, green: 0.95, blue: 0.97, alpha: 1).cgColor,
-            UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor,
-            UIColor(red: 1, green: 0.65, blue: 0.98, alpha: 1).cgColor
-        ]
-        tastingJournalBackgroundLayer.locations = [0, 0.31, 0.76, 1]
-        tastingJournalBackgroundLayer.startPoint = CGPoint(x: 0.68, y: -0.01)
-        tastingJournalBackgroundLayer.endPoint = CGPoint(x: 0.96, y: 0.96)
-        journalPinnedBackdrop.translatesAutoresizingMaskIntoConstraints = false
-        journalPinnedBackdrop.isHidden = true
-        journalPinnedBackdrop.layer.insertSublayer(tastingJournalBackgroundLayer, at: 0)
-        view.insertSubview(journalPinnedBackdrop, belowSubview: glazePinnedHeaders)
         donutCaseContent.addSubview(bakeryAtlasPanel)
 
         let exploredonutWevvButton = makeImageButton(asset: "wevv_discover_explore_logo", action: #selector(openGlazeNoticeList))
@@ -1261,7 +1171,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         configureTastingJournalShelfButton(tastingJournalTrendingButton, title: "Trending", shelf: .artisanFrySequence)
         configureTastingJournalShelfButton(tastingJournalFollowButton, title: "Follow", shelf: .cherryCenter)
         tastingJournalSelectionBar.translatesAutoresizingMaskIntoConstraints = false
-        tastingJournalSelectionBar.backgroundColor = UIColor(red: 1, green: 0.24, blue: 0.65, alpha: 1)
+        tastingJournalSelectionBar.backgroundColor = UIColor(red: 255 / 255.0, green: 76 / 255.0, blue: 192 / 255.0, alpha: 1)
         tastingJournalSelectionBar.layer.cornerRadius = 2.5
 
         tastingJournalMomentPager.translatesAutoresizingMaskIntoConstraints = false
@@ -1283,7 +1193,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let newPostTitle = UILabel()
         newPostTitle.translatesAutoresizingMaskIntoConstraints = false
         newPostTitle.text = "New Post"
-        newPostTitle.textColor = .black
+        newPostTitle.textColor = UIColor(red: 255 / 255.0, green: 248 / 255.0, blue: 255 / 255.0, alpha: 1)
         newPostTitle.font = .systemFont(ofSize: 22, weight: .heavy)
 
         donutSnapshotStack.translatesAutoresizingMaskIntoConstraints = false
@@ -1292,6 +1202,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         configureGlazeStatusLabel(tastingJournalStatusLabel, text: "")
         tastingJournalStatusLabel.isHidden = true
+        configureGlazeLoadMoreFooter(loadingCard, spinner: loadingSpinner, label: loadingLabel,
+                                     action: #selector(loadGlazeMomentContent))
 
         journalPinnedHeader.addSubview(exploredonutWevvButton)
         journalPinnedHeader.addSubview(noticeButton)
@@ -1302,16 +1214,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         bakeryAtlasPanel.addSubview(newPostTitle)
         bakeryAtlasPanel.addSubview(donutSnapshotStack)
         bakeryAtlasPanel.addSubview(tastingJournalStatusLabel)
+        bakeryAtlasPanel.addSubview(loadingCard)
         frostingDiaryPanels.append(bakeryAtlasPanel)
 
         NSLayoutConstraint.activate([
             bakeryAtlasPanel.topAnchor.constraint(equalTo: donutCaseContent.topAnchor),
             bakeryAtlasPanel.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor),
             bakeryAtlasPanel.trailingAnchor.constraint(equalTo: donutCaseContent.trailingAnchor),
-            journalPinnedBackdrop.topAnchor.constraint(equalTo: view.topAnchor),
-            journalPinnedBackdrop.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            journalPinnedBackdrop.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            journalPinnedBackdrop.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             exploredonutWevvButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             exploredonutWevvButton.leadingAnchor.constraint(equalTo: journalPinnedHeader.leadingAnchor, constant: 25),
             exploredonutWevvButton.widthAnchor.constraint(equalToConstant: 126),
@@ -1345,7 +1254,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             donutSnapshotStack.leadingAnchor.constraint(equalTo: bakeryAtlasPanel.leadingAnchor, constant: 12),
             donutSnapshotStack.trailingAnchor.constraint(equalTo: bakeryAtlasPanel.trailingAnchor, constant: -12),
             donutSnapshotStack.heightAnchor.constraint(greaterThanOrEqualToConstant: 120),
-            donutSnapshotStack.bottomAnchor.constraint(equalTo: bakeryAtlasPanel.bottomAnchor),
+            loadingCard.topAnchor.constraint(equalTo: donutSnapshotStack.bottomAnchor, constant: 10),
+            loadingCard.leadingAnchor.constraint(equalTo: bakeryAtlasPanel.leadingAnchor, constant: 12),
+            loadingCard.trailingAnchor.constraint(equalTo: bakeryAtlasPanel.trailingAnchor, constant: -12),
+            loadingCard.bottomAnchor.constraint(equalTo: bakeryAtlasPanel.bottomAnchor),
             tastingJournalStatusLabel.topAnchor.constraint(equalTo: newPostTitle.bottomAnchor, constant: 24),
             tastingJournalStatusLabel.leadingAnchor.constraint(equalTo: bakeryAtlasPanel.leadingAnchor, constant: 28),
             tastingJournalStatusLabel.trailingAnchor.constraint(equalTo: bakeryAtlasPanel.trailingAnchor, constant: -28),
@@ -1359,7 +1271,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func buildDonutParlorTabBar() {
         donutParlorTabBack.translatesAutoresizingMaskIntoConstraints = false
-        donutParlorTabBack.backgroundColor = .white
+        donutParlorTabBack.backgroundColor = UIColor(red: 0.15, green: 0.09, blue: 0.29, alpha: 1)
         donutParlorTabBack.layer.cornerRadius = 30
         donutParlorTabBack.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.addSubview(donutParlorTabBack)
@@ -1477,30 +1389,54 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let avatarButton = makeProfileImageAction(asset: "wevv_profile_avatar_piano_donut")
         avatarButton.removeTarget(nil, action: nil, for: .touchUpInside)
         avatarButton.addTarget(self, action: #selector(openGlazeProfileEditor), for: .touchUpInside)
-        let shelfButton = makeProfileImageAction(asset: "wevv_profile_shop_shelf_card")
-        shelfButton.removeTarget(nil, action: nil, for: .touchUpInside)
-        shelfButton.addTarget(self, action: #selector(openBakeryShelf), for: .touchUpInside)
-        let vaultdonutWevvButton = makeProfileImageAction(asset: "wevv_profile_donut_vault_card")
-        vaultdonutWevvButton.removeTarget(nil, action: nil, for: .touchUpInside)
+        let vaultdonutWevvButton = UIControl()
+        vaultdonutWevvButton.translatesAutoresizingMaskIntoConstraints = false
+        vaultdonutWevvButton.isAccessibilityElement = true
+        vaultdonutWevvButton.accessibilityTraits = .button
+        vaultdonutWevvButton.accessibilityLabel = "Wallet"
+        vaultdonutWevvButton.layer.cornerRadius = 42.5
+        vaultdonutWevvButton.clipsToBounds = true
         vaultdonutWevvButton.addTarget(self, action: #selector(openDonutArchive), for: .touchUpInside)
+        let glazeSheenLayer = FimVSugarGradientBand(wevvActiveGlazeColors: [
+            UIColor(red: 167 / 255.0, green: 169 / 255.0, blue: 255 / 255.0, alpha: 1).cgColor,
+            UIColor(red: 110 / 255.0, green: 112 / 255.0, blue: 255 / 255.0, alpha: 1).cgColor
+        ])
+        glazeSheenLayer.translatesAutoresizingMaskIntoConstraints = false
+        glazeSheenLayer.isUserInteractionEnabled = false
+        vaultdonutWevvButton.addSubview(glazeSheenLayer)
+        let donutRingImage = UIImageView(image: UIImage(named: "oldgem"))
+        donutRingImage.translatesAutoresizingMaskIntoConstraints = false
+        donutRingImage.contentMode = .scaleAspectFit
+        vaultdonutWevvButton.addSubview(donutRingImage)
+        NSLayoutConstraint.activate([
+            glazeSheenLayer.topAnchor.constraint(equalTo: vaultdonutWevvButton.topAnchor),
+            glazeSheenLayer.leadingAnchor.constraint(equalTo: vaultdonutWevvButton.leadingAnchor),
+            glazeSheenLayer.trailingAnchor.constraint(equalTo: vaultdonutWevvButton.trailingAnchor),
+            glazeSheenLayer.bottomAnchor.constraint(equalTo: vaultdonutWevvButton.bottomAnchor),
+            donutRingImage.leadingAnchor.constraint(equalTo: vaultdonutWevvButton.leadingAnchor, constant: 18),
+            donutRingImage.centerYAnchor.constraint(equalTo: vaultdonutWevvButton.centerYAnchor),
+            donutRingImage.heightAnchor.constraint(equalTo: vaultdonutWevvButton.heightAnchor, multiplier: 64.0 / 85.0),
+            donutRingImage.widthAnchor.constraint(equalTo: donutRingImage.heightAnchor)
+        ])
         let postdonutWevvTitle = UIImageView(image: UIImage(named: "wevv_profile_sugar_post_title"))
         postdonutWevvTitle.translatesAutoresizingMaskIntoConstraints = false
         postdonutWevvTitle.contentMode = .scaleAspectFit
 
         donutDiaryNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        donutDiaryNameLabel.font = .systemFont(ofSize: 17, weight: .heavy)
+        donutDiaryNameLabel.font = .systemFont(ofSize: 25, weight: .bold)
+        donutDiaryNameLabel.adjustsFontSizeToFitWidth = true
+        donutDiaryNameLabel.minimumScaleFactor = 0.6
+        donutDiaryNameLabel.lineBreakMode = .byTruncatingTail
         donutDiaryNameLabel.textAlignment = .center
-        donutDiaryNameLabel.textColor = UIColor(red: 0.2, green: 0.07, blue: 0.26, alpha: 1)
+        donutDiaryNameLabel.textColor = .white
         donutDiaryNameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openProfileSugarEntry)))
 
         configureProfileCountLabel(bakeryTrailCountLabel)
         configureProfileCountLabel(tasterTrailCountLabel)
-        configureProfileCardCountLabel(bakeryShelfCountLabel)
         configureProfileCardCountLabel(donutArchiveCountLabel)
 
         let folldonutWevvTitle = makeProfileTinyText("FGoUl+lio!wPibn=gL".wevVPastryCrumbBloomRestored)
         let foldonutWevvTitle = makeProfileTinyText("Frotl*lao@wsebrP".wevVPastryCrumbBloomRestored)
-        let shelfTitle = makeProfileCardTitle("SOaOvie^ pSwhCotp/".wevVPastryCrumbBloomRestored)
         let vaultTitle = makeProfileCardTitle("WRaAlGlre?tQ".wevVPastryCrumbBloomRestored)
         let followingEntry = makeProfileRelationEntry(action: #selector(openBakeryTrailList))
         let followerEntry = makeProfileRelationEntry(action: #selector(openTasterTrailList))
@@ -1516,8 +1452,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let crumbEmptyImage = makeProfileCrumbEmptyImage()
         emptyFlavorStack.addArrangedSubview(crumbEmptyImage)
 
-        placeSugarProfileViews(meButton: meButton, gearButton: gearButton, statButton: statButton, avatarButton: avatarButton, followingTitle: folldonutWevvTitle, followerTitle: foldonutWevvTitle, followingEntry: followingEntry, followerEntry: followerEntry, shelfButton: shelfButton, vaultButton: vaultdonutWevvButton, shelfTitle: shelfTitle, vaultTitle: vaultTitle, postTitle: postdonutWevvTitle)
-        pinSugarProfileLayout(meButton: meButton, gearButton: gearButton, statButton: statButton, avatarButton: avatarButton, followingTitle: folldonutWevvTitle, followerTitle: foldonutWevvTitle, followingEntry: followingEntry, followerEntry: followerEntry, shelfButton: shelfButton, vaultButton: vaultdonutWevvButton, shelfTitle: shelfTitle, vaultTitle: vaultTitle, postTitle: postdonutWevvTitle, emptyImage: crumbEmptyImage)
+        placeSugarProfileViews(meButton: meButton, gearButton: gearButton, statButton: statButton, avatarButton: avatarButton, followingTitle: folldonutWevvTitle, followerTitle: foldonutWevvTitle, followingEntry: followingEntry, followerEntry: followerEntry, vaultButton: vaultdonutWevvButton, vaultTitle: vaultTitle, postTitle: postdonutWevvTitle)
+        pinSugarProfileLayout(meButton: meButton, gearButton: gearButton, statButton: statButton, avatarButton: avatarButton, followingTitle: folldonutWevvTitle, followerTitle: foldonutWevvTitle, followingEntry: followingEntry, followerEntry: followerEntry, vaultButton: vaultdonutWevvButton, vaultTitle: vaultTitle, postTitle: postdonutWevvTitle, emptyImage: crumbEmptyImage)
         refreshDonutDiaryPanel()
     }
 
@@ -1528,7 +1464,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         return crumbEmptyImage
     }
 
-    private func placeSugarProfileViews(meButton: UIButton, gearButton: UIButton, statButton: UIControl, avatarButton: UIControl, followingTitle: UILabel, followerTitle: UILabel, followingEntry: UIControl, followerEntry: UIControl, shelfButton: UIControl, vaultButton: UIControl, shelfTitle: UILabel, vaultTitle: UILabel, postTitle: UIImageView) {
+    private func placeSugarProfileViews(meButton: UIButton, gearButton: UIButton, statButton: UIControl, avatarButton: UIControl, followingTitle: UILabel, followerTitle: UILabel, followingEntry: UIControl, followerEntry: UIControl, vaultButton: UIControl, vaultTitle: UILabel, postTitle: UIImageView) {
         donutDiaryPanel.addSubview(meButton)
         donutDiaryPanel.addSubview(gearButton)
         donutDiaryPanel.addSubview(statButton)
@@ -1540,22 +1476,19 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         donutDiaryPanel.addSubview(followerTitle)
         donutDiaryPanel.addSubview(followingEntry)
         donutDiaryPanel.addSubview(followerEntry)
-        donutDiaryPanel.addSubview(shelfButton)
         donutDiaryPanel.addSubview(vaultButton)
-        donutDiaryPanel.addSubview(bakeryShelfCountLabel)
-        donutDiaryPanel.addSubview(donutArchiveCountLabel)
-        donutDiaryPanel.addSubview(shelfTitle)
-        donutDiaryPanel.addSubview(vaultTitle)
+        vaultButton.addSubview(donutArchiveCountLabel)
+        vaultButton.addSubview(vaultTitle)
         donutDiaryPanel.addSubview(postTitle)
         donutDiaryPanel.addSubview(flavorNoteStack)
         donutDiaryPanel.addSubview(emptyFlavorStack)
         donutDiaryPanel.bringSubviewToFront(donutDiaryNameLabel)
     }
 
-    private func pinSugarProfileLayout(meButton: UIButton, gearButton: UIButton, statButton: UIControl, avatarButton: UIControl, followingTitle: UILabel, followerTitle: UILabel, followingEntry: UIControl, followerEntry: UIControl, shelfButton: UIControl, vaultButton: UIControl, shelfTitle: UILabel, vaultTitle: UILabel, postTitle: UIImageView, emptyImage: UIImageView) {
+    private func pinSugarProfileLayout(meButton: UIButton, gearButton: UIButton, statButton: UIControl, avatarButton: UIControl, followingTitle: UILabel, followerTitle: UILabel, followingEntry: UIControl, followerEntry: UIControl, vaultButton: UIControl, vaultTitle: UILabel, postTitle: UIImageView, emptyImage: UIImageView) {
         pinSugarProfileTop(meButton: meButton, gearButton: gearButton, statButton: statButton, avatarButton: avatarButton)
         pinSugarProfileRelations(statButton: statButton, followingTitle: followingTitle, followerTitle: followerTitle, followingEntry: followingEntry, followerEntry: followerEntry)
-        pinSugarProfileCards(statButton: statButton, shelfButton: shelfButton, vaultButton: vaultButton, shelfTitle: shelfTitle, vaultTitle: vaultTitle, postTitle: postTitle, emptyImage: emptyImage)
+        pinSugarProfileCards(vaultButton: vaultButton, vaultTitle: vaultTitle, postTitle: postTitle, emptyImage: emptyImage)
     }
 
     private func pinSugarProfileTop(meButton: UIButton, gearButton: UIButton, statButton: UIControl, avatarButton: UIControl) {
@@ -1563,7 +1496,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             donutDiaryPanel.topAnchor.constraint(equalTo: donutCaseContent.topAnchor),
             donutDiaryPanel.leadingAnchor.constraint(equalTo: donutCaseContent.leadingAnchor),
             donutDiaryPanel.trailingAnchor.constraint(equalTo: donutCaseContent.trailingAnchor),
-            meButton.topAnchor.constraint(equalTo: donutCaseContent.safeAreaLayoutGuide.topAnchor, constant: 24),
+            meButton.topAnchor.constraint(equalTo: donutCaseContent.safeAreaLayoutGuide.topAnchor, constant: 16),
             meButton.leadingAnchor.constraint(equalTo: donutDiaryPanel.leadingAnchor, constant: 25),
             meButton.widthAnchor.constraint(equalToConstant: 75),
             meButton.heightAnchor.constraint(equalToConstant: 30),
@@ -1576,10 +1509,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             statButton.trailingAnchor.constraint(equalTo: donutDiaryPanel.trailingAnchor, constant: -20),
             statButton.heightAnchor.constraint(equalTo: statButton.widthAnchor, multiplier: 60.0 / 335.0),
             avatarButton.centerXAnchor.constraint(equalTo: donutDiaryPanel.centerXAnchor),
-            avatarButton.centerYAnchor.constraint(equalTo: statButton.centerYAnchor, constant: -24),
+            avatarButton.centerYAnchor.constraint(equalTo: statButton.centerYAnchor, constant: -5),
             avatarButton.widthAnchor.constraint(equalToConstant: 108),
             avatarButton.heightAnchor.constraint(equalToConstant: 130),
-            donutDiaryNameLabel.topAnchor.constraint(equalTo: avatarButton.bottomAnchor, constant: 4),
+            donutDiaryNameLabel.topAnchor.constraint(equalTo: avatarButton.bottomAnchor, constant: 12),
             donutDiaryNameLabel.centerXAnchor.constraint(equalTo: donutDiaryPanel.centerXAnchor),
             donutDiaryNameLabel.leadingAnchor.constraint(greaterThanOrEqualTo: donutDiaryPanel.leadingAnchor, constant: 36),
             donutDiaryNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: donutDiaryPanel.trailingAnchor, constant: -36)
@@ -1607,29 +1540,19 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         ])
     }
 
-    private func pinSugarProfileCards(statButton: UIControl, shelfButton: UIControl, vaultButton: UIControl, shelfTitle: UILabel, vaultTitle: UILabel, postTitle: UIImageView, emptyImage: UIImageView) {
+    private func pinSugarProfileCards(vaultButton: UIControl, vaultTitle: UILabel, postTitle: UIImageView, emptyImage: UIImageView) {
         NSLayoutConstraint.activate([
-            shelfButton.topAnchor.constraint(equalTo: statButton.bottomAnchor, constant: 28),
-            shelfButton.leadingAnchor.constraint(equalTo: donutDiaryPanel.leadingAnchor, constant: 15),
-            shelfButton.widthAnchor.constraint(equalTo: donutDiaryPanel.widthAnchor, multiplier: 0.434),
-            shelfButton.heightAnchor.constraint(equalTo: shelfButton.widthAnchor, multiplier: 178.0 / 163.0),
-            vaultButton.topAnchor.constraint(equalTo: shelfButton.topAnchor),
-            vaultButton.trailingAnchor.constraint(equalTo: donutDiaryPanel.trailingAnchor, constant: -15),
-            vaultButton.widthAnchor.constraint(equalTo: shelfButton.widthAnchor),
-            vaultButton.heightAnchor.constraint(equalTo: shelfButton.heightAnchor),
-            bakeryShelfCountLabel.centerXAnchor.constraint(equalTo: shelfButton.centerXAnchor),
-            bakeryShelfCountLabel.centerYAnchor.constraint(equalTo: shelfButton.centerYAnchor, constant: 18),
-            shelfTitle.topAnchor.constraint(equalTo: bakeryShelfCountLabel.bottomAnchor, constant: 8),
-            shelfTitle.centerXAnchor.constraint(equalTo: shelfButton.centerXAnchor),
-            shelfTitle.leadingAnchor.constraint(greaterThanOrEqualTo: shelfButton.leadingAnchor, constant: 10),
-            shelfTitle.trailingAnchor.constraint(lessThanOrEqualTo: shelfButton.trailingAnchor, constant: -10),
-            donutArchiveCountLabel.centerXAnchor.constraint(equalTo: vaultButton.centerXAnchor),
-            donutArchiveCountLabel.centerYAnchor.constraint(equalTo: vaultButton.centerYAnchor, constant: 18),
-            vaultTitle.topAnchor.constraint(equalTo: donutArchiveCountLabel.bottomAnchor, constant: 8),
-            vaultTitle.centerXAnchor.constraint(equalTo: vaultButton.centerXAnchor),
-            vaultTitle.leadingAnchor.constraint(greaterThanOrEqualTo: vaultButton.leadingAnchor, constant: 10),
-            vaultTitle.trailingAnchor.constraint(lessThanOrEqualTo: vaultButton.trailingAnchor, constant: -10),
-            postTitle.topAnchor.constraint(equalTo: shelfButton.bottomAnchor, constant: 20),
+            vaultButton.topAnchor.constraint(equalTo: donutDiaryNameLabel.bottomAnchor, constant: 12),
+            vaultButton.leadingAnchor.constraint(equalTo: donutDiaryPanel.leadingAnchor, constant: 17),
+            vaultButton.trailingAnchor.constraint(equalTo: donutDiaryPanel.trailingAnchor, constant: -18),
+            vaultButton.heightAnchor.constraint(equalTo: vaultButton.widthAnchor, multiplier: 85.0 / 340.0),
+            vaultTitle.leadingAnchor.constraint(equalTo: vaultButton.leadingAnchor, constant: 117),
+            vaultTitle.centerYAnchor.constraint(equalTo: vaultButton.centerYAnchor),
+            vaultTitle.trailingAnchor.constraint(lessThanOrEqualTo: donutArchiveCountLabel.leadingAnchor, constant: -12),
+            donutArchiveCountLabel.trailingAnchor.constraint(equalTo: vaultButton.trailingAnchor, constant: -46),
+            donutArchiveCountLabel.centerYAnchor.constraint(equalTo: vaultButton.centerYAnchor),
+            donutArchiveCountLabel.widthAnchor.constraint(lessThanOrEqualTo: vaultButton.widthAnchor, multiplier: 0.35),
+            postTitle.topAnchor.constraint(equalTo: vaultButton.bottomAnchor, constant: 15),
             postTitle.leadingAnchor.constraint(equalTo: donutDiaryPanel.leadingAnchor, constant: 15),
             postTitle.widthAnchor.constraint(equalToConstant: 97),
             postTitle.heightAnchor.constraint(equalToConstant: 24),
@@ -1954,7 +1877,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func configureTastingJournalShelfButton(_ button: UIButton, title: String, shelf: goldenCrumbDough) {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(UIColor(red: 255 / 255.0, green: 248 / 255.0, blue: 255 / 255.0, alpha: 1), for: .normal)
         button.contentHorizontalAlignment = .leading
         button.tag = shelf.rawValue
         button.accessibilityLabel = title
@@ -2003,7 +1926,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         )
         fillTastingJournalMomentPage(
             tastingJournalFollowMoments,
-            starchGelatinizationStudy: Array(glazeFollowedMomentItems.prefix(4)),
+            starchGelatinizationStudy: donutJournalStore.isTasterReady ? Array(glazeFollowedMomentItems.prefix(4)) : [],
             emptyText: donutJournalStore.isTasterReady
                 ? "No posts from followed creators yet."
                 : "Sign in to see posts from creators you follow."
@@ -2016,7 +1939,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             let empty = UILabel()
             empty.translatesAutoresizingMaskIntoConstraints = false
             empty.text = emptyText
-            empty.textColor = UIColor(red: 0.34, green: 0.24, blue: 0.39, alpha: 1)
+            empty.textColor = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
             empty.font = .systemFont(ofSize: 15, weight: .semibold)
             empty.textAlignment = .center
             empty.numberOfLines = 0
@@ -2036,7 +1959,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         sideColumn.axis = .vertical
         sideColumn.spacing = 8
         sideColumn.distribution = .fillEqually
-        sideColumn.backgroundColor = UIColor(red: 253.0 / 255.0, green: 236.0 / 255.0, blue: 1, alpha: 1)
+        sideColumn.backgroundColor = UIColor(red: 50 / 255.0, green: 23 / 255.0, blue: 123 / 255.0, alpha: 1)
         sideColumn.layer.cornerRadius = 18
         sideColumn.clipsToBounds = true
         sideColumn.isLayoutMarginsRelativeArrangement = true
@@ -2069,13 +1992,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         card.translatesAutoresizingMaskIntoConstraints = false
         card.accessibilityIdentifier = String(moment.coconutCenter)
         card.addTarget(self, action: #selector(openDonutSnapshotDetail(_:)), for: .touchUpInside)
-        card.backgroundColor = UIColor(red: 1, green: 0.92, blue: 1, alpha: 0.94)
+        card.backgroundColor = UIColor(red: 50 / 255.0, green: 23 / 255.0, blue: 123 / 255.0, alpha: 1)
         card.layer.cornerRadius = 18
         card.clipsToBounds = true
 
         let cover = UIImageView()
         cover.translatesAutoresizingMaskIntoConstraints = false
-        cover.backgroundColor = UIColor(red: 0.96, green: 0.85, blue: 0.96, alpha: 1)
+        cover.backgroundColor = UIColor(red: 65 / 255.0, green: 33 / 255.0, blue: 153 / 255.0, alpha: 1)
         cover.contentMode = .scaleAspectFill
         cover.clipsToBounds = true
         cover.layer.cornerRadius = 13
@@ -2090,16 +2013,16 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.text = moment.gingerHoneyDrizzle
-        name.textColor = .white
+        name.textColor = UIColor(red: 255 / 255.0, green: 248 / 255.0, blue: 255 / 255.0, alpha: 1)
         name.font = .systemFont(ofSize: 15, weight: .semibold)
         name.lineBreakMode = .byTruncatingTail
 
-        let followMark = makeTastingJournalFollowControl(moment, diameter: 20, fontSize: 16)
+        let followMark = makeTastingJournalFollowControl(moment, diameter: 20, fontSize: 16, color: UIColor(red: 255 / 255.0, green: 248 / 255.0, blue: 255 / 255.0, alpha: 1))
 
         let caption = UILabel()
         caption.translatesAutoresizingMaskIntoConstraints = false
         caption.text = moment.caramelCurd
-        caption.textColor = .black
+        caption.textColor = UIColor(red: 255 / 255.0, green: 248 / 255.0, blue: 255 / 255.0, alpha: 1)
         caption.font = .systemFont(ofSize: 16, weight: .semibold)
         caption.numberOfLines = 2
         caption.lineBreakMode = .byTruncatingTail
@@ -2145,7 +2068,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let cover = UIImageView()
         cover.translatesAutoresizingMaskIntoConstraints = false
-        cover.backgroundColor = UIColor(red: 0.96, green: 0.85, blue: 0.96, alpha: 1)
+        cover.backgroundColor = UIColor(red: 65 / 255.0, green: 33 / 255.0, blue: 153 / 255.0, alpha: 1)
         cover.contentMode = .scaleAspectFill
         cover.clipsToBounds = true
         cover.layer.cornerRadius = 10
@@ -2154,7 +2077,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.text = moment.gingerHoneyDrizzle
-        name.textColor = .black
+        name.textColor = UIColor(red: 255 / 255.0, green: 248 / 255.0, blue: 255 / 255.0, alpha: 1)
         name.font = .systemFont(ofSize: 14, weight: .bold)
         name.lineBreakMode = .byTruncatingTail
 
@@ -2173,18 +2096,18 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         return card
     }
 
-    private func makeGlazeMomentCard(_ moment: butteryTexture, showsHotMark: Bool) -> UIView {
+    private func makeGlazeMomentCard(_ moment: butteryTexture, showsHotMark: Bool, color: UIColor? = nil) -> UIView {
         let card = UIControl()
         card.translatesAutoresizingMaskIntoConstraints = false
         card.accessibilityIdentifier = String(moment.coconutCenter)
         card.addTarget(self, action: #selector(openDonutSnapshotDetail(_:)), for: .touchUpInside)
-        card.backgroundColor = .white
+        card.backgroundColor = color == nil ? .white : UIColor(red: 50 / 255.0, green: 23 / 255.0, blue: 123 / 255.0, alpha: 1)
         card.layer.cornerRadius = 16
         card.clipsToBounds = true
 
         let cover = UIImageView()
         cover.translatesAutoresizingMaskIntoConstraints = false
-        cover.backgroundColor = UIColor(red: 0.97, green: 0.88, blue: 0.96, alpha: 1)
+        cover.backgroundColor = color == nil ? UIColor(red: 0.97, green: 0.88, blue: 0.96, alpha: 1) : UIColor(red: 65 / 255.0, green: 33 / 255.0, blue: 153 / 255.0, alpha: 1)
         cover.contentMode = .scaleAspectFill
         cover.clipsToBounds = true
         cover.layer.cornerRadius = 12
@@ -2195,25 +2118,25 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.text = moment.gingerHoneyDrizzle
-        name.textColor = UIColor(red: 0.20, green: 0.17, blue: 0.21, alpha: 1)
+        name.textColor = color ?? UIColor(red: 0.20, green: 0.17, blue: 0.21, alpha: 1)
         name.font = .systemFont(ofSize: 16, weight: .bold)
         name.lineBreakMode = .byTruncatingTail
 
-        let followMark = makeTastingJournalFollowControl(moment, diameter: 28, fontSize: 21)
+        let followMark = makeTastingJournalFollowControl(moment, diameter: 28, fontSize: 21, color: color)
 
         let caption = UILabel()
         caption.translatesAutoresizingMaskIntoConstraints = false
         caption.text = moment.caramelCurd
-        caption.textColor = .black
+        caption.textColor = color ?? .black
         caption.font = .systemFont(ofSize: 15, weight: .semibold)
         caption.numberOfLines = 2
         caption.lineBreakMode = .byTruncatingTail
 
-        let tagPalette = [
+        let tagPalette = color == nil ? [
             UIColor(red: 0.72, green: 0.35, blue: 1, alpha: 1),
             UIColor(red: 1, green: 0.30, blue: 0.66, alpha: 1),
             UIColor(red: 0.98, green: 0.58, blue: 0.18, alpha: 1)
-        ]
+        ] : [UIColor(red: 255 / 255.0, green: 91 / 255.0, blue: 255 / 255.0, alpha: 1), UIColor(red: 103 / 255.0, green: 47 / 255.0, blue: 255 / 255.0, alpha: 1), UIColor(red: 255 / 255.0, green: 91 / 255.0, blue: 255 / 255.0, alpha: 1)]
         let tags = makeTastingJournalTags(for: moment)
         let tagViews = tags.enumerated().map { index, tag in
             makeTastingJournalCountMark(tag, color: tagPalette[index % tagPalette.count])
@@ -2226,7 +2149,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let hotMark = UILabel()
         hotMark.translatesAutoresizingMaskIntoConstraints = false
         hotMark.text = "🔥Hot"
-        hotMark.textColor = .white
+        hotMark.textColor = color == nil ? .white : UIColor(red: 191 / 255.0, green: 178 / 255.0, blue: 222 / 255.0, alpha: 1)
         hotMark.font = .systemFont(ofSize: 13, weight: .medium)
         hotMark.textAlignment = .center
         hotMark.backgroundColor = UIColor(red: 1, green: 0.56, blue: 0.04, alpha: 1)
@@ -2342,15 +2265,18 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         return owner
     }
 
-    private func makeTastingJournalFollowControl(_ moment: butteryTexture, diameter: CGFloat, fontSize: CGFloat) -> UIButton {
+    private func makeTastingJournalFollowControl(_ moment: butteryTexture, diameter: CGFloat, fontSize: CGFloat, color: UIColor? = nil) -> UIButton {
+        let followed = donutJournalStore.isTasterReady && moment.mascarponeCream
         let followButton = UIButton(type: .custom)
         followButton.translatesAutoresizingMaskIntoConstraints = false
         followButton.accessibilityIdentifier = String(moment.vanillaBeanIcing)
-        followButton.accessibilityLabel = moment.mascarponeCream ? "Unfollow \(moment.gingerHoneyDrizzle)" : "Follow \(moment.gingerHoneyDrizzle)"
-        followButton.setTitle(moment.mascarponeCream ? "✓" : "+", for: .normal)
+        followButton.accessibilityLabel = followed ? "Unfollow \(moment.gingerHoneyDrizzle)" : "Follow \(moment.gingerHoneyDrizzle)"
+        followButton.setTitle(followed ? "✓" : "+", for: .normal)
         followButton.setTitleColor(.white, for: .normal)
         followButton.titleLabel?.font = .systemFont(ofSize: fontSize, weight: .medium)
-        followButton.backgroundColor = moment.mascarponeCream ? .black : UIColor(red: 1, green: 0.12, blue: 0.57, alpha: 1)
+        followButton.backgroundColor = color == nil
+            ? (followed ? .black : UIColor(red: 1, green: 0.12, blue: 0.57, alpha: 1))
+            : (followed ? UIColor(red: 104 / 255.0, green: 30 / 255.0, blue: 104 / 255.0, alpha: 1) : UIColor(red: 255 / 255.0, green: 37 / 255.0, blue: 153 / 255.0, alpha: 1))
         followButton.layer.cornerRadius = diameter / 2
         followButton.clipsToBounds = true
         followButton.isEnabled = moment.vanillaBeanIcing > 0
@@ -2426,7 +2352,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         join.textColor = .white
         join.font = .systemFont(ofSize: 15, weight: .bold)
         join.textAlignment = .center
-        join.backgroundColor = UIColor(red: 0.69, green: 0.55, blue: 1, alpha: 0.9)
+        join.backgroundColor = UIColor(red: 0.1, green: 0.06, blue: 0.21, alpha: 1)
         join.layer.cornerRadius = 15
         join.clipsToBounds = true
 
@@ -2505,7 +2431,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         glazeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         glazeTitleLabel.text = sugarTitle
         glazeTitleLabel.font = .systemFont(ofSize: 15, weight: .heavy)
-        glazeTitleLabel.textColor = .black
+        glazeTitleLabel.textColor = .white
         glazeTitleLabel.textAlignment = .center
         glazeTitleLabel.adjustsFontSizeToFitWidth = true
         glazeTitleLabel.minimumScaleFactor = 0.7
@@ -2557,116 +2483,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         avatar.layer.borderColor = UIColor.white.cgColor
         avatar.clipsToBounds = true
         return avatar
-    }
-
-    private func makeSprinkleMomentHeroImage(_ donutSnapshot: WevVDonutSnapshot) -> UIImageView {
-        let glazeImage = UIImageView(image: DucerPastryImageVault.watercolorIcingDesign(for: donutSnapshot.donutBackdropAsset) ?? makeFrostingHeroImage(seed: donutSnapshot.donutBackdropAsset))
-        glazeImage.translatesAutoresizingMaskIntoConstraints = false
-        glazeImage.contentMode = .scaleAspectFill
-        glazeImage.clipsToBounds = true
-        return glazeImage
-    }
-
-    private func makeSprinkleMomentTextBand() -> UIView {
-        let glazeBand = FimVSugarGradientBand()
-        glazeBand.translatesAutoresizingMaskIntoConstraints = false
-        glazeBand.isUserInteractionEnabled = false
-        return glazeBand
-    }
-
-    private func makeSprinkleMomentCaption(_ sugarText: String) -> UILabel {
-        let sugarDustLabel = UILabel()
-        sugarDustLabel.translatesAutoresizingMaskIntoConstraints = false
-        sugarDustLabel.text = sugarText
-        sugarDustLabel.font = .systemFont(ofSize: 15, weight: .semibold)
-        sugarDustLabel.textColor = .white
-        sugarDustLabel.numberOfLines = 2
-        sugarDustLabel.adjustsFontSizeToFitWidth = true
-        sugarDustLabel.minimumScaleFactor = 0.82
-        return sugarDustLabel
-    }
-
-    private func makeSprinkleMomentAvatar(_ donutSnapshot: WevVDonutSnapshot) -> UIImageView {
-        let glazeAvatar = UIImageView(image: makeSprinkleAuthorAvatar(for: donutSnapshot))
-        glazeAvatar.translatesAutoresizingMaskIntoConstraints = false
-        glazeAvatar.contentMode = .scaleAspectFill
-        glazeAvatar.clipsToBounds = true
-        glazeAvatar.layer.cornerRadius = 15
-        glazeAvatar.layer.borderWidth = 1.5
-        glazeAvatar.layer.borderColor = UIColor.white.cgColor
-        return glazeAvatar
-    }
-
-    private func makeSprinkleMomentName(_ sugarName: String) -> UILabel {
-        let sugarDustLabel = UILabel()
-        sugarDustLabel.translatesAutoresizingMaskIntoConstraints = false
-        sugarDustLabel.text = sugarName
-        sugarDustLabel.font = .systemFont(ofSize: 15, weight: .semibold)
-        sugarDustLabel.textColor = .white
-        sugarDustLabel.adjustsFontSizeToFitWidth = true
-        sugarDustLabel.minimumScaleFactor = 0.76
-        return sugarDustLabel
-    }
-
-    private func makeSprinkleMomentSafetyButton(_ sugarDustKey: String) -> UIButton {
-        let sprinkleButton = UIButton(type: .system)
-        sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
-        sprinkleButton.accessibilityIdentifier = sugarDustKey
-        sprinkleButton.setImage(UIImage(systemName: "exclamationmark.triangle.fill"), for: .normal)
-        sprinkleButton.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.58, alpha: 1)
-        sprinkleButton.backgroundColor = UIColor.white.withAlphaComponent(0.9)
-        sprinkleButton.layer.cornerRadius = 17
-        sprinkleButton.addTarget(self, action: #selector(openSprinkleMomentSafety(_:)), for: .touchUpInside)
-        return sprinkleButton
-    }
-
-    private func placeSprinkleMomentCardViews(treatCaseCard: UIControl, heroImage: UIImageView, textBand: UIView, captionLabel: UILabel, avatar: UIImageView, tasterNameLabel: UILabel, safetyButton: UIButton) {
-        treatCaseCard.addSubview(heroImage)
-        treatCaseCard.addSubview(textBand)
-        textBand.addSubview(captionLabel)
-        treatCaseCard.addSubview(avatar)
-        treatCaseCard.addSubview(tasterNameLabel)
-        treatCaseCard.addSubview(safetyButton)
-    }
-
-    private func pinSprinkleMomentCardLayout(treatCaseCard: UIControl, heroImage: UIImageView, textBand: UIView, captionLabel: UILabel, avatar: UIImageView, tasterNameLabel: UILabel, safetyButton: UIButton) {
-        NSLayoutConstraint.activate([
-            treatCaseCard.heightAnchor.constraint(equalTo: treatCaseCard.widthAnchor, multiplier: 182.0 / 345.0),
-            heroImage.topAnchor.constraint(equalTo: treatCaseCard.topAnchor),
-            heroImage.leadingAnchor.constraint(equalTo: treatCaseCard.leadingAnchor),
-            heroImage.trailingAnchor.constraint(equalTo: treatCaseCard.trailingAnchor),
-            heroImage.bottomAnchor.constraint(equalTo: textBand.topAnchor),
-            textBand.leadingAnchor.constraint(equalTo: treatCaseCard.leadingAnchor),
-            textBand.trailingAnchor.constraint(equalTo: treatCaseCard.trailingAnchor),
-            textBand.bottomAnchor.constraint(equalTo: treatCaseCard.bottomAnchor),
-            textBand.heightAnchor.constraint(equalToConstant: 50),
-            captionLabel.topAnchor.constraint(equalTo: textBand.topAnchor, constant: 8),
-            captionLabel.leadingAnchor.constraint(equalTo: textBand.leadingAnchor, constant: 22),
-            captionLabel.trailingAnchor.constraint(equalTo: textBand.trailingAnchor, constant: -18),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: textBand.bottomAnchor, constant: -7),
-            avatar.topAnchor.constraint(equalTo: heroImage.topAnchor, constant: 16),
-            avatar.leadingAnchor.constraint(equalTo: heroImage.leadingAnchor, constant: 16),
-            avatar.widthAnchor.constraint(equalToConstant: 30),
-            avatar.heightAnchor.constraint(equalToConstant: 30),
-            tasterNameLabel.centerYAnchor.constraint(equalTo: avatar.centerYAnchor),
-            tasterNameLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
-            tasterNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: safetyButton.leadingAnchor, constant: -10),
-            safetyButton.topAnchor.constraint(equalTo: heroImage.topAnchor, constant: 15),
-            safetyButton.trailingAnchor.constraint(equalTo: heroImage.trailingAnchor, constant: -15),
-            safetyButton.widthAnchor.constraint(equalToConstant: 34),
-            safetyButton.heightAnchor.constraint(equalToConstant: 34)
-        ])
-    }
-
-    private func makeSprinkleAuthorAvatar(for donutSnapshot: WevVDonutSnapshot) -> UIImage {
-        if let profile = bakeryTasterStore.allProfiles.first(where: { $0.donutPinKey == donutSnapshot.tasterBloom.donutPinKey }),
-           let glazeImage = UIImage(named: profile.donutFrameAsset) {
-            return glazeImage
-        }
-        if let glazeImage = UIImage(named: donutSnapshot.tasterBloom.donutFrameAsset) {
-            return glazeImage
-        }
-        return makeFrostingAvatarImage(seed: donutSnapshot.tasterBloom.donutFrameAsset)
     }
 
     private func makeProfileImageAction(asset: String) -> UIControl {
@@ -2740,7 +2556,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let icon = UIImageView(image: UIImage(named: asset))
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFit
-        let iconSide: CGFloat = section == .tastingParlor ? 44 : 30
+        let iconSide: CGFloat =  30
         NSLayoutConstraint.activate([
             icon.widthAnchor.constraint(equalToConstant: iconSide),
             icon.heightAnchor.constraint(equalToConstant: iconSide)
@@ -2757,7 +2573,9 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func configureProfileCardCountLabel(_ sugarDustLabel: UILabel) {
         sugarDustLabel.translatesAutoresizingMaskIntoConstraints = false
-        sugarDustLabel.font = .systemFont(ofSize: 24, weight: .heavy)
+        sugarDustLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        sugarDustLabel.adjustsFontSizeToFitWidth = true
+        sugarDustLabel.minimumScaleFactor = 0.6
         sugarDustLabel.textColor = .white
         sugarDustLabel.textAlignment = .center
     }
@@ -2766,7 +2584,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let sugarDustLabel = UILabel()
         sugarDustLabel.translatesAutoresizingMaskIntoConstraints = false
         sugarDustLabel.text = text
-        sugarDustLabel.font = .systemFont(ofSize: 23, weight: .heavy)
+        sugarDustLabel.font = .systemFont(ofSize: 20, weight: .bold)
         sugarDustLabel.textColor = .white
         sugarDustLabel.textAlignment = .center
         sugarDustLabel.adjustsFontSizeToFitWidth = true
@@ -2818,8 +2636,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         }
         bakeryTrailCountLabel.text = "\(tastingMarks.glazeTrailCount)"
         tasterTrailCountLabel.text = "\(tastingMarks.sprinkleTasterCount)"
-        bakeryShelfCountLabel.text = "\(tastingMarks.bakeryShelfTotal)"
         donutArchiveCountLabel.text = "\(tastingMarks.donutArchiveTotal)"
+        donutArchiveCountLabel.superview?.accessibilityValue = donutArchiveCountLabel.text
 
         flavorNoteStack.arrangedSubviews.forEach { sugarView in
             flavorNoteStack.removeArrangedSubview(sugarView)
@@ -3061,9 +2879,15 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         glazeContentTask?.cancel()
         homeLivePageTask?.cancel()
         homeLivePageTask = nil
+        strawberryMilkSwirl?.cancel()
+        strawberryMilkSwirl = nil
+        deadline.removeValue(forKey: "moments")
+        let refresh = cocoaWeekendFestival.refresh()
+        deadline.removeValue(forKey: "live")
         let liveRequestID = homeLivePagination.beginRefresh()
         let initialVoiceRequestIDs = beginVoiceRoomRefresh()
         updateHomeLiveLoadMoreFooter()
+        refreshTastingRow()
         if showsLoading {
             homeLiveStatusLabel.isHidden = activeDonutParlorSection != .donutCounter || !homeLivePagination.rooms.isEmpty
             homeLiveStatusLabel.text = "Loading live rooms…"
@@ -3082,6 +2906,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             catch {
                 guard !Task.isCancelled else { return }
                 self.homeLivePagination.fail(request: liveRequestID)
+                self.cocoaWeekendFestival.showGlazeError(requestID: refresh)
+                self.refreshTastingRow()
                 for (shelf, id) in initialVoiceRequestIDs { self.voicePaginations[shelf]?.fail(request: id) }
                 self.updateHomeLiveLoadMoreFooter()
                 self.tastingJournalStatusLabel.isHidden = false
@@ -3095,20 +2921,23 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             guard !Task.isCancelled else { return }
             let owner = self.currentGlazeContentOwnerKey()
             let requestID: UUID
+            let id: UUID
             let voiceRequestIDs: [mascarponeFilling: UUID]
             if self.glazeContentOwnerKey != owner {
                 self.resetGlazeContentOwner(owner)
                 requestID = self.homeLivePagination.beginRefresh()
+                id = self.cocoaWeekendFestival.refresh()
                 voiceRequestIDs = self.beginVoiceRoomRefresh()
                 self.updateHomeLiveLoadMoreFooter()
             } else {
                 requestID = liveRequestID
+                id = refresh
                 voiceRequestIDs = initialVoiceRequestIDs
             }
             // A slow or failed room request must not prevent the Discover feed from appearing.
             async let rooms: Void = self.loadGlazeRoomContent(owner: owner, requestID: requestID,
                 voiceRequestIDs: voiceRequestIDs, contentRequestID: contentRequestID)
-            async let moments: Void = self.loadGlazeMomentContent(owner: owner, contentRequestID: contentRequestID)
+            async let moments: Void = self.loadGlazeMomentContent(owner: owner, contentRequestID: contentRequestID, requestID: id)
             _ = await (rooms, moments)
         }
     }
@@ -3120,6 +2949,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
               activeDonutParlorSection == section else { return }
         glazeContentRefreshOwner = nil
         sprinkleRefresh.endRefreshing()
+        refreshTastingRow()
     }
 
     private func beginVoiceRoomRefresh() -> [mascarponeFilling: UUID] {
@@ -3127,6 +2957,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         voicePageTasks.removeAll()
         var requests: [mascarponeFilling: UUID] = [:]
         for shelf in mascarponeFilling.allCases {
+            deadline.removeValue(forKey: "voice-\(shelf.rawValue)")
             requests[shelf] = voicePaginations[shelf, default: WevVGlazeVoicePagination()].beginRefresh()
         }
         updateTastingParlorStatus()
@@ -3217,6 +3048,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func updateVoiceRoomLoadMoreFooter() {
         let pagination = voicePaginations[tastingParlorShelf] ?? WevVGlazeVoicePagination()
         voiceLoadMoreFooter.isHidden = activeDonutParlorSection != .tastingParlor || pagination.rooms.isEmpty
+            || sprinkleRefresh.isRefreshing
+            || (!pagination.isLoading && !pagination.failed && pagination.hasMore && homeLivePullDistance() <= 0)
         voiceLoadMoreFooter.isEnabled = pagination.hasMore && !pagination.isLoading && !pagination.failedRefresh
         if pagination.isLoading {
             voiceLoadMoreSpinner.startAnimating()
@@ -3234,6 +3067,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                 voiceLoadMoreLabel.text = "No more voice rooms"
             }
         }
+        hideSugarLoading(voiceLoadMoreFooter, id: "voice-\(tastingParlorShelf.rawValue)",
+                         isLoading: pagination.isLoading, hasMore: pagination.hasMore, failed: pagination.failed)
         voiceLoadMoreFooter.accessibilityLabel = voiceLoadMoreLabel.text
     }
 
@@ -3269,6 +3104,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func updateHomeLiveLoadMoreFooter() {
         homeLiveLoadMoreFooter.isHidden = activeDonutParlorSection != .donutCounter || homeLivePagination.rooms.isEmpty
+            || sprinkleRefresh.isRefreshing
+            || (!homeLivePagination.isLoading && !homeLivePagination.failed && homeLivePagination.hasMore && homeLivePullDistance() <= 0)
         homeLiveLoadMoreFooter.isEnabled = homeLivePagination.hasMore && !homeLivePagination.isLoading
         if homeLivePagination.isLoading {
             homeLiveLoadMoreSpinner.startAnimating()
@@ -3286,7 +3123,29 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                 homeLiveLoadMoreLabel.text = "No more live rooms"
             }
         }
+        hideSugarLoading(homeLiveLoadMoreFooter, id: "live", isLoading: homeLivePagination.isLoading,
+                         hasMore: homeLivePagination.hasMore, failed: homeLivePagination.failed)
         homeLiveLoadMoreFooter.accessibilityLabel = homeLiveLoadMoreLabel.text
+    }
+
+    private func hideSugarLoading(_ footer: UIControl, id: String, isLoading: Bool, hasMore: Bool, failed: Bool) {
+        guard !isLoading, !hasMore, !failed else {
+            deadline.removeValue(forKey: id)
+            return
+        }
+        guard !footer.isHidden else { return }
+        if let timeout = deadline[id] {
+            footer.isHidden = ProcessInfo.processInfo.systemUptime >= timeout
+            return
+        }
+        let timeout = ProcessInfo.processInfo.systemUptime + 2
+        deadline[id] = timeout
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self, self.deadline[id] == timeout else { return }
+            self.updateHomeLiveLoadMoreFooter()
+            self.updateVoiceRoomLoadMoreFooter()
+            self.refreshTastingRow()
+        }
     }
 
     private func homeLivePullDistance() -> CGFloat {
@@ -3302,21 +3161,37 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         }
     }
 
-    private func loadGlazeMomentContent(owner: String, contentRequestID: UUID) async {
+    private func loadGlazeMomentContent(owner: String, contentRequestID: UUID, requestID: UUID) async {
         let shelves = [tastingJournalShelf] + goldenCrumbDough.allCases.filter { $0 != tastingJournalShelf }
         for shelf in shelves {
             var posts: [butteryTexture]?
             var momentError: Error?
-            do { posts = try await glazeContentRepository.starchGelatinizationStudy(carnivalGlazeShowcase: shelf) }
-            catch { momentError = error }
+            do {
+                if shelf == .artisanFrySequence {
+                    let page = try await glazeContentRepository.tastingPassportPage(
+                        cursor: 0, pageSize: WevVGlazeCommunityService.tastingPassportPage.pageSize)
+                    guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner,
+                          cocoaWeekendFestival.completeGlaze(page, requestID: requestID) else { return }
+                    posts = cocoaWeekendFestival.posts
+                } else {
+                    posts = try await glazeContentRepository.starchGelatinizationStudy(carnivalGlazeShowcase: shelf)
+                }
+            } catch {
+                momentError = error
+                if shelf == .artisanFrySequence {
+                    guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner,
+                          cocoaWeekendFestival.showGlazeError(requestID: requestID) else { return }
+                }
+            }
             guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner else { return }
             // Failed refreshes keep successful data for this same account; a real empty result clears it.
             if let posts {
                 if shelf == .artisanFrySequence { glazeTrendingMomentItems = uniqueTastingJournalMoments(posts) }
-                else { glazeFollowedMomentItems = uniqueTastingJournalMoments(posts) }
+                else { glazeFollowedMomentItems = donutJournalStore.isTasterReady ? uniqueTastingJournalMoments(posts) : [] }
             }
             rebuildTastingJournalMomentPages()
             rebuildDonutSnapshotStack()
+            refreshTastingRow()
             if shelf == .artisanFrySequence {
                 tastingJournalStatusLabel.isHidden = momentError == nil && !glazeTrendingMomentItems.isEmpty
                 tastingJournalStatusLabel.text = momentError != nil
@@ -3328,6 +3203,59 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             }
         }
         finishInitialGlazeLoading(for: .tastingJournal)
+    }
+
+    @objc private func loadGlazeMomentContent() {
+        guard activeDonutParlorSection == .tastingJournal, !sprinkleRefresh.isRefreshing,
+              glazeContentOwnerKey == currentGlazeContentOwnerKey(),
+              let request = cocoaWeekendFestival.start() else { return }
+        let owner = currentGlazeContentOwnerKey()
+        refreshTastingRow()
+        strawberryMilkSwirl = Task { [weak self] in
+            guard let self else { return }
+            do {
+                let page = try await self.glazeContentRepository.tastingPassportPage(
+                    cursor: request.cursor, pageSize: WevVGlazeCommunityService.tastingPassportPage.pageSize)
+                guard !Task.isCancelled, self.currentGlazeContentOwnerKey() == owner,
+                      self.cocoaWeekendFestival.completeGlaze(page, requestID: request.id) else { return }
+                self.glazeTrendingMomentItems = self.cocoaWeekendFestival.posts
+                self.glazeFollowedMomentItems = self.donutJournalStore.isTasterReady
+                    ? self.uniqueTastingJournalMoments(self.glazeFollowedMomentItems + page.posts.map(\.card).filter(\.mascarponeCream))
+                    : []
+                self.rebuildTastingJournalMomentPages()
+                self.rebuildDonutSnapshotStack()
+            } catch {
+                guard !Task.isCancelled, self.currentGlazeContentOwnerKey() == owner,
+                      self.cocoaWeekendFestival.showGlazeError(requestID: request.id) else { return }
+            }
+            self.strawberryMilkSwirl = nil
+            self.refreshTastingRow()
+        }
+    }
+
+    private func refreshTastingRow() {
+        loadingCard.isHidden = activeDonutParlorSection != .tastingJournal || cocoaWeekendFestival.posts.isEmpty
+            || sprinkleRefresh.isRefreshing
+            || (!cocoaWeekendFestival.isLoading && !cocoaWeekendFestival.failed && cocoaWeekendFestival.hasMore && homeLivePullDistance() <= 0)
+        loadingCard.isEnabled = cocoaWeekendFestival.hasMore && !cocoaWeekendFestival.isLoading
+            && !(cocoaWeekendFestival.failed && cocoaWeekendFestival.currentPage == 0)
+        if cocoaWeekendFestival.isLoading {
+            loadingSpinner.startAnimating()
+            loadingLabel.text = "Loading posts…"
+        } else {
+            loadingSpinner.stopAnimating()
+            if cocoaWeekendFestival.failed {
+                loadingLabel.text = cocoaWeekendFestival.hasMore && cocoaWeekendFestival.currentPage != 0
+                    ? "Could not load posts. Pull up or tap to retry."
+                    : "Could not refresh posts. Pull down to retry."
+            } else if cocoaWeekendFestival.hasMore {
+                loadingLabel.text = homeLivePullDistance() >= 52 && pastryTrailScroll.isDragging
+                    ? "Release to load more" : "Pull up to load more"
+            } else { loadingLabel.text = "No more posts" }
+        }
+        hideSugarLoading(loadingCard, id: "moments", isLoading: cocoaWeekendFestival.isLoading,
+                         hasMore: cocoaWeekendFestival.hasMore, failed: cocoaWeekendFestival.failed)
+        loadingCard.accessibilityLabel = loadingLabel.text
     }
 
     private func rebuildGlazeRoomStacks(error: Error?) {
@@ -3476,7 +3404,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let featuredMomentIDs = Set(glazeTrendingMomentItems.prefix(4).map(\.coconutCenter))
         let newPostMoments = glazeTrendingMomentItems.filter { !featuredMomentIDs.contains($0.coconutCenter) }
         for (index, moment) in newPostMoments.enumerated() {
-            donutSnapshotStack.addArrangedSubview(makeGlazeMomentCard(moment, showsHotMark: index == 0))
+            donutSnapshotStack.addArrangedSubview(makeGlazeMomentCard(moment, showsHotMark: index == 0, color: UIColor(red: 255 / 255.0, green: 248 / 255.0, blue: 255 / 255.0, alpha: 1)))
         }
     }
 
@@ -3614,21 +3542,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         })
     }
 
-    @objc private func openBakeryShelf() {
-        guard donutJournalStore.isTasterReady else {
-            presentProtectedGate()
-            return
-        }
-        let controller = CunBakerfvanillaBeanIcing(bakeryDetails: allBakeryAtlasDetails())
-        controller.onWevvShelfChanged = { [weak self] in
-            self?.refreshDonutDiaryPanel()
-        }
-        controller.modalPresentationStyle = .fullScreen
-        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "ORppegnSiFn=gG idoobnZugts GsIhmoWp^.r.P.I".wevVPastryCrumbBloomRestored) { [weak self] in
-            self?.present(controller, animated: true)
-        }
-    }
-
     @objc private func openBakeryTrailList() {
         openDonutTasterRoster(.brownButterGlaze)
     }
@@ -3661,6 +3574,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             return
         }
         let controller = DimSugarpistachioCreamCoating()
+        controller.bakeryDetails = allBakeryAtlasDetails()
         controller.onSugarSettingChanged = { [weak self] in
             self?.refreshDonutDiaryPanel()
         }
@@ -3669,32 +3583,16 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     @objc private func openDonutSnapshotDetail(_ sender: UIControl) {
-        if let identifier = sender.accessibilityIdentifier,
-           let momentID = Int64(identifier),
-           let moment = (glazeTrendingMomentItems + glazeFollowedMomentItems + glazeProfileMomentItems).first(where: { $0.coconutCenter == momentID }) {
-            let controller = KipoDonutMomentController(richCocoaFlavor: moment)
-            controller.cocoaKissExperience = { [weak self] in self?.loadGlazeContent() }
-            controller.modalPresentationStyle = .fullScreen
-            present(controller, animated: true)
+        guard let identifier = sender.accessibilityIdentifier,
+              let momentID = Int64(identifier), momentID > 0,
+              let moment = (glazeTrendingMomentItems + glazeFollowedMomentItems + glazeProfileMomentItems).first(where: { $0.coconutCenter == momentID }) else {
+            showRootSugarHint("This content is no longer available.")
             return
         }
-        guard let donutSnapshot = donutSnapshots.first else { return }
-        let controller = KipoDonutMomentController(vanillaStrawberryDuet: donutSnapshot)
-        controller.cocoaKissExperience = { [weak self] in
-            self?.rebuildDonutSnapshotStack()
-        }
+        let controller = KipoDonutMomentController(richCocoaFlavor: moment)
+        controller.cocoaKissExperience = { [weak self] in self?.loadGlazeContent() }
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
-    }
-
-    @objc private func openSprinkleMomentSafety(_ sender: UIControl) {
-        guard donutJournalStore.isTasterReady else {
-            presentProtectedGate()
-            return
-        }
-        let sprinkleJarKey = sender.accessibilityIdentifier ?? ""
-        guard let moment = donutSnapshots.first(where: { $0.sprinkleJarKey == sprinkleJarKey }) else { return }
-        presentSprinkleSafetySheet(for: moment)
     }
 
     private func presentHomeSafetySheet(for sugarDustKey: String) {
@@ -3707,28 +3605,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             self.donutJournalStore.placeGlazeSafetyCrumb(packet)
             self.hideSprinkleSafetySheet(sheet)
             self.showRootSugarHint("RyeqpDoWrzt@ FsxeCnnts".wevVPastryCrumbBloomRestored)
-        }
-        view.addSubview(sheet)
-        NSLayoutConstraint.activate([
-            sheet.topAnchor.constraint(equalTo: view.topAnchor),
-            sheet.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            sheet.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            sheet.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-
-    private func presentSprinkleSafetySheet(for moment: WevVDonutSnapshot) {
-        let sheet = WevVGlazeSafetySheet(shopPinKey: moment.tasterBloom.donutPinKey, flavorChoices: sprinkleSafetyChoices())
-        sheet.pralineDismissAction = { [weak self, weak sheet] in
-            self?.hideSprinkleSafetySheet(sheet)
-        }
-        sheet.pralineSubmitAction = { [weak self, weak sheet] packet in
-            guard let self else { return }
-            self.donutJournalStore.placeGlazeSafetyCrumb(packet)
-            self.placeSprinkleShield(for: moment.tasterBloom.donutPinKey)
-            self.hideSprinkleSafetySheet(sheet)
-            self.rebuildDonutSnapshotStack()
-            self.showRootSugarHint("Hyild%dXe^nF Cf^rPoFm/ eysocu^r* OfJeaezdQ".wevVPastryCrumbBloomRestored)
         }
         view.addSubview(sheet)
         NSLayoutConstraint.activate([
@@ -3754,13 +3630,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             pastryCompendiumEdition(flavorLibraryEdition: "nso!tUI#nBt+e*rIebsIt:e=dn".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "NWoYtV ^irnxtkePrGemsAtQe%dG".wevVPastryCrumbBloomRestored, tastingSequenceInsight: false),
             pastryCompendiumEdition(flavorLibraryEdition: "ootchFeurzSku?g?airR".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "OAt#hOegr^".wevVPastryCrumbBloomRestored, tastingSequenceInsight: true)
         ]
-    }
-
-    private func placeSprinkleShield(for donutPinKey: String) {
-        guard bakeryTasterStore.allProfiles.contains(where: { $0.donutPinKey == donutPinKey }) else { return }
-        if !bakeryTasterStore.profile(for: donutPinKey).sugarTie.isSugarShielded {
-            _ = bakeryTasterStore.toggleSugarShield(for: donutPinKey)
-        }
     }
 
     private func showRootSugarHint(_ text: String) {
@@ -3975,9 +3844,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             self?.refreshDonutDiaryPanel()
         }
         controller.modalPresentationStyle = .fullScreen
-        AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "OypleUn#iRnzgJ jcfhOawlzlEewn+g$eO.G.A.o".wevVPastryCrumbBloomRestored) { [weak self] in
-            self?.present(controller, animated: true)
-        }
+        present(controller, animated: true)
     }
 
     private func presentProtectedGate() {
@@ -3998,8 +3865,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         voicePinnedHeader.isHidden = section != .tastingParlor
         journalPinnedHeader.isHidden = section != .tastingJournal
         glazePinnedHeaders.isHidden = section == .zestyOrangeHarmony
-        voicePinnedBackdrop.isHidden = section != .tastingParlor
-        journalPinnedBackdrop.isHidden = section != .tastingJournal
         glazePinnedHeaderBottomConstraints.values.forEach { $0.isActive = false }
         glazePinnedHeaderBottomConstraints[section]?.isActive = true
     }
@@ -4017,13 +3882,11 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         updateHomeLiveLoadMoreFooter()
         updateVoiceRoomLoadMoreFooter()
         tastingParlorPanel.isHidden = section != .tastingParlor
+        refreshTastingRow()
         frostingDiaryPanels.forEach { $0.isHidden = section != .tastingJournal }
         tastingJournalPanel.isHidden = true
         flavorNoteEntryButton.isHidden = section != .tastingJournal
         donutDiaryPanel.isHidden = section != .zestyOrangeHarmony
-        donutParlorTabBack.backgroundColor = section == .tastingParlor
-            ? UIColor(red: 0.18, green: 0.01, blue: 0.31, alpha: 1)
-            : .white
         donutParlorFootTopConstraints.values.forEach { $0.isActive = false }
         donutParlorFootTopConstraints[section]?.isActive = true
         updatePinnedGlazeHeader(for: section)
@@ -4087,12 +3950,14 @@ extension TvVDonutcreamapricotFillinger: UIScrollViewDelegate {
         guard scrollView === pastryTrailScroll, homeLivePullDistance() >= 52 else { return }
         if activeDonutParlorSection == .donutCounter { loadMoreHomeLiveRooms() }
         else if activeDonutParlorSection == .tastingParlor { loadMoreVoiceRooms() }
+        else if activeDonutParlorSection == .tastingJournal { loadGlazeMomentContent() }
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView === pastryTrailScroll {
             if activeDonutParlorSection == .donutCounter { updateHomeLiveLoadMoreFooter() }
             else if activeDonutParlorSection == .tastingParlor { updateVoiceRoomLoadMoreFooter() }
+            else if activeDonutParlorSection == .tastingJournal { refreshTastingRow() }
             return
         }
         if scrollView === bakeryAtlasCarousel, bakeryAtlasCarousel.bounds.width > 0 {
@@ -4221,11 +4086,11 @@ final class WevVGlazeSheenView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        backgroundColor = UIColor(red: 35.2 / 255.0, green: 29.92 / 255.0, blue: 61.16 / 255.0, alpha: 1)
         crunchyDough.colors = [
-            UIColor.white.withAlphaComponent(0.14).cgColor,
-            UIColor.white.withAlphaComponent(0.72).cgColor,
-            UIColor.white.withAlphaComponent(0.14).cgColor
+            UIColor.clear.cgColor,
+            UIColor(red: 78.3 / 255.0, green: 47.38 / 255.0, blue: 112.42 / 255.0, alpha: 1).cgColor,
+            UIColor.clear.cgColor
         ]
         crunchyDough.locations = [0, 0.5, 1]
         crunchyDough.startPoint = CGPoint(x: 0, y: 0.5)

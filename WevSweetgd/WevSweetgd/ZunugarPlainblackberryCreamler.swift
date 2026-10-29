@@ -20,20 +20,20 @@ final class ZunugarPlainblackberryCreamler: UIViewController {
     }
 
     private func buildSugarTextPage() {
-        view.backgroundColor = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
+        view.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.25, alpha: 1)
 
         let baSugarck = UIButton(type: .system)
         baSugarck.translatesAutoresizingMaskIntoConstraints = false
-        baSugarck.tintColor = .black
+        baSugarck.tintColor = .white
         baSugarck.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         baSugarck.addTarget(self, action: #selector(closeSugarText), for: .touchUpInside)
 
-        let glazeTitle = makeSugarLabel(titleWevVSugarText, size: 18, weight: .heavy, color: .black)
+        let glazeTitle = makeSugarLabel(titleWevVSugarText, size: 18, weight: .heavy, color: UIColor(red: 0.94, green: 0.94, blue: 0.95, alpha: 1))
         glazeTitle.textAlignment = .center
 
         let glazePanel = UIView()
         glazePanel.translatesAutoresizingMaskIntoConstraints = false
-        glazePanel.backgroundColor = .white
+        glazePanel.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.25, alpha: 1)
         glazePanel.layer.cornerRadius = 16
 
         let sugarScroll = UIScrollView()
@@ -44,7 +44,7 @@ final class ZunugarPlainblackberryCreamler: UIViewController {
         let sugarContent = UIView()
         sugarContent.translatesAutoresizingMaskIntoConstraints = false
 
-        let body = makeSugarLabel(bodyWevVSugarText, size: 15, weight: .regular, color: UIColor(red: 0.28, green: 0.24, blue: 0.32, alpha: 1))
+        let body = makeSugarLabel(bodyWevVSugarText, size: 15, weight: .regular, color: UIColor(red: 0.94, green: 0.94, blue: 0.95, alpha: 1))
         body.numberOfLines = 0
 
         view.addSubview(baSugarck)

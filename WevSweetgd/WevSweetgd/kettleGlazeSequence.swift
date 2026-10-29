@@ -1033,7 +1033,12 @@ final class WevVGlazeContentRepository {
     func starchGelatinizationStudy(carnivalGlazeShowcase: goldenCrumbDough) async throws -> [butteryTexture] {
         try await WevVGlazeRuntime.shared.prepare()
         if carnivalGlazeShowcase == .cherryCenter, !pastryCatalogEntry.isTasterReady { return [] }
-        return try await WevVGlazeCommunityService.shared.timeline(followedOnly: carnivalGlazeShowcase == .cherryCenter).map(\.card)
+        return try await WevVGlazeCommunityService.shared.timeline(followedOnly: carnivalGlazeShowcase == .cherryCenter, maxPages: 1).map(\.card)
+    }
+
+    func tastingPassportPage(cursor: Int64 = 0, pageSize: Int = 20) async throws -> WevVGlazeCommunityService.FeedPage {
+        try await WevVGlazeRuntime.shared.prepare()
+        return try await WevVGlazeCommunityService.shared.feed(cursorID: cursor, size: pageSize)
     }
 
     func aromaSpectrumNotes() async throws -> [coldProofRhythm] {

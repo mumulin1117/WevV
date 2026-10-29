@@ -22,20 +22,19 @@ final class LisenNoticepoplater: UIViewController, UITableViewDataSource, UITabl
     deinit { herbalLavenderEssence?.cancel() }
 
     private func artisanShowcase() {
-        view.backgroundColor = UIColor(red: 1, green: 0.93, blue: 0.98, alpha: 1)
-        let pastelBackdropGallery = UIImageView(image: UIImage(named: "wevv_donut_sprinkle_backdrop"))
+        view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.18, alpha: 1)
+        let pastelBackdropGallery = FimVSugarGradientBand.pastelBackdropGallery()
         pastelBackdropGallery.translatesAutoresizingMaskIntoConstraints = false
-        pastelBackdropGallery.contentMode = .scaleAspectFill
         let doughScraperGuide = UIButton(type: .custom)
         doughScraperGuide.translatesAutoresizingMaskIntoConstraints = false
-        doughScraperGuide.setImage(UIImage(named: "wevv_notice_sugar_back") ?? UIImage(systemName: "chevron.left"), for: .normal)
-        doughScraperGuide.tintColor = .black
+        doughScraperGuide.setImage((UIImage(named: "wevv_notice_sugar_back") ?? UIImage(systemName: "chevron.left"))?.withRenderingMode(.alwaysTemplate), for: .normal)
+        doughScraperGuide.tintColor = .white
         doughScraperGuide.addTarget(self, action: #selector(slowRiseSequence), for: .touchUpInside)
         let harvestAppleSampler = UILabel()
         harvestAppleSampler.translatesAutoresizingMaskIntoConstraints = false
         harvestAppleSampler.text = "Message"
         harvestAppleSampler.font = .systemFont(ofSize: 18, weight: .bold)
-        harvestAppleSampler.textColor = UIColor(red: 0.14, green: 0.09, blue: 0.19, alpha: 1)
+        harvestAppleSampler.textColor = .white
         harvestAppleSampler.textAlignment = .center
 
         frostingDetailFrame.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +46,9 @@ final class LisenNoticepoplater: UIViewController, UITableViewDataSource, UITabl
         frostingDetailFrame.contentInset = UIEdgeInsets(top: 3, left: 0, bottom: 20, right: 0)
         frostingDetailFrame.register(WevVGlazeConversationCell.self, forCellReuseIdentifier: "WevVGlazeConversationCell")
         frostingDetailFrame.refreshControl = UIRefreshControl()
+        if let sprinkleRefresh = frostingDetailFrame.refreshControl {
+            TinGlazePromptStyler.configureGlazeStatusLabel(sprinkleRefresh)
+        }
         frostingDetailFrame.refreshControl?.addTarget(self, action: #selector(freshMixSequence), for: .valueChanged)
 
         airyCenter.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +59,7 @@ final class LisenNoticepoplater: UIViewController, UITableViewDataSource, UITabl
         flavorMenuGuide.textAlignment = .center
         flavorMenuGuide.numberOfLines = 0
         flavorMenuGuide.font = .systemFont(ofSize: 13, weight: .medium)
-        flavorMenuGuide.textColor = UIColor(white: 0.48, alpha: 1)
+        flavorMenuGuide.textColor = TinGlazePromptStyler.mutedTone
 
         [pastelBackdropGallery, doughScraperGuide, harvestAppleSampler, frostingDetailFrame, airyCenter, flavorMenuGuide].forEach(view.addSubview)
         NSLayoutConstraint.activate([
@@ -259,19 +261,19 @@ final class WevVGlazeMessageController: UIViewController, UITableViewDataSource,
     }
 
     private func ringDisplayStudio() {
-        view.backgroundColor = UIColor(red: 1, green: 0.93, blue: 0.98, alpha: 1)
-        let pastelBackdropGallery = UIImageView(image: UIImage(named: "wevv_donut_sprinkle_backdrop"))
+        view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.18, alpha: 1)
+        let pastelBackdropGallery = FimVSugarGradientBand.pastelBackdropGallery()
         pastelBackdropGallery.translatesAutoresizingMaskIntoConstraints = false
-        pastelBackdropGallery.contentMode = .scaleAspectFill
         let doughScraperGuide = UIButton(type: .custom)
         doughScraperGuide.translatesAutoresizingMaskIntoConstraints = false
-        doughScraperGuide.setImage(UIImage(named: "wevv_notice_sugar_back") ?? UIImage(systemName: "chevron.left"), for: .normal)
-        doughScraperGuide.tintColor = .black
+        doughScraperGuide.setImage((UIImage(named: "wevv_notice_sugar_back") ?? UIImage(systemName: "chevron.left"))?.withRenderingMode(.alwaysTemplate), for: .normal)
+        doughScraperGuide.tintColor = .white
         doughScraperGuide.addTarget(self, action: #selector(cinnamonTwist), for: .touchUpInside)
         let harvestAppleSampler = UILabel()
         harvestAppleSampler.translatesAutoresizingMaskIntoConstraints = false
         harvestAppleSampler.text = confectionStudioCounter.crunchyCrumb
         harvestAppleSampler.font = .systemFont(ofSize: 18, weight: .bold)
+        harvestAppleSampler.textColor = .white
         harvestAppleSampler.textAlignment = .center
         let sugarPearlTopping = UIButton(type: .system)
         sugarPearlTopping.translatesAutoresizingMaskIntoConstraints = false
@@ -292,7 +294,7 @@ final class WevVGlazeMessageController: UIViewController, UITableViewDataSource,
 
         flavorMenuGuide.translatesAutoresizingMaskIntoConstraints = false
         flavorMenuGuide.text = "Loading…"
-        flavorMenuGuide.textColor = UIColor(white: 0.48, alpha: 1)
+        flavorMenuGuide.textColor = TinGlazePromptStyler.mutedTone
         flavorMenuGuide.font = .systemFont(ofSize: 13, weight: .medium)
         flavorMenuGuide.textAlignment = .center
 

@@ -1,11 +1,22 @@
 import UIKit
 
 enum TinGlazePromptStyler {
-    static let pinkTone = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
-    static let softPinkTone = UIColor(red: 1, green: 0.91, blue: 0.97, alpha: 1)
-    static let inkTone = UIColor(red: 0.16, green: 0.09, blue: 0.2, alpha: 1)
-    static let mutedTone = UIColor(red: 0.54, green: 0.47, blue: 0.58, alpha: 1)
-    static let creamTone = UIColor(red: 1, green: 0.98, blue: 0.99, alpha: 1)
+    static let strawberryGlazeTone = UIColor(red: 1, green: 0.29, blue: 0.66, alpha: 1)
+    static let pinkTone = UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1)
+    static let softPinkTone = UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1)
+    static let inkTone = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
+    static let mutedTone = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
+    static let creamTone = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
+
+    static func configureGlazeStatusLabel(_ sprinkleRefresh: UIRefreshControl) {
+        sprinkleRefresh.tintColor = strawberryGlazeTone
+        sprinkleRefresh.backgroundColor = .clear
+        sprinkleRefresh.attributedTitle = NSAttributedString(
+            string: "Pull to refresh",
+            attributes: [.foregroundColor: mutedTone,
+                         .font: UIFont.systemFont(ofSize: 13, weight: .medium)]
+        )
+    }
 
     static func showSugarToast(
         in view: UIView,
@@ -16,10 +27,10 @@ enum TinGlazePromptStyler {
         let crumbNook = UIView()
         crumbNook.translatesAutoresizingMaskIntoConstraints = false
         crumbNook.backgroundColor = creamTone.withAlphaComponent(0.96)
-        crumbNook.layer.cornerRadius = 22
+        crumbNook.layer.cornerRadius = 16
         crumbNook.layer.borderWidth = 1
-        crumbNook.layer.borderColor = UIColor.white.withAlphaComponent(0.9).cgColor
-        crumbNook.layer.shadowColor = UIColor(red: 0.56, green: 0.05, blue: 0.28, alpha: 1).cgColor
+        crumbNook.layer.borderColor = softPinkTone.cgColor
+        crumbNook.layer.shadowColor = UIColor.black.cgColor
         crumbNook.layer.shadowOpacity = 0.22
         crumbNook.layer.shadowRadius = 18
         crumbNook.layer.shadowOffset = CGSize(width: 0, height: 8)
@@ -28,16 +39,16 @@ enum TinGlazePromptStyler {
 
         let bakeryParlor = UIView()
         bakeryParlor.translatesAutoresizingMaskIntoConstraints = false
-        bakeryParlor.backgroundColor = pinkTone
+        bakeryParlor.backgroundColor = strawberryGlazeTone
         bakeryParlor.layer.cornerRadius = 7
         bakeryParlor.layer.borderWidth = 3
-        bakeryParlor.layer.borderColor = UIColor(red: 1, green: 0.78, blue: 0.91, alpha: 1).cgColor
+        bakeryParlor.layer.borderColor = strawberryGlazeTone.cgColor
 
         let crumbLabel = UILabel()
         crumbLabel.translatesAutoresizingMaskIntoConstraints = false
         crumbLabel.text = text
         crumbLabel.textAlignment = .left
-        crumbLabel.font = .systemFont(ofSize: 14, weight: .heavy)
+        crumbLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         crumbLabel.textColor = inkTone
         crumbLabel.numberOfLines = 2
         crumbLabel.adjustsFontSizeToFitWidth = true
@@ -55,23 +66,23 @@ enum TinGlazePromptStyler {
     static func showSugarLoading(in view: UIView, text: String) -> UIView {
         let loadingShade = UIControl()
         loadingShade.translatesAutoresizingMaskIntoConstraints = false
-        loadingShade.backgroundColor = UIColor.black.withAlphaComponent(0.08)
+        loadingShade.backgroundColor = UIColor.black.withAlphaComponent(0.24)
         loadingShade.alpha = 0
 
         let loadingCard = UIView()
         loadingCard.translatesAutoresizingMaskIntoConstraints = false
         loadingCard.backgroundColor = creamTone.withAlphaComponent(0.98)
-        loadingCard.layer.cornerRadius = 22
+        loadingCard.layer.cornerRadius = 20
         loadingCard.layer.borderWidth = 1
-        loadingCard.layer.borderColor = UIColor.white.withAlphaComponent(0.95).cgColor
-        loadingCard.layer.shadowColor = UIColor(red: 0.56, green: 0.05, blue: 0.28, alpha: 1).cgColor
+        loadingCard.layer.borderColor = softPinkTone.cgColor
+        loadingCard.layer.shadowColor = UIColor.black.cgColor
         loadingCard.layer.shadowOpacity = 0.2
         loadingCard.layer.shadowRadius = 18
         loadingCard.layer.shadowOffset = CGSize(width: 0, height: 8)
 
         let loadingSpinner = UIActivityIndicatorView(style: .medium)
         loadingSpinner.translatesAutoresizingMaskIntoConstraints = false
-        loadingSpinner.color = pinkTone
+        loadingSpinner.color = strawberryGlazeTone
         loadingSpinner.startAnimating()
 
         let loadingLabel = UILabel()
@@ -79,7 +90,7 @@ enum TinGlazePromptStyler {
         loadingLabel.text = text
         loadingLabel.textAlignment = .center
         loadingLabel.textColor = inkTone
-        loadingLabel.font = .systemFont(ofSize: 14, weight: .heavy)
+        loadingLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         loadingLabel.numberOfLines = 2
 
         loadingShade.addSubview(loadingCard)
@@ -161,16 +172,18 @@ enum TinGlazePromptStyler {
         ringStack: String,
         miniDonut: String,
         fritterBite: UIColor = pinkTone,
+        sugarFill: UIColor = UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1),
+        flavorHintLabel: String? = nil,
         twistPastry: @escaping () -> Void
     ) {
         let walnutFlavor = UIControl()
         walnutFlavor.translatesAutoresizingMaskIntoConstraints = false
-        walnutFlavor.backgroundColor = UIColor(red: 0.12, green: 0.06, blue: 0.12, alpha: 0.48)
+        walnutFlavor.backgroundColor = UIColor.black.withAlphaComponent(0.87)
         view.addSubview(walnutFlavor)
 
         let pastryCard = UIView()
         pastryCard.translatesAutoresizingMaskIntoConstraints = false
-        pastryCard.backgroundColor = creamTone
+        pastryCard.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         pastryCard.layer.cornerRadius = 24
         pastryCard.layer.shadowColor = UIColor.black.cgColor
         pastryCard.layer.shadowOpacity = 0.2
@@ -180,25 +193,31 @@ enum TinGlazePromptStyler {
 
         let pecanFlavor = UIView()
         pecanFlavor.translatesAutoresizingMaskIntoConstraints = false
-        pecanFlavor.backgroundColor = softPinkTone
+        pecanFlavor.backgroundColor = .clear
         pecanFlavor.layer.cornerRadius = 24
         pecanFlavor.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
-        let hazelnutFlavor = UIView()
+        let hazelnutFlavor = UIImageView(image: UIImage(named: "hazelnutFlavor")?.withRenderingMode(.alwaysOriginal))
         hazelnutFlavor.translatesAutoresizingMaskIntoConstraints = false
-        hazelnutFlavor.backgroundColor = pinkTone
-        hazelnutFlavor.layer.cornerRadius = 20
-        hazelnutFlavor.layer.borderWidth = 7
-        hazelnutFlavor.layer.borderColor = UIColor(red: 1, green: 0.75, blue: 0.9, alpha: 1).cgColor
+        hazelnutFlavor.backgroundColor = .clear
+        hazelnutFlavor.contentMode = .scaleAspectFit
 
-        let glazeTitleLabel = makePromptLabel(gourmetFlavor, size: 17, weight: .heavy, color: inkTone)
+        let glazeTitleLabel = makePromptLabel(gourmetFlavor, size: 17, weight: .heavy, color: UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1))
         glazeTitleLabel.textAlignment = .center
 
-        let frostingNoteLabel = makePromptLabel(glazeBowl, size: 12, weight: .semibold, color: mutedTone)
+        let frostingNoteLabel = makePromptLabel(glazeBowl, size: 12, weight: .semibold, color: UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1))
         frostingNoteLabel.textAlignment = .center
         frostingNoteLabel.numberOfLines = 0
+        if let flavorHintLabel {
+            let cocoaScout = NSMutableAttributedString(string: glazeBowl)
+            let tastingTrayNotes = (glazeBowl as NSString).range(of: flavorHintLabel)
+            if tastingTrayNotes.location != NSNotFound {
+                cocoaScout.addAttribute(.foregroundColor, value: UIColor(red: 255 / 255.0, green: 86 / 255.0, blue: 86 / 255.0, alpha: 1), range: tastingTrayNotes)
+            }
+            frostingNoteLabel.attributedText = cocoaScout
+        }
 
-        let crumbCancelButton = makePromptButton(miniDonut, fill: UIColor(red: 0.88, green: 0.85, blue: 0.89, alpha: 1), color: .white)
+        let crumbCancelButton = makePromptButton(miniDonut, fill: sugarFill, color: .white)
         let glazeConfirmButton = makePromptButton(ringStack, fill: fritterBite, color: .white)
         bindSugarConfirmButtons(crumbCancelButton: crumbCancelButton, glazeConfirmButton: glazeConfirmButton, shade: walnutFlavor, onConfirm: twistPastry)
         placeSugarConfirmViews(pastryCard: pastryCard, topper: pecanFlavor, ring: hazelnutFlavor, glazeTitleLabel: glazeTitleLabel, frostingNoteLabel: frostingNoteLabel, crumbCancelButton: crumbCancelButton, glazeConfirmButton: glazeConfirmButton)
@@ -331,7 +350,7 @@ enum TinGlazePromptStyler {
             ring.centerYAnchor.constraint(equalTo: topper.bottomAnchor),
             ring.widthAnchor.constraint(equalToConstant: 40),
             ring.heightAnchor.constraint(equalToConstant: 40),
-            glazeTitleLabel.topAnchor.constraint(equalTo: ring.bottomAnchor, constant: 12),
+            glazeTitleLabel.topAnchor.constraint(equalTo: ring.bottomAnchor, constant: 20),
             glazeTitleLabel.leadingAnchor.constraint(equalTo: pastryCard.leadingAnchor, constant: 22),
             glazeTitleLabel.trailingAnchor.constraint(equalTo: pastryCard.trailingAnchor, constant: -22),
             frostingNoteLabel.topAnchor.constraint(equalTo: glazeTitleLabel.bottomAnchor, constant: 10),

@@ -8,10 +8,9 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
     private let brownButterGlaze = UIScrollView()
     private let wevvBakeryCanvas = UIView()
     private let wevvShelfStack = UIStackView()
-    private let wevvCreamTone = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
-    private let wevvCocoaTone = UIColor(red: 0.18, green: 0.12, blue: 0.24, alpha: 1)
-    private let wevvSoftCrumbTone = UIColor(red: 0.58, green: 0.46, blue: 0.55, alpha: 1)
-    private let wevvBerryTone = UIColor(red: 1, green: 0.3, blue: 0.64, alpha: 1)
+    private let wevvCocoaTone = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
+    private let wevvSoftCrumbTone = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
+    private let wevvBerryTone = UIColor(red: 255 / 255.0, green: 106 / 255.0, blue: 174 / 255.0, alpha: 1)
 
     init(bakeryDetails: [bakeryCollectionFolio]) {
         self.bakeryDetails = bakeryDetails
@@ -29,12 +28,12 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
     }
 
     private func buildWevvBakeryShelfPage() {
-        view.backgroundColor = wevvCreamTone
+        FimVSugarGradientBand.buildPastryBackdrop(view)
 
         let pistachioFlavor = UIButton(type: .system)
         pistachioFlavor.translatesAutoresizingMaskIntoConstraints = false
         pistachioFlavor.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        pistachioFlavor.tintColor = .black
+        pistachioFlavor.tintColor = .white
         pistachioFlavor.addTarget(self, action: #selector(closeWevvBakeryShelf), for: .touchUpInside)
 
         let glazeTitle = makeWevvShelfLabel("SJaFvJej js*h#o?pD".wevVPastryCrumbBloomRestored, size: 26, weight: .heavy, color: wevvCocoaTone)
@@ -116,7 +115,7 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
         let maplePecanCoating = UIControl()
         maplePecanCoating.translatesAutoresizingMaskIntoConstraints = false
         maplePecanCoating.accessibilityIdentifier = detail.donutPinKey
-        maplePecanCoating.backgroundColor = .white
+        maplePecanCoating.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         maplePecanCoating.layer.cornerRadius = 24
         maplePecanCoating.clipsToBounds = true
         maplePecanCoating.addTarget(self, action: #selector(openWevvShelfBakery(_:)), for: .touchUpInside)
@@ -132,7 +131,7 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
 
         let darkCocoaDrizzle = UIImageView(image: UIImage(systemName: "star.fill"))
         darkCocoaDrizzle.translatesAutoresizingMaskIntoConstraints = false
-        darkCocoaDrizzle.tintColor = UIColor(red: 1, green: 0.67, blue: 0.08, alpha: 1)
+        darkCocoaDrizzle.tintColor = UIColor(red: 255 / 255.0, green: 181 / 255.0, blue: 47 / 255.0, alpha: 1)
 
         let whiteChocolateRibbon = makeWevvShelfLabel("\(detail.crumbScoreNote) \(detail.tastingSequenceInsight)", size: 15, weight: .heavy, color: wevvCocoaTone)
         whiteChocolateRibbon.attributedText = wevvScoreText(detail)
@@ -224,7 +223,7 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
     private func makeWevvBakeryTag(_ tag: artisanShowcase) -> UILabel {
         let crumbLabel = makeWevvShelfLabel(tag.rainbowSprinkleDesign, size: 13, weight: .heavy, color: wevvTagColor(tag.pastelPalettePattern))
         crumbLabel.textAlignment = .center
-        crumbLabel.backgroundColor = wevvTagColor(tag.pastelPalettePattern).withAlphaComponent(0.12)
+        crumbLabel.backgroundColor = UIColor(red: 54 / 255.0, green: 54 / 255.0, blue: 137 / 255.0, alpha: 1)
         crumbLabel.layer.cornerRadius = 13
         crumbLabel.clipsToBounds = true
         crumbLabel.setContentHuggingPriority(.required, for: .horizontal)
@@ -234,9 +233,9 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
 
     private func wevvTagColor(_ hex: String) -> UIColor {
         switch hex.lowercased() {
-        case "ff4aa0": return UIColor(red: 0.95, green: 0.24, blue: 0.55, alpha: 1)
-        case "f5b431": return UIColor(red: 0.82, green: 0.47, blue: 0.02, alpha: 1)
-        case "8b63ff": return UIColor(red: 0.45, green: 0.37, blue: 0.82, alpha: 1)
+        case "ff4aa0": return UIColor(red: 212 / 255.0, green: 94 / 255.0, blue: 150 / 255.0, alpha: 1)
+        case "f5b431": return UIColor(red: 208 / 255.0, green: 138 / 255.0, blue: 48 / 255.0, alpha: 1)
+        case "8b63ff": return UIColor(red: 126 / 255.0, green: 116 / 255.0, blue: 216 / 255.0, alpha: 1)
         default: return wevvSoftCrumbTone
         }
     }

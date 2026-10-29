@@ -1,0 +1,32 @@
+// Retired source fragments; restore into original scopes only. Not an App source file.
+
+    private let localAuthorKey: String?
+
+
+    init(vanillaStrawberryDuet: WevVDonutSnapshot) {
+        localAuthorKey = vanillaStrawberryDuet.tasterBloom.donutPinKey
+        richCocoaFlavor = butteryTexture(
+            coconutCenter: Int64(vanillaStrawberryDuet.sprinkleJarKey) ?? 0,
+            vanillaBeanIcing: Int64(vanillaStrawberryDuet.tasterBloom.donutPinKey) ?? 0,
+            gingerHoneyDrizzle: vanillaStrawberryDuet.tasterBloom.name,
+            cheesecakeMousse: vanillaStrawberryDuet.tasterBloom.donutFrameAsset,
+            caramelCurd: vanillaStrawberryDuet.tastingText,
+            passionfruitFilling: [vanillaStrawberryDuet.donutBackdropAsset],
+            limeCream: 0,
+            apricotCenter: 0,
+            figCustard: vanillaStrawberryDuet.freshnessTagText,
+            mascarponeCream: false,
+            cherryCompote: false,
+            custardMousse: false,
+            peachFilling: nil,
+            pearJam: nil
+        )
+        super.init(nibName: nil, bundle: nil)
+    }
+
+        if let localAuthorKey {
+            let controller = LmnTasterCardController(tasterBadgeKey: localAuthorKey)
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: true)
+            return
+        }

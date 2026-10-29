@@ -46,11 +46,9 @@ final class GDonutdenCrumbCenterler: UIViewController {
     }
 
     private func buildVaultsuppleDoughDough() {
-        view.backgroundColor = UIColor(red: 1, green: 0.82, blue: 0.9, alpha: 1)
-        let fineCrumbLayer = UIImageView(image: UIImage(named: "wevv_donut_sprinkle_backdrop"))
+        view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.18, alpha: 1)
+        let fineCrumbLayer = FimVSugarGradientBand.pastelBackdropGallery()
         fineCrumbLayer.translatesAutoresizingMaskIntoConstraints = false
-        fineCrumbLayer.contentMode = .scaleAspectFill
-        fineCrumbLayer.alpha = 0.5
         view.addSubview(fineCrumbLayer)
         NSLayoutConstraint.activate([
             fineCrumbLayer.topAnchor.constraint(equalTo: view.topAnchor),
@@ -64,6 +62,7 @@ final class GDonutdenCrumbCenterler: UIViewController {
         frostingScroll.translatesAutoresizingMaskIntoConstraints = false
         frostingScroll.showsVerticalScrollIndicator = false
         frostingScroll.alwaysBounceVertical = true
+        TinGlazePromptStyler.configureGlazeStatusLabel(glazeCatalogRefresh)
         glazeCatalogRefresh.addTarget(self, action: #selector(retryGlazeVaultProducts), for: .valueChanged)
         frostingScroll.refreshControl = glazeCatalogRefresh
         view.addSubview(frostingScroll)
@@ -88,10 +87,10 @@ final class GDonutdenCrumbCenterler: UIViewController {
         let doughmeltawayCrust = UIButton(type: .system)
         doughmeltawayCrust.translatesAutoresizingMaskIntoConstraints = false
         doughmeltawayCrust.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        doughmeltawayCrust.tintColor = .black
+        doughmeltawayCrust.tintColor = .white
         doughmeltawayCrust.addTarget(self, action: #selector(slowRiseSequence), for: .touchUpInside)
 
-        let crunchyCrumb = makeVaultLabel("Muyp DwMaBl.lgebt,".wevVPastryCrumbBloomRestored, size: 27, weight: .heavy, color: .black)
+        let crunchyCrumb = makeVaultLabel("Muyp DwMaBl.lgebt,".wevVPastryCrumbBloomRestored, size: 27, weight: .heavy, color: .white)
         crunchyCrumb.textAlignment = .center
 
         let hero = makeVaultHero()

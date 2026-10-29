@@ -1,16 +1,17 @@
 import UIKit
 
 final class DimSugarpistachioCreamCoating: UIViewController {
+    var bakeryDetails: [bakeryCollectionFolio] = []
+
     var onSugarSettingChanged: (() -> Void)?
 
     private let glazeRepository = WevVGlazeSessionRepository.pastryTrailDiary
     private let sugarScrollView = UIScrollView()
     private let sugarContentView = UIView()
     private let sugarRowsStack = UIStackView()
-    private let gingerHoneyDrizzle = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
-    private let paleTone = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
-    private let inkTone = UIColor(red: 0.11, green: 0.08, blue: 0.14, alpha: 1)
-    private let mutedTone = UIColor(red: 0.54, green: 0.49, blue: 0.58, alpha: 1)
+    private let gingerHoneyDrizzle = UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1)
+    private let inkTone = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
+    private let mutedTone = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
 
     private struct SugarSettingRowSpec {
         let sugarTitle: String
@@ -26,7 +27,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
     }
 
     private func buildSugarSettingsPage() {
-        view.backgroundColor = paleTone
+        FimVSugarGradientBand.buildPastryBackdrop(view)
         blackSesameRibbon()
         caramelAppleIcing()
         builddarkCocoaIcing()
@@ -35,7 +36,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
     private func blackSesameRibbon() {
         let doughBackButton = UIButton(type: .system)
         doughBackButton.translatesAutoresizingMaskIntoConstraints = false
-        doughBackButton.tintColor = .black
+        doughBackButton.tintColor = .white
         doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         doughBackButton.addTarget(self, action: #selector(closeSugarSettings), for: .touchUpInside)
 
@@ -93,7 +94,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             let group = UIStackView()
             group.axis = .vertical
             group.spacing = 0
-            group.backgroundColor = .white
+            group.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
             group.layer.cornerRadius = 18
             group.layer.shadowColor = UIColor.black.cgColor
             group.layer.shadowOpacity = 0.05
@@ -131,7 +132,8 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             [
                 SugarSettingRowSpec(sugarTitle: "Store", h5Entry: .store),
                 SugarSettingRowSpec(sugarTitle: "Backpack", h5Entry: .backpack),
-                SugarSettingRowSpec(sugarTitle: "Diamond Records", h5Entry: .diamondRecords)
+                SugarSettingRowSpec(sugarTitle: "Diamond Records", h5Entry: .diamondRecords),
+                SugarSettingRowSpec(sugarTitle: "Save shop", action: #selector(openBakeryShelf))
             ],
             [
                 SugarSettingRowSpec(sugarTitle: "System Message", h5Entry: .systemMessages),
@@ -149,13 +151,13 @@ final class DimSugarpistachioCreamCoating: UIViewController {
     private func builddarkCocoaIcing() {
         let crumbEraseButton = makeSugarBottomButton(
             sugarTitle: "DfeFlyeytQe* %Afcbc*oAuXnitB".wevVPastryCrumbBloomRestored,
-            sugarInk: UIColor(red: 0.92, green: 0.12, blue: 0.18, alpha: 1),
-            sugarFill: .white,
+            sugarInk: UIColor(red: 255 / 255.0, green: 61 / 255.0, blue: 61 / 255.0, alpha: 1),
+            sugarFill: UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1),
             fontSize: 14,
             action: #selector(showDeleteSugarPrompt)
         )
         crumbEraseButton.layer.borderWidth = 1
-        crumbEraseButton.layer.borderColor = UIColor(red: 0.87, green: 0.84, blue: 0.88, alpha: 1).cgColor
+        crumbEraseButton.layer.borderColor = UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1).cgColor
 
         let frostingRestButton = makeSugarBottomButton(
             sugarTitle: "LxoSgc +oNuMt%".wevVPastryCrumbBloomRestored,
@@ -196,7 +198,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
     private func makeSettingRow(title: String, tastingVisit: String?, showsArrow: Bool, action: Selector?) -> UIControl {
         let donutRow = UIControl()
         donutRow.translatesAutoresizingMaskIntoConstraints = false
-        donutRow.backgroundColor = .white
+        donutRow.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         if let action {
             donutRow.addTarget(self, action: action, for: .touchUpInside)
         }
@@ -204,7 +206,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         let glazeTitleLabel = espressoCreamIcing(title, almondPralineShell: 14, orangeBlossomCoating: .semibold, brownButterShell: inkTone)
         let divider = UIView()
         divider.translatesAutoresizingMaskIntoConstraints = false
-        divider.backgroundColor = UIColor(red: 0.91, green: 0.89, blue: 0.92, alpha: 1)
+        divider.backgroundColor = UIColor(red: 47 / 255.0, green: 47 / 255.0, blue: 71 / 255.0, alpha: 1)
 
         donutRow.addSubview(glazeTitleLabel)
         donutRow.addSubview(divider)
@@ -219,7 +221,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         if showsArrow {
             let arrow = UIImageView(image: UIImage(systemName: "chevron.right"))
             arrow.translatesAutoresizingMaskIntoConstraints = false
-            arrow.tintColor = UIColor(red: 0.63, green: 0.59, blue: 0.66, alpha: 1)
+            arrow.tintColor = UIColor(red: 176 / 255.0, green: 176 / 255.0, blue: 184 / 255.0, alpha: 1)
             arrow.contentMode = .scaleAspectFit
             donutRow.addSubview(arrow)
             pinSugarstrawberryMilkShell(arrow, donutRow: donutRow)
@@ -259,7 +261,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         ])
     }
 
-    private func showConfirmSugarPanel(title: String, note: String, okTitle: String, cancelTitle: String, okFill: UIColor, okAction: @escaping () -> Void) {
+    private func showConfirmSugarPanel(title: String, note: String, okTitle: String, cancelTitle: String, okFill: UIColor, sugarFill: UIColor = UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1), flavorHintLabel: String? = nil, okAction: @escaping () -> Void) {
         TinGlazePromptStyler.showSugarConfirm(
             almondFlavor: view,
             gourmetFlavor: title,
@@ -267,6 +269,8 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             ringStack: okTitle,
             miniDonut: cancelTitle,
             fritterBite: okFill,
+            sugarFill: sugarFill,
+            flavorHintLabel: flavorHintLabel,
             twistPastry: okAction
         )
     }
@@ -280,6 +284,16 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         crumbLabel.adjustsFontSizeToFitWidth = true
         crumbLabel.minimumScaleFactor = 0.72
         return crumbLabel
+    }
+
+    @objc private func openBakeryShelf() {
+        guard WevVGlazeSessionStore.shared.isTasterReady else { return }
+        let controller = CunBakerfvanillaBeanIcing(bakeryDetails: bakeryDetails)
+        controller.onWevvShelfChanged = { [weak self] in
+            self?.onSugarSettingChanged?()
+        }
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
     }
 
     @objc private func openPrivacySugarText() {
@@ -373,7 +387,9 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             note: "Your account and all data will be permanently removed and cannot be recovered.\nThis action cannot be undone.",
             okTitle: "DQe*l~e=t%eW".wevVPastryCrumbBloomRestored,
             cancelTitle: "CYawn^cqe=lL".wevVPastryCrumbBloomRestored,
-            okFill: gingerHoneyDrizzle
+            okFill: UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1),
+            sugarFill: gingerHoneyDrizzle,
+            flavorHintLabel: "This action cannot be undone."
         ) { [weak self] in
             self?.performGlazeAccountAction(deletesAccount: true)
         }

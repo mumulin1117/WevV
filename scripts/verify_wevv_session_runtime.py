@@ -49,6 +49,8 @@ final class TestDefaults {
 }
 enum glazeGalleryGuide {
     static var packets: [String: String] = [:]
+    static var legacyPacket: String?
+    static func cocoaRaspberryMedley() { legacyPacket = nil }
     static var refuseWrite = false
     static func firstBiteArchive() -> String { "offline-device" }
     static func sweetKeepsakeEntry(scope: String) -> String? { packets[scope] }
@@ -449,6 +451,88 @@ TESTS = r'''
             do { _ = try await pending.value; throw NSError(domain: "LateAccountDataAccepted", code: 5) }
             catch is CancellationError { }
             try check(store.currentGlazeCredentials?.vanillaBeanIcing == 2, "late response cannot replace current account")
+        case "logout-clears-credentials":
+            try install(1, "old")
+            glazeGalleryGuide.legacyPacket = "retired-credential"
+            TestDefaults.shared.set("retired-token", forKey: "wevv_glaze_token")
+            TestDefaults.shared.set("retired-profile", forKey: "wevv_glaze_taster_profile")
+            WevVGlazeNetworkFoundation.openHandler = { _ in try openResponse(accessToken: "access-open-old") }
+            _ = try await runtime.prepareH5Context()
+            _ = try await runtime.voiceList(path: "/sapi/room/list")
+            let profile = WevVDoughRingTasterProfile(ringCutterKey: "1", powderedAtlas: "offline1@example.invalid",
+                glazeNickname: "Departing User", sugarHandle: "@old", crumbBio: "old bio",
+                donutFrameAsset: "private-avatar", glazeTrailCount: 8, sprinkleTasterCount: 9,
+                bakeryShelfTotal: 3, glazeVaultCount: 100)
+            store.storeDoughRingTasterProfile(profile)
+            let departing = store.currentGlazeCredentials!
+            let oldScope = runtime.environmentID
+            var revoked = false
+            WevVGlazeNetworkFoundation.handler = { path, _, token in
+                if path == "/_v2/auth/logout" {
+                    try check(token == departing.brownButterGlaze, "only logout revocation uses the departing access token")
+                    revoked = true
+                }
+                return try json([:])
+            }
+            await WevVGlazeSessionRepository.pastryTrailDiary.starchGelatinizationDetail()
+            try check(revoked && !store.isTasterReady && store.currentGlazeCredentials == nil
+                && store.currentGlazeToken.isEmpty && store.currentTasterEmail.isEmpty,
+                "logout removes all access/refresh/legacy/IM credentials from the persisted session")
+            try check(glazeGalleryGuide.sweetKeepsakeEntry(scope: oldScope) == nil && glazeGalleryGuide.legacyPacket == nil
+                && TestDefaults.shared.values["wevv_glaze_token"] == nil
+                && TestDefaults.shared.values["wevv_glaze_taster_profile"] == nil
+                && TestDefaults.shared.values["wevvcurrentEmail"] == nil,
+                "scoped Keychain, retired credentials and compatibility user values are removed")
+            try check(store.currentDoughRingTasterProfile.glazeNickname != "Departing User"
+                && WevVGlazeNetworkFoundation.latest?.currentOpen?.accessToken == nil
+                && WevVGlazeNetworkFoundation.latest?.currentOpen?.expiresIn == nil,
+                "profile and Open cache no longer retain the departed account/token")
+            let restored = WevVGlazeSessionStore()
+            restored.selectGlazeEnvironment(oldScope)
+            try check(!restored.isTasterReady && restored.currentGlazeCredentials == nil,
+                "a new session store cannot restore the signed-out account")
+            WevVGlazeNetworkFoundation.handler = nil
+            _ = try await runtime.browsingOPI(path: "/_v2/moments/feed", body: [:])
+            _ = try await runtime.voiceList(path: "/sapi/room/list")
+            try check(WevVGlazeNetworkFoundation.calls.first(where: { $0.path == "/_v2/moments/feed" })?.token == "access-guest"
+                && WevVGlazeNetworkFoundation.calls.last?.token == "ticket-legacy-guest"
+                && WevVGlazeNetworkFoundation.exchangeCount == 2,
+                "post-logout feeds/voice lists use fresh technical browsing credentials, not the user's OPI/SAPI tokens")
+            do {
+                _ = try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true)
+                throw NSError(domain: "SignedOutRequestSent", code: 21)
+            } catch let error as NSError where error.domain == "SignedOutRequestSent" { throw error }
+            catch { }
+            try check(!WevVGlazeNetworkFoundation.calls.contains { $0.path == "/_v2/user/info" }
+                && !store.isTasterReady && store.currentGlazeCredentials == nil,
+                "private requests fail locally and guest browsing never restores UI login")
+        case "logout-late-open-cache":
+            try install(1, "old")
+            let oldGate = Gate(), newGate = Gate()
+            WevVGlazeNetworkFoundation.openHandler = { refresh in
+                if refresh == "refresh-old" { return try await oldGate.wait() }
+                return try await newGate.wait()
+            }
+            let foundation = WevVGlazeNetworkFoundation.latest!
+            let pending = Task { try await foundation.open(refreshToken: "refresh-old", force: true) }
+            try await wait(oldGate)
+            runtime.invalidateAuthentication()
+            try install(2, "new", startingNewSession: true)
+            let newOpen = Task { try await foundation.open(refreshToken: "refresh-new", force: true) }
+            try await wait(newGate)
+            oldGate.succeed(try openResponse(accessToken: "access-departed"))
+            do { _ = try await pending.value; throw NSError(domain: "DepartedOpenAccepted", code: 22) }
+            catch is CancellationError { }
+            let calls = WevVGlazeNetworkFoundation.openRefreshTokens.count
+            let coalesced = Task { try await foundation.open(refreshToken: "refresh-new") }
+            for _ in 0..<50 { await Task.yield() }
+            try check(WevVGlazeNetworkFoundation.openRefreshTokens.count == calls && foundation.currentOpen?.accessToken == nil,
+                "late cancelled Open cannot refill credentials or clear the new account's pending request")
+            newGate.succeed(try openResponse(accessToken: "access-new-open"))
+            _ = try await newOpen.value; _ = try await coalesced.value
+            try check(foundation.currentOpen?.accessToken == "access-new-open"
+                && store.currentGlazeCredentials?.vanillaBeanIcing == 2,
+                "only the new account's Open result may populate the cache")
         case "logout-same-account-relogin":
             try install(1, "old")
             let gate = Gate()
@@ -540,6 +624,33 @@ TESTS = r'''
             catch let error as NSError where error.domain == "LateRetryAccepted" { throw error }
             catch { }
             try check(store.currentGlazeCredentials?.maplePecanCoating == "refresh-new", "late retried 401 must not clear newer same-account credentials")
+        case "late-profile-401-after-refresh", "late-browsing-401-after-refresh":
+            try install(1, "old")
+            let gate = Gate()
+            var refreshCalls = 0
+            WevVGlazeNetworkFoundation.handler = { path, _, token in
+                if path == "/_v2/auth/token/refresh" {
+                    refreshCalls += 1
+                    guard refreshCalls == 1 else { throw WevVGlazeNetworkError.http(401) }
+                    return try response(user: 1, suffix: "renewed")
+                }
+                if token == "access-renewed" { return try json(["ok": true]) }
+                if path == "/_v2/user/info" { return try await gate.wait() }
+                throw WevVGlazeNetworkError.http(401)
+            }
+            let pending = Task {
+                if scenario == "late-profile-401-after-refresh" {
+                    return try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true)
+                }
+                return try await runtime.browsingOPI(path: "/_v2/user/info", body: [:])
+            }
+            try await wait(gate)
+            _ = try await runtime.opi(path: "/_v2/moments/feed", body: json([:]), authenticated: true)
+            gate.fail(WevVGlazeNetworkError.http(401))
+            _ = try await pending.value
+            try check(refreshCalls == 1 && store.isTasterReady && store.currentGlazeCredentials?.brownButterGlaze == "access-renewed",
+                "a late old-token 401 reuses the renewed session instead of refreshing twice or clearing login")
+            try check(WevVGlazeNetworkFoundation.calls.last?.token == "access-renewed", "profile retry uses the latest account token")
         case "sapi-ticket-isolation":
             try install(1, "one")
             _ = try await runtime.voiceList(path: "/sapi/room/list")
@@ -597,7 +708,8 @@ def main():
                  "h5-cold-refresh-key", "h5-other-account-open-during-refresh", "h5-hot-fresh", "h5-hot-open-failure",
                  "h5-context-cancelled", "h5-context-environment-change", "startup-retry", "test-scope-default", "production-scope-isolation", "production-split-identity-scope", "production-domain-migration", "production-server-selected-domain",
                  "guest-isolation", "refresh-coalescing", "late-account-response",
-                 "logout-same-account-relogin", "cancelled-login-profile", "profile-temporary-failure",
+                 "late-profile-401-after-refresh", "late-browsing-401-after-refresh",
+                 "logout-clears-credentials", "logout-late-open-cache", "logout-same-account-relogin", "cancelled-login-profile", "profile-temporary-failure",
                  "persistence-failure", "late-guest-response", "refresh-identity-mismatch",
                  "refresh-authentication-failure", "late-refresh-failure-after-relogin",
                  "late-retry-failure-after-relogin", "late-retry-failure-after-token-rotation",
@@ -608,7 +720,7 @@ def main():
         # Execute the real Open cache/revision/coalescing implementation too;
         # only its OPI transport boundary is controlled by the fixture.
         open_state = foundation[foundation.index("    private(set) var currentRoute:"):foundation.index("    init(profile:")]
-        open_method = declaration(foundation, "func open(refreshToken:") + "\n" + declaration(foundation, "private static func integer(")
+        open_method = declaration(foundation, "func open(refreshToken:") + "\n" + declaration(foundation, "func clearSugarCrumbs()") + "\n" + declaration(foundation, "private static func integer(")
         mock_io = MOCK_IO.replace("__ACTUAL_OPEN_STATE__", open_state).replace("__ACTUAL_OPEN_METHOD__", open_method)
         source.write_text(mock_io + "\n" + "\n\n".join(selected) + "\n" + TESTS)
         executable = folder / "verification"

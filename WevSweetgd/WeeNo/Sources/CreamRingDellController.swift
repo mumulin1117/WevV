@@ -32,7 +32,6 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
     private var pastryBottomConstraint: NSLayoutConstraint?
     private var glazeSaveTask: Task<Void, Never>?
 
-    private let powderedPinkTone = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
     private let strawberryGlazeTone = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
     private let cocoaInkTone = UIColor(red: 0.14, green: 0.1, blue: 0.2, alpha: 1)
     private let sugarDustTone = UIColor(red: 0.58, green: 0.57, blue: 0.63, alpha: 1)
@@ -51,21 +50,21 @@ final class CreamRingDellController: UIViewController, UITextViewDelegate {
     }
 
     private func buildCreamRingEditPage() {
-        view.backgroundColor = powderedPinkTone
+        FimVSugarGradientBand.buildPastryBackdrop(view)
         buildPastryEditScrollShell()
 
         let doughBackButton = UIButton(type: .system)
         doughBackButton.translatesAutoresizingMaskIntoConstraints = false
         doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        doughBackButton.tintColor = .black
+        doughBackButton.tintColor = .white
         doughBackButton.addTarget(self, action: #selector(closeCreamRingEdit), for: .touchUpInside)
 
-        let glazeTitle = makeCreamRingEditLabel("E&dKi&th TPBr%o#f&iVlgeu".wevVPastryCrumbBloomRestored, size: 17, weight: .bold, color: cocoaInkTone)
+        let glazeTitle = makeCreamRingEditLabel("E&dKi&th TPBr%o#f&iVlgeu".wevVPastryCrumbBloomRestored, size: 17, weight: .bold, color: .white)
         glazeTitle.textAlignment = .center
         tuneDonutAvatarButton()
 
         let donutCameraButton = makeDonutCameraButton()
-        let sugarBasicTitle = makeCreamRingEditLabel("BmaRsIiIcy AIGn!fBol".wevVPastryCrumbBloomRestored, size: 15, weight: .bold, color: cocoaInkTone)
+        let sugarBasicTitle = makeCreamRingEditLabel("BmaRsIiIcy AIGn!fBol".wevVPastryCrumbBloomRestored, size: 15, weight: .bold, color: .white)
         let creamFormCard = makeCreamRingFormCard()
         tuneSugarSaveButton()
 

@@ -11,7 +11,7 @@
     "keySource": "existing-native-resource"
   },
   "status": "integrated",
-  "contentVersion": "sdk2-1bb9b664b76f82d3ebc092f745db4746cb7852d63a2823e842aeee5d3496ebe5",
+  "contentVersion": "sdk2-4cba3159858ca818b451398248cda8a05c74080e24acf180bdc14b1a0abe5def",
   "sdkProtocolVersion": "2.0.0",
   "appConfigSchemaVersion": 18,
   "opiProfileRevision": 2,
@@ -31,18 +31,21 @@
   "h5BuildId": "2026-09-18-01",
   "entryPoint": "index.html",
   "archiveFile": "vanillaBeanIcingSdk2.data",
-  "archiveBytes": 39280544,
-  "archiveSha256": "8d11910438c9d0cb54c890d5e6de02114ff8a16a6afae8b073ff5cd4ad302849",
+  "archiveBytes": 39279648,
+  "archiveSha256": "24f4b572e98c772eb6bd24f1f04ee97403c88c0a06790c299cd46ba1321d3410",
   "fileCount": 1174,
-  "unpackedBytes": 49231663,
+  "unpackedBytes": 49224049,
   "source": {
     "deliveryManifestSha256": "e71ab9ebfcf59ec83f627d9f542138fbd511ae80b998e0e3289a22ee131b49fa",
     "profileInputSha256": "11c8a9577fefc7098921206a060bf6a3aaf641a7c9c2030a5cf5362efdf704c7",
     "appConfigInputSha256": "19c5c9cbdb65ac948121310d521d9197aea4953f0ace9567dfcde59ef61f7426",
     "modifiedDeliveryFiles": [
+      "assets/common/app-loading-still.svg",
+      "assets/common/app-loading.svg",
       "config/app-config.js",
       "config/opi-profile.js",
-      "index.html"
+      "index.html",
+      "webapp-manifest.json"
     ],
     "nativeRouting": {
       "environment": "production",
@@ -55,6 +58,21 @@
       "inputSha256": "2130a110871d9207a5ca6bbc272eb8ba45f0a5382b71a2bbc62f178793a1e156",
       "previousContentVersion": "sdk2-7a700f8adeb79ca1750f9d77530791c01988949dc0e793645ba4533fe1c4359d",
       "previousIndexSha256": "eb969fa0ffd226888afa6d465158ac1c708c5ddb75443183857c0aae1dc3b4f9"
+    },
+    "loadingReplacement": {
+      "previousContentVersion": "sdk2-1bb9b664b76f82d3ebc092f745db4746cb7852d63a2823e842aeee5d3496ebe5",
+      "files": [
+        {
+          "path": "assets/common/app-loading.svg",
+          "bytes": 1883,
+          "sha256": "fea7cc75df786bb0e8a23970fcf42ed078916dfee30153001eef2a7c9bcbf8dd"
+        },
+        {
+          "path": "assets/common/app-loading-still.svg",
+          "bytes": 1156,
+          "sha256": "7731bc456503059c8cc72c8088c7fc1234b399010b7f427a7f2e07a585892b45"
+        }
+      ]
     }
   },
   "files": [
@@ -375,13 +393,13 @@
     },
     {
       "path": "assets/common/app-loading-still.svg",
-      "bytes": 767,
-      "sha256": "cfa7a11d4725c3ae80396c3df3da054ab83f033faf1280366823e43e257b97e3"
+      "bytes": 1156,
+      "sha256": "7731bc456503059c8cc72c8088c7fc1234b399010b7f427a7f2e07a585892b45"
     },
     {
       "path": "assets/common/app-loading.svg",
-      "bytes": 9887,
-      "sha256": "e004c1a7d3143ba64628e48c0d05e1731a6fba5c9413de50f327c439c942189f"
+      "bytes": 1883,
+      "sha256": "fea7cc75df786bb0e8a23970fcf42ed078916dfee30153001eef2a7c9bcbf8dd"
     },
     {
       "path": "assets/common/arrow_right_gray.png",
@@ -5925,8 +5943,8 @@
     },
     {
       "path": "webapp-manifest.json",
-      "bytes": 197472,
-      "sha256": "e71ab9ebfcf59ec83f627d9f542138fbd511ae80b998e0e3289a22ee131b49fa"
+      "bytes": 197473,
+      "sha256": "347d9975b6c826effc593473d61ff33d4dbf63deacb3688b6536dab826d926d4"
     }
   ],
   "nativeConfiguration": {

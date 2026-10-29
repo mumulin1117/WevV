@@ -9,29 +9,31 @@ enum AoVGlazeCrackleOverlay {
     ) {
         let glazeCrackleLayer = UIControl()
         glazeCrackleLayer.translatesAutoresizingMaskIntoConstraints = false
-        glazeCrackleLayer.backgroundColor = UIColor(red: 0.12, green: 0.05, blue: 0.11, alpha: 0.34)
+        glazeCrackleLayer.backgroundColor = UIColor.black.withAlphaComponent(0.24)
         glazeCrackleLayer.alpha = 0
 
         let treatCaseCard = UIView()
         treatCaseCard.translatesAutoresizingMaskIntoConstraints = false
-        treatCaseCard.backgroundColor = UIColor(red: 1, green: 0.98, blue: 0.99, alpha: 0.98)
-        treatCaseCard.layer.cornerRadius = 22
-        treatCaseCard.layer.shadowColor = UIColor(red: 0.56, green: 0.05, blue: 0.28, alpha: 1).cgColor
+        treatCaseCard.backgroundColor = TinGlazePromptStyler.creamTone.withAlphaComponent(0.98)
+        treatCaseCard.layer.cornerRadius = 20
+        treatCaseCard.layer.borderWidth = 1
+        treatCaseCard.layer.borderColor = TinGlazePromptStyler.softPinkTone.cgColor
+        treatCaseCard.layer.shadowColor = UIColor.black.cgColor
         treatCaseCard.layer.shadowOpacity = 0.22
         treatCaseCard.layer.shadowRadius = 20
         treatCaseCard.layer.shadowOffset = CGSize(width: 0, height: 10)
 
         let glazeSpinner = UIActivityIndicatorView(style: .medium)
         glazeSpinner.translatesAutoresizingMaskIntoConstraints = false
-        glazeSpinner.color = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
+        glazeSpinner.color = TinGlazePromptStyler.strawberryGlazeTone
         glazeSpinner.startAnimating()
 
         let sugarDustLabel = UILabel()
         sugarDustLabel.translatesAutoresizingMaskIntoConstraints = false
         sugarDustLabel.text = note
         sugarDustLabel.textAlignment = .center
-        sugarDustLabel.textColor = UIColor(red: 0.16, green: 0.09, blue: 0.2, alpha: 1)
-        sugarDustLabel.font = .systemFont(ofSize: 13, weight: .heavy)
+        sugarDustLabel.textColor = TinGlazePromptStyler.inkTone
+        sugarDustLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         sugarDustLabel.numberOfLines = 2
         sugarDustLabel.adjustsFontSizeToFitWidth = true
         sugarDustLabel.minimumScaleFactor = 0.76

@@ -1,0 +1,14 @@
+---
+description: Select new custom Swift names from existing project names outside WevEnd
+globs: WevSweetgd/WevSweetgd/**/*.swift
+alwaysApply: false
+---
+
+# 新增代码自主命名
+
+- 遵循根目录 `AGENTS.md` 的新增代码命名规则。
+- 新增类型、方法、属性、局部变量等自主命名前，先检索 `WevSweetgd/WevSweetgd/` 中排除 `WevEnd/` 的现有 Swift 代码，从已有非系统自定义命名中选取。
+- 优先复用已有同用途成员；独立声明须遵守作用域并避免重名，不从 `WevEnd` 或系统／第三方 SDK 引入自主命名。
+- 例如本次统一背景直接复用已有的 `voicePinnedBackdrop` 和 `buildDonutParlorBackdrop`。
+- 保留系统 API、override／协议方法和外部接口契约字段；不批量重命名旧代码。
+- 新增 Swift 文件和 App 资源仍按归档规则放在 `WevEnd/`。

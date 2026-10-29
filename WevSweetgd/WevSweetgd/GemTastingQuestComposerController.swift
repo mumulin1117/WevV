@@ -34,14 +34,8 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vanillaGlowBackdrop.colors = [
-            UIColor(red: 1.0, green: 0.89, blue: 0.95, alpha: 1).cgColor,
-            UIColor(red: 1.0, green: 0.96, blue: 0.98, alpha: 1).cgColor,
-            UIColor.white.cgColor
-        ]
-        vanillaGlowBackdrop.locations = [0, 0.56, 1]
-        vanillaGlowBackdrop.startPoint = CGPoint(x: 0.5, y: 0)
-        vanillaGlowBackdrop.endPoint = CGPoint(x: 0.5, y: 1)
+        view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.18, alpha: 1)
+        FimVSugarGradientBand.buildPastryBackdrop(vanillaGlowBackdrop)
         view.layer.insertSublayer(vanillaGlowBackdrop, at: 0)
         warmBakeryHandbook()
         NotificationCenter.default.addObserver(self, selector: #selector(proofingTimeNotes(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -63,7 +57,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         let doughScraperTechnique = UIButton(type: .system)
         doughScraperTechnique.translatesAutoresizingMaskIntoConstraints = false
         doughScraperTechnique.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        doughScraperTechnique.tintColor = .black
+        doughScraperTechnique.tintColor = .white
         doughScraperTechnique.addTarget(self, action: #selector(cinnamonTwist), for: .touchUpInside)
 
         let cakeRing = sweetKeepsakeEntry("PMudbRlxiqsih* MCmhOaHlCl;e^nCgieh".wevVPastryCrumbBloomRestored, size: 18, weight: .bold)
@@ -116,7 +110,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         handDipSequence.setTitle("Pdossjtz".wevVPastryCrumbBloomRestored, for: .normal)
         handDipSequence.setTitleColor(.white, for: .normal)
         handDipSequence.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        handDipSequence.backgroundColor = UIColor(red: 1.0, green: 0.25, blue: 0.62, alpha: 1)
+        handDipSequence.backgroundColor = UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1)
         handDipSequence.layer.cornerRadius = 26
         handDipSequence.addTarget(self, action: #selector(weekendBrunchSampler), for: .touchUpInside)
     }
@@ -243,21 +237,22 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
     private func tastingPassportEdition() -> UIView {
         let pastryWorkshopMap = UIView()
         pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false
-        pastryWorkshopMap.backgroundColor = .white
+        pastryWorkshopMap.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         pastryWorkshopMap.layer.cornerRadius = 20
         pastryWorkshopMap.clipsToBounds = true
 
         let latteHarmony = sweetKeepsakeEntry("TGIyTqLsEW".wevVPastryCrumbBloomRestored, size: 13, weight: .bold)
-        latteHarmony.textColor = UIColor(red: 0.66, green: 0.56, blue: 0.68, alpha: 1)
+        latteHarmony.textColor = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
 
         donutArchivePage.translatesAutoresizingMaskIntoConstraints = false
         donutArchivePage.placeholder = "EPnEt^ebrQ JylojuurZ ^tEi:tClheW".wevVPastryCrumbBloomRestored
+        donutArchivePage.attributedPlaceholder = NSAttributedString(string: donutArchivePage.placeholder ?? "", attributes: [.foregroundColor: UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)])
         donutArchivePage.font = .systemFont(ofSize: 14, weight: .semibold)
-        donutArchivePage.textColor = UIColor(red: 0.17, green: 0.12, blue: 0.22, alpha: 1)
-        donutArchivePage.backgroundColor = UIColor(red: 1.0, green: 0.97, blue: 0.99, alpha: 1)
+        donutArchivePage.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
+        donutArchivePage.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         donutArchivePage.layer.cornerRadius = 12
         donutArchivePage.layer.borderWidth = 1
-        donutArchivePage.layer.borderColor = UIColor(red: 0.94, green: 0.80, blue: 0.89, alpha: 1).cgColor
+        donutArchivePage.layer.borderColor = UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1).cgColor
         donutArchivePage.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 1))
         donutArchivePage.leftViewMode = .always
 
@@ -277,7 +272,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
     private func sugarCraftStudio() -> UIView {
         let pastryWorkshopMap = UIView()
         pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false
-        pastryWorkshopMap.backgroundColor = .white
+        pastryWorkshopMap.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         pastryWorkshopMap.layer.cornerRadius = 30
         pastryWorkshopMap.clipsToBounds = true
 
@@ -313,23 +308,23 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
     private func custardCraftHandbook() -> UIView {
         let pastryWorkshopMap = UIView()
         pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false
-        pastryWorkshopMap.backgroundColor = .white
+        pastryWorkshopMap.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         pastryWorkshopMap.layer.cornerRadius = 14
         pastryWorkshopMap.layer.borderWidth = 1
-        pastryWorkshopMap.layer.borderColor = UIColor(red: 0.94, green: 0.80, blue: 0.89, alpha: 1).cgColor
+        pastryWorkshopMap.layer.borderColor = UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1).cgColor
 
         flavorNotebookFolio.translatesAutoresizingMaskIntoConstraints = false
         flavorNotebookFolio.delegate = self
         flavorNotebookFolio.text = zestyTwistJourney
         flavorNotebookFolio.font = .systemFont(ofSize: 14, weight: .semibold)
-        flavorNotebookFolio.textColor = UIColor(red: 0.58, green: 0.50, blue: 0.61, alpha: 1)
+        flavorNotebookFolio.textColor = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
         flavorNotebookFolio.backgroundColor = .clear
         flavorNotebookFolio.textContainerInset = UIEdgeInsets(top: 14, left: 14, bottom: 28, right: 14)
 
         sugarCrystallizationDetail.translatesAutoresizingMaskIntoConstraints = false
         sugarCrystallizationDetail.text = "0t e/? !1l8&0/".wevVPastryCrumbBloomRestored
         sugarCrystallizationDetail.font = .systemFont(ofSize: 14, weight: .medium)
-        sugarCrystallizationDetail.textColor = UIColor(red: 0.58, green: 0.50, blue: 0.61, alpha: 1)
+        sugarCrystallizationDetail.textColor = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
         sugarCrystallizationDetail.textAlignment = .right
 
         pastryWorkshopMap.addSubview(flavorNotebookFolio)
@@ -348,15 +343,16 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
     private func doughKitchenShowcase(field: UITextField, placeholder: String) -> UIView {
         let pastryWorkshopMap = UIView()
         pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false
-        pastryWorkshopMap.backgroundColor = .white
+        pastryWorkshopMap.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
         pastryWorkshopMap.layer.cornerRadius = 14
         pastryWorkshopMap.layer.borderWidth = 1
-        pastryWorkshopMap.layer.borderColor = UIColor(red: 0.94, green: 0.80, blue: 0.89, alpha: 1).cgColor
+        pastryWorkshopMap.layer.borderColor = UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1).cgColor
 
         field.translatesAutoresizingMaskIntoConstraints = false
         field.placeholder = placeholder
+        field.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)])
         field.font = .systemFont(ofSize: 14, weight: .semibold)
-        field.textColor = UIColor(red: 0.47, green: 0.39, blue: 0.48, alpha: 1)
+        field.textColor = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
         field.rollingPinEssentials()
 
         pastryWorkshopMap.addSubview(field)
@@ -374,7 +370,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         flavorSpectrumInsight.translatesAutoresizingMaskIntoConstraints = false
         flavorSpectrumInsight.text = text
         flavorSpectrumInsight.font = .systemFont(ofSize: size, weight: weight)
-        flavorSpectrumInsight.textColor = UIColor(red: 0.17, green: 0.12, blue: 0.22, alpha: 1)
+        flavorSpectrumInsight.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         flavorSpectrumInsight.adjustsFontSizeToFitWidth = true
         flavorSpectrumInsight.minimumScaleFactor = 0.72
         return flavorSpectrumInsight
@@ -383,9 +379,9 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
     private func cocoaWeekendFestival() {
         for sugarPearlTopping in glazeThicknessInsight {
             let delicateCrust = sugarPearlTopping.tag == artisanFrySequence
-            sugarPearlTopping.backgroundColor = delicateCrust ? UIColor(red: 1.0, green: 0.25, blue: 0.62, alpha: 1) : UIColor(red: 1.0, green: 0.97, blue: 0.99, alpha: 1)
-            sugarPearlTopping.setTitleColor(delicateCrust ? .white : UIColor(red: 0.17, green: 0.12, blue: 0.22, alpha: 1), for: .normal)
-            sugarPearlTopping.layer.borderColor = delicateCrust ? UIColor.clear.cgColor : UIColor(red: 0.94, green: 0.80, blue: 0.89, alpha: 1).cgColor
+            sugarPearlTopping.backgroundColor = delicateCrust ? UIColor(red: 255 / 255.0, green: 75 / 255.0, blue: 169 / 255.0, alpha: 1) : UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
+            sugarPearlTopping.setTitleColor(delicateCrust ? .white : UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1), for: .normal)
+            sugarPearlTopping.layer.borderColor = delicateCrust ? UIColor.clear.cgColor : UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1).cgColor
         }
     }
 
@@ -405,7 +401,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         guard velvetyCrumb else { return }
         velvetyCrumb = false
         textView.text = ""
-        textView.textColor = UIColor(red: 0.17, green: 0.12, blue: 0.22, alpha: 1)
+        textView.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         sugarCrystallizationDetail.text = "0m d/# Q1P8:0C".wevVPastryCrumbBloomRestored
     }
 
@@ -414,7 +410,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         guard tastingTrayNotes.isEmpty else { return }
         velvetyCrumb = true
         textView.text = zestyTwistJourney
-        textView.textColor = UIColor(red: 0.58, green: 0.50, blue: 0.61, alpha: 1)
+        textView.textColor = UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)
         sugarCrystallizationDetail.text = "0G G// F1r8!0V".wevVPastryCrumbBloomRestored
     }
 

@@ -276,6 +276,7 @@ final class WevVGlazeSessionStore {
         if let scope = activeEnvironmentID {
             glazeGalleryGuide.cocoaRaspberryMedley(scope: scope)
         }
+        glazeGalleryGuide.cocoaRaspberryMedley()
         sessionEpoch &+= 1
         updateGlazeCompatibilityState(nil)
         notifyGlazeProfileChanged()
@@ -294,6 +295,7 @@ final class WevVGlazeSessionStore {
         if let scope = activeEnvironmentID {
             glazeGalleryGuide.cocoaRaspberryMedley(scope: scope)
         }
+        glazeGalleryGuide.cocoaRaspberryMedley()
         sessionEpoch &+= 1
         [
             wevvSignedInKey,

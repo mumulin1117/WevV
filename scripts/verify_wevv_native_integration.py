@@ -53,6 +53,7 @@ struct OfflineAccount { let vanillaBeanIcing: Int64 }
 }
 @MainActor final class WevVGlazeCommunityService {
     struct Post { let card: butteryTexture; var allowsInteraction = true }
+    struct FeedPage { let posts: [Post]; let nextCursor: Int64?; let isLastPage: Bool }
     struct Comments { let comments: [featherlightBite] }
     struct Configuration { let publishEnabled: Bool; let imageUploadEnabled: Bool }
     enum PublishOutcome { case published(Int64), pendingReview }
@@ -68,6 +69,9 @@ struct OfflineAccount { let vanillaBeanIcing: Int64 }
     var commentsHook: (() -> Void)?
     func timeline(followedOnly: Bool = false, maxPages: Int = 5) async throws -> [Post] {
         calls.append(followedOnly ? "followed" : "feed"); return posts
+    }
+    func feed(cursorID: Int64 = 0, size: Int = 20) async throws -> FeedPage {
+        FeedPage(posts: posts, nextCursor: nil, isLastPage: true)
     }
     func publishConfig() async throws -> Configuration {
         calls.append("config"); configHook?(); return Configuration(publishEnabled: enabled, imageUploadEnabled: enabled)
@@ -88,6 +92,7 @@ struct OfflineAccount { let vanillaBeanIcing: Int64 }
     var paginatedLive: ((Int, Int) async throws -> WevVGlazeLivePage)?
     var voice: (mascarponeFilling) async throws -> [pearFilling] = { _ in [] }
     var paginatedVoice: ((mascarponeFilling, WevVGlazeVoiceCursor?, Int) async throws -> WevVGlazeVoicePage)?
+    var paginatedMoments: ((Int64, Int) async throws -> WevVGlazeCommunityService.FeedPage)?
     var moments: (goldenCrumbDough) async throws -> [butteryTexture] = { _ in [] }
     var profile: (Int64) async throws -> meltawayCrumb = { profileValue($0) }
     var userMoments: (Int64) async throws -> [butteryTexture] = { _ in [] }
@@ -106,6 +111,10 @@ struct OfflineAccount { let vanillaBeanIcing: Int64 }
         return WevVGlazeVoicePage(rooms: rooms, rawCount: rooms.count, nextCursor: nil)
     }
     func starchGelatinizationStudy(carnivalGlazeShowcase: goldenCrumbDough) async throws -> [butteryTexture] { try await moments(carnivalGlazeShowcase) }
+    func tastingPassportPage(cursor: Int64 = 0, pageSize: Int = 20) async throws -> WevVGlazeCommunityService.FeedPage {
+        if let paginatedMoments { return try await paginatedMoments(cursor, pageSize) }
+        return WevVGlazeCommunityService.FeedPage(posts: try await moments(.artisanFrySequence).map { .init(card: $0) }, nextCursor: nil, isLastPage: true)
+    }
     func smallBatchKitchen(vanillaBeanIcing: Int64) async throws -> meltawayCrumb { try await profile(vanillaBeanIcing) }
     func heritageMap(vanillaBeanIcing: Int64) async throws -> [butteryTexture] { try await userMoments(vanillaBeanIcing) }
     func riversideBakery(vanillaBeanIcing: Int64, autumnPecanCollection: Bool) async throws { try await follow(vanillaBeanIcing, autumnPecanCollection) }
@@ -129,10 +138,33 @@ struct UIColor {
 }
 @MainActor final class UIButton {
     enum State { case normal }
+    enum ButtonType { case custom }
+    enum Event { case touchUpInside }
+    struct Font {
+        enum Weight { case medium }
+        static func systemFont(ofSize: CGFloat, weight: Weight) -> Font { Font() }
+    }
+    final class TitleLabel { var font: Font? }
+    final class Layer { var cornerRadius: CGFloat = 0 }
+    var translatesAutoresizingMaskIntoConstraints = true, clipsToBounds = false
+    let titleLabel: TitleLabel? = TitleLabel()
+    let layer = Layer()
     var accessibilityIdentifier: String?, accessibilityLabel: String?, title: String?
     var isEnabled = true
     var backgroundColor: UIColor?
+    init() {}
+    init(type: ButtonType) {}
     func setTitle(_ value: String?, for state: State) { title = value }
+    func setTitleColor(_ value: UIColor, for state: State) {}
+    func addTarget(_ target: Any, action: String, for event: Event) {}
+}
+typealias UIControl = UIButton
+@MainActor final class KipoDonutMomentController {
+    enum Style { case fullScreen }
+    let momentID: Int64
+    var cocoaKissExperience: (() -> Void)?
+    var modalPresentationStyle: Style = .fullScreen
+    init(richCocoaFlavor: butteryTexture) { momentID = richCocoaFlavor.coconutCenter }
 }
 @MainActor final class Label {
     var text: String?
@@ -165,10 +197,10 @@ enum WevVDonutParlorSection: Hashable { case donutCounter, tastingParlor, tastin
     func wait() async { entered = true; await withCheckedContinuation { continuations.append($0) } }
     func release() { let pending = continuations; continuations = []; pending.forEach { $0.resume() } }
 }
-func postValue(_ id: Int64 = 1, owner: Int64 = 7) -> butteryTexture {
+func postValue(_ id: Int64 = 1, owner: Int64 = 7, followed: Bool = false) -> butteryTexture {
     butteryTexture(coconutCenter: id, vanillaBeanIcing: owner, gingerHoneyDrizzle: "Synthetic", cheesecakeMousse: nil,
                    caramelCurd: "A real text-only post", passionfruitFilling: [], limeCream: 0, apricotCenter: 0,
-                   figCustard: "", mascarponeCream: false, cherryCompote: false, custardMousse: false, peachFilling: nil, pearJam: nil)
+                   figCustard: "", mascarponeCream: followed, cherryCompote: false, custardMousse: false, peachFilling: nil, pearJam: nil)
 }
 func profileValue(_ id: Int64 = 42, mutual: Bool? = nil, chat: Bool? = nil, followed: Bool = false) -> meltawayCrumb {
     var value = meltawayCrumb(vanillaBeanIcing: id, gingerHoneyDrizzle: "Synthetic", cheesecakeMousse: nil,
@@ -198,6 +230,8 @@ MAIN_STATE = r'''
     var glazeContentRefreshOwner: (requestID: UUID, section: WevVDonutParlorSection)?
     var homeLivePageTask: Task<Void, Never>?
     var homeLivePagination = WevVGlazeLivePagination()
+    var cocoaWeekendFestival = WevVGlazeCommunityService.tastingPassportPage()
+    var strawberryMilkSwirl: Task<Void, Never>?
     var voicePageTasks: [mascarponeFilling: Task<Void, Never>] = [:]
     var voicePaginations: [mascarponeFilling: WevVGlazeVoicePagination] = [
         .cherryCenter: WevVGlazeVoicePagination(), .apricotCompote: WevVGlazeVoicePagination()
@@ -223,6 +257,7 @@ MAIN_STATE = r'''
     var glazeJournalFollowTask: Task<Void, Never>?
     var glazeJournalFollowRequestID = UUID()
     var glazeContentOwnerKey: String?
+    var deadline: [String: TimeInterval] = [:]
     var glazeOwnerNameTasks: [Int64: Task<Void, Never>] = [:]
     var glazeOwnerNameRequestID = UUID()
     var glazeOwnerNameAttempts = Set<Int64>()
@@ -238,7 +273,10 @@ MAIN_STATE = r'''
     let sprinkleRefresh = Refresh()
     var hints: [String] = []
     func showRootSugarHint(_ text: String) { hints.append(text) }
-    func presentProtectedGate() {}
+    var protectedGates = 0
+    func presentProtectedGate() { protectedGates += 1 }
+    var presentedMomentIDs: [Int64] = []
+    func present(_ controller: KipoDonutMomentController, animated: Bool) { presentedMomentIDs.append(controller.momentID) }
     var renderedLiveRoomIDs: [String] = []
     var footerUpdates = 0
     var voiceFooterUpdates = 0
@@ -246,6 +284,7 @@ MAIN_STATE = r'''
     func updateHomeLiveLoadMoreFooter() { footerUpdates += 1 }
     func updateVoiceRoomLoadMoreFooter() { voiceFooterUpdates += 1 }
     func updateVoiceRoomPagerHeight() {}
+    func refreshTastingRow() {}
     func rebuildVoiceRoomStacks() {
         renderedVoiceRoomIDs[.apricotCompote] = glazeRecommendedVoiceRooms.map(\.passionfruitMousse)
         renderedVoiceRoomIDs[.cherryCenter] = glazeFollowedVoiceRooms.map(\.passionfruitMousse)
@@ -1498,6 +1537,143 @@ TESTS = r'''
         try check(prefetched.sprinkleRefresh.endCount == 0 && prefetched.glazeContentRefreshOwner == nil,
             "background prefetch without a user refresh never claims or ends the shared control")
         cases += 1
+        func momentPage(_ ids: [Int64], next: Int64? = nil) -> WevVGlazeCommunityService.FeedPage {
+            .init(posts: ids.map { .init(card: postValue($0)) }, nextCursor: next, isLastPage: next == nil)
+        }
+        let journal = contentRefreshPage(.tastingJournal)
+        var feedRequests: [(Int64, Int)] = []
+        journal.glazeContentRepository.paginatedMoments = { cursor, size in
+            feedRequests.append((cursor, size)); return momentPage(Array(1...20), next: 20)
+        }
+        journal.loadGlazeContent(showsLoading: false); await journal.glazeContentTask?.value
+        try check(feedRequests.count == 1 && feedRequests[0].0 == 0 && feedRequests[0].1 == 20
+            && journal.glazeTrendingMomentItems.count == 20 && journal.cocoaWeekendFestival.hasMore,
+            "Discover starts with one twenty-post feed page and retains its server cursor")
+        cases += 1
+        let morePostsGate = Gate()
+        journal.glazeContentRepository.paginatedMoments = { cursor, size in
+            feedRequests.append((cursor, size)); await morePostsGate.wait()
+            return momentPage(Array(20...39), next: 39)
+        }
+        journal.loadGlazeMomentContent(); let morePostsTask = journal.strawberryMilkSwirl
+        try await entered(morePostsGate)
+        journal.loadGlazeMomentContent()
+        try check(feedRequests.count == 2 && feedRequests.last?.0 == 20 && journal.cocoaWeekendFestival.isLoading,
+            "repeated pulls cannot duplicate an in-flight cursor request")
+        morePostsGate.release(); await morePostsTask?.value
+        try check(journal.glazeTrendingMomentItems.map(\.coconutCenter) == Array(1...39),
+            "next-page append deduplicates overlap without discarding existing posts")
+        cases += 1
+        journal.glazeContentRepository.paginatedMoments = { cursor, size in
+            feedRequests.append((cursor, size)); throw WevVGlazeNetworkError.http(503)
+        }
+        journal.loadGlazeMomentContent(); await journal.strawberryMilkSwirl?.value
+        try check(journal.cocoaWeekendFestival.failed && !journal.cocoaWeekendFestival.isLoading
+            && journal.cocoaWeekendFestival.cursor == 39 && journal.glazeTrendingMomentItems.count == 39,
+            "a failed next page releases loading and retains visible posts and retry cursor")
+        journal.glazeContentRepository.paginatedMoments = { cursor, size in
+            feedRequests.append((cursor, size)); return momentPage(Array(40...44))
+        }
+        journal.loadGlazeMomentContent(); await journal.strawberryMilkSwirl?.value
+        let endedFeedCalls = feedRequests.count
+        journal.loadGlazeMomentContent()
+        try check(feedRequests.suffix(2).allSatisfy { $0.0 == 39 } && journal.glazeTrendingMomentItems.count == 44
+            && !journal.cocoaWeekendFestival.hasMore && feedRequests.count == endedFeedCalls,
+            "retry uses the same cursor and the final page blocks subsequent requests")
+        cases += 1
+        journal.glazeContentRepository.paginatedMoments = { _, _ in throw WevVGlazeNetworkError.http(503) }
+        journal.loadGlazeContent(showsLoading: false); await journal.glazeContentTask?.value
+        try check(journal.glazeTrendingMomentItems.count == 44 && journal.cocoaWeekendFestival.failed
+            && journal.cocoaWeekendFestival.start() == nil,
+            "failed refresh preserves cards while blocking pagination through the previous feed snapshot")
+        cases += 1
+        journal.glazeContentRepository.paginatedMoments = { _, _ in momentPage(Array(201...220), next: 220) }
+        journal.loadGlazeContent(showsLoading: false); await journal.glazeContentTask?.value
+        let stalePostsGate = Gate()
+        journal.glazeContentRepository.paginatedMoments = { _, _ in
+            await stalePostsGate.wait(); return momentPage(Array(221...240), next: 240)
+        }
+        journal.loadGlazeMomentContent(); let stalePostsTask = journal.strawberryMilkSwirl
+        try await entered(stalePostsGate)
+        journal.glazeContentRepository.paginatedMoments = { _, _ in momentPage(Array(901...920), next: 920) }
+        journal.loadGlazeContent(showsLoading: false); await journal.glazeContentTask?.value
+        stalePostsGate.release(); await stalePostsTask?.value
+        try check(journal.glazeTrendingMomentItems.map(\.coconutCenter) == Array(901...920)
+            && journal.cocoaWeekendFestival.cursor == 920 && !journal.cocoaWeekendFestival.isLoading,
+            "refresh cancels and invalidates the previous pending page even if its transport returns late")
+        cases += 1
+        let switchedPostsGate = Gate()
+        journal.glazeContentRepository.paginatedMoments = { _, _ in
+            await switchedPostsGate.wait(); return momentPage(Array(921...940), next: 940)
+        }
+        journal.loadGlazeMomentContent(); let switchedPostsTask = journal.strawberryMilkSwirl
+        try await entered(switchedPostsGate)
+        store.sessionEpoch += 1
+        journal.resetGlazeContentOwner(owner())
+        switchedPostsGate.release(); await switchedPostsTask?.value
+        try check(journal.glazeTrendingMomentItems.isEmpty && journal.cocoaWeekendFestival.posts.isEmpty
+            && journal.strawberryMilkSwirl == nil,
+            "account changes clear feed cursor/cards and reject previous-account page replies")
+        cases += 1
+        var cyclic = WevVGlazeCommunityService.tastingPassportPage()
+        let firstCursor = cyclic.refresh()
+        cyclic.completeGlaze(momentPage(Array(1...20), next: 20), requestID: firstCursor)
+        let secondCursor = cyclic.start()!
+        cyclic.completeGlaze(momentPage(Array(21...40), next: 40), requestID: secondCursor.id)
+        let thirdCursor = cyclic.start()!
+        cyclic.completeGlaze(momentPage(Array(41...60), next: 20), requestID: thirdCursor.id)
+        try check(!cyclic.hasMore && cyclic.start() == nil, "cursor cycles cannot trigger an endless feed loop")
+        let currentCursor = cyclic.refresh()
+        try check(!cyclic.completeGlaze(momentPage([999]), requestID: firstCursor), "late generations are rejected")
+        cyclic.completeGlaze(momentPage([]), requestID: currentCursor)
+        try check(cyclic.posts.isEmpty && !cyclic.hasMore, "a real empty refresh clears previous posts")
+        cases += 1
+        let detailPage = MainPage(), detailButton = UIControl()
+        detailPage.glazeTrendingMomentItems = [postValue(0), postValue(101)]
+        detailPage.glazeFollowedMomentItems = [postValue(202)]
+        detailPage.glazeProfileMomentItems = [postValue(303)]
+        for id in [101, 202, 303] {
+            detailButton.accessibilityIdentifier = String(id)
+            detailPage.openDonutSnapshotDetail(detailButton)
+        }
+        try check(detailPage.presentedMomentIDs == [101, 202, 303],
+            "valid feed, followed and profile records open their exact API-backed detail")
+        for id: String? in [nil, "abc", "0", "-1", "999", "9223372036854775808"] {
+            detailButton.accessibilityIdentifier = id
+            detailPage.openDonutSnapshotDetail(detailButton)
+        }
+        try check(detailPage.presentedMomentIDs == [101, 202, 303] && detailPage.hints.count == 6
+            && detailPage.hints.allSatisfy { $0 == "This content is no longer available." },
+            "invalid, missing or stale IDs show unavailable and never open a sample or another post")
+        cases += 2
+        // Server/device-session follow flags never imply a signed-in UI state.
+        let guestJournal = contentRefreshPage(.tastingJournal)
+        let followed = postValue(1701, followed: true)
+        store.isTasterReady = false
+        let guestButton = guestJournal.makeTastingJournalFollowControl(followed, diameter: 24, fontSize: 14)
+        try check(guestButton.title == "+" && guestButton.accessibilityLabel == "Follow Synthetic",
+            "guest cards ignore a true server follow flag visually and for accessibility")
+        guestJournal.toggleTastingJournalFollow(guestButton)
+        try check(guestJournal.protectedGates == 1 && guestJournal.glazeJournalFollowTask == nil,
+            "guest follow taps open login without starting a follow request")
+        guestJournal.glazeContentRepository.moments = { _ in [followed] }
+        guestJournal.glazeContentRepository.paginatedMoments = { cursor, _ in
+            .init(posts: [.init(card: followed)], nextCursor: cursor == 0 ? 1701 : nil, isLastPage: cursor != 0)
+        }
+        guestJournal.loadGlazeContent(showsLoading: false); await guestJournal.glazeContentTask?.value
+        try check(guestJournal.glazeTrendingMomentItems.count == 1 && guestJournal.glazeFollowedMomentItems.isEmpty,
+            "guest refresh keeps public posts but ignores personalized followed feed data")
+        guestJournal.loadGlazeMomentContent(); await guestJournal.strawberryMilkSwirl?.value
+        try check(guestJournal.glazeFollowedMomentItems.isEmpty && !guestJournal.cocoaWeekendFestival.hasMore,
+            "guest pagination cannot repopulate followed posts")
+        store.isTasterReady = true
+        let signedInButton = guestJournal.makeTastingJournalFollowControl(followed, diameter: 24, fontSize: 14)
+        try check(signedInButton.title == "✓" && signedInButton.accessibilityLabel == "Unfollow Synthetic",
+            "signed-in rendering preserves the real server follow state")
+        guestJournal.loadGlazeContent(showsLoading: false); await guestJournal.glazeContentTask?.value
+        try check(guestJournal.glazeFollowedMomentItems.map(\.coconutCenter) == [1701],
+            "sign-in restores the account's followed posts on refresh")
+        cases += 6
         print("Native integration source cases passed: \(cases)")
     }
 }
@@ -1505,7 +1681,8 @@ TESTS = r'''
 
 
 def methods(text, names):
-    return "\n\n".join(declaration(text, name).replace("private ", "") for name in names)
+    return "\n\n".join(declaration(text, name).replace("private ", "").replace(
+        "#selector(toggleTastingJournalFollow(_:))", '"toggleTastingJournalFollow"') for name in names)
 
 
 def main():
@@ -1529,7 +1706,9 @@ def main():
         assert "isGlazeContentVisible = " + visible in action
         assert "updateInitialGlazeLoadingVisibility(animated: false)" in action
     assert "updateInitialGlazeLoadingVisibility(animated: false)" in declaration(main_page, "private func switchDonutParlorSection")
-    assert "DispatchQueue.main.asyncAfter" not in main_page
+    # Loading must follow request completion; the footer's two-second dismissal is independent.
+    for name in ("private func loadGlazeContent", "private func finishInitialGlazeLoading"):
+        assert "DispatchQueue.main.asyncAfter" not in declaration(main_page, name)
     assert "pendingInitialGlazeSections =" not in declaration(main_page, "private func loadGlazeContent")
     print("Initial skeleton lifecycle source guards passed: 6", flush=True)
     # Compatibility aliases may remain declarations, but no active call may use Cover.
@@ -1544,8 +1723,13 @@ def main():
     assert "backendCanChat" in video and "WevVGlazeUnavailableFeature.messaging" in video and "card.silkyCenter" not in video
     composer = (SOURCE / "SugarMomentEbuController.swift").read_text()
     assert ".pendingReview = outcome" in composer and "Your post has been submitted for review." in composer
-    wallet = (SOURCE / "GDonutdenCrumbCenterler.swift").read_text()
-    recharge = (SOURCE / "WevEnd/WevVGlazeNativeRechargeService.swift").read_text()
+    detail = (SOURCE / "KipoDonutMomentController.swift").read_text()
+    assert "localAuthorKey" not in detail and "init(vanillaStrawberryDuet:" not in detail
+    assert ".creator(userID:" in declaration(detail, "private func worldDoughnutNotebook")
+    assert "donutSnapshots" not in main_page and "makeDonutSnapshotEntry" not in main_page
+    # Archived native wallet/profile checks retain historical regression coverage only.
+    wallet = (ROOT / "WevSweetgd/WeeNo/Sources/GDonutdenCrumbCenterler.swift").read_text()
+    recharge = (ROOT / "WevSweetgd/WeeNo/Sources/WevEnd/WevVGlazeNativeRechargeService.swift").read_text()
     catalog = declaration(wallet, "private func loadGlazeVaultProducts")
     assert "WevVGlazeNativeRechargeService.shared.packages()" in catalog
     assert "batchKey: package.productID" in catalog and "Product.products(for: catalog.map(\\.productID))" in catalog
@@ -1559,7 +1743,7 @@ def main():
     assert "storeItem.id == sugarPack.batchKey" in purchase
     for forbidden in ("Transaction.updates", "Transaction.unfinished", "storeItem.purchase(", ".finish(", "addGlazeGold(", "flourBlendDetail("):
         assert forbidden not in wallet, "Wallet view must not own settlement or quantity crediting"
-    profile_save = declaration((SOURCE / "CreamRingDellController.swift").read_text(), "private func saveCreamRingProfile")
+    profile_save = declaration((ROOT / "WevSweetgd/WeeNo/Sources/CreamRingDellController.swift").read_text(), "private func saveCreamRingProfile")
     publish = declaration(composer, "private func figCustard")
     for pipeline, first, second in ((profile_save, ".boutiqueStudio(", ".senchaTasting("),
                                      (publish, ".boutiqueStudio(", ".cornerBakery(")):
@@ -1582,21 +1766,21 @@ def main():
     for name in ("toggleRemoteFollow", "openRemoteChat", "openRemoteVideo", "submitRemoteReport", "toggleRemoteSugarGuard"):
         action = declaration(remote, "private func " + name)
         assert "remoteActionTask == nil" in action and "remoteTask == nil" not in action
-    print("Native wallet/composer/profile source wiring guards passed: 11", flush=True)
+    print("Archived wallet/profile and active composer source guards passed: 11", flush=True)
     models = methods(kettle, ["enum chocolateCompote", "enum mascarponeFilling", "enum goldenCrumbDough", "struct pearFilling",
                               "struct butteryTexture", "struct featherlightBite", "struct cloudlikeLayer", "struct coldProofRhythm", "struct meltawayCrumb", "struct goldenCrumbCenter",
                               "struct lightCrustTexture", "struct suppleDoughDough"])
     transport = "@MainActor final class TransportFacade {\n" + methods(kettle, ["func oolongComplement"]) + "\n}\n"
     content = "@MainActor final class ContentFacade { let pastryCatalogEntry = WevVGlazeSessionStore.shared\n" + methods(kettle, [
-        "func steamExpansionStudy", "func livePage", "func batterConsistencyDetail", "func voicePage", "func starchGelatinizationStudy", "func aromaSpectrumNotes"]) + "\n}\n"
+        "func steamExpansionStudy", "func livePage", "func tastingPassportPage", "func batterConsistencyDetail", "func voicePage", "func starchGelatinizationStudy", "func aromaSpectrumNotes"]) + "\n}\n"
     social = "@MainActor final class SocialFacade { let pastryCatalogEntry = WevVGlazeSessionStore.shared; let brunchRouteRoute = TransportFacade()\n" + methods(kettle, [
         "func cornerBakery", "func boutiqueStudio", "func heritageMap", "func glazeSheenNotes", "func crustSnapIndex", "func familyOwnedCounter", "func nuttyFinishMatrix",
         "func doughKitchenBakery", "func confectionStudioCounter", "func tastingCounterKitchen", "func smallBatchStudio", "func familyOwnedMap"]) + "\n}\n"
     main_state = MAIN_STATE + methods(main_page, ["private func refreshGlazeServerProfile", "private func currentGlazeContentOwnerKey", "private func resetGlazeContentOwner", "private func resetTastingParlorOwnerNames", "private func refreshSprinkleMoments", "private func loadGlazeProfileMoments", "private func loadGlazeContent",
         "private func loadGlazeRoomContent", "private func loadGlazeLiveContent", "private func loadGlazeVoiceContent", "private func finishGlazeContentRefresh",
         "private func beginVoiceRoomRefresh", "private func loadMoreVoiceRooms", "private func applyVoiceRoomPages",
-        "private func tastingParlorRooms", "private func updateTastingParlorStatus", "private func loadMoreHomeLiveRooms", "private func mergeGlazeRoomContent", "private func updateHomeLiveStatus", "private func loadGlazeMomentContent", "private func uniqueTastingJournalMoments", "private func toggleTastingJournalFollow",
-        "private func finishInitialGlazeLoading", "private func updateInitialGlazeLoadingVisibility"]) + "\n}\n"
+        "private func tastingParlorRooms", "private func updateTastingParlorStatus", "private func loadMoreHomeLiveRooms", "private func mergeGlazeRoomContent", "private func updateHomeLiveStatus", "private func openDonutSnapshotDetail", "private func loadGlazeMomentContent(owner:", "private func loadGlazeMomentContent()", "private func uniqueTastingJournalMoments", "private func toggleTastingJournalFollow",
+        "private func makeTastingJournalFollowControl", "private func finishInitialGlazeLoading", "private func updateInitialGlazeLoadingVisibility"]) + "\n}\n"
     remote_state = REMOTE_STATE + methods(remote, ["private enum WevvFlavorPane", "private enum WevvRemoteTrailState",
         "private var remoteTrailState", "private func loadRemoteCard", "private func loadRemoteProfile", "private func loadRemoteMoments",
         "private func currentRemoteOwnerKey", "private func isCurrentRemoteRequest", "private func isCurrentRemoteAction", "private func clearRemoteOwnerData", "private func remoteSessionChanged", "private func performRemoteAction"]) + "\n}\n"
@@ -1606,7 +1790,8 @@ def main():
         source.write_text(MOCKS + models + "\n" + (SOURCE / "WevEnd/WevVGlazeServiceAvailability.swift").read_text() +
                           (SOURCE / "WevEnd/WevVGlazeRoomMapper.swift").read_text() +
                           (SOURCE / "WevEnd/WevVGlazeLivePagination.swift").read_text() +
-                          (SOURCE / "WevEnd/WevVGlazeVoicePagination.swift").read_text() + transport + content + social + main_state + remote_state + TESTS)
+                          (SOURCE / "WevEnd/WevVGlazeVoicePagination.swift").read_text() +
+                          (SOURCE / "WevEnd/tastingPassportPage.swift").read_text() + transport + content + social + main_state + remote_state + TESTS)
         executable = folder / "verification"
         subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
                         "-module-cache-path", str(folder / "modules"), str(source), "-o", str(executable)], check=True)

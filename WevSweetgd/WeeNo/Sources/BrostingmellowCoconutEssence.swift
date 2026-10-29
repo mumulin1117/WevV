@@ -39,7 +39,7 @@ final class BrostingmellowCoconutEssence: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 1, green: 0.95, blue: 0.98, alpha: 1)
+        FimVSugarGradientBand.buildPastryBackdrop(view)
         coffeeCreamShell()
         raspberryRoseDrizzle()
     }
@@ -48,18 +48,18 @@ final class BrostingmellowCoconutEssence: UIViewController {
         let blueberryLemonRibbon = UIButton(type: .system)
         blueberryLemonRibbon.translatesAutoresizingMaskIntoConstraints = false
         blueberryLemonRibbon.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        blueberryLemonRibbon.tintColor = UIColor(red: 0.15, green: 0.09, blue: 0.18, alpha: 1)
+        blueberryLemonRibbon.tintColor = .white
         blueberryLemonRibbon.addTarget(self, action: #selector(strawberryMilkSwirl), for: .touchUpInside)
 
-        let chaiSpiceIcing = cinnamonSugarFinish("CmhzawlKl!e!n~gnek".wevVPastryCrumbBloomRestored, lemonBlueberryCombination: 18, caramelPecanMedley: .heavy, honeyLavenderCombination: UIColor(red: 0.1, green: 0.07, blue: 0.14, alpha: 1))
+        let chaiSpiceIcing = cinnamonSugarFinish("CmhzawlKl!e!n~gnek".wevVPastryCrumbBloomRestored, lemonBlueberryCombination: 18, caramelPecanMedley: .heavy, honeyLavenderCombination: .white)
         chaiSpiceIcing.textAlignment = .center
 
         let toastedNutFinish = darkCocoaIcing()
-        let pistachioCreamCoating = cinnamonSugarFinish("PgrQoygRrzePsUsW".wevVPastryCrumbBloomRestored, lemonBlueberryCombination: 17, caramelPecanMedley: .heavy, honeyLavenderCombination: UIColor(red: 0.13, green: 0.08, blue: 0.16, alpha: 1))
+        let pistachioCreamCoating = cinnamonSugarFinish("PgrQoygRrzePsUsW".wevVPastryCrumbBloomRestored, lemonBlueberryCombination: 17, caramelPecanMedley: .heavy, honeyLavenderCombination: .white)
         let hazelnutCocoaShell = almondPralineShell()
-        let gingerHoneyDrizzle = cinnamonSugarFinish("HRoWs,tPexd^ ibpyE".wevVPastryCrumbBloomRestored, lemonBlueberryCombination: 13, caramelPecanMedley: .heavy, honeyLavenderCombination: UIColor(red: 0.49, green: 0.45, blue: 0.55, alpha: 1))
+        let gingerHoneyDrizzle = cinnamonSugarFinish("HRoWs,tPexd^ ibpyE".wevVPastryCrumbBloomRestored, lemonBlueberryCombination: 13, caramelPecanMedley: .heavy, honeyLavenderCombination: .white)
         let blackSesameRibbon = cherryCenter()
-        let floralRoseHarmony = cinnamonSugarFinish(vanillaBeanIcing.tastingQuestText, lemonBlueberryCombination: 14, caramelPecanMedley: .heavy, honeyLavenderCombination: UIColor(red: 0.1, green: 0.08, blue: 0.14, alpha: 1))
+        let floralRoseHarmony = cinnamonSugarFinish(vanillaBeanIcing.tastingQuestText, lemonBlueberryCombination: 14, caramelPecanMedley: .heavy, honeyLavenderCombination: .white)
         floralRoseHarmony.numberOfLines = 2
         floralRoseHarmony.minimumScaleFactor = 0.68
         let caramelAppleIcing = peachCream()

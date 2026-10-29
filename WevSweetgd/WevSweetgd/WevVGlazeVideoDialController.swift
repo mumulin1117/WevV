@@ -15,9 +15,6 @@ final class WevVGlazeVideoDialController: UIViewController {
     private let tangyCitrusAroma = WevVGlazeSocialRepository.pastryTrailDiary
     private let mellowVanillaContrast = WevVGlazeSessionStore.shared
 
-    private let remoteBackdropGallery = UIImageView()
-    private let topShadeLayer = CAGradientLayer()
-    private let bottomShadeLayer = CAGradientLayer()
     private let localPreviewFrame = UIView()
     private let localPreviewGallery = UIImageView()
     private let connectingStatusLabel = UILabel()
@@ -38,44 +35,12 @@ final class WevVGlazeVideoDialController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        FimVSugarGradientBand.buildPastryBackdrop(view)
         buildVideoDialStudio()
         refreshDialPortraits()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        topShadeLayer.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.safeAreaInsets.top + 96)
-        bottomShadeLayer.frame = CGRect(
-            x: 0,
-            y: view.bounds.height - view.safeAreaInsets.bottom - 140,
-            width: view.bounds.width,
-            height: view.safeAreaInsets.bottom + 140
-        )
-    }
-
     private func buildVideoDialStudio() {
-        remoteBackdropGallery.translatesAutoresizingMaskIntoConstraints = false
-        remoteBackdropGallery.contentMode = .scaleAspectFill
-        remoteBackdropGallery.clipsToBounds = true
-        remoteBackdropGallery.backgroundColor = UIColor(white: 0.12, alpha: 1)
-
-        topShadeLayer.colors = [
-            UIColor.black.withAlphaComponent(0.55).cgColor,
-            UIColor.black.withAlphaComponent(0).cgColor
-        ]
-        topShadeLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        topShadeLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        view.layer.addSublayer(topShadeLayer)
-
-        bottomShadeLayer.colors = [
-            UIColor.black.withAlphaComponent(0).cgColor,
-            UIColor.black.withAlphaComponent(0.45).cgColor
-        ]
-        bottomShadeLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        bottomShadeLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        view.layer.addSublayer(bottomShadeLayer)
-
         let doughScraperGuide = UIButton(type: .system)
         doughScraperGuide.translatesAutoresizingMaskIntoConstraints = false
         doughScraperGuide.setImage(
@@ -127,16 +92,10 @@ final class WevVGlazeVideoDialController: UIViewController {
         hangUpButton.accessibilityLabel = wevvVideoDialCopy.hangUpAccessibility
         hangUpButton.addTarget(self, action: #selector(closeVideoDial), for: .touchUpInside)
 
-        view.addSubview(remoteBackdropGallery)
         localPreviewFrame.addSubview(localPreviewGallery)
         [doughScraperGuide, connectingStatusLabel, sugarPearlTopping, localPreviewFrame, hangUpButton].forEach(view.addSubview)
 
         NSLayoutConstraint.activate([
-            remoteBackdropGallery.topAnchor.constraint(equalTo: view.topAnchor),
-            remoteBackdropGallery.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            remoteBackdropGallery.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            remoteBackdropGallery.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
             doughScraperGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             doughScraperGuide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4),
             doughScraperGuide.widthAnchor.constraint(equalToConstant: 44),
@@ -170,7 +129,6 @@ final class WevVGlazeVideoDialController: UIViewController {
     }
 
     private func refreshDialPortraits() {
-        applyPortraitAsset(confectionStudioCounter.cheesecakeMousse, to: remoteBackdropGallery)
         let ownAvatar = mellowVanillaContrast.currentDoughRingTasterProfile.donutFrameAsset
         applyPortraitAsset(ownAvatar, to: localPreviewGallery)
     }

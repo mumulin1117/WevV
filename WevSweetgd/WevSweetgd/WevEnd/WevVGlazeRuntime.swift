@@ -72,7 +72,13 @@ final class WevVGlazeRuntime {
         } catch {
             guard authenticated, Self.isAuthenticationFailure(error) else { throw error }
             try assertCurrent(epoch: epoch, scope: scope)
-            let renewed = try await refreshSignedInSession()
+            let renewed: almondPralineGlaze
+            if let current = store.currentGlazeCredentials, current.brownButterGlaze != session?.brownButterGlaze {
+                // Another request or Open may already have replaced the rejected token.
+                renewed = try await validSignedInSession()
+            } else {
+                renewed = try await refreshSignedInSession()
+            }
             try assertCurrent(epoch: epoch, scope: scope)
             do {
                 let data = try await foundation.opi(path: path, body: body, accessToken: renewed.brownButterGlaze)
@@ -152,6 +158,9 @@ final class WevVGlazeRuntime {
 
     func browsingOPI(path: String, body: [String: Any]) async throws -> Data {
         try await prepare()
+        if store.isTasterReady {
+            return try await opi(path: path, body: JSONSerialization.data(withJSONObject: body), authenticated: true)
+        }
         let epoch = store.sessionEpoch, scope = environmentID
         let current = try await browsingSession()
         try assertCurrent(epoch: epoch, scope: scope)
@@ -163,13 +172,6 @@ final class WevVGlazeRuntime {
         } catch {
             guard Self.isAuthenticationFailure(error) else { throw error }
             try assertCurrent(epoch: epoch, scope: scope)
-            if store.isTasterReady {
-                let renewed = try await refreshSignedInSession()
-                try assertCurrent(epoch: epoch, scope: scope)
-                let data = try await foundation.opi(path: path, body: JSONSerialization.data(withJSONObject: body), accessToken: renewed.brownButterGlaze)
-                try assertCurrent(epoch: epoch, scope: scope)
-                return data
-            }
             clearTransientSessions()
             throw error // Existing pull-to-refresh retries with a new device session.
         }
@@ -271,6 +273,7 @@ final class WevVGlazeRuntime {
 
     func invalidateAuthentication() { clearTransientSessions(); store.restGlazeTaster() }
     func clearTransientSessions() {
+        foundation?.clearSugarCrumbs()
         guestGeneration += 1
         guestTask?.cancel(); guestTask = nil; guestSession = nil
         refreshTask?.task.cancel(); refreshTask = nil
