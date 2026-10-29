@@ -1,0 +1,45 @@
+WeeNo 自主命名提取说明
+
+扫描：9 份现存源码（完整 Swift 文件及 .swift.txt 片段）。
+归档内类：11；归档内声明的去重自主命名：455；引用项目名称候选：123；合并：578。
+
+文件说明：
+归档内类名.txt：包含私有辅助类，只列在归档中实际声明的 class。
+归档内声明的自主命名.txt：类型、方法、属性、局部变量、参数、闭包参数、枚举成员、泛型参数及自定义参数标签；每行一个，已去重。
+引用的项目自定义类型.txt：归档引用、但在当前项目其他源码声明的自定义类型。
+全部自主命名.txt：归档内声明名称 + 引用项目自定义名称候选；每行一个，已去重。
+来源明细.json：每个声明的分类和文件行号、引用候选的使用/声明位置、排除的固定方法、全部源码标识符兜底清单及扫描文件摘要。
+
+边界：
+不将系统/UIKit/StoreKit 类型或方法仅因出现过就当成自主命名。
+排除 override 和已识别的系统协议固定方法名；其可自行命名的局部参数仍保留。
+使用 Swift 语法树提取，字符串和注释内的普通文字不计入代码命名；资源名称不属于代码标识符，未合并进命名表。
+引用项目名称采用名称匹配，未对停用代码进行完整类型检查；同名系统成员可能和项目名称重合，因此引用部分标注为候选，须结合来源明细核对。
+原文件、现有 App 代码、工程配置和归档目录均未修改。
+本清单不自动改变 AGENTS.md 中的新增命名来源约束，也不代表这里的每个名称都符合后续新增代码的命名来源要求。
+
+归档内类：
+BrostingmellowCoconutEssence
+CreamRingDellController
+DrawcreamScoutSugarStyle
+GDonutdenCrumbCenterler
+LisenNoticepoplater
+NertyuChoiceStackLayer
+WevVGlazeConversationCell
+WevVGlazeMessageCell
+WevVGlazeMessageController
+WevVGlazeRosterCell
+XunSugarRosterbrownButterDrizzle
+
+扫描文件：
+WevSweetgd/WeeNo/Sources/BrostingmellowCoconutEssence.swift
+WevSweetgd/WeeNo/Sources/CreamRingDellController.swift
+WevSweetgd/WeeNo/Sources/DrawcreamScoutSugarStyle.swift
+WevSweetgd/WeeNo/Sources/GDonutdenCrumbCenterler.swift
+WevSweetgd/WeeNo/Sources/LisenNoticepoplater.swift
+WevSweetgd/WeeNo/Sources/NertyuChoiceStackLayer.swift
+WevSweetgd/WeeNo/Sources/XunSugarRosterbrownButterDrizzle.swift
+WevSweetgd/WeeNo/Fragments/KipoDonutMomentController.local-detail.swift.txt
+WevSweetgd/WeeNo/Fragments/TvVDonutcreamapricotFillinger.local-detail.swift.txt
+
+补充：归档内类型名.txt 包含 class、struct、enum 等全部自定义类型；归档资源名称.txt 单独列出当前归档图片资源名称。

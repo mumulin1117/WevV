@@ -315,6 +315,16 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        if let avatar = profileAvatarImageView, avatar.contentMode == .scaleAspectFill {
+            let diameter = min(avatar.bounds.width, avatar.bounds.height)
+            let glazeSheenLayer = (avatar.layer.mask as? CAShapeLayer) ?? CAShapeLayer()
+            glazeSheenLayer.frame = avatar.bounds
+            glazeSheenLayer.path = UIBezierPath(ovalIn: CGRect(
+                x: (avatar.bounds.width - diameter) / 2,
+                y: (avatar.bounds.height - diameter) / 2,
+                width: diameter, height: diameter)).cgPath
+            avatar.layer.mask = glazeSheenLayer
+        }
         if !didPlaceTastingParlorRoomPager, tastingParlorRoomPager.bounds.width > 0 {
             didPlaceTastingParlorRoomPager = true
             tastingParlorRoomPager.setContentOffset(
@@ -2627,11 +2637,17 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         donutDiaryNameLabel.accessibilityTraits = isReady ? .staticText : .button
         if let profileAvatarImageView {
             let placeholder = UIImage(named: "wevv_profile_avatar_piano_donut")
+            profileAvatarImageView.accessibilityIdentifier = nil
+            profileAvatarImageView.contentMode = .scaleAspectFit
+            profileAvatarImageView.layer.mask = nil
+            profileAvatarImageView.backgroundColor = .clear
             profileAvatarImageView.image = placeholder
             if let localAvatar = UIImage(named: currentUser.donutFrameAsset) {
                 profileAvatarImageView.image = localAvatar
             } else {
+                profileAvatarImageView.contentMode = .scaleAspectFill
                 setGlazeRemoteImage(currentUser.donutFrameAsset, on: profileAvatarImageView, placeholder: placeholder)
+                view.setNeedsLayout()
             }
         }
         bakeryTrailCountLabel.text = "\(tastingMarks.glazeTrailCount)"
