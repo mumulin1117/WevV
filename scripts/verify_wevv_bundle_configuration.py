@@ -245,7 +245,7 @@ def make_fixtures(folder):
                  expectedRouting=routing) for (accept, path, seed, host, app_id, routing) in cases]
 
 def actual_fixture(folder):
-    manifest = json.loads((SOURCES / MANIFEST).read_text())
+    manifest = json.loads((SOURCES / "WevEnd" / MANIFEST).read_text())
     controller = (SOURCES / 'UKGlazeActortroller.swift').read_text()
     match = re.search('static let vanillaCipher\\s*=\\s*"([^"\\\\]+)"\\.wevVPastryCrumbBloomRestored', controller)
     if match is None:
@@ -256,7 +256,7 @@ def actual_fixture(folder):
     (bundle / 'Contents/Info.plist').write_bytes(plistlib.dumps({'CFBundleIdentifier': 'com.wevv.nativeconfiguration.actualprobe', 'CFBundleVersion': '1', 'CFBundlePackageType': 'BNDL'}))
     # Never read or copy the complete H5 resource.
     for name in (MANIFEST, THIN_ARCHIVE):
-        shutil.copy2(SOURCES / name, resources / name)
+        shutil.copy2(SOURCES / "WevEnd" / name, resources / name)
     return dict(expected=True, bundlePath=str(bundle), seed=match.group(1), obfuscatedSeed=True, hostVersion=manifest['hostVersion'], contentVersion=manifest['contentVersion'], expectedAppID=manifest['appId'], expectedRouting=manifest.get('nativeRouting'))
 SWIFT_PROBE = r'''
 import Foundation
@@ -329,7 +329,7 @@ def main():
         probe.write_text(SWIFT_PROBE)
         executable = folder / 'probe'
         # Link the actual loader and OPI parser; fixture generation has no decoder.
-        subprocess.run(['xcrun', 'swiftc', '-parse-as-library', '-swift-version', '5', '-default-isolation', 'MainActor', '-module-cache-path', str(folder / 'modules'), str(SOURCES / 'WevVGlazeNetworkFoundation.swift'), str(SOURCES / 'WevVGlazeBundleConfiguration.swift'), str(probe), '-o', str(executable)], check=True)
+        subprocess.run(['xcrun', 'swiftc', '-parse-as-library', '-swift-version', '5', '-default-isolation', 'MainActor', '-module-cache-path', str(folder / 'modules'), str(SOURCES / 'WevEnd/WevVGlazeNetworkFoundation.swift'), str(SOURCES / 'WevEnd/WevVGlazeBundleConfiguration.swift'), str(probe), '-o', str(executable)], check=True)
         subprocess.run([str(executable), str(case_file)], check=True, timeout=30)
     if arguments.actual:
         print('Actual project thin resource verified; full H5 archive was not read')

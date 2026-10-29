@@ -20,6 +20,14 @@ enum WevVGlazeRoomMapper {
         guard let string = text(value), let number = Int64(string), number > 0 else { return nil }; return String(number)
     }
     private static func count(_ value: Any?) -> Int64 { max(0, text(value).flatMap(Int64.init) ?? 0) }
+    private static func voiceOnlineCount(_ row: [String: Any]) -> Int64? {
+        // Match the delivered H5's audience fields, preserving an explicit zero.
+        // heatValue and the sampled avatar list are not online totals.
+        for field in ["audienceNum", "onlineCount"] {
+            if let value = text(row[field]).flatMap(Int64.init), value >= 0 { return value }
+        }
+        return nil
+    }
     private static func flag(_ value: Any?) -> Bool? {
         if let string = value as? String {
             switch string.trimmingCharacters(in: .whitespacesAndNewlines) {
@@ -54,7 +62,8 @@ enum WevVGlazeRoomMapper {
                 yuzuCustard: hostID, peachCream: name, pearCenter: text(row["icon"]),
                 appleCompote: text(row["backgroundImgUrl"]) ?? text(row["icon"]),
                 figFilling: count(row["joinNum"]), custardCurd: avatars(row), vanillaJam: [], pistachioCustard: nil, hazelnutCream: false,
-                glazeHostID: hostID, glazeIMAccount: text(row["yxAccid"]), glazeFollowed: flag(followed))
+                glazeHostID: hostID, glazeIMAccount: text(row["yxAccid"]), glazeFollowed: flag(followed),
+                glazeIsLive: text(row["liveRoomState"]).flatMap(Int.init) == 2)
         }
         let total = text(root["total"]).flatMap(Int.init).flatMap { $0 >= 0 ? $0 : nil }
         return WevVGlazeLivePage(rooms: rooms, total: total, rawCount: rows.count)
@@ -68,11 +77,12 @@ enum WevVGlazeRoomMapper {
             guard let roomID = id(row["id"]), let ownerID = id(row["ownerId"]) else { return nil }
             let status = text(row["roomStatus"]).flatMap(Int.init)
             if status == 0 || status == 2 { return nil }
+            let onlineCount = voiceOnlineCount(row)
             return pearFilling(passionfruitMousse: roomID, lemonCurd: .blackberryCream, limeJam: text(row["roomName"]) ?? "Voice Room",
                 yuzuCustard: ownerID, peachCream: text(row["ownerName"]) ?? "WevV", pearCenter: text(row["ownerAvatar"]),
-                appleCompote: text(row["roomAvatar"]), figFilling: count(row["heatValue"]), custardCurd: avatars(row),
+                appleCompote: text(row["roomAvatar"]), figFilling: onlineCount ?? 0, custardCurd: avatars(row),
                 vanillaJam: [], pistachioCustard: nil, hazelnutCream: followed, glazeHostID: ownerID,
-                glazeIMAccount: text(row["yxAccid"]), glazeFollowed: followed)
+                glazeIMAccount: text(row["yxAccid"]), glazeFollowed: followed, glazeOnlineCount: onlineCount)
         }
         // The server cursor belongs to the raw final row, even if its room was
         // closed or invalid and consequently absent from the visible cards.

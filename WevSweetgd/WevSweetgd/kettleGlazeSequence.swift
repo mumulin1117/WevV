@@ -159,6 +159,13 @@ struct pearFilling: Sendable {
     var glazeHostID: String? = nil
     var glazeIMAccount: String? = nil
     var glazeFollowed: Bool? = nil
+    var glazeIsLive: Bool = false
+    var glazeOnlineCount: Int64? = nil
+
+    var glazeAudienceText: String {
+        guard lemonCurd == .blackberryCream else { return "\(figFilling) online" }
+        return glazeOnlineCount.map { "\($0) online" } ?? "— online"
+    }
 }
 
 struct butteryTexture: Sendable {

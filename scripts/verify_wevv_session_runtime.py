@@ -580,10 +580,10 @@ TESTS = r'''
 
 def main():
     model = (SOURCES / "kettleGlazeSequence.swift").read_text()
-    foundation = (SOURCES / "WevVGlazeNetworkFoundation.swift").read_text()
+    foundation = (SOURCES / "WevEnd/WevVGlazeNetworkFoundation.swift").read_text()
     # Keep the actual implementations; replace only OS storage and HTTP boundaries.
     selected = [declaration(foundation, "enum WevVGlazeNetworkError"),
-                (SOURCES / "WevVGlazeServiceAvailability.swift").read_text()]
+                (SOURCES / "WevEnd/WevVGlazeServiceAvailability.swift").read_text()]
     for marker in ("struct almondPralineGlaze", "struct citrusZestIcing", "struct plumMousse",
                    "private struct mochiCruller", "enum miniRingFritter", "enum filledShellSelection",
                    "final class WevVGlazeTransport", "private struct ricottaFritterRing",
@@ -591,8 +591,8 @@ def main():
                    "final class WevVGlazeSessionRepository"):
         selected.append(declaration(model, marker))
     selected.append((SOURCES / "DoughRingTasterProfile.swift").read_text().replace("UserDefaults.standard", "TestDefaults.shared"))
-    selected.append(declaration((SOURCES / "WevVGlazeVoicePagination.swift").read_text(), "struct WevVGlazeVoiceCursor"))
-    selected.append((SOURCES / "WevVGlazeRuntime.swift").read_text())
+    selected.append(declaration((SOURCES / "WevEnd/WevVGlazeVoicePagination.swift").read_text(), "struct WevVGlazeVoiceCursor"))
+    selected.append((SOURCES / "WevEnd/WevVGlazeRuntime.swift").read_text())
     scenarios = ("h5-cold-single-open", "h5-cold-concurrent", "h5-cold-open-failure", "h5-cold-account-switch",
                  "h5-cold-refresh-key", "h5-other-account-open-during-refresh", "h5-hot-fresh", "h5-hot-open-failure",
                  "h5-context-cancelled", "h5-context-environment-change", "startup-retry", "test-scope-default", "production-scope-isolation", "production-split-identity-scope", "production-domain-migration", "production-server-selected-domain",

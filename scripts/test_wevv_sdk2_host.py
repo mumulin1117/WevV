@@ -19,7 +19,7 @@ import wevv_room_bundle as bundletool
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'WevSweetgd/WevSweetgd/UKGlazeActortroller.swift'
-RESOURCES = ROOT / 'WevSweetgd/WevSweetgd'
+RESOURCES = ROOT / 'WevSweetgd/WevSweetgd/WevEnd'
 
 
 def method(source, declaration, next_declaration):

@@ -1545,7 +1545,7 @@ def main():
     composer = (SOURCE / "SugarMomentEbuController.swift").read_text()
     assert ".pendingReview = outcome" in composer and "Your post has been submitted for review." in composer
     wallet = (SOURCE / "GDonutdenCrumbCenterler.swift").read_text()
-    recharge = (SOURCE / "WevVGlazeNativeRechargeService.swift").read_text()
+    recharge = (SOURCE / "WevEnd/WevVGlazeNativeRechargeService.swift").read_text()
     catalog = declaration(wallet, "private func loadGlazeVaultProducts")
     assert "WevVGlazeNativeRechargeService.shared.packages()" in catalog
     assert "batchKey: package.productID" in catalog and "Product.products(for: catalog.map(\\.productID))" in catalog
@@ -1603,10 +1603,10 @@ def main():
     with tempfile.TemporaryDirectory(prefix="wevv-native-integration-") as temporary:
         folder = Path(temporary)
         source = folder / "Verification.swift"
-        source.write_text(MOCKS + models + "\n" + (SOURCE / "WevVGlazeServiceAvailability.swift").read_text() +
-                          (SOURCE / "WevVGlazeRoomMapper.swift").read_text() +
-                          (SOURCE / "WevVGlazeLivePagination.swift").read_text() +
-                          (SOURCE / "WevVGlazeVoicePagination.swift").read_text() + transport + content + social + main_state + remote_state + TESTS)
+        source.write_text(MOCKS + models + "\n" + (SOURCE / "WevEnd/WevVGlazeServiceAvailability.swift").read_text() +
+                          (SOURCE / "WevEnd/WevVGlazeRoomMapper.swift").read_text() +
+                          (SOURCE / "WevEnd/WevVGlazeLivePagination.swift").read_text() +
+                          (SOURCE / "WevEnd/WevVGlazeVoicePagination.swift").read_text() + transport + content + social + main_state + remote_state + TESTS)
         executable = folder / "verification"
         subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
                         "-module-cache-path", str(folder / "modules"), str(source), "-o", str(executable)], check=True)

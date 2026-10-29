@@ -11,7 +11,7 @@
     "keySource": "existing-native-resource"
   },
   "status": "integrated",
-  "contentVersion": "sdk2-7a700f8adeb79ca1750f9d77530791c01988949dc0e793645ba4533fe1c4359d",
+  "contentVersion": "sdk2-1bb9b664b76f82d3ebc092f745db4746cb7852d63a2823e842aeee5d3496ebe5",
   "sdkProtocolVersion": "2.0.0",
   "appConfigSchemaVersion": 18,
   "opiProfileRevision": 2,
@@ -31,10 +31,10 @@
   "h5BuildId": "2026-09-18-01",
   "entryPoint": "index.html",
   "archiveFile": "vanillaBeanIcingSdk2.data",
-  "archiveBytes": 39277856,
-  "archiveSha256": "b33a9ca5651e35fa0e95842601946f9137bc907ced88ad8265e69c87559fd32c",
+  "archiveBytes": 39280544,
+  "archiveSha256": "8d11910438c9d0cb54c890d5e6de02114ff8a16a6afae8b073ff5cd4ad302849",
   "fileCount": 1174,
-  "unpackedBytes": 49224015,
+  "unpackedBytes": 49231663,
   "source": {
     "deliveryManifestSha256": "e71ab9ebfcf59ec83f627d9f542138fbd511ae80b998e0e3289a22ee131b49fa",
     "profileInputSha256": "11c8a9577fefc7098921206a060bf6a3aaf641a7c9c2030a5cf5362efdf704c7",
@@ -52,9 +52,9 @@
     "connectionConfigInputSha256": "0b7e57321626ccc3ced3a32447819cc313e62c39885851a77d6f8c9681dde4ac",
     "indexReplacement": {
       "inputFileName": "index.html",
-      "inputSha256": "eb969fa0ffd226888afa6d465158ac1c708c5ddb75443183857c0aae1dc3b4f9",
-      "previousContentVersion": "sdk2-bfe9bc94ec803289edbdc8395e4ed96c7c0df50b11dadc9a9880d3c3b42a5cef",
-      "previousIndexSha256": "62cdb4030ce0a148cbddc751f6e4516b8a84ec8d46fd5b38b828445fb05b6bf5"
+      "inputSha256": "2130a110871d9207a5ca6bbc272eb8ba45f0a5382b71a2bbc62f178793a1e156",
+      "previousContentVersion": "sdk2-7a700f8adeb79ca1750f9d77530791c01988949dc0e793645ba4533fe1c4359d",
+      "previousIndexSha256": "eb969fa0ffd226888afa6d465158ac1c708c5ddb75443183857c0aae1dc3b4f9"
     }
   },
   "files": [
@@ -5920,8 +5920,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 4509115,
-      "sha256": "eb969fa0ffd226888afa6d465158ac1c708c5ddb75443183857c0aae1dc3b4f9"
+      "bytes": 4516763,
+      "sha256": "2130a110871d9207a5ca6bbc272eb8ba45f0a5382b71a2bbc62f178793a1e156"
     },
     {
       "path": "webapp-manifest.json",

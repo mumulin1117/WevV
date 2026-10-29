@@ -1019,7 +1019,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         card.translatesAutoresizingMaskIntoConstraints = false
         card.accessibilityIdentifier = "voice:\(room.passionfruitMousse)"
         card.isAccessibilityElement = true
-        card.accessibilityLabel = "\(room.limeJam), \(room.figFilling) online"
+        card.accessibilityLabel = "\(room.limeJam), \(room.glazeAudienceText)"
         card.accessibilityTraits = .button
         card.layer.cornerRadius = 9
         card.clipsToBounds = true
@@ -1745,9 +1745,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         liveBadge.translatesAutoresizingMaskIntoConstraints = false
         liveBadge.contentMode = .scaleAspectFit
 
-        let signal = WevVGlazzestyOrangeEssence(glazeBarHeights: [7, 11, 16])
-        signal.translatesAutoresizingMaskIntoConstraints = false
-
         let titleBand = UIView()
         titleBand.translatesAutoresizingMaskIntoConstraints = false
         titleBand.backgroundColor = UIColor.black.withAlphaComponent(0.46)
@@ -1761,7 +1758,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         card.addSubview(cover)
         card.addSubview(liveBadge)
-        card.addSubview(signal)
         card.addSubview(titleBand)
         titleBand.addSubview(title)
         NSLayoutConstraint.activate([
@@ -1774,10 +1770,6 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             liveBadge.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 10),
             liveBadge.widthAnchor.constraint(equalToConstant: 54),
             liveBadge.heightAnchor.constraint(equalToConstant: 22),
-            signal.topAnchor.constraint(equalTo: card.topAnchor, constant: 13),
-            signal.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -11),
-            signal.widthAnchor.constraint(equalToConstant: 17),
-            signal.heightAnchor.constraint(equalToConstant: 17),
             titleBand.leadingAnchor.constraint(equalTo: card.leadingAnchor),
             titleBand.trailingAnchor.constraint(equalTo: card.trailingAnchor),
             titleBand.bottomAnchor.constraint(equalTo: card.bottomAnchor),
@@ -1786,6 +1778,17 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             title.trailingAnchor.constraint(equalTo: titleBand.trailingAnchor, constant: -8),
             title.centerYAnchor.constraint(equalTo: titleBand.centerYAnchor)
         ])
+        if room.glazeIsLive {
+            let signal = WevVGlazzestyOrangeEssence(glazeBarHeights: [7, 11, 16])
+            signal.translatesAutoresizingMaskIntoConstraints = false
+            card.addSubview(signal)
+            NSLayoutConstraint.activate([
+                signal.topAnchor.constraint(equalTo: card.topAnchor, constant: 13),
+                signal.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -11),
+                signal.widthAnchor.constraint(equalToConstant: 17),
+                signal.heightAnchor.constraint(equalToConstant: 17)
+            ])
+        }
         return card
     }
 
@@ -1800,7 +1803,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         card.translatesAutoresizingMaskIntoConstraints = false
         card.accessibilityIdentifier = "\(room.lemonCurd.rawValue):\(room.passionfruitMousse)"
         card.isAccessibilityElement = true
-        card.accessibilityLabel = "Join \(room.limeJam), \(room.figFilling) online"
+        card.accessibilityLabel = "Join \(room.limeJam), \(room.glazeAudienceText)"
         card.accessibilityTraits = .button
         card.layer.cornerRadius = 14
         card.clipsToBounds = true
@@ -1850,7 +1853,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let audience = UILabel()
         audience.translatesAutoresizingMaskIntoConstraints = false
-        audience.text = "\(room.figFilling) online"
+        audience.text = room.glazeAudienceText
         audience.textColor = .white
         audience.font = .systemFont(ofSize: 14, weight: .medium)
 

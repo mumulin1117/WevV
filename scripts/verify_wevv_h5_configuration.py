@@ -17,7 +17,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RESOURCES = ROOT / "WevSweetgd/WevSweetgd"
+RESOURCES = ROOT / "WevSweetgd/WevSweetgd/WevEnd"
 
 
 def require(condition, message):

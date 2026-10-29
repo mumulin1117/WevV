@@ -161,7 +161,7 @@ struct RechargeProfile { let glazeVaultCount:Int }
     with tempfile.TemporaryDirectory(prefix='wevv-native-recharge-test-') as d:
         path=Path(d);(path/'Stubs.swift').write_text(stubs);(path/'Verify.swift').write_text(tests)
         exe=path/'Verify'
-        subprocess.run(['xcrun','swiftc','-D','WEVV_PURCHASE_TESTING','-swift-version','5','-default-isolation','MainActor','-parse-as-library','-module-cache-path','/private/tmp/wevv-native-recharge-module-cache',str(path/'Stubs.swift'),str(APP/'WevVGlazeNetworkFoundation.swift'),str(APP/'WevVGlazePurchaseCoordinator.swift'),str(APP/'WevVGlazeNativeRechargeService.swift'),str(path/'Verify.swift'),'-o',str(exe)],check=True)
+        subprocess.run(['xcrun','swiftc','-D','WEVV_PURCHASE_TESTING','-swift-version','5','-default-isolation','MainActor','-parse-as-library','-module-cache-path','/private/tmp/wevv-native-recharge-module-cache',str(path/'Stubs.swift'),str(APP/'WevEnd/WevVGlazeNetworkFoundation.swift'),str(APP/'WevEnd/WevVGlazePurchaseCoordinator.swift'),str(APP/'WevEnd/WevVGlazeNativeRechargeService.swift'),str(path/'Verify.swift'),'-o',str(exe)],check=True)
         subprocess.run([str(exe)],check=True)
 
 

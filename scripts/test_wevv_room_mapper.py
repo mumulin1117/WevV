@@ -46,6 +46,15 @@ def main():
         precondition(live[0].pearCenter == "https://example.invalid/avatar.png" && live[0].glazeIMAccount == "host-im" && live[0].figFilling == 123)
         precondition(live[0].appleCompote == "https://example.invalid/cover.png" && live[0].peachCream == "Host")
         precondition(live[0].glazeFollowed == true)
+        precondition(live[0].glazeIsLive)
+        let liveStates: [Any] = [2, "2", " 2 ", 1, "1", 0, true, false, NSNull(), "true", "", "bad", 2.5, "2.5"]
+        for (index, state) in liveStates.enumerated() {
+            let rooms = try WevVGlazeRoomMapper.live(data(["rows": [["id": 9, "userId": 5, "liveRoomState": state]]]))
+            precondition(rooms.count == 1 && rooms[0].glazeIsLive == (index < 3))
+        }
+        let noLiveState = try WevVGlazeRoomMapper.live(data(["rows": [["id": 9, "userId": 5, "liveFlag": 1, "joinNum": 100]]]))
+        precondition(noLiveState.count == 1 && !noLiveState[0].glazeIsLive,
+                     "Legacy live flags and audience counts must not imply a live room")
         precondition(live[0].limeJam == "Actual room title")
         let titleFallbacks = try WevVGlazeRoomMapper.live(data(["rows": [
             ["id": 1, "userId": 5, "liveName": "   ", "liveDescribe": " Description ", "nickname": "Host", "anchorLevelName": "Lv 1"],
@@ -116,6 +125,35 @@ def main():
         precondition(voice[0].glazeHostID == "9007199254740993" && voice[0].lemonCurd == .blackberryCream)
         precondition(voice[0].appleCompote == "https://example.invalid/room.png" && voice[0].custardCurd == ["https://example.invalid/user.png"])
         precondition(voice.allSatisfy { !$0.hazelnutCream && $0.glazeFollowed == false })
+        precondition(voice.allSatisfy { !$0.glazeIsLive })
+        precondition(voice[0].glazeOnlineCount == nil && voice[0].glazeAudienceText == "— online",
+                     "Heat and sampled avatars cannot become an online total")
+        let voiceCountCases: [([String: Any], Int64?)] = [
+            (["audienceNum": 12, "onlineCount": 25, "heatValue": 999], 12),
+            (["audienceNum": 0, "onlineCount": 25], 0),
+            (["audienceNum": " 8 "], 8),
+            (["onlineCount": 7], 7),
+            (["audienceNum": NSNull(), "onlineCount": "9"], 9),
+            (["audienceNum": -1, "onlineCount": 4], 4),
+            (["onlineCount": 0, "onlineUserList": [["avatar": "a"], ["avatar": "b"]]], 0),
+            (["heatValue": 999, "groveAttendance": 10], nil),
+            ([:], nil)
+        ]
+        for (fields, expected) in voiceCountCases {
+            var row: [String: Any] = ["id": 9, "ownerId": 5, "roomStatus": 1]
+            row.merge(fields) { _, value in value }
+            for followed in [false, true] {
+                let rooms = try WevVGlazeRoomMapper.voice(data([row]), followed: followed)
+                precondition(rooms.count == 1 && rooms[0].glazeOnlineCount == expected)
+                precondition(rooms[0].figFilling == (expected ?? 0))
+                precondition(rooms[0].glazeAudienceText == (expected.map { "\($0) online" } ?? "— online"))
+            }
+        }
+        for invalid: Any in [true, false, -1, 1.5, "2.5", "bad", "", NSNull(), "9223372036854775808"] {
+            let rooms = try WevVGlazeRoomMapper.voice(data([["id": 9, "ownerId": 5, "audienceNum": invalid, "onlineCount": invalid, "heatValue": 300]]), followed: false)
+            precondition(rooms[0].glazeOnlineCount == nil && rooms[0].glazeAudienceText == "— online")
+        }
+        precondition(live[0].figFilling == 123 && live[0].glazeAudienceText == "123 online")
         precondition(WevVGlazeH5Entry.room(voice[0]).makeURL(indexURL: URL(fileURLWithPath: "/bundle/index.html"))!.absoluteString.hasSuffix("#/party/room/9223372036854775807"))
         let followed = try WevVGlazeRoomMapper.voice(voiceBody, followed: true)
         precondition(followed.allSatisfy { $0.hazelnutCream && $0.glazeFollowed == true })
@@ -201,7 +239,7 @@ def main():
         repository_source.write_text(repository)
         tests.write_text(checks)
         executable = destination / 'MapperVerification'
-        subprocess.run(['xcrun', 'swiftc', '-swift-version', '5', '-default-isolation', 'MainActor', '-parse-as-library', '-module-cache-path', '/private/tmp/wevv-room-mapper-module-cache', str(models), str(repository_source), str(APP / 'WevVGlazeNetworkFoundation.swift'), str(APP / 'WevVGlazeVoicePagination.swift'), str(APP / 'WevVGlazeRoomMapper.swift'), str(APP / 'WevVGlazeH5Entry.swift'), str(tests), '-o', str(executable)], check=True)
+        subprocess.run(['xcrun', 'swiftc', '-swift-version', '5', '-default-isolation', 'MainActor', '-parse-as-library', '-module-cache-path', '/private/tmp/wevv-room-mapper-module-cache', str(models), str(repository_source), str(APP / 'WevEnd/WevVGlazeNetworkFoundation.swift'), str(APP / 'WevEnd/WevVGlazeVoicePagination.swift'), str(APP / 'WevEnd/WevVGlazeRoomMapper.swift'), str(APP / 'WevEnd/WevVGlazeH5Entry.swift'), str(tests), '-o', str(executable)], check=True)
         subprocess.run([str(executable)], check=True)
 
 

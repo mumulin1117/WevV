@@ -114,13 +114,13 @@ func page(_ ids: [Int], total: Int? = nil, rawCount: Int? = nil) -> WevVGlazeLiv
 
 def main():
     kettle = (SOURCE / "kettleGlazeSequence.swift").read_text()
-    mapper = (SOURCE / "WevVGlazeRoomMapper.swift").read_text()
+    mapper = (SOURCE / "WevEnd/WevVGlazeRoomMapper.swift").read_text()
     models = "\n".join(declaration(kettle, name) for name in ("enum chocolateCompote", "struct pearFilling"))
     with tempfile.TemporaryDirectory(prefix="wevv-live-pagination-") as temporary:
         folder = Path(temporary)
         harness = folder / "Verification.swift"
         harness.write_text("import Foundation\n" + models + "\n" + declaration(mapper, "struct WevVGlazeLivePage")
-            + "\n" + (SOURCE / "WevVGlazeLivePagination.swift").read_text() + CHECKS)
+            + "\n" + (SOURCE / "WevEnd/WevVGlazeLivePagination.swift").read_text() + CHECKS)
         executable = folder / "verification"
         subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
             "-module-cache-path", str(folder / "modules"), str(harness), "-o", str(executable)], check=True)

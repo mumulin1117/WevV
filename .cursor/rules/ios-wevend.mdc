@@ -1,0 +1,13 @@
+---
+description: Keep new WevV iOS source files and app resources under WevEnd
+globs: WevSweetgd/WevSweetgd/**
+alwaysApply: false
+---
+
+# WevEnd 文件归档
+
+- 遵循项目根目录 `AGENTS.md` 的新增 iOS 文件归档规则。
+- 新增 Swift 文件和 App 资源放在 `WevSweetgd/WevSweetgd/WevEnd/`。
+- 新增独立类建立对应 Swift 文件，不继续追加到旧 Swift 文件。
+- 原始工程基线是 `8ad28ed6fa96816982d171d25811abeabd8f008c`，已有文件保留原路径。
+- 迁移时保持 Bundle 名称、加载路径、弱引用关系和运行行为，并更新脚本路径、构建验证。

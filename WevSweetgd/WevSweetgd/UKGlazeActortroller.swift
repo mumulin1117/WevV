@@ -57,14 +57,6 @@ final class UKGlazeActortroller: UIViewController {
         let timeout: Task<Void, Never>
     }
     private enum GlazeFailure: Error { case code(String) }
-    private final class GlazeRelay: NSObject, WKScriptMessageHandler {
-        weak var owner: UKGlazeActortroller?
-        init(owner: UKGlazeActortroller) { self.owner = owner }
-        func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-            if message.name == UKGlazeActortroller.glazePaintHandler { owner?.receiveGlazeFirstPaint(message) }
-            else { owner?.receiveGlaze(message) }
-        }
-    }
 
     private var glazeEntry: WevVGlazeH5Entry
     private var glazeIsStandby = false
@@ -610,8 +602,12 @@ final class UKGlazeActortroller: UIViewController {
         }
         glazeConfiguration = configuration
         let controller = WKUserContentController()
-        controller.add(GlazeRelay(owner: self), name: configuration.handler)
-        controller.add(GlazeRelay(owner: self), name: Self.glazePaintHandler)
+        let receiveMessage: (WKScriptMessage) -> Void = { [weak self] message in
+            if message.name == Self.glazePaintHandler { self?.receiveGlazeFirstPaint(message) }
+            else { self?.receiveGlaze(message) }
+        }
+        controller.add(WevVGlazeScriptMessageRelay(receive: receiveMessage), name: configuration.handler)
+        controller.add(WevVGlazeScriptMessageRelay(receive: receiveMessage), name: Self.glazePaintHandler)
         controller.addUserScript(WKUserScript(source: glazeFirstPaintScript(), injectionTime: .atDocumentStart, forMainFrameOnly: true))
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = controller

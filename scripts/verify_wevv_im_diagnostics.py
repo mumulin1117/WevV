@@ -22,10 +22,12 @@ SWIFT = r'''import Foundation
     var glazeRequests: [String: GlazeRequest] = [:]
     var glazeResponses: [String: [String: Any]] = [:]
     var glazeWebViewGeneration = UUID()
+    var glazeContextDeliveryStarted = false
     var glazeContextDelivered = false
     var sendThrows = false
     var replaceGeneration = false
     var wasDeliveredDuringSend = false
+    func traceGlazeLoad(_ event: String) {}
     func sendGlaze(_ message: [String: Any]) async throws {
         wasDeliveredDuringSend = glazeContextDelivered
         if replaceGeneration { glazeWebViewGeneration = UUID() }
@@ -102,7 +104,7 @@ def main():
     start = source.index("    @discardableResult\n    private func completeGlaze(")
     end = source.index("    private func respondInvalidGlaze(", start)
     actual = source[start:end]
-    network = (SOURCES / "WevVGlazeNetworkFoundation.swift").read_text()
+    network = (SOURCES / "WevEnd/WevVGlazeNetworkFoundation.swift").read_text()
     error_start = network.index("enum WevVGlazeNetworkError:")
     error_end = network.index("\n@MainActor\nstruct WevVGlazeOPIProfile", error_start)
     network_error = network[error_start:error_end]
@@ -115,7 +117,7 @@ def main():
             command = ["xcrun", "swiftc", "-swift-version", "5", "-default-isolation", "MainActor", "-parse-as-library", "-module-cache-path", str(folder / "modules")]
             if debug:
                 command.extend(["-D", "DEBUG"])
-            command.extend([str(SOURCES / "WevVGlazeIMDiagnostics.swift"), str(probe), "-o", str(binary)])
+            command.extend([str(SOURCES / "WevEnd/WevVGlazeIMDiagnostics.swift"), str(probe), "-o", str(binary)])
             subprocess.run(command, check=True)
             result = subprocess.run([str(binary)], check=True, text=True, capture_output=True)
             assert "SECRET_TOKEN_FULL" not in result.stdout + result.stderr

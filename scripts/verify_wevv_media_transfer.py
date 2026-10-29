@@ -8,7 +8,7 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "WevSweetgd/WevSweetgd/WevVGlazeMediaTransfer.swift"
+SOURCE = ROOT / "WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMediaTransfer.swift"
 
 MOCKS = r'''
 import Foundation

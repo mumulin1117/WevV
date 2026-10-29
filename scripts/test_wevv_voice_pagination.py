@@ -174,7 +174,7 @@ def main():
         folder = Path(temporary)
         harness = folder / "Verification.swift"
         harness.write_text("import Foundation\n" + models + "\n"
-            + (SOURCE / "WevVGlazeVoicePagination.swift").read_text() + CHECKS)
+            + (SOURCE / "WevEnd/WevVGlazeVoicePagination.swift").read_text() + CHECKS)
         executable = folder / "verification"
         subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
             "-module-cache-path", str(folder / "modules"), str(harness), "-o", str(executable)], check=True)

@@ -14,8 +14,8 @@ SOURCES = ROOT / 'WevSweetgd/WevSweetgd'
 
 
 def main():
-    navigation = (SOURCES / 'WevVGlazeH5Navigation.swift').read_text().replace('import UIKit', '')
-    entry = (SOURCES / 'WevVGlazeH5Entry.swift').read_text().replace('import Foundation', '')
+    navigation = (SOURCES / 'WevEnd/WevVGlazeH5Navigation.swift').read_text().replace('import UIKit', '')
+    entry = (SOURCES / 'WevEnd/WevVGlazeH5Entry.swift').read_text().replace('import Foundation', '')
     host = (SOURCES / 'UKGlazeActortroller.swift').read_text()
     start = host.index('    private func performGlazeExit(target: Int) {')
     end = host.index('    private func showGlazeReleaseFailure()', start)

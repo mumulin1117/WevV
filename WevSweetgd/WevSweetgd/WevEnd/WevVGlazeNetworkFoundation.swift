@@ -336,6 +336,28 @@ final class WevVGlazeNetworkFoundation {
         guard let code = envelope["code"] as? NSNumber, CFGetTypeID(code) != CFBooleanGetTypeID() else { throw WevVGlazeNetworkError.invalidResponse }
         guard code.doubleValue == 0 else { throw Self.business(envelope, code: code.stringValue) }
         let decoded = try Self.payload(envelope, key: profile.encryptionKey, iv: profile.encryptionIV)
+        #if DEBUG
+        if path == "/_v2/discover/live/pool", let object = decoded as? [String: Any] {
+            let rowsField = semantic ? "rows" : (profile.fields["rows"] ?? "rows")
+            let idField = semantic ? "id" : (profile.fields["id"] ?? "id")
+            let stateField = semantic ? "liveRoomState" : (profile.fields["liveRoomState"] ?? "liveRoomState")
+            let rows = object[rowsField] as? [[String: Any]] ?? []
+            let page = Self.integer((original as? [String: Any])?["currentPage"]) ?? 1
+            print("[WevV.LivePool] page=\(page) rows=\(rows.count) stateField=\(stateField)")
+            for (index, row) in rows.enumerated() {
+                let roomID = Self.integer(row[idField]).map(String.init) ?? "<unknown>"
+                let state: String
+                switch row[stateField] {
+                case let value as NSNumber: state = value.stringValue
+                case let value as String: state = String(reflecting: value)
+                case is NSNull: state = "null"
+                case nil: state = "<missing>"
+                default: state = "<invalid>"
+                }
+                print("[WevV.LivePool] row=\(index + 1) roomId=\(roomID) \(stateField)=\(state)")
+            }
+        }
+        #endif
         let restored = semantic ? decoded : Self.mapFields(decoded, mapping: profile.reverseFields)
         // Retained for older Profile compatibility. The supplied Revision 2 list is empty.
         if let object = restored as? [String: Any] {

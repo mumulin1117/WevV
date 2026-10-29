@@ -1,6 +1,66 @@
 # WevV 正式环境 SDK2 接入记录
 
-更新：2026-10-28。当前资源已经切换正式项目；下方折叠保留此前测试环境接入证据，不代表当前运行配置。原生一级页面、布局、样式和键盘逻辑保留；按用户最新要求，将有公开 H5 合同的现有二级入口切换到 SDK2。
+更新：2026-10-29。当前资源已经切换正式项目；下方折叠保留此前测试环境接入证据，不代表当前运行配置。原生一级页面、布局、样式和键盘逻辑保留；按用户最新要求，将有公开 H5 合同的现有二级入口切换到 SDK2。
+
+## 相对指定提交整理新增 iOS 文件（2026-10-29）
+
+以 `8ad28ed6fa96816982d171d25811abeabd8f008c` 为基线，对照当前工作区（包含整理前尚未提交的修改）核对文件和 Swift 编译器解析出的类型声明。全部新增 Swift 文件和 SDK2 资源现集中到 `WevSweetgd/WevSweetgd/WevEnd/`；后文历史记录中的旧源路径保留为当时证据，当前源路径以本节为准。
+
+以下 16 个 Swift 文件从原 App 源码根目录移动到 `WevEnd/`，内容与本轮修改前逐字节一致：
+
+- `WevVGlazeBundleConfiguration.swift`
+- `WevVGlazeCommunityService.swift`
+- `WevVGlazeH5Entry.swift`
+- `WevVGlazeH5Navigation.swift`
+- `WevVGlazeIMDiagnostics.swift`
+- `WevVGlazeLivePagination.swift`
+- `WevVGlazeMediaTransfer.swift`
+- `WevVGlazeNativeRechargeService.swift`
+- `WevVGlazeNetworkFoundation.swift`
+- `WevVGlazePurchaseCoordinator.swift`
+- `WevVGlazeRoomMapper.swift`
+- `WevVGlazeRuntime.swift`
+- `WevVGlazeServiceAvailability.swift`
+- `WevVGlazeSkeletonPanel.swift`
+- `WevVGlazeSocialService.swift`
+- `WevVGlazeVoicePagination.swift`
+
+以下 3 个资源同样原样移动到 `WevEnd/`：
+
+- `vanillaBeanIcingSdk2.data`
+- `vanillaBeanIcingSdk2Network.data`
+- `vanillaBeanIcingSdk2.manifest.json`
+
+基线已有 Swift 文件没有新增的顶层类；`UKGlazeActortroller.swift` 中新增的嵌套类 `GlazeRelay` 已独立为 `WevEnd/WevVGlazeScriptMessageRelay.swift`。宿主通过弱捕获的接收闭包分发 Bridge 和首帧消息，保留原来的私有接收方法和释放关系。基线已有的辅助类以及所属类型的私有结构体、枚举保留原有组织方式。没有修改业务流程、界面、凭据键、数据格式、签名或版本配置。
+
+Xcode 使用 `PBXFileSystemSynchronizedRootGroup` 自动纳入新目录，无需另加重复的项目文件引用。实际构建中，17 个 `WevEnd` Swift 文件各编译一次；3 个资源仍以原文件名位于 App Bundle 根目录，各一份，内容与移动前一致，没有把 Swift 文件作为资源复制。H5 包未重新加密，contentVersion、配置小包、缓存版本和 Bundle 查找方式均保留。完整包通过原生 Swift 解密解压及全部 1174 个还原文件校验。
+
+以下 18 个现有脚本同步源文件或资源路径；IM 诊断夹具另补齐实际宿主已存在的 `glazeContextDeliveryStarted` 和追踪方法边界，以继续执行原有 Bridge 交付断言：
+
+- `scripts/test_wevv_live_pagination.py`
+- `scripts/test_wevv_room_mapper.py`
+- `scripts/test_wevv_sdk2_host.py`
+- `scripts/test_wevv_voice_pagination.py`
+- `scripts/verify_wevv_bundle_configuration.py`
+- `scripts/verify_wevv_community_service.py`
+- `scripts/verify_wevv_h5_configuration.py`
+- `scripts/verify_wevv_h5_entries.py`
+- `scripts/verify_wevv_h5_navigation.py`
+- `scripts/verify_wevv_im_diagnostics.py`
+- `scripts/verify_wevv_media_transfer.py`
+- `scripts/verify_wevv_native_integration.py`
+- `scripts/verify_wevv_native_recharge.py`
+- `scripts/verify_wevv_network_foundation.py`
+- `scripts/verify_wevv_purchase_coordinator.py`
+- `scripts/verify_wevv_purchase_retry.py`
+- `scripts/verify_wevv_session_runtime.py`
+- `scripts/verify_wevv_social_service.py`
+
+根目录 `AGENTS.md` 和 `.cursor/rules/ios-wevend.mdc` 已记录后续新增 iOS Swift／App 资源必须放入 `WevEnd`，新增独立类建立对应文件；原有文件以及仓库级脚本、文档、工程配置保留原路径。
+
+验证结果：无签名 Debug Simulator（arm64、x86_64）及 Release iOS（arm64）构建通过；21 组现有离线脚本通过，覆盖网络、会话、两类列表分页、房间映射、H5 配置／入口／导航／加载／生命周期、IM 诊断、媒体、社区、社交、购买／补单及归档。路由验证读取当前资源包实际解包的 index.html。另执行 `wevv_room_bundle.py verify --native`、两种构建产物的资源唯一性／内容核验和 `git diff --check`，均通过。
+
+构建保留原有 `DrawcreamScoutSugarStyle` 的 StoreKit actor 隔离警告及无 AppIntents 依赖的元数据提示，本轮未更改这些旧文件。所有验证均为构建和离线检查，没有安装、重启用户设备 App 或操作真实账号／购买；本轮未修改 Auto Layout、SafeArea 或键盘处理，也未做新的大小屏视觉实测。前置快照、文件／类型清单、构建及各脚本日志位于 `/private/tmp/wevv-wevend-refactor-7vemh7b0/`。
 
 ## 按启动返回值选择业务域名（2026-10-28）
 

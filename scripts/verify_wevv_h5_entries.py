@@ -100,7 +100,7 @@ def main():
         (temp / "main.swift").write_text(SWIFT_FIXTURES)
         process = subprocess.run([
             swiftc, "-module-cache-path", str(temp / "module-cache"),
-            str(temp / "Models.swift"), str(SOURCE / "WevVGlazeH5Entry.swift"), str(temp / "main.swift"),
+            str(temp / "Models.swift"), str(SOURCE / "WevEnd/WevVGlazeH5Entry.swift"), str(temp / "main.swift"),
             "-o", str(temp / "verify-entries")
         ], text=True, capture_output=True)
         if process.returncode:

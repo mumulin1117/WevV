@@ -7,7 +7,7 @@ import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "WevSweetgd/WevSweetgd/WevVGlazeSocialService.swift"
+SOURCE = ROOT / "WevSweetgd/WevSweetgd/WevEnd/WevVGlazeSocialService.swift"
 MODELS = ROOT / "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift"
 
 TESTS = r'''

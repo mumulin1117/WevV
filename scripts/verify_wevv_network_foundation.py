@@ -9,6 +9,6 @@ with tempfile.TemporaryDirectory(prefix='wevv-network-check-') as folder:
     root = Path(folder)
     binary = root / 'verify'
     subprocess.run(['xcrun', 'swiftc', '-swift-version', '5', '-module-cache-path', str(root / 'cache'),
-                    '-parse-as-library', str(ROOT / 'WevSweetgd/WevSweetgd/WevVGlazeNetworkFoundation.swift'),
+                    '-parse-as-library', str(ROOT / 'WevSweetgd/WevSweetgd/WevEnd/WevVGlazeNetworkFoundation.swift'),
                     str(ROOT / 'scripts/WevVGlazeNetworkVerification.swift'), '-o', str(binary)], check=True)
     subprocess.run([str(binary)], check=True)
