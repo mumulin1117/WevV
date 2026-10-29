@@ -10,13 +10,13 @@ APP = ROOT / 'WevSweetgd/WevSweetgd'
 
 def main():
     source = (APP / 'kettleGlazeSequence.swift').read_text()
-    models = source[source.index('struct butteryTexture:'):source.index('struct meltawayCrumb:')]
+    models = source[source.index('struct butteryTexture:'):source.index('enum goldenCrumbDough:')]
     stubs = '''import Foundation
 @MainActor final class BrostingmellowCoconutEssence {
- static let shared = BrostingmellowCoconutEssence(); var environmentID = "fixture"
- func prepare() async throws {}
- func opi(path:String, body:Data, authenticated:Bool) async throws -> Data { fatalError("Unexpected real transport") }
- func browsingOPI(path:String, body:[String:Any]) async throws -> Data { fatalError("Unexpected real transport") }
+ static let listenForGlazeTrades = BrostingmellowCoconutEssence(); var closeCreamRingEdit = "fixture"
+ func glazeCounterBakery() async throws {}
+ func frostedWinterAssortment(glazeCatalogRefresh:String, autumnPecanSelection:Data, applyRemoteTrailButton:Bool) async throws -> Data { fatalError("Unexpected real transport") }
+ func bakeryPieces(glazeCatalogRefresh:String, autumnPecanSelection:[String:Any]) async throws -> Data { fatalError("Unexpected real transport") }
 }
 @MainActor final class WevVGlazeSessionStore {
  static let shared = WevVGlazeSessionStore(); var isTasterReady = true; var sessionEpoch = 1

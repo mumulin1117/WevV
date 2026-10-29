@@ -62,13 +62,13 @@ final class LisenNoticepoplater {
         let customTransport = request != nil
         self.request = request ?? { path, body, signedIn in
             if signedIn {
-                return try await BrostingmellowCoconutEssence.shared.opi(path: path, body: JSONSerialization.data(withJSONObject: body), authenticated: true)
+                return try await BrostingmellowCoconutEssence.listenForGlazeTrades.frostedWinterAssortment(glazeCatalogRefresh: path, autumnPecanSelection: JSONSerialization.data(withJSONObject: body), applyRemoteTrailButton: true)
             }
-            return try await BrostingmellowCoconutEssence.shared.browsingOPI(path: path, body: body)
+            return try await BrostingmellowCoconutEssence.listenForGlazeTrades.bakeryPieces(glazeCatalogRefresh: path, autumnPecanSelection: body)
         }
         self.isSignedIn = isSignedIn ?? { WevVGlazeSessionStore.shared.isTasterReady }
-        self.scope = scope ?? { BrostingmellowCoconutEssence.shared.environmentID + "|" + String(WevVGlazeSessionStore.shared.sessionEpoch) }
-        self.prepare = prepare ?? { if !customTransport { try await BrostingmellowCoconutEssence.shared.prepare() } }
+        self.scope = scope ?? { BrostingmellowCoconutEssence.listenForGlazeTrades.closeCreamRingEdit + "|" + String(WevVGlazeSessionStore.shared.sessionEpoch) }
+        self.prepare = prepare ?? { if !customTransport { try await BrostingmellowCoconutEssence.listenForGlazeTrades.glazeCounterBakery() } }
     }
 
     func feed(cursorID: Int64 = 0, size: Int = 20) async throws -> choiceStackPacket {

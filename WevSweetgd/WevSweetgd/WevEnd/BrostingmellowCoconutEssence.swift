@@ -3,298 +3,298 @@ import Foundation
 /// Owns the selected service environment and credentials independently of individual screens/WebViews.
 @MainActor
 final class BrostingmellowCoconutEssence {
-    static let shared = BrostingmellowCoconutEssence()
-    private var foundation: NertyuChoiceStackLayer?
-    private var launchTask: Task<Void, Error>?
-    private var refreshTask: (key: String, task: Task<almondPralineGlaze, Error>)?
-    private var guestTask: Task<almondPralineGlaze, Error>?
-    private var guestSession: almondPralineGlaze?
-    private var guestGeneration = 0
-    private var ticket: (key: String, value: donutCameraButton)?
-    private var ticketTask: (key: String, task: Task<donutCameraButton, Error>)?
-    private let store = WevVGlazeSessionStore.shared
-    private(set) var environmentID = ""
-    private(set) var appID = ""
-    var apiBaseURL: URL? { foundation?.currentRoute?.apiBaseURL }
-    var fullFeaturesEnabled: Bool { foundation?.currentRoute?.fullFeaturesEnabled == true }
+    static let listenForGlazeTrades = BrostingmellowCoconutEssence()
+    private var connectingStatus: NertyuChoiceStackLayer?
+    private var festiveCinnamonPalette: Task<Void, Error>?
+    private var harvestPearCollection: (familyOwnedMap: String, lowerTitle: Task<almondPralineGlaze, Error>)?
+    private var currentGlazeWalletOwner: Task<almondPralineGlaze, Error>?
+    private var currentCreamRingFormPacket: almondPralineGlaze?
+    private var crumbScoutline = 0
+    private var loweredKey: (familyOwnedMap: String, makeRemoteLabel: donutCameraButton)?
+    private var loweredTitle: (familyOwnedMap: String, lowerTitle: Task<donutCameraButton, Error>)?
+    private let loadRemoteProfile = WevVGlazeSessionStore.shared
+    private(set) var closeCreamRingEdit = ""
+    private(set) var WevvRemoteTrailState = ""
+    var WevVWevvTastingQuestCard: URL? { connectingStatus?.currentRoute?.apiBaseURL }
+    var crumbDensityInsight: Bool { connectingStatus?.currentRoute?.fullFeaturesEnabled == true }
 
     private init() {}
 
-    func prepare() async throws {
-        if let launchTask { return try await launchTask.value }
-        if let foundation, foundation.currentRoute != nil, foundation.currentOpen != nil, !environmentID.isEmpty { return }
-        let task = Task { @MainActor in
-            let network: NertyuChoiceStackLayer
-            if let configured = self.foundation { network = configured }
+    func glazeCounterBakery() async throws {
+        if let festiveCinnamonPalette { return try await festiveCinnamonPalette.value }
+        if let connectingStatus, connectingStatus.currentRoute != nil, connectingStatus.currentOpen != nil, !closeCreamRingEdit.isEmpty { return }
+        let lowerTitle = Task { @MainActor in
+            let flavorQuestCollection: NertyuChoiceStackLayer
+            if let buildRemoteCardPage = self.connectingStatus { flavorQuestCollection = buildRemoteCardPage }
             else {
-                let configuration = try CreamRingDellController(seed: UKGlazeActortroller.glazeArchiveConfigurationSeed,
-                                                                     hostVersion: filledShellSelection.tastingJourneyAtlas)
-                network = NertyuChoiceStackLayer(profile: configuration.profile, deviceNo: filledShellSelection.glazeQuestTrail,
+                let buildPastryEditScrollShell = try CreamRingDellController(cocoaWeekendFestival: UKGlazeActortroller.glazeArchiveConfigurationSeed,
+                                                                     blushDrizzleDetail: filledShellSelection.tastingJourneyAtlas)
+                flavorQuestCollection = NertyuChoiceStackLayer(profile: buildPastryEditScrollShell.cherryCenter, deviceNo: filledShellSelection.glazeQuestTrail,
                                                      hostVersion: filledShellSelection.tastingJourneyAtlas, language: filledShellSelection.flavorJourneyJournal)
-                self.foundation = network
+                self.connectingStatus = flavorQuestCollection
             }
-            self.appID = network.profile.appID
-            let route = try await network.bootstrap()
-            let scope = "\(network.profile.environment)|\(network.profile.appID)|\(route.apiBaseURL.absoluteString)"
-            if self.environmentID != scope {
-                self.clearTransientSessions()
-                self.environmentID = scope
-                self.appID = network.profile.appID
-                self.store.selectGlazeEnvironment(scope)
+            self.WevvRemoteTrailState = flavorQuestCollection.profile.appID
+            let isDonutTrailOpen = try await flavorQuestCollection.bootstrap()
+            let liftPastryEditCanvas = "\(flavorQuestCollection.profile.environment)|\(flavorQuestCollection.profile.appID)|\(isDonutTrailOpen.apiBaseURL.absoluteString)"
+            if self.closeCreamRingEdit != liftPastryEditCanvas {
+                self.cinnamonSugarFinish()
+                self.closeCreamRingEdit = liftPastryEditCanvas
+                self.WevvRemoteTrailState = flavorQuestCollection.profile.appID
+                self.loadRemoteProfile.selectGlazeEnvironment(liftPastryEditCanvas)
             }
-            let epoch = self.store.sessionEpoch
-            let saved = self.store.currentGlazeCredentials
+            let closeVideoDial = self.loadRemoteProfile.sessionEpoch
+            let lemonBlueberryCombination = self.loadRemoteProfile.currentGlazeCredentials
             do {
-                let opened = try await network.open(refreshToken: saved?.maplePecanCoating)
-                try self.assertCurrent(epoch: epoch, scope: scope)
-                if let saved { try self.acceptOpenToken(opened, previous: saved) }
+                let formatWevvSweetMarkCount = try await flavorQuestCollection.open(refreshToken: lemonBlueberryCombination?.maplePecanCoating)
+                try self.applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+                if let lemonBlueberryCombination { try self.GzeProfileSafetyTray(formatWevvSweetMarkCount, glazeStoreItemsByKey: lemonBlueberryCombination) }
             } catch {
-                guard Self.isAuthenticationFailure(error), self.store.sessionEpoch == epoch else { throw error }
-                self.invalidateAuthentication()
-                _ = try await network.open(refreshToken: nil, force: true)
+                guard Self.earlyMorningGuide(error), self.loadRemoteProfile.sessionEpoch == closeVideoDial else { throw error }
+                self.dropPastryEditCanvas()
+                _ = try await flavorQuestCollection.open(refreshToken: nil, force: true)
             }
         }
-        launchTask = task
-        do { try await task.value; launchTask = nil }
-        catch { launchTask = nil; throw error }
+        festiveCinnamonPalette = lowerTitle
+        do { try await lowerTitle.value; festiveCinnamonPalette = nil }
+        catch { festiveCinnamonPalette = nil; throw error }
     }
 
-    func opi(path: String, body: Data, authenticated: Bool, explicitToken: String? = nil) async throws -> Data {
-        try await prepare()
-        guard let foundation else { throw GlazeVaultTradeError.invalidConfiguration }
-        let epoch = store.sessionEpoch, scope = environmentID
-        let session = authenticated ? try await validSignedInSession() : nil
-        try assertCurrent(epoch: epoch, scope: scope)
+    func frostedWinterAssortment(glazeCatalogRefresh: String, autumnPecanSelection: Data, applyRemoteTrailButton: Bool, closeWevvTasterCard: String? = nil) async throws -> Data {
+        try await glazeCounterBakery()
+        guard let connectingStatus else { throw GlazeVaultTradeError.invalidConfiguration }
+        let closeVideoDial = loadRemoteProfile.sessionEpoch, liftPastryEditCanvas = closeCreamRingEdit
+        let lightCrustTexture = applyRemoteTrailButton ? try await makePackCard() : nil
+        try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
         do {
-            let data = try await foundation.opi(path: path, body: body, accessToken: explicitToken ?? session?.brownButterGlaze)
-            try assertCurrent(epoch: epoch, scope: scope)
-            return data
+            let candiedOrangeDust = try await connectingStatus.opi(path: glazeCatalogRefresh, body: autumnPecanSelection, accessToken: closeWevvTasterCard ?? lightCrustTexture?.brownButterGlaze)
+            try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+            return candiedOrangeDust
         } catch {
-            guard authenticated, Self.isAuthenticationFailure(error) else { throw error }
-            try assertCurrent(epoch: epoch, scope: scope)
-            let renewed: almondPralineGlaze
-            if let current = store.currentGlazeCredentials, current.brownButterGlaze != session?.brownButterGlaze {
+            guard applyRemoteTrailButton, Self.earlyMorningGuide(error) else { throw error }
+            try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+            let hideRemoteSafetyView: almondPralineGlaze
+            if let buildWevvTasterTopBar = loadRemoteProfile.currentGlazeCredentials, buildWevvTasterTopBar.brownButterGlaze != lightCrustTexture?.brownButterGlaze {
                 // Another request or Open may already have replaced the rejected token.
-                renewed = try await validSignedInSession()
+                hideRemoteSafetyView = try await makePackCard()
             } else {
-                renewed = try await refreshSignedInSession()
+                hideRemoteSafetyView = try await harvestPearAssortment()
             }
-            try assertCurrent(epoch: epoch, scope: scope)
+            try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
             do {
-                let data = try await foundation.opi(path: path, body: body, accessToken: renewed.brownButterGlaze)
-                try assertCurrent(epoch: epoch, scope: scope)
-                return data
+                let candiedOrangeDust = try await connectingStatus.opi(path: glazeCatalogRefresh, body: autumnPecanSelection, accessToken: hideRemoteSafetyView.brownButterGlaze)
+                try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+                return candiedOrangeDust
             } catch {
-                if Self.isAuthenticationFailure(error), isCurrent(renewed, epoch: epoch, scope: scope) { invalidateAuthentication() }
+                if Self.earlyMorningGuide(error), endCreamRingEditing(hideRemoteSafetyView, closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas) { dropPastryEditCanvas() }
                 throw error
             }
         }
     }
 
-    func validSignedInSession() async throws -> almondPralineGlaze {
-        try await prepare()
-        guard store.prepareGlazeJournal(), let current = store.currentGlazeCredentials else { throw miniRingFritter.cityBakeryTrail }
-        if current.citrusZestShell <= Date().addingTimeInterval(30) { return try await refreshSignedInSession() }
-        return current
+    func makePackCard() async throws -> almondPralineGlaze {
+        try await glazeCounterBakery()
+        guard loadRemoteProfile.prepareGlazeJournal(), let buildWevvTasterTopBar = loadRemoteProfile.currentGlazeCredentials else { throw miniRingFritter.cityBakeryTrail }
+        if buildWevvTasterTopBar.citrusZestShell <= Date().addingTimeInterval(30) { return try await harvestPearAssortment() }
+        return buildWevvTasterTopBar
     }
 
-    private func refreshSignedInSession() async throws -> almondPralineGlaze {
-        guard let previous = store.currentGlazeCredentials, previous.darkCocoaDrizzle > Date(), let foundation else {
-            invalidateAuthentication(); throw miniRingFritter.cityBakeryTrail
+    private func harvestPearAssortment() async throws -> almondPralineGlaze {
+        guard let glazeStoreItemsByKey = loadRemoteProfile.currentGlazeCredentials, glazeStoreItemsByKey.darkCocoaDrizzle > Date(), let connectingStatus else {
+            dropPastryEditCanvas(); throw miniRingFritter.cityBakeryTrail
         }
-        let key = "\(environmentID)|\(store.sessionEpoch)|\(previous.vanillaBeanIcing)|\(previous.maplePecanCoating)"
-        if let running = refreshTask, running.key == key { return try await running.task.value }
-        let epoch = store.sessionEpoch, scope = environmentID
-        let task = Task { @MainActor in
-            let body = try JSONSerialization.data(withJSONObject: ["refreshToken": previous.maplePecanCoating])
-            let data = try await foundation.opi(path: "/_v2/auth/token/refresh", body: body)
-            let response = try JSONDecoder().decode(citrusZestIcing.self, from: data)
-            let next = try WevVGlazeTransport.vanillaMilkCompanion(cherryBlossomCalendar: response, saltedCaramelFinish: previous.saltedCaramelFinish, previous: previous)
-            try self.assertCurrent(epoch: epoch, scope: scope)
-            guard self.store.currentGlazeCredentials?.maplePecanCoating == previous.maplePecanCoating else { throw CancellationError() }
-            try self.store.persistGlazeCredentials(next)
-            return next
+        let familyOwnedMap = "\(closeCreamRingEdit)|\(loadRemoteProfile.sessionEpoch)|\(glazeStoreItemsByKey.vanillaBeanIcing)|\(glazeStoreItemsByKey.maplePecanCoating)"
+        if let isGlazeStoreLoading = harvestPearCollection, isGlazeStoreLoading.familyOwnedMap == familyOwnedMap { return try await isGlazeStoreLoading.lowerTitle.value }
+        let closeVideoDial = loadRemoteProfile.sessionEpoch, liftPastryEditCanvas = closeCreamRingEdit
+        let lowerTitle = Task { @MainActor in
+            let autumnPecanSelection = try JSONSerialization.data(withJSONObject: ["refreshToken": glazeStoreItemsByKey.maplePecanCoating])
+            let candiedOrangeDust = try await connectingStatus.opi(path: "/_v2/auth/token/refresh", body: autumnPecanSelection)
+            let identifiers = try JSONDecoder().decode(citrusZestIcing.self, from: candiedOrangeDust)
+            let flavorScoutline = try WevVGlazeTransport.vanillaMilkCompanion(cherryBlossomCalendar: identifiers, saltedCaramelFinish: glazeStoreItemsByKey.saltedCaramelFinish, previous: glazeStoreItemsByKey)
+            try self.applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+            guard self.loadRemoteProfile.currentGlazeCredentials?.maplePecanCoating == glazeStoreItemsByKey.maplePecanCoating else { throw CancellationError() }
+            try self.loadRemoteProfile.persistGlazeCredentials(flavorScoutline)
+            return flavorScoutline
         }
-        refreshTask = (key, task)
+        harvestPearCollection = (familyOwnedMap, lowerTitle)
         do {
-            let value = try await task.value
-            if refreshTask?.key == key { refreshTask = nil }
-            return value
+            let makeRemoteLabel = try await lowerTitle.value
+            if harvestPearCollection?.familyOwnedMap == familyOwnedMap { harvestPearCollection = nil }
+            return makeRemoteLabel
         } catch {
-            if refreshTask?.key == key { refreshTask = nil }
-            if Self.isAuthenticationFailure(error), !task.isCancelled, store.sessionEpoch == epoch,
-               environmentID == scope, store.currentGlazeCredentials?.maplePecanCoating == previous.maplePecanCoating { invalidateAuthentication() }
+            if harvestPearCollection?.familyOwnedMap == familyOwnedMap { harvestPearCollection = nil }
+            if Self.earlyMorningGuide(error), !lowerTitle.isCancelled, loadRemoteProfile.sessionEpoch == closeVideoDial,
+               closeCreamRingEdit == liftPastryEditCanvas, loadRemoteProfile.currentGlazeCredentials?.maplePecanCoating == glazeStoreItemsByKey.maplePecanCoating { dropPastryEditCanvas() }
             throw error
         }
     }
 
-    func browsingSession() async throws -> almondPralineGlaze {
-        try await prepare()
-        if store.isTasterReady { return try await validSignedInSession() }
-        if let guestSession, guestSession.citrusZestShell > Date().addingTimeInterval(30) { return guestSession }
-        if let guestTask { return try await guestTask.value }
-        guard let foundation else { throw GlazeVaultTradeError.invalidConfiguration }
-        let generation = guestGeneration, epoch = store.sessionEpoch, scope = environmentID
-        let task = Task { @MainActor in
-            let body = try JSONSerialization.data(withJSONObject: ["deviceNo": filledShellSelection.glazeQuestTrail])
-            let data = try await foundation.opi(path: "/_v2/auth/device/login", body: body)
-            let response = try JSONDecoder().decode(citrusZestIcing.self, from: data)
-            let credentials = try WevVGlazeTransport.vanillaMilkCompanion(cherryBlossomCalendar: response, saltedCaramelFinish: "")
-            try self.assertCurrent(epoch: epoch, scope: scope)
-            guard self.guestGeneration == generation else { throw CancellationError() }
-            self.guestSession = credentials // Technical browsing only: never stored or published as a UI login.
-            return credentials
+    func beginSugarPictureUpload() async throws -> almondPralineGlaze {
+        try await glazeCounterBakery()
+        if loadRemoteProfile.isTasterReady { return try await makePackCard() }
+        if let currentCreamRingFormPacket, currentCreamRingFormPacket.citrusZestShell > Date().addingTimeInterval(30) { return currentCreamRingFormPacket }
+        if let currentGlazeWalletOwner { return try await currentGlazeWalletOwner.value }
+        guard let connectingStatus else { throw GlazeVaultTradeError.invalidConfiguration }
+        let crumbIndex = crumbScoutline, closeVideoDial = loadRemoteProfile.sessionEpoch, liftPastryEditCanvas = closeCreamRingEdit
+        let lowerTitle = Task { @MainActor in
+            let autumnPecanSelection = try JSONSerialization.data(withJSONObject: ["deviceNo": filledShellSelection.glazeQuestTrail])
+            let candiedOrangeDust = try await connectingStatus.opi(path: "/_v2/auth/device/login", body: autumnPecanSelection)
+            let identifiers = try JSONDecoder().decode(citrusZestIcing.self, from: candiedOrangeDust)
+            let buildWevvTasterScrollShell = try WevVGlazeTransport.vanillaMilkCompanion(cherryBlossomCalendar: identifiers, saltedCaramelFinish: "")
+            try self.applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+            guard self.crumbScoutline == crumbIndex else { throw CancellationError() }
+            self.currentCreamRingFormPacket = buildWevvTasterScrollShell // Technical browsing only: never stored or published as a UI login.
+            return buildWevvTasterScrollShell
         }
-        guestTask = task
+        currentGlazeWalletOwner = lowerTitle
         do {
-            let value = try await task.value
-            if guestGeneration == generation { guestTask = nil }
-            return value
+            let makeRemoteLabel = try await lowerTitle.value
+            if crumbScoutline == crumbIndex { currentGlazeWalletOwner = nil }
+            return makeRemoteLabel
         } catch {
-            if guestGeneration == generation { guestTask = nil }
+            if crumbScoutline == crumbIndex { currentGlazeWalletOwner = nil }
             throw error
         }
     }
 
-    func browsingOPI(path: String, body: [String: Any]) async throws -> Data {
-        try await prepare()
-        if store.isTasterReady {
-            return try await opi(path: path, body: JSONSerialization.data(withJSONObject: body), authenticated: true)
+    func bakeryPieces(glazeCatalogRefresh: String, autumnPecanSelection: [String: Any]) async throws -> Data {
+        try await glazeCounterBakery()
+        if loadRemoteProfile.isTasterReady {
+            return try await frostedWinterAssortment(glazeCatalogRefresh: glazeCatalogRefresh, autumnPecanSelection: JSONSerialization.data(withJSONObject: autumnPecanSelection), applyRemoteTrailButton: true)
         }
-        let epoch = store.sessionEpoch, scope = environmentID
-        let current = try await browsingSession()
-        try assertCurrent(epoch: epoch, scope: scope)
-        guard let foundation else { throw GlazeVaultTradeError.invalidConfiguration }
+        let closeVideoDial = loadRemoteProfile.sessionEpoch, liftPastryEditCanvas = closeCreamRingEdit
+        let buildWevvTasterTopBar = try await beginSugarPictureUpload()
+        try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+        guard let connectingStatus else { throw GlazeVaultTradeError.invalidConfiguration }
         do {
-            let data = try await foundation.opi(path: path, body: JSONSerialization.data(withJSONObject: body), accessToken: current.brownButterGlaze)
-            try assertCurrent(epoch: epoch, scope: scope)
-            return data
+            let candiedOrangeDust = try await connectingStatus.opi(path: glazeCatalogRefresh, body: JSONSerialization.data(withJSONObject: autumnPecanSelection), accessToken: buildWevvTasterTopBar.brownButterGlaze)
+            try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+            return candiedOrangeDust
         } catch {
-            guard Self.isAuthenticationFailure(error) else { throw error }
-            try assertCurrent(epoch: epoch, scope: scope)
-            clearTransientSessions()
+            guard Self.earlyMorningGuide(error) else { throw error }
+            try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+            cinnamonSugarFinish()
             throw error // Existing pull-to-refresh retries with a new device session.
         }
     }
 
-    func voiceList(path: String, cursor: glazeVaultHeroLayer? = nil, pageSize: Int = 10) async throws -> Data {
-        try await prepare()
-        let epoch = store.sessionEpoch, scope = environmentID
-        let current = try await browsingSession()
-        try assertCurrent(epoch: epoch, scope: scope)
-        guard let foundation, let opened = foundation.currentOpen else { throw GlazeVaultTradeError.invalidConfiguration }
-        let key = "\(scope)|\(epoch)|\(current.vanillaBeanIcing)|\(current.legacyToken)|\(opened.runtimeConfig.sapiBaseURL)|\(opened.runtimeConfig.sapiAesKey)|\(opened.runtimeConfig.sapiAesIv)"
-        let value: donutCameraButton
-        if let ticket, ticket.key == key, ticket.value.expiresAt > Date().addingTimeInterval(30) { value = ticket.value }
-        else if let running = ticketTask, running.key == key { value = try await running.task.value }
+    func makeSprinkleAuthorAvatar(glazeCatalogRefresh: String, cancelCitrusTray: glazeVaultHeroLayer? = nil, frostingScroll: Int = 10) async throws -> Data {
+        try await glazeCounterBakery()
+        let closeVideoDial = loadRemoteProfile.sessionEpoch, liftPastryEditCanvas = closeCreamRingEdit
+        let buildWevvTasterTopBar = try await beginSugarPictureUpload()
+        try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+        guard let connectingStatus, let formatWevvSweetMarkCount = connectingStatus.currentOpen else { throw GlazeVaultTradeError.invalidConfiguration }
+        let familyOwnedMap = "\(liftPastryEditCanvas)|\(closeVideoDial)|\(buildWevvTasterTopBar.vanillaBeanIcing)|\(buildWevvTasterTopBar.legacyToken)|\(formatWevvSweetMarkCount.runtimeConfig.sapiBaseURL)|\(formatWevvSweetMarkCount.runtimeConfig.sapiAesKey)|\(formatWevvSweetMarkCount.runtimeConfig.sapiAesIv)"
+        let makeRemoteLabel: donutCameraButton
+        if let loweredKey, loweredKey.familyOwnedMap == familyOwnedMap, loweredKey.makeRemoteLabel.expiresAt > Date().addingTimeInterval(30) { makeRemoteLabel = loweredKey.makeRemoteLabel }
+        else if let isGlazeStoreLoading = loweredTitle, isGlazeStoreLoading.familyOwnedMap == familyOwnedMap { makeRemoteLabel = try await isGlazeStoreLoading.lowerTitle.value }
         else {
-            let task = Task { try await foundation.exchange(legacyToken: current.legacyToken) }
-            ticketTask = (key, task)
+            let lowerTitle = Task { try await connectingStatus.exchange(legacyToken: buildWevvTasterTopBar.legacyToken) }
+            loweredTitle = (familyOwnedMap, lowerTitle)
             do {
-                value = try await task.value
-                try assertCurrent(epoch: epoch, scope: scope)
-                ticket = (key, value)
-                if ticketTask?.key == key { ticketTask = nil }
+                makeRemoteLabel = try await lowerTitle.value
+                try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+                loweredKey = (familyOwnedMap, makeRemoteLabel)
+                if loweredTitle?.familyOwnedMap == familyOwnedMap { loweredTitle = nil }
             } catch {
-                if ticketTask?.key == key { ticketTask = nil }
+                if loweredTitle?.familyOwnedMap == familyOwnedMap { loweredTitle = nil }
                 throw error
             }
         }
-        try assertCurrent(epoch: epoch, scope: scope)
+        try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
         // SAPI pagination follows the last raw record's score/snapshot. Its
         // offset is not the number of rooms already displayed, and the first
         // request must omit both cursor fields.
-        var body: [String: Any] = ["languageCode": "", "pageSize": max(1, pageSize), "version": "v2"]
-        if path == "/sapi/weidou/v1/client/party/room/followed/list" { body["languageCode"] = NSNull() }
-        if let cursor {
-            body["offset"] = cursor.offset
-            if let snapshot = cursor.snapshotID?.trimmingCharacters(in: .whitespacesAndNewlines), !snapshot.isEmpty {
-                body["snapshotId"] = snapshot
+        var autumnPecanSelection: [String: Any] = ["languageCode": "", "pageSize": max(1, frostingScroll), "version": "v2"]
+        if glazeCatalogRefresh == "/sapi/weidou/v1/client/party/room/followed/list" { autumnPecanSelection["languageCode"] = NSNull() }
+        if let cancelCitrusTray {
+            autumnPecanSelection["offset"] = cancelCitrusTray.offset
+            if let loadGlazeVaultProducts = cancelCitrusTray.snapshotID?.trimmingCharacters(in: .whitespacesAndNewlines), !loadGlazeVaultProducts.isEmpty {
+                autumnPecanSelection["snapshotId"] = loadGlazeVaultProducts
             }
         }
         do {
-            let data = try await foundation.sapi(path: path, body: JSONSerialization.data(withJSONObject: body), authToken: value.tokenValue)
-            try assertCurrent(epoch: epoch, scope: scope)
-            return data
+            let candiedOrangeDust = try await connectingStatus.sapi(path: glazeCatalogRefresh, body: JSONSerialization.data(withJSONObject: autumnPecanSelection), authToken: makeRemoteLabel.tokenValue)
+            try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+            return candiedOrangeDust
         } catch {
-            if Self.isAuthenticationFailure(error), ticket?.key == key { ticket = nil }
+            if Self.earlyMorningGuide(error), loweredKey?.familyOwnedMap == familyOwnedMap { loweredKey = nil }
             throw error
         }
     }
 
-    func prepareH5Context() async throws -> [String: Any] {
-        let previousOpenRevision = foundation?.openRevision ?? 0
-        try await prepare()
-        let epoch = store.sessionEpoch, scope = environmentID
-        _ = try await validSignedInSession()
-        try assertCurrent(epoch: epoch, scope: scope)
-        guard let foundation else { throw GlazeVaultTradeError.invalidConfiguration }
-        guard let before = store.currentGlazeCredentials else { throw miniRingFritter.cityBakeryTrail }
+    func glazeLogCollection() async throws -> [String: Any] {
+        let goldenCrumbCenter = connectingStatus?.openRevision ?? 0
+        try await glazeCounterBakery()
+        let closeVideoDial = loadRemoteProfile.sessionEpoch, liftPastryEditCanvas = closeCreamRingEdit
+        _ = try await makePackCard()
+        try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+        guard let connectingStatus else { throw GlazeVaultTradeError.invalidConfiguration }
+        guard let autumnMaplePalette = loadRemoteProfile.currentGlazeCredentials else { throw miniRingFritter.cityBakeryTrail }
         do {
             // Startup may have just completed this account's Open. The foundation
             // still requires the refresh-token cache key to match before reuse.
-            let opened = try await foundation.open(refreshToken: before.maplePecanCoating,
-                                                   force: foundation.openRevision == previousOpenRevision)
-            try assertCurrent(epoch: epoch, scope: scope)
-            try acceptOpenToken(opened, previous: before)
-            let current = try await validSignedInSession()
-            try assertCurrent(epoch: epoch, scope: scope)
-            guard let route = foundation.currentRoute else { throw GlazeVaultTradeError.invalidConfiguration }
+            let formatWevvSweetMarkCount = try await connectingStatus.open(refreshToken: autumnMaplePalette.maplePecanCoating,
+                                                   force: connectingStatus.openRevision == goldenCrumbCenter)
+            try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+            try GzeProfileSafetyTray(formatWevvSweetMarkCount, glazeStoreItemsByKey: autumnMaplePalette)
+            let buildWevvTasterTopBar = try await makePackCard()
+            try applyPortraitAsset(closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas)
+            guard let isDonutTrailOpen = connectingStatus.currentRoute else { throw GlazeVaultTradeError.invalidConfiguration }
             #if DEBUG
-            conversationAvatar.contextPrepared(appID: appID, accountID: current.vanillaBeanIcing,
-                                                   imAccount: current.imAccount, imTokenLength: current.imToken.utf8.count,
-                                                   imTokenMatchesAccessToken: current.imToken == current.brownButterGlaze)
+            conversationAvatar.buildVideoDialStudio(WevvRemoteTrailState: WevvRemoteTrailState, WevVGlazeVideoDialController: buildWevvTasterTopBar.vanillaBeanIcing,
+                                                   dialReportSuggestion: buildWevvTasterTopBar.imAccount, donutRibbonNote: buildWevvTasterTopBar.imToken.utf8.count,
+                                                   donutSnapshots: buildWevvTasterTopBar.imToken == buildWevvTasterTopBar.brownButterGlaze)
             #endif
             return ["deviceNo": filledShellSelection.glazeQuestTrail,
-                    "apiBaseUrl": route.apiBaseURL.absoluteString,
-                    "fullFeaturesEnabled": route.fullFeaturesEnabled,
-                    "open": ["runtimeConfig": opened.runtimeConfig.dictionary, "cdnDomainConfig": opened.cdnDomainConfig as Any? ?? NSNull()],
-                    "session": ["accountId": String(current.vanillaBeanIcing), "accessToken": current.brownButterGlaze,
-                                "legacyToken": current.legacyToken, "realtime": ["imAccount": current.imAccount, "imToken": current.imToken]]]
+                    "apiBaseUrl": isDonutTrailOpen.apiBaseURL.absoluteString,
+                    "fullFeaturesEnabled": isDonutTrailOpen.fullFeaturesEnabled,
+                    "open": ["runtimeConfig": formatWevvSweetMarkCount.runtimeConfig.dictionary, "cdnDomainConfig": formatWevvSweetMarkCount.cdnDomainConfig as Any? ?? NSNull()],
+                    "session": ["accountId": String(buildWevvTasterTopBar.vanillaBeanIcing), "accessToken": buildWevvTasterTopBar.brownButterGlaze,
+                                "legacyToken": buildWevvTasterTopBar.legacyToken, "realtime": ["imAccount": buildWevvTasterTopBar.imAccount, "imToken": buildWevvTasterTopBar.imToken]]]
         } catch {
             #if DEBUG
-            conversationAvatar.failure(stage: .context, error: error)
+            conversationAvatar.cocoaGuarded(loadRemoteCard: .buildVaultsuppleDoughDough, closeWevvSugarPrompt: error)
             #endif
-            if Self.isAuthenticationFailure(error), isCurrent(before, epoch: epoch, scope: scope) { invalidateAuthentication() }
+            if Self.earlyMorningGuide(error), endCreamRingEditing(autumnMaplePalette, closeVideoDial: closeVideoDial, liftPastryEditCanvas: liftPastryEditCanvas) { dropPastryEditCanvas() }
             throw error
         }
     }
 
-    private func acceptOpenToken(_ opened: donutAvatarChoices, previous: almondPralineGlaze) throws {
-        guard let token = opened.accessToken else { return }
-        guard store.currentGlazeCredentials?.maplePecanCoating == previous.maplePecanCoating else { throw CancellationError() }
-        let updated = almondPralineGlaze(vanillaBeanIcing: previous.vanillaBeanIcing, saltedCaramelFinish: previous.saltedCaramelFinish,
-                                        brownButterGlaze: token, maplePecanCoating: previous.maplePecanCoating,
-                                        citrusZestShell: Date().addingTimeInterval(TimeInterval(opened.expiresIn ?? 1800)), darkCocoaDrizzle: previous.darkCocoaDrizzle,
-                                        whiteChocolateRibbon: previous.whiteChocolateRibbon, legacyToken: previous.legacyToken,
-                                        imAccount: previous.imAccount, imToken: previous.imToken, environmentID: previous.environmentID, registered: previous.registered)
-        try store.persistGlazeCredentials(updated)
+    private func GzeProfileSafetyTray(_ formatWevvSweetMarkCount: donutAvatarChoices, glazeStoreItemsByKey: almondPralineGlaze) throws {
+        guard let makeCreamRingFormCard = formatWevvSweetMarkCount.accessToken else { return }
+        guard loadRemoteProfile.currentGlazeCredentials?.maplePecanCoating == glazeStoreItemsByKey.maplePecanCoating else { throw CancellationError() }
+        let makeDonutAvatarChoicePairs = almondPralineGlaze(vanillaBeanIcing: glazeStoreItemsByKey.vanillaBeanIcing, saltedCaramelFinish: glazeStoreItemsByKey.saltedCaramelFinish,
+                                        brownButterGlaze: makeCreamRingFormCard, maplePecanCoating: glazeStoreItemsByKey.maplePecanCoating,
+                                        citrusZestShell: Date().addingTimeInterval(TimeInterval(formatWevvSweetMarkCount.expiresIn ?? 1800)), darkCocoaDrizzle: glazeStoreItemsByKey.darkCocoaDrizzle,
+                                        whiteChocolateRibbon: glazeStoreItemsByKey.whiteChocolateRibbon, legacyToken: glazeStoreItemsByKey.legacyToken,
+                                        imAccount: glazeStoreItemsByKey.imAccount, imToken: glazeStoreItemsByKey.imToken, environmentID: glazeStoreItemsByKey.environmentID, registered: glazeStoreItemsByKey.registered)
+        try loadRemoteProfile.persistGlazeCredentials(makeDonutAvatarChoicePairs)
     }
 
-    func invalidateAuthentication() { clearTransientSessions(); store.restGlazeTaster() }
-    func clearTransientSessions() {
-        foundation?.clearSugarCrumbs()
-        guestGeneration += 1
-        guestTask?.cancel(); guestTask = nil; guestSession = nil
-        refreshTask?.task.cancel(); refreshTask = nil
-        ticketTask?.task.cancel(); ticketTask = nil; ticket = nil
+    func dropPastryEditCanvas() { cinnamonSugarFinish(); loadRemoteProfile.restGlazeTaster() }
+    func cinnamonSugarFinish() {
+        connectingStatus?.clearSugarCrumbs()
+        crumbScoutline += 1
+        currentGlazeWalletOwner?.cancel(); currentGlazeWalletOwner = nil; currentCreamRingFormPacket = nil
+        harvestPearCollection?.lowerTitle.cancel(); harvestPearCollection = nil
+        loweredTitle?.lowerTitle.cancel(); loweredTitle = nil; loweredKey = nil
     }
 
-    func assertCurrent(epoch: Int, scope: String) throws {
+    func applyPortraitAsset(closeVideoDial: Int, liftPastryEditCanvas: String) throws {
         try Task.checkCancellation()
-        guard store.sessionEpoch == epoch, environmentID == scope, store.activeEnvironmentID == scope else { throw CancellationError() }
+        guard loadRemoteProfile.sessionEpoch == closeVideoDial, closeCreamRingEdit == liftPastryEditCanvas, loadRemoteProfile.activeEnvironmentID == liftPastryEditCanvas else { throw CancellationError() }
     }
 
-    private func isCurrent(_ credentials: almondPralineGlaze, epoch: Int, scope: String) -> Bool {
-        guard !Task.isCancelled, store.sessionEpoch == epoch, environmentID == scope,
-              let current = store.currentGlazeCredentials else { return false }
-        return current.vanillaBeanIcing == credentials.vanillaBeanIcing
-            && current.maplePecanCoating == credentials.maplePecanCoating
-            && current.brownButterGlaze == credentials.brownButterGlaze
+    private func endCreamRingEditing(_ buildWevvTasterScrollShell: almondPralineGlaze, closeVideoDial: Int, liftPastryEditCanvas: String) -> Bool {
+        guard !Task.isCancelled, loadRemoteProfile.sessionEpoch == closeVideoDial, closeCreamRingEdit == liftPastryEditCanvas,
+              let buildWevvTasterTopBar = loadRemoteProfile.currentGlazeCredentials else { return false }
+        return buildWevvTasterTopBar.vanillaBeanIcing == buildWevvTasterScrollShell.vanillaBeanIcing
+            && buildWevvTasterTopBar.maplePecanCoating == buildWevvTasterScrollShell.maplePecanCoating
+            && buildWevvTasterTopBar.brownButterGlaze == buildWevvTasterScrollShell.brownButterGlaze
     }
 
-    static func isAuthenticationFailure(_ error: Error) -> Bool {
-        (error as? GlazeVaultTradeError)?.isAuthenticationFailure == true || (error as? miniRingFritter).map {
+    static func earlyMorningGuide(_ closeWevvSugarPrompt: Error) -> Bool {
+        (closeWevvSugarPrompt as? GlazeVaultTradeError)?.isAuthenticationFailure == true || (closeWevvSugarPrompt as? miniRingFritter).map {
             if case .cityBakeryTrail = $0 { return true }; return false
         } == true
     }

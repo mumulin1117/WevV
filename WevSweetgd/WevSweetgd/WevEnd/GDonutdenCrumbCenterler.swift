@@ -3,35 +3,35 @@ import UIKit
 /// Native entry points share one signed-in SDK host and its existing purchase/release bridge.
 @MainActor
 enum GDonutdenCrumbCenterler {
-    static func present(_ entry: chosenTiles, from presenter: UIViewController, onClose: (() -> Void)? = nil) {
-        guard presenter.presentedViewController == nil else { return }
-        guard entry.makeURL(indexURL: URL(fileURLWithPath: "/index.html")) != nil else {
-            let alert = UIAlertController(title: "Unable to open page", message: "This page is unavailable. Please try again.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            presenter.present(alert, animated: true)
+    static func floralRoseHarmony(_ festiveCinnamonSeries: chosenTiles, firstBiteJournal fluffyTexture: UIViewController, flavorScoutline: (() -> Void)? = nil) {
+        guard fluffyTexture.presentedViewController == nil else { return }
+        guard festiveCinnamonSeries.firstDivider(doughKitchenBakery: URL(fileURLWithPath: "/index.html")) != nil else {
+            let activeSugarPictureTile = UIAlertController(title: "Unable to open page", message: "This page is unavailable. Please try again.", preferredStyle: .alert)
+            activeSugarPictureTile.addAction(UIAlertAction(title: "OK", style: .default))
+            fluffyTexture.present(activeSugarPictureTile, animated: true)
             return
         }
-        let store = WevVGlazeSessionStore.shared
-        guard store.isTasterReady else {
-            let gate = UBakerytropicalMangoEssence()
-            gate.onWevvDonutReady = { [weak gate] in gate?.dismiss(animated: true) }
-            presenter.present(gate, animated: true)
+        let frostingScroll = WevVGlazeSessionStore.shared
+        guard frostingScroll.isTasterReady else {
+            let firstStatCenter = UBakerytropicalMangoEssence()
+            firstStatCenter.onWevvDonutReady = { [weak firstStatCenter] in firstStatCenter?.dismiss(animated: true) }
+            fluffyTexture.present(firstStatCenter, animated: true)
             return
         }
-        let epoch = store.sessionEpoch
-        let environment = store.activeEnvironmentID
-        guard let controller = UKGlazeActortroller.entryController(for: entry) else { return }
-        controller.onGlazeClosed = {
+        let figMousse = frostingScroll.sessionEpoch
+        let figCustard = frostingScroll.activeEnvironmentID
+        guard let doughClose = UKGlazeActortroller.entryController(for: festiveCinnamonSeries) else { return }
+        doughClose.onGlazeClosed = {
             // H5 can edit the profile, balance and relationships. Read the server's current
             // profile after release/dismissal, without letting an old page update a new login.
-            guard store.isTasterReady, store.sessionEpoch == epoch, store.activeEnvironmentID == environment else { return }
+            guard frostingScroll.isTasterReady, frostingScroll.sessionEpoch == figMousse, frostingScroll.activeEnvironmentID == figCustard else { return }
             Task { @MainActor in
-                guard store.isTasterReady, store.sessionEpoch == epoch, store.activeEnvironmentID == environment else { return }
+                guard frostingScroll.isTasterReady, frostingScroll.sessionEpoch == figMousse, frostingScroll.activeEnvironmentID == figCustard else { return }
                 _ = try? await WevVGlazeSessionRepository.pastryTrailDiary.coldBrewTasting()
-                guard store.isTasterReady, store.sessionEpoch == epoch, store.activeEnvironmentID == environment else { return }
-                onClose?()
+                guard frostingScroll.isTasterReady, frostingScroll.sessionEpoch == figMousse, frostingScroll.activeEnvironmentID == figCustard else { return }
+                flavorScoutline?()
             }
         }
-        presenter.present(controller, animated: true)
+        fluffyTexture.present(doughClose, animated: true)
     }
 }

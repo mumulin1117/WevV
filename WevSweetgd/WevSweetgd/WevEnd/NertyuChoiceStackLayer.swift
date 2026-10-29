@@ -262,8 +262,8 @@ final class NertyuChoiceStackLayer {
         }
         if !force, currentOpenRefreshToken == refreshToken, let currentOpen {
             #if DEBUG
-            conversationAvatar.openSucceeded(appID: profile.appID, imAppKeyLength: currentOpen.runtimeConfig.imAppKey.utf8.count,
-                                                imAppKeyValid: true, cached: true)
+            conversationAvatar.followingList(WevvRemoteTrailState: profile.appID, donutCheckinCalendar: currentOpen.runtimeConfig.imAppKey.utf8.count,
+                                                donutNoteCalendar: true, bindCurrentDoughRingProfile: true)
             #endif
             return currentOpen
         }
@@ -293,13 +293,13 @@ final class NertyuChoiceStackLayer {
                 self.currentOpenRefreshToken = refreshToken
                 self.openRevision &+= 1
                 #if DEBUG
-                conversationAvatar.openSucceeded(appID: self.profile.appID, imAppKeyLength: context.runtimeConfig.imAppKey.utf8.count,
-                                                    imAppKeyValid: true, cached: false)
+                conversationAvatar.followingList(WevvRemoteTrailState: self.profile.appID, donutCheckinCalendar: context.runtimeConfig.imAppKey.utf8.count,
+                                                    donutNoteCalendar: true, bindCurrentDoughRingProfile: false)
                 #endif
                 return context
             } catch {
                 #if DEBUG
-                conversationAvatar.failure(stage: .open, error: error)
+                conversationAvatar.cocoaGuarded(loadRemoteCard: .flavorSketchNotebook, closeWevvSugarPrompt: error)
                 #endif
                 throw error
             }

@@ -1122,10 +1122,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
               let userID = Int64(hostID),
               userID > 0 else { return }
         let room = glazeRoomItems.first { $0.glazeHostID == String(userID) }
-        GDonutdenCrumbCenterler.present(
-            .creator(userID: String(userID), imAccount: room?.glazeIMAccount),
-            from: self,
-            onClose: { [weak self] in
+        GDonutdenCrumbCenterler.floralRoseHarmony(
+            .buildWevvTasterScrollLayer(makeLargeFlavorNote: String(userID), dialReportSuggestion: room?.glazeIMAccount),
+            firstBiteJournal: self,
+            flavorScoutline: { [weak self] in
                 self?.refreshDonutDiaryPanel()
                 self?.loadGlazeContent(showsLoading: false)
             }
@@ -1135,10 +1135,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     @objc private func openTastingJournalAuthor(_ sender: UIControl) {
         guard let identifier = sender.accessibilityIdentifier,
               let userID = Int64(identifier), userID > 0 else { return }
-        GDonutdenCrumbCenterler.present(
-            .creator(userID: String(userID), imAccount: nil),
-            from: self,
-            onClose: { [weak self] in
+        GDonutdenCrumbCenterler.floralRoseHarmony(
+            .buildWevvTasterScrollLayer(makeLargeFlavorNote: String(userID), dialReportSuggestion: nil),
+            firstBiteJournal: self,
+            flavorScoutline: { [weak self] in
                 self?.refreshDonutDiaryPanel()
                 self?.loadGlazeContent(showsLoading: false)
             }
@@ -2868,7 +2868,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        GDonutdenCrumbCenterler.present(.messages, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.floralRoseHarmony(.firstStatCenter, firstBiteJournal: self, flavorScoutline: { [weak self] in
             self?.refreshDonutDiaryPanel()
         })
     }
@@ -2900,12 +2900,12 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         deadline.removeValue(forKey: "moments")
         let refresh = cocoaWeekendFestival.refresh()
         deadline.removeValue(forKey: "live")
-        let liveRequestID = homeLivePagination.beginRefresh()
+        let liveRequestID = homeLivePagination.artisanSelectionShowcase()
         let initialVoiceRequestIDs = beginVoiceRoomRefresh()
         updateHomeLiveLoadMoreFooter()
         refreshTastingRow()
         if showsLoading {
-            homeLiveStatusLabel.isHidden = activeDonutParlorSection != .donutCounter || !homeLivePagination.rooms.isEmpty
+            homeLiveStatusLabel.isHidden = activeDonutParlorSection != .donutCounter || !homeLivePagination.closeWevvBakeryShelf.isEmpty
             homeLiveStatusLabel.text = "Loading live rooms…"
             tastingParlorStatusLabel.isHidden = !tastingParlorRooms(for: tastingParlorShelf).isEmpty
             tastingParlorStatusLabel.text = "Loading rooms…"
@@ -2918,10 +2918,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                     self.finishGlazeContentRefresh(for: refresh.section, requestID: contentRequestID)
                 }
             }
-            do { try await BrostingmellowCoconutEssence.shared.prepare() }
+            do { try await BrostingmellowCoconutEssence.listenForGlazeTrades.glazeCounterBakery() }
             catch {
                 guard !Task.isCancelled else { return }
-                self.homeLivePagination.fail(request: liveRequestID)
+                self.homeLivePagination.berryCrumbBakeryNotes(closeFlavorNoteForm: liveRequestID)
                 self.cocoaWeekendFestival.showGlazeError(requestID: refresh)
                 self.refreshTastingRow()
                 for (shelf, id) in initialVoiceRequestIDs { self.voicePaginations[shelf]?.fail(request: id) }
@@ -2941,7 +2941,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             let voiceRequestIDs: [mascarponeFilling: UUID]
             if self.glazeContentOwnerKey != owner {
                 self.resetGlazeContentOwner(owner)
-                requestID = self.homeLivePagination.beginRefresh()
+                requestID = self.homeLivePagination.artisanSelectionShowcase()
                 id = self.cocoaWeekendFestival.refresh()
                 voiceRequestIDs = self.beginVoiceRoomRefresh()
                 self.updateHomeLiveLoadMoreFooter()
@@ -2992,16 +2992,16 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func loadGlazeLiveContent(owner: String, requestID: UUID, contentRequestID: UUID) async {
         var liveError: Error?
         do {
-            let page = try await glazeContentRepository.livePage(currentPage: 1, pageSize: creamPacket.pageSize)
+            let page = try await glazeContentRepository.livePage(currentPage: 1, pageSize: creamPacket.caramelMeltDelight)
             guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner,
-                  homeLivePagination.receive(page, request: requestID) else { return }
+                  homeLivePagination.cleanCrumbPacketPart(page, closeFlavorNoteForm: requestID) else { return }
         } catch {
             guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner,
-                  homeLivePagination.fail(request: requestID) else { return }
+                  homeLivePagination.berryCrumbBakeryNotes(closeFlavorNoteForm: requestID) else { return }
             liveError = error
         }
         guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner else { return }
-        mergeGlazeRoomContent(live: homeLivePagination.rooms)
+        mergeGlazeRoomContent(live: homeLivePagination.closeWevvBakeryShelf)
         rebuildGlazeRoomStacks(error: liveError)
         finishInitialGlazeLoading(for: .donutCounter)
         finishGlazeContentRefresh(for: .donutCounter, requestID: contentRequestID)
@@ -3057,7 +3057,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func applyVoiceRoomPages() {
         glazeRecommendedVoiceRooms = voicePaginations[.apricotCompote]?.rooms ?? []
         glazeFollowedVoiceRooms = voicePaginations[.cherryCenter]?.rooms ?? []
-        mergeGlazeRoomContent(live: homeLivePagination.rooms)
+        mergeGlazeRoomContent(live: homeLivePagination.closeWevvBakeryShelf)
         rebuildVoiceRoomStacks()
     }
 
@@ -3096,22 +3096,22 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     @objc private func loadMoreHomeLiveRooms() {
         guard activeDonutParlorSection == .donutCounter, !sprinkleRefresh.isRefreshing,
               glazeContentOwnerKey == currentGlazeContentOwnerKey(),
-              let request = homeLivePagination.beginNextPage() else { return }
+              let request = homeLivePagination.artisanFrySequence() else { return }
         let owner = currentGlazeContentOwnerKey()
         updateHomeLiveLoadMoreFooter()
         homeLivePageTask = Task { [weak self] in
             guard let self else { return }
             do {
                 let page = try await self.glazeContentRepository.livePage(
-                    currentPage: request.page, pageSize: creamPacket.pageSize)
+                    currentPage: request.caramelLatteCompanion, pageSize: creamPacket.caramelMeltDelight)
                 guard !Task.isCancelled, self.currentGlazeContentOwnerKey() == owner,
-                      self.homeLivePagination.receive(page, request: request.id) else { return }
-                self.mergeGlazeRoomContent(live: self.homeLivePagination.rooms)
+                      self.homeLivePagination.cleanCrumbPacketPart(page, closeFlavorNoteForm: request.bodyWevVSugarText) else { return }
+                self.mergeGlazeRoomContent(live: self.homeLivePagination.closeWevvBakeryShelf)
                 self.rebuildHomeLiveRoomStack()
                 self.updateHomeLiveStatus(error: nil)
             } catch {
                 guard !Task.isCancelled, self.currentGlazeContentOwnerKey() == owner,
-                      self.homeLivePagination.fail(request: request.id) else { return }
+                      self.homeLivePagination.berryCrumbBakeryNotes(closeFlavorNoteForm: request.bodyWevVSugarText) else { return }
             }
             self.homeLivePageTask = nil
             self.updateHomeLiveLoadMoreFooter()
@@ -3119,28 +3119,28 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func updateHomeLiveLoadMoreFooter() {
-        homeLiveLoadMoreFooter.isHidden = activeDonutParlorSection != .donutCounter || homeLivePagination.rooms.isEmpty
+        homeLiveLoadMoreFooter.isHidden = activeDonutParlorSection != .donutCounter || homeLivePagination.closeWevvBakeryShelf.isEmpty
             || sprinkleRefresh.isRefreshing
-            || (!homeLivePagination.isLoading && !homeLivePagination.failed && homeLivePagination.hasMore && homeLivePullDistance() <= 0)
-        homeLiveLoadMoreFooter.isEnabled = homeLivePagination.hasMore && !homeLivePagination.isLoading
-        if homeLivePagination.isLoading {
+            || (!homeLivePagination.brownButterIcing && !homeLivePagination.berryCrumbBakerySelections && homeLivePagination.blueberryCustard && homeLivePullDistance() <= 0)
+        homeLiveLoadMoreFooter.isEnabled = homeLivePagination.blueberryCustard && !homeLivePagination.brownButterIcing
+        if homeLivePagination.brownButterIcing {
             homeLiveLoadMoreSpinner.startAnimating()
             homeLiveLoadMoreLabel.text = "Loading live rooms…"
         } else {
             homeLiveLoadMoreSpinner.stopAnimating()
-            if homeLivePagination.failed {
-                homeLiveLoadMoreLabel.text = homeLivePagination.hasMore
+            if homeLivePagination.berryCrumbBakerySelections {
+                homeLiveLoadMoreLabel.text = homeLivePagination.blueberryCustard
                     ? "Could not load rooms. Pull up or tap to retry."
                     : "Could not refresh rooms. Pull down to retry."
-            } else if homeLivePagination.hasMore {
+            } else if homeLivePagination.blueberryCustard {
                 homeLiveLoadMoreLabel.text = homeLivePullDistance() >= 52 && pastryTrailScroll.isDragging
                     ? "Release to load more" : "Pull up to load more"
             } else {
                 homeLiveLoadMoreLabel.text = "No more live rooms"
             }
         }
-        hideSugarLoading(homeLiveLoadMoreFooter, id: "live", isLoading: homeLivePagination.isLoading,
-                         hasMore: homeLivePagination.hasMore, failed: homeLivePagination.failed)
+        hideSugarLoading(homeLiveLoadMoreFooter, id: "live", isLoading: homeLivePagination.brownButterIcing,
+                         hasMore: homeLivePagination.blueberryCustard, failed: homeLivePagination.berryCrumbBakerySelections)
         homeLiveLoadMoreFooter.accessibilityLabel = homeLiveLoadMoreLabel.text
     }
 
@@ -3367,7 +3367,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let roomID = String(identifier[identifier.index(after: separator)...])
         guard let kind = chocolateCompote(rawValue: kindText),
               let room = glazeRoomItems.first(where: { $0.lemonCurd == kind && $0.passionfruitMousse == roomID }) else { return }
-        GDonutdenCrumbCenterler.present(.room(room), from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.floralRoseHarmony(.isCurrentRemoteAction(room), firstBiteJournal: self, flavorScoutline: { [weak self] in
             self?.refreshDonutDiaryPanel()
             self?.loadGlazeContent(showsLoading: false)
         })
@@ -3553,7 +3553,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        GDonutdenCrumbCenterler.present(.editProfile, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.floralRoseHarmony(.cinnamonDustDust, firstBiteJournal: self, flavorScoutline: { [weak self] in
             self?.refreshDonutDiaryPanel()
         })
     }
@@ -3573,11 +3573,11 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         }
         let entry: chosenTiles
         switch rubyCocoaSwirl {
-        case .brownButterGlaze: entry = .relations(.following)
-        case .maplePecanCoating: entry = .relations(.fans)
-        case .citrusZestShell: entry = .blocklist
+        case .brownButterGlaze: entry = .hideDialSafetyOverlay(.configureWevvTasterBodyStack)
+        case .maplePecanCoating: entry = .hideDialSafetyOverlay(.configurePastryButton)
+        case .citrusZestShell: entry = .autumnPecanAssortment
         }
-        GDonutdenCrumbCenterler.present(entry, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.floralRoseHarmony(entry, firstBiteJournal: self, flavorScoutline: { [weak self] in
             self?.refreshDonutDiaryPanel()
             self?.rebuildDonutSnapshotStack()
             self?.loadGlazeContent(showsLoading: false)
@@ -3657,7 +3657,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        GDonutdenCrumbCenterler.present(.diamonds, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.floralRoseHarmony(.chooseDonutAvatar, firstBiteJournal: self, flavorScoutline: { [weak self] in
             self?.refreshDonutDiaryPanel()
         })
     }
@@ -3894,7 +3894,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             loadGlazeProfileMoments()
         }
         glazeHomePanels.forEach { $0.isHidden = !showHome }
-        updateHomeLiveStatus(error: homeLivePagination.failed ? GlazeVaultTradeError.invalidResponse : nil)
+        updateHomeLiveStatus(error: homeLivePagination.berryCrumbBakerySelections ? GlazeVaultTradeError.invalidResponse : nil)
         updateHomeLiveLoadMoreFooter()
         updateVoiceRoomLoadMoreFooter()
         tastingParlorPanel.isHidden = section != .tastingParlor

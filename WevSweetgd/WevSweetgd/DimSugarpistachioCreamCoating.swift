@@ -111,7 +111,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
                 if let entry = crumbSpec.h5Entry {
                     row.addAction(UIAction { [weak self] _ in
                         guard let self else { return }
-                        GDonutdenCrumbCenterler.present(entry, from: self, onClose: { [weak self] in
+                        GDonutdenCrumbCenterler.floralRoseHarmony(entry, firstBiteJournal: self, flavorScoutline: { [weak self] in
                             self?.onSugarSettingChanged?()
                         })
                     }, for: .touchUpInside)
@@ -125,23 +125,23 @@ final class DimSugarpistachioCreamCoating: UIViewController {
     private func makeSugargingerHoneyShellSpecs() -> [[SugarSettingRowSpec]] {
         [
             [
-                SugarSettingRowSpec(sugarTitle: "Edit Profile", h5Entry: .editProfile),
-                SugarSettingRowSpec(sugarTitle: "Level", h5Entry: .level),
-                SugarSettingRowSpec(sugarTitle: "Friends", h5Entry: .relations(.friends))
+                SugarSettingRowSpec(sugarTitle: "Edit Profile", h5Entry: .cinnamonDustDust),
+                SugarSettingRowSpec(sugarTitle: "Level", h5Entry: .festiveCinnamonSeries),
+                SugarSettingRowSpec(sugarTitle: "Friends", h5Entry: .hideDialSafetyOverlay(.crispEdgeDough))
             ],
             [
-                SugarSettingRowSpec(sugarTitle: "Store", h5Entry: .store),
-                SugarSettingRowSpec(sugarTitle: "Backpack", h5Entry: .backpack),
-                SugarSettingRowSpec(sugarTitle: "Diamond Records", h5Entry: .diamondRecords),
+                SugarSettingRowSpec(sugarTitle: "Store", h5Entry: .loadRemoteProfile),
+                SugarSettingRowSpec(sugarTitle: "Backpack", h5Entry: .attachSafetyOverlay),
+                SugarSettingRowSpec(sugarTitle: "Diamond Records", h5Entry: .candiedOrangeLayer),
                 SugarSettingRowSpec(sugarTitle: "Save shop", action: #selector(openBakeryShelf))
             ],
             [
-                SugarSettingRowSpec(sugarTitle: "System Message", h5Entry: .systemMessages),
-                SugarSettingRowSpec(sugarTitle: "Feedback", h5Entry: .feedback)
+                SugarSettingRowSpec(sugarTitle: "System Message", h5Entry: .localPreviewGallery),
+                SugarSettingRowSpec(sugarTitle: "Feedback", h5Entry: .configureSugarTextField)
             ],
             [
                 SugarSettingRowSpec(sugarTitle: "Privacy Policy", showsArrow: false, action: #selector(openPrivacySugarText)),
-                SugarSettingRowSpec(sugarTitle: "Blacklist", h5Entry: .blocklist),
+                SugarSettingRowSpec(sugarTitle: "Blacklist", h5Entry: .autumnPecanAssortment),
                 SugarSettingRowSpec(sugarTitle: "Terms of Service", showsArrow: false, action: #selector(openTermsSugarText)),
                 SugarSettingRowSpec(sugarTitle: "App Version", sugarValue: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0", showsArrow: false)
             ]

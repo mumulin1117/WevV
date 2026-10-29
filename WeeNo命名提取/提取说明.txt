@@ -1,45 +1,30 @@
-WeeNo 自主命名提取说明
+WeeNo 自主命名提取说明（累计清单）
 
-扫描：9 份现存源码（完整 Swift 文件及 .swift.txt 片段）。
-归档内类：11；归档内声明的去重自主命名：455；引用项目名称候选：123；合并：578。
+扫描 15 份归档源码，包括本轮新增的 6 份逐行注释源码。
+本轮新增确认自主命名 358 个，新增类型 26 个。
+累计归档内类 14 个、全部类型 39 个、声明的去重自主命名 813 个；合并引用候选共 948 个名称。
 
 文件说明：
-归档内类名.txt：包含私有辅助类，只列在归档中实际声明的 class。
-归档内声明的自主命名.txt：类型、方法、属性、局部变量、参数、闭包参数、枚举成员、泛型参数及自定义参数标签；每行一个，已去重。
-引用的项目自定义类型.txt：归档引用、但在当前项目其他源码声明的自定义类型。
-全部自主命名.txt：归档内声明名称 + 引用项目自定义名称候选；每行一个，已去重。
-来源明细.json：每个声明的分类和文件行号、引用候选的使用/声明位置、排除的固定方法、全部源码标识符兜底清单及扫描文件摘要。
+归档内声明的自主命名.txt：累计确认在归档源码中声明的类型、方法、属性、参数、闭包参数、局部变量、枚举成员和自定义参数标签。
+全部自主命名.txt：累计声明名称与项目引用名称候选的合并清单；保留此前所有名称，不因工程重命名删除历史名称。
+本轮新增自主命名.txt：相对上轮累计声明清单新增的名称。
+归档内类名.txt / 归档内类型名.txt：累计类名 / 含结构体、枚举等的全部类型名。
+本轮新增类型名.txt：本轮新增的类型名称。
+引用的项目自定义类型.txt：引用候选中可匹配到项目自定义类型声明的名称。
+归档资源名称.txt：单独列出归档图片资源，不混入 Swift 命名清单。
+来源明细.json：分类、实际归档文件行号、还原文本行号、SHA-256、排除的固定方法及增量记录。
 
 边界：
-不将系统/UIKit/StoreKit 类型或方法仅因出现过就当成自主命名。
-排除 override 和已识别的系统协议固定方法名；其可自行命名的局部参数仍保留。
-使用 Swift 语法树提取，字符串和注释内的普通文字不计入代码命名；资源名称不属于代码标识符，未合并进命名表。
-引用项目名称采用名称匹配，未对停用代码进行完整类型检查；同名系统成员可能和项目名称重合，因此引用部分标注为候选，须结合来源明细核对。
-原文件、现有 App 代码、工程配置和归档目录均未修改。
-本清单不自动改变 AGENTS.md 中的新增命名来源约束，也不代表这里的每个名称都符合后续新增代码的命名来源要求。
+新归档内容只在临时目录解除行注释后交给 Swift 语法树解析，未取消工程归档中的注释，也未恢复任何功能。
+排除 override 和已识别的系统协议固定方法名；其可自行命名的局部参数仍保留。普通字符串、注释文字不作为代码标识符。
+引用候选采用名称匹配，可能存在同名系统成员；旧引用定义位置保留历史快照，部分定义已重命名或移走。请以归档内声明清单作为已确认自主命名集合。
+本清单不自动改变 AGENTS.md 的命名来源约束；从原 WevEnd 归档而来的名称仍记录其来源，不能仅因进入清单就视为符合所有未来命名规则。
+未修改现有 App 源码、归档源码、资源、工程配置或运行逻辑。
 
-归档内类：
-BrostingmellowCoconutEssence
-CreamRingDellController
-DrawcreamScoutSugarStyle
-GDonutdenCrumbCenterler
-LisenNoticepoplater
-NertyuChoiceStackLayer
-WevVGlazeConversationCell
-WevVGlazeMessageCell
-WevVGlazeMessageController
-WevVGlazeRosterCell
-XunSugarRosterbrownButterDrizzle
-
-扫描文件：
-WevSweetgd/WeeNo/Sources/BrostingmellowCoconutEssence.swift
-WevSweetgd/WeeNo/Sources/CreamRingDellController.swift
-WevSweetgd/WeeNo/Sources/DrawcreamScoutSugarStyle.swift
-WevSweetgd/WeeNo/Sources/GDonutdenCrumbCenterler.swift
-WevSweetgd/WeeNo/Sources/LisenNoticepoplater.swift
-WevSweetgd/WeeNo/Sources/NertyuChoiceStackLayer.swift
-WevSweetgd/WeeNo/Sources/XunSugarRosterbrownButterDrizzle.swift
-WevSweetgd/WeeNo/Fragments/KipoDonutMomentController.local-detail.swift.txt
-WevSweetgd/WeeNo/Fragments/TvVDonutcreamapricotFillinger.local-detail.swift.txt
-
-补充：归档内类型名.txt 包含 class、struct、enum 等全部自定义类型；归档资源名称.txt 单独列出当前归档图片资源名称。
+本轮扫描新增文件：
+WevSweetgd/WeeNo/Sources/GzeProfileSafetyTray.swift
+WevSweetgd/WeeNo/Sources/LmnTasterCardController.swift
+WevSweetgd/WeeNo/Sources/WevEnd/WevVGlazeRosterCell.legacy-profile.swift
+WevSweetgd/WeeNo/Sources/WevVGlazeVideoDialController.swift
+WevSweetgd/WeeNo/Sources/kettleGlazeSequence.legacy-models.swift
+WevSweetgd/WeeNo/Sources/kettleGlazeSequence.legacy-social.swift

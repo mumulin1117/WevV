@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
+from wevv_archive_source import read_archive
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -228,7 +229,7 @@ struct SocialServiceVerification {
 
 
 def main() -> None:
-    models = MODELS.read_text()
+    models = MODELS.read_text() + "\n" + read_archive(ROOT / "WevSweetgd/WeeNo/Sources/kettleGlazeSequence.legacy-models.swift")
     declarations = []
     for name in ("meltawayCrumb", "goldenCrumbCenter"):
         match = re.search(r"struct " + name + r": Sendable \{.*?\n\}", models, re.S)
@@ -238,11 +239,13 @@ def main() -> None:
     with tempfile.TemporaryDirectory(prefix="wevv-social-test-") as temporary:
         directory = Path(temporary)
         source = directory / "SocialVerification.swift"
-        source.write_text(SOURCE.read_text() + "\n" + "\n".join(declarations) + "\n" + TESTS)
+        historical = read_archive(ROOT / "WevSweetgd/WeeNo/Sources/WevEnd/WevVGlazeRosterCell.legacy-profile.swift")
+        source.write_text(SOURCE.read_text() + "\n" + historical + "\n" + "\n".join(declarations) + "\n" + TESTS)
         executable = directory / "verify-social"
         subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-D", "WEVV_SOCIAL_TESTING",
                         "-module-cache-path", str(directory / "modules"), str(source), "-o", str(executable)], check=True)
         subprocess.run([str(executable)], check=True)
+        print("Includes commented historical profile/relations fixtures; active displayName/follow/report remain production source.")
 
 
 if __name__ == "__main__":

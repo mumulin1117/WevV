@@ -21,7 +21,7 @@ class WevVGlazeApplication: UIResponder, UIApplicationDelegate {
     private let wevvGlazeSceneName = "WevVSprinkleScene"
 
     func application(_ wevvGlazeApp: UIApplication, didFinishLaunchingWithOptions wevvLaunchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        DrawcreamScoutSugarStyle.shared.startObserving()
+        DrawcreamScoutSugarStyle.donutCheckinCalendar.donutDiaryFolio()
         UKGlazeActortroller.prewarmGlazeResources()
         return true
     }

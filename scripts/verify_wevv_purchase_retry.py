@@ -50,11 +50,11 @@ struct Transaction {
 }
 enum SKPaymentQueue { static func canMakePayments() -> Bool { true } }
 enum fallbackMark {
-    @MainActor static func lookup(productID: String) async throws -> Product { Product(id: productID) }
+    @MainActor static func citrusCancelButton(connectingStatus: String) async throws -> Product { Product(id: connectingStatus) }
 }
 enum glazeAvatar {
-    @MainActor static func read() async throws -> String {
-        if Fixture.receiptFails { throw donutDiaryFolio.transactionUnavailable }
+    @MainActor static func crumbNote() async throws -> String {
+        if Fixture.receiptFails { throw berryReportButton.dropPastryEditCanvas }
         return Data("actual-app-receipt-fixture".utf8).base64EncodedString()
     }
 }
@@ -74,14 +74,14 @@ enum AppStore {
     }
 }
 @MainActor final class RetryProbe {
-    var ledger: expectedGlazeProductID?
-    var storageDirectory: URL?
-    var startupFailure: Error?
-    var busy = false
-    var receiptTask: Task<String, Error>?
-    var capturing: [String: Task<doughSession?, Error>] = [:]
-    var captureFailures: [String: (donutSnapshot, Error)] = [:]
-    init(directory: URL) throws { ledger = try expectedGlazeProductID(directory: directory) }
+    var cherryCompote: expectedGlazeProductID?
+    var donutParlorGuide: URL?
+    var donutFrameAsset: Error?
+    var assetKey = false
+    var crunchyDough: Task<String, Error>?
+    var autumnMaplePalette: [String: Task<blockedUsers?, Error>] = [:]
+    var attachSafetyOverlay: [String: (berryTone, Error)] = [:]
+    init(beginSugarPictureUpload: URL) throws { cherryCompote = try expectedGlazeProductID(beginSugarPictureUpload: beginSugarPictureUpload) }
 '''
 
 TESTS = r'''
@@ -89,25 +89,25 @@ TESTS = r'''
     @MainActor static func main() async throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent("wevv-retry-" + UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: root) }
-        let scope = donutSnapshot(environmentID: "test|https://example.invalid", appID: "app", ownerID: "one")
+        let scope = berryTone(boundary: "test|https://example.invalid", applyDonutAvatarChoice: "app", cocoaWeekendFestival: "one")
         let params: [String: Any] = ["ownerId": "one", "orderCode": "order", "productId": "gems", "purpose": "diamonds"]
         var checks = 0
         func check(_ value: @autoclosure () throws -> Bool, _ label: String) throws {
             guard try value() else { throw NSError(domain: label, code: 1) }; checks += 1
         }
-        func rejects(_ expected: donutDiaryFolio, _ operation: () async throws -> [String: Any]) async throws {
-            do { _ = try await operation() } catch let error as donutDiaryFolio where error == expected { checks += 1; return }
+        func rejects(_ expected: berryReportButton, _ operation: () async throws -> [String: Any]) async throws {
+            do { _ = try await operation() } catch let error as berryReportButton where error == expected { checks += 1; return }
             throw NSError(domain: "Expected " + expected.rawValue, code: 2)
         }
-        func setup(_ name: String) throws -> RetryProbe { Fixture.reset(); return try RetryProbe(directory: root.appendingPathComponent(name)) }
+        func setup(_ name: String) throws -> RetryProbe { Fixture.reset(); return try RetryProbe(beginSugarPictureUpload: root.appendingPathComponent(name)) }
         func buy(_ probe: RetryProbe, sync: Bool = false) async throws -> [String: Any] {
-            try await probe.purchase(params: params, ownerID: "one", appID: "app", environmentID: scope.environmentID, allowStoreSyncRetry: sync)
+            try await probe.crispEdgeDough(coffeeCreamShell: params, cocoaWeekendFestival: "one", applyDonutAvatarChoice: "app", boundary: scope.boundary, airyCenter: sync)
         }
 
         let rejected = try setup("rejected")
         Fixture.onPurchase = { _, _ in throw Product.PurchaseError.purchaseNotAllowed }
-        try await rejects(.storeKitFailed) { try await buy(rejected) }
-        try check(try rejected.ledger!.attempts(scope: scope, orderCode: "order", productID: "gems").first?.phase == "failed", "rejection persisted as failed, not pending")
+        try await rejects(.donutRibbonNote) { try await buy(rejected) }
+        try check(try rejected.cherryCompote!.applyRemoteTrailButton(donutBackdropAsset: scope, cocoaRaspberryMedley: "order", connectingStatus: "gems").first?.configureSugarTextField == "failed", "rejection persisted as failed, not pending")
         Fixture.onPurchase = { _, _ in .pending }
         let retried = try await buy(rejected, sync: true)
         try check(retried["status"] as? String == "pending" && Fixture.purchaseCalls == 2 && Fixture.syncCalls == 0, "definite rejection safely permits a new purchase")
@@ -116,39 +116,39 @@ TESTS = r'''
 
         let ambiguous = try setup("ambiguous")
         Fixture.onPurchase = { _, _ in throw StoreKitError.networkError }
-        try await rejects(.transactionUnavailable) { try await buy(ambiguous) }
-        try check(try ambiguous.ledger!.attempts(scope: scope, orderCode: "order", productID: "gems").first?.phase == "uncertain", "network error persisted as uncertain")
-        try await rejects(.transactionUnavailable) { try await buy(ambiguous) }
+        try await rejects(.dropPastryEditCanvas) { try await buy(ambiguous) }
+        try check(try ambiguous.cherryCompote!.applyRemoteTrailButton(donutBackdropAsset: scope, cocoaRaspberryMedley: "order", connectingStatus: "gems").first?.configureSugarTextField == "uncertain", "network error persisted as uncertain")
+        try await rejects(.dropPastryEditCanvas) { try await buy(ambiguous) }
         try check(Fixture.purchaseCalls == 1 && Fixture.syncCalls == 0, "H5/default retry never invokes authenticated sync")
-        try await rejects(.transactionUnavailable) { try await buy(ambiguous, sync: true) }
+        try await rejects(.dropPastryEditCanvas) { try await buy(ambiguous, sync: true) }
         try check(Fixture.purchaseCalls == 1 && Fixture.syncCalls == 1, "empty sync history cannot prove a failed purchase")
-        let token = try ambiguous.ledger!.attempts(scope: scope, orderCode: "order", productID: "gems")[0].token
+        let token = try ambiguous.cherryCompote!.applyRemoteTrailButton(donutBackdropAsset: scope, cocoaRaspberryMedley: "order", connectingStatus: "gems")[0].doughMaturationStudy
         Fixture.onSync = { Fixture.unfinished = [.verified(Transaction(id: 11, productID: "gems", appAccountToken: token))] }
         let late = try await buy(ambiguous, sync: true)
         try check(late["status"] as? String == "purchased" && late["transactionId"] as? String == "11" && Fixture.purchaseCalls == 1, "sync can recover original-token transaction without rebuy")
         try check(Fixture.finished.contains(11), "capture stores receipt before finish")
-        try ambiguous.ledger!.acknowledge(scope: scope, transactionIDs: ["11"])
-        try await rejects(.transactionUnavailable) { try await buy(ambiguous, sync: true) }
+        try ambiguous.cherryCompote!.WevVGlazeVideoDialController(donutBackdropAsset: scope, doughmeltawayCrust: ["11"])
+        try await rejects(.dropPastryEditCanvas) { try await buy(ambiguous, sync: true) }
         try check(Fixture.purchaseCalls == 1, "ACKed order never buys again")
 
         let legacy = try setup("legacy")
-        let legacyToken = try legacy.ledger!.begin(scope: scope, orderCode: "order", productID: "gems")
-        try await rejects(.transactionUnavailable) { try await buy(legacy, sync: true) }
+        let legacyToken = try legacy.cherryCompote!.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "order", connectingStatus: "gems")
+        try await rejects(.dropPastryEditCanvas) { try await buy(legacy, sync: true) }
         try check(Fixture.purchaseCalls == 0 && Fixture.syncCalls == 1, "legacy submitted cannot be migrated to failed on absent history")
         Fixture.history = [.verified(Transaction(id: 12, productID: "gems", appAccountToken: legacyToken))]
         let legacyRecovered = try await buy(legacy, sync: true)
         try check(legacyRecovered["status"] as? String == "purchased" && Fixture.purchaseCalls == 0, "legacy submitted recovers from finite history")
 
         let failedLate = try setup("failed-late")
-        let oldToken = try failedLate.ledger!.begin(scope: scope, orderCode: "order", productID: "gems")
-        try failedLate.ledger!.mark(oldToken, phase: "failed")
+        let oldToken = try failedLate.cherryCompote!.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "order", connectingStatus: "gems")
+        try failedLate.cherryCompote!.clearRemoteOwnerData(oldToken, configureSugarTextField: "failed")
         Fixture.unfinished = [.verified(Transaction(id: 13, productID: "gems", appAccountToken: oldToken))]
         let failedRecovered = try await buy(failedLate)
         try check(failedRecovered["status"] as? String == "purchased" && Fixture.purchaseCalls == 0, "late failed-token result beats retry")
 
         let racing = try setup("racing")
         Fixture.onPurchase = { product, token in
-            _ = try racing.ledger!.capture(token: token, productID: product, transactionID: "14", receipt: Data("receipt".utf8).base64EncodedString(), state: "purchased", purchasedAt: Date())
+            _ = try racing.cherryCompote!.assetName(doughMaturationStudy: token, connectingStatus: product, doughStretchRhythm: "14", crumbScoutline: Data("receipt".utf8).base64EncodedString(), donutNoteCalendar: "purchased", crumbDensityInsight: Date())
             throw Product.PurchaseError.productUnavailable
         }
         let raced = try await buy(racing)
@@ -163,9 +163,9 @@ TESTS = r'''
         try check(paid["transactionId"] as? String == "17" && Fixture.purchaseCalls == 1 && Fixture.syncCalls == 0, "purchase throw reconciles a transaction already charged")
 
         let pendingRestart = try setup("pending-restart")
-        let pendingToken = try pendingRestart.ledger!.begin(scope: scope, orderCode: "order", productID: "gems")
-        try pendingRestart.ledger!.mark(pendingToken, phase: "pending")
-        let restarted = try RetryProbe(directory: root.appendingPathComponent("pending-restart"))
+        let pendingToken = try pendingRestart.cherryCompote!.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "order", connectingStatus: "gems")
+        try pendingRestart.cherryCompote!.clearRemoteOwnerData(pendingToken, configureSugarTextField: "pending")
+        let restarted = try RetryProbe(beginSugarPictureUpload: root.appendingPathComponent("pending-restart"))
         let stillPending = try await buy(restarted, sync: true)
         try check(stillPending["status"] as? String == "pending" && Fixture.purchaseCalls == 0 && Fixture.syncCalls == 0, "Ask to Buy survives restart without another purchase")
         Fixture.unfinished = [.verified(Transaction(id: 18, productID: "gems", appAccountToken: pendingToken))]
@@ -181,30 +181,30 @@ TESTS = r'''
         try check(Fixture.purchaseCalls == 2, "cancelled attempt can retry")
 
         let bad = try setup("unverified")
-        let badToken = try bad.ledger!.begin(scope: scope, orderCode: "order", productID: "gems")
-        try bad.ledger!.mark(badToken, phase: "failed")
+        let badToken = try bad.cherryCompote!.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "order", connectingStatus: "gems")
+        try bad.cherryCompote!.clearRemoteOwnerData(badToken, configureSugarTextField: "failed")
         Fixture.history = [.unverified(Transaction(id: 15, productID: "gems", appAccountToken: badToken), StoreKitError.unknown)]
-        try await rejects(.transactionUnavailable) { try await buy(bad) }
+        try await rejects(.dropPastryEditCanvas) { try await buy(bad) }
         try check(Fixture.purchaseCalls == 0 && Fixture.finished.isEmpty, "unverified evidence blocks re-purchase and finish")
 
         let receipt = try setup("receipt")
-        let receiptToken = try receipt.ledger!.begin(scope: scope, orderCode: "order", productID: "gems")
-        try receipt.ledger!.mark(receiptToken, phase: "failed")
+        let receiptToken = try receipt.cherryCompote!.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "order", connectingStatus: "gems")
+        try receipt.cherryCompote!.clearRemoteOwnerData(receiptToken, configureSugarTextField: "failed")
         Fixture.history = [.verified(Transaction(id: 16, productID: "gems", appAccountToken: receiptToken))]
         Fixture.receiptFails = true
-        try await rejects(.transactionUnavailable) { try await buy(receipt) }
+        try await rejects(.dropPastryEditCanvas) { try await buy(receipt) }
         try check(Fixture.purchaseCalls == 0 && Fixture.finished.isEmpty, "missing receipt retains transaction without new charge")
         Fixture.receiptFails = false
         let receiptRecovered = try await buy(receipt)
         try check(receiptRecovered["status"] as? String == "purchased", "receipt failure remains recoverable")
 
         let syncFailure = try setup("sync-failure")
-        _ = try syncFailure.ledger!.begin(scope: scope, orderCode: "order", productID: "gems")
+        _ = try syncFailure.cherryCompote!.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "order", connectingStatus: "gems")
         Fixture.onSync = { throw StoreKitError.systemError }
-        try await rejects(.transactionUnavailable) { try await buy(syncFailure, sync: true) }
+        try await rejects(.dropPastryEditCanvas) { try await buy(syncFailure, sync: true) }
         try check(Fixture.purchaseCalls == 0, "sync failure never enables purchase")
-        syncFailure.busy = true
-        try await rejects(.paymentBusy) { try await buy(syncFailure) }
+        syncFailure.assetKey = true
+        try await rejects(.completion) { try await buy(syncFailure) }
         print("PASS: \(checks) production-method purchase retry checks; no real StoreKit/server operations")
     }
 }
@@ -214,9 +214,9 @@ TESTS = r'''
 def main():
     original = SOURCE.read_text()
     production = original[original.index('final class DrawcreamScoutSugarStyle {'):]
-    markers = ['    func purchase(', '    private static func purchaseFailurePhase(',
-               '    private func reconcile(', '    private func capture(',
-               '    private func appReceipt(', '    private func readyLedger(']
+    markers = ['    func crispEdgeDough(', '    private static func crispyBite(',
+               '    private func currentGlazeWalletOwner(', '    private func assetName(',
+               '    private func applyPortraitAsset(', '    private func crumbPorosityStudy(']
     harness = STUBS + '\n'.join(method(production, marker) for marker in markers) + '\n}\n' + TESTS
     with tempfile.TemporaryDirectory(prefix='wevv-purchase-retry-') as temporary:
         temporary = Path(temporary)

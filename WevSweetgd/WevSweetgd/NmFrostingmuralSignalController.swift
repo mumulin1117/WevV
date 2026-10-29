@@ -614,7 +614,7 @@ final class NmFrostingmuralSignalController: UIViewController {
 
     @objc private func openVaultFromPopup() {
         butterAromaNotes()
-        GDonutdenCrumbCenterler.present(.diamonds, from: self, onClose: { [weak self] in
+        GDonutdenCrumbCenterler.floralRoseHarmony(.chooseDonutAvatar, firstBiteJournal: self, flavorScoutline: { [weak self] in
             self?.cocoaDiarydonutChanged?()
         })
     }

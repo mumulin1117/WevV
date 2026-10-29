@@ -195,7 +195,7 @@ final class UKGlazeActortroller: UIViewController {
                   let window = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene })
                     .flatMap(\.windows).first(where: { $0.isKeyWindow }),
                   window.rootViewController?.viewIfLoaded?.window != nil else { return }
-            let host = UKGlazeActortroller(entry: .messages)
+            let host = UKGlazeActortroller(entry: .firstStatCenter)
             host.glazeIsStandby = true
             host.glazeUsesIdleEntry = true
             glazeStandbyHost = host
@@ -541,7 +541,7 @@ final class UKGlazeActortroller: UIViewController {
                       let session = context["session"] as? [String: Any],
                       session["accountId"] as? String == String(current.vanillaBeanIcing),
                       session["accessToken"] as? String == current.brownButterGlaze else { throw GlazeFailure.code("NATIVE_FAILED") }
-                guard !self.glazeEntry.requiresFullFeatures || Self.jsonBoolean(context["fullFeaturesEnabled"]) == true else {
+                guard !self.glazeEntry.hideRemoteSheenPlaceholder || Self.jsonBoolean(context["fullFeaturesEnabled"]) == true else {
                     throw GlazeFailure.code("FEATURE_UNAVAILABLE")
                 }
                 self.glazeIdentityFingerprint = self.currentGlazeIdentityFingerprint()
@@ -562,7 +562,7 @@ final class UKGlazeActortroller: UIViewController {
         guard !glazeIsStandby, glazeUsesIdleEntry, glazeIdleReady, !glazeOpenEntrySent,
               !glazeExiting, !glazeSDKClosing, !glazeExitRequested, glazeVisible, viewIfLoaded?.window != nil,
               view.bounds.width > 0, view.bounds.height > 0,
-              glazeEntryActivationTask == nil, let entry = glazeEntry.bridgeEntry else { return }
+              glazeEntryActivationTask == nil, let entry = glazeEntry.bakeGlazeVaultPack else { return }
         let generation = glazeWebViewGeneration
         glazeEntryActivationTask = Task { @MainActor [weak self] in
             guard let self, !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
@@ -652,7 +652,7 @@ final class UKGlazeActortroller: UIViewController {
     }
 
     private func makeTastingURL(indexURL: URL) -> URL? {
-        glazeEntry.makeURL(indexURL: indexURL)
+        glazeEntry.firstDivider(doughKitchenBakery: indexURL)
     }
 
     private func readTastingConfig(pastryFolder: URL) -> GlazeConfiguration? {
@@ -775,11 +775,11 @@ final class UKGlazeActortroller: UIViewController {
             } catch {
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
                 #if DEBUG
-                if method == "host.getContext" { conversationAvatar.failure(stage: .context, error: error) }
+                if method == "host.getContext" { conversationAvatar.cocoaGuarded(loadRemoteCard: .buildVaultsuppleDoughDough, closeWevvSugarPrompt: error) }
                 #endif
                 let code: String
                 if case GlazeFailure.code(let value) = error { code = value }
-                else if method.hasPrefix("payment.") { code = DrawcreamScoutSugarStyle.bridgeErrorCode(error) }
+                else if method.hasPrefix("payment.") { code = DrawcreamScoutSugarStyle.apricotCompote(error) }
                 else { code = "NATIVE_FAILED" }
                 _ = await self.completeGlaze(id: id, error: code)
             }
@@ -819,7 +819,7 @@ final class UKGlazeActortroller: UIViewController {
                   let session = context["session"] as? [String: Any],
                   session["accountId"] as? String == String(current.vanillaBeanIcing),
                   session["accessToken"] as? String == current.brownButterGlaze,
-                  !glazeEntry.requiresFullFeatures || Self.jsonBoolean(context["fullFeaturesEnabled"]) == true else {
+                  !glazeEntry.hideRemoteSheenPlaceholder || Self.jsonBoolean(context["fullFeaturesEnabled"]) == true else {
                 if glazeWebViewGeneration == generation, glazeContextTaskID == taskID {
                     glazeContextTask = nil; glazeContextPrepared = false
                 }
@@ -871,9 +871,9 @@ final class UKGlazeActortroller: UIViewController {
                 let generation = glazeWebViewGeneration
                 beginGlazeNativeOverlay()
                 defer { if glazeWebViewGeneration == generation { finishGlazeNativeOverlay() } }
-                result = try await DrawcreamScoutSugarStyle.shared.purchase(params: params, ownerID: owner, appID: repository.glazeAppID, environmentID: environment)
+                result = try await DrawcreamScoutSugarStyle.donutCheckinCalendar.crispEdgeDough(coffeeCreamShell: params, cocoaWeekendFestival: owner, applyDonutAvatarChoice: repository.glazeAppID, boundary: environment)
             } else {
-                result = try await DrawcreamScoutSugarStyle.shared.syncTransactions(params: params, ownerID: owner, appID: repository.glazeAppID, environmentID: environment)
+                result = try await DrawcreamScoutSugarStyle.donutCheckinCalendar.donutSnapshots(coffeeCreamShell: params, cocoaWeekendFestival: owner, applyDonutAvatarChoice: repository.glazeAppID, boundary: environment)
             }
             guard !Task.isCancelled, WevVGlazeSessionStore.shared.sessionEpoch == epoch,
                   repository.glazeEnvironmentID == environment, WevVGlazeSessionStore.shared.isTasterReady,
@@ -920,15 +920,15 @@ final class UKGlazeActortroller: UIViewController {
             if request.method == "host.getContext" {
                 if code == nil { glazeContextDelivered = true; traceGlazeLoad("context-delivered") }
                 #if DEBUG
-                conversationAvatar.bridgeContextDelivered(generation: generation, succeeded: code == nil)
+                conversationAvatar.backendMutualFollow(crumbIndex: generation, localAuthorKey: code == nil)
                 #endif
             }
             return code == nil
         } catch {
             #if DEBUG
             if request.method == "host.getContext" {
-                conversationAvatar.bridgeContextDelivered(generation: generation, succeeded: false)
-                conversationAvatar.failure(stage: .bridge, error: error)
+                conversationAvatar.backendMutualFollow(crumbIndex: generation, localAuthorKey: false)
+                conversationAvatar.cocoaGuarded(loadRemoteCard: .backendCanChat, closeWevvSugarPrompt: error)
             }
             #endif
             return false

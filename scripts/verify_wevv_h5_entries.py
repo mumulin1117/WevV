@@ -27,50 +27,50 @@ let account = "target+im/空 帐&#?%"
 let name = "Alice & Bob + 甜甜圈"
 let avatar = "https://example.com/photo?a=1&b=two+words#crop"
 let fixtures: [(String, chosenTiles)] = [
-    ("messages", .messages), ("systemMessages", .systemMessages), ("likedMessages", .likedMessages),
-    ("user", .user(userID: "20002", imAccount: "target-im-account")),
-    ("creator", .creator(userID: "10001", imAccount: nil)),
-    ("conversation", .conversation(userID: "20002", imAccount: account, name: name, avatarURL: avatar)),
-    ("editProfile", .editProfile), ("diamonds", .diamonds), ("diamondRecords", .diamondRecords),
-    ("blocklist", .blocklist), ("feedback", .feedback), ("level", .level),
-    ("store", .store), ("backpack", .backpack),
-    ("friends", .relations(.friends)), ("fans", .relations(.fans)), ("following", .relations(.following)),
-    ("liveSearch", .liveSearch), ("liveRanking", .liveRanking), ("partyCreate", .partyCreate),
-    ("partySearch", .partySearch), ("partyRanking", .partyRanking), ("cpSettings", .cpSettings),
-    ("liveRoom", .room(room("901", .blueberryCustard))),
-    ("liveHostLookup", .room(room("", .blueberryCustard, followed: nil))),
-    ("voiceRoom", .room(room("902", .blackberryCream))),
-    ("largeUserID", .user(userID: "9223372036854775807", imAccount: nil))
+    ("messages", .firstStatCenter), ("systemMessages", .localPreviewGallery), ("likedMessages", .fillVaultPackRow),
+    ("user", .makeDonutTasterEntry(makeLargeFlavorNote: "20002", dialReportSuggestion: "target-im-account")),
+    ("creator", .buildWevvTasterScrollLayer(makeLargeFlavorNote: "10001", dialReportSuggestion: nil)),
+    ("conversation", .buildWevvActionFoot(makeLargeFlavorNote: "20002", dialReportSuggestion: account, flavorNotePane: name, assetForFlavorNote: avatar)),
+    ("editProfile", .cinnamonDustDust), ("diamonds", .chooseDonutAvatar), ("diamondRecords", .candiedOrangeLayer),
+    ("blocklist", .autumnPecanAssortment), ("feedback", .configureSugarTextField), ("level", .festiveCinnamonSeries),
+    ("store", .loadRemoteProfile), ("backpack", .attachSafetyOverlay),
+    ("friends", .hideDialSafetyOverlay(.crispEdgeDough)), ("fans", .hideDialSafetyOverlay(.configurePastryButton)), ("following", .hideDialSafetyOverlay(.configureWevvTasterBodyStack)),
+    ("liveSearch", .finishSugarPictureUpload), ("liveRanking", .fineCrumbLayer), ("partyCreate", .gardenLaneStudio),
+    ("partySearch", .glazeCatalogOwner), ("partyRanking", .glazeAtlasPage), ("cpSettings", .buildWevvLockedFoot),
+    ("liveRoom", .isCurrentRemoteAction(room("901", .blueberryCustard))),
+    ("liveHostLookup", .isCurrentRemoteAction(room("", .blueberryCustard, followed: nil))),
+    ("voiceRoom", .isCurrentRemoteAction(room("902", .blackberryCream))),
+    ("largeUserID", .makeDonutTasterEntry(makeLargeFlavorNote: "9223372036854775807", dialReportSuggestion: nil))
 ]
 var records: [[String: Any]] = []
 for (label, entry) in fixtures {
-    guard let url = entry.makeURL(indexURL: index) else { fatalError("Missing URL for \(label)") }
-    guard let bridgeEntry = entry.bridgeEntry else { fatalError("Missing idle activation entry for \(label)") }
-    records.append(["label": label, "url": url.absoluteString, "bridgeEntry": bridgeEntry, "requiresFullFeatures": entry.requiresFullFeatures])
-    precondition(entry.requiresFullFeatures == (label == "cpSettings"))
+    guard let url = entry.firstDivider(doughKitchenBakery: index) else { fatalError("Missing URL for \(label)") }
+    guard let bridgeEntry = entry.bakeGlazeVaultPack else { fatalError("Missing idle activation entry for \(label)") }
+    records.append(["label": label, "url": url.absoluteString, "bridgeEntry": bridgeEntry, "requiresFullFeatures": entry.hideRemoteSheenPlaceholder])
+    precondition(entry.hideRemoteSheenPlaceholder == (label == "cpSettings"))
 }
 var rejected = 0
 func rejects(_ entry: chosenTiles) {
-    precondition(entry.makeURL(indexURL: index) == nil)
-    precondition(entry.bridgeEntry == nil)
+    precondition(entry.firstDivider(doughKitchenBakery: index) == nil)
+    precondition(entry.bakeGlazeVaultPack == nil)
     rejected += 1
 }
 for invalid in ["", "0", "00", "01", "-1", "+1", "1.5", "1/2", "1?token=x", " 1", "1 ", "１２", "١٢"] {
-    rejects(.user(userID: invalid, imAccount: nil))
-    rejects(.creator(userID: invalid, imAccount: nil))
-    rejects(.conversation(userID: invalid, imAccount: "target", name: nil, avatarURL: nil))
-    rejects(.room(room(invalid, .blackberryCream)))
-    rejects(.room(room("901", .blueberryCustard, host: invalid)))
+    rejects(.makeDonutTasterEntry(makeLargeFlavorNote: invalid, dialReportSuggestion: nil))
+    rejects(.buildWevvTasterScrollLayer(makeLargeFlavorNote: invalid, dialReportSuggestion: nil))
+    rejects(.buildWevvActionFoot(makeLargeFlavorNote: invalid, dialReportSuggestion: "target", flavorNotePane: nil, assetForFlavorNote: nil))
+    rejects(.isCurrentRemoteAction(room(invalid, .blackberryCream)))
+    rejects(.isCurrentRemoteAction(room("901", .blueberryCustard, host: invalid)))
 }
-rejects(.room(room("901", .blueberryCustard, host: nil)))
-rejects(.conversation(userID: "2", imAccount: "", name: nil, avatarURL: nil))
-rejects(.conversation(userID: "2", imAccount: " \n\t", name: nil, avatarURL: nil))
-rejects(.conversation(userID: "2", imAccount: String(repeating: "a", count: 2048), name: nil, avatarURL: nil))
-rejects(.conversation(userID: "2", imAccount: "target", name: String(repeating: "a", count: 4097), avatarURL: nil))
-rejects(.conversation(userID: "2", imAccount: "target", name: String(repeating: "🍩", count: 2049), avatarURL: nil))
-precondition(chosenTiles.messages.makeURL(indexURL: URL(string: "https://example.com/index.html")!) == nil)
-precondition(chosenTiles.messages.makeURL(indexURL: URL(string: index.absoluteString + "#old")!) == nil)
-precondition(chosenTiles.messages.makeURL(indexURL: URL(string: index.absoluteString + "?token=old")!) == nil)
+rejects(.isCurrentRemoteAction(room("901", .blueberryCustard, host: nil)))
+rejects(.buildWevvActionFoot(makeLargeFlavorNote: "2", dialReportSuggestion: "", flavorNotePane: nil, assetForFlavorNote: nil))
+rejects(.buildWevvActionFoot(makeLargeFlavorNote: "2", dialReportSuggestion: " \n\t", flavorNotePane: nil, assetForFlavorNote: nil))
+rejects(.buildWevvActionFoot(makeLargeFlavorNote: "2", dialReportSuggestion: String(repeating: "a", count: 2048), flavorNotePane: nil, assetForFlavorNote: nil))
+rejects(.buildWevvActionFoot(makeLargeFlavorNote: "2", dialReportSuggestion: "target", flavorNotePane: String(repeating: "a", count: 4097), assetForFlavorNote: nil))
+rejects(.buildWevvActionFoot(makeLargeFlavorNote: "2", dialReportSuggestion: "target", flavorNotePane: String(repeating: "🍩", count: 2049), assetForFlavorNote: nil))
+precondition(chosenTiles.firstStatCenter.firstDivider(doughKitchenBakery: URL(string: "https://example.com/index.html")!) == nil)
+precondition(chosenTiles.firstStatCenter.firstDivider(doughKitchenBakery: URL(string: index.absoluteString + "#old")!) == nil)
+precondition(chosenTiles.firstStatCenter.firstDivider(doughKitchenBakery: URL(string: index.absoluteString + "?token=old")!) == nil)
 let payload: [String: Any] = ["records": records, "rejected": rejected + 3]
 print(String(data: try JSONSerialization.data(withJSONObject: payload, options: [.sortedKeys]), encoding: .utf8)!)
 '''

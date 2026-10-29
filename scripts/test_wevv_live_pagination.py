@@ -17,7 +17,7 @@ func room(_ id: Int) -> pearFilling {
         figFilling: 0, custardCurd: [], vanillaJam: [], pistachioCustard: nil, hazelnutCream: false)
 }
 func page(_ ids: [Int], total: Int? = nil, rawCount: Int? = nil) -> glazeMarkLabel {
-    glazeMarkLabel(rooms: ids.map(room), total: total, rawCount: rawCount ?? ids.count)
+    glazeMarkLabel(formatter: ids.map(room), gingerHoneyDrizzle: total, followingList: rawCount ?? ids.count)
 }
 @main struct PaginationVerification {
     static func main() throws {
@@ -28,49 +28,49 @@ func page(_ ids: [Int], total: Int? = nil, rawCount: Int? = nil) -> glazeMarkLab
                 userInfo: [NSLocalizedDescriptionKey: message]) }
         }
         var pager = creamPacket()
-        try check(pager.rooms.isEmpty && !pager.hasMore && !pager.isLoading && pager.nextPage == 1,
+        try check(pager.closeWevvBakeryShelf.isEmpty && !pager.blueberryCustard && !pager.brownButterIcing && pager.cancelGlazeEntryPreparation == 1,
             "initial state must not request page two")
-        try check(pager.beginNextPage() == nil, "load more requires a successful first page")
-        let first = pager.beginRefresh()
-        try check(pager.isLoading && !pager.failed && pager.beginNextPage() == nil, "refresh serializes requests")
-        try check(!pager.receive(page([99]), request: UUID()) && pager.isLoading,
+        try check(pager.artisanFrySequence() == nil, "load more requires a successful first page")
+        let first = pager.artisanSelectionShowcase()
+        try check(pager.brownButterIcing && !pager.berryCrumbBakerySelections && pager.artisanFrySequence() == nil, "refresh serializes requests")
+        try check(!pager.cleanCrumbPacketPart(page([99]), closeFlavorNoteForm: UUID()) && pager.brownButterIcing,
             "unknown success cannot replace the active refresh")
-        try check(!pager.fail(request: UUID()) && pager.isLoading, "unknown failure cannot end the active refresh")
-        try check(pager.receive(page(Array(1...10), total: 25), request: first), "first page is accepted once")
-        try check(pager.rooms.count == 10 && pager.nextPage == 2 && pager.hasMore && !pager.isLoading,
+        try check(!pager.berryCrumbBakeryNotes(closeFlavorNoteForm: UUID()) && pager.brownButterIcing, "unknown failure cannot end the active refresh")
+        try check(pager.cleanCrumbPacketPart(page(Array(1...10), total: 25), closeFlavorNoteForm: first), "first page is accepted once")
+        try check(pager.closeWevvBakeryShelf.count == 10 && pager.cancelGlazeEntryPreparation == 2 && pager.blueberryCustard && !pager.brownButterIcing,
             "all ten first-page rooms survive and total enables page two")
-        try check(!pager.receive(page([99]), request: first), "duplicate first-page completion is ignored")
-        let second = pager.beginNextPage()!
-        try check(second.page == 2 && pager.beginNextPage() == nil, "concurrent load-more requests coalesce")
-        try check(pager.receive(page(Array(11...20), total: 25), request: second.id), "second page accepted")
-        try check(pager.rooms.map(\.passionfruitMousse) == (1...20).map(String.init) && pager.nextPage == 3 && pager.hasMore,
+        try check(!pager.cleanCrumbPacketPart(page([99]), closeFlavorNoteForm: first), "duplicate first-page completion is ignored")
+        let second = pager.artisanFrySequence()!
+        try check(second.caramelLatteCompanion == 2 && pager.artisanFrySequence() == nil, "concurrent load-more requests coalesce")
+        try check(pager.cleanCrumbPacketPart(page(Array(11...20), total: 25), closeFlavorNoteForm: second.bodyWevVSugarText), "second page accepted")
+        try check(pager.closeWevvBakeryShelf.map(\.passionfruitMousse) == (1...20).map(String.init) && pager.cancelGlazeEntryPreparation == 3 && pager.blueberryCustard,
             "later rooms append in stable server order")
-        let third = pager.beginNextPage()!
-        try check(pager.receive(page(Array(21...25), total: 25), request: third.id)
-            && pager.rooms.count == 25 && !pager.hasMore && pager.beginNextPage() == nil,
+        let third = pager.artisanFrySequence()!
+        try check(pager.cleanCrumbPacketPart(page(Array(21...25), total: 25), closeFlavorNoteForm: third.bodyWevVSugarText)
+            && pager.closeWevvBakeryShelf.count == 25 && !pager.blueberryCustard && pager.artisanFrySequence() == nil,
             "total exhaustion ends pagination without an extra request")
 
-        let refresh = pager.beginRefresh()
-        try check(pager.rooms.count == 25, "refresh preserves visible rooms until success")
-        try check(pager.fail(request: refresh) && pager.failed && !pager.isLoading && pager.rooms.count == 25,
+        let refresh = pager.artisanSelectionShowcase()
+        try check(pager.closeWevvBakeryShelf.count == 25, "refresh preserves visible rooms until success")
+        try check(pager.berryCrumbBakeryNotes(closeFlavorNoteForm: refresh) && pager.berryCrumbBakerySelections && !pager.brownButterIcing && pager.closeWevvBakeryShelf.count == 25,
             "failed same-owner refresh preserves visible rooms")
-        let refreshed = pager.beginRefresh()
-        try check(pager.receive(page(Array(100...109)), request: refreshed)
-            && pager.rooms.map(\.passionfruitMousse) == (100...109).map(String.init) && pager.hasMore,
+        let refreshed = pager.artisanSelectionShowcase()
+        try check(pager.cleanCrumbPacketPart(page(Array(100...109)), closeFlavorNoteForm: refreshed)
+            && pager.closeWevvBakeryShelf.map(\.passionfruitMousse) == (100...109).map(String.init) && pager.blueberryCustard,
             "successful refresh replaces the old pool and full unknown-total page can continue")
-        let failed = pager.beginNextPage()!
-        try check(pager.fail(request: failed.id) && pager.failed && pager.nextPage == 2 && pager.rooms.count == 10,
+        let failed = pager.artisanFrySequence()!
+        try check(pager.berryCrumbBakeryNotes(closeFlavorNoteForm: failed.bodyWevVSugarText) && pager.berryCrumbBakerySelections && pager.cancelGlazeEntryPreparation == 2 && pager.closeWevvBakeryShelf.count == 10,
             "load-more failure retains cursor and existing rooms")
-        let retry = pager.beginNextPage()!
-        try check(retry.page == 2 && retry.id != failed.id && !pager.failed, "retry requests the failed page again")
-        try check(!pager.fail(request: failed.id) && pager.isLoading,
+        let retry = pager.artisanFrySequence()!
+        try check(retry.caramelLatteCompanion == 2 && retry.bodyWevVSugarText != failed.bodyWevVSugarText && !pager.berryCrumbBakerySelections, "retry requests the failed page again")
+        try check(!pager.berryCrumbBakeryNotes(closeFlavorNoteForm: failed.bodyWevVSugarText) && pager.brownButterIcing,
             "late failure from the previous attempt cannot stop its retry")
-        try check(pager.receive(page([109, 110, 111], rawCount: 10), request: retry.id)
-            && pager.rooms.count == 12 && pager.hasMore,
+        try check(pager.cleanCrumbPacketPart(page([109, 110, 111], rawCount: 10), closeFlavorNoteForm: retry.bodyWevVSugarText)
+            && pager.closeWevvBakeryShelf.count == 12 && pager.blueberryCustard,
             "overlap is deduplicated by room ID while raw page size drives unknown totals")
-        let repeated = pager.beginNextPage()!
-        try check(pager.receive(page([109, 110, 111], total: 100, rawCount: 10), request: repeated.id)
-            && pager.rooms.count == 12 && !pager.hasMore,
+        let repeated = pager.artisanFrySequence()!
+        try check(pager.cleanCrumbPacketPart(page([109, 110, 111], total: 100, rawCount: 10), closeFlavorNoteForm: repeated.bodyWevVSugarText)
+            && pager.closeWevvBakeryShelf.count == 12 && !pager.blueberryCustard,
             "a repeated page stops an endless loop even when the server reports more rows")
 
         for (payload, message) in [
@@ -79,32 +79,32 @@ func page(_ ids: [Int], total: Int? = nil, rawCount: Int? = nil) -> glazeMarkLab
             (page([], total: 99, rawCount: 10), "all invalid room identifiers end nonproductive pagination"),
             (page(Array(1...10), total: 10), "full final page honors total")
         ] {
-            let request = pager.beginRefresh()
-            try check(pager.receive(payload, request: request) && !pager.hasMore, message)
+            let request = pager.artisanSelectionShowcase()
+            try check(pager.cleanCrumbPacketPart(payload, closeFlavorNoteForm: request) && !pager.blueberryCustard, message)
         }
 
-        let duplicateFirst = pager.beginRefresh()
-        try check(pager.receive(page([1, 1, 2, 3], total: 4, rawCount: 4), request: duplicateFirst)
-            && pager.rooms.map(\.passionfruitMousse) == ["1", "2", "3"] && !pager.hasMore,
+        let duplicateFirst = pager.artisanSelectionShowcase()
+        try check(pager.cleanCrumbPacketPart(page([1, 1, 2, 3], total: 4, rawCount: 4), closeFlavorNoteForm: duplicateFirst)
+            && pager.closeWevvBakeryShelf.map(\.passionfruitMousse) == ["1", "2", "3"] && !pager.blueberryCustard,
             "raw records, rather than deduplicated display count, satisfy total")
-        let oldFirst = pager.beginRefresh(), newFirst = pager.beginRefresh()
-        try check(!pager.receive(page([888]), request: oldFirst) && !pager.fail(request: oldFirst) && pager.isLoading,
+        let oldFirst = pager.artisanSelectionShowcase(), newFirst = pager.artisanSelectionShowcase()
+        try check(!pager.cleanCrumbPacketPart(page([888]), closeFlavorNoteForm: oldFirst) && !pager.berryCrumbBakeryNotes(closeFlavorNoteForm: oldFirst) && pager.brownButterIcing,
             "a newer refresh invalidates all old refresh completions")
-        try check(pager.receive(page(Array(1...10), total: 30), request: newFirst), "new refresh completes normally")
-        let oldMore = pager.beginNextPage()!
-        let replacement = pager.beginRefresh()
-        try check(!pager.receive(page(Array(11...20), total: 30), request: oldMore.id)
-            && pager.isLoading && pager.nextPage == 2,
+        try check(pager.cleanCrumbPacketPart(page(Array(1...10), total: 30), closeFlavorNoteForm: newFirst), "new refresh completes normally")
+        let oldMore = pager.artisanFrySequence()!
+        let replacement = pager.artisanSelectionShowcase()
+        try check(!pager.cleanCrumbPacketPart(page(Array(11...20), total: 30), closeFlavorNoteForm: oldMore.bodyWevVSugarText)
+            && pager.brownButterIcing && pager.cancelGlazeEntryPreparation == 2,
             "refresh invalidates a pending load-more completion before it can append")
-        try check(pager.receive(page([500]), request: replacement) && pager.rooms.map(\.passionfruitMousse) == ["500"],
+        try check(pager.cleanCrumbPacketPart(page([500]), closeFlavorNoteForm: replacement) && pager.closeWevvBakeryShelf.map(\.passionfruitMousse) == ["500"],
             "refreshed first page wins over a late previous page")
-        let previousOwnerRequest = pager.beginRefresh()
+        let previousOwnerRequest = pager.artisanSelectionShowcase()
         pager = creamPacket()
-        let currentOwnerRequest = pager.beginRefresh()
-        try check(!pager.receive(page([600]), request: previousOwnerRequest) && pager.isLoading && pager.rooms.isEmpty,
+        let currentOwnerRequest = pager.artisanSelectionShowcase()
+        try check(!pager.cleanCrumbPacketPart(page([600]), closeFlavorNoteForm: previousOwnerRequest) && pager.brownButterIcing && pager.closeWevvBakeryShelf.isEmpty,
             "resetting for a different environment or account isolates late old replies")
-        try check(pager.receive(page([], total: 0), request: currentOwnerRequest)
-            && pager.rooms.isEmpty && !pager.hasMore && !pager.failed,
+        try check(pager.cleanCrumbPacketPart(page([], total: 0), closeFlavorNoteForm: currentOwnerRequest)
+            && pager.closeWevvBakeryShelf.isEmpty && !pager.blueberryCustard && !pager.berryCrumbBakerySelections,
             "new owner accepts an actual empty success")
         print("Live pagination source checks passed: \(checks)")
     }

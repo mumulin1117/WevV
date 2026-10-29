@@ -458,9 +458,9 @@ final class KipoDonutMomentController: UIViewController, UITextFieldDelegate {
 
     @objc private func worldDoughnutNotebook() {
         guard richCocoaFlavor.vanillaBeanIcing > 0 else { return }
-        GDonutdenCrumbCenterler.present(
-            .creator(userID: String(richCocoaFlavor.vanillaBeanIcing), imAccount: nil),
-            from: self
+        GDonutdenCrumbCenterler.floralRoseHarmony(
+            .buildWevvTasterScrollLayer(makeLargeFlavorNote: String(richCocoaFlavor.vanillaBeanIcing), dialReportSuggestion: nil),
+            firstBiteJournal: self
         )
     }
 

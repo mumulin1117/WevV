@@ -29,11 +29,6 @@
 			path = WevSweetgd;
 			sourceTree = "<group>";
 		};
-		B9AF005E55284E029994A311 /* WeeNo */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WeeNo;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				04CF1DD93011C45F00595192 /* WevSweetgd */,
-				B9AF005E55284E029994A311 /* WeeNo */,
 				04CF1DD83011C45F00595192 /* Products */,
 				7A5D97CD43562414D5A26010 /* Frameworks */,
 			);

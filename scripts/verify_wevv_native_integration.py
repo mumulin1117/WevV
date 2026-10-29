@@ -9,6 +9,7 @@ import re
 import runpy
 import subprocess
 import tempfile
+from wevv_archive_source import read_archive
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "WevSweetgd/WevSweetgd"
@@ -26,22 +27,22 @@ struct OfflineAccount { let vanillaBeanIcing: Int64 }
     var currentGlazeCredentials: OfflineAccount? = OfflineAccount(vanillaBeanIcing: 7)
 }
 @MainActor final class BrostingmellowCoconutEssence {
-    static let shared = BrostingmellowCoconutEssence()
-    var environmentID = "test"
+    static let listenForGlazeTrades = BrostingmellowCoconutEssence()
+    var closeCreamRingEdit = "test"
     var paths: [String] = []
     var requestBodies: [[String: Any]] = []
     var browsingResponse = Data("{\"total\":0,\"rows\":[]}".utf8)
     var prepareHook: (() async throws -> Void)?
-    func prepare() async throws { try await prepareHook?() }
-    func assertCurrent(epoch: Int, scope: String) throws {
+    func glazeCounterBakery() async throws { try await prepareHook?() }
+    func applyPortraitAsset(closeVideoDial: Int, liftPastryEditCanvas: String) throws {
         try Task.checkCancellation()
-        guard epoch == WevVGlazeSessionStore.shared.sessionEpoch, scope == environmentID else { throw CancellationError() }
+        guard closeVideoDial == WevVGlazeSessionStore.shared.sessionEpoch, liftPastryEditCanvas == closeCreamRingEdit else { throw CancellationError() }
     }
-    func browsingOPI(path: String, body: [String: Any]) async throws -> Data {
-        paths.append(path); requestBodies.append(body); return browsingResponse
+    func bakeryPieces(glazeCatalogRefresh: String, autumnPecanSelection: [String: Any]) async throws -> Data {
+        paths.append(glazeCatalogRefresh); requestBodies.append(autumnPecanSelection); return browsingResponse
     }
-    func voiceList(path: String, cursor: glazeVaultHeroLayer? = nil, pageSize: Int = 10) async throws -> Data {
-        paths.append(path); return Data("[]".utf8)
+    func makeSprinkleAuthorAvatar(glazeCatalogRefresh: String, cancelCitrusTray: glazeVaultHeroLayer? = nil, frostingScroll: Int = 10) async throws -> Data {
+        paths.append(glazeCatalogRefresh); return Data("[]".utf8)
     }
 }
 @MainActor final class WevVGlazeMessageController {
@@ -101,7 +102,7 @@ struct OfflineAccount { let vanillaBeanIcing: Int64 }
     func livePage(currentPage: Int, pageSize: Int = 10) async throws -> glazeMarkLabel {
         if let paginatedLive { return try await paginatedLive(currentPage, pageSize) }
         let rooms = try await live()
-        return glazeMarkLabel(rooms: rooms, total: rooms.count, rawCount: rooms.count)
+        return glazeMarkLabel(formatter: rooms, gingerHoneyDrizzle: rooms.count, followingList: rooms.count)
     }
     func batterConsistencyDetail(carnivalGlazeShowcase: mascarponeFilling) async throws -> [pearFilling] { try await voice(carnivalGlazeShowcase) }
     func voicePage(carnivalGlazeShowcase: mascarponeFilling, cursor: glazeVaultHeroLayer? = nil,
@@ -336,7 +337,7 @@ REMOTE_STATE = r'''
 TESTS = r'''
 @main struct NativeIntegrationVerification {
     @MainActor static func main() async throws {
-        let store = WevVGlazeSessionStore.shared, runtime = BrostingmellowCoconutEssence.shared
+        let store = WevVGlazeSessionStore.shared, runtime = BrostingmellowCoconutEssence.listenForGlazeTrades
         let community = LisenNoticepoplater.shared
         var cases = 0
         func check(_ value: Bool, _ label: String) throws {
@@ -352,9 +353,9 @@ TESTS = r'''
         }
         func owner() -> String { (store.activeEnvironmentID ?? "unprepared") + "|" + String(store.sessionEpoch) }
         func seedLive(_ page: MainPage, ids: [Int], total: Int? = nil) {
-            let request = page.homeLivePagination.beginRefresh()
-            page.homeLivePagination.receive(glazeMarkLabel(rooms: ids.map(roomValue), total: total ?? ids.count, rawCount: ids.count), request: request)
-            page.mergeGlazeRoomContent(live: page.homeLivePagination.rooms)
+            let request = page.homeLivePagination.artisanSelectionShowcase()
+            page.homeLivePagination.cleanCrumbPacketPart(glazeMarkLabel(formatter: ids.map(roomValue), gingerHoneyDrizzle: total ?? ids.count, followingList: ids.count), closeFlavorNoteForm: request)
+            page.mergeGlazeRoomContent(live: page.homeLivePagination.closeWevvBakeryShelf)
         }
         func voicePage(_ ids: [Int], offset: Int64, snapshot: String = "synthetic-snapshot") -> glazeVaultHeroView {
             glazeVaultHeroView(rooms: ids.map(voiceRoomValue), rawCount: ids.count,
@@ -686,7 +687,7 @@ TESTS = r'''
         paginated.glazeContentRepository.paginatedLive = { number, size in
             requestedPages.append((number, size))
             let ids = number == 1 ? Array(1...10) : Array(11...20)
-            return glazeMarkLabel(rooms: ids.map(roomValue), total: 25, rawCount: ids.count)
+            return glazeMarkLabel(formatter: ids.map(roomValue), gingerHoneyDrizzle: 25, followingList: ids.count)
         }
         paginated.glazeContentRepository.voice = { kind in
             if kind == .apricotCompote { await slowVoice.wait() }
@@ -716,17 +717,17 @@ TESTS = r'''
         try check(requestedPages.map { $0.0 } == [1, 2, 3],
             "repeated gestures while loading cannot start duplicate page requests")
         nextGate.release(); await failedMore?.value
-        try check(paginated.homeLivePagination.failed && paginated.homeLivePagination.nextPage == 3
+        try check(paginated.homeLivePagination.berryCrumbBakerySelections && paginated.homeLivePagination.cancelGlazeEntryPreparation == 3
             && paginated.homeLivePageTask == nil && paginated.renderedLiveRoomIDs.count == 20,
             "failed later page releases the task and retains the visible list and retry cursor")
         paginated.glazeContentRepository.paginatedLive = { number, size in
             requestedPages.append((number, size))
-            return glazeMarkLabel(rooms: Array(21...25).map(roomValue), total: 25, rawCount: 5)
+            return glazeMarkLabel(formatter: Array(21...25).map(roomValue), gingerHoneyDrizzle: 25, followingList: 5)
         }
         paginated.loadMoreHomeLiveRooms(); await paginated.homeLivePageTask?.value
         paginated.loadMoreHomeLiveRooms()
         try check(requestedPages.map { $0.0 } == [1, 2, 3, 3]
-            && paginated.renderedLiveRoomIDs == (1...25).map(String.init) && !paginated.homeLivePagination.hasMore,
+            && paginated.renderedLiveRoomIDs == (1...25).map(String.init) && !paginated.homeLivePagination.blueberryCustard,
             "retry repeats the failed page and total exhaustion blocks further loading")
         cases += 1
 
@@ -738,19 +739,19 @@ TESTS = r'''
         paginated.sprinkleRefresh.isRefreshing = true
         paginated.loadMoreHomeLiveRooms()
         paginated.sprinkleRefresh.isRefreshing = false
-        try check(requestedPages.count == beforeBlocked && !paginated.homeLivePagination.isLoading,
+        try check(requestedPages.count == beforeBlocked && !paginated.homeLivePagination.brownButterIcing,
             "other tabs and an active pull-down refresh cannot start load more")
         cases += 1
 
         let replacedGate = Gate()
         paginated.glazeContentRepository.paginatedLive = { number, _ in
             await replacedGate.wait()
-            return glazeMarkLabel(rooms: Array(11...20).map(roomValue), total: 30, rawCount: 10)
+            return glazeMarkLabel(formatter: Array(11...20).map(roomValue), gingerHoneyDrizzle: 30, followingList: 10)
         }
         paginated.loadMoreHomeLiveRooms(); let replacedMore = paginated.homeLivePageTask
         try await entered(replacedGate)
         paginated.glazeContentRepository.paginatedLive = { _, _ in
-            glazeMarkLabel(rooms: Array(100...109).map(roomValue), total: 30, rawCount: 10)
+            glazeMarkLabel(formatter: Array(100...109).map(roomValue), gingerHoneyDrizzle: 30, followingList: 10)
         }
         paginated.glazeContentRepository.voice = { _ in [] }
         paginated.loadGlazeContent(showsLoading: false); await paginated.glazeContentTask?.value
@@ -759,13 +760,13 @@ TESTS = r'''
         let currentMoreGate = Gate()
         paginated.glazeContentRepository.paginatedLive = { _, _ in
             await currentMoreGate.wait()
-            return glazeMarkLabel(rooms: Array(110...119).map(roomValue), total: 30, rawCount: 10)
+            return glazeMarkLabel(formatter: Array(110...119).map(roomValue), gingerHoneyDrizzle: 30, followingList: 10)
         }
         paginated.loadMoreHomeLiveRooms(); let currentMore = paginated.homeLivePageTask
         try await entered(currentMoreGate)
         replacedGate.release(); await replacedMore?.value
         try check(paginated.renderedLiveRoomIDs == (100...109).map(String.init)
-            && paginated.homeLivePageTask != nil && paginated.homeLivePagination.isLoading,
+            && paginated.homeLivePageTask != nil && paginated.homeLivePagination.brownButterIcing,
             "cancelled late page cannot append old rows or clear a newer pagination task")
         currentMoreGate.release(); await currentMore?.value
         try check(paginated.renderedLiveRoomIDs == (100...119).map(String.init),
@@ -775,17 +776,17 @@ TESTS = r'''
         let changedOwnerGate = Gate()
         paginated.glazeContentRepository.paginatedLive = { _, _ in
             await changedOwnerGate.wait()
-            return glazeMarkLabel(rooms: Array(120...129).map(roomValue), total: 30, rawCount: 10)
+            return glazeMarkLabel(formatter: Array(120...129).map(roomValue), gingerHoneyDrizzle: 30, followingList: 10)
         }
         paginated.loadMoreHomeLiveRooms(); let changedOwnerMore = paginated.homeLivePageTask
         try await entered(changedOwnerGate)
         store.sessionEpoch += 1
         paginated.resetGlazeContentOwner(owner())
         try check(changedOwnerMore?.isCancelled == true && paginated.homeLivePageTask == nil
-            && paginated.homeLivePagination.rooms.isEmpty && paginated.renderedLiveRoomIDs.isEmpty,
+            && paginated.homeLivePagination.closeWevvBakeryShelf.isEmpty && paginated.renderedLiveRoomIDs.isEmpty,
             "account change immediately cancels pagination and clears old room rows")
         changedOwnerGate.release(); await changedOwnerMore?.value
-        try check(paginated.renderedLiveRoomIDs.isEmpty && paginated.homeLivePagination.rooms.isEmpty,
+        try check(paginated.renderedLiveRoomIDs.isEmpty && paginated.homeLivePagination.closeWevvBakeryShelf.isEmpty,
             "a late old-account page cannot restore previous-account room rows")
         cases += 1
 
@@ -793,13 +794,13 @@ TESTS = r'''
         unnotified.resetGlazeContentOwner(owner()); seedLive(unnotified, ids: Array(1...10), total: 30)
         unnotified.glazeContentRepository.paginatedLive = { _, _ in
             await unnotifiedGate.wait()
-            return glazeMarkLabel(rooms: Array(11...20).map(roomValue), total: 30, rawCount: 10)
+            return glazeMarkLabel(formatter: Array(11...20).map(roomValue), gingerHoneyDrizzle: 30, followingList: 10)
         }
         unnotified.loadMoreHomeLiveRooms(); let unnotifiedMore = unnotified.homeLivePageTask
         try await entered(unnotifiedGate)
         store.sessionEpoch += 1
         unnotifiedGate.release(); await unnotifiedMore?.value
-        try check(unnotified.homeLivePagination.rooms.map(\.passionfruitMousse) == (1...10).map(String.init),
+        try check(unnotified.homeLivePagination.closeWevvBakeryShelf.map(\.passionfruitMousse) == (1...10).map(String.init),
             "owner guard rejects late pagination even before the session notification resets the controller")
         cases += 1
 
@@ -1356,7 +1357,7 @@ TESTS = r'''
                         if section == .donutCounter && fails { throw GlazeVaultTradeError.http(503) }
                     }
                     let ids = number == 1 ? Array(1...10) : Array(11...20)
-                    return glazeMarkLabel(rooms: ids.map(roomValue), total: 30, rawCount: ids.count)
+                    return glazeMarkLabel(formatter: ids.map(roomValue), gingerHoneyDrizzle: 30, followingList: ids.count)
                 }
                 scoped.glazeContentRepository.paginatedVoice = { shelf, _, _ in
                     if shelf == .apricotCompote {
@@ -1688,7 +1689,10 @@ def methods(text, names):
 def main():
     kettle = (SOURCE / "kettleGlazeSequence.swift").read_text()
     main_page = (SOURCE / "TvVDonutcreamapricotFillinger.swift").read_text()
-    remote = (SOURCE / "LmnTasterCardController.swift").read_text()
+    remote = read_archive(ROOT / "WevSweetgd/WeeNo/Sources/LmnTasterCardController.swift")
+    # Deprecated controller/facade cases remain historical offline checks only.
+    historical_kettle = kettle + "\n" + read_archive(ROOT / "WevSweetgd/WeeNo/Sources/kettleGlazeSequence.legacy-models.swift")
+    historical_kettle += "\n" + read_archive(ROOT / "WevSweetgd/WeeNo/Sources/kettleGlazeSequence.legacy-social.swift")
     live_stack = declaration(main_page, "private func rebuildHomeLiveRoomStack")
     assert ".prefix(" not in live_stack and "steamExpansionStudy.count" in live_stack
     assert "pastryTrailScroll.delegate = self" in declaration(main_page, "private func buildPastryTrailScroll")
@@ -1725,7 +1729,7 @@ def main():
     assert ".pendingReview = outcome" in composer and "Your post has been submitted for review." in composer
     detail = (SOURCE / "KipoDonutMomentController.swift").read_text()
     assert "localAuthorKey" not in detail and "init(vanillaStrawberryDuet:" not in detail
-    assert ".creator(userID:" in declaration(detail, "private func worldDoughnutNotebook")
+    assert ".buildWevvTasterScrollLayer(makeLargeFlavorNote:" in declaration(detail, "private func worldDoughnutNotebook")
     assert "donutSnapshots" not in main_page and "makeDonutSnapshotEntry" not in main_page
     # Archived native wallet/profile checks retain historical regression coverage only.
     wallet = (ROOT / "WevSweetgd/WeeNo/Sources/GDonutdenCrumbCenterler.swift").read_text()
@@ -1752,9 +1756,10 @@ def main():
     for pipeline, first, second in ((profile_save, ".boutiqueStudio(", ".senchaTasting("),
                                      (publish, ".boutiqueStudio(", ".cornerBakery(")):
         first_position, second_position = pipeline.index(first), pipeline.index(second)
-        assert first_position < second_position and "assertCurrent" in pipeline[first_position:second_position]
-        assert "assertCurrent" in pipeline[second_position:pipeline.index("await MainActor.run")]
-        assert pipeline.count("assertCurrent") >= 3
+        guard_name = "applyPortraitAsset" if pipeline == publish else "assertCurrent"
+        assert first_position < second_position and guard_name in pipeline[first_position:second_position]
+        assert guard_name in pipeline[second_position:pipeline.index("await MainActor.run")]
+        assert pipeline.count(guard_name) >= 3
     assert "backendCanChat == nil" in declaration(remote, "private func showWevvSugarGuardPrompt")
     retry = declaration(wallet, "private func addVaultmuralAura")
     missing_product = retry[retry.index("guard let product ="):retry.index("bakeGlazeVaultPack(")]
@@ -1771,13 +1776,13 @@ def main():
         action = declaration(remote, "private func " + name)
         assert "remoteActionTask == nil" in action and "remoteTask == nil" not in action
     print("Archived wallet/profile and active composer source guards passed: 11", flush=True)
-    models = methods(kettle, ["enum chocolateCompote", "enum mascarponeFilling", "enum goldenCrumbDough", "struct pearFilling",
+    models = methods(historical_kettle, ["enum chocolateCompote", "enum mascarponeFilling", "enum goldenCrumbDough", "struct pearFilling",
                               "struct butteryTexture", "struct featherlightBite", "struct cloudlikeLayer", "struct coldProofRhythm", "struct meltawayCrumb", "struct goldenCrumbCenter",
                               "struct lightCrustTexture", "struct suppleDoughDough"])
     transport = "@MainActor final class TransportFacade {\n" + methods(kettle, ["func oolongComplement"]) + "\n}\n"
     content = "@MainActor final class ContentFacade { let pastryCatalogEntry = WevVGlazeSessionStore.shared\n" + methods(kettle, [
         "func steamExpansionStudy", "func livePage", "func tastingPassportPage", "func batterConsistencyDetail", "func voicePage", "func starchGelatinizationStudy", "func aromaSpectrumNotes"]) + "\n}\n"
-    social = "@MainActor final class SocialFacade { let pastryCatalogEntry = WevVGlazeSessionStore.shared; let brunchRouteRoute = TransportFacade()\n" + methods(kettle, [
+    social = "@MainActor final class SocialFacade { let pastryCatalogEntry = WevVGlazeSessionStore.shared; let brunchRouteRoute = TransportFacade()\n" + methods(historical_kettle, [
         "func cornerBakery", "func boutiqueStudio", "func heritageMap", "func glazeSheenNotes", "func crustSnapIndex", "func familyOwnedCounter", "func nuttyFinishMatrix",
         "func doughKitchenBakery", "func confectionStudioCounter", "func tastingCounterKitchen", "func smallBatchStudio", "func familyOwnedMap"]) + "\n}\n"
     main_state = MAIN_STATE + methods(main_page, ["private func refreshGlazeServerProfile", "private func currentGlazeContentOwnerKey", "private func resetGlazeContentOwner", "private func resetTastingParlorOwnerNames", "private func refreshSprinkleMoments", "private func loadGlazeProfileMoments", "private func loadGlazeContent",
@@ -1795,7 +1800,7 @@ def main():
                           (SOURCE / 'WevEnd/glazeMarkLabel.swift').read_text() +
                           (SOURCE / 'WevEnd/creamPacket.swift').read_text() +
                           (SOURCE / 'WevEnd/honeyLavenderCombination.swift').read_text() +
-                          (SOURCE / 'WevEnd/honeyScout.swift').read_text() + transport + content + social + main_state + remote_state + TESTS)
+                          (SOURCE / 'WevEnd/honeyScout.swift').read_text() + transport + content + social + main_state + remote_state.replace("BrostingmellowCoconutEssence.shared.prepare()", "BrostingmellowCoconutEssence.listenForGlazeTrades.glazeCounterBakery()") + TESTS)
         executable = folder / "verification"
         subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
                         "-module-cache-path", str(folder / "modules"), str(source), "-o", str(executable)], check=True)

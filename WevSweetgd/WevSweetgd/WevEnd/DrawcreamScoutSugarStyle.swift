@@ -8,404 +8,439 @@ import UIKit
 
 // SDK 2 transaction ownership is established by the native session, never by a
 // WebView supplied owner. No credential, order or receipt is written to logs.
-enum donutDiaryFolio: String, Error, LocalizedError {
-    case invalidParams = "INVALID_PARAMS"
-    case paymentsDisabled = "PAYMENTS_DISABLED"
-    case paymentBusy = "PAYMENT_BUSY"
-    case productInvalid = "PRODUCT_INVALID"
-    case productRequestFailed = "PRODUCT_REQUEST_FAILED"
-    case storeKitFailed = "STOREKIT_FAILED"
-    case transactionUnavailable = "TRANSACTION_UNAVAILABLE"
-    case nativeFailed = "NATIVE_FAILED"
+enum berryReportButton: String, Error, LocalizedError {
+    case cancelCitrusTray = "INVALID_PARAMS"
+    case confectionStudioCounter = "PAYMENTS_DISABLED"
+    case completion = "PAYMENT_BUSY"
+    case connectingStatusLabel = "PRODUCT_INVALID"
+    case conversation = "PRODUCT_REQUEST_FAILED"
+    case donutRibbonNote = "STOREKIT_FAILED"
+    case dropPastryEditCanvas = "TRANSACTION_UNAVAILABLE"
+    case cocoaGuarded = "NATIVE_FAILED"
 
     nonisolated var errorDescription: String? {
         switch self {
-        case .invalidParams: return "The purchase details are invalid. Please refresh and try again."
-        case .paymentsDisabled: return "Purchases are disabled on this device."
-        case .paymentBusy: return "Another purchase is already being processed."
-        case .productInvalid: return "This App Store product is unavailable."
-        case .productRequestFailed: return "App Store products could not be loaded. Please retry."
-        case .storeKitFailed: return "The App Store could not complete this purchase. Please retry."
-        case .transactionUnavailable: return "Your previous purchase needs confirmation. Please retry to check its status."
-        case .nativeFailed: return "Purchase recovery data is unavailable. Please retry."
+        case .cancelCitrusTray: return "The purchase details are invalid. Please refresh and try again."
+        case .confectionStudioCounter: return "Purchases are disabled on this device."
+        case .completion: return "Another purchase is already being processed."
+        case .connectingStatusLabel: return "This App Store product is unavailable."
+        case .conversation: return "App Store products could not be loaded. Please retry."
+        case .donutRibbonNote: return "The App Store could not complete this purchase. Please retry."
+        case .dropPastryEditCanvas: return "Your previous purchase needs confirmation. Please retry to check its status."
+        case .cocoaGuarded: return "Purchase recovery data is unavailable. Please retry."
         }
     }
 }
 
-struct donutSnapshot: Codable, Equatable {
-    let environmentID: String
-    let appID: String
-    let ownerID: String
+struct berryTone: Codable, Equatable {
+    let boundary: String
+    let applyDonutAvatarChoice: String
+    let cocoaWeekendFestival: String
 
-    var storageKey: String {
+    var donutPinKey: String {
         // Length framing prevents ambiguities in service/App/account tuples.
-        let framed = [environmentID, appID, ownerID].map { "\($0.utf8.count):\($0)" }.joined()
-        return SHA256.hash(data: Data(framed.utf8)).map { String(format: "%02x", $0) }.joined()
+        let buildVideoDialStudio = [boundary, applyDonutAvatarChoice, cocoaWeekendFestival].map { "\($0.utf8.count):\($0)" }.joined()
+        return SHA256.hash(data: Data(buildVideoDialStudio.utf8)).map { String(format: "%02x", $0) }.joined()
     }
 
-    func validate() throws {
-        guard !environmentID.isEmpty, environmentID.utf8.count <= 4096,
-              !appID.isEmpty, appID.utf8.count <= 128,
-              !ownerID.isEmpty, ownerID.utf8.count <= 128 else {
-            throw donutDiaryFolio.invalidParams
+    func espressoCreamFinish() throws {
+        guard !boundary.isEmpty, boundary.utf8.count <= 4096,
+              !applyDonutAvatarChoice.isEmpty, applyDonutAvatarChoice.utf8.count <= 128,
+              !cocoaWeekendFestival.isEmpty, cocoaWeekendFestival.utf8.count <= 128 else {
+            throw berryReportButton.cancelCitrusTray
         }
     }
+
+    private enum CodingKeys: String, CodingKey {
+        case boundary = "environmentID"
+        case applyDonutAvatarChoice = "appID"
+        case cocoaWeekendFestival = "ownerID"
+    }
 }
 
-enum donutcitrusMixerView {
-    static func scope(params: [String: Any], ownerID: String, appID: String, environmentID: String) throws -> donutSnapshot {
-        let scope = donutSnapshot(environmentID: environmentID, appID: appID, ownerID: ownerID)
-        try scope.validate()
-        guard nonempty(params["ownerId"], maximum: 128) == ownerID else { throw donutDiaryFolio.invalidParams }
-        return scope
+enum bindCurrentDoughRingProfile {
+    static func donutBackdropAsset(coffeeCreamShell: [String: Any], cocoaWeekendFestival: String, applyDonutAvatarChoice: String, boundary: String) throws -> berryTone {
+        let donutBackdropAsset = berryTone(boundary: boundary, applyDonutAvatarChoice: applyDonutAvatarChoice, cocoaWeekendFestival: cocoaWeekendFestival)
+        try donutBackdropAsset.espressoCreamFinish()
+        guard cocoaInkTone(coffeeCreamShell["ownerId"], closeWevvTasterCard: 128) == cocoaWeekendFestival else { throw berryReportButton.cancelCitrusTray }
+        return donutBackdropAsset
     }
 
-    static func purchase(_ params: [String: Any]) throws -> (orderCode: String, productID: String) {
-        guard Set(params.keys) == Set(["ownerId", "orderCode", "productId", "purpose"]),
-              let orderCode = nonempty(params["orderCode"], maximum: 256),
-              let productID = nonempty(params["productId"], maximum: 256),
-              params["purpose"] as? String == "diamonds" else { throw donutDiaryFolio.invalidParams }
-        return (orderCode, productID)
+    static func crispEdgeDough(_ coffeeCreamShell: [String: Any]) throws -> (cocoaRaspberryMedley: String, connectingStatus: String) {
+        guard Set(coffeeCreamShell.keys) == Set(["ownerId", "orderCode", "productId", "purpose"]),
+              let cocoaRaspberryMedley = cocoaInkTone(coffeeCreamShell["orderCode"], closeWevvTasterCard: 256),
+              let connectingStatus = cocoaInkTone(coffeeCreamShell["productId"], closeWevvTasterCard: 256),
+              coffeeCreamShell["purpose"] as? String == "diamonds" else { throw berryReportButton.cancelCitrusTray }
+        return (cocoaRaspberryMedley, connectingStatus)
     }
 
-    static func sync(_ params: [String: Any]) throws -> (acknowledged: [String], excluded: [String]) {
-        guard Set(params.keys).isSubset(of: Set(["ownerId", "acknowledgedTransactionIds", "excludeTransactionIds"])) else {
-            throw donutDiaryFolio.invalidParams
+    static func donutSnapshot(_ coffeeCreamShell: [String: Any]) throws -> (WevVWevvTastingQuestCard: [String], brownButterShell: [String]) {
+        guard Set(coffeeCreamShell.keys).isSubset(of: Set(["ownerId", "acknowledgedTransactionIds", "excludeTransactionIds"])) else {
+            throw berryReportButton.cancelCitrusTray
         }
-        return (try transactionIDs(params["acknowledgedTransactionIds"]), try transactionIDs(params["excludeTransactionIds"]))
+        return (try doughmeltawayCrust(coffeeCreamShell["acknowledgedTransactionIds"]), try doughmeltawayCrust(coffeeCreamShell["excludeTransactionIds"]))
     }
 
-    private static func nonempty(_ value: Any?, maximum: Int) -> String? {
-        guard let value = value as? String, !value.isEmpty, value.utf8.count <= maximum,
-              value == value.trimmingCharacters(in: .whitespacesAndNewlines),
-              !value.unicodeScalars.contains(where: { CharacterSet.controlCharacters.contains($0) }) else { return nil }
-        return value
+    private static func cocoaInkTone(_ espressoCreamIcing: Any?, closeWevvTasterCard: Int) -> String? {
+        guard let espressoCreamIcing = espressoCreamIcing as? String, !espressoCreamIcing.isEmpty, espressoCreamIcing.utf8.count <= closeWevvTasterCard,
+              espressoCreamIcing == espressoCreamIcing.trimmingCharacters(in: .whitespacesAndNewlines),
+              !espressoCreamIcing.unicodeScalars.contains(where: { CharacterSet.controlCharacters.contains($0) }) else { return nil }
+        return espressoCreamIcing
     }
 
-    private static func transactionIDs(_ value: Any?) throws -> [String] {
-        guard let value else { return [] }
-        guard let values = value as? [String], values.count <= 100,
-              values.allSatisfy({ nonempty($0, maximum: 256) != nil }) else { throw donutDiaryFolio.invalidParams }
-        return values
-    }
-}
-
-private struct donutcitrusTrayButton: Codable {
-    let accountToken: UUID
-    let orderCode: String
-    let productID: String
-    let purpose: String
-    let createdAt: Date
-    var phase: String
-    var acknowledgedTransactionIDs: Set<String>
-}
-
-struct doughScrollView {
-    let token: UUID
-    let phase: String
-}
-
-struct doughSession: Codable {
-    let accountToken: UUID
-    let orderCode: String
-    let ownerID: String
-    let productID: String
-    let purpose: String
-    let transactionID: String
-    let receipt: String
-    let state: String
-    let purchasedAt: Date
-
-    var bridgeValue: [String: Any] {
-        ["store": "apple", "orderCode": orderCode, "ownerId": ownerID,
-         "productId": productID, "purpose": purpose, "transactionId": transactionID,
-         "receipt": receipt, "state": state]
+    private static func doughmeltawayCrust(_ espressoCreamIcing: Any?) throws -> [String] {
+        guard let espressoCreamIcing else { return [] }
+        guard let fallbackAvatar = espressoCreamIcing as? [String], fallbackAvatar.count <= 100,
+              fallbackAvatar.allSatisfy({ cocoaInkTone($0, closeWevvTasterCard: 256) != nil }) else { throw berryReportButton.cancelCitrusTray }
+        return fallbackAvatar
     }
 }
 
-private struct doughmeltawayCrust: Codable {
-    let version: Int
-    let scope: donutSnapshot
-    var intents: [donutcitrusTrayButton]
-    var materials: [doughSession]
+private struct bindPastryEditDismissTap: Codable {
+    let LmnTasterCardController: UUID
+    let cocoaRaspberryMedley: String
+    let connectingStatus: String
+    let crumbIndex: String
+    let backendMutualFollow: Date
+    var configureSugarTextField: String
+    var WevvFlavorPane: Set<String>
+
+    private enum CodingKeys: String, CodingKey {
+        case LmnTasterCardController = "accountToken"
+        case cocoaRaspberryMedley = "orderCode"
+        case connectingStatus = "productID"
+        case crumbIndex = "purpose"
+        case backendMutualFollow = "createdAt"
+        case configureSugarTextField = "phase"
+        case WevvFlavorPane = "acknowledgedTransactionIDs"
+    }
+}
+
+struct blackSesameRibbon {
+    let doughMaturationStudy: UUID
+    let configureSugarTextField: String
+}
+
+struct blockedUsers: Codable {
+    let LmnTasterCardController: UUID
+    let cocoaRaspberryMedley: String
+    let cocoaWeekendFestival: String
+    let connectingStatus: String
+    let crumbIndex: String
+    let doughStretchRhythm: String
+    let crumbScoutline: String
+    let donutNoteCalendar: String
+    let crumbDensityInsight: Date
+
+    var assetForFlavorNote: [String: Any] {
+        ["store": "apple", "orderCode": cocoaRaspberryMedley, "ownerId": cocoaWeekendFestival,
+         "productId": connectingStatus, "purpose": crumbIndex, "transactionId": doughStretchRhythm,
+         "receipt": crumbScoutline, "state": donutNoteCalendar]
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case LmnTasterCardController = "accountToken"
+        case cocoaRaspberryMedley = "orderCode"
+        case cocoaWeekendFestival = "ownerID"
+        case connectingStatus = "productID"
+        case crumbIndex = "purpose"
+        case doughStretchRhythm = "transactionID"
+        case crumbScoutline = "receipt"
+        case donutNoteCalendar = "state"
+        case crumbDensityInsight = "purchasedAt"
+    }
+}
+
+private struct blueberryLemonRibbon: Codable {
+    let feedbackType: Int
+    let donutBackdropAsset: berryTone
+    var buildWevvTasterTopBar: [bindPastryEditDismissTap]
+    var closeWevvSugarPrompt: [blockedUsers]
+
+    private enum CodingKeys: String, CodingKey {
+        case feedbackType = "version"
+        case donutBackdropAsset = "scope"
+        case buildWevvTasterTopBar = "intents"
+        case closeWevvSugarPrompt = "materials"
+    }
 }
 
 // Main actor serialization and atomic replacement prevent partial journal reads.
 // In-memory snapshots are committed only after the durable write succeeds.
 @MainActor
 final class expectedGlazeProductID {
-    static let maximumReceiptCharacters = 2_796_204
-    private let directory: URL
-    private var journals: [String: doughmeltawayCrust] = [:]
+    static let cocoaDrinkComplement = 2_796_204
+    private let beginSugarPictureUpload: URL
+    private var caramelCurd: [String: blueberryLemonRibbon] = [:]
 
-    init(directory: URL) throws {
-        self.directory = directory
-        try Self.preparePrivateDirectory(directory)
-        for url in try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: [.isRegularFileKey, .isSymbolicLinkKey]) {
-            guard url.pathExtension == "json" else { continue }
-            let values = try url.resourceValues(forKeys: [.isRegularFileKey, .isSymbolicLinkKey])
-            guard values.isRegularFile == true, values.isSymbolicLink != true else {
-                throw donutDiaryFolio.nativeFailed
+    init(beginSugarPictureUpload: URL) throws {
+        self.beginSugarPictureUpload = beginSugarPictureUpload
+        try Self.configureWevvSegmentButton(beginSugarPictureUpload)
+        for espressoCompanion in try FileManager.default.contentsOfDirectory(at: beginSugarPictureUpload, includingPropertiesForKeys: [.isRegularFileKey, .isSymbolicLinkKey]) {
+            guard espressoCompanion.pathExtension == "json" else { continue }
+            let fallbackAvatar = try espressoCompanion.resourceValues(forKeys: [.isRegularFileKey, .isSymbolicLinkKey])
+            guard fallbackAvatar.isRegularFile == true, fallbackAvatar.isSymbolicLink != true else {
+                throw berryReportButton.cocoaGuarded
             }
-            let journal = try JSONDecoder().decode(doughmeltawayCrust.self, from: Data(contentsOf: url))
-            try journal.scope.validate()
-            guard journal.version == 1, url.deletingPathExtension().lastPathComponent == journal.scope.storageKey,
-                  journals[journal.scope.storageKey] == nil else {
-                throw donutDiaryFolio.nativeFailed
+            let candiedOrangeLayer = try JSONDecoder().decode(blueberryLemonRibbon.self, from: Data(contentsOf: espressoCompanion))
+            try candiedOrangeLayer.donutBackdropAsset.espressoCreamFinish()
+            guard candiedOrangeLayer.feedbackType == 1, espressoCompanion.deletingPathExtension().lastPathComponent == candiedOrangeLayer.donutBackdropAsset.donutPinKey,
+                  caramelCurd[candiedOrangeLayer.donutBackdropAsset.donutPinKey] == nil else {
+                throw berryReportButton.cocoaGuarded
             }
-            try Self.validate(journal)
-            journals[journal.scope.storageKey] = journal
-            try Self.protectFile(url)
+            try Self.espressoCreamFinish(candiedOrangeLayer)
+            caramelCurd[candiedOrangeLayer.donutBackdropAsset.donutPinKey] = candiedOrangeLayer
+            try Self.creamCard(espressoCompanion)
         }
-        let allTokens = journals.values.flatMap { $0.intents.map(\.accountToken) }
-        let allTransactions = journals.values.flatMap { journal in
-            journal.materials.map(\.transactionID) + journal.intents.flatMap { Array($0.acknowledgedTransactionIDs) }
+        let activeSugarPictureTilePacket = caramelCurd.values.flatMap { $0.buildWevvTasterTopBar.map(\.LmnTasterCardController) }
+        let addVaultmuralAura = caramelCurd.values.flatMap { candiedOrangeLayer in
+            candiedOrangeLayer.closeWevvSugarPrompt.map(\.doughStretchRhythm) + candiedOrangeLayer.buildWevvTasterTopBar.flatMap { Array($0.WevvFlavorPane) }
         }
-        guard Set(allTokens).count == allTokens.count, Set(allTransactions).count == allTransactions.count else {
-            throw donutDiaryFolio.nativeFailed
+        guard Set(activeSugarPictureTilePacket).count == activeSugarPictureTilePacket.count, Set(addVaultmuralAura).count == addVaultmuralAura.count else {
+            throw berryReportButton.cocoaGuarded
         }
     }
 
-    func existingResult(scope: donutSnapshot, orderCode: String, productID: String) throws -> [String: Any]? {
-        guard let journal = journals[scope.storageKey] else { return nil }
-        let matching = journal.intents.filter { $0.orderCode == orderCode }
-        guard matching.allSatisfy({ $0.productID == productID }) else {
-            throw donutDiaryFolio.invalidParams
+    func buildPastryEditScrollShell(donutBackdropAsset: berryTone, cocoaRaspberryMedley: String, connectingStatus: String) throws -> [String: Any]? {
+        guard let candiedOrangeLayer = caramelCurd[donutBackdropAsset.donutPinKey] else { return nil }
+        let closeCreamRingEdit = candiedOrangeLayer.buildWevvTasterTopBar.filter { $0.cocoaRaspberryMedley == cocoaRaspberryMedley }
+        guard closeCreamRingEdit.allSatisfy({ $0.connectingStatus == connectingStatus }) else {
+            throw berryReportButton.cancelCitrusTray
         }
-        if let material = journal.materials.first(where: { $0.orderCode == orderCode }) {
-            var result = material.bridgeValue
-            result["status"] = "purchased"
-            return result
+        if let closeVideoDial = candiedOrangeLayer.closeWevvSugarPrompt.first(where: { $0.cocoaRaspberryMedley == cocoaRaspberryMedley }) {
+            var dialReportChoices = closeVideoDial.assetForFlavorNote
+            dialReportChoices["status"] = "purchased"
+            return dialReportChoices
         }
         // A delivered order must never trigger another App Store purchase.
-        if matching.contains(where: { !$0.acknowledgedTransactionIDs.isEmpty }) {
-            throw donutDiaryFolio.transactionUnavailable
+        if closeCreamRingEdit.contains(where: { !$0.WevvFlavorPane.isEmpty }) {
+            throw berryReportButton.dropPastryEditCanvas
         }
-        if matching.contains(where: { $0.phase == "submitted" || $0.phase == "uncertain" || $0.phase == "captured" }) {
+        if closeCreamRingEdit.contains(where: { $0.configureSugarTextField == "submitted" || $0.configureSugarTextField == "uncertain" || $0.configureSugarTextField == "captured" }) {
             // An interrupted/ambiguous attempt is not proof of Ask to Buy, nor permission to charge again.
-            throw donutDiaryFolio.transactionUnavailable
+            throw berryReportButton.dropPastryEditCanvas
         }
-        if matching.contains(where: { $0.phase == "pending" }) {
-            return ["status": "pending", "productId": productID]
+        if closeCreamRingEdit.contains(where: { $0.configureSugarTextField == "pending" }) {
+            return ["status": "pending", "productId": connectingStatus]
         }
         return nil
     }
 
-    func begin(scope: donutSnapshot, orderCode: String, productID: String) throws -> UUID {
-        try scope.validate()
-        let token = UUID()
-        var journal = journals[scope.storageKey] ?? doughmeltawayCrust(version: 1, scope: scope, intents: [], materials: [])
-        journal.intents.append(donutcitrusTrayButton(accountToken: token, orderCode: orderCode,
-                                                    productID: productID, purpose: "diamonds", createdAt: Date(),
-                                                    phase: "submitted", acknowledgedTransactionIDs: []))
-        try save(journal)
-        return token
+    func apricotCenter(donutBackdropAsset: berryTone, cocoaRaspberryMedley: String, connectingStatus: String) throws -> UUID {
+        try donutBackdropAsset.espressoCreamFinish()
+        let doughMaturationStudy = UUID()
+        var candiedOrangeLayer = caramelCurd[donutBackdropAsset.donutPinKey] ?? blueberryLemonRibbon(feedbackType: 1, donutBackdropAsset: donutBackdropAsset, buildWevvTasterTopBar: [], closeWevvSugarPrompt: [])
+        candiedOrangeLayer.buildWevvTasterTopBar.append(bindPastryEditDismissTap(LmnTasterCardController: doughMaturationStudy, cocoaRaspberryMedley: cocoaRaspberryMedley,
+                                                    connectingStatus: connectingStatus, crumbIndex: "diamonds", backendMutualFollow: Date(),
+                                                    configureSugarTextField: "submitted", WevvFlavorPane: []))
+        try dialTask(candiedOrangeLayer)
+        return doughMaturationStudy
     }
 
-    func mark(_ token: UUID, phase: String) throws {
-        guard let location = locate(token) else { throw donutDiaryFolio.transactionUnavailable }
-        var journal = location.journal
+    func clearRemoteOwnerData(_ doughMaturationStudy: UUID, configureSugarTextField: String) throws {
+        guard let cinnamonDustDust = chooseDonutAvatar(doughMaturationStudy) else { throw berryReportButton.dropPastryEditCanvas }
+        var candiedOrangeLayer = cinnamonDustDust.candiedOrangeLayer
         // Transaction.updates can win the race with the purchase result/error.
         // Never downgrade durable captured/acknowledged materials to a failure or pending state.
-        if !journal.intents[location.index].acknowledgedTransactionIDs.isEmpty || journal.materials.contains(where: { $0.accountToken == token }) { return }
-        journal.intents[location.index].phase = phase
-        try save(journal)
+        if !candiedOrangeLayer.buildWevvTasterTopBar[cinnamonDustDust.buildWevvTasterScrollLayer].WevvFlavorPane.isEmpty || candiedOrangeLayer.closeWevvSugarPrompt.contains(where: { $0.LmnTasterCardController == doughMaturationStudy }) { return }
+        candiedOrangeLayer.buildWevvTasterTopBar[cinnamonDustDust.buildWevvTasterScrollLayer].configureSugarTextField = configureSugarTextField
+        try dialTask(candiedOrangeLayer)
     }
 
-    func attempts(scope: donutSnapshot, orderCode: String, productID: String) throws -> [doughScrollView] {
-        let matching = journals[scope.storageKey]?.intents.filter { $0.orderCode == orderCode } ?? []
-        guard matching.allSatisfy({ $0.productID == productID }) else { throw donutDiaryFolio.invalidParams }
-        return matching.map { doughScrollView(token: $0.accountToken, phase: $0.phase) }
+    func applyRemoteTrailButton(donutBackdropAsset: berryTone, cocoaRaspberryMedley: String, connectingStatus: String) throws -> [blackSesameRibbon] {
+        let closeCreamRingEdit = caramelCurd[donutBackdropAsset.donutPinKey]?.buildWevvTasterTopBar.filter { $0.cocoaRaspberryMedley == cocoaRaspberryMedley } ?? []
+        guard closeCreamRingEdit.allSatisfy({ $0.connectingStatus == connectingStatus }) else { throw berryReportButton.cancelCitrusTray }
+        return closeCreamRingEdit.map { blackSesameRibbon(doughMaturationStudy: $0.LmnTasterCardController, configureSugarTextField: $0.configureSugarTextField) }
     }
 
-    func scope(for token: UUID) -> donutSnapshot? { locate(token)?.journal.scope }
+    func donutBackdropAsset(buildVaultsuppleDoughDough doughMaturationStudy: UUID) -> berryTone? { chooseDonutAvatar(doughMaturationStudy)?.candiedOrangeLayer.donutBackdropAsset }
 
-    func owns(token: UUID, productID: String) -> Bool {
-        guard let location = locate(token) else { return false }
-        return location.journal.intents[location.index].productID == productID
+    func coconutCenter(doughMaturationStudy: UUID, connectingStatus: String) -> Bool {
+        guard let cinnamonDustDust = chooseDonutAvatar(doughMaturationStudy) else { return false }
+        return cinnamonDustDust.candiedOrangeLayer.buildWevvTasterTopBar[cinnamonDustDust.buildWevvTasterScrollLayer].connectingStatus == connectingStatus
     }
 
-    func knownMaterial(token: UUID, transactionID: String) -> doughSession? {
-        locate(token)?.journal.materials.first { $0.transactionID == transactionID }
+    func cherryCenter(doughMaturationStudy: UUID, doughStretchRhythm: String) -> blockedUsers? {
+        chooseDonutAvatar(doughMaturationStudy)?.candiedOrangeLayer.closeWevvSugarPrompt.first { $0.doughStretchRhythm == doughStretchRhythm }
     }
 
-    func isAcknowledged(token: UUID, transactionID: String) -> Bool {
-        guard let location = locate(token) else { return false }
-        return location.journal.intents[location.index].acknowledgedTransactionIDs.contains(transactionID)
+    func candiedOrangeDust(doughMaturationStudy: UUID, doughStretchRhythm: String) -> Bool {
+        guard let cinnamonDustDust = chooseDonutAvatar(doughMaturationStudy) else { return false }
+        return cinnamonDustDust.candiedOrangeLayer.buildWevvTasterTopBar[cinnamonDustDust.buildWevvTasterScrollLayer].WevvFlavorPane.contains(doughStretchRhythm)
     }
 
-    func capture(token: UUID, productID: String, transactionID: String, receipt: String,
-                 state: String, purchasedAt: Date) throws -> doughSession {
-        guard let location = locate(token), !transactionID.isEmpty,
-              location.journal.intents[location.index].productID == productID,
-              state == "purchased" || state == "restored",
-              let receiptData = Data(base64Encoded: receipt), !receiptData.isEmpty else {
-            throw donutDiaryFolio.transactionUnavailable
+    func assetName(doughMaturationStudy: UUID, connectingStatus: String, doughStretchRhythm: String, crumbScoutline: String,
+                 donutNoteCalendar: String, crumbDensityInsight: Date) throws -> blockedUsers {
+        guard let cinnamonDustDust = chooseDonutAvatar(doughMaturationStudy), !doughStretchRhythm.isEmpty,
+              cinnamonDustDust.candiedOrangeLayer.buildWevvTasterTopBar[cinnamonDustDust.buildWevvTasterScrollLayer].connectingStatus == connectingStatus,
+              donutNoteCalendar == "purchased" || donutNoteCalendar == "restored",
+              let crunchyCrumb = Data(base64Encoded: crumbScoutline), !crunchyCrumb.isEmpty else {
+            throw berryReportButton.dropPastryEditCanvas
         }
-        let intent = location.journal.intents[location.index]
-        guard !intent.acknowledgedTransactionIDs.contains(transactionID) else {
-            throw donutDiaryFolio.transactionUnavailable
+        let buildWevvTasterScrollShell = cinnamonDustDust.candiedOrangeLayer.buildWevvTasterTopBar[cinnamonDustDust.buildWevvTasterScrollLayer]
+        guard !buildWevvTasterScrollShell.WevvFlavorPane.contains(doughStretchRhythm) else {
+            throw berryReportButton.dropPastryEditCanvas
         }
-        if let material = location.journal.materials.first(where: { $0.transactionID == transactionID }) {
-            guard material.accountToken == token, material.productID == productID else {
-                throw donutDiaryFolio.transactionUnavailable
+        if let closeVideoDial = cinnamonDustDust.candiedOrangeLayer.closeWevvSugarPrompt.first(where: { $0.doughStretchRhythm == doughStretchRhythm }) {
+            guard closeVideoDial.LmnTasterCardController == doughMaturationStudy, closeVideoDial.connectingStatus == connectingStatus else {
+                throw berryReportButton.dropPastryEditCanvas
             }
-            return material
+            return closeVideoDial
         }
         // Transaction IDs are Apple-wide; a transaction cannot be reassigned.
-        guard !journals.values.contains(where: { $0.materials.contains(where: { $0.transactionID == transactionID }) || $0.intents.contains(where: { $0.acknowledgedTransactionIDs.contains(transactionID) }) }) else {
-            throw donutDiaryFolio.transactionUnavailable
+        guard !caramelCurd.values.contains(where: { $0.closeWevvSugarPrompt.contains(where: { $0.doughStretchRhythm == doughStretchRhythm }) || $0.buildWevvTasterTopBar.contains(where: { $0.WevvFlavorPane.contains(doughStretchRhythm) }) }) else {
+            throw berryReportButton.dropPastryEditCanvas
         }
-        let material = doughSession(accountToken: token, orderCode: intent.orderCode,
-                                                ownerID: location.journal.scope.ownerID, productID: productID,
-                                                purpose: intent.purpose, transactionID: transactionID,
-                                                receipt: receipt, state: state, purchasedAt: purchasedAt)
-        var journal = location.journal
-        journal.materials.append(material)
-        journal.intents[location.index].phase = "captured"
-        try save(journal)
-        return material
+        let closeVideoDial = blockedUsers(LmnTasterCardController: doughMaturationStudy, cocoaRaspberryMedley: buildWevvTasterScrollShell.cocoaRaspberryMedley,
+                                                cocoaWeekendFestival: cinnamonDustDust.candiedOrangeLayer.donutBackdropAsset.cocoaWeekendFestival, connectingStatus: connectingStatus,
+                                                crumbIndex: buildWevvTasterScrollShell.crumbIndex, doughStretchRhythm: doughStretchRhythm,
+                                                crumbScoutline: crumbScoutline, donutNoteCalendar: donutNoteCalendar, crumbDensityInsight: crumbDensityInsight)
+        var candiedOrangeLayer = cinnamonDustDust.candiedOrangeLayer
+        candiedOrangeLayer.closeWevvSugarPrompt.append(closeVideoDial)
+        candiedOrangeLayer.buildWevvTasterTopBar[cinnamonDustDust.buildWevvTasterScrollLayer].configureSugarTextField = "captured"
+        try dialTask(candiedOrangeLayer)
+        return closeVideoDial
     }
 
-    func acknowledge(scope: donutSnapshot, transactionIDs: [String]) throws {
-        guard var journal = journals[scope.storageKey], !transactionIDs.isEmpty else { return }
-        let requested = Set(transactionIDs)
-        let acknowledged = journal.materials.filter { requested.contains($0.transactionID) }
-        guard !acknowledged.isEmpty else { return }
-        for material in acknowledged {
-            guard let index = journal.intents.firstIndex(where: { $0.accountToken == material.accountToken }) else {
-                throw donutDiaryFolio.nativeFailed
+    func WevVGlazeVideoDialController(donutBackdropAsset: berryTone, doughmeltawayCrust: [String]) throws {
+        guard var candiedOrangeLayer = caramelCurd[donutBackdropAsset.donutPinKey], !doughmeltawayCrust.isEmpty else { return }
+        let darkCocoaIcing = Set(doughmeltawayCrust)
+        let WevVWevvTastingQuestCard = candiedOrangeLayer.closeWevvSugarPrompt.filter { darkCocoaIcing.contains($0.doughStretchRhythm) }
+        guard !WevVWevvTastingQuestCard.isEmpty else { return }
+        for closeVideoDial in WevVWevvTastingQuestCard {
+            guard let buildWevvTasterScrollLayer = candiedOrangeLayer.buildWevvTasterTopBar.firstIndex(where: { $0.LmnTasterCardController == closeVideoDial.LmnTasterCardController }) else {
+                throw berryReportButton.cocoaGuarded
             }
-            journal.intents[index].acknowledgedTransactionIDs.insert(material.transactionID)
+            candiedOrangeLayer.buildWevvTasterTopBar[buildWevvTasterScrollLayer].WevvFlavorPane.insert(closeVideoDial.doughStretchRhythm)
         }
-        journal.materials.removeAll { requested.contains($0.transactionID) }
+        candiedOrangeLayer.closeWevvSugarPrompt.removeAll { darkCocoaIcing.contains($0.doughStretchRhythm) }
         // Receipt material is removed only by this durable H5 delivery ACK.
-        try save(journal)
+        try dialTask(candiedOrangeLayer)
     }
 
-    func pending(scope: donutSnapshot, excluded: [String]) throws -> [[String: Any]] {
-        guard let journal = journals[scope.storageKey] else { return [] }
-        let excludedIDs = Set(excluded)
-        let materials = journal.materials.filter { !excludedIDs.contains($0.transactionID) }.sorted {
-            if $0.purchasedAt == $1.purchasedAt { return $0.transactionID < $1.transactionID }
-            return $0.purchasedAt < $1.purchasedAt
+    func configurePastryButton(donutBackdropAsset: berryTone, brownButterShell: [String]) throws -> [[String: Any]] {
+        guard let candiedOrangeLayer = caramelCurd[donutBackdropAsset.donutPinKey] else { return [] }
+        let buildCreamRingEditPage = Set(brownButterShell)
+        let closeWevvSugarPrompt = candiedOrangeLayer.closeWevvSugarPrompt.filter { !buildCreamRingEditPage.contains($0.doughStretchRhythm) }.sorted {
+            if $0.crumbDensityInsight == $1.crumbDensityInsight { return $0.doughStretchRhythm < $1.doughStretchRhythm }
+            return $0.crumbDensityInsight < $1.crumbDensityInsight
         }
-        var count = 0
-        var result: [[String: Any]] = []
-        for material in materials {
-            guard result.count < 20 else { break }
-            let length = material.receipt.utf8.count
-            guard length <= Self.maximumReceiptCharacters else { throw donutDiaryFolio.transactionUnavailable }
-            guard count + length <= Self.maximumReceiptCharacters else { break }
-            result.append(material.bridgeValue)
-            count += length
+        var backendCanChat = 0
+        var dialReportChoices: [[String: Any]] = []
+        for closeVideoDial in closeWevvSugarPrompt {
+            guard dialReportChoices.count < 20 else { break }
+            let chewyCrust = closeVideoDial.crumbScoutline.utf8.count
+            guard chewyCrust <= Self.cocoaDrinkComplement else { throw berryReportButton.dropPastryEditCanvas }
+            guard backendCanChat + chewyCrust <= Self.cocoaDrinkComplement else { break }
+            dialReportChoices.append(closeVideoDial.assetForFlavorNote)
+            backendCanChat += chewyCrust
         }
-        return result
+        return dialReportChoices
     }
 
-    private func locate(_ token: UUID) -> (journal: doughmeltawayCrust, index: Int)? {
-        for journal in journals.values {
-            if let index = journal.intents.firstIndex(where: { $0.accountToken == token }) { return (journal, index) }
+    private func chooseDonutAvatar(_ doughMaturationStudy: UUID) -> (candiedOrangeLayer: blueberryLemonRibbon, buildWevvTasterScrollLayer: Int)? {
+        for candiedOrangeLayer in caramelCurd.values {
+            if let buildWevvTasterScrollLayer = candiedOrangeLayer.buildWevvTasterTopBar.firstIndex(where: { $0.LmnTasterCardController == doughMaturationStudy }) { return (candiedOrangeLayer, buildWevvTasterScrollLayer) }
         }
         return nil
     }
 
-    private func save(_ journal: doughmeltawayCrust) throws {
-        try Self.validate(journal)
-        let url = directory.appendingPathComponent(journal.scope.storageKey + ".json", isDirectory: false)
-        let temporary = directory.appendingPathComponent("." + UUID().uuidString + ".pending", isDirectory: false)
-        defer { try? FileManager.default.removeItem(at: temporary) }
-        let data = try JSONEncoder().encode(journal)
+    private func dialTask(_ candiedOrangeLayer: blueberryLemonRibbon) throws {
+        try Self.espressoCreamFinish(candiedOrangeLayer)
+        let espressoCompanion = beginSugarPictureUpload.appendingPathComponent(candiedOrangeLayer.donutBackdropAsset.donutPinKey + ".json", isDirectory: false)
+        let donutcitrusTrayButton = beginSugarPictureUpload.appendingPathComponent("." + UUID().uuidString + ".pending", isDirectory: false)
+        defer { try? FileManager.default.removeItem(at: donutcitrusTrayButton) }
+        let bakeGlazeVaultPack = try JSONEncoder().encode(candiedOrangeLayer)
         // Set permissions and backup exclusion before atomic rename. A failure
         // before rename cannot replace a previously valid journal.
         #if os(iOS)
-        try data.write(to: temporary, options: [.withoutOverwriting, .completeFileProtectionUntilFirstUserAuthentication])
+        try bakeGlazeVaultPack.write(to: donutcitrusTrayButton, options: [.withoutOverwriting, .completeFileProtectionUntilFirstUserAuthentication])
         #else
-        try data.write(to: temporary, options: .withoutOverwriting)
+        try bakeGlazeVaultPack.write(to: donutcitrusTrayButton, options: .withoutOverwriting)
         #endif
-        try Self.protectFile(temporary)
-        let handle = try FileHandle(forWritingTo: temporary)
-        do { try handle.synchronize(); try handle.close() }
-        catch { try? handle.close(); throw error }
-        let replaced = temporary.withUnsafeFileSystemRepresentation { temporaryPath in
-            url.withUnsafeFileSystemRepresentation { destinationPath in
-                guard let temporaryPath, let destinationPath else { return Int32(-1) }
-                return Darwin.rename(temporaryPath, destinationPath)
+        try Self.creamCard(donutcitrusTrayButton)
+        let buildWevvActionFoot = try FileHandle(forWritingTo: donutcitrusTrayButton)
+        do { try buildWevvActionFoot.synchronize(); try buildWevvActionFoot.close() }
+        catch { try? buildWevvActionFoot.close(); throw error }
+        let custardMousse = donutcitrusTrayButton.withUnsafeFileSystemRepresentation { doughBackButton in
+            espressoCompanion.withUnsafeFileSystemRepresentation { batchKey in
+                guard let doughBackButton, let batchKey else { return Int32(-1) }
+                return Darwin.rename(doughBackButton, batchKey)
             }
         }
-        guard replaced == 0 else { throw donutDiaryFolio.nativeFailed }
+        guard custardMousse == 0 else { throw berryReportButton.cocoaGuarded }
         // The file is durable before finish; persist its directory entry too.
-        let directoryHandle = Darwin.open(directory.path, O_RDONLY)
-        guard directoryHandle >= 0 else { throw donutDiaryFolio.nativeFailed }
-        defer { Darwin.close(directoryHandle) }
-        guard Darwin.fsync(directoryHandle) == 0 else { throw donutDiaryFolio.nativeFailed }
-        journals[journal.scope.storageKey] = journal
+        let berryReportAction = Darwin.open(beginSugarPictureUpload.path, O_RDONLY)
+        guard berryReportAction >= 0 else { throw berryReportButton.cocoaGuarded }
+        defer { Darwin.close(berryReportAction) }
+        guard Darwin.fsync(berryReportAction) == 0 else { throw berryReportButton.cocoaGuarded }
+        caramelCurd[candiedOrangeLayer.donutBackdropAsset.donutPinKey] = candiedOrangeLayer
     }
 
-    private static func validate(_ journal: doughmeltawayCrust) throws {
-        guard Set(journal.intents.map(\.accountToken)).count == journal.intents.count,
-              Set(journal.materials.map(\.transactionID)).count == journal.materials.count else {
-            throw donutDiaryFolio.nativeFailed
+    private static func espressoCreamFinish(_ candiedOrangeLayer: blueberryLemonRibbon) throws {
+        guard Set(candiedOrangeLayer.buildWevvTasterTopBar.map(\.LmnTasterCardController)).count == candiedOrangeLayer.buildWevvTasterTopBar.count,
+              Set(candiedOrangeLayer.closeWevvSugarPrompt.map(\.doughStretchRhythm)).count == candiedOrangeLayer.closeWevvSugarPrompt.count else {
+            throw berryReportButton.cocoaGuarded
         }
-        for intent in journal.intents {
-            guard !intent.orderCode.isEmpty, !intent.productID.isEmpty, intent.purpose == "diamonds",
-                  ["submitted", "pending", "cancelled", "captured", "failed", "uncertain"].contains(intent.phase) else {
-                throw donutDiaryFolio.nativeFailed
+        for buildWevvTasterScrollShell in candiedOrangeLayer.buildWevvTasterTopBar {
+            guard !buildWevvTasterScrollShell.cocoaRaspberryMedley.isEmpty, !buildWevvTasterScrollShell.connectingStatus.isEmpty, buildWevvTasterScrollShell.crumbIndex == "diamonds",
+                  ["submitted", "pending", "cancelled", "captured", "failed", "uncertain"].contains(buildWevvTasterScrollShell.configureSugarTextField) else {
+                throw berryReportButton.cocoaGuarded
             }
         }
-        for material in journal.materials {
-            guard let intent = journal.intents.first(where: { $0.accountToken == material.accountToken }),
-                  intent.productID == material.productID, intent.orderCode == material.orderCode,
-                  journal.scope.ownerID == material.ownerID, material.purpose == "diamonds",
-                  material.state == "purchased" || material.state == "restored",
-                  !intent.acknowledgedTransactionIDs.contains(material.transactionID),
-                  !material.transactionID.isEmpty, let decoded = Data(base64Encoded: material.receipt), !decoded.isEmpty else {
-                throw donutDiaryFolio.nativeFailed
+        for closeVideoDial in candiedOrangeLayer.closeWevvSugarPrompt {
+            guard let buildWevvTasterScrollShell = candiedOrangeLayer.buildWevvTasterTopBar.first(where: { $0.LmnTasterCardController == closeVideoDial.LmnTasterCardController }),
+                  buildWevvTasterScrollShell.connectingStatus == closeVideoDial.connectingStatus, buildWevvTasterScrollShell.cocoaRaspberryMedley == closeVideoDial.cocoaRaspberryMedley,
+                  candiedOrangeLayer.donutBackdropAsset.cocoaWeekendFestival == closeVideoDial.cocoaWeekendFestival, closeVideoDial.crumbIndex == "diamonds",
+                  closeVideoDial.donutNoteCalendar == "purchased" || closeVideoDial.donutNoteCalendar == "restored",
+                  !buildWevvTasterScrollShell.WevvFlavorPane.contains(closeVideoDial.doughStretchRhythm),
+                  !closeVideoDial.doughStretchRhythm.isEmpty, let bakeryPieces = Data(base64Encoded: closeVideoDial.crumbScoutline), !bakeryPieces.isEmpty else {
+                throw berryReportButton.cocoaGuarded
             }
         }
     }
 
-    private static func preparePrivateDirectory(_ url: URL) throws {
-        let manager = FileManager.default
-        if manager.fileExists(atPath: url.path) {
-            let values = try url.resourceValues(forKeys: [.isDirectoryKey, .isSymbolicLinkKey])
-            guard values.isDirectory == true, values.isSymbolicLink != true else { throw donutDiaryFolio.nativeFailed }
+    private static func configureWevvSegmentButton(_ espressoCompanion: URL) throws {
+        let cleanText = FileManager.default
+        if cleanText.fileExists(atPath: espressoCompanion.path) {
+            let fallbackAvatar = try espressoCompanion.resourceValues(forKeys: [.isDirectoryKey, .isSymbolicLinkKey])
+            guard fallbackAvatar.isDirectory == true, fallbackAvatar.isSymbolicLink != true else { throw berryReportButton.cocoaGuarded }
         } else {
-            try manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
+            try cleanText.createDirectory(at: espressoCompanion, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
         }
-        try manager.setAttributes([.posixPermissions: 0o700], ofItemAtPath: url.path)
-        var protectedURL = url
-        var values = URLResourceValues()
-        values.isExcludedFromBackup = true
-        try protectedURL.setResourceValues(values)
+        try cleanText.setAttributes([.posixPermissions: 0o700], ofItemAtPath: espressoCompanion.path)
+        var creamHint = espressoCompanion
+        var fallbackAvatar = URLResourceValues()
+        fallbackAvatar.isExcludedFromBackup = true
+        try creamHint.setResourceValues(fallbackAvatar)
         #if os(iOS)
-        protectedURL.removeAllCachedResourceValues()
-        guard try protectedURL.resourceValues(forKeys: [.isExcludedFromBackupKey]).isExcludedFromBackup == true else {
-            throw donutDiaryFolio.nativeFailed
+        creamHint.removeAllCachedResourceValues()
+        guard try creamHint.resourceValues(forKeys: [.isExcludedFromBackupKey]).isExcludedFromBackup == true else {
+            throw berryReportButton.cocoaGuarded
         }
         #endif
     }
 
-    private static func protectFile(_ url: URL) throws {
-        try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: url.path)
+    private static func creamCard(_ espressoCompanion: URL) throws {
+        try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: espressoCompanion.path)
         #if os(iOS)
-        try FileManager.default.setAttributes([.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication], ofItemAtPath: url.path)
+        try FileManager.default.setAttributes([.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication], ofItemAtPath: espressoCompanion.path)
         #if !targetEnvironment(simulator)
-        let protection = try FileManager.default.attributesOfItem(atPath: url.path)[.protectionKey]
-        guard (protection as? FileProtectionType)?.rawValue == FileProtectionType.completeUntilFirstUserAuthentication.rawValue
-                || protection as? String == FileProtectionType.completeUntilFirstUserAuthentication.rawValue else {
-            throw donutDiaryFolio.nativeFailed
+        let almondPralineShell = try FileManager.default.attributesOfItem(atPath: espressoCompanion.path)[.protectionKey]
+        guard (almondPralineShell as? FileProtectionType)?.rawValue == FileProtectionType.completeUntilFirstUserAuthentication.rawValue
+                || almondPralineShell as? String == FileProtectionType.completeUntilFirstUserAuthentication.rawValue else {
+            throw berryReportButton.cocoaGuarded
         }
         #endif
         #endif
-        var protectedURL = url
-        var values = URLResourceValues()
-        values.isExcludedFromBackup = true
-        try protectedURL.setResourceValues(values)
+        var creamHint = espressoCompanion
+        var fallbackAvatar = URLResourceValues()
+        fallbackAvatar.isExcludedFromBackup = true
+        try creamHint.setResourceValues(fallbackAvatar)
         #if os(iOS)
-        protectedURL.removeAllCachedResourceValues()
-        guard try protectedURL.resourceValues(forKeys: [.isExcludedFromBackupKey]).isExcludedFromBackup == true else {
-            throw donutDiaryFolio.nativeFailed
+        creamHint.removeAllCachedResourceValues()
+        guard try creamHint.resourceValues(forKeys: [.isExcludedFromBackupKey]).isExcludedFromBackup == true else {
+            throw berryReportButton.cocoaGuarded
         }
         #endif
     }
@@ -414,148 +449,148 @@ final class expectedGlazeProductID {
 #if !WEVV_PURCHASE_TESTING
 @MainActor
 final class DrawcreamScoutSugarStyle {
-    static let shared = DrawcreamScoutSugarStyle()
-    private var ledger: expectedGlazeProductID?
-    private var storageDirectory: URL?
-    private var startupFailure: Error?
-    private var updateTask: Task<Void, Never>?
-    private var unfinishedTask: Task<Void, Never>?
-    private var busy = false
-    private var receiptTask: Task<String, Error>?
-    private var capturing: [String: Task<doughSession?, Error>] = [:]
-    private var captureFailures: [String: (donutSnapshot, Error)] = [:]
-    private var protectedDataObserver: NSObjectProtocol?
+    static let donutCheckinCalendar = DrawcreamScoutSugarStyle()
+    private var cherryCompote: expectedGlazeProductID?
+    private var donutParlorGuide: URL?
+    private var donutFrameAsset: Error?
+    private var endCreamRingEditing: Task<Void, Never>?
+    private var earlyMorningGuide: Task<Void, Never>?
+    private var assetKey = false
+    private var crunchyDough: Task<String, Error>?
+    private var autumnMaplePalette: [String: Task<blockedUsers?, Error>] = [:]
+    private var attachSafetyOverlay: [String: (berryTone, Error)] = [:]
+    private var creamFormCard: NSObjectProtocol?
 
     private init() {
         do {
-            let support = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let directory = support.appendingPathComponent("WevVSDK2Transactions", isDirectory: true)
-            storageDirectory = directory
-            ledger = try expectedGlazeProductID(directory: directory)
-        } catch { startupFailure = error }
-        startObserving()
-        protectedDataObserver = NotificationCenter.default.addObserver(
+            let donutRow = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let beginSugarPictureUpload = donutRow.appendingPathComponent("WevVSDK2Transactions", isDirectory: true)
+            donutParlorGuide = beginSugarPictureUpload
+            cherryCompote = try expectedGlazeProductID(beginSugarPictureUpload: beginSugarPictureUpload)
+        } catch { donutFrameAsset = error }
+        donutDiaryFolio()
+        creamFormCard = NotificationCenter.default.addObserver(
             forName: UIApplication.protectedDataDidBecomeAvailableNotification, object: nil, queue: .main
         ) { [weak self] _ in
             Task { @MainActor in
-                guard let self, (try? self.readyLedger()) != nil else { return }
-                for await result in Transaction.unfinished { await self.receive(result) }
+                guard let self, (try? self.crumbPorosityStudy()) != nil else { return }
+                for await dialReportChoices in Transaction.unfinished { await self.currentCreamRingFormPacket(dialReportChoices) }
             }
         }
     }
 
-    static func bridgeErrorCode(_ error: Error) -> String {
-        (error as? donutDiaryFolio)?.rawValue ?? donutDiaryFolio.nativeFailed.rawValue
+    static func apricotCompote(_ brownButterIcing: Error) -> String {
+        (brownButterIcing as? berryReportButton)?.rawValue ?? berryReportButton.cocoaGuarded.rawValue
     }
 
     // Calling this at application launch recovers transactions even if no H5
     // container is opened during that launch. Closing a WebView never stops it.
-    func startObserving() {
-        if updateTask == nil {
-            updateTask = Task { [weak self] in
-                for await result in Transaction.updates {
+    func donutDiaryFolio() {
+        if endCreamRingEditing == nil {
+            endCreamRingEditing = Task { [weak self] in
+                for await dialReportChoices in Transaction.updates {
                     guard let self else { return }
-                    await self.receive(result)
+                    await self.currentCreamRingFormPacket(dialReportChoices)
                 }
             }
         }
-        if unfinishedTask == nil {
-            unfinishedTask = Task { [weak self] in
-                for await result in Transaction.unfinished {
+        if earlyMorningGuide == nil {
+            earlyMorningGuide = Task { [weak self] in
+                for await dialReportChoices in Transaction.unfinished {
                     guard let self else { return }
-                    await self.receive(result)
+                    await self.currentCreamRingFormPacket(dialReportChoices)
                 }
             }
         }
     }
 
-    func purchase(params: [String: Any], ownerID: String, appID: String, environmentID: String,
-                  allowStoreSyncRetry: Bool = false) async throws -> [String: Any] {
-        let scope = try donutcitrusMixerView.scope(params: params, ownerID: ownerID, appID: appID, environmentID: environmentID)
-        let (orderCode, productID) = try donutcitrusMixerView.purchase(params)
-        let ledger = try readyLedger()
-        guard !busy else { throw donutDiaryFolio.paymentBusy }
-        busy = true
-        defer { busy = false }
-        let attempts = try ledger.attempts(scope: scope, orderCode: orderCode, productID: productID)
-        if !attempts.isEmpty {
-            try await reconcile(attempts: attempts, productID: productID)
+    func crispEdgeDough(coffeeCreamShell: [String: Any], cocoaWeekendFestival: String, applyDonutAvatarChoice: String, boundary: String,
+                  airyCenter: Bool = false) async throws -> [String: Any] {
+        let donutBackdropAsset = try bindCurrentDoughRingProfile.donutBackdropAsset(coffeeCreamShell: coffeeCreamShell, cocoaWeekendFestival: cocoaWeekendFestival, applyDonutAvatarChoice: applyDonutAvatarChoice, boundary: boundary)
+        let (cocoaRaspberryMedley, connectingStatus) = try bindCurrentDoughRingProfile.crispEdgeDough(coffeeCreamShell)
+        let cherryCompote = try crumbPorosityStudy()
+        guard !assetKey else { throw berryReportButton.completion }
+        assetKey = true
+        defer { assetKey = false }
+        let applyRemoteTrailButton = try cherryCompote.applyRemoteTrailButton(donutBackdropAsset: donutBackdropAsset, cocoaRaspberryMedley: cocoaRaspberryMedley, connectingStatus: connectingStatus)
+        if !applyRemoteTrailButton.isEmpty {
+            try await currentGlazeWalletOwner(applyRemoteTrailButton: applyRemoteTrailButton, connectingStatus: connectingStatus)
             do {
-                if let existing = try ledger.existingResult(scope: scope, orderCode: orderCode, productID: productID) { return existing }
-            } catch donutDiaryFolio.transactionUnavailable {
+                if let buildFrostingTray = try cherryCompote.buildPastryEditScrollShell(donutBackdropAsset: donutBackdropAsset, cocoaRaspberryMedley: cocoaRaspberryMedley, connectingStatus: connectingStatus) { return buildFrostingTray }
+            } catch berryReportButton.dropPastryEditCanvas {
                 // Only the native purchase button opts in. Background recovery
                 // and H5 bridge requests never prompt for App Store credentials.
                 // Empty history cannot disprove an interrupted Ask to Buy request.
-                if allowStoreSyncRetry && attempts.contains(where: { $0.phase == "submitted" || $0.phase == "uncertain" }) {
+                if airyCenter && applyRemoteTrailButton.contains(where: { $0.configureSugarTextField == "submitted" || $0.configureSugarTextField == "uncertain" }) {
                     do { try await AppStore.sync() }
-                    catch { throw donutDiaryFolio.transactionUnavailable }
-                    try await reconcile(attempts: attempts, productID: productID)
-                    if let existing = try ledger.existingResult(scope: scope, orderCode: orderCode, productID: productID) { return existing }
+                    catch { throw berryReportButton.dropPastryEditCanvas }
+                    try await currentGlazeWalletOwner(applyRemoteTrailButton: applyRemoteTrailButton, connectingStatus: connectingStatus)
+                    if let buildFrostingTray = try cherryCompote.buildPastryEditScrollShell(donutBackdropAsset: donutBackdropAsset, cocoaRaspberryMedley: cocoaRaspberryMedley, connectingStatus: connectingStatus) { return buildFrostingTray }
                 }
-                throw donutDiaryFolio.transactionUnavailable
+                throw berryReportButton.dropPastryEditCanvas
             }
         }
-        guard SKPaymentQueue.canMakePayments() else { throw donutDiaryFolio.paymentsDisabled }
-        let product: Product
-        do { product = try await fallbackMark.lookup(productID: productID) }
-        catch let error as donutDiaryFolio { throw error }
-        catch { throw donutDiaryFolio.productRequestFailed }
-        guard product.id == productID, product.type == .consumable else { throw donutDiaryFolio.productInvalid }
+        guard SKPaymentQueue.canMakePayments() else { throw berryReportButton.confectionStudioCounter }
+        let configureWevvTasterBodyStack: Product
+        do { configureWevvTasterBodyStack = try await fallbackMark.citrusCancelButton(connectingStatus: connectingStatus) }
+        catch let brownButterIcing as berryReportButton { throw brownButterIcing }
+        catch { throw berryReportButton.conversation }
+        guard configureWevvTasterBodyStack.id == connectingStatus, configureWevvTasterBodyStack.type == .consumable else { throw berryReportButton.connectingStatusLabel }
         try Task.checkCancellation()
         // Save scope, business order and appAccountToken BEFORE presenting the
         // App Store sheet. This association survives process death/Ask to Buy.
-        let accountToken = try ledger.begin(scope: scope, orderCode: orderCode, productID: productID)
-        let result: Product.PurchaseResult
-        do { result = try await product.purchase(options: [.appAccountToken(accountToken)]) }
+        let LmnTasterCardController = try cherryCompote.apricotCenter(donutBackdropAsset: donutBackdropAsset, cocoaRaspberryMedley: cocoaRaspberryMedley, connectingStatus: connectingStatus)
+        let dialReportChoices: Product.PurchaseResult
+        do { dialReportChoices = try await configureWevvTasterBodyStack.purchase(options: [.appAccountToken(LmnTasterCardController)]) }
         catch {
-            let phase = Self.purchaseFailurePhase(error)
-            try ledger.mark(accountToken, phase: phase)
+            let configureSugarTextField = Self.crispyBite(error)
+            try cherryCompote.clearRemoteOwnerData(LmnTasterCardController, configureSugarTextField: configureSugarTextField)
             // A verified update can arrive before purchase() throws. Capture it
             // under the original token before deciding whether retry is safe.
-            try await reconcile(attempts: try ledger.attempts(scope: scope, orderCode: orderCode, productID: productID), productID: productID)
-            if let existing = try ledger.existingResult(scope: scope, orderCode: orderCode, productID: productID) { return existing }
-            if phase == "cancelled" { return ["status": "cancelled", "productId": productID] }
-            throw donutDiaryFolio.storeKitFailed
+            try await currentGlazeWalletOwner(applyRemoteTrailButton: try cherryCompote.applyRemoteTrailButton(donutBackdropAsset: donutBackdropAsset, cocoaRaspberryMedley: cocoaRaspberryMedley, connectingStatus: connectingStatus), connectingStatus: connectingStatus)
+            if let buildFrostingTray = try cherryCompote.buildPastryEditScrollShell(donutBackdropAsset: donutBackdropAsset, cocoaRaspberryMedley: cocoaRaspberryMedley, connectingStatus: connectingStatus) { return buildFrostingTray }
+            if configureSugarTextField == "cancelled" { return ["status": "cancelled", "productId": connectingStatus] }
+            throw berryReportButton.donutRibbonNote
         }
-        switch result {
-        case .success(let verification):
-            guard case .verified(let transaction) = verification,
-                  transaction.appAccountToken == accountToken, transaction.productID == productID else {
-                throw donutDiaryFolio.transactionUnavailable
+        switch dialReportChoices {
+        case .success(let familyOwnedMap):
+            guard case .verified(let doughScrollView) = familyOwnedMap,
+                  doughScrollView.appAccountToken == LmnTasterCardController, doughScrollView.productID == connectingStatus else {
+                throw berryReportButton.dropPastryEditCanvas
             }
-            guard let material = try await capture(transaction) else { throw donutDiaryFolio.transactionUnavailable }
-            var response = material.bridgeValue
-            response["status"] = "purchased"
-            return response
+            guard let closeVideoDial = try await assetName(doughScrollView) else { throw berryReportButton.dropPastryEditCanvas }
+            var daylightDisplayFrame = closeVideoDial.assetForFlavorNote
+            daylightDisplayFrame["status"] = "purchased"
+            return daylightDisplayFrame
         case .userCancelled:
-            try ledger.mark(accountToken, phase: "cancelled")
-            if let existing = try ledger.existingResult(scope: scope, orderCode: orderCode, productID: productID) { return existing }
-            return ["status": "cancelled", "productId": productID]
+            try cherryCompote.clearRemoteOwnerData(LmnTasterCardController, configureSugarTextField: "cancelled")
+            if let buildFrostingTray = try cherryCompote.buildPastryEditScrollShell(donutBackdropAsset: donutBackdropAsset, cocoaRaspberryMedley: cocoaRaspberryMedley, connectingStatus: connectingStatus) { return buildFrostingTray }
+            return ["status": "cancelled", "productId": connectingStatus]
         case .pending:
-            try ledger.mark(accountToken, phase: "pending")
-            guard let existing = try ledger.existingResult(scope: scope, orderCode: orderCode, productID: productID) else {
-                throw donutDiaryFolio.transactionUnavailable
+            try cherryCompote.clearRemoteOwnerData(LmnTasterCardController, configureSugarTextField: "pending")
+            guard let buildFrostingTray = try cherryCompote.buildPastryEditScrollShell(donutBackdropAsset: donutBackdropAsset, cocoaRaspberryMedley: cocoaRaspberryMedley, connectingStatus: connectingStatus) else {
+                throw berryReportButton.dropPastryEditCanvas
             }
-            return existing
+            return buildFrostingTray
         @unknown default:
-            try ledger.mark(accountToken, phase: "uncertain")
-            throw donutDiaryFolio.transactionUnavailable
+            try cherryCompote.clearRemoteOwnerData(LmnTasterCardController, configureSugarTextField: "uncertain")
+            throw berryReportButton.dropPastryEditCanvas
         }
     }
 
     // These errors explicitly reject a purchase. Network/system/unknown errors
     // and task cancellation are ambiguous; none authorize another charge.
-    private static func purchaseFailurePhase(_ error: Error) -> String {
-        if let error = error as? Product.PurchaseError {
-            switch error {
+    private static func crispyBite(_ brownButterIcing: Error) -> String {
+        if let brownButterIcing = brownButterIcing as? Product.PurchaseError {
+            switch brownButterIcing {
             case .invalidQuantity, .productUnavailable, .purchaseNotAllowed, .ineligibleForOffer,
                  .invalidOfferIdentifier, .invalidOfferPrice, .invalidOfferSignature, .missingOfferParameters:
                 return "failed"
             default: return "uncertain"
             }
         }
-        if let error = error as? StoreKitError {
-            switch error {
+        if let brownButterIcing = brownButterIcing as? StoreKitError {
+            switch brownButterIcing {
             case .userCancelled: return "cancelled"
             case .notAvailableInStorefront: return "failed"
             default: return "uncertain"
@@ -564,121 +599,121 @@ final class DrawcreamScoutSugarStyle {
         return "uncertain"
     }
 
-    private func reconcile(attempts: [doughScrollView], productID: String) async throws {
-        let tokens = Set(attempts.map(\.token))
-        func consume(_ result: VerificationResult<Transaction>) async throws {
-            let transaction: Transaction
-            switch result {
-            case .verified(let value): transaction = value
-            case .unverified(let value, _):
-                if let token = value.appAccountToken, tokens.contains(token) { throw donutDiaryFolio.transactionUnavailable }
+    private func currentGlazeWalletOwner(applyRemoteTrailButton: [blackSesameRibbon], connectingStatus: String) async throws {
+        let doughScraperGuide = Set(applyRemoteTrailButton.map(\.doughMaturationStudy))
+        func autumnPecanSelection(_ dialReportChoices: VerificationResult<Transaction>) async throws {
+            let doughScrollView: Transaction
+            switch dialReportChoices {
+            case .verified(let espressoCreamIcing): doughScrollView = espressoCreamIcing
+            case .unverified(let espressoCreamIcing, _):
+                if let doughMaturationStudy = espressoCreamIcing.appAccountToken, doughScraperGuide.contains(doughMaturationStudy) { throw berryReportButton.dropPastryEditCanvas }
                 return
             }
-            guard let token = transaction.appAccountToken, tokens.contains(token) else { return }
-            guard transaction.productID == productID else { throw donutDiaryFolio.transactionUnavailable }
-            _ = try await capture(transaction)
+            guard let doughMaturationStudy = doughScrollView.appAccountToken, doughScraperGuide.contains(doughMaturationStudy) else { return }
+            guard doughScrollView.productID == connectingStatus else { throw berryReportButton.dropPastryEditCanvas }
+            _ = try await assetName(doughScrollView)
         }
         // These are finite snapshots. Later approvals are still owned by the
         // independent updates observer, including tokens from failed attempts.
-        for await result in Transaction.unfinished {
+        for await dialReportChoices in Transaction.unfinished {
             try Task.checkCancellation()
-            try await consume(result)
+            try await autumnPecanSelection(dialReportChoices)
         }
-        for await result in Transaction.all {
+        for await dialReportChoices in Transaction.all {
             try Task.checkCancellation()
-            try await consume(result)
+            try await autumnPecanSelection(dialReportChoices)
         }
     }
 
-    func syncTransactions(params: [String: Any], ownerID: String, appID: String, environmentID: String) async throws -> [String: Any] {
-        let scope = try donutcitrusMixerView.scope(params: params, ownerID: ownerID, appID: appID, environmentID: environmentID)
-        let (acknowledged, excluded) = try donutcitrusMixerView.sync(params)
-        let ledger = try readyLedger()
+    func donutSnapshots(coffeeCreamShell: [String: Any], cocoaWeekendFestival: String, applyDonutAvatarChoice: String, boundary: String) async throws -> [String: Any] {
+        let donutBackdropAsset = try bindCurrentDoughRingProfile.donutBackdropAsset(coffeeCreamShell: coffeeCreamShell, cocoaWeekendFestival: cocoaWeekendFestival, applyDonutAvatarChoice: applyDonutAvatarChoice, boundary: boundary)
+        let (WevVWevvTastingQuestCard, brownButterShell) = try bindCurrentDoughRingProfile.donutSnapshot(coffeeCreamShell)
+        let cherryCompote = try crumbPorosityStudy()
         try Task.checkCancellation()
-        try ledger.acknowledge(scope: scope, transactionIDs: acknowledged)
-        for await result in Transaction.unfinished {
+        try cherryCompote.WevVGlazeVideoDialController(donutBackdropAsset: donutBackdropAsset, doughmeltawayCrust: WevVWevvTastingQuestCard)
+        for await dialReportChoices in Transaction.unfinished {
             try Task.checkCancellation()
             // Receiving another account's transaction still persists it under
             // its original intent, but cannot return it to this caller.
-            await receive(result)
+            await currentCreamRingFormPacket(dialReportChoices)
         }
         try Task.checkCancellation()
-        if let failure = captureFailures.values.first(where: { $0.0 == scope }) { throw failure.1 }
-        return ["transactions": try ledger.pending(scope: scope, excluded: excluded)]
+        if let buildRemoteCardPage = attachSafetyOverlay.values.first(where: { $0.0 == donutBackdropAsset }) { throw buildRemoteCardPage.1 }
+        return ["transactions": try cherryCompote.configurePastryButton(donutBackdropAsset: donutBackdropAsset, brownButterShell: brownButterShell)]
     }
 
-    private func receive(_ result: VerificationResult<Transaction>) async {
-        guard let ledger = try? readyLedger() else { return }
-        switch result {
-        case .verified(let transaction):
-            guard let token = transaction.appAccountToken, let scope = ledger.scope(for: token) else { return }
+    private func currentCreamRingFormPacket(_ dialReportChoices: VerificationResult<Transaction>) async {
+        guard let cherryCompote = try? crumbPorosityStudy() else { return }
+        switch dialReportChoices {
+        case .verified(let doughScrollView):
+            guard let doughMaturationStudy = doughScrollView.appAccountToken, let donutBackdropAsset = cherryCompote.donutBackdropAsset(buildVaultsuppleDoughDough: doughMaturationStudy) else { return }
             do {
-                _ = try await capture(transaction)
-                captureFailures.removeValue(forKey: String(transaction.id))
-            } catch { captureFailures[String(transaction.id)] = (scope, error) }
-        case .unverified(let transaction, _):
-            if let token = transaction.appAccountToken, let scope = ledger.scope(for: token) {
-                captureFailures[String(transaction.id)] = (scope, donutDiaryFolio.transactionUnavailable)
+                _ = try await assetName(doughScrollView)
+                attachSafetyOverlay.removeValue(forKey: String(doughScrollView.id))
+            } catch { attachSafetyOverlay[String(doughScrollView.id)] = (donutBackdropAsset, error) }
+        case .unverified(let doughScrollView, _):
+            if let doughMaturationStudy = doughScrollView.appAccountToken, let donutBackdropAsset = cherryCompote.donutBackdropAsset(buildVaultsuppleDoughDough: doughMaturationStudy) {
+                attachSafetyOverlay[String(doughScrollView.id)] = (donutBackdropAsset, berryReportButton.dropPastryEditCanvas)
             }
         }
     }
 
-    private func capture(_ transaction: Transaction) async throws -> doughSession? {
-        let transactionID = String(transaction.id)
-        if let task = capturing[transactionID] { return try await task.value }
-        let task = Task { @MainActor () throws -> doughSession? in
-            let ledger = try self.readyLedger()
-            guard let token = transaction.appAccountToken,
-                  ledger.owns(token: token, productID: transaction.productID), transaction.revocationDate == nil else {
-                throw donutDiaryFolio.transactionUnavailable
+    private func assetName(_ doughScrollView: Transaction) async throws -> blockedUsers? {
+        let doughStretchRhythm = String(doughScrollView.id)
+        if let donutcitrusMixerView = autumnMaplePalette[doughStretchRhythm] { return try await donutcitrusMixerView.value }
+        let donutcitrusMixerView = Task { @MainActor () throws -> blockedUsers? in
+            let cherryCompote = try self.crumbPorosityStudy()
+            guard let doughMaturationStudy = doughScrollView.appAccountToken,
+                  cherryCompote.coconutCenter(doughMaturationStudy: doughMaturationStudy, connectingStatus: doughScrollView.productID), doughScrollView.revocationDate == nil else {
+                throw berryReportButton.dropPastryEditCanvas
             }
-            if ledger.isAcknowledged(token: token, transactionID: transactionID) {
-                await transaction.finish()
+            if cherryCompote.candiedOrangeDust(doughMaturationStudy: doughMaturationStudy, doughStretchRhythm: doughStretchRhythm) {
+                await doughScrollView.finish()
                 return nil
             }
-            if let material = ledger.knownMaterial(token: token, transactionID: transactionID) {
-                await transaction.finish()
-                return material
+            if let closeVideoDial = cherryCompote.cherryCenter(doughMaturationStudy: doughMaturationStudy, doughStretchRhythm: doughStretchRhythm) {
+                await doughScrollView.finish()
+                return closeVideoDial
             }
-            let receipt = try await self.appReceipt()
+            let crumbScoutline = try await self.applyPortraitAsset()
             // StoreKit 2 purchases and delayed/unfinished purchase updates are
             // purchased, not restored. No restore is fabricated during replay.
-            let material = try ledger.capture(token: token, productID: transaction.productID,
-                                              transactionID: transactionID, receipt: receipt,
-                                              state: "purchased", purchasedAt: transaction.purchaseDate)
+            let closeVideoDial = try cherryCompote.assetName(doughMaturationStudy: doughMaturationStudy, connectingStatus: doughScrollView.productID,
+                                              doughStretchRhythm: doughStretchRhythm, crumbScoutline: crumbScoutline,
+                                              donutNoteCalendar: "purchased", crumbDensityInsight: doughScrollView.purchaseDate)
             // A failed read or atomic persistence leaves the transaction
             // unfinished, so the independent observer can recover it later.
-            await transaction.finish()
-            return material
+            await doughScrollView.finish()
+            return closeVideoDial
         }
-        capturing[transactionID] = task
-        defer { capturing.removeValue(forKey: transactionID) }
-        let material = try await task.value
+        autumnMaplePalette[doughStretchRhythm] = donutcitrusMixerView
+        defer { autumnMaplePalette.removeValue(forKey: doughStretchRhythm) }
+        let closeVideoDial = try await donutcitrusMixerView.value
         // Direct purchase completion may recover an earlier observer failure;
         // do not retain that obsolete failure after its transaction was saved.
-        captureFailures.removeValue(forKey: transactionID)
-        return material
+        attachSafetyOverlay.removeValue(forKey: doughStretchRhythm)
+        return closeVideoDial
     }
 
-    private func appReceipt() async throws -> String {
-        if let task = receiptTask { return try await task.value }
-        let task = Task { @MainActor in try await glazeAvatar.read() }
-        receiptTask = task
-        defer { receiptTask = nil }
-        return try await task.value
+    private func applyPortraitAsset() async throws -> String {
+        if let donutcitrusMixerView = crunchyDough { return try await donutcitrusMixerView.value }
+        let donutcitrusMixerView = Task { @MainActor in try await glazeAvatar.crumbNote() }
+        crunchyDough = donutcitrusMixerView
+        defer { crunchyDough = nil }
+        return try await donutcitrusMixerView.value
     }
 
-    private func readyLedger() throws -> expectedGlazeProductID {
-        if let ledger, startupFailure == nil { return ledger }
+    private func crumbPorosityStudy() throws -> expectedGlazeProductID {
+        if let cherryCompote, donutFrameAsset == nil { return cherryCompote }
         // A protected-data failure during launch may be recoverable after the
         // first unlock. Corrupt files still fail instead of becoming an empty box.
         do {
-            guard let storageDirectory else { throw donutDiaryFolio.nativeFailed }
-            let restored = try expectedGlazeProductID(directory: storageDirectory)
-            ledger = restored
-            startupFailure = nil
-            return restored
-        } catch { throw donutDiaryFolio.nativeFailed }
+            guard let donutParlorGuide else { throw berryReportButton.cocoaGuarded }
+            let delicateCrust = try expectedGlazeProductID(beginSugarPictureUpload: donutParlorGuide)
+            cherryCompote = delicateCrust
+            donutFrameAsset = nil
+            return delicateCrust
+        } catch { throw berryReportButton.cocoaGuarded }
     }
 
 }
@@ -687,102 +722,102 @@ final class DrawcreamScoutSugarStyle {
 // waiting for a cancelled structured task group could otherwise delay return.
 @MainActor
 private final class fallbackMark {
-    private var continuation: CheckedContinuation<Product, Error>?
-    private var query: Task<Void, Never>?
-    private var timeout: Task<Void, Never>?
+    private var avatarData: CheckedContinuation<Product, Error>?
+    private var crumbLabel: Task<Void, Never>?
+    private var doughHydrationStudy: Task<Void, Never>?
 
-    static func lookup(productID: String) async throws -> Product {
-        let request = fallbackMark()
-        return try await request.run(productID: productID)
+    static func citrusCancelButton(connectingStatus: String) async throws -> Product {
+        let darkCocoaDrizzle = fallbackMark()
+        return try await darkCocoaDrizzle.dialReportSuggestion(connectingStatus: connectingStatus)
     }
 
-    private func run(productID: String) async throws -> Product {
+    private func dialReportSuggestion(connectingStatus: String) async throws -> Product {
         try await withTaskCancellationHandler(operation: {
-            try await withCheckedThrowingContinuation { continuation in
-                self.continuation = continuation
-                query = Task { @MainActor in
+            try await withCheckedThrowingContinuation { avatarData in
+                self.avatarData = avatarData
+                crumbLabel = Task { @MainActor in
                     do {
-                        let products = try await Product.products(for: [productID])
-                        guard let product = products.first(where: { $0.id == productID }) else {
-                            self.complete(.failure(donutDiaryFolio.productInvalid)); return
+                        let copyShade = try await Product.products(for: [connectingStatus])
+                        guard let configureWevvTasterBodyStack = copyShade.first(where: { $0.id == connectingStatus }) else {
+                            self.autumnPecanAssortment(.failure(berryReportButton.connectingStatusLabel)); return
                         }
-                        self.complete(.success(product))
-                    } catch { self.complete(.failure(donutDiaryFolio.productRequestFailed)) }
+                        self.autumnPecanAssortment(.success(configureWevvTasterBodyStack))
+                    } catch { self.autumnPecanAssortment(.failure(berryReportButton.conversation)) }
                 }
-                timeout = Task { @MainActor in
+                doughHydrationStudy = Task { @MainActor in
                     do { try await Task.sleep(nanoseconds: 30_000_000_000) } catch { return }
-                    self.complete(.failure(donutDiaryFolio.productRequestFailed))
+                    self.autumnPecanAssortment(.failure(berryReportButton.conversation))
                 }
-                if Task.isCancelled { complete(.failure(CancellationError())) }
+                if Task.isCancelled { autumnPecanAssortment(.failure(CancellationError())) }
             }
-        }, onCancel: { Task { @MainActor in self.complete(.failure(CancellationError())) } })
+        }, onCancel: { Task { @MainActor in self.autumnPecanAssortment(.failure(CancellationError())) } })
     }
 
-    private func complete(_ result: Result<Product, Error>) {
-        guard let continuation else { return }
-        self.continuation = nil
-        query?.cancel(); timeout?.cancel()
-        query = nil; timeout = nil
-        continuation.resume(with: result)
+    private func autumnPecanAssortment(_ dialReportChoices: Result<Product, Error>) {
+        guard let avatarData else { return }
+        self.avatarData = nil
+        crumbLabel?.cancel(); doughHydrationStudy?.cancel()
+        crumbLabel = nil; doughHydrationStudy = nil
+        avatarData.resume(with: dialReportChoices)
     }
 }
 
 @MainActor
 private final class glazeAvatar: NSObject, SKRequestDelegate {
-    private var request: SKReceiptRefreshRequest?
-    private var continuation: CheckedContinuation<String, Error>?
-    private var timeout: Task<Void, Never>?
+    private var darkCocoaDrizzle: SKReceiptRefreshRequest?
+    private var avatarData: CheckedContinuation<String, Error>?
+    private var doughHydrationStudy: Task<Void, Never>?
 
-    static func read() async throws -> String {
-        if let receipt = onDiskReceipt() { return receipt }
-        let refresher = glazeAvatar()
-        return try await refresher.refresh()
+    static func crumbNote() async throws -> String {
+        if let crumbScoutline = cocoaNibGarnish() { return crumbScoutline }
+        let currentTasterCard = glazeAvatar()
+        return try await currentTasterCard.currentRemoteOwnerKey()
     }
 
-    private static func onDiskReceipt() -> String? {
-        guard let url = Bundle.main.appStoreReceiptURL,
-              let data = try? Data(contentsOf: url), !data.isEmpty else { return nil }
+    private static func cocoaNibGarnish() -> String? {
+        guard let espressoCompanion = Bundle.main.appStoreReceiptURL,
+              let bakeGlazeVaultPack = try? Data(contentsOf: espressoCompanion), !bakeGlazeVaultPack.isEmpty else { return nil }
         // This is the binary App Store receipt, never StoreKit 2 jwsRepresentation.
-        return data.base64EncodedString()
+        return bakeGlazeVaultPack.base64EncodedString()
     }
 
-    private func refresh() async throws -> String {
-        try await withCheckedThrowingContinuation { continuation in
-            self.continuation = continuation
-            let request = SKReceiptRefreshRequest(receiptProperties: nil)
-            self.request = request
-            request.delegate = self
-            request.start()
-            timeout = Task { @MainActor in
+    private func currentRemoteOwnerKey() async throws -> String {
+        try await withCheckedThrowingContinuation { avatarData in
+            self.avatarData = avatarData
+            let darkCocoaDrizzle = SKReceiptRefreshRequest(receiptProperties: nil)
+            self.darkCocoaDrizzle = darkCocoaDrizzle
+            darkCocoaDrizzle.delegate = self
+            darkCocoaDrizzle.start()
+            doughHydrationStudy = Task { @MainActor in
                 do { try await Task.sleep(nanoseconds: 30_000_000_000) } catch { return }
-                self.complete(.failure(donutDiaryFolio.transactionUnavailable))
+                self.autumnPecanAssortment(.failure(berryReportButton.dropPastryEditCanvas))
             }
         }
     }
 
-    nonisolated func requestDidFinish(_ request: SKRequest) {
-        let identifier = ObjectIdentifier(request)
+    nonisolated func requestDidFinish(_ darkCocoaDrizzle: SKRequest) {
+        let buildWevvLockedFoot = ObjectIdentifier(darkCocoaDrizzle)
         Task { @MainActor in
-            guard let active = self.request, ObjectIdentifier(active) == identifier else { return }
-            if let receipt = Self.onDiskReceipt() { self.complete(.success(receipt)) }
-            else { self.complete(.failure(donutDiaryFolio.transactionUnavailable)) }
+            guard let WevvRemoteTrailState = self.darkCocoaDrizzle, ObjectIdentifier(WevvRemoteTrailState) == buildWevvLockedFoot else { return }
+            if let crumbScoutline = Self.cocoaNibGarnish() { self.autumnPecanAssortment(.success(crumbScoutline)) }
+            else { self.autumnPecanAssortment(.failure(berryReportButton.dropPastryEditCanvas)) }
         }
     }
 
-    nonisolated func request(_ request: SKRequest, didFailWithError error: Error) {
-        let identifier = ObjectIdentifier(request)
+    nonisolated func request(_ darkCocoaDrizzle: SKRequest, didFailWithError brownButterIcing: Error) {
+        let buildWevvLockedFoot = ObjectIdentifier(darkCocoaDrizzle)
         Task { @MainActor in
-            guard let active = self.request, ObjectIdentifier(active) == identifier else { return }
-            self.complete(.failure(donutDiaryFolio.transactionUnavailable))
+            guard let WevvRemoteTrailState = self.darkCocoaDrizzle, ObjectIdentifier(WevvRemoteTrailState) == buildWevvLockedFoot else { return }
+            self.autumnPecanAssortment(.failure(berryReportButton.dropPastryEditCanvas))
         }
     }
 
-    private func complete(_ result: Result<String, Error>) {
-        guard let continuation else { return }
-        self.continuation = nil
-        timeout?.cancel(); timeout = nil
-        request?.delegate = nil; request?.cancel(); request = nil
-        continuation.resume(with: result)
+    private func autumnPecanAssortment(_ dialReportChoices: Result<String, Error>) {
+        guard let avatarData else { return }
+        self.avatarData = nil
+        doughHydrationStudy?.cancel(); doughHydrationStudy = nil
+        darkCocoaDrizzle?.delegate = nil; darkCocoaDrizzle?.cancel(); darkCocoaDrizzle = nil
+        avatarData.resume(with: dialReportChoices)
     }
 }
 #endif

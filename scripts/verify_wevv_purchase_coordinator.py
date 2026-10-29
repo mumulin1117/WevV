@@ -29,103 +29,103 @@ struct PurchaseLedgerVerification {
             throw NSError(domain: "Verification", code: 2, userInfo: [NSLocalizedDescriptionKey: label])
         }
         let directory = root.appendingPathComponent("ledger")
-        var ledger = try expectedGlazeProductID(directory: directory)
-        let scope = donutSnapshot(environmentID: "https://test.invalid|REPLICA", appID: "test-app", ownerID: "account-one")
-        let otherOwner = donutSnapshot(environmentID: scope.environmentID, appID: scope.appID, ownerID: "account-two")
-        let otherApp = donutSnapshot(environmentID: scope.environmentID, appID: "other-app", ownerID: scope.ownerID)
-        let otherEnvironment = donutSnapshot(environmentID: "https://other.invalid|REPLICA", appID: scope.appID, ownerID: scope.ownerID)
+        var ledger = try expectedGlazeProductID(beginSugarPictureUpload: directory)
+        let scope = berryTone(boundary: "https://test.invalid|REPLICA", applyDonutAvatarChoice: "test-app", cocoaWeekendFestival: "account-one")
+        let otherOwner = berryTone(boundary: scope.boundary, applyDonutAvatarChoice: scope.applyDonutAvatarChoice, cocoaWeekendFestival: "account-two")
+        let otherApp = berryTone(boundary: scope.boundary, applyDonutAvatarChoice: "other-app", cocoaWeekendFestival: scope.cocoaWeekendFestival)
+        let otherEnvironment = berryTone(boundary: "https://other.invalid|REPLICA", applyDonutAvatarChoice: scope.applyDonutAvatarChoice, cocoaWeekendFestival: scope.cocoaWeekendFestival)
         let receipt = Data("offline-receipt-fixture".utf8).base64EncodedString()
-        let purchaseParams: [String: Any] = ["ownerId": scope.ownerID, "orderCode": "order-one", "productId": "gems-one", "purpose": "diamonds"]
-        try check(try donutcitrusMixerView.scope(params: purchaseParams, ownerID: scope.ownerID, appID: scope.appID, environmentID: scope.environmentID) == scope, "trusted native identity accepted")
-        try rejects("H5 cannot choose another native account") { _ = try donutcitrusMixerView.scope(params: purchaseParams, ownerID: otherOwner.ownerID, appID: scope.appID, environmentID: scope.environmentID) }
-        try rejects("guest cannot authorize purchase") { _ = try donutcitrusMixerView.scope(params: purchaseParams, ownerID: "", appID: scope.appID, environmentID: scope.environmentID) }
-        try check(try donutcitrusMixerView.purchase(purchaseParams).productID == "gems-one", "valid business order accepted")
+        let purchaseParams: [String: Any] = ["ownerId": scope.cocoaWeekendFestival, "orderCode": "order-one", "productId": "gems-one", "purpose": "diamonds"]
+        try check(try bindCurrentDoughRingProfile.donutBackdropAsset(coffeeCreamShell: purchaseParams, cocoaWeekendFestival: scope.cocoaWeekendFestival, applyDonutAvatarChoice: scope.applyDonutAvatarChoice, boundary: scope.boundary) == scope, "trusted native identity accepted")
+        try rejects("H5 cannot choose another native account") { _ = try bindCurrentDoughRingProfile.donutBackdropAsset(coffeeCreamShell: purchaseParams, cocoaWeekendFestival: otherOwner.cocoaWeekendFestival, applyDonutAvatarChoice: scope.applyDonutAvatarChoice, boundary: scope.boundary) }
+        try rejects("guest cannot authorize purchase") { _ = try bindCurrentDoughRingProfile.donutBackdropAsset(coffeeCreamShell: purchaseParams, cocoaWeekendFestival: "", applyDonutAvatarChoice: scope.applyDonutAvatarChoice, boundary: scope.boundary) }
+        try check(try bindCurrentDoughRingProfile.crispEdgeDough(purchaseParams).connectingStatus == "gems-one", "valid business order accepted")
         var invalidParams = purchaseParams
         invalidParams["purpose"] = "subscription"
-        try rejects("only diamonds purpose allowed") { _ = try donutcitrusMixerView.purchase(invalidParams) }
+        try rejects("only diamonds purpose allowed") { _ = try bindCurrentDoughRingProfile.crispEdgeDough(invalidParams) }
         invalidParams = purchaseParams
         invalidParams["ownerId"] = 1
-        try rejects("numeric owner cannot bypass string identity") { _ = try donutcitrusMixerView.scope(params: invalidParams, ownerID: "1", appID: scope.appID, environmentID: scope.environmentID) }
-        try check(try donutcitrusMixerView.sync(["ownerId": scope.ownerID]).acknowledged.isEmpty, "sync optional arrays default empty")
-        try check(try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "acknowledgedTransactionIds": (0..<100).map(String.init)]).acknowledged.count == 100, "100 ACK entries accepted")
-        try rejects("101 ACK entries rejected") { _ = try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "acknowledgedTransactionIds": (0..<101).map(String.init)]) }
-        try rejects("101 excluded entries rejected") { _ = try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "excludeTransactionIds": (0..<101).map(String.init)]) }
-        try rejects("null array is not omitted") { _ = try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "acknowledgedTransactionIds": NSNull()]) }
-        try rejects("mixed transaction array rejected") { _ = try donutcitrusMixerView.sync(["ownerId": scope.ownerID, "excludeTransactionIds": ["1", 2]]) }
-        try check(try ledger.pending(scope: scope, excluded: []).isEmpty, "initial empty queue")
-        let token = try ledger.begin(scope: scope, orderCode: "order-one", productID: "gems-one")
-        ledger = try expectedGlazeProductID(directory: directory)
-        try check(ledger.scope(for: token) == scope, "purchase context survives relaunch")
-        try rejects("legacy submitted is unresolved, not fabricated Ask to Buy") { _ = try ledger.existingResult(scope: scope, orderCode: "order-one", productID: "gems-one") }
-        try rejects("same order cannot change product") { _ = try ledger.existingResult(scope: scope, orderCode: "order-one", productID: "different") }
-        try ledger.mark(token, phase: "pending")
-        try check(try ledger.existingResult(scope: scope, orderCode: "order-one", productID: "gems-one")?["status"] as? String == "pending", "actual Ask to Buy remains pending")
-        _ = try ledger.capture(token: token, productID: "gems-one", transactionID: "trade-one", receipt: receipt, state: "purchased", purchasedAt: Date(timeIntervalSince1970: 1))
-        try ledger.mark(token, phase: "failed")
-        try check(try ledger.existingResult(scope: scope, orderCode: "order-one", productID: "gems-one")?["status"] as? String == "purchased", "error result cannot downgrade an earlier verified update")
-        ledger = try expectedGlazeProductID(directory: directory)
-        let recovered = try ledger.pending(scope: scope, excluded: [])
+        try rejects("numeric owner cannot bypass string identity") { _ = try bindCurrentDoughRingProfile.donutBackdropAsset(coffeeCreamShell: invalidParams, cocoaWeekendFestival: "1", applyDonutAvatarChoice: scope.applyDonutAvatarChoice, boundary: scope.boundary) }
+        try check(try bindCurrentDoughRingProfile.donutSnapshot(["ownerId": scope.cocoaWeekendFestival]).WevVWevvTastingQuestCard.isEmpty, "sync optional arrays default empty")
+        try check(try bindCurrentDoughRingProfile.donutSnapshot(["ownerId": scope.cocoaWeekendFestival, "acknowledgedTransactionIds": (0..<100).map(String.init)]).WevVWevvTastingQuestCard.count == 100, "100 ACK entries accepted")
+        try rejects("101 ACK entries rejected") { _ = try bindCurrentDoughRingProfile.donutSnapshot(["ownerId": scope.cocoaWeekendFestival, "acknowledgedTransactionIds": (0..<101).map(String.init)]) }
+        try rejects("101 excluded entries rejected") { _ = try bindCurrentDoughRingProfile.donutSnapshot(["ownerId": scope.cocoaWeekendFestival, "excludeTransactionIds": (0..<101).map(String.init)]) }
+        try rejects("null array is not omitted") { _ = try bindCurrentDoughRingProfile.donutSnapshot(["ownerId": scope.cocoaWeekendFestival, "acknowledgedTransactionIds": NSNull()]) }
+        try rejects("mixed transaction array rejected") { _ = try bindCurrentDoughRingProfile.donutSnapshot(["ownerId": scope.cocoaWeekendFestival, "excludeTransactionIds": ["1", 2]]) }
+        try check(try ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: []).isEmpty, "initial empty queue")
+        let token = try ledger.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "order-one", connectingStatus: "gems-one")
+        ledger = try expectedGlazeProductID(beginSugarPictureUpload: directory)
+        try check(ledger.donutBackdropAsset(buildVaultsuppleDoughDough: token) == scope, "purchase context survives relaunch")
+        try rejects("legacy submitted is unresolved, not fabricated Ask to Buy") { _ = try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "order-one", connectingStatus: "gems-one") }
+        try rejects("same order cannot change product") { _ = try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "order-one", connectingStatus: "different") }
+        try ledger.clearRemoteOwnerData(token, configureSugarTextField: "pending")
+        try check(try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "order-one", connectingStatus: "gems-one")?["status"] as? String == "pending", "actual Ask to Buy remains pending")
+        _ = try ledger.assetName(doughMaturationStudy: token, connectingStatus: "gems-one", doughStretchRhythm: "trade-one", crumbScoutline: receipt, donutNoteCalendar: "purchased", crumbDensityInsight: Date(timeIntervalSince1970: 1))
+        try ledger.clearRemoteOwnerData(token, configureSugarTextField: "failed")
+        try check(try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "order-one", connectingStatus: "gems-one")?["status"] as? String == "purchased", "error result cannot downgrade an earlier verified update")
+        ledger = try expectedGlazeProductID(beginSugarPictureUpload: directory)
+        let recovered = try ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: [])
         try check(recovered.count == 1 && recovered[0]["receipt"] as? String == receipt && recovered[0]["orderCode"] as? String == "order-one", "late purchase materials survive restart")
-        try check(try ledger.pending(scope: otherOwner, excluded: []).isEmpty && ledger.pending(scope: otherApp, excluded: []).isEmpty && ledger.pending(scope: otherEnvironment, excluded: []).isEmpty, "account App service isolation")
-        try ledger.acknowledge(scope: otherOwner, transactionIDs: ["trade-one"])
-        try check(try ledger.pending(scope: scope, excluded: []).count == 1, "other owner cannot acknowledge")
-        _ = try ledger.capture(token: token, productID: "gems-one", transactionID: "trade-one", receipt: receipt, state: "purchased", purchasedAt: Date())
-        try check(try ledger.pending(scope: scope, excluded: []).count == 1, "transaction replay is idempotent")
-        try check(try ledger.pending(scope: scope, excluded: ["trade-one"]).isEmpty && ledger.pending(scope: scope, excluded: []).count == 1, "exclude is temporary")
-        let alienToken = try ledger.begin(scope: otherOwner, orderCode: "alien-order", productID: "gems-one")
-        try rejects("transaction cannot be reassigned across accounts") { _ = try ledger.capture(token: alienToken, productID: "gems-one", transactionID: "trade-one", receipt: receipt, state: "purchased", purchasedAt: Date()) }
-        try ledger.acknowledge(scope: scope, transactionIDs: ["trade-one", "unknown"])
-        try ledger.acknowledge(scope: scope, transactionIDs: ["trade-one"])
-        ledger = try expectedGlazeProductID(directory: directory)
-        try check(try ledger.pending(scope: scope, excluded: []).isEmpty && ledger.isAcknowledged(token: token, transactionID: "trade-one"), "ACK removes material and survives relaunch")
-        try rejects("ACKed transaction cannot reappear") { _ = try ledger.capture(token: token, productID: "gems-one", transactionID: "trade-one", receipt: receipt, state: "purchased", purchasedAt: Date()) }
-        try rejects("delivered order cannot charge again") { _ = try ledger.existingResult(scope: scope, orderCode: "order-one", productID: "gems-one") }
-        let cancelled = try ledger.begin(scope: scope, orderCode: "cancel-order", productID: "gems-one")
-        try ledger.mark(cancelled, phase: "cancelled")
-        try check(try ledger.existingResult(scope: scope, orderCode: "cancel-order", productID: "gems-one") == nil, "cancelled purchase can retry")
-        try rejects("invalid receipt is not saved") { _ = try ledger.capture(token: cancelled, productID: "gems-one", transactionID: "broken", receipt: "!invalid", state: "purchased", purchasedAt: Date()) }
-        try check(try ledger.pending(scope: scope, excluded: []).isEmpty, "invalid capture leaves queue intact")
-        let failed = try ledger.begin(scope: scope, orderCode: "failed-order", productID: "gems-one")
-        try ledger.mark(failed, phase: "failed")
-        ledger = try expectedGlazeProductID(directory: directory)
-        try check(try ledger.existingResult(scope: scope, orderCode: "failed-order", productID: "gems-one") == nil, "explicit rejected attempt can retry after restart")
-        _ = try ledger.capture(token: failed, productID: "gems-one", transactionID: "late-failed-trade", receipt: receipt, state: "purchased", purchasedAt: Date())
-        try check(try ledger.existingResult(scope: scope, orderCode: "failed-order", productID: "gems-one")?["status"] as? String == "purchased", "late transaction keeps original rejected token ownership")
-        try ledger.acknowledge(scope: scope, transactionIDs: ["late-failed-trade"])
-        try ledger.mark(failed, phase: "failed")
-        try rejects("error result cannot downgrade durable ACK") { _ = try ledger.existingResult(scope: scope, orderCode: "failed-order", productID: "gems-one") }
-        let uncertain = try ledger.begin(scope: scope, orderCode: "uncertain-order", productID: "gems-one")
-        try ledger.mark(uncertain, phase: "uncertain")
-        ledger = try expectedGlazeProductID(directory: directory)
-        try rejects("ambiguous outcome remains blocked after restart") { _ = try ledger.existingResult(scope: scope, orderCode: "uncertain-order", productID: "gems-one") }
+        try check(try ledger.configurePastryButton(donutBackdropAsset: otherOwner, brownButterShell: []).isEmpty && ledger.configurePastryButton(donutBackdropAsset: otherApp, brownButterShell: []).isEmpty && ledger.configurePastryButton(donutBackdropAsset: otherEnvironment, brownButterShell: []).isEmpty, "account App service isolation")
+        try ledger.WevVGlazeVideoDialController(donutBackdropAsset: otherOwner, doughmeltawayCrust: ["trade-one"])
+        try check(try ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: []).count == 1, "other owner cannot acknowledge")
+        _ = try ledger.assetName(doughMaturationStudy: token, connectingStatus: "gems-one", doughStretchRhythm: "trade-one", crumbScoutline: receipt, donutNoteCalendar: "purchased", crumbDensityInsight: Date())
+        try check(try ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: []).count == 1, "transaction replay is idempotent")
+        try check(try ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: ["trade-one"]).isEmpty && ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: []).count == 1, "exclude is temporary")
+        let alienToken = try ledger.apricotCenter(donutBackdropAsset: otherOwner, cocoaRaspberryMedley: "alien-order", connectingStatus: "gems-one")
+        try rejects("transaction cannot be reassigned across accounts") { _ = try ledger.assetName(doughMaturationStudy: alienToken, connectingStatus: "gems-one", doughStretchRhythm: "trade-one", crumbScoutline: receipt, donutNoteCalendar: "purchased", crumbDensityInsight: Date()) }
+        try ledger.WevVGlazeVideoDialController(donutBackdropAsset: scope, doughmeltawayCrust: ["trade-one", "unknown"])
+        try ledger.WevVGlazeVideoDialController(donutBackdropAsset: scope, doughmeltawayCrust: ["trade-one"])
+        ledger = try expectedGlazeProductID(beginSugarPictureUpload: directory)
+        try check(try ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: []).isEmpty && ledger.candiedOrangeDust(doughMaturationStudy: token, doughStretchRhythm: "trade-one"), "ACK removes material and survives relaunch")
+        try rejects("ACKed transaction cannot reappear") { _ = try ledger.assetName(doughMaturationStudy: token, connectingStatus: "gems-one", doughStretchRhythm: "trade-one", crumbScoutline: receipt, donutNoteCalendar: "purchased", crumbDensityInsight: Date()) }
+        try rejects("delivered order cannot charge again") { _ = try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "order-one", connectingStatus: "gems-one") }
+        let cancelled = try ledger.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "cancel-order", connectingStatus: "gems-one")
+        try ledger.clearRemoteOwnerData(cancelled, configureSugarTextField: "cancelled")
+        try check(try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "cancel-order", connectingStatus: "gems-one") == nil, "cancelled purchase can retry")
+        try rejects("invalid receipt is not saved") { _ = try ledger.assetName(doughMaturationStudy: cancelled, connectingStatus: "gems-one", doughStretchRhythm: "broken", crumbScoutline: "!invalid", donutNoteCalendar: "purchased", crumbDensityInsight: Date()) }
+        try check(try ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: []).isEmpty, "invalid capture leaves queue intact")
+        let failed = try ledger.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "failed-order", connectingStatus: "gems-one")
+        try ledger.clearRemoteOwnerData(failed, configureSugarTextField: "failed")
+        ledger = try expectedGlazeProductID(beginSugarPictureUpload: directory)
+        try check(try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "failed-order", connectingStatus: "gems-one") == nil, "explicit rejected attempt can retry after restart")
+        _ = try ledger.assetName(doughMaturationStudy: failed, connectingStatus: "gems-one", doughStretchRhythm: "late-failed-trade", crumbScoutline: receipt, donutNoteCalendar: "purchased", crumbDensityInsight: Date())
+        try check(try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "failed-order", connectingStatus: "gems-one")?["status"] as? String == "purchased", "late transaction keeps original rejected token ownership")
+        try ledger.WevVGlazeVideoDialController(donutBackdropAsset: scope, doughmeltawayCrust: ["late-failed-trade"])
+        try ledger.clearRemoteOwnerData(failed, configureSugarTextField: "failed")
+        try rejects("error result cannot downgrade durable ACK") { _ = try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "failed-order", connectingStatus: "gems-one") }
+        let uncertain = try ledger.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "uncertain-order", connectingStatus: "gems-one")
+        try ledger.clearRemoteOwnerData(uncertain, configureSugarTextField: "uncertain")
+        ledger = try expectedGlazeProductID(beginSugarPictureUpload: directory)
+        try rejects("ambiguous outcome remains blocked after restart") { _ = try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "uncertain-order", connectingStatus: "gems-one") }
         for index in 0..<25 {
-            let context = try ledger.begin(scope: scope, orderCode: "batch-\(index)", productID: "gems-one")
-            _ = try ledger.capture(token: context, productID: "gems-one", transactionID: "batch-trade-\(index)", receipt: receipt, state: index == 0 ? "restored" : "purchased", purchasedAt: Date(timeIntervalSince1970: Double(index)))
+            let context = try ledger.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "batch-\(index)", connectingStatus: "gems-one")
+            _ = try ledger.assetName(doughMaturationStudy: context, connectingStatus: "gems-one", doughStretchRhythm: "batch-trade-\(index)", crumbScoutline: receipt, donutNoteCalendar: index == 0 ? "restored" : "purchased", crumbDensityInsight: Date(timeIntervalSince1970: Double(index)))
         }
-        let batch = try ledger.pending(scope: scope, excluded: [])
+        let batch = try ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: [])
         try check(batch.count == 20 && batch[0]["state"] as? String == "restored", "maximum batch size and exact stored state")
         let exclusion = (0..<20).map { "batch-trade-\($0)" }
-        try check(try ledger.pending(scope: scope, excluded: exclusion).count == 5, "exclude permits pagination without deletion")
-        let largeScope = donutSnapshot(environmentID: scope.environmentID, appID: scope.appID, ownerID: "large-receipts")
+        try check(try ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: exclusion).count == 5, "exclude permits pagination without deletion")
+        let largeScope = berryTone(boundary: scope.boundary, applyDonutAvatarChoice: scope.applyDonutAvatarChoice, cocoaWeekendFestival: "large-receipts")
         let largeReceipt = Data(repeating: 42, count: 1_100_000).base64EncodedString()
         for index in 0..<2 {
-            let context = try ledger.begin(scope: largeScope, orderCode: "large-\(index)", productID: "gems-one")
-            _ = try ledger.capture(token: context, productID: "gems-one", transactionID: "large-trade-\(index)", receipt: largeReceipt, state: "purchased", purchasedAt: Date(timeIntervalSince1970: Double(index)))
+            let context = try ledger.apricotCenter(donutBackdropAsset: largeScope, cocoaRaspberryMedley: "large-\(index)", connectingStatus: "gems-one")
+            _ = try ledger.assetName(doughMaturationStudy: context, connectingStatus: "gems-one", doughStretchRhythm: "large-trade-\(index)", crumbScoutline: largeReceipt, donutNoteCalendar: "purchased", crumbDensityInsight: Date(timeIntervalSince1970: Double(index)))
         }
-        try check(try ledger.pending(scope: largeScope, excluded: []).count == 1, "aggregate receipt character bound")
-        let hugeScope = donutSnapshot(environmentID: scope.environmentID, appID: scope.appID, ownerID: "oversize-receipt")
-        let hugeToken = try ledger.begin(scope: hugeScope, orderCode: "huge-order", productID: "gems-one")
-        _ = try ledger.capture(token: hugeToken, productID: "gems-one", transactionID: "huge-trade", receipt: Data(repeating: 7, count: 2_100_000).base64EncodedString(), state: "purchased", purchasedAt: Date())
-        try rejects("oversize receipt fails instead of pretending queue empty") { _ = try ledger.pending(scope: hugeScope, excluded: []) }
+        try check(try ledger.configurePastryButton(donutBackdropAsset: largeScope, brownButterShell: []).count == 1, "aggregate receipt character bound")
+        let hugeScope = berryTone(boundary: scope.boundary, applyDonutAvatarChoice: scope.applyDonutAvatarChoice, cocoaWeekendFestival: "oversize-receipt")
+        let hugeToken = try ledger.apricotCenter(donutBackdropAsset: hugeScope, cocoaRaspberryMedley: "huge-order", connectingStatus: "gems-one")
+        _ = try ledger.assetName(doughMaturationStudy: hugeToken, connectingStatus: "gems-one", doughStretchRhythm: "huge-trade", crumbScoutline: Data(repeating: 7, count: 2_100_000).base64EncodedString(), donutNoteCalendar: "purchased", crumbDensityInsight: Date())
+        try rejects("oversize receipt fails instead of pretending queue empty") { _ = try ledger.configurePastryButton(donutBackdropAsset: hugeScope, brownButterShell: []) }
         let backupDirectory = root.appendingPathComponent("saved-ledger")
         try FileManager.default.moveItem(at: directory, to: backupDirectory)
         try Data("not-a-directory".utf8).write(to: directory)
-        try rejects("failed persistence is surfaced") { _ = try ledger.begin(scope: scope, orderCode: "disk-failure", productID: "gems-one") }
+        try rejects("failed persistence is surfaced") { _ = try ledger.apricotCenter(donutBackdropAsset: scope, cocoaRaspberryMedley: "disk-failure", connectingStatus: "gems-one") }
         try FileManager.default.removeItem(at: directory)
         try FileManager.default.moveItem(at: backupDirectory, to: directory)
-        ledger = try expectedGlazeProductID(directory: directory)
-        try check(try ledger.existingResult(scope: scope, orderCode: "disk-failure", productID: "gems-one") == nil && ledger.pending(scope: scope, excluded: []).count == 20, "failed write preserves prior durable state")
-        let file = directory.appendingPathComponent(scope.storageKey + ".json")
+        ledger = try expectedGlazeProductID(beginSugarPictureUpload: directory)
+        try check(try ledger.buildPastryEditScrollShell(donutBackdropAsset: scope, cocoaRaspberryMedley: "disk-failure", connectingStatus: "gems-one") == nil && ledger.configurePastryButton(donutBackdropAsset: scope, brownButterShell: []).count == 20, "failed write preserves prior durable state")
+        let file = directory.appendingPathComponent(scope.donutPinKey + ".json")
         let fileAttributes = try FileManager.default.attributesOfItem(atPath: file.path)
         let directoryAttributes = try FileManager.default.attributesOfItem(atPath: directory.path)
         try check((fileAttributes[.posixPermissions] as? NSNumber)?.intValue == 0o600 && (directoryAttributes[.posixPermissions] as? NSNumber)?.intValue == 0o700, "private file and directory permissions")
@@ -149,11 +149,11 @@ struct PurchaseLedgerVerification {
         try check(try FileManager.default.contentsOfDirectory(atPath: directory.path).allSatisfy { $0.hasSuffix(".json") && !$0.contains("account-one") }, "opaque paths and no leftover staging files")
         let corruptDirectory = root.appendingPathComponent("corrupt")
         try FileManager.default.createDirectory(at: corruptDirectory, withIntermediateDirectories: true)
-        try Data("broken".utf8).write(to: corruptDirectory.appendingPathComponent(scope.storageKey + ".json"))
-        try rejects("corrupt persistent data is not an empty queue") { _ = try expectedGlazeProductID(directory: corruptDirectory) }
+        try Data("broken".utf8).write(to: corruptDirectory.appendingPathComponent(scope.donutPinKey + ".json"))
+        try rejects("corrupt persistent data is not an empty queue") { _ = try expectedGlazeProductID(beginSugarPictureUpload: corruptDirectory) }
         let symlink = root.appendingPathComponent("symlink-ledger")
         try FileManager.default.createSymbolicLink(at: symlink, withDestinationURL: directory)
-        try rejects("symlink store rejected") { _ = try expectedGlazeProductID(directory: symlink) }
+        try rejects("symlink store rejected") { _ = try expectedGlazeProductID(beginSugarPictureUpload: symlink) }
         print("SDK2 purchase ledger: \(passed) offline checks passed; no StoreKit purchase or server request performed.")
     }
 }

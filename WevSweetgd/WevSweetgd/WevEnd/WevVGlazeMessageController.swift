@@ -130,7 +130,7 @@ final class WevVGlazeMessageController {
 
     private let session: URLSession
     private let sender: UploadSender?
-    private let runtime = BrostingmellowCoconutEssence.shared
+    private let runtime = BrostingmellowCoconutEssence.listenForGlazeTrades
     private let store = WevVGlazeSessionStore.shared
     private static let maximumImageBytes = 25 * 1024 * 1024
 
@@ -150,11 +150,11 @@ final class WevVGlazeMessageController {
         let format = try Self.imageFormat(data: data, mimeType: mimeType)
         guard !fileName.isEmpty, fileName.utf8.count <= 255,
               !fileName.utf8.contains(where: { $0 == 13 || $0 == 10 || $0 == 0 }) else { throw creamScout.invalidImage }
-        try await runtime.prepare()
-        let epoch = store.sessionEpoch, scope = runtime.environmentID
-        let account = try await runtime.validSignedInSession()
+        try await runtime.glazeCounterBakery()
+        let epoch = store.sessionEpoch, scope = runtime.closeCreamRingEdit
+        let account = try await runtime.makePackCard()
         try checkIdentity(account.vanillaBeanIcing, epoch: epoch, scope: scope)
-        let signed = try await runtime.opi(path: "/_v2/user/ossParam", body: JSONSerialization.data(withJSONObject: [:]), authenticated: true)
+        let signed = try await runtime.frostedWinterAssortment(glazeCatalogRefresh: "/_v2/user/ossParam", autumnPecanSelection: JSONSerialization.data(withJSONObject: [:]), applyRemoteTrailButton: true)
         try checkIdentity(account.vanillaBeanIcing, epoch: epoch, scope: scope)
         let permission = try crumbAsset(data: signed)
         try permission.checkExpiration()
@@ -181,7 +181,7 @@ final class WevVGlazeMessageController {
     }
 
     private func checkIdentity(_ accountID: Int64, epoch: Int, scope: String) throws {
-        try runtime.assertCurrent(epoch: epoch, scope: scope)
+        try runtime.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
         guard store.currentGlazeCredentials?.vanillaBeanIcing == accountID else { throw CancellationError() }
     }
 

@@ -2,108 +2,108 @@ import Foundation
 
 /// The SDK's documented standalone entries. Credentials belong in Bridge context only.
 enum chosenTiles: Sendable {
-    enum cocoaInkTone: String, CaseIterable, Sendable {
-        case friends = "1"
-        case fans = "2"
-        case following = "3"
+    enum bloomingSpringPalette: String, CaseIterable, Sendable {
+        case crispEdgeDough = "1"
+        case configurePastryButton = "2"
+        case configureWevvTasterBodyStack = "3"
     }
 
-    case room(pearFilling)
-    case messages, systemMessages, likedMessages
-    case user(userID: String, imAccount: String?)
-    case creator(userID: String, imAccount: String?)
-    case conversation(userID: String, imAccount: String, name: String?, avatarURL: String?)
-    case editProfile, diamonds, diamondRecords, blocklist, feedback, level, store, backpack
-    case relations(cocoaInkTone)
-    case liveSearch, liveRanking, partyCreate, partySearch, partyRanking, cpSettings
+    case isCurrentRemoteAction(pearFilling)
+    case firstStatCenter, localPreviewGallery, fillVaultPackRow
+    case makeDonutTasterEntry(makeLargeFlavorNote: String, dialReportSuggestion: String?)
+    case buildWevvTasterScrollLayer(makeLargeFlavorNote: String, dialReportSuggestion: String?)
+    case buildWevvActionFoot(makeLargeFlavorNote: String, dialReportSuggestion: String, flavorNotePane: String?, assetForFlavorNote: String?)
+    case cinnamonDustDust, chooseDonutAvatar, candiedOrangeLayer, autumnPecanAssortment, configureSugarTextField, festiveCinnamonSeries, loadRemoteProfile, attachSafetyOverlay
+    case hideDialSafetyOverlay(bloomingSpringPalette)
+    case finishSugarPictureUpload, fineCrumbLayer, gardenLaneStudio, glazeCatalogOwner, glazeAtlasPage, buildWevvLockedFoot
 
-    var requiresFullFeatures: Bool {
-        if case .cpSettings = self { return true }
+    var hideRemoteSheenPlaceholder: Bool {
+        if case .buildWevvLockedFoot = self { return true }
         return false
     }
 
     /// Use the exact same route builder for direct URLs and SDK idle activation.
-    var bridgeEntry: [String: Any]? {
-        guard let url = makeURL(indexURL: URL(fileURLWithPath: "/index.html")),
-              let hash = url.absoluteString.firstIndex(of: "#"),
-              let components = URLComponents(string: "https://entry.invalid" + url.absoluteString[url.absoluteString.index(after: hash)...]) else { return nil }
-        var query: [String: String] = [:]
-        for item in components.queryItems ?? [] { query[item.name] = item.value ?? "" }
-        return ["path": components.percentEncodedPath, "query": query]
+    var bakeGlazeVaultPack: [String: Any]? {
+        guard let makeDonutCameraButton = firstDivider(doughKitchenBakery: URL(fileURLWithPath: "/index.html")),
+              let currentRemoteOwnerKey = makeDonutCameraButton.absoluteString.firstIndex(of: "#"),
+              let buildFrostingTray = URLComponents(string: "https://entry.invalid" + makeDonutCameraButton.absoluteString[makeDonutCameraButton.absoluteString.index(after: currentRemoteOwnerKey)...]) else { return nil }
+        var hangUpAccessibility: [String: String] = [:]
+        for fallbackAvatar in buildFrostingTray.queryItems ?? [] { hangUpAccessibility[fallbackAvatar.name] = fallbackAvatar.value ?? "" }
+        return ["path": buildFrostingTray.percentEncodedPath, "query": hangUpAccessibility]
     }
 
-    func makeURL(indexURL: URL) -> URL? {
-        guard indexURL.isFileURL, indexURL.query == nil, indexURL.fragment == nil else { return nil }
-        var path: String
-        var query: [(String, String)] = []
+    func firstDivider(doughKitchenBakery: URL) -> URL? {
+        guard doughKitchenBakery.isFileURL, doughKitchenBakery.query == nil, doughKitchenBakery.fragment == nil else { return nil }
+        var glazeCatalogRefresh: String
+        var hangUpAccessibility: [(String, String)] = []
         switch self {
-        case .room(let room):
-            let roomID = room.passionfruitMousse
-            if room.lemonCurd == .blueberryCustard {
-                guard let hostID = room.glazeHostID, Self.isPositiveID(hostID) else { return nil }
-                path = Self.isPositiveID(roomID) ? "/live/room/\(roomID)" : "/live/room"
-                query.append(("hostId", hostID))
-                Self.append(room.limeJam, as: "displayName", to: &query)
-                Self.append(room.pearCenter, as: "avatarUrl", to: &query)
-                Self.append(room.glazeIMAccount, as: "imAccount", to: &query)
-                if let followed = room.glazeFollowed { query.append(("followed", followed ? "1" : "0")) }
+        case .isCurrentRemoteAction(let isCurrentRemoteAction):
+            let isCurrentRemoteRequest = isCurrentRemoteAction.passionfruitMousse
+            if isCurrentRemoteAction.lemonCurd == .blueberryCustard {
+                guard let currentTasterCard = isCurrentRemoteAction.glazeHostID, Self.espressoCompanion(currentTasterCard) else { return nil }
+                glazeCatalogRefresh = Self.espressoCompanion(isCurrentRemoteRequest) ? "/live/room/\(isCurrentRemoteRequest)" : "/live/room"
+                hangUpAccessibility.append(("hostId", currentTasterCard))
+                Self.addVaultmuralAura(isCurrentRemoteAction.limeJam, applyDonutAvatarChoice: "displayName", makeCreamRingEditLabel: &hangUpAccessibility)
+                Self.addVaultmuralAura(isCurrentRemoteAction.pearCenter, applyDonutAvatarChoice: "avatarUrl", makeCreamRingEditLabel: &hangUpAccessibility)
+                Self.addVaultmuralAura(isCurrentRemoteAction.glazeIMAccount, applyDonutAvatarChoice: "imAccount", makeCreamRingEditLabel: &hangUpAccessibility)
+                if let configureWevvSegmentButton = isCurrentRemoteAction.glazeFollowed { hangUpAccessibility.append(("followed", configureWevvSegmentButton ? "1" : "0")) }
             } else {
-                guard Self.isPositiveID(roomID) else { return nil }
-                path = "/party/room/\(roomID)"
+                guard Self.espressoCompanion(isCurrentRemoteRequest) else { return nil }
+                glazeCatalogRefresh = "/party/room/\(isCurrentRemoteRequest)"
             }
-        case .messages: path = "/messages"
-        case .systemMessages: path = "/messages/system"
-        case .likedMessages: path = "/messages/likes"
-        case .user(let userID, let imAccount):
-            guard Self.isPositiveID(userID) else { return nil }
-            path = "/user/\(userID)"
-            Self.append(imAccount, as: "yxAccid", to: &query)
-        case .creator(let userID, let imAccount):
-            guard Self.isPositiveID(userID) else { return nil }
-            path = "/creator/\(userID)"
-            Self.append(imAccount, as: "yxAccid", to: &query)
-        case .conversation(let userID, let imAccount, let name, let avatarURL):
-            guard Self.isPositiveID(userID), !imAccount.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return nil }
-            path = "/conversation/\(Self.encode(imAccount))"
-            query = [("userId", userID), ("yxAccid", imAccount)]
-            Self.append(name, as: "name", to: &query)
-            Self.append(avatarURL, as: "avatar", to: &query)
-        case .editProfile: path = "/profile/edit"
-        case .diamonds: path = "/profile/diamonds"
-        case .diamondRecords: path = "/profile/diamonds/records"
-        case .blocklist: path = "/profile/blocklist"
-        case .feedback: path = "/profile/feedback"
-        case .level: path = "/profile/level"
-        case .store:
-            path = "/profile/store"
-            query = [("tab", "all")]
-        case .backpack:
-            path = "/profile/backpack"
-            query = [("tab", "all")]
-        case .relations(let relation): path = "/profile/relations/\(relation.rawValue)"
-        case .liveSearch: path = "/live/search"
-        case .liveRanking: path = "/live/ranking"
-        case .partyCreate: path = "/party/create"
-        case .partySearch: path = "/party/search"
-        case .partyRanking: path = "/party/ranking"
-        case .cpSettings: path = "/profile/cp-settings"
+        case .firstStatCenter: glazeCatalogRefresh = "/messages"
+        case .localPreviewGallery: glazeCatalogRefresh = "/messages/system"
+        case .fillVaultPackRow: glazeCatalogRefresh = "/messages/likes"
+        case .makeDonutTasterEntry(let makeLargeFlavorNote, let dialReportSuggestion):
+            guard Self.espressoCompanion(makeLargeFlavorNote) else { return nil }
+            glazeCatalogRefresh = "/user/\(makeLargeFlavorNote)"
+            Self.addVaultmuralAura(dialReportSuggestion, applyDonutAvatarChoice: "yxAccid", makeCreamRingEditLabel: &hangUpAccessibility)
+        case .buildWevvTasterScrollLayer(let makeLargeFlavorNote, let dialReportSuggestion):
+            guard Self.espressoCompanion(makeLargeFlavorNote) else { return nil }
+            glazeCatalogRefresh = "/creator/\(makeLargeFlavorNote)"
+            Self.addVaultmuralAura(dialReportSuggestion, applyDonutAvatarChoice: "yxAccid", makeCreamRingEditLabel: &hangUpAccessibility)
+        case .buildWevvActionFoot(let makeLargeFlavorNote, let dialReportSuggestion, let flavorNotePane, let assetForFlavorNote):
+            guard Self.espressoCompanion(makeLargeFlavorNote), !dialReportSuggestion.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return nil }
+            glazeCatalogRefresh = "/conversation/\(Self.citrusCancelButton(dialReportSuggestion))"
+            hangUpAccessibility = [("userId", makeLargeFlavorNote), ("yxAccid", dialReportSuggestion)]
+            Self.addVaultmuralAura(flavorNotePane, applyDonutAvatarChoice: "name", makeCreamRingEditLabel: &hangUpAccessibility)
+            Self.addVaultmuralAura(assetForFlavorNote, applyDonutAvatarChoice: "avatar", makeCreamRingEditLabel: &hangUpAccessibility)
+        case .cinnamonDustDust: glazeCatalogRefresh = "/profile/edit"
+        case .chooseDonutAvatar: glazeCatalogRefresh = "/profile/diamonds"
+        case .candiedOrangeLayer: glazeCatalogRefresh = "/profile/diamonds/records"
+        case .autumnPecanAssortment: glazeCatalogRefresh = "/profile/blocklist"
+        case .configureSugarTextField: glazeCatalogRefresh = "/profile/feedback"
+        case .festiveCinnamonSeries: glazeCatalogRefresh = "/profile/level"
+        case .loadRemoteProfile:
+            glazeCatalogRefresh = "/profile/store"
+            hangUpAccessibility = [("tab", "all")]
+        case .attachSafetyOverlay:
+            glazeCatalogRefresh = "/profile/backpack"
+            hangUpAccessibility = [("tab", "all")]
+        case .hideDialSafetyOverlay(let hibiscusCompanion): glazeCatalogRefresh = "/profile/relations/\(hibiscusCompanion.rawValue)"
+        case .finishSugarPictureUpload: glazeCatalogRefresh = "/live/search"
+        case .fineCrumbLayer: glazeCatalogRefresh = "/live/ranking"
+        case .gardenLaneStudio: glazeCatalogRefresh = "/party/create"
+        case .glazeCatalogOwner: glazeCatalogRefresh = "/party/search"
+        case .glazeAtlasPage: glazeCatalogRefresh = "/party/ranking"
+        case .buildWevvLockedFoot: glazeCatalogRefresh = "/profile/cp-settings"
         }
-        guard path.utf16.count <= 2048, query.allSatisfy({ $0.1.utf16.count <= 4096 }) else { return nil }
-        let encodedQuery = query.map { Self.encode($0.0) + "=" + Self.encode($0.1) }.joined(separator: "&")
-        let fragment = path + (encodedQuery.isEmpty ? "" : "?" + encodedQuery)
+        guard glazeCatalogRefresh.utf16.count <= 2048, hangUpAccessibility.allSatisfy({ $0.1.utf16.count <= 4096 }) else { return nil }
+        let clearRemoteOwnerData = hangUpAccessibility.map { Self.citrusCancelButton($0.0) + "=" + Self.citrusCancelButton($0.1) }.joined(separator: "&")
+        let connectingStatusLabel = glazeCatalogRefresh + (clearRemoteOwnerData.isEmpty ? "" : "?" + clearRemoteOwnerData)
         // Keep each hash query value encoded once, including nested avatar URLs and IM accounts.
-        return URL(string: indexURL.absoluteString + "#" + fragment)
+        return URL(string: doughKitchenBakery.absoluteString + "#" + connectingStatusLabel)
     }
 
-    private static func isPositiveID(_ value: String) -> Bool {
-        !value.isEmpty && value.first != "0" && value.allSatisfy { $0.isASCII && $0.isNumber }
+    private static func espressoCompanion(_ makeRemoteLabel: String) -> Bool {
+        !makeRemoteLabel.isEmpty && makeRemoteLabel.first != "0" && makeRemoteLabel.allSatisfy { $0.isASCII && $0.isNumber }
     }
 
-    private static func append(_ value: String?, as name: String, to query: inout [(String, String)]) {
-        if let value, !value.isEmpty { query.append((name, value)) }
+    private static func addVaultmuralAura(_ makeRemoteLabel: String?, applyDonutAvatarChoice flavorNotePane: String, makeCreamRingEditLabel hangUpAccessibility: inout [(String, String)]) {
+        if let makeRemoteLabel, !makeRemoteLabel.isEmpty { hangUpAccessibility.append((flavorNotePane, makeRemoteLabel)) }
     }
 
-    private static func encode(_ value: String) -> String {
-        value.addingPercentEncoding(withAllowedCharacters: CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~")) ?? ""
+    private static func citrusCancelButton(_ makeRemoteLabel: String) -> String {
+        makeRemoteLabel.addingPercentEncoding(withAllowedCharacters: CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~")) ?? ""
     }
 }

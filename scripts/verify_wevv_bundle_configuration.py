@@ -290,16 +290,16 @@ struct Fixture: Decodable {
                 : fixture.seed
             var accepted = false
             do {
-                let configuration = try CreamRingDellController(bundle: bundle, seed: seed, hostVersion: fixture.hostVersion)
+                let configuration = try CreamRingDellController(bakerChoiceJournal: bundle, cocoaWeekendFestival: seed, blushDrizzleDetail: fixture.hostVersion)
                 accepted = true
-                precondition(configuration.profile.appID == fixture.expectedAppID)
+                precondition(configuration.cherryCenter.appID == fixture.expectedAppID)
                 if let routing = fixture.expectedRouting {
-                    precondition(configuration.profile.environment == routing.environment)
-                    precondition(configuration.profile.bootstrapAppID == routing.bootstrapAppId)
-                    precondition(configuration.profile.bootstrapBaseURL.absoluteString == routing.bootstrapBaseUrl)
+                    precondition(configuration.cherryCenter.environment == routing.environment)
+                    precondition(configuration.cherryCenter.bootstrapAppID == routing.bootstrapAppId)
+                    precondition(configuration.cherryCenter.bootstrapBaseURL.absoluteString == routing.bootstrapBaseUrl)
                 }
-                precondition(configuration.contentVersion.hasPrefix("sdk2-"))
-                if let version = fixture.contentVersion { precondition(configuration.contentVersion == version) }
+                precondition(configuration.bakeryFindKey.hasPrefix("sdk2-"))
+                if let version = fixture.contentVersion { precondition(configuration.bakeryFindKey == version) }
             } catch { }
             guard accepted == fixture.expected else {
                 let label = URL(fileURLWithPath: fixture.bundlePath).lastPathComponent

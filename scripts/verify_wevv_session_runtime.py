@@ -77,8 +77,8 @@ enum glazeGalleryGuide {
     let initialBaseURL = OfflineProfileSelection.apiBaseURL
 }
 @MainActor struct CreamRingDellController {
-    let profile = WevVGlazeVaultPack()
-    init(seed: String, hostVersion: String) throws {}
+    let cherryCenter = WevVGlazeVaultPack()
+    init(cocoaWeekendFestival: String, blushDrizzleDetail: String) throws {}
 }
 enum UKGlazeActortroller { static let glazeArchiveConfigurationSeed = "offline-seed" }
 @MainActor final class WevVGlazeMessageController {
@@ -179,7 +179,7 @@ TESTS = r'''
 @main struct SessionRuntimeVerification {
     @MainActor static func main() async throws {
         let scenario = CommandLine.arguments[1]
-        let runtime = BrostingmellowCoconutEssence.shared
+        let runtime = BrostingmellowCoconutEssence.listenForGlazeTrades
         let store = WevVGlazeSessionStore.shared
         func check(_ value: Bool, _ label: String) throws {
             if !value { throw NSError(domain: "OfflineSessionRegression", code: 1, userInfo: [NSLocalizedDescriptionKey: label]) }
@@ -195,7 +195,7 @@ TESTS = r'''
                 citrusZestShell: Date().addingTimeInterval(expiredAccess ? -10 : 1800),
                 darkCocoaDrizzle: Date().addingTimeInterval(3600), whiteChocolateRibbon: true,
                 legacyToken: "legacy-" + suffix, imAccount: "im-" + suffix, imToken: "im-token-" + suffix,
-                environmentID: environment ?? runtime.environmentID, registered: false), startingNewSession: startingNewSession)
+                environmentID: environment ?? runtime.closeCreamRingEdit, registered: false), startingNewSession: startingNewSession)
         }
         if scenario.hasPrefix("h5-cold-") || scenario == "h5-other-account-open-during-refresh" {
             let scope = "test|12211334|https://test.invalid"
@@ -205,15 +205,15 @@ TESTS = r'''
             switch scenario {
             case "h5-cold-single-open":
                 NertyuChoiceStackLayer.openHandler = { _ in try openResponse(accessToken: "access-startup") }
-                let context = try await runtime.prepareH5Context()
+                let context = try await runtime.glazeLogCollection()
                 try check(NertyuChoiceStackLayer.openRefreshTokens == ["refresh-cold"], "cold H5 preparation must share its matching startup Open")
                 try check(NertyuChoiceStackLayer.latest?.openRevision == 1, "cold startup has one successful Open revision")
                 try check((context["session"] as? [String: Any])?["accessToken"] as? String == "access-startup", "reused Open still accepts its new access token")
             case "h5-cold-concurrent":
                 let gate = Gate()
                 NertyuChoiceStackLayer.openHandler = { _ in try await gate.wait() }
-                let first = Task { try await runtime.prepareH5Context() }
-                let second = Task { try await runtime.prepareH5Context() }
+                let first = Task { try await runtime.glazeLogCollection() }
+                let second = Task { try await runtime.glazeLogCollection() }
                 try await wait(gate)
                 try check(NertyuChoiceStackLayer.openRefreshTokens.count == 1, "concurrent cold preparations share the pending startup Open")
                 gate.succeed(try openResponse())
@@ -227,26 +227,26 @@ TESTS = r'''
                     if attempts == 1 { throw GlazeVaultTradeError.http(503) }
                     return try openResponse()
                 }
-                do { _ = try await runtime.prepareH5Context(); throw NSError(domain: "FailedColdOpenAccepted", code: 20) }
+                do { _ = try await runtime.glazeLogCollection(); throw NSError(domain: "FailedColdOpenAccepted", code: 20) }
                 catch let error as NSError where error.domain == "FailedColdOpenAccepted" { throw error }
                 catch GlazeVaultTradeError.http(503) { }
                 try check(NertyuChoiceStackLayer.latest?.openRevision == 0, "a failed Open cannot create a reusable successful revision")
-                _ = try await runtime.prepareH5Context()
+                _ = try await runtime.glazeLogCollection()
                 try check(attempts == 2 && NertyuChoiceStackLayer.latest?.openRevision == 1 && store.isTasterReady, "retry performs one successful startup Open and preserves the account")
             case "h5-cold-account-switch":
                 let gate = Gate()
                 NertyuChoiceStackLayer.openHandler = { _ in try await gate.wait() }
-                let pending = Task { try await runtime.prepareH5Context() }
+                let pending = Task { try await runtime.glazeLogCollection() }
                 try await wait(gate); try install(2, "new", startingNewSession: true, environment: scope)
                 gate.succeed(try openResponse(accessToken: "access-old-account"))
                 do { _ = try await pending.value; throw NSError(domain: "OldColdContextAccepted", code: 21) }
                 catch is CancellationError { }
                 try check(store.currentGlazeCredentials?.vanillaBeanIcing == 2 && store.currentGlazeCredentials?.brownButterGlaze == "access-new", "late startup Open cannot overwrite the new account")
                 NertyuChoiceStackLayer.openHandler = nil
-                let context = try await runtime.prepareH5Context()
+                let context = try await runtime.glazeLogCollection()
                 try check(NertyuChoiceStackLayer.openRefreshTokens == ["refresh-cold", "refresh-new"] && (context["session"] as? [String: Any])?["accountId"] as? String == "2", "new account requires its own Open")
             case "h5-cold-refresh-key":
-                let context = try await runtime.prepareH5Context()
+                let context = try await runtime.glazeLogCollection()
                 try check(NertyuChoiceStackLayer.openRefreshTokens == ["refresh-cold", "refresh-renewed"], "revision change must not bypass a renewed refresh-token cache key")
                 try check((context["session"] as? [String: Any])?["accessToken"] as? String == "access-renewed", "post-Open session validation uses renewed credentials")
             case "h5-other-account-open-during-refresh":
@@ -255,7 +255,7 @@ TESTS = r'''
                     if path == "/_v2/auth/token/refresh" { return try await gate.wait() }
                     return try json([:])
                 }
-                let pending = Task { try await runtime.prepareH5Context() }
+                let pending = Task { try await runtime.glazeLogCollection() }
                 try await wait(gate)
                 _ = try await NertyuChoiceStackLayer.latest!.open(refreshToken: "refresh-other-account", force: true)
                 gate.succeed(try response(user: 1, suffix: "renewed"))
@@ -268,12 +268,12 @@ TESTS = r'''
         }
         if scenario == "startup-retry" {
             NertyuChoiceStackLayer.bootstrapFailures = 1
-            do { try await runtime.prepare(); throw NSError(domain: "ExpectedStartupFailure", code: 3) }
+            do { try await runtime.glazeCounterBakery(); throw NSError(domain: "ExpectedStartupFailure", code: 3) }
             catch let error as NSError where error.domain == "ExpectedStartupFailure" { throw error }
             catch { }
-            try check(!store.isTasterReady && runtime.apiBaseURL == nil, "failed bootstrap must not create a usable route")
-            try await runtime.prepare()
-            try check(NertyuChoiceStackLayer.bootstrapCount == 2 && runtime.apiBaseURL?.host == "test.invalid", "startup retries the test route")
+            try check(!store.isTasterReady && runtime.WevVWevvTastingQuestCard == nil, "failed bootstrap must not create a usable route")
+            try await runtime.glazeCounterBakery()
+            try check(NertyuChoiceStackLayer.bootstrapCount == 2 && runtime.WevVWevvTastingQuestCard?.host == "test.invalid", "startup retries the test route")
             print("PASS \(scenario)"); return
         }
         if scenario == "production-scope-isolation" {
@@ -326,32 +326,32 @@ TESTS = r'''
             OfflineProfileSelection.bootstrapAppID = "39114002"
             OfflineProfileSelection.apiBaseURL = URL(string: "https://getaway.wevvstream.online")!
         }
-        try await runtime.prepare()
+        try await runtime.glazeCounterBakery()
         switch scenario {
         case "h5-hot-fresh":
             try install(1, "hot")
             let count = NertyuChoiceStackLayer.openRefreshTokens.count
             let revision = NertyuChoiceStackLayer.latest!.openRevision
-            _ = try await runtime.prepareH5Context(); _ = try await runtime.prepareH5Context()
+            _ = try await runtime.glazeLogCollection(); _ = try await runtime.glazeLogCollection()
             try check(NertyuChoiceStackLayer.openRefreshTokens.count == count + 2 && NertyuChoiceStackLayer.latest?.openRevision == revision + 2, "each established H5 entry must force a fresh Open")
         case "h5-hot-open-failure":
             try install(1, "hot")
-            _ = try await runtime.prepareH5Context()
+            _ = try await runtime.glazeLogCollection()
             let revision = NertyuChoiceStackLayer.latest!.openRevision
             let count = NertyuChoiceStackLayer.openRefreshTokens.count
             NertyuChoiceStackLayer.openHandler = { _ in throw GlazeVaultTradeError.http(503) }
-            do { _ = try await runtime.prepareH5Context(); throw NSError(domain: "FailedHotOpenAccepted", code: 23) }
+            do { _ = try await runtime.glazeLogCollection(); throw NSError(domain: "FailedHotOpenAccepted", code: 23) }
             catch let error as NSError where error.domain == "FailedHotOpenAccepted" { throw error }
             catch GlazeVaultTradeError.http(503) { }
             try check(NertyuChoiceStackLayer.latest?.openRevision == revision && store.isTasterReady, "failed forced Open neither advances revision nor falls back to the old Open")
             NertyuChoiceStackLayer.openHandler = nil
-            _ = try await runtime.prepareH5Context()
+            _ = try await runtime.glazeLogCollection()
             try check(NertyuChoiceStackLayer.openRefreshTokens.count == count + 2 && NertyuChoiceStackLayer.latest?.openRevision == revision + 1, "next hot entry retries the failed Open")
         case "h5-context-cancelled", "h5-context-environment-change":
             try install(1, "hot")
             let gate = Gate()
             NertyuChoiceStackLayer.openHandler = { _ in try await gate.wait() }
-            let pending = Task { try await runtime.prepareH5Context() }
+            let pending = Task { try await runtime.glazeLogCollection() }
             try await wait(gate)
             if scenario == "h5-context-cancelled" { pending.cancel() }
             else { store.selectGlazeEnvironment("test|other|https://other.invalid") }
@@ -364,11 +364,11 @@ TESTS = r'''
                 try check(store.currentGlazeCredentials == nil, "old Open cannot restore credentials into a new environment")
             }
         case "test-scope-default":
-            try check(runtime.environmentID == "test|12211334|https://test.invalid", "legacy test Profile retains its scope")
+            try check(runtime.closeCreamRingEdit == "test|12211334|https://test.invalid", "legacy test Profile retains its scope")
         case "production-scope-isolation":
             let productionScope = "production|12211334|https://test.invalid"
             let testScope = "test|12211334|https://test.invalid"
-            try check(runtime.environmentID == productionScope && store.activeEnvironmentID == productionScope, "production scope uses explicit environment")
+            try check(runtime.closeCreamRingEdit == productionScope && store.activeEnvironmentID == productionScope, "production scope uses explicit environment")
             try check(!store.isTasterReady && store.currentGlazeCredentials == nil, "production must not restore test credentials")
             try install(2, "production")
             store.selectGlazeEnvironment(testScope)
@@ -377,20 +377,20 @@ TESTS = r'''
             try check(store.currentGlazeCredentials?.brownButterGlaze == "access-production", "production credentials restore only in production scope")
         case "production-split-identity-scope":
             let productionScope = "production|39114002|https://production.invalid"
-            try check(runtime.appID == "39114002" && runtime.environmentID == productionScope, "startup ID must not become business identity or scope")
+            try check(runtime.WevvRemoteTrailState == "39114002" && runtime.closeCreamRingEdit == productionScope, "startup ID must not become business identity or scope")
             try check(store.activeEnvironmentID == productionScope && !store.isTasterReady, "split startup identity must not restore a test session")
             try install(2, "production")
-            let context = try await runtime.prepareH5Context()
+            let context = try await runtime.glazeLogCollection()
             try check(context["apiBaseUrl"] as? String == "https://production.invalid", "H5 receives production OPI base")
             try check(store.currentGlazeCredentials?.environmentID == productionScope, "persisted session remains in formal business scope")
         case "production-server-selected-domain":
             let scope = "production|39114002|https://selected.invalid"
-            try check(runtime.environmentID == scope && store.activeEnvironmentID == scope,
+            try check(runtime.closeCreamRingEdit == scope && store.activeEnvironmentID == scope,
                       "credential scope follows the server route, not the Profile initial address")
             try check(store.currentGlazeCredentials == nil && NertyuChoiceStackLayer.openRefreshTokens == [nil],
                       "Open cannot receive credentials saved for the initial domain")
             try install(2, "selected")
-            let context = try await runtime.prepareH5Context()
+            let context = try await runtime.glazeLogCollection()
             try check(context["apiBaseUrl"] as? String == "https://selected.invalid"
                       && (context["session"] as? [String: Any])?["accessToken"] as? String == "access-selected",
                       "H5 receives the server-selected address and matching session")
@@ -399,9 +399,9 @@ TESTS = r'''
         case "production-domain-migration":
             let scope = "production|39114002|https://getaway.wevvstream.online"
             let oldScope = "production|39114002|https://opi.mbolw89a.link"
-            try check(runtime.appID == "39114002" && OfflineProfileSelection.bootstrapAppID == runtime.appID,
+            try check(runtime.WevvRemoteTrailState == "39114002" && OfflineProfileSelection.bootstrapAppID == runtime.WevvRemoteTrailState,
                       "new bootstrap and business identities both use the formal App ID")
-            try check(runtime.environmentID == scope && store.activeEnvironmentID == scope,
+            try check(runtime.closeCreamRingEdit == scope && store.activeEnvironmentID == scope,
                       "new formal domain is the active credential scope")
             try check(!store.isTasterReady && store.currentGlazeCredentials == nil,
                       "new formal domain cannot restore old-domain credentials")
@@ -413,7 +413,7 @@ TESTS = r'''
                       && store.hasDailyDonutStamp(dayKey: "offline-day"),
                       "domain migration preserves local shop, activity and check-in records")
             try install(2, "new-domain")
-            let context = try await runtime.prepareH5Context()
+            let context = try await runtime.glazeLogCollection()
             let session = context["session"] as? [String: Any]
             try check(context["apiBaseUrl"] as? String == "https://getaway.wevvstream.online"
                       && session?["accessToken"] as? String == "access-new-domain",
@@ -421,11 +421,11 @@ TESTS = r'''
             try check(glazeGalleryGuide.packets[oldScope] == oldPacket && store.currentGlazeCredentials?.environmentID == scope,
                       "new-domain login does not overwrite or migrate the original credential packet")
         case "guest-isolation":
-            let guest = try await runtime.browsingSession()
-            _ = try await runtime.browsingSession()
+            let guest = try await runtime.beginSugarPictureUpload()
+            _ = try await runtime.beginSugarPictureUpload()
             try check(guest.vanillaBeanIcing == 999 && !store.isTasterReady && store.currentGlazeCredentials == nil, "device session must remain technical")
             try check(NertyuChoiceStackLayer.calls.filter { $0.path == "/_v2/auth/device/login" }.count == 1, "guest session is reused")
-            do { _ = try await runtime.opi(path: "/_v2/user/update", body: json([:]), authenticated: true); throw NSError(domain: "GuestWasAuthorized", code: 4) }
+            do { _ = try await runtime.frostedWinterAssortment(glazeCatalogRefresh: "/_v2/user/update", autumnPecanSelection: json([:]), applyRemoteTrailButton: true); throw NSError(domain: "GuestWasAuthorized", code: 4) }
             catch let error as NSError where error.domain == "GuestWasAuthorized" { throw error }
             catch { }
             try check(!NertyuChoiceStackLayer.calls.contains { $0.path == "/_v2/user/update" }, "guest cannot reach protected request")
@@ -433,8 +433,8 @@ TESTS = r'''
             try install(1, "old", expiredAccess: true)
             let epoch = store.sessionEpoch, gate = Gate()
             NertyuChoiceStackLayer.handler = { path, _, _ in path == "/_v2/auth/token/refresh" ? try await gate.wait() : try json([:]) }
-            let one = Task { try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true) }
-            let two = Task { try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true) }
+            let one = Task { try await runtime.frostedWinterAssortment(glazeCatalogRefresh: "/_v2/user/info", autumnPecanSelection: json([:]), applyRemoteTrailButton: true) }
+            let two = Task { try await runtime.frostedWinterAssortment(glazeCatalogRefresh: "/_v2/user/info", autumnPecanSelection: json([:]), applyRemoteTrailButton: true) }
             try await wait(gate)
             for _ in 0..<50 { await Task.yield() }
             gate.succeed(try response(user: 1, suffix: "new"))
@@ -446,7 +446,7 @@ TESTS = r'''
             try install(1, "one")
             let gate = Gate()
             NertyuChoiceStackLayer.handler = { _, _, _ in try await gate.wait() }
-            let pending = Task { try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true) }
+            let pending = Task { try await runtime.frostedWinterAssortment(glazeCatalogRefresh: "/_v2/user/info", autumnPecanSelection: json([:]), applyRemoteTrailButton: true) }
             try await wait(gate); try install(2, "two"); gate.succeed(try json(["userId": 1]))
             do { _ = try await pending.value; throw NSError(domain: "LateAccountDataAccepted", code: 5) }
             catch is CancellationError { }
@@ -457,15 +457,15 @@ TESTS = r'''
             TestDefaults.shared.set("retired-token", forKey: "wevv_glaze_token")
             TestDefaults.shared.set("retired-profile", forKey: "wevv_glaze_taster_profile")
             NertyuChoiceStackLayer.openHandler = { _ in try openResponse(accessToken: "access-open-old") }
-            _ = try await runtime.prepareH5Context()
-            _ = try await runtime.voiceList(path: "/sapi/room/list")
+            _ = try await runtime.glazeLogCollection()
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: "/sapi/room/list")
             let profile = WevVDoughRingTasterProfile(ringCutterKey: "1", powderedAtlas: "offline1@example.invalid",
                 glazeNickname: "Departing User", sugarHandle: "@old", crumbBio: "old bio",
                 donutFrameAsset: "private-avatar", glazeTrailCount: 8, sprinkleTasterCount: 9,
                 bakeryShelfTotal: 3, glazeVaultCount: 100)
             store.storeDoughRingTasterProfile(profile)
             let departing = store.currentGlazeCredentials!
-            let oldScope = runtime.environmentID
+            let oldScope = runtime.closeCreamRingEdit
             var revoked = false
             NertyuChoiceStackLayer.handler = { path, _, token in
                 if path == "/_v2/auth/logout" {
@@ -492,14 +492,14 @@ TESTS = r'''
             try check(!restored.isTasterReady && restored.currentGlazeCredentials == nil,
                 "a new session store cannot restore the signed-out account")
             NertyuChoiceStackLayer.handler = nil
-            _ = try await runtime.browsingOPI(path: "/_v2/moments/feed", body: [:])
-            _ = try await runtime.voiceList(path: "/sapi/room/list")
+            _ = try await runtime.bakeryPieces(glazeCatalogRefresh: "/_v2/moments/feed", autumnPecanSelection: [:])
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: "/sapi/room/list")
             try check(NertyuChoiceStackLayer.calls.first(where: { $0.path == "/_v2/moments/feed" })?.token == "access-guest"
                 && NertyuChoiceStackLayer.calls.last?.token == "ticket-legacy-guest"
                 && NertyuChoiceStackLayer.exchangeCount == 2,
                 "post-logout feeds/voice lists use fresh technical browsing credentials, not the user's OPI/SAPI tokens")
             do {
-                _ = try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true)
+                _ = try await runtime.frostedWinterAssortment(glazeCatalogRefresh: "/_v2/user/info", autumnPecanSelection: json([:]), applyRemoteTrailButton: true)
                 throw NSError(domain: "SignedOutRequestSent", code: 21)
             } catch let error as NSError where error.domain == "SignedOutRequestSent" { throw error }
             catch { }
@@ -516,7 +516,7 @@ TESTS = r'''
             let foundation = NertyuChoiceStackLayer.latest!
             let pending = Task { try await foundation.open(refreshToken: "refresh-old", force: true) }
             try await wait(oldGate)
-            runtime.invalidateAuthentication()
+            runtime.dropPastryEditCanvas()
             try install(2, "new", startingNewSession: true)
             let newOpen = Task { try await foundation.open(refreshToken: "refresh-new", force: true) }
             try await wait(newGate)
@@ -552,7 +552,7 @@ TESTS = r'''
                 return try await gate.wait()
             }
             let pending = Task { try await WevVGlazeSessionRepository.pastryTrailDiary.caramelLatteCompanion(saltedCaramelFinish: "offline@example.invalid", cocoaWeekendFestival: "123456") }
-            try await wait(gate); runtime.invalidateAuthentication(); gate.succeed(try json(["userId": 1]))
+            try await wait(gate); runtime.dropPastryEditCanvas(); gate.succeed(try json(["userId": 1]))
             do { _ = try await pending.value; throw NSError(domain: "CancelledLoginReportedSuccess", code: 6) }
             catch is CancellationError { }
             try check(!store.isTasterReady, "late login profile cannot restore a signed-out account")
@@ -572,8 +572,8 @@ TESTS = r'''
         case "late-guest-response":
             let gate = Gate()
             NertyuChoiceStackLayer.handler = { _, _, _ in try await gate.wait() }
-            let pending = Task { try await runtime.browsingSession() }
-            try await wait(gate); try install(1, "signed-in"); runtime.clearTransientSessions()
+            let pending = Task { try await runtime.beginSugarPictureUpload() }
+            try await wait(gate); try install(1, "signed-in"); runtime.cinnamonSugarFinish()
             gate.succeed(try response(user: 999, suffix: "guest"))
             do { _ = try await pending.value; throw NSError(domain: "LateGuestAccepted", code: 8) }
             catch is CancellationError { }
@@ -581,14 +581,14 @@ TESTS = r'''
         case "refresh-identity-mismatch":
             try install(1, "old", expiredAccess: true)
             NertyuChoiceStackLayer.handler = { _, _, _ in try response(user: 2, suffix: "wrong-owner") }
-            do { _ = try await runtime.validSignedInSession(); throw NSError(domain: "WrongRefreshOwnerAccepted", code: 9) }
+            do { _ = try await runtime.makePackCard(); throw NSError(domain: "WrongRefreshOwnerAccepted", code: 9) }
             catch let error as NSError where error.domain == "WrongRefreshOwnerAccepted" { throw error }
             catch { }
             try check(store.currentGlazeCredentials?.vanillaBeanIcing == 1, "refresh cannot change account identity")
         case "refresh-authentication-failure":
             try install(1, "old", expiredAccess: true)
             NertyuChoiceStackLayer.handler = { _, _, _ in throw GlazeVaultTradeError.http(401) }
-            do { _ = try await runtime.validSignedInSession(); throw NSError(domain: "RejectedRefreshAccepted", code: 10) }
+            do { _ = try await runtime.makePackCard(); throw NSError(domain: "RejectedRefreshAccepted", code: 10) }
             catch let error as NSError where error.domain == "RejectedRefreshAccepted" { throw error }
             catch { }
             try check(!store.isTasterReady && store.currentGlazeCredentials == nil, "rejected refresh clears the current session")
@@ -596,10 +596,10 @@ TESTS = r'''
             try install(1, "old", expiredAccess: true)
             let gate = Gate()
             NertyuChoiceStackLayer.handler = { _, _, _ in try await gate.wait() }
-            let pending = Task { try await runtime.validSignedInSession() }
+            let pending = Task { try await runtime.makePackCard() }
             try await wait(gate)
             try install(1, "new", startingNewSession: true)
-            runtime.clearTransientSessions()
+            runtime.cinnamonSugarFinish()
             gate.fail(GlazeVaultTradeError.http(401))
             do { _ = try await pending.value; throw NSError(domain: "LateRefreshAccepted", code: 12) }
             catch let error as NSError where error.domain == "LateRefreshAccepted" { throw error }
@@ -615,10 +615,10 @@ TESTS = r'''
                 if businessCalls == 1 { throw GlazeVaultTradeError.http(401) }
                 return try await gate.wait()
             }
-            let pending = Task { try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true) }
+            let pending = Task { try await runtime.frostedWinterAssortment(glazeCatalogRefresh: "/_v2/user/info", autumnPecanSelection: json([:]), applyRemoteTrailButton: true) }
             try await wait(gate)
             try install(1, "new", startingNewSession: scenario == "late-retry-failure-after-relogin")
-            runtime.clearTransientSessions()
+            runtime.cinnamonSugarFinish()
             gate.fail(GlazeVaultTradeError.http(401))
             do { _ = try await pending.value; throw NSError(domain: "LateRetryAccepted", code: 13) }
             catch let error as NSError where error.domain == "LateRetryAccepted" { throw error }
@@ -640,12 +640,12 @@ TESTS = r'''
             }
             let pending = Task {
                 if scenario == "late-profile-401-after-refresh" {
-                    return try await runtime.opi(path: "/_v2/user/info", body: json([:]), authenticated: true)
+                    return try await runtime.frostedWinterAssortment(glazeCatalogRefresh: "/_v2/user/info", autumnPecanSelection: json([:]), applyRemoteTrailButton: true)
                 }
-                return try await runtime.browsingOPI(path: "/_v2/user/info", body: [:])
+                return try await runtime.bakeryPieces(glazeCatalogRefresh: "/_v2/user/info", autumnPecanSelection: [:])
             }
             try await wait(gate)
-            _ = try await runtime.opi(path: "/_v2/moments/feed", body: json([:]), authenticated: true)
+            _ = try await runtime.frostedWinterAssortment(glazeCatalogRefresh: "/_v2/moments/feed", autumnPecanSelection: json([:]), applyRemoteTrailButton: true)
             gate.fail(GlazeVaultTradeError.http(401))
             _ = try await pending.value
             try check(refreshCalls == 1 && store.isTasterReady && store.currentGlazeCredentials?.brownButterGlaze == "access-renewed",
@@ -653,31 +653,31 @@ TESTS = r'''
             try check(NertyuChoiceStackLayer.calls.last?.token == "access-renewed", "profile retry uses the latest account token")
         case "sapi-ticket-isolation":
             try install(1, "one")
-            _ = try await runtime.voiceList(path: "/sapi/room/list")
-            _ = try await runtime.voiceList(path: "/sapi/room/list")
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: "/sapi/room/list")
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: "/sapi/room/list")
             try check(NertyuChoiceStackLayer.exchangeCount == 1, "same account reuses SAPI ticket")
             try install(2, "two")
-            _ = try await runtime.voiceList(path: "/sapi/room/list")
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: "/sapi/room/list")
             try check(NertyuChoiceStackLayer.exchangeCount == 2, "account switch exchanges a separate SAPI ticket")
             try check(NertyuChoiceStackLayer.calls.last?.token == "ticket-legacy-two", "room list uses current account SAPI ticket")
         case "sapi-cursor-contract":
             try install(1, "one")
             let recommended = "/sapi/weidou/v1/client/party/room/list"
             let followed = "/sapi/weidou/v1/client/party/room/followed/list"
-            _ = try await runtime.voiceList(path: recommended)
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: recommended)
             var body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check(body["pageSize"] as? Int == 10 && body["languageCode"] as? String == "" && body["version"] as? String == "v2", "recommended first page matches H5 request")
             try check(body["offset"] == nil && body["snapshotId"] == nil && body["ignoreRoomIds"] == nil, "first page omits the cursor and exclusion list")
-            _ = try await runtime.voiceList(path: followed)
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: followed)
             body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check(body["languageCode"] is NSNull && body["offset"] == nil && body["snapshotId"] == nil, "followed first page sends null language and no cursor")
-            _ = try await runtime.voiceList(path: recommended, cursor: .init(offset: Int64.min, snapshotID: "cursor-last"), pageSize: 7)
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: recommended, cancelCitrusTray: .init(offset: Int64.min, snapshotID: "cursor-last"), frostingScroll: 7)
             body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check((body["offset"] as? NSNumber)?.stringValue == String(Int64.min) && body["snapshotId"] as? String == "cursor-last" && body["pageSize"] as? Int == 7, "next page preserves the exact score and snapshot")
-            _ = try await runtime.voiceList(path: followed, cursor: .init(offset: 0, snapshotID: "  "))
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: followed, cancelCitrusTray: .init(offset: 0, snapshotID: "  "))
             body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check(body["offset"] as? Int == 0 && body["snapshotId"] == nil && body["ignoreRoomIds"] == nil && body["languageCode"] is NSNull, "zero score remains valid and empty snapshot is omitted")
-            _ = try await runtime.voiceList(path: recommended, cursor: .init(offset: Int64.max, snapshotID: nil), pageSize: 0)
+            _ = try await runtime.makeSprinkleAuthorAvatar(glazeCatalogRefresh: recommended, cancelCitrusTray: .init(offset: Int64.max, snapshotID: nil), frostingScroll: 0)
             body = try JSONSerialization.jsonObject(with: NertyuChoiceStackLayer.calls.last!.body) as! [String: Any]
             try check((body["offset"] as? NSNumber)?.stringValue == String(Int64.max) && body["snapshotId"] == nil && body["pageSize"] as? Int == 1, "score-only pagination keeps integer precision and a valid page size")
             try check(NertyuChoiceStackLayer.exchangeCount == 1 && NertyuChoiceStackLayer.calls.last?.token == "ticket-legacy-one", "all pages retain the account-scoped SAPI ticket")

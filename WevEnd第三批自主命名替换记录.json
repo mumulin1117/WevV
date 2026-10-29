@@ -1,0 +1,1564 @@
+{
+  "scope": [
+    "WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift",
+    "WevSweetgd/WevSweetgd/WevEnd/GDonutdenCrumbCenterler.swift",
+    "WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift"
+  ],
+  "nameCount": 182,
+  "symbolCount": 400,
+  "sourceEditCount": 1610,
+  "vocabulary": "WeeNo命名提取/归档内声明的自主命名.txt",
+  "mapping": {
+    "XunSugarRosterbrownButterDrizzle": "GzeProfileSafetyTray",
+    "accountGroup": "LmnTasterCardController",
+    "activateGlazeIdleEntry": "WevVGlazeVideoDialController",
+    "activeDonutParlorSection": "WevVWevvTastingQuestCard",
+    "activeEnvironmentID": "WevvFlavorPane",
+    "addGlazeGold": "WevvRemoteTrailState",
+    "alert": "activeSugarPictureTile",
+    "allBakeryAtlasDetails": "activeSugarPictureTilePacket",
+    "almondCutter": "addVaultmuralAura",
+    "almondDuster": "airyCenter",
+    "almondPralineGlaze": "almondPralineShell",
+    "appleCompote": "applyDonutAvatarChoice",
+    "applyGlazeNavigation": "applyPortraitAsset",
+    "aromaSpectrumNotes": "applyRemoteTrailButton",
+    "artisanDoughAtelier": "apricotCenter",
+    "avatarButton": "apricotCompote",
+    "avatars": "apricotFilling",
+    "awaitingFirstPaint": "assetForFlavorNote",
+    "bakerChoiceNotes": "assetKey",
+    "bakeryAtlasDots": "assetName",
+    "bakeryAtlasItems": "attachSafetyOverlay",
+    "bakeryAtlasPages": "autumnMaplePalette",
+    "bakeryAtlasTimer": "autumnPecanAssortment",
+    "bakeryDetails": "autumnPecanSelection",
+    "bakeryFinder": "avatarData",
+    "bakeryFindsStack": "backendCanChat",
+    "bakeryFrameAsset": "backendMutualFollow",
+    "bakeryPinKey": "bakeGlazeVaultPack",
+    "bakeryShelfGuide": "bakeryPieces",
+    "bakeryTagRow": "batchKey",
+    "bakeryTrailCountLabel": "beginSugarPictureUpload",
+    "bakeryTrailLabel": "berryReportAction",
+    "bakeryTrailLine": "berryReportButton",
+    "bakeryTrailMap": "berryTone",
+    "bakeryTrailRow": "bindCurrentDoughRingProfile",
+    "bakeryVisitArchive": "bindPastryEditDismissTap",
+    "bakeryWeekStack": "blackSesameRibbon",
+    "bakingScaleStation": "blockedUsers",
+    "bakingSceneFrame": "blueberryLemonRibbon",
+    "batterWhiskEssentials": "boundary",
+    "beginGlazeContextPreparation": "brownButterIcing",
+    "beginGlazeNativeOverlay": "brownButterShell",
+    "beginVoiceRoomRefresh": "buildCreamRingEditPage",
+    "beginvelvetyCrumbSheen": "buildFrostingTray",
+    "benchRestDetail": "buildPastryEditScrollShell",
+    "bindFlavorKeyboard": "buildRemoteCardPage",
+    "blackberryCream": "buildVaultsuppleDoughDough",
+    "blackberryLemonCombination": "buildVideoDialStudio",
+    "blueberryCompote": "buildWevvActionFoot",
+    "bootstrapPaths": "buildWevvLockedFoot",
+    "bottomActionInset": "buildWevvTasterScrollLayer",
+    "bottomTarget": "buildWevvTasterScrollShell",
+    "boutiqueStudio": "buildWevvTasterTopBar",
+    "brightYuzuAccent": "cancelCitrusTray",
+    "brownButterDrizzle": "candiedOrangeDust",
+    "brunchRouteRoute": "candiedOrangeLayer",
+    "buildBakeryVisitBand": "caramelCurd",
+    "buildDonutParlorFoot": "cherryCenter",
+    "buildDonutStampContent": "cherryCompote",
+    "buildFlavorBackdrop": "chewyCrust",
+    "buildFlavorNoteForm": "chooseDonutAvatar",
+    "buildFlavorNotePanel": "cinnamonDustDust",
+    "buildFlavorScroll": "citrusCancelButton",
+    "buildPastryBackdrop": "cleanText",
+    "buildPastryTrailScroll": "clearRemoteOwnerData",
+    "buildTastingJournalPanel": "closeCreamRingEdit",
+    "buildTastingParlorPanel": "closeVideoDial",
+    "buildTastingQuestBand": "closeWevvSugarPrompt",
+    "buildTastingReportSheet": "closeWevvTasterCard",
+    "butterAromaNotes": "cocoaDrinkComplement",
+    "cafeCheckinCollection": "cocoaGuarded",
+    "cancelGlazeLoading": "cocoaInkTone",
+    "candiedOrangeScatter": "cocoaNibGarnish",
+    "canonicalFolder": "cocoaRaspberryMedley",
+    "captionLabel": "cocoaWeekendFestival",
+    "caramelAppleIcing": "coconutCenter",
+    "caramelMeltJourney": "coffeeCreamShell",
+    "carnivalGlazeTasting": "completion",
+    "carouselAsset": "confectionStudioCounter",
+    "chaiCompanion": "configurePastryButton",
+    "chaiSpiceIcing": "configureSugarTextField",
+    "changedSection": "configureWevvSegmentButton",
+    "checkinArtwork": "configureWevvTasterBodyStack",
+    "cheesecakeMousse": "connectingStatus",
+    "cherryAlmondCombination": "connectingStatusLabel",
+    "cherryAlmondFusion": "conversation",
+    "cherryBlossomCalendar": "copyShade",
+    "cinnamonDustLayer": "creamCard",
+    "cinnamonSugarFinish": "creamFormCard",
+    "cinnamonSugarSwirl": "creamHint",
+    "cinnamonTwist": "crispEdgeDough",
+    "cinnamonVector": "crispyBite",
+    "citrusBergamotEssence": "crumbDensityInsight",
+    "citrusBergamotFinish": "crumbIndex",
+    "citrusBrightnessMatrix": "crumbLabel",
+    "citrusSeasonGathering": "crumbNote",
+    "citrusZestShell": "crumbPorosityStudy",
+    "cityBakeryTrail": "crumbScoutline",
+    "clean": "crumbSeed",
+    "cleanConfirm": "crunchyCrumb",
+    "cleanCrumbBio": "crunchyDough",
+    "cleanCrumbPacketPart": "currentCreamRingFormPacket",
+    "cleanDonutAvatar": "currentGlazeWalletOwner",
+    "clearSugarCrumbLayer": "currentRemoteOwnerKey",
+    "clearSugarCrumbs": "currentTasterCard",
+    "closeDailyDonut": "custardMousse",
+    "closeFlavorNoteForm": "darkCocoaDrizzle",
+    "closePastrySheet": "darkCocoaIcing",
+    "closeSugarSettings": "daylightDisplayFrame",
+    "closeSugarText": "delicateCrust",
+    "closeWevvBakeryGate": "dialReportChoices",
+    "cocoaDiarydonutChanged": "dialReportSuggestion",
+    "cocoaKissExperience": "dialTask",
+    "cocoaVelvetMotif": "donutBackdropAsset",
+    "coldBrewTasting": "donutCheckinCalendar",
+    "confettiSugarPattern": "donutDiaryFolio",
+    "configuration": "donutFrameAsset",
+    "configurationForConnecting": "donutNoteCalendar",
+    "configureGlazeStatusLabel": "donutParlorGuide",
+    "configureProfileCardCountLabel": "donutPinKey",
+    "configureProfileCountLabel": "donutRibbonNote",
+    "configureTastingParlorShelfButton": "donutRow",
+    "confirmButton": "donutSnapshot",
+    "confirmVanillaChoice": "donutSnapshots",
+    "contentRequestID": "donutcitrusMixerView",
+    "contextFields": "donutcitrusTrayButton",
+    "contextPaths": "doughBackButton",
+    "controller": "doughClose",
+    "cookieFlavor": "doughHydrationStudy",
+    "cornerBakery": "doughMaturationStudy",
+    "cornerRadius": "doughScraperGuide",
+    "cortadoCompanion": "doughScrollView",
+    "count": "doughSession",
+    "counterScout": "doughStretchRhythm",
+    "cozyAutumnTrail": "doughmeltawayCrust",
+    "creamProfile": "dropPastryEditCanvas",
+    "crispEdgeCrust": "earlyMorningGuide",
+    "crullerScout": "endCreamRingEditing",
+    "crumbArchiveName": "espressoCompanion",
+    "crumbCancelButton": "espressoCreamFinish",
+    "crumbCaption": "espressoCreamIcing",
+    "crumbCraftLaboratory": "fallbackAvatar",
+    "crumbEmptyImage": "familyOwnedMap",
+    "crumbEraseButton": "feedbackType",
+    "data": "festiveCinnamonPalette",
+    "entry": "festiveCinnamonSeries",
+    "environment": "figCustard",
+    "epoch": "figMousse",
+    "field": "fillVaultPackRow",
+    "flag": "fineCrumbLayer",
+    "followed": "finishSugarPictureUpload",
+    "from": "firstBiteJournal",
+    "gate": "firstStatCenter",
+    "hostID": "flakyLayer",
+    "id": "flavorLibraryEdition",
+    "live": "flavorMenuGuide",
+    "livePage": "flavorNotePane",
+    "name": "flavorNoteSelected",
+    "nextCursor": "flavorNotebookFolio",
+    "number": "flavorQuestCollection",
+    "onClose": "flavorScoutline",
+    "onlineCount": "flavorSketchNotebook",
+    "ownerID": "flavorSpectrumInsight",
+    "present": "floralRoseHarmony",
+    "presenter": "fluffyTexture",
+    "rawCount": "followingList",
+    "roomID": "formatWevvSweetMarkCount",
+    "rooms": "formatter",
+    "root": "freshPastryStudio",
+    "row": "freshnessTagText",
+    "rows": "frostedWinterAssortment",
+    "score": "frostingBackdrop",
+    "status": "frostingDetailFrame",
+    "store": "frostingScroll",
+    "string": "fryingTemperatureStudy",
+    "text": "gardenLaneStudio",
+    "title": "gardenRoseAssortment",
+    "total": "gingerHoneyDrizzle",
+    "value": "gingerHoneyShell",
+    "voice": "glazeAtlasPage",
+    "voiceOnlineCount": "glazeBand",
+    "voicePage": "glazeCatalogOwner"
+  },
+  "vocabularyProvenance": {
+    "XunSugarRosterbrownButterDrizzle": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 6,
+        "kind": "vocabulary"
+      }
+    ],
+    "accountGroup": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 8,
+        "kind": "vocabulary"
+      }
+    ],
+    "activateGlazeIdleEntry": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 16,
+        "kind": "vocabulary"
+      }
+    ],
+    "activeDonutParlorSection": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 17,
+        "kind": "vocabulary"
+      }
+    ],
+    "activeEnvironmentID": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 18,
+        "kind": "vocabulary"
+      }
+    ],
+    "addGlazeGold": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 19,
+        "kind": "vocabulary"
+      }
+    ],
+    "alert": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 23,
+        "kind": "vocabulary"
+      }
+    ],
+    "allBakeryAtlasDetails": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 24,
+        "kind": "vocabulary"
+      }
+    ],
+    "almondCutter": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 25,
+        "kind": "vocabulary"
+      }
+    ],
+    "almondDuster": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 28,
+        "kind": "vocabulary"
+      }
+    ],
+    "almondPralineGlaze": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 30,
+        "kind": "vocabulary"
+      }
+    ],
+    "appleCompote": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 33,
+        "kind": "vocabulary"
+      }
+    ],
+    "applyGlazeNavigation": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 34,
+        "kind": "vocabulary"
+      }
+    ],
+    "aromaSpectrumNotes": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 35,
+        "kind": "vocabulary"
+      }
+    ],
+    "artisanDoughAtelier": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 36,
+        "kind": "vocabulary"
+      }
+    ],
+    "avatarButton": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 37,
+        "kind": "vocabulary"
+      }
+    ],
+    "avatars": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 38,
+        "kind": "vocabulary"
+      }
+    ],
+    "awaitingFirstPaint": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 41,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakerChoiceNotes": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 42,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryAtlasDots": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 43,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryAtlasItems": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 46,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryAtlasPages": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 48,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryAtlasTimer": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 49,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryDetails": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 50,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryFinder": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 52,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryFindsStack": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 54,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryFrameAsset": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 55,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryPinKey": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 56,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryShelfGuide": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 58,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryTagRow": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 61,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryTrailCountLabel": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 62,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryTrailLabel": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 65,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryTrailLine": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 66,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryTrailMap": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 67,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryTrailRow": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 69,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryVisitArchive": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 70,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakeryWeekStack": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 71,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakingScaleStation": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 74,
+        "kind": "vocabulary"
+      }
+    ],
+    "bakingSceneFrame": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 78,
+        "kind": "vocabulary"
+      }
+    ],
+    "batterWhiskEssentials": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 80,
+        "kind": "vocabulary"
+      }
+    ],
+    "beginGlazeContextPreparation": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 83,
+        "kind": "vocabulary"
+      }
+    ],
+    "beginGlazeNativeOverlay": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 84,
+        "kind": "vocabulary"
+      }
+    ],
+    "beginVoiceRoomRefresh": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 85,
+        "kind": "vocabulary"
+      }
+    ],
+    "beginvelvetyCrumbSheen": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 86,
+        "kind": "vocabulary"
+      }
+    ],
+    "benchRestDetail": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 87,
+        "kind": "vocabulary"
+      }
+    ],
+    "bindFlavorKeyboard": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 88,
+        "kind": "vocabulary"
+      }
+    ],
+    "blackberryCream": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 89,
+        "kind": "vocabulary"
+      }
+    ],
+    "blackberryLemonCombination": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 90,
+        "kind": "vocabulary"
+      }
+    ],
+    "blueberryCompote": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 91,
+        "kind": "vocabulary"
+      }
+    ],
+    "bootstrapPaths": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 92,
+        "kind": "vocabulary"
+      }
+    ],
+    "bottomActionInset": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 94,
+        "kind": "vocabulary"
+      }
+    ],
+    "bottomTarget": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 95,
+        "kind": "vocabulary"
+      }
+    ],
+    "boutiqueStudio": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 96,
+        "kind": "vocabulary"
+      }
+    ],
+    "brightYuzuAccent": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 99,
+        "kind": "vocabulary"
+      }
+    ],
+    "brownButterDrizzle": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 100,
+        "kind": "vocabulary"
+      }
+    ],
+    "brunchRouteRoute": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 101,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildBakeryVisitBand": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 105,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildDonutParlorFoot": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 115,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildDonutStampContent": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 116,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildFlavorBackdrop": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 117,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildFlavorNoteForm": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 120,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildFlavorNotePanel": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 125,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildFlavorScroll": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 130,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildPastryBackdrop": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 132,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildPastryTrailScroll": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 133,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildTastingJournalPanel": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 135,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildTastingParlorPanel": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 136,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildTastingQuestBand": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 137,
+        "kind": "vocabulary"
+      }
+    ],
+    "buildTastingReportSheet": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 138,
+        "kind": "vocabulary"
+      }
+    ],
+    "butterAromaNotes": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 139,
+        "kind": "vocabulary"
+      }
+    ],
+    "cafeCheckinCollection": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 140,
+        "kind": "vocabulary"
+      }
+    ],
+    "cancelGlazeLoading": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 141,
+        "kind": "vocabulary"
+      }
+    ],
+    "candiedOrangeScatter": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 142,
+        "kind": "vocabulary"
+      }
+    ],
+    "canonicalFolder": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 143,
+        "kind": "vocabulary"
+      }
+    ],
+    "captionLabel": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 144,
+        "kind": "vocabulary"
+      }
+    ],
+    "caramelAppleIcing": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 145,
+        "kind": "vocabulary"
+      }
+    ],
+    "caramelMeltJourney": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 147,
+        "kind": "vocabulary"
+      }
+    ],
+    "carnivalGlazeTasting": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 149,
+        "kind": "vocabulary"
+      }
+    ],
+    "carouselAsset": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 150,
+        "kind": "vocabulary"
+      }
+    ],
+    "chaiCompanion": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 153,
+        "kind": "vocabulary"
+      }
+    ],
+    "chaiSpiceIcing": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 154,
+        "kind": "vocabulary"
+      }
+    ],
+    "changedSection": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 155,
+        "kind": "vocabulary"
+      }
+    ],
+    "checkinArtwork": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 156,
+        "kind": "vocabulary"
+      }
+    ],
+    "cheesecakeMousse": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 157,
+        "kind": "vocabulary"
+      }
+    ],
+    "cherryAlmondCombination": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 158,
+        "kind": "vocabulary"
+      }
+    ],
+    "cherryAlmondFusion": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 160,
+        "kind": "vocabulary"
+      }
+    ],
+    "cherryBlossomCalendar": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 162,
+        "kind": "vocabulary"
+      }
+    ],
+    "cinnamonDustLayer": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 166,
+        "kind": "vocabulary"
+      }
+    ],
+    "cinnamonSugarFinish": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 167,
+        "kind": "vocabulary"
+      }
+    ],
+    "cinnamonSugarSwirl": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 168,
+        "kind": "vocabulary"
+      }
+    ],
+    "cinnamonTwist": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 172,
+        "kind": "vocabulary"
+      }
+    ],
+    "cinnamonVector": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 173,
+        "kind": "vocabulary"
+      }
+    ],
+    "citrusBergamotEssence": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 180,
+        "kind": "vocabulary"
+      }
+    ],
+    "citrusBergamotFinish": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 181,
+        "kind": "vocabulary"
+      }
+    ],
+    "citrusBrightnessMatrix": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 182,
+        "kind": "vocabulary"
+      }
+    ],
+    "citrusSeasonGathering": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 183,
+        "kind": "vocabulary"
+      }
+    ],
+    "citrusZestShell": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 184,
+        "kind": "vocabulary"
+      }
+    ],
+    "cityBakeryTrail": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 185,
+        "kind": "vocabulary"
+      }
+    ],
+    "clean": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 186,
+        "kind": "vocabulary"
+      }
+    ],
+    "cleanConfirm": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 187,
+        "kind": "vocabulary"
+      }
+    ],
+    "cleanCrumbBio": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 188,
+        "kind": "vocabulary"
+      }
+    ],
+    "cleanCrumbPacketPart": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 190,
+        "kind": "vocabulary"
+      }
+    ],
+    "cleanDonutAvatar": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 191,
+        "kind": "vocabulary"
+      }
+    ],
+    "clearSugarCrumbLayer": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 192,
+        "kind": "vocabulary"
+      }
+    ],
+    "clearSugarCrumbs": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 193,
+        "kind": "vocabulary"
+      }
+    ],
+    "closeDailyDonut": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 195,
+        "kind": "vocabulary"
+      }
+    ],
+    "closeFlavorNoteForm": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 196,
+        "kind": "vocabulary"
+      }
+    ],
+    "closePastrySheet": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 197,
+        "kind": "vocabulary"
+      }
+    ],
+    "closeSugarSettings": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 199,
+        "kind": "vocabulary"
+      }
+    ],
+    "closeSugarText": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 200,
+        "kind": "vocabulary"
+      }
+    ],
+    "closeWevvBakeryGate": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 201,
+        "kind": "vocabulary"
+      }
+    ],
+    "cocoaDiarydonutChanged": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 202,
+        "kind": "vocabulary"
+      }
+    ],
+    "cocoaKissExperience": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 203,
+        "kind": "vocabulary"
+      }
+    ],
+    "cocoaVelvetMotif": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 206,
+        "kind": "vocabulary"
+      }
+    ],
+    "coldBrewTasting": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 208,
+        "kind": "vocabulary"
+      }
+    ],
+    "confettiSugarPattern": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 209,
+        "kind": "vocabulary"
+      }
+    ],
+    "configuration": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 210,
+        "kind": "vocabulary"
+      }
+    ],
+    "configurationForConnecting": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 211,
+        "kind": "vocabulary"
+      }
+    ],
+    "configureGlazeStatusLabel": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 212,
+        "kind": "vocabulary"
+      }
+    ],
+    "configureProfileCardCountLabel": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 213,
+        "kind": "vocabulary"
+      }
+    ],
+    "configureProfileCountLabel": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 214,
+        "kind": "vocabulary"
+      }
+    ],
+    "configureTastingParlorShelfButton": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 215,
+        "kind": "vocabulary"
+      }
+    ],
+    "confirmButton": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 216,
+        "kind": "vocabulary"
+      }
+    ],
+    "confirmVanillaChoice": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 217,
+        "kind": "vocabulary"
+      }
+    ],
+    "contentRequestID": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 218,
+        "kind": "vocabulary"
+      }
+    ],
+    "contextFields": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 219,
+        "kind": "vocabulary"
+      }
+    ],
+    "contextPaths": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 221,
+        "kind": "vocabulary"
+      }
+    ],
+    "controller": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 222,
+        "kind": "vocabulary"
+      }
+    ],
+    "cookieFlavor": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 223,
+        "kind": "vocabulary"
+      }
+    ],
+    "cornerBakery": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 225,
+        "kind": "vocabulary"
+      }
+    ],
+    "cornerRadius": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 226,
+        "kind": "vocabulary"
+      }
+    ],
+    "cortadoCompanion": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 227,
+        "kind": "vocabulary"
+      }
+    ],
+    "count": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 228,
+        "kind": "vocabulary"
+      }
+    ],
+    "counterScout": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 229,
+        "kind": "vocabulary"
+      }
+    ],
+    "cozyAutumnTrail": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 230,
+        "kind": "vocabulary"
+      }
+    ],
+    "creamProfile": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 231,
+        "kind": "vocabulary"
+      }
+    ],
+    "crispEdgeCrust": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 232,
+        "kind": "vocabulary"
+      }
+    ],
+    "crullerScout": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 234,
+        "kind": "vocabulary"
+      }
+    ],
+    "crumbArchiveName": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 237,
+        "kind": "vocabulary"
+      }
+    ],
+    "crumbCancelButton": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 238,
+        "kind": "vocabulary"
+      }
+    ],
+    "crumbCaption": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 239,
+        "kind": "vocabulary"
+      }
+    ],
+    "crumbCraftLaboratory": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 242,
+        "kind": "vocabulary"
+      }
+    ],
+    "crumbEmptyImage": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 244,
+        "kind": "vocabulary"
+      }
+    ],
+    "crumbEraseButton": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 245,
+        "kind": "vocabulary"
+      }
+    ],
+    "data": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 246,
+        "kind": "vocabulary"
+      }
+    ],
+    "entry": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 247,
+        "kind": "vocabulary"
+      }
+    ],
+    "environment": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 248,
+        "kind": "vocabulary"
+      }
+    ],
+    "epoch": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 250,
+        "kind": "vocabulary"
+      }
+    ],
+    "field": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 252,
+        "kind": "vocabulary"
+      }
+    ],
+    "flag": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 254,
+        "kind": "vocabulary"
+      }
+    ],
+    "followed": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 255,
+        "kind": "vocabulary"
+      }
+    ],
+    "from": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 256,
+        "kind": "vocabulary"
+      }
+    ],
+    "gate": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 258,
+        "kind": "vocabulary"
+      }
+    ],
+    "hostID": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 259,
+        "kind": "vocabulary"
+      }
+    ],
+    "id": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 261,
+        "kind": "vocabulary"
+      }
+    ],
+    "live": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 262,
+        "kind": "vocabulary"
+      }
+    ],
+    "livePage": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 263,
+        "kind": "vocabulary"
+      }
+    ],
+    "name": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 264,
+        "kind": "vocabulary"
+      }
+    ],
+    "nextCursor": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 265,
+        "kind": "vocabulary"
+      }
+    ],
+    "number": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 266,
+        "kind": "vocabulary"
+      }
+    ],
+    "onClose": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 267,
+        "kind": "vocabulary"
+      }
+    ],
+    "onlineCount": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 268,
+        "kind": "vocabulary"
+      }
+    ],
+    "ownerID": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 269,
+        "kind": "vocabulary"
+      }
+    ],
+    "present": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 270,
+        "kind": "vocabulary"
+      }
+    ],
+    "presenter": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 271,
+        "kind": "vocabulary"
+      }
+    ],
+    "rawCount": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 273,
+        "kind": "vocabulary"
+      }
+    ],
+    "roomID": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 275,
+        "kind": "vocabulary"
+      }
+    ],
+    "rooms": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 276,
+        "kind": "vocabulary"
+      }
+    ],
+    "root": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 278,
+        "kind": "vocabulary"
+      }
+    ],
+    "row": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 279,
+        "kind": "vocabulary"
+      }
+    ],
+    "rows": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 282,
+        "kind": "vocabulary"
+      }
+    ],
+    "score": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 283,
+        "kind": "vocabulary"
+      }
+    ],
+    "status": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 284,
+        "kind": "vocabulary"
+      }
+    ],
+    "store": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 285,
+        "kind": "vocabulary"
+      }
+    ],
+    "string": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 286,
+        "kind": "vocabulary"
+      }
+    ],
+    "text": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 287,
+        "kind": "vocabulary"
+      }
+    ],
+    "title": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 288,
+        "kind": "vocabulary"
+      }
+    ],
+    "total": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 291,
+        "kind": "vocabulary"
+      }
+    ],
+    "value": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 292,
+        "kind": "vocabulary"
+      }
+    ],
+    "voice": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 293,
+        "kind": "vocabulary"
+      }
+    ],
+    "voiceOnlineCount": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 295,
+        "kind": "vocabulary"
+      }
+    ],
+    "voicePage": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 296,
+        "kind": "vocabulary"
+      }
+    ]
+  },
+  "sourceFiles": [
+    {
+      "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+      "edits": 21,
+      "sha256Before": "324a4db19f2dfce879919c1f60725fe5339398d6e2a219245c945d26ac9f8b93",
+      "sha256After": "19a109e914375c87ecc5b5afbaac860bc35a104aeeae19e791e45823907759f0"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+      "edits": 3,
+      "sha256Before": "689ac5e8fa257708eedb678be27681cfb05049688b275bfe866661e11655791c",
+      "sha256After": "002196a3a351967a75521b1b48538e80835d19f0de209971b995953245c3f0b9"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevVGlazeApplication.swift",
+      "edits": 2,
+      "sha256Before": "a6fb0203c70e80a12ed45e9a0f933c42f0cd7d62926c5500274cc6e955985975",
+      "sha256After": "af43f0dfd1b6f3aec6f7d6328d300ed140cd223815cdd81725d90c09c945188d"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+      "edits": 6,
+      "sha256Before": "8db0e40ef328e1501f7429ddb57919a7e7c5751df5e4403bdf7b68253dc73170",
+      "sha256After": "8005c22510bc258e13975587384fb1e86cd1f24b4961a713644415a8994512ed"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+      "edits": 3,
+      "sha256Before": "362c75cd833ed42f229c56c988eed6e4a84c230ce88aa8c75fc86edd259c87a0",
+      "sha256After": "8f3cbca620589fa8823501fc2bf7163b9d67bc40417a093f409e83f3e6a2c0a5"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+      "edits": 2,
+      "sha256Before": "4e5fe68599d1bc8c83a722189df4dff4c420866b3b1d5eb26d7a0c104eaad2f2",
+      "sha256After": "a0ec7e2b98fbb4cd8b191ae6deb03209fde3d138cf7dcec2deb5eba8a4267e75"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+      "edits": 13,
+      "sha256Before": "e54c17860a2a78e963864eea7cbfb625371b95e9490b72c800f5ff75bf296bae",
+      "sha256After": "20b2b1b769900e47a16bf7482853c5670a577a3feea0b81a6e138a93ae162c22"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/GDonutdenCrumbCenterler.swift",
+      "edits": 44,
+      "sha256Before": "81d26963bb871c0a9a8421fdbee2e117d2a7792b90599bf2b61f42868708fa21",
+      "sha256After": "3df79924c0f865543a3dffc4d72978d19bc291c68ca129c82c6f4302974c1ca3"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/creamPacket.swift",
+      "edits": 5,
+      "sha256Before": "35e9d388f807cb1b6717818f06d2b46a3eb0c1d4f3ef67083b17533a3de930d2",
+      "sha256After": "49af644a5241c70a4044304ad1ebe5db42d94a3ca81a1a2a9a81a3148e636522"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift",
+      "edits": 174,
+      "sha256Before": "e62d6ca1d870d5ab42a0b51b31e80471d5b51d511f8ee478f184cbbc4fd899d9",
+      "sha256After": "75221fcaf234815b0adce03f2fee2757e85cebc7d7ae99e793de18e1384bea4f"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift",
+      "edits": 1337,
+      "sha256Before": "33229dad65973ad60037eaf84741455ba643435b4191082e397985de8646b2ec",
+      "sha256After": "a33e3f773370c03abd66b742fe9c0c66ca419a5e86749e3d489737db9d71c383"
+    }
+  ],
+  "preservedTypes": [
+    "CodingKeys",
+    "DrawcreamScoutSugarStyle",
+    "GDonutdenCrumbCenterler",
+    "expectedGlazeProductID",
+    "fallbackMark",
+    "glazeAvatar",
+    "glazeMarkLabel"
+  ],
+  "checks": {
+    "allCustomDeclarationsRenamed": true,
+    "wordsFromUserVocabulary": true,
+    "originalStringSegmentsUnchanged": true,
+    "changesAreOnlyIdentifierTokenReplacements": true,
+    "classNamesUnchanged": true,
+    "protocolNamesAndCodableKeysPreserved": true
+  },
+  "regressionScripts": [
+    "scripts/verify_wevv_purchase_coordinator.py",
+    "scripts/verify_wevv_purchase_retry.py",
+    "scripts/verify_wevv_native_integration.py",
+    "scripts/verify_wevv_h5_navigation.py",
+    "scripts/test_wevv_room_mapper.py",
+    "scripts/test_wevv_live_pagination.py"
+  ]
+}

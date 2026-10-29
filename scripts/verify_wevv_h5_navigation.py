@@ -180,7 +180,7 @@ struct pearFilling: Sendable {
     }
     static func open(_ proposedPresenter: UIViewController? = nil, onClose: (() -> Void)? = nil) -> (UIViewController, UKGlazeActortroller) {
         let presenter = proposedPresenter ?? UIViewController()
-        GDonutdenCrumbCenterler.present(.messages, from: presenter, onClose: onClose)
+        GDonutdenCrumbCenterler.floralRoseHarmony(.firstStatCenter, firstBiteJournal: presenter, flavorScoutline: onClose)
         guard let host = presenter.presentedViewController as? UKGlazeActortroller else { fatalError("Missing H5 host") }
         return (presenter, host)
     }
@@ -188,19 +188,19 @@ struct pearFilling: Sendable {
         reset()
         let blocked = UIViewController()
         blocked.present(UIViewController(), animated: false)
-        GDonutdenCrumbCenterler.present(.messages, from: blocked)
+        GDonutdenCrumbCenterler.floralRoseHarmony(.firstStatCenter, firstBiteJournal: blocked)
         expect(blocked.presentationCount == 1, "An existing modal prevents duplicate presentation")
 
         reset()
         let invalid = UIViewController()
-        GDonutdenCrumbCenterler.present(.user(userID: "0", imAccount: nil), from: invalid)
+        GDonutdenCrumbCenterler.floralRoseHarmony(.makeDonutTasterEntry(makeLargeFlavorNote: "0", dialReportSuggestion: nil), firstBiteJournal: invalid)
         expect(invalid.presentedViewController is UIAlertController, "Invalid business IDs show the existing alert")
         expect(repository.refreshes == 0, "Invalid entries do not prepare sessions")
 
         reset()
         store.isTasterReady = false
         let guest = UIViewController()
-        GDonutdenCrumbCenterler.present(.messages, from: guest)
+        GDonutdenCrumbCenterler.floralRoseHarmony(.firstStatCenter, firstBiteJournal: guest)
         guard let gate = guest.presentedViewController as? UBakerytropicalMangoEssence else { fatalError("Missing login gate") }
         expect(repository.refreshes == 0, "Guests enter the native welcome without session refresh")
         gate.onWevvDonutReady?()
@@ -297,7 +297,7 @@ struct pearFilling: Sendable {
         reset()
         let navigation = UINavigationController()
         let root = UIViewController()
-        let pushed = UKGlazeActortroller(entry: .messages)
+        let pushed = UKGlazeActortroller(entry: .firstStatCenter)
         pushed.navigationController = navigation
         navigation.viewControllers = [root, pushed]
         navigation.interactivePopGestureRecognizer?.isEnabled = false
@@ -314,7 +314,7 @@ struct pearFilling: Sendable {
         expect(navigation.interactivePopGestureRecognizer?.isEnabled == true && pushed.teardownCount >= 1, "Pop completion tears down the host and restores the prior gesture state")
 
         reset()
-        let unattached = UKGlazeActortroller(entry: .messages)
+        let unattached = UKGlazeActortroller(entry: .firstStatCenter)
         var unattachedCallbacks = 0
         unattached.onGlazeClosed = { unattachedCallbacks += 1 }
         unattached.close()

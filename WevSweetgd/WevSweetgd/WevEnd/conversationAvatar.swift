@@ -5,78 +5,78 @@ import OSLog
 /// The public API deliberately accepts credential lengths/flags instead of tokens or keys.
 @MainActor
 enum conversationAvatar {
-    enum creamFormCard: String {
-        case open, context, bridge
+    enum buildWevvTasterCardPage: String {
+        case flavorSketchNotebook = "open", buildVaultsuppleDoughDough = "context", backendCanChat = "bridge"
     }
 
-    private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "WevV", category: "H5IM")
+    private static let firstBiteJournal = Logger(subsystem: Bundle.main.bundleIdentifier ?? "WevV", category: "H5IM")
 
-    static func openSucceeded(appID: String, imAppKeyLength: Int, imAppKeyValid: Bool, cached: Bool) {
+    static func followingList(WevvRemoteTrailState: String, donutCheckinCalendar: Int, donutNoteCalendar: Bool, bindCurrentDoughRingProfile: Bool) {
         #if DEBUG
-        let app = safeIdentifier(appID)
-        logger.notice("native.open succeeded appId=\(app, privacy: .public) imAppKeyPresent=\(imAppKeyLength > 0) imAppKeyLength=\(max(0, imAppKeyLength)) imAppKeyValid=\(imAppKeyValid) cached=\(cached)")
+        let WevvFlavorPane = isTrailNowOpen(WevvRemoteTrailState)
+        firstBiteJournal.notice("native.open succeeded appId=\(WevvFlavorPane, privacy: .public) imAppKeyPresent=\(donutCheckinCalendar > 0) imAppKeyLength=\(max(0, donutCheckinCalendar)) imAppKeyValid=\(donutNoteCalendar) cached=\(bindCurrentDoughRingProfile)")
         #endif
     }
 
-    static func contextPrepared(appID: String, accountID: Int64, imAccount: String, imTokenLength: Int,
-                                imTokenMatchesAccessToken: Bool) {
+    static func buildVideoDialStudio(WevvRemoteTrailState: String, WevVGlazeVideoDialController: Int64, dialReportSuggestion: String, donutRibbonNote: Int,
+                                donutSnapshots: Bool) {
         #if DEBUG
-        let app = safeIdentifier(appID)
-        let account = safeIdentifier(imAccount)
-        let version = safeIdentifier(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown")
-        let build = safeIdentifier(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "unknown")
-        let system = ProcessInfo.processInfo.operatingSystemVersion
-        logger.notice("native.context prepared appId=\(app, privacy: .public) accountId=\(accountID) yxAccid=\(account, privacy: .public) imTokenPresent=\(imTokenLength > 0) imTokenLength=\(max(0, imTokenLength)) imTokenMatchesAccessToken=\(imTokenMatchesAccessToken) clientVersion=\(version, privacy: .public) build=\(build, privacy: .public) system=\(system.majorVersion).\(system.minorVersion).\(system.patchVersion)")
+        let WevvFlavorPane = isTrailNowOpen(WevvRemoteTrailState)
+        let LmnTasterCardController = isTrailNowOpen(dialReportSuggestion)
+        let makeRemoteMomentCard = isTrailNowOpen(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown")
+        let berryReportAction = isTrailNowOpen(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "unknown")
+        let localPreviewFrame = ProcessInfo.processInfo.operatingSystemVersion
+        firstBiteJournal.notice("native.context prepared appId=\(WevvFlavorPane, privacy: .public) accountId=\(WevVGlazeVideoDialController) yxAccid=\(LmnTasterCardController, privacy: .public) imTokenPresent=\(donutRibbonNote > 0) imTokenLength=\(max(0, donutRibbonNote)) imTokenMatchesAccessToken=\(donutSnapshots) clientVersion=\(makeRemoteMomentCard, privacy: .public) build=\(berryReportAction, privacy: .public) system=\(localPreviewFrame.majorVersion).\(localPreviewFrame.minorVersion).\(localPreviewFrame.patchVersion)")
         #endif
     }
 
-    static func bridgeContextDelivered(generation: UUID, succeeded: Bool) {
+    static func backendMutualFollow(crumbIndex: UUID, localAuthorKey: Bool) {
         #if DEBUG
-        let identifier = generation.uuidString
-        logger.notice("native.bridge contextDelivered=\(succeeded) generation=\(identifier, privacy: .public)")
+        let dialReportChoices = crumbIndex.uuidString
+        firstBiteJournal.notice("native.bridge contextDelivered=\(localAuthorKey) generation=\(dialReportChoices, privacy: .public)")
         #endif
     }
 
-    static func failure(stage: creamFormCard, error: Error) {
+    static func cocoaGuarded(loadRemoteCard: buildWevvTasterCardPage, closeWevvSugarPrompt: Error) {
         #if DEBUG
-        let metadata = failureMetadata(error)
-        logger.error("native.\(stage.rawValue, privacy: .public) failed category=\(metadata.category, privacy: .public) code=\(metadata.code, privacy: .public)")
+        let flakyLayer = confectionStudioCounter(closeWevvSugarPrompt)
+        firstBiteJournal.error("native.\(loadRemoteCard.rawValue, privacy: .public) failed category=\(flakyLayer.bindPastryEditDismissTap, privacy: .public) code=\(flakyLayer.buildCreamRingEditPage, privacy: .public)")
         #endif
     }
 
     /// Rejects arbitrary messages, URLs, whitespace and overlong values before they reach logging.
-    static func safeIdentifier(_ raw: String) -> String {
-        guard (1...64).contains(raw.utf8.count), raw.utf8.allSatisfy({ byte in
-            (48...57).contains(byte) || (65...90).contains(byte) || (97...122).contains(byte)
-                || [45, 46, 64, 95].contains(byte)
+    static func isTrailNowOpen(_ hangUpButton: String) -> String {
+        guard (1...64).contains(hangUpButton.utf8.count), hangUpButton.utf8.allSatisfy({ berryReportButton in
+            (48...57).contains(berryReportButton) || (65...90).contains(berryReportButton) || (97...122).contains(berryReportButton)
+                || [45, 46, 64, 95].contains(berryReportButton)
         }) else { return "redacted" }
-        return raw
+        return hangUpButton
     }
 
-    static func safeBusinessCode(_ raw: String) -> String {
+    static func isSugarGuarded(_ hangUpButton: String) -> String {
         // OPI's envelope code is numeric. Do not accept arbitrary server strings here.
-        guard (1...12).contains(raw.utf8.count), raw.utf8.allSatisfy({ (48...57).contains($0) }) else { return "redacted" }
-        return raw
+        guard (1...12).contains(hangUpButton.utf8.count), hangUpButton.utf8.allSatisfy({ (48...57).contains($0) }) else { return "redacted" }
+        return hangUpButton
     }
 
     /// Never uses an error's description, response body, URL or userInfo.
-    static func failureMetadata(_ error: Error) -> (category: String, code: String) {
-        if error is CancellationError { return ("cancelled", "none") }
-        if let network = error as? GlazeVaultTradeError {
-            switch network {
-            case .http(let status): return ("http", String(status))
-            case .business(let code, _): return ("business", safeBusinessCode(code))
+    static func confectionStudioCounter(_ closeWevvSugarPrompt: Error) -> (bindPastryEditDismissTap: String, buildCreamRingEditPage: String) {
+        if closeWevvSugarPrompt is CancellationError { return ("cancelled", "none") }
+        if let flavorQuestCollection = closeWevvSugarPrompt as? GlazeVaultTradeError {
+            switch flavorQuestCollection {
+            case .http(let loadRemoteMoments): return ("http", String(loadRemoteMoments))
+            case .business(let buildCreamRingEditPage, _): return ("business", isSugarGuarded(buildCreamRingEditPage))
             case .invalidConfiguration: return ("invalid-configuration", "none")
             case .invalidResponse: return ("invalid-response", "none")
             case .missingContract: return ("missing-contract", "none")
             }
         }
-        if let urlError = error as? URLError { return ("url", String(urlError.code.rawValue)) }
-        let native = error as NSError
-        switch native.domain {
-        case NSURLErrorDomain: return ("url", String(native.code))
-        case NSCocoaErrorDomain: return ("cocoa", String(native.code))
-        case "WKErrorDomain": return ("webkit", String(native.code))
+        if let makeDonutSnapshotEntry = closeWevvSugarPrompt as? URLError { return ("url", String(makeDonutSnapshotEntry.code.rawValue)) }
+        let flavorNoteSelected = closeWevvSugarPrompt as NSError
+        switch flavorNoteSelected.domain {
+        case NSURLErrorDomain: return ("url", String(flavorNoteSelected.code))
+        case NSCocoaErrorDomain: return ("cocoa", String(flavorNoteSelected.code))
+        case "WKErrorDomain": return ("webkit", String(flavorNoteSelected.code))
         default: return ("other", "none")
         }
     }

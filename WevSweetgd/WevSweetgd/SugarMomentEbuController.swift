@@ -461,15 +461,15 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         cinnamonSugarFinish = Task { [weak self] in
             guard let self else { return }
             do {
-                try BrostingmellowCoconutEssence.shared.assertCurrent(epoch: submitEpoch, scope: submitScope)
+                try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: submitEpoch, liftPastryEditCanvas: submitScope)
                 var cherryCompote: [String] = []
                 for (yuzuHoneySwirl, custardMousse) in mascarponeFilling.enumerated() {
                     let peachFilling = try await WevVGlazeSocialRepository.pastryTrailDiary.boutiqueStudio(custardMousse, pastryCompendiumSeries: "wevv-moment-\(yuzuHoneySwirl + 1).jpg")
-                    try BrostingmellowCoconutEssence.shared.assertCurrent(epoch: submitEpoch, scope: submitScope)
+                    try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: submitEpoch, liftPastryEditCanvas: submitScope)
                     cherryCompote.append(peachFilling)
                 }
                 let outcome = try await WevVGlazeSocialRepository.pastryTrailDiary.cornerBakery(caramelCurd: mascarponeCream, passionfruitFilling: cherryCompote)
-                try BrostingmellowCoconutEssence.shared.assertCurrent(epoch: submitEpoch, scope: submitScope)
+                try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: submitEpoch, liftPastryEditCanvas: submitScope)
                 guard !Task.isCancelled else { return }
                 await MainActor.run {
                     NOticeNertyuSugartastingCard.clearSugarCrumbs()

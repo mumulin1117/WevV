@@ -1,0 +1,184 @@
+三个类型内部自主命名替换记录
+
+词汇来源：WeeNo命名提取/归档内声明的自主命名.txt
+替换名称 144 个；编译器符号 231 个；源码替换位置 1139 处。
+三个外层类型名保持不变，既有字符串内容不变。
+系统 API、其他类型所属的成员、Swift 隐式 error/self/Self/$0 保持原名。
+诊断 String 枚举新增显式原始值，保持原 open/context/bridge 运行值。
+
+源码文件：
+- WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift（17 处）
+- WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift（10 处）
+- WevSweetgd/WevSweetgd/SugarMomentEbuController.swift（12 处）
+- WevSweetgd/WevSweetgd/kettleGlazeSequence.swift（128 处）
+- WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift（1 处）
+- WevSweetgd/WevSweetgd/KipoDonutMomentController.swift（3 处）
+- WevSweetgd/WevSweetgd/UKGlazeActortroller.swift（20 处）
+- WevSweetgd/WevSweetgd/WevEnd/GDonutdenCrumbCenterler.swift（2 处）
+- WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift（13 处）
+- WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift（14 处）
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift（11 处）
+- WevSweetgd/WevSweetgd/WevEnd/conversationAvatar.swift（106 处）
+- WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift（559 处）
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift（24 处）
+- WevSweetgd/WevSweetgd/WevEnd/chosenTiles.swift（219 处）
+
+名称映射：
+acceptOpenToken -> GzeProfileSafetyTray
+account -> LmnTasterCardController
+accountID -> WevVGlazeVideoDialController
+apiBaseURL -> WevVWevvTastingQuestCard
+app -> WevvFlavorPane
+appID -> WevvRemoteTrailState
+append -> addVaultmuralAura
+as -> applyDonutAvatarChoice
+assertCurrent -> applyPortraitAsset
+authenticated -> applyRemoteTrailButton
+avatarURL -> assetForFlavorNote
+backpack -> attachSafetyOverlay
+before -> autumnMaplePalette
+blocklist -> autumnPecanAssortment
+body -> autumnPecanSelection
+bridge -> backendCanChat
+bridgeContextDelivered -> backendMutualFollow
+bridgeEntry -> bakeGlazeVaultPack
+browsingOPI -> bakeryPieces
+browsingSession -> beginSugarPictureUpload
+build -> berryReportAction
+byte -> berryReportButton
+cached -> bindCurrentDoughRingProfile
+category -> bindPastryEditDismissTap
+clearTransientSessions -> blockedUsers
+cocoaInkTone -> bloomingSpringPalette
+code -> buildCreamRingEditPage
+components -> buildFrostingTray
+configuration -> buildPastryEditScrollShell
+configured -> buildRemoteCardPage
+context -> buildVaultsuppleDoughDough
+contextPrepared -> buildVideoDialStudio
+conversation -> buildWevvActionFoot
+cpSettings -> buildWevvLockedFoot
+creamFormCard -> buildWevvTasterCardPage
+creator -> buildWevvTasterScrollLayer
+credentials -> buildWevvTasterScrollShell
+current -> buildWevvTasterTopBar
+cursor -> cancelCitrusTray
+data -> candiedOrangeDust
+diamondRecords -> candiedOrangeLayer
+diamonds -> chooseDonutAvatar
+editProfile -> cinnamonDustDust
+encode -> citrusCancelButton
+encodedQuery -> clearRemoteOwnerData
+environmentID -> closeCreamRingEdit
+epoch -> closeVideoDial
+error -> closeWevvSugarPrompt
+explicitToken -> closeWevvTasterCard
+failure -> cocoaGuarded
+failureMetadata -> confectionStudioCounter
+fans -> configurePastryButton
+feedback -> configureSugarTextField
+followed -> configureWevvSegmentButton
+following -> configureWevvTasterBodyStack
+foundation -> connectingStatus
+fragment -> connectingStatusLabel
+friends -> crispEdgeDough
+fullFeaturesEnabled -> crumbDensityInsight
+generation -> crumbIndex
+guestGeneration -> crumbScoutline
+guestSession -> currentCreamRingFormPacket
+guestTask -> currentGlazeWalletOwner
+hash -> currentRemoteOwnerKey
+hostID -> currentTasterCard
+identifier -> dialReportChoices
+imAccount -> dialReportSuggestion
+imAppKeyLength -> donutCheckinCalendar
+imAppKeyValid -> donutNoteCalendar
+imTokenLength -> donutRibbonNote
+imTokenMatchesAccessToken -> donutSnapshots
+indexURL -> doughKitchenBakery
+invalidateAuthentication -> dropPastryEditCanvas
+isAuthenticationFailure -> earlyMorningGuide
+isCurrent -> endCreamRingEditing
+isPositiveID -> espressoCompanion
+item -> fallbackAvatar
+key -> familyOwnedMap
+launchTask -> festiveCinnamonPalette
+level -> festiveCinnamonSeries
+likedMessages -> fillVaultPackRow
+liveRanking -> fineCrumbLayer
+liveSearch -> finishSugarPictureUpload
+logger -> firstBiteJournal
+makeURL -> firstDivider
+messages -> firstStatCenter
+metadata -> flakyLayer
+name -> flavorNotePane
+native -> flavorNoteSelected
+network -> flavorQuestCollection
+next -> flavorScoutline
+open -> flavorSketchNotebook
+openSucceeded -> followingList
+opened -> formatWevvSweetMarkCount
+opi -> frostedWinterAssortment
+pageSize -> frostingScroll
+partyCreate -> gardenLaneStudio
+partyRanking -> glazeAtlasPage
+partySearch -> glazeCatalogOwner
+path -> glazeCatalogRefresh
+prepare -> glazeCounterBakery
+prepareH5Context -> glazeLogCollection
+previous -> glazeStoreItemsByKey
+previousOpenRevision -> goldenCrumbCenter
+query -> hangUpAccessibility
+raw -> hangUpButton
+refreshSignedInSession -> harvestPearAssortment
+refreshTask -> harvestPearCollection
+relation -> hibiscusCompanion
+relations -> hideDialSafetyOverlay
+renewed -> hideRemoteSafetyView
+requiresFullFeatures -> hideRemoteSheenPlaceholder
+response -> identifiers
+room -> isCurrentRemoteAction
+roomID -> isCurrentRemoteRequest
+route -> isDonutTrailOpen
+running -> isGlazeStoreLoading
+safeBusinessCode -> isSugarGuarded
+safeIdentifier -> isTrailNowOpen
+saved -> lemonBlueberryCombination
+scope -> liftPastryEditCanvas
+session -> lightCrustTexture
+shared -> listenForGlazeTrades
+snapshot -> loadGlazeVaultProducts
+stage -> loadRemoteCard
+status -> loadRemoteMoments
+store -> loadRemoteProfile
+succeeded -> localAuthorKey
+system -> localPreviewFrame
+systemMessages -> localPreviewGallery
+task -> lowerTitle
+ticket -> loweredKey
+ticketTask -> loweredTitle
+to -> makeCreamRingEditLabel
+token -> makeCreamRingFormCard
+updated -> makeDonutAvatarChoicePairs
+url -> makeDonutCameraButton
+urlError -> makeDonutSnapshotEntry
+user -> makeDonutTasterEntry
+userID -> makeLargeFlavorNote
+validSignedInSession -> makePackCard
+value -> makeRemoteLabel
+version -> makeRemoteMomentCard
+voiceList -> makeSprinkleAuthorAvatar
+
+回归脚本（同步调用名称）：
+- scripts/test_wevv_room_mapper.py
+- scripts/verify_wevv_community_service.py
+- scripts/verify_wevv_h5_entries.py
+- scripts/verify_wevv_h5_navigation.py
+- scripts/verify_wevv_im_diagnostics.py
+- scripts/verify_wevv_media_transfer.py
+- scripts/verify_wevv_native_integration.py
+- scripts/verify_wevv_session_runtime.py
+
+验证：Debug / Release 模拟器构建成功；8 组关联回归通过。
+声明覆盖、词汇来源、字符串片段、枚举原始值、替换范围审计均通过。
+额外检查：旧社交脚本引用的 WevVGlazeRosterCell.legacy-profile.swift 归档文件缺失，未修改该旧脚本。
