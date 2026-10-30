@@ -1,0 +1,89 @@
+Swift 字符串随机处理记录
+日期：2026-10-30
+
+沿用既有 wevVPastryCrumbBloomRestored，在原字符之间插入独立随机干扰字符，运行时隔位还原。
+已撤换本轮最初统一 X 的方案。随机内容在修改源码时生成，不在运行时重复生成。
+已按原方式处理的既有字面量保留。
+
+本轮处理 35 个原有 Swift 文件中的 1552 处字面量：
+- 1404 处普通字符串按既有方法随机处理。
+- 75 处插值字符串只处理固定片段，保留动态表达式及插值方式。
+- 73 处编译期常量采用等值 Unicode 转义，保留枚举原始值、CodingKeys 和编译语义。
+原为 Character 或 Substring 的字面量显式保留原类型，避免选中不同的 String 重载。
+
+既有 String 扩展提取到 WevEnd/wevVGlazeCrumbRibbonFolded.swift，方法体不变；增加 nonisolated 以支持非主线程读取。
+离线脚本共同编译实际还原文件，不再维护模拟还原实现。
+scripts/wevv_swift_source.py 按还原值定位相关源码表达式，不依赖固定干扰字符。
+
+验证：
+- 使用实际 Swift 还原方法执行 1477 项非插值字面量检查，逐字节一致。
+- 全部原有 Swift 文件完成语法规范化后逐 token 对比，固定文本、插值和原有控制流程一致。
+- 最终扫描 48 个 App Swift 文件：2159 个经过处理的字面量、73 个编译期常量，无遗漏的非空明文片段。
+- 本轮普通字符串使用 80 种随机干扰字符。
+- Debug 模拟器和 Release 真机目标构建成功（不签名）。
+- 网络启动/Open、会话恢复与退出、配置、社交与动态、媒体上传、H5 进退与 Bridge、内购补单、分页和字段映射离线回归通过。
+- H5 入口验证接受 27 个有效入口、拒绝 74 项无效值或索引 URL。
+- 实际 Swift 资源还原的 1174 个文件一致；H5、Network、加密 manifest 资源未改动。
+- git diff --check 通过。
+
+未改变页面布局、SafeArea、键盘交互、登录注册、接口契约或本地存储键值；本轮未进行真机 UI 或真实内购操作。
+
+修改 Swift 文件及处理处数：
+- WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift: 10
+- WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift: 8
+- WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift: 23
+- WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift: 21
+- WevSweetgd/WevSweetgd/DucerPastryImageVault.swift: 1
+- WevSweetgd/WevSweetgd/EFlavorNoteController.swift: 3
+- WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift: 14
+- WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift: 51
+- WevSweetgd/WevSweetgd/KipoDonutMomentController.swift: 28
+- WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift: 5
+- WevSweetgd/WevSweetgd/SugarMomentEbuController.swift: 8
+- WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift: 2
+- WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift: 234
+- WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift: 23
+- WevSweetgd/WevSweetgd/UKGlazeActortroller.swift: 326
+- WevSweetgd/WevSweetgd/VGuestSevenSweet.swift: 21
+- WevSweetgd/WevSweetgd/VunBakeryShelfToastView.swift: 2
+- WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift: 32
+- WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift: 88
+- WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift: 115
+- WevSweetgd/WevSweetgd/WevEnd/GDonutdenCrumbCenterler.swift: 4
+- WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift: 74
+- WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift: 148
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift: 15
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift: 53
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift: 24
+- WevSweetgd/WevSweetgd/WevEnd/chosenTiles.swift: 58
+- WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift: 34
+- WevSweetgd/WevSweetgd/WevEnd/glazeNameField.swift: 6
+- WevSweetgd/WevSweetgd/WevVGlazeApplication.swift: 1
+- WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift: 4
+- WevSweetgd/WevSweetgd/XunSugarRosterbrownButterDrizzle.swift: 14
+- WevSweetgd/WevSweetgd/ZunugarPlainblackberryCreamler.swift: 1
+- WevSweetgd/WevSweetgd/glazeGalleryGuide.swift: 6
+- WevSweetgd/WevSweetgd/kettleGlazeSequence.swift: 95
+- WevSweetgd/WevSweetgd/WevEnd/wevVGlazeCrumbRibbonFolded.swift
+
+Verification scripts:
+- scripts/test_wevv_live_pagination.py
+- scripts/test_wevv_load_more_footer.py
+- scripts/test_wevv_room_mapper.py
+- scripts/test_wevv_sdk2_host.py
+- scripts/test_wevv_voice_pagination.py
+- scripts/verify_wevv_active_social.py
+- scripts/verify_wevv_bundle_configuration.py
+- scripts/verify_wevv_community_service.py
+- scripts/verify_wevv_h5_entries.py
+- scripts/verify_wevv_h5_lifecycle.py
+- scripts/verify_wevv_h5_loading.py
+- scripts/verify_wevv_h5_navigation.py
+- scripts/verify_wevv_im_diagnostics.py
+- scripts/verify_wevv_media_transfer.py
+- scripts/verify_wevv_network_foundation.py
+- scripts/verify_wevv_purchase_coordinator.py
+- scripts/verify_wevv_purchase_retry.py
+- scripts/verify_wevv_session_runtime.py
+- scripts/wevv_room_bundle.py
+- scripts/wevv_swift_source.py

@@ -3,12 +3,13 @@
 
 No real signing endpoint, OSS host, photograph, access ID or signature is used.
 """
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift'
+SOURCE = ROOT / 'WevSweetgd/WevSweetgd/WevEnd/WevVpastelBackdropGalleryler.swift'
 
 MOCKS = r'''
 import Foundation
@@ -82,7 +83,7 @@ TESTS = r'''
         func perform(data: Data? = nil, mime: String = "image/jpeg", fileName: String = "wevv-test.jpg", status: Int = 200,
                      overrideURL: URL? = nil) async throws -> (String, URLRequest, Data) {
             var captured: (URLRequest, Data)?
-            let transfer = WevVGlazeMessageController(citrusBergamotEssence: { request, body in
+            let transfer = WevVpastelBackdropGalleryler(citrusBergamotEssence: { request, body in
                 uploads += 1; captured = (request, body)
                 return (Data(), response(request, status: status, overrideURL: overrideURL))
             })
@@ -177,7 +178,7 @@ TESTS = r'''
 
         for cancelled in [false, true] {
             try reset(); let uploadGate = Gate()
-            let transfer = WevVGlazeMessageController(citrusBergamotEssence: { request, _ in
+            let transfer = WevVpastelBackdropGalleryler(citrusBergamotEssence: { request, _ in
                 await uploadGate.wait(); return (Data(), response(request))
             })
             let uploading = Task { try await transfer.cocoaRaspberryMedley(batterWhiskEssentials: jpeg, blackberryCream: "test.jpg", buildTastingParlorPanel: "image/jpeg") }
@@ -200,7 +201,7 @@ def main():
         source = folder / "Verification.swift"
         source.write_text(MOCKS + "\n" + SOURCE.read_text() + "\n" + TESTS)
         executable = folder / "verification"
-        subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5",
+        subprocess.run(["xcrun", "swiftc", str(STRING_HELPER), "-parse-as-library", "-swift-version", "5",
                         "-default-isolation", "MainActor", "-module-cache-path", str(folder / "modules"),
                         str(source), "-o", str(executable)], check=True)
         subprocess.run([str(executable)], check=True, timeout=30)

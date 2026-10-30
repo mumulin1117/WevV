@@ -1,11 +1,5 @@
 import Foundation
 
-struct pastryCompendiumEdition {
-    let flavorLibraryEdition: String
-    let pastryDisplayShowcase: String
-    let tastingSequenceInsight: Bool
-}
-
 struct tastingPassportEdition {
     let glazeNotebookEdition: String
     let rainbowSprinkleDesign: String

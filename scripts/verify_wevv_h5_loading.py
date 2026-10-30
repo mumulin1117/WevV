@@ -7,6 +7,7 @@ are replaced. No H5 resource, account, network service or device is accessed.
 Generated Swift and its module cache stay in an isolated /private/tmp directory.
 """
 
+from wevv_swift_source import STRING_HELPER, literal
 from pathlib import Path
 import subprocess
 import tempfile
@@ -22,9 +23,11 @@ def between(source, start, end):
 
 
 def probe_source(source):
-    owner = between(source, "    private func currentGlazeContextOwner()", "    private func traceGlazeLoad(")
+    owner = between(source, "    private func currentGlazeContextOwner()", "    private func armGlazeLoadingTimeout(")
     preparation = between(source, "    private func startGlazeContextTask()", "    private func activateGlazeIdleEntry()")
-    context = between(source, '        case "host.getContext":', '        case "host.setNavigation":')
+    preparation = preparation.replace("self.glazeContextPrepared = true", "self.glazeContextPrepared = true\n                self.fixtureContextReady()")
+    execution = source[source.index('private func executeGlaze('):]
+    context = between(execution, '        case ' + literal(execution, 'host.getContext') + ':', '        case ' + literal(execution, 'host.setNavigation') + ':')
     depth = between(source, "    private func beginGlazeContextPreparation()", "    @objc private func retryGlaze()")
     boolean = between(source, "    private static func jsonBoolean(", "    private static func jsonInteger(")
     return SWIFT.replace("// SHIPPING_OWNER", owner).replace("// SHIPPING_PREPARATION", preparation).replace(
@@ -100,7 +103,7 @@ private struct FixtureCredentials {
 
 @MainActor private final class HostProbe {
     private enum GlazeFailure: Error { case code(String) }
-    private struct Entry { var requiresFullFeatures = false }
+    private struct Entry { var hideRemoteSheenPlaceholder = false }
     private var glazeEntry = Entry()
     private var glazeIsStandby = false
     private var glazeContextTask: Task<[String: Any], Error>?
@@ -129,8 +132,8 @@ private struct FixtureCredentials {
     private func currentGlazeIdentityFingerprint() -> String {
         currentGlazeContextOwner() + ":" + (WevVGlazeSessionStore.shared.currentGlazeCredentials?.brownButterGlaze ?? "")
     }
-    private func traceGlazeLoad(_ stage: String) {
-        if stage == "context-ready" { let action = onContextReady; onContextReady = nil; action?() }
+    private func fixtureContextReady() {
+        let action = onContextReady; onContextReady = nil; action?()
     }
     private func mappedGlazeContext(_ value: [String: Any]) throws -> [String: Any] { value }
     private func glazeAccountChanged() { changedNotifications += 1 }
@@ -159,7 +162,7 @@ private struct FixtureCredentials {
         try WevVGlazeSessionRepository.pastryTrailDiary.reset()
         WevVGlazeSessionStore.shared.reset()
         let host = HostProbe()
-        host.glazeEntry.requiresFullFeatures = gated
+        host.glazeEntry.hideRemoteSheenPlaceholder = gated
         return host
     }
     private static func waitForCalls(_ count: Int) async throws {
@@ -373,7 +376,7 @@ def main():
         generated, executable = root / "ContextProbe.swift", root / "ContextProbe"
         generated.write_text(swift)
         result = subprocess.run(
-            ["xcrun", "swiftc", "-swift-version", "5", "-default-isolation", "MainActor", "-parse-as-library",
+            ["xcrun", "swiftc", str(STRING_HELPER), "-swift-version", "5", "-default-isolation", "MainActor", "-parse-as-library",
              "-module-cache-path", str(root / "module-cache"), str(generated), "-o", str(executable)],
             text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=60,
         )

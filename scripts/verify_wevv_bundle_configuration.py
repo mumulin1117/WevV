@@ -6,6 +6,7 @@ without real keys.
 --actual: also verify the project's thin archive; derive its existing resource
 seed only inside the probe, never print it, and never read the full H5 archive.
 """
+from wevv_swift_source import STRING_HELPER
 import argparse
 import ctypes
 import ctypes.util
@@ -21,8 +22,8 @@ import zlib
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / 'WevSweetgd/WevSweetgd'
-MANIFEST = 'vanillaBeanIcingSdk2.manifest.json'
-THIN_ARCHIVE = 'vanillaBeanIcingSdk2Network.data'
+MANIFEST = 'vanillaBeanIcingDonut.manifest.data'
+THIN_ARCHIVE = 'vanillaBeanIcingDonutNetwork.data'
 
 def make_fixtures(folder):
     SEED = 'synthetic-native-configuration-seed-only-v1'
@@ -67,15 +68,15 @@ def make_fixtures(folder):
         encrypted = encrypt(compressed)
         r = records(files)
         full = records({**files, 'index.html': b'<html></html>'})
-        m = {'schemaVersion': 1, 'archiveFormat': 'WVVROOM1', 'archiveFile': 'vanillaBeanIcingSdk2.data', 'compression': {'algorithm': 'zlib', 'layers': 2}, 'encryption': {'algorithm': 'AES-128-CBC', 'padding': 'PKCS7', 'keySource': 'existing-native-resource'}, 'sdkProtocolVersion': '2.0.0', 'appConfigSchemaVersion': 18, 'opiProfileRevision': 2, 'hostVersion': '1.3', 'contentVersion': 'sdk2-' + sha(json.dumps(full, sort_keys=True, separators=(',', ':')).encode()), 'appId': '12211334', 'h5BuildId': 'synthetic-build', 'fileCount': len(full), 'files': full, 'nativeConfiguration': {'archiveFile': 'vanillaBeanIcingSdk2Network.data', 'archiveBytes': len(encrypted), 'archiveSha256': sha(encrypted), 'files': r}}
+        m = {'schemaVersion': 1, 'archiveFormat': 'WVVROOM1', 'archiveFile': 'vanillaBeanIcingDonut.data', 'compression': {'algorithm': 'zlib', 'layers': 2}, 'encryption': {'algorithm': 'AES-128-CBC', 'padding': 'PKCS7', 'keySource': 'existing-native-resource'}, 'sdkProtocolVersion': '2.0.0', 'appConfigSchemaVersion': 18, 'opiProfileRevision': 2, 'hostVersion': '1.3', 'contentVersion': 'sdk2-' + sha(json.dumps(full, sort_keys=True, separators=(',', ':')).encode()), 'appId': '12211334', 'h5BuildId': 'synthetic-build', 'fileCount': len(full), 'files': full, 'nativeConfiguration': {'archiveFile': 'vanillaBeanIcingDonutNetwork.data', 'archiveBytes': len(encrypted), 'archiveSha256': sha(encrypted), 'files': r}}
         if adjust:
             adjust(m)
         b = folder / (name + '.bundle')
         resources = b / 'Contents/Resources'
         resources.mkdir(parents=True)
         (b / 'Contents/Info.plist').write_bytes(plistlib.dumps({'CFBundleIdentifier': 'com.wevv.synthetic.' + name, 'CFBundleVersion': '1', 'CFBundlePackageType': 'BNDL', 'CFBundleName': name}))
-        (resources / 'vanillaBeanIcingSdk2Network.data').write_bytes(encrypted)
-        (resources / 'vanillaBeanIcingSdk2.manifest.json').write_text(json.dumps(m))
+        (resources / 'vanillaBeanIcingDonutNetwork.data').write_bytes(encrypted)
+        (resources / MANIFEST).write_bytes(encrypt(zlib.compress(zlib.compress(json.dumps(m).encode()))))
         cases.append((accept, str(b), seed, host, m['appId'], expected_routing))
         return resources
     case('valid', True)
@@ -137,14 +138,24 @@ def make_fixtures(folder):
     case('bridge-methods', files=configs(a=a))
     case('metadata-compression', adjust=lambda x: x['compression'].update(layers=1))
     r = case('manifest-duplicate-key')
-    path = r / 'vanillaBeanIcingSdk2.manifest.json'
-    path.write_text(path.read_text().replace('"schemaVersion": 1', '"schemaVersion":1,"schemaVersion":1', 1))
+    path = r / 'vanillaBeanIcingDonut.manifest.data'
+    path.write_bytes(encrypt(zlib.compress(zlib.compress(b'{"schemaVersion":1,"schemaVersion":1}'))))
     r = case('manifest-trailing-json')
-    path = r / 'vanillaBeanIcingSdk2.manifest.json'
-    path.write_text(path.read_text() + ' {}')
+    path = r / 'vanillaBeanIcingDonut.manifest.data'
+    path.write_bytes(encrypt(zlib.compress(zlib.compress(b'{} {}'))))
     r = case('manifest-nan')
-    path = r / 'vanillaBeanIcingSdk2.manifest.json'
-    path.write_text(path.read_text().replace('"schemaVersion": 1', '"schemaVersion":NaN', 1))
+    path = r / 'vanillaBeanIcingDonut.manifest.data'
+    path.write_bytes(encrypt(zlib.compress(zlib.compress(b'{"schemaVersion":NaN}'))))
+
+    for name, payload in [
+        ('plaintext', b'{"schemaVersion":1}'),
+        ('truncated', encrypt(zlib.compress(zlib.compress(b'{}')))[:-1]),
+        ('single-layer', encrypt(zlib.compress(b'{}'))),
+        ('trailing-compressed', encrypt(zlib.compress(zlib.compress(b'{}') + b'trailing'))),
+        ('over-limit', encrypt(zlib.compress(zlib.compress(b'x' * (2 * 1024 * 1024 + 1))))),
+    ]:
+        r = case('manifest-' + name)
+        (r / MANIFEST).write_bytes(payload)
 
     production = json.loads(json.dumps(profile))
     production['services'].update(environment='production', apiBaseUrl='https://production.invalid')
@@ -245,7 +256,8 @@ def make_fixtures(folder):
                  expectedRouting=routing) for (accept, path, seed, host, app_id, routing) in cases]
 
 def actual_fixture(folder):
-    manifest = json.loads((SOURCES / "WevEnd" / MANIFEST).read_text())
+    from wevv_room_bundle import decode_manifest
+    manifest = decode_manifest((SOURCES / "WevEnd" / MANIFEST).read_bytes())
     controller = (SOURCES / 'UKGlazeActortroller.swift').read_text()
     match = re.search('static let vanillaCipher\\s*=\\s*"([^"\\\\]+)"\\.wevVPastryCrumbBloomRestored', controller)
     if match is None:
@@ -329,7 +341,7 @@ def main():
         probe.write_text(SWIFT_PROBE)
         executable = folder / 'probe'
         # Link the actual loader and OPI parser; fixture generation has no decoder.
-        subprocess.run(['xcrun', 'swiftc', '-parse-as-library', '-swift-version', '5', '-default-isolation', 'MainActor', '-module-cache-path', str(folder / 'modules'), str(SOURCES / 'WevEnd/NertyuChoiceStackLayer.swift'), str(SOURCES / 'WevEnd/CreamRingDellController.swift'), str(probe), '-o', str(executable)], check=True)
+        subprocess.run(['xcrun', 'swiftc', str(STRING_HELPER), '-parse-as-library', '-swift-version', '5', '-default-isolation', 'MainActor', '-module-cache-path', str(folder / 'modules'), str(SOURCES / 'WevEnd/NertyuChoiceStackLayer.swift'), str(SOURCES / 'WevEnd/CreamRingDellController.swift'), str(probe), '-o', str(executable)], check=True)
         subprocess.run([str(executable), str(case_file)], check=True, timeout=30)
     if arguments.actual:
         print('Actual project thin resource verified; full H5 archive was not read')

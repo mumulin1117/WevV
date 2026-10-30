@@ -5,6 +5,7 @@ Only the Bundle/Caches I/O boundaries and iOS file-protection setting are
 adapted to the macOS runner. Every cache is isolated under /private/tmp.
 No service calls, user devices, credentials or cryptographic inputs are logged.
 """
+from wevv_swift_source import STRING_HELPER, bundle_resource
 import sys
 sys.dont_write_bytecode = True
 
@@ -44,8 +45,9 @@ def snapshot(folder):
 def main():
     source = SOURCE.read_text()
     crypto = method(source, '    nonisolated private static func restorePastryArchive()', '    private func showGlazeError(')
-    crypto = crypto.replace('Bundle.main.url(forResource: sugarPalette.sdkArchiveName + ".manifest", withExtension: "json")', 'resource(sugarPalette.sdkArchiveName + ".manifest.json")')
-    crypto = crypto.replace('Bundle.main.url(forResource: sugarPalette.sdkArchiveName, withExtension: "data")', 'resource(sugarPalette.sdkArchiveName + ".data")')
+    manifest_boundary = bundle_resource(crypto, '.manifest')
+    crypto = crypto.replace(manifest_boundary, 'resource(sugarPalette.sdkArchiveName + ".manifest.data")')
+    crypto = crypto.replace(bundle_resource(crypto), 'resource(sugarPalette.sdkArchiveName + ".data")')
     boundary = 'manager.urls(for: .cachesDirectory, in: .userDomainMask).first'
     if crypto.count(boundary) != 1:
         raise ValueError('Native archive Caches I/O boundary changed')
@@ -62,19 +64,18 @@ def main():
     declarations = method(source, '    private struct GlazeRequest {', '    private struct GlazeCommand {')
     preparation = method(source, '    static func prewarmGlazeResources()', '    private func warmTastingParlor()')
     prepared_declarations = method(source, '    private struct GlazeArchiveStamp:', '    private enum sugarPalette')
-    manifest_boundary = 'Bundle.main.url(forResource: sugarPalette.sdkArchiveName + ".manifest", withExtension: "json")'
+    manifest_boundary = bundle_resource(preparation, '.manifest')
     if preparation.count(manifest_boundary) != 1:
         raise ValueError('Coordinator bootstrap manifest boundary changed')
     preparation = preparation.replace(manifest_boundary, 'Optional(fixtureManifestURL)')
+    preparation += method(source, '    nonisolated private static func unlockPastryArchive(', '    private func showGlazeError(')
+    preparation += '    private enum sugarPalette { ' + seed + ' }\n'
     preparation += method(source, '    nonisolated private static func safeGlazePath(', '    nonisolated private static func readMarkedJSON(')
     swift = r'''import Foundation
 import Darwin
 import CoreFoundation
 import CommonCrypto
 import zlib
-extension String {
-    nonisolated var wevVPastryCrumbBloomRestored: String { String(enumerated().filter { $0.offset.isMultiple(of: 2) }.map { $0.element }) }
-}
 @MainActor final class CloseProbe {
     enum GlazeFailure: Error { case code(String) }
     var tastingWebView: Bool? = true
@@ -165,7 +166,7 @@ extension String {
     nonisolated static var cacheBase: URL { fixtureRoot.appendingPathComponent("cache", isDirectory: true) }
     nonisolated static var namespace: URL { cacheBase.appendingPathComponent("vanillaBeanIcingSdk2", isDirectory: true) }
     nonisolated static var folder: URL { namespace.appendingPathComponent("sdk2-fixture", isDirectory: true) }
-    nonisolated static var fixtureManifestURL: URL { fixtureRoot.appendingPathComponent("fixture.manifest.json") }
+    nonisolated static var fixtureManifestURL: URL { fixtureRoot.appendingPathComponent("fixture.manifest.data") }
     nonisolated static let requiredFiles = ["index.html", "config/app-config.js", "config/opi-profile.js",
         "assets/rtc.js", "assets/workers/cache-worker.mjs", "assets/logic/vendor.cjs",
         "assets/theme/main.css", "assets/engine/rtc.wasm"]
@@ -216,8 +217,7 @@ extension String {
         let manager = FileManager.default
         try manager.createDirectory(at: fixtureRoot, withIntermediateDirectories: true)
         defer { try? manager.removeItem(at: fixtureRoot) }
-        let records = (requiredFiles + ["assets/photo.png"]).map { ["path": $0] }
-        let manifestData = try JSONSerialization.data(withJSONObject: ["files": records])
+        let manifestData = try Data(contentsOf: URL(fileURLWithPath: CommandLine.arguments[2]).appendingPathComponent("coordinator.manifest.data"))
         try manifestData.write(to: fixtureManifestURL)
         precondition(Set(glazeBootstrapPaths() ?? []) == Set(requiredFiles))
         prewarmGlazeResources()
@@ -310,7 +310,7 @@ extension String {
     private enum GlazeFailure: Error { case code(String) }
     private enum sugarPalette {
 ''' + seed + r'''
-        nonisolated static let sdkArchiveName = "vanillaBeanIcingSdk2"
+        nonisolated static let sdkArchiveName = "vanillaBeanIcingDonut"
     }
     nonisolated static var cacheRootOverride: URL { URL(fileURLWithPath: CommandLine.arguments[3], isDirectory: true) }
     nonisolated static func resource(_ name: String) -> URL? { URL(fileURLWithPath: CommandLine.arguments[2], isDirectory: true).appendingPathComponent(name) }
@@ -331,7 +331,8 @@ extension String {
         let manager = FileManager.default
         let files = manager.enumerator(at: folder, includingPropertiesForKeys: [.isRegularFileKey])!.allObjects as! [URL]
         let regular = files.filter { (try? $0.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile) == true }
-        let manifest = try JSONSerialization.jsonObject(with: Data(contentsOf: resource("vanillaBeanIcingSdk2.manifest.json")!)) as! [String: Any]
+        let manifestData = try Data(contentsOf: resource("vanillaBeanIcingDonut.manifest.data")!)
+        let manifest = try JSONSerialization.jsonObject(with: expandPastryArchive(expandPastryArchive(unlockPastryArchive(manifestData)!)!)!) as! [String: Any]
         precondition(regular.count == manifest["fileCount"] as? Int && folder.lastPathComponent == manifest["contentVersion"] as? String)
         precondition(!safeGlazePath("../outside") && !safeGlazePath("a//b") && !safeGlazePath("C:/x") && !safeGlazePath("a\\b"))
         if CommandLine.arguments[1] == "hot" {
@@ -349,14 +350,20 @@ extension String {
         root = Path(output)
         swift_path, executable = root / 'HostProbe.swift', root / 'HostProbe'
         swift_path.write_text(swift)
-        check_run(['xcrun', 'swiftc', '-swift-version', '5', '-default-isolation', 'MainActor', '-parse-as-library',
+        check_run(['xcrun', 'swiftc', str(STRING_HELPER), '-swift-version', '5', '-default-isolation', 'MainActor', '-parse-as-library',
                    '-module-cache-path', str(root / 'module-cache'), str(swift_path), '-o', str(executable)], 'Native host probe compilation')
-        files, metadata = bundletool.verify(RESOURCES / 'vanillaBeanIcingSdk2.data',
-                                             RESOURCES / 'vanillaBeanIcingSdk2.manifest.json', bundletool.host_version())
+        files, metadata = bundletool.verify(RESOURCES / 'vanillaBeanIcingDonut.data',
+                                             RESOURCES / 'vanillaBeanIcingDonut.manifest.data', bundletool.host_version())
         assert len(files) == metadata['fileCount'] == 1174
         resources = root / 'resources'; resources.mkdir()
-        for name in ('vanillaBeanIcingSdk2.data', 'vanillaBeanIcingSdk2.manifest.json'):
+        for name in ('vanillaBeanIcingDonut.data', 'vanillaBeanIcingDonut.manifest.data'):
             shutil.copyfile(RESOURCES / name, resources / name)
+
+        coordinator_paths = ['index.html', 'config/app-config.js', 'config/opi-profile.js',
+                             'assets/rtc.js', 'assets/workers/cache-worker.mjs', 'assets/logic/vendor.cjs',
+                             'assets/theme/main.css', 'assets/engine/rtc.wasm', 'assets/photo.png']
+        (resources / 'coordinator.manifest.data').write_bytes(
+            bundletool.encode_manifest({'files': [{'path': path} for path in coordinator_paths]}))
 
         def run(mode='restore', resource_root=resources, cache_root=None):
             target = cache_root or root / 'cache'
@@ -414,8 +421,8 @@ extension String {
         version_metadata = dict(metadata, files=records, fileCount=len(records), unpackedBytes=sum(map(len, version_files.values())),
                                 contentVersion=bundletool.content_version(records), archiveBytes=len(version_data), archiveSha256=bundletool.sha256(version_data))
         version_resources = root / 'version-resources'; version_resources.mkdir()
-        (version_resources / 'vanillaBeanIcingSdk2.data').write_bytes(version_data)
-        (version_resources / 'vanillaBeanIcingSdk2.manifest.json').write_text(json.dumps(version_metadata))
+        (version_resources / 'vanillaBeanIcingDonut.data').write_bytes(version_data)
+        (version_resources / 'vanillaBeanIcingDonut.manifest.data').write_bytes(bundletool.encode_manifest(version_metadata))
         previous = snapshot(folder)
         second = run(resource_root=version_resources)
         second_folder = Path(second['folder'])
@@ -436,14 +443,14 @@ extension String {
         corrupt_resources = root / 'corrupt-resources'; corrupt_resources.mkdir()
         corrupt_data = b'not-a-valid-encrypted-archive'
         corrupt_metadata = dict(version_metadata, archiveBytes=len(corrupt_data), archiveSha256=bundletool.sha256(corrupt_data))
-        (corrupt_resources / 'vanillaBeanIcingSdk2.data').write_bytes(corrupt_data)
-        (corrupt_resources / 'vanillaBeanIcingSdk2.manifest.json').write_text(json.dumps(corrupt_metadata))
+        (corrupt_resources / 'vanillaBeanIcingDonut.data').write_bytes(corrupt_data)
+        (corrupt_resources / 'vanillaBeanIcingDonut.manifest.data').write_bytes(bundletool.encode_manifest(corrupt_metadata))
         # No valid current-version cache, but the older version is still present.
         shutil.rmtree(second_folder)
         run('reject', corrupt_resources)
         assert folder.exists() and snapshot(folder) == previous
         run('reject', corrupt_resources, root / 'empty-corrupt-cache')
-        (corrupt_resources / 'vanillaBeanIcingSdk2.data').unlink()
+        (corrupt_resources / 'vanillaBeanIcingDonut.data').unlink()
         run('reject', corrupt_resources, root / 'empty-missing-cache')
         print('PASS: corrupt/missing bundled resources without valid current cache fail closed; older cached versions are not fallback')
 

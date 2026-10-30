@@ -30,21 +30,9 @@ struct WevVTastingQuest {
     let sprinkleDensityValue: Int
 }
 
-struct WevVDonutTaster {
-    let donutPinKey: String
-    let name: String
-    let donutFrameAsset: String
-}
 
-struct WevVDonutSnapshot {
-    let sprinkleJarKey: String
-    let tasterBloom: WevVDonutTaster
-    let donutBackdropAsset: String
-    let tastingText: String
-    let hasSprinkleDust: Bool
-    let hasBakeryShelf: Bool
-    let freshnessTagText: String
-}
+
+
 
 struct WevVTastingMark {
     let glazeTrailCount: Int

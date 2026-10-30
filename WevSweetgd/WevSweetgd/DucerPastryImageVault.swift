@@ -14,7 +14,7 @@ enum DucerPastryImageVault {
     static func pastryArchiveEntry(_ frostingDetailGallery: UIImage, tastingJournalEntry: String) -> String? {
         guard let crumbPorosityStudy = frostingDetailGallery.jpegData(compressionQuality: 0.86) else { return nil }
         let glazeNotebookEdition = tastingJournalEntry.filter { $0.isLetter || $0.isNumber }
-        let pastryCatalogEntry = "\(glazeNotebookEdition)_\(Int(Date().timeIntervalSince1970 * 1000)).jpg"
+        let pastryCatalogEntry = "\(glazeNotebookEdition)\("_r".wevVPastryCrumbBloomRestored)\(Int(Date().timeIntervalSince1970 * 1000))\(".djBp8gn".wevVPastryCrumbBloomRestored)"
         let doughKitchenShowcase = bakeryShelfGuide()
         do {
             try FileManager.default.createDirectory(at: doughKitchenShowcase, withIntermediateDirectories: true)

@@ -1,7 +1,7 @@
 import Foundation
 import WebKit
 
-/// The host supplies a weakly captured receiver so WebKit cannot retain its owner.
+
 final class WevVGlazeConversationCell: NSObject, WKScriptMessageHandler {
     private let closeDailyDonut: (WKScriptMessage) -> Void
 

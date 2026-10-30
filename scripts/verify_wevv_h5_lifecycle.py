@@ -4,6 +4,7 @@
 Product timers are unchanged. Only generated test-copy sleeps are compressed.
 No device, business endpoint, credentials, application defaults or Keychain.
 """
+from wevv_swift_source import STRING_HELPER, literal
 from pathlib import Path
 import argparse
 import subprocess
@@ -98,7 +99,7 @@ struct Frame { var isMainFrame = true; var request: URLRequest }
     }
     func succeed(_ value: Value) { continuation!.resume(returning: value); continuation = nil }
 }
-struct Entry { var bridgeEntry: [String: Any]? = ["path": "/messages", "query": [:]] }
+struct Entry { var bakeGlazeVaultPack: [String: Any]? = ["path": "/messages", "query": [:]] }
 @MainActor final class Host: AppearanceBoundary {
     enum GlazeFailure: Error { case code(String) }
     static let fixtureFolder = URL(fileURLWithPath: "/private/tmp/offline-h5-lifecycle", isDirectory: true)
@@ -136,7 +137,6 @@ struct Entry { var bridgeEntry: [String: Any]? = ["path": "/messages", "query": 
     var tastingWebView: WKWebView? = WKWebView()
     var tastingBundleURL: URL? = fixtureFolder
     var glazeProcessCrashDates: [Date] = []
-    var traces: [String] = []
     var errors: [String] = []
     var commands: [(name: String, params: [String: Any], timeout: Double)] = []
     var commandHandler: (() async throws -> [String: Any]?)?
@@ -145,7 +145,6 @@ struct Entry { var bridgeEntry: [String: Any]? = ["path": "/messages", "query": 
     var rebuilds = 0
     var teardowns = 0
     var exits: [Int] = []
-    func traceGlazeLoad(_ stage: String) { traces.append(stage) }
     func publishGlazeVisibility() { visibilityPublishes += 1 }
     func sendGlazeCommand(_ name: String, params: [String: Any] = [:], timeout: Double = 15) async throws -> [String: Any]? {
         commands.append((name, params, timeout))
@@ -480,8 +479,8 @@ def main():
     if 'override func viewDidDisappear(' in source:
         markers.append('override func viewDidDisappear(')
     selected = [method(source, marker) for marker in markers]
-    navigation_start = source.index('        case "host.setNavigation":', source.index('private func executeGlaze('))
-    navigation_end = source.index('        case "host.close":', navigation_start)
+    navigation_start = source.index('        case ' + literal(source[source.index('private func executeGlaze('):], 'host.setNavigation') + ':', source.index('private func executeGlaze('))
+    navigation_end = source.index('        case ' + literal(source[source.index('private func executeGlaze('):], 'host.close') + ':', navigation_start)
     # Run the complete shipping switch arm. Only the outer method signature and
     # unrelated switch arms are bounded out of this offline platform fixture.
     selected.append('private func receiveFixtureNavigation(_ params: [String: Any]) throws -> Any {\n'
@@ -490,7 +489,7 @@ def main():
     # Keep real error eligibility/queue/cancellation logic; UIKit presentation
     # itself is the controlled boundary, not a second copy of lifecycle logic.
     error = method(source, 'private func showGlazeError(')
-    error = error[:error.index('        // A loaded, live process')] + '''        errors.append(glazeNotice)
+    error = error[:error.index('        if tastingWebView != nil, glazeDocumentLoaded')] + '''        errors.append(glazeNotice)
         presentedViewController = NSObject()
     }
 '''
@@ -503,7 +502,7 @@ def main():
         folder = Path(temporary)
         swift, executable = folder / 'Lifecycle.swift', folder / 'verify'
         swift.write_text(BOUNDARIES + implementation + TESTS)
-        subprocess.run(['xcrun', 'swiftc', '-parse-as-library', '-swift-version', '5',
+        subprocess.run(['xcrun', 'swiftc', str(STRING_HELPER), '-parse-as-library', '-swift-version', '5',
                         '-default-isolation', 'MainActor', '-module-cache-path', str(folder / 'modules'),
                         str(swift), '-o', str(executable)], check=True)
         subprocess.run([str(executable)], check=True, timeout=20)
@@ -513,7 +512,7 @@ def main():
             # temporary executable. The shipping source is never modified.
             legacy_swift, legacy_executable = folder / 'LegacyDisappearance.swift', folder / 'legacy'
             legacy_swift.write_text(BOUNDARIES + implementation + "\n" + legacy + "\n" + TESTS)
-            subprocess.run(['xcrun', 'swiftc', '-parse-as-library', '-swift-version', '5',
+            subprocess.run(['xcrun', 'swiftc', str(STRING_HELPER), '-parse-as-library', '-swift-version', '5',
                             '-default-isolation', 'MainActor', '-module-cache-path', str(folder / 'modules'),
                             str(legacy_swift), '-o', str(legacy_executable)], check=True)
             failed = subprocess.run([str(legacy_executable)], text=True, capture_output=True, timeout=20)

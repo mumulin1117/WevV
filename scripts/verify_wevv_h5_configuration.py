@@ -161,7 +161,7 @@ def main():
     spec = importlib.util.spec_from_file_location("wevv_room_bundle", ROOT / "scripts/wevv_room_bundle.py")
     packer = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(packer)
-    manifest = packer.strict_json((RESOURCES / "vanillaBeanIcingSdk2.manifest.json").read_bytes())
+    manifest = packer.decode_manifest((RESOURCES / "vanillaBeanIcingDonut.manifest.data").read_bytes())
     encrypted = (RESOURCES / manifest["archiveFile"]).read_bytes()
     require(hashlib.sha256(encrypted).hexdigest() == manifest["archiveSha256"],
             "Encrypted resource checksum mismatch")

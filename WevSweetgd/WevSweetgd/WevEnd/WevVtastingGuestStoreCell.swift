@@ -1,11 +1,11 @@
 import UIKit
 
-/// A temporary representation of feed requests or a detail page's first presentation.
-/// The host decides when a request has settled; this view owns only presentation.
-final class WevVGlazeMessageCell: UIView {
+
+
+final class WevVtastingGuestStoreCell: UIView {
     enum bottomTarget: String, CustomStringConvertible {
-        case brownButterShell = "home", compactChallenge = "voice", buildTopDonutBar = "moments"
-        case clearGlazeRelationsForFreshTaster = "sprinkleChallenge", cappuccinoCompanion = "pastryFolio"
+        case brownButterShell = "\u{68}\u{6f}\u{6d}\u{65}", compactChallenge = "\u{76}\u{6f}\u{69}\u{63}\u{65}", buildTopDonutBar = "\u{6d}\u{6f}\u{6d}\u{65}\u{6e}\u{74}\u{73}"
+        case clearGlazeRelationsForFreshTaster = "\u{73}\u{70}\u{72}\u{69}\u{6e}\u{6b}\u{6c}\u{65}\u{43}\u{68}\u{61}\u{6c}\u{6c}\u{65}\u{6e}\u{67}\u{65}", cappuccinoCompanion = "\u{70}\u{61}\u{73}\u{74}\u{72}\u{79}\u{46}\u{6f}\u{6c}\u{69}\u{6f}"
         var description: String { rawValue }
     }
 
@@ -16,7 +16,7 @@ final class WevVGlazeMessageCell: UIView {
         let beginGlazeContextPreparation: UIColor
         let brownButterIcing: UIColor
 
-        // Match the packaged H5's sRGB color-mix skeleton tokens.
+
         static let citrusPeelGarnish = boutiqueStudio(
             artisanFrySequence: [UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1), UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1)],
             closePastryDetail: UIColor(red: 6.4 / 255.0, green: 5.44 / 255.0, blue: 38.12 / 255.0, alpha: 1),
@@ -45,13 +45,13 @@ final class WevVGlazeMessageCell: UIView {
         isAccessibilityElement = true
         accessibilityTraits = .staticText
         switch buildPastryBackdrop {
-        case .brownButterShell: accessibilityLabel = "Loading live rooms"
-        case .compactChallenge: accessibilityLabel = "Loading voice rooms"
-        case .buildTopDonutBar: accessibilityLabel = "Loading community posts"
-        case .clearGlazeRelationsForFreshTaster: accessibilityLabel = "Loading challenge details"
-        case .cappuccinoCompanion: accessibilityLabel = "Loading shop details"
+        case .brownButterShell: accessibilityLabel = "Laonawdhi*n/ge .lOiqvWeO urSoMoPmesI".wevVPastryCrumbBloomRestored
+        case .compactChallenge: accessibilityLabel = "L!oxaHd@i1n!g? $vsoTiac5e~ =rJo!oImTsI".wevVPastryCrumbBloomRestored
+        case .buildTopDonutBar: accessibilityLabel = "L6o6aBd3i!nng? 7cloZmcm2u4n4iitjyO +pYobsAt5sf".wevVPastryCrumbBloomRestored
+        case .clearGlazeRelationsForFreshTaster: accessibilityLabel = "LEoUaxdiiNnlg% ScQhSaJl.lpelnUgBem *d~eGttadi$lGsA".wevVPastryCrumbBloomRestored
+        case .cappuccinoCompanion: accessibilityLabel = "LGoHa?dgiGn+g2 JsYh#oCpx Yd/e3tsa*iRl5s;".wevVPastryCrumbBloomRestored
         }
-        accessibilityIdentifier = "wevv.initialLoading.\(buildPastryBackdrop)"
+        accessibilityIdentifier = "\("w~ecv7vX.0iTn8iFt#iGaxloL?oHaXddiwn4gW.D".wevVPastryCrumbBloomRestored)\(buildPastryBackdrop)"
         backgroundColor = candiedOrangeScatter.artisanFrySequence.first
         artisanFrySequence.colors = candiedOrangeScatter.artisanFrySequence.map(\.cgColor)
         artisanFrySequence.startPoint = CGPoint(x: 0.15, y: 0)
@@ -72,7 +72,7 @@ final class WevVGlazeMessageCell: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        // Layer geometry follows the Auto Layout managed view, never a device-specific frame.
+
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         artisanFrySequence.frame = bounds
@@ -569,16 +569,16 @@ private final class glazeSaveTask: UIView {
 
     func citrusBrightnessMatrix(_ beginVoiceRoomRefresh: Bool) {
         guard beginVoiceRoomRefresh else {
-            citrusSeasonGathering.removeAnimation(forKey: "wevvSkeletonSweep")
+            citrusSeasonGathering.removeAnimation(forKey: "wIejvgv!Sqk,e:lAe7tjoSn?SCwje2e$pO".wevVPastryCrumbBloomRestored)
             return
         }
-        guard citrusSeasonGathering.animation(forKey: "wevvSkeletonSweep") == nil else { return }
-        let closePastrySheet = CABasicAnimation(keyPath: "locations")
+        guard citrusSeasonGathering.animation(forKey: "wye?vrvaSpkYeXlOeXt|oJngSiwZe#eKpC".wevVPastryCrumbBloomRestored) == nil else { return }
+        let closePastrySheet = CABasicAnimation(keyPath: "l5oMc6altIiNonnSsY".wevVPastryCrumbBloomRestored)
         closePastrySheet.fromValue = [-1.0, -0.5, 0.0]
         closePastrySheet.toValue = [1.0, 1.5, 2.0]
         closePastrySheet.duration = 1.45
         closePastrySheet.repeatCount = .infinity
         closePastrySheet.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        citrusSeasonGathering.add(closePastrySheet, forKey: "wevvSkeletonSweep")
+        citrusSeasonGathering.add(closePastrySheet, forKey: "w!eVvhv4SMk/e2loestRoOnCS?wPegezp=".wevVPastryCrumbBloomRestored)
     }
 }

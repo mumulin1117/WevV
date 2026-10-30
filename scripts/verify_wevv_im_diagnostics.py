@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Offline checks for safe native IM diagnostics and actual Bridge delivery state.
+"""Offline checks for actual native Bridge delivery state.
 No accounts, SDK logins, network requests or simulator data are used.
 """
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import subprocess
 import tempfile
@@ -27,7 +28,6 @@ SWIFT = r'''import Foundation
     var sendThrows = false
     var replaceGeneration = false
     var wasDeliveredDuringSend = false
-    func traceGlazeLoad(_ event: String) {}
     func sendGlaze(_ message: [String: Any]) async throws {
         wasDeliveredDuringSend = glazeContextDelivered
         if replaceGeneration { glazeWebViewGeneration = UUID() }
@@ -43,30 +43,6 @@ SWIFT = r'''import Foundation
             precondition(condition)
             cases += 1
         }
-        check(conversationAvatar.isTrailNowOpen("39114002_554") == "39114002_554")
-        for raw in ["https://example.invalid?token=secret", "bad\nmessage", "", String(repeating: "x", count: 65)] {
-            check(conversationAvatar.isTrailNowOpen(raw) == "redacted")
-        }
-        for raw in ["", "token-value", "https://invalid", "1234567890123", "401\nsecret"] {
-            check(conversationAvatar.isSugarGuarded(raw) == "redacted")
-        }
-        let business = conversationAvatar.confectionStudioCounter(accountGroup.artisanSelectionShowcase(bakeryDetails: "40101", cancelGlazeLoading: "SECRET_TOKEN_FULL"))
-        check(business.bindPastryEditDismissTap == "business" && business.buildCreamRingEditPage == "40101")
-        let maliciousCode = conversationAvatar.confectionStudioCounter(accountGroup.artisanSelectionShowcase(bakeryDetails: "SECRET_TOKEN_FULL", cancelGlazeLoading: "SECRET_APPKEY"))
-        check(maliciousCode.buildCreamRingEditPage == "redacted")
-        let contract = conversationAvatar.confectionStudioCounter(accountGroup.cancelTastingReport("SECRET_TOKEN_FULL"))
-        check(contract.bindPastryEditDismissTap == "missing-contract" && contract.buildCreamRingEditPage == "none")
-        let unknown = conversationAvatar.confectionStudioCounter(NSError(domain: "SECRET_TOKEN_FULL", code: 123, userInfo: [NSLocalizedDescriptionKey: "SECRET_APPKEY"]))
-        check(unknown.bindPastryEditDismissTap == "other" && unknown.buildCreamRingEditPage == "none")
-        let web = conversationAvatar.confectionStudioCounter(NSError(domain: "WKErrorDomain", code: 4, userInfo: [NSLocalizedDescriptionKey: "SECRET_TOKEN_FULL"]))
-        check(web.bindPastryEditDismissTap == "webkit" && web.buildCreamRingEditPage == "4")
-        let url = conversationAvatar.confectionStudioCounter(URLError(.notConnectedToInternet, userInfo: [NSURLErrorFailingURLErrorKey: "https://invalid?token=SECRET_TOKEN_FULL"]))
-        check(url.bindPastryEditDismissTap == "url" && url.buildCreamRingEditPage == "-1009")
-        let http = conversationAvatar.confectionStudioCounter(accountGroup.brownButterPecanCombination(401))
-        check(http.bindPastryEditDismissTap == "http" && http.buildCreamRingEditPage == "401")
-        let cancelled = conversationAvatar.confectionStudioCounter(CancellationError())
-        check(cancelled.bindPastryEditDismissTap == "cancelled" && cancelled.buildCreamRingEditPage == "none")
-
         let success = BridgeProbe()
         success.glazeRequests["ok"] = .init(method: "host.getContext")
         check(await success.complete("ok"))
@@ -94,7 +70,7 @@ SWIFT = r'''import Foundation
         check(await other.complete("navigation"))
         check(!other.glazeContextDelivered)
         check(!(await other.complete("missing")))
-        print("IM diagnostics and actual Bridge delivery checks passed: \(cases)")
+        print("Bridge delivery checks passed: \(cases)")
     }
 }
 '''
@@ -104,20 +80,16 @@ def main():
     start = source.index("    @discardableResult\n    private func completeGlaze(")
     end = source.index("    private func respondInvalidGlaze(", start)
     actual = source[start:end]
-    network = (SOURCES / 'WevEnd/NertyuChoiceStackLayer.swift').read_text()
-    error_start = network.index('enum accountGroup:')
-    error_end = network.index('\n@MainActor\nstruct activeDonutParlorSection', error_start)
-    network_error = network[error_start:error_end]
     with tempfile.TemporaryDirectory(prefix="wevv-im-checks-") as directory:
         folder = Path(directory)
         probe = folder / "Probe.swift"
-        probe.write_text(SWIFT.replace("    // ACTUAL_COMPLETE_GLAZE", actual).replace("// ACTUAL_NETWORK_ERROR", network_error))
+        probe.write_text(SWIFT.replace("    // ACTUAL_COMPLETE_GLAZE", actual))
         for debug in [False, True]:
             binary = folder / ("debug" if debug else "release")
-            command = ["xcrun", "swiftc", "-swift-version", "5", "-default-isolation", "MainActor", "-parse-as-library", "-module-cache-path", str(folder / "modules")]
+            command = ["xcrun", "swiftc", str(STRING_HELPER), "-swift-version", "5", "-default-isolation", "MainActor", "-parse-as-library", "-module-cache-path", str(folder / "modules")]
             if debug:
                 command.extend(["-D", "DEBUG"])
-            command.extend([str(SOURCES / 'WevEnd/conversationAvatar.swift'), str(probe), "-o", str(binary)])
+            command.extend([str(probe), "-o", str(binary)])
             subprocess.run(command, check=True)
             result = subprocess.run([str(binary)], check=True, text=True, capture_output=True)
             assert "SECRET_TOKEN_FULL" not in result.stdout + result.stderr

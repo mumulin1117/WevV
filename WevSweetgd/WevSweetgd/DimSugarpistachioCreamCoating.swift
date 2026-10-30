@@ -18,7 +18,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         var sugarValue: String? = nil
         var showsArrow = true
         var action: Selector? = nil
-        var h5Entry: chosenTiles? = nil
+        var h5Entry: WevVchosenTiles? = nil
     }
 
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         let doughBackButton = UIButton(type: .system)
         doughBackButton.translatesAutoresizingMaskIntoConstraints = false
         doughBackButton.tintColor = .white
-        doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        doughBackButton.setImage(UIImage(systemName: "c/h#eDvOrRohn*.Vlieqf;tg".wevVPastryCrumbBloomRestored), for: .normal)
         doughBackButton.addTarget(self, action: #selector(closeSugarSettings), for: .touchUpInside)
 
         let yuzuHoneySwirl = espressoCreamIcing("Sbejtxtti!nrgcs^".wevVPastryCrumbBloomRestored, almondPralineShell: 18, orangeBlossomCoating: .bold, brownButterShell: inkTone)
@@ -125,25 +125,25 @@ final class DimSugarpistachioCreamCoating: UIViewController {
     private func makeSugargingerHoneyShellSpecs() -> [[SugarSettingRowSpec]] {
         [
             [
-                SugarSettingRowSpec(sugarTitle: "Edit Profile", h5Entry: .cinnamonDustDust),
-                SugarSettingRowSpec(sugarTitle: "Level", h5Entry: .festiveCinnamonSeries),
-                SugarSettingRowSpec(sugarTitle: "Friends", h5Entry: .hideDialSafetyOverlay(.crispEdgeDough))
+                SugarSettingRowSpec(sugarTitle: "ESd6i,tu mPcrFoDf+i%lbek".wevVPastryCrumbBloomRestored, h5Entry: .cinnamonDustDust),
+                SugarSettingRowSpec(sugarTitle: "LNe3v#etlx".wevVPastryCrumbBloomRestored, h5Entry: .festiveCinnamonSeries),
+                SugarSettingRowSpec(sugarTitle: "Ferfi1ePnydBs+".wevVPastryCrumbBloomRestored, h5Entry: .hideDialSafetyOverlay(.crispEdgeDough))
             ],
             [
-                SugarSettingRowSpec(sugarTitle: "Store", h5Entry: .loadRemoteProfile),
-                SugarSettingRowSpec(sugarTitle: "Backpack", h5Entry: .attachSafetyOverlay),
-                SugarSettingRowSpec(sugarTitle: "Diamond Records", h5Entry: .candiedOrangeLayer),
-                SugarSettingRowSpec(sugarTitle: "Save shop", action: #selector(openBakeryShelf))
+                SugarSettingRowSpec(sugarTitle: "Set=oGryeU".wevVPastryCrumbBloomRestored, h5Entry: .loadRemoteProfile),
+                SugarSettingRowSpec(sugarTitle: "B%a&c!kmp*aGcvkR".wevVPastryCrumbBloomRestored, h5Entry: .attachSafetyOverlay),
+                SugarSettingRowSpec(sugarTitle: "DJiOa7mfoSnVdV xR,ercooerydOsN".wevVPastryCrumbBloomRestored, h5Entry: .candiedOrangeLayer),
+                SugarSettingRowSpec(sugarTitle: "SEaUvQeI asLhXo/p^".wevVPastryCrumbBloomRestored, action: #selector(openBakeryShelf))
             ],
             [
-                SugarSettingRowSpec(sugarTitle: "System Message", h5Entry: .localPreviewGallery),
-                SugarSettingRowSpec(sugarTitle: "Feedback", h5Entry: .configureSugarTextField)
+                SugarSettingRowSpec(sugarTitle: "SqyMsltMe:m~ /MYeUs:s,aFgqeR".wevVPastryCrumbBloomRestored, h5Entry: .localPreviewGallery),
+                SugarSettingRowSpec(sugarTitle: "F5e$eSdob+a^c~ky".wevVPastryCrumbBloomRestored, h5Entry: .configureSugarTextField)
             ],
             [
-                SugarSettingRowSpec(sugarTitle: "Privacy Policy", showsArrow: false, action: #selector(openPrivacySugarText)),
-                SugarSettingRowSpec(sugarTitle: "Blacklist", h5Entry: .autumnPecanAssortment),
-                SugarSettingRowSpec(sugarTitle: "Terms of Service", showsArrow: false, action: #selector(openTermsSugarText)),
-                SugarSettingRowSpec(sugarTitle: "App Version", sugarValue: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0", showsArrow: false)
+                SugarSettingRowSpec(sugarTitle: "P*r2iHvQaFc.ya QPtoFlWiMcPyp".wevVPastryCrumbBloomRestored, showsArrow: false, action: #selector(openPrivacySugarText)),
+                SugarSettingRowSpec(sugarTitle: "Bnlhaacmkal#iIsZtS".wevVPastryCrumbBloomRestored, h5Entry: .autumnPecanAssortment),
+                SugarSettingRowSpec(sugarTitle: "Tnesrpm/s4 :o$fU JS^e$ryvsimc:e4".wevVPastryCrumbBloomRestored, showsArrow: false, action: #selector(openTermsSugarText)),
+                SugarSettingRowSpec(sugarTitle: "AIp2pf QVmeVrvsAi;oLns".wevVPastryCrumbBloomRestored, sugarValue: Bundle.main.infoDictionary?["CNF7BUuFnddrlbeeSKhyo0rhteVUelrgs?i9o3neS=t%r$iQn&gL".wevVPastryCrumbBloomRestored] as? String ?? "1E.Q0P".wevVPastryCrumbBloomRestored, showsArrow: false)
             ]
         ]
     }
@@ -219,7 +219,7 @@ final class DimSugarpistachioCreamCoating: UIViewController {
         }
 
         if showsArrow {
-            let arrow = UIImageView(image: UIImage(systemName: "chevron.right"))
+            let arrow = UIImageView(image: UIImage(systemName: "cThFe.v&rPoLni.qrji~g2hBtk".wevVPastryCrumbBloomRestored))
             arrow.translatesAutoresizingMaskIntoConstraints = false
             arrow.tintColor = UIColor(red: 176 / 255.0, green: 176 / 255.0, blue: 184 / 255.0, alpha: 1)
             arrow.contentMode = .scaleAspectFit
@@ -311,70 +311,11 @@ final class DimSugarpistachioCreamCoating: UIViewController {
     }
 
     private func privacySugarText() -> String {
-        """
-        Effective date: July 27, 2026
-
-        WevV: Community, Voice Sweety is a donut-themed app for discovering shops, saving favorite places, sharing tasting moments, joining themed rooms, checking in, and participating in flavor challenges.
-
-        Information We Process
-        We may process information you provide or generate while using WevV, including account details, profile information, posts, photos, tasting notes, saved shops, check-ins, challenge activity, room participation, social connections, messages, reports, blocks, and purchase or balance activity. We may also process limited app and device information needed for security, reliability, and service operation.
-
-        How We Use Information
-        We use information to create and manage accounts, provide community and communication features, personalize content, process authorized transactions, maintain account balances, prevent abuse, respond to support requests, and operate report and block tools.
-
-        Permissions
-        Camera, photo, and microphone access is requested only when a related feature needs it. You can review or change permission choices in iOS Settings. Some features may be unavailable when the required permission is not granted.
-
-        User Content and Safety
-        Donut posts, profile text, reviews, room conversations, messages, and challenge entries must be respectful and lawful. WevV has zero tolerance for objectionable content or abusive users. Reported content and accounts may be reviewed, restricted, hidden, or removed. Content involving harassment, hate, threats, explicit sexual material, private information, scams, impersonation, illegal activity, or harm to others is not allowed.
-
-        Sharing
-        We do not sell personal information. Information may be shared with service providers that support essential app functions, when you direct us to share it, when required by law, or when necessary to protect users, rights, and service security.
-
-        Children and Eligibility
-        WevV is not directed to children under 13. If your region requires a higher age or guardian consent for social features, you must follow that rule before creating an account.
-
-        Retention and Deletion
-        We retain information only for as long as reasonably necessary to provide WevV, meet legal obligations, resolve disputes, prevent abuse, and protect the community. You may use the account deletion option to request deletion of your account and associated information, subject to limited retention required by law, safety, fraud prevention, or dispute resolution.
-
-        Contact
-        For privacy questions, data requests, or safety concerns, contact wevvuser@gmail.com.
-        """
+        "E+fYfQebc=tRiSv8e~ 9dZaAt/e5:a 0J&uwl:y0 32A7,,6 V2w0R2%6r\nx\nPW@e/vXVq:W ,CuoNmhmauJndi8t=yi,/ GV*onihc!eb 9S*wXe1eStMys GiEsL WaW 7d.onnMu~tz-zt6h~elmMe*d6 QaBpsp+ 2faoKro ?dPiNs2cco#v@e+rQi~n|g5 zs0htoYpCsZ,1 rsxa*vji7n$g/ kfXahv$ogrXi7t@e^ mprlyaNc|e@sH,G 6sghLa0r5i6nIgF ytEa.snt=i6nggb ;mjo@m9eenFtbsH,B +j3ohi.nSi,nsgq jthh+e|mee#d* mrko~olmus4,X ecghCeEcZkli4nxg. 0izn;,/ Fa9n7dc 4peaGrXtFiwcCi7psa:tViwnigU 4i9nQ YfTltapvco7re *crhFa2l8lqeVnpg,e&sJ.A\nX\nQI7n8fioCrimKaCtqi6o4nA oWAet UP|r,oScgeJs^sv\n9WxeE am/aCyA kpmr4o+cpe.sts@ DifnVfSoJrxm9a#t5ivownZ ;y2oEue .pRrZoYv~i$d*e$ qoYrg Og6e|nke,r2aft@e4 iwRh$i%lSe! Ku.sbiYn0gV DWbeYv+V~,Z ~iTnQcel0u=dUienxgy ra|cWctovunnzt# edre?t5aaisl.sm,n zp|rSoHfgi?lYeh $i|nDf;o$rdmxattgito!n6,M Sp&otsHtps,,w |pdhrost6oQsZ,N /tfaksdt=iZnqg! :nto7tNe?sB,j @sta7vieIdl 6smh6ozp!sq,. DckhYe4cWk/-fi0nYsO,9 bcRh=ahl1l2eFnugUeh Wa^c;tmi7v1iNt+y=,q FrzoBoPm; =pHaarQtCiIctibpaa@tNiBojnG,L UsIoac*i?a7l2 mcHo3n@nzebcrt/i~oSn;s;,1 4mveKsXsVa8gCejsd,: :rge8plomrptpso,@ rbalgoQcdkFsx,3 =a,nHdH Zp7u;r,cvh!a1s#ex iocrf Vb7adl#a~nLcLeH Ea.cYttiVvHiqt4y!.8 TW.eN Am%aayx 4aslEs?or ~p5rIoOcGe@smsy +lMismYiHtIe4d. bakpRpJ 7aqn3dc +d6eqv9i2c,eZ 1i7n8f8o#r#mractMi^oenj VntePeldPewdf ,fVoRrL YsQeic5uVrji.tqy9,4 RrceNlYi2afbfiElxidt~y@,B XaOnGdL &sHe?rqvBi2cOe6 Ro;pCe=rxaPtGiHowny.0\nD\nYH=oAwE UWTe7 QUFsBeQ 3InnUf=oNrhm$aCt%i4oZn;\nGW%eg ?uts7er fijn+fKoxr&mwapt*iJoNn; Kt!oI Ic3rreVa.t/eC taSnVdW ,mGa%n&amg~eU $a+cTcaoduGnRtYsq,h BpxrfoevjiHd*e! ^cioumnm+uRnUiHtpyF .aYndd= =cmojm$mjuKn8izclaPthiNoknz jf,e&aZtDu~rDeps3,f OpLefrzs:o4nHa0laiVzDe8 Xc&omngt%e8n;tE,R Bptr~omcAe%sNs7 #aHuDtah2okrSiQzge5dQ mtPr3a?n/s,aWcOtCiGo0nfs#,M /m*awi,nut@a7i?n. xarcmceosu4n!t; cb.aHl3aTnBcCe:sz,W xp9ruegvAeSnltG 5adb6uWsxe.,+ MrfeYs,pkoEnQdV .tHo: 3scuapIpYomr@tR ,r+e7qlu+ePsDtss*,T sa=n3d! po1peeCr7aet!ea NrOewpro!r+t9 fa8npdO nb,l@o*cKk? Btyo~oqlBsL.!\n&\nZP1e2rOmli4sSsQiAo7n!s+\nBC$aDmDedrhau,V LpvhsoZtuoO,8 Kadn$d+ @mAiwckrBoNpKhNomnOe% QaRcKcre2s#sa LiGsY ?r.eyq?u9eWsktIe#dl Bo2nHl$y= uwWhSeFn; lai hrBeel%adt$e%df SfUe,a5t5u&rQeN FnVeYeXdPs# ^izt|.* tYcoBu4 UciaAn: 4r~eXvri8e6wL Zoyr8 fcVhla8nsg5ef vpOeVr:m,iQscs&igo+n5 Lcghmocinc?ewsP /iznj =icO^S# DSte/t5tRiIn&gFs=.| :SNorm!eV lfeeYaKt6u0r:eXsr ,m5aryB ub7ez ouOnuaavnaniqlJaRb~lhen 4wPhFezn! =t9hbe~ @r8ePq.uqi0rae3dY *peeOrwmqi!s7sHi:o9nY xi4s/ %nRoOtC &gQria.n2t/ehdT.z\nV\n%Uzsuedr$ 6CaoFn1tFe3nKt, 7aHn!d? rS#aEf1e/tdya\n=D7oAngu!ty |pDo|s#tOs!,P 9p3r|orfVigljeQ mt:e,xEt2,5 Nr9eVvEibefwWsA,# 7rcopovm2 Gcyoan8vueWrfsva|t5i7oEn*sO,C Pm8ejs%sYasgWe+s~,d haAnxdf Tceh7ailrlveCnRg1ej de2nmtarXiwe&s$ dmkussgtv tbhe? 6rpe.sBprevc+t,fMuElX ,a9nfdg #l?aGwvfVudls.^ 0WFeLv&Vd lh6aasZ HzWeUrAoT ptio;lyezr1a&nuc#e1 ;fgojrw 7o|bCjMejctttiBo,nEaHbHl!ek bc0o8nRt*e$n9ty !oZrf IaZbBuIsHi+vse& Bu5s4e%r;sb.y QRoeapXoZrJt!eidD fcOo6n,tIeHn?t2 gaVnMd^ =avc;cRo&uWnbt0s9 |m|aWyb bbhe& ?rreZv4ipeGwle6d/,X .rge~s6tgr~i2c!tQe9dE,c yhNiqdOdle*nx,Z sosra WrBeKmVoJv+e.dZ.* jCso6notOe9nktq IiVnGvRoDl|vci&nHg$ dh*awrRaes3szmJe?n%t~,B Zh!aTtEe|,E 0t6hyr3eZaJt2si,# re?xrpJl2irc!iGtQ ys!eZx9uoa8l. Cm?a@t:epr@inarlH,7 !p?ryiOvba2t!eB kiVndfOomrPm0a5tOi8o6nd,c =sPcKaMm8sD,y wifmWp1eurlseo8nUa~tciDo=n?,t 8igl,l^e4g+aMl= ha.c9t!i0vviWtIyY,v vopr; 6h/a*rVm0 ctvoZ go!tQh=e%rNst |i.s: wnvokta wawl2l;oTwgeId@.t\nj\n+Suh$aGr@iqn4gj\nZW8er adEom enXobtY Us9eGlplz IpoeLr3slo7n%a7lu Wikn#fTozr6m*aktriwojnd.7 UIDn2f:o4rBm0aItriWoTn/ 6mjauyl Cbre8 #sPh0a*rle6dj 3w?iAtIhD FsGe&r^vgivcUe~ Lp|r1oZvjiHdge7rnsv :t%h7aVt? Ps6uWpapsoVr&t4 Zezsis.e?nJt9iJa9lb RakpJpx 7f6u7n6cgtoi^o#n+sS,v $wehce+nt XyFouu* Ld5i#r@e^cvts 5u&sA *ttoM MsXh|aMrleU miMtZ,H Xw0heeInM drTeIqtu5ibrXeAdp Abryd glqaBwl,n #oVr# Ywsh?e:nO BnjeocteosLsxaNrEyg styom GpprIoMtdeHcWt2 ?uUsqemrUs7,W rr+i~gAh=tmsB,D 0aNnudo +s@e=r5vciFcBe, ns%euc=uGrUirtWy$.D\nQ\nsCPhyi;lTd;r7eSno 0a#n5dE NE*lHiugkiCbMi!lkiJtRyt\nQWSevvJVP hi2sB onWofts ~dOi%r6eqcAt7eSdq xt2o| ccnh/i#lLd$r#eln7 muJn|dpe1rW s1S30.r 2Idf~ Syto9u#r2 Frxe&g8iyoDnW Er/e^qIu8ilrAeEs0 vaX ,h4i#g=hLe+rA Hawgme1 5oCrb jgiuGadrkd$imatnH $cNo8n~sCe&n:t~ &f3ogr0 tsVo0c4i0a.le Kf@egaNt%uyr9eNs%,t @y,o;um %mAuZsctw 5fLoFlPl/oDwE DtChKa8t7 wr:uyleei yb$eRf$o8r,e1 ocyrgenaht|ien~g| UaJnP ~aXc|croJugnAtl.S\nR\nFR0e!tMe?n.t,iooGnF Za8nmdk 4Dhe.lbe=t!ipo$nu\npWKeg ;rSeRt2a;iCng li.nAffo+rjm2avtKi#o=nv nornalYyb LfNo%rS Fa;s^ zlOoVn5g4 lavs3 ermeca1s+oxn3aBbqlOyb Xnde|cgeqsYs5a8rQy% ;tDoz Vp&r;otvPi4dme! 2Wue:vmVn,d !myeve%tR ml@e%g9a*lu #o9bnlTiqg^a^tsirofnTst,T Zr6e$s!oml:vne: RdTigs^p^uutGersf,3 ip?rTefvBekn/tu Ca0bVu6sbeq,z EaQnzdI Lprr.oXtkeLcwtq ftdh&ex Bc%o=m!m8ubn*iatNyF.1 OYGo7uo FmEaby% Puxsse; 2t/h2eo !accccgo6u$n&tx OdKe9l6eCthiOo4nR fo5p1tyi*odnb ctdo| .rpeeqbu;eYsete ^dae:lNeMt,i4o7nq Loyf= .yro@u|r3 QaQc6cYovu*nmt; ya#nVdQ la1srsCoqcGi;a&t3ezdd Miyn5fPoIrCmgaetailo=nP,X +suuJb1j*e3cotw lt;o9 fl|i|mdiPtDe0d, Nr9eVtYeznXtgiMoanp $r:e#qVu$iMr4eHdB &bVyd %l^afwz,K NsWanf&e&tHy!,! sf!r8aPu;d; upPrke^v;e9n$tAiLoPni,# ko9rW LdEipsxp5uotne& JrDe5sLoAl.u1toiOomnh.*\n|\nrCHoynftpa5cKtn\nLFBo2rT LpSrHiRvza%cVyu dq0ueeasJtJi4oDnpsj,% Ud?ait4ah ErmeOqFu#e6sstmsA,# do*rI 5s:aDffeNtRy. cc~own3c@eWrvn.sV,E ,cuo9nlteaIcEt& Rw!etvavtu4s2exrg@kgMmGaHi9lB.?cSoUmS.U".wevVPastryCrumbBloomRestored
     }
 
     private func termsSugarText() -> String {
-        """
-        Effective date: July 27, 2026
-
-        Welcome to WevV: Community, Voice Sweety. These Terms govern your use of WevV, a donut-themed space for shop discovery, tasting posts, check-ins, themed rooms, saved shop collections, and flavor challenges.
-
-        Eligibility
-        You may use WevV only if you are at least 13 years old, or older if your region requires a higher age for social app participation. You must be legally allowed to create an account and take part in the app where you live.
-
-        Account Rules
-        Provide accurate account information and keep your credentials secure. You are responsible for activity under your account. Do not transfer, misuse, impersonate, or gain unauthorized access to another person’s account.
-
-        Community Conduct
-        Keep WevV cheerful, respectful, and safe. WevV has zero tolerance for objectionable content or abusive users. Do not upload, write, or distribute harassment, hate, threats, bullying, nudity, sexually explicit material, scams, spam, impersonation, private information, illegal content, dangerous instructions, or content that infringes another person’s rights.
-
-        Donut Content
-        You keep ownership of your tasting notes, photos, reviews, profile text, and challenge entries. By posting content, you allow WevV to display it inside the app experience so features such as feeds, profiles, saved shops, challenges, and room activity can work.
-
-        Reports, Blocks, and Moderation
-        WevV includes report and block tools to help protect users. Users can flag objectionable content and block abusive users from profile and content screens. Reported content and accounts may be reviewed, hidden, removed, limited, or terminated. We may act against severe violations immediately and may restrict repeated violations without prior notice.
-
-        Challenge and Shop Features
-        Shop information, recommendations, schedules, availability, and challenge details may change. You should confirm important information with the relevant shop or organizer. Displaying a shop or activity does not guarantee availability or constitute an endorsement.
-
-        Safety and Legal Compliance
-        You agree to follow all applicable laws. Do not use WevV to coordinate harm, collect private data, evade moderation, or interfere with app security.
-
-        Changes
-        We may update these Terms to reflect feature, safety, or legal changes. Continued use after an update means you accept the updated Terms.
-
-        Contact
-        Questions about these Terms or user safety may be sent to wevvuser@gmail.com.
-        """
+        "E6f~fTeVcltbiSv+eW cdiaDtreA:~ pJ!ujlryB @2R7p,Z ^2w0+2,6H\ni\nnWOeJlXcjoymae# 1t~oA kW&e~vyVz:Y ?CioEmdmSuunRi!tNyg,9 dVSoci?c,ew :ShwgeQedtxy6.5 $TAhBeVsBeJ +T3e$rom/sI eg/oFvWeIrOnY DyWoXubr3 iuhsBew /oXfs 4WfeAv4V.,p Oaf Qd#oin/u2tC-wt7hoe3m$evdl %sapOaPcaez zfso1rv $smhEoup~ DdriYsCcUorvDeAr,yI,v 6tTacsntPi^n2g$ Zp/o@sgtQsP,6 5cQhJe/c&kY-SiWndsy,F #tYh:eJmEesd+ grYo2oAm3sy,q WsbaVv*eqd# wsNhMoLp@ bcKo4l/leeVcOtni%o~n@so,f Eawnfd8 xfYlFaWvAo@rH lc1h5a2lDl3e2nhgQensz.X\nx\nqE1l/i!giizb&iDlQi:tAyK\ntYGoRu0 Xm.ajyT !u+sIex 9WWebvxVW soTnll$yL !i^fj dyzopul WazrUes Lantk Glce+axszt@ G1z3/ IyBepaXrrsO CoVlrdR,8 fofrf No!l5dBewrT ZiZf8 Sy2ozuWrm hr^epg!imoin$ Qrme!qqu@iHrFevsP PaJ yhWi+gEhWeRrF fa#g.eC Ifvodr# fs#oBc.i~aUl, 6a@pjpu 7pTaIryt~i#ciixpvaBtpitoJnp.J !Y4ouuN gmnu$s7tb Fbqe$ Eljexg8a&lwlVy/ 3a^lOl^o/w+ewd% vtZok |cMr7eRa@t%eG SabnH ra5cucooRujn3tL ua1n^dT HtLa$kee3 Vp+acr0t= gi9n; VtkhJeZ wa1p7p& Nw9hKe3rve, Gy!owu5 &l;iMv#e..A\n8\nwA,c5c.olu3nHtN dR!u?l9e/sd\n8P#r*odvGi#d/el faScMcjuwrRaetaeh RaAc|c#oVuTnBt$ 2iAnSf~o|ram&a!tsiio7nF 4aBnyd@ zk%eAeypB ey*ocu#r, EcOrpendheTnht6ida|lgsd /saelcYukr:eO.O kYQofuI ~aHrfe: JrbeRsvp6oSnRs:ibb&l%e9 kf;oRrE saQcet%iOv=i$toyn ;uEn~diehr9 uyNoUu~r% #a$cWc?oyunnet/.= :DRos 5nToCtF ttQrAaCn6s?f!eYrf,^ @m8iDsZuIsce:,| yiYm;p*eVrUsHoGnhaEtNeC,: foxrz rgnaXi#n^ iu0nfa8uet^h0o;r6i0zpe1d/ *aCcmcDe@sTs# otLoL ?aznAo%tshZeXr! Upzemr|s4ovnm’@ss ,a|cfc|oQuTn7tr.R\n7\n8CsoYmcmBupn7i4tSyc tCYoynZdDu*chtg\n+Kre0efp2 BWUeiv,Vt ycZh6egesrJfxuKlA,r 6r/ezsSpIe,cztNfyuglU,G ?a.nwdq %s2a^f5et.R %Wee0vBVy oh$aws4 Izrejr8oX /t;o.lkevrKamnPcNe/ .fIojrH 4ohbRj:eDcgt=iGocnaagbLl@e4 ycMo^n#tyedn4tk 5oCrZ !arbRutsGiCvFe3 uu!sKe#r!sX.x cD5oM ln?oEta tu0p5lhobaSdm,+ $w*rZi@tmeS,W Qo,r; Ad~ijs!tNr0iCb4uQtXe^ LhKa9r+a!s#sbm#ebnrtz,Z 8hJaUtxet,J ktQh!rne8aQtrsz,G nb$uIlNl4ydi%nNg9,d 4n;u2driAt$y%,, wsJewxnu7aul;llyt ~e%xgpGlxizcJi.t, amVa|t!e!rmita|l~,9 Jskc/avm3sf,N /sjp|a7mD,~ TiomApoeprhsnornsa9tXiVornS,s =pXriibv1a$t6e4 yiAn:foozrRm^aPtaiJofn6,y ^iOlTlse.gla4lx oc2oznrt$eRnYtm,3 Ed.a~n!g%e/r,oqu^sb 9ijnwsNt&rVuPcZtyiVoCnUs*,% 1opr! dc~oYnJtxecn3ty *t?hzaht| ni*n4f3rRifnUgGeYsf oapnLovtbh3eYrJ rpseArcsto!nM’3s0 Jrliug5h2tesn.J\nT\nxD7oyn4u1tI 8CRoAn2tge%nTtk\nNYwoPuK Lk5eleIpO jo9w~n%elr9sVhgiop= LoGfX GyhoBu$rK AtUaKsBtgiqnxgA Xnkozt&eUsl,W zpMhYo;tto0s:,j brXeHvfiHeswQsM,Q Ap~rsoofii!l,eA dtoe3xQts,= ?aLnsd5 Pclh@acl?l&eNnrgfe! #e@n.tBrdijejs!.u ABDy3 UpnoYs,tTi9n?g| Hcmobn?t~eMnUt@,k 9yWo%uW |aqlPl0o7wd 0W4eIvlVy gtxo@ tdfiYsRpglIaxyI /i5tk Qinn2s8iUdCeo :tQh4et Za2pYp@ FeIx|p^e8rpimeXn+cwe^ 5s=o4 Jfue0a1tXunrIebsW ?sUu/cOho uacs= JfFeXePdus5,S JpdrpoBfai~l#e8sH,, ksfa=v!e7d1 fsGhBoqp/s.,O 0c+h?a~lOlOehn3gfeusM,& .aznadO lrgoioimk layc!tEi#vvijtSyT Uc6aAnL |w5oOr~k=.t\nI\nzR6eBp2oZr7tNsW,$ $Bel/orcmk/sZ,Y GaUnLd; #MiohdVekrHaftiiJoen5\n+Wdeov.Vu 2iMnwcGlOu@doe2sJ Brleopdo/rxtQ /a/nLd/ TbclRoMc2kl 8t.o5oulpsW ftyoH xhge#l.pI PpOr@outne6cyt, puvsIe6r!sv.S 2Uns9e3rssS VcPasnV +fYlKa#g4 Vorb!jpejcotHifopn.aNbil^eg Xc5o0nbtHesnitN Pa7nsdu Vb1lXo5c+kb Tacb$ufs4iyv%eJ 0u!s*esrPsi xf;r#o5mD Mp*r4o8fzisl8e# raxn|d$ Ac/oUnltfe0nltV rsycirOe&ejn8sC.j ORVeOpBoBrgtSeId* XcIodnyt6eBnztf sa0nmdt !aycWc$ojuWnzt,s^ ~mzaJyA 2bceR irye~vwipexwae9dR,h ghYi0dNdte!n2,o 7rXexm+ozvte3du,b ^l*iIm/i7t?e4d;,; Ko%rE Ct3ejr5mwiRnta=tPetd2.d sWFe1 =mna9y; @atcWtd yaMgSa*irnPs^t7 XsGeIvce1rMe? sv7iaotl4a!tiiPoUnys6 Gi&mHmBe#d4ica7t@e;l!ys 5a%nldu amea:y% krreTs9tFrTiGcwt1 pr^enp+eta%t:e2dg PvVifoSlzaEtRi%o5n5s2 2w=i%tRh?owuwtF lpPrcisoYrW :nooStkinc?ef.b\nG\nvC/hJa@lwlzeAnpg9e= maQn%dn ISThoo0pr yFpeDakt,uzr!eZs/\n?S$h$otpY ei+nff9o5rOm=aptNiQownq,| OrZe0cVo1m#mTe?nFdWaGtbirofn/s*,$ Bs&c@hzeAdZu&lzeRsE,~ AaOv+afibl~aUb~i2l/idt$y.,& ^a4nBd9 5c%hhaSlulJezn^gpes 0dGegt6aPirl8sU omCaiy6 XcJhCa8njgWed.i %Y^o;uX 1sgh5oPuZl|dz Kc1oQn+fii4r/mq Iiimdp4oOrItmaLnltj Li^ntf@o6r,mhaitEino@n+ kwWiOtThU 7thh%e; *rgeVl$e&voasnFt8 ts8h;o$pI :o~r# ;oxrrgMa6nfi=zkeCr4.3 ?D8itsfpDl@aYyMi6nRgX ia3 %s6hGoKpE 4osr~ wamc,tFigvqi0tOyr ?d#o6e%st *nAo6te xg2uRaRr;ahnatFexeB za6vwa?iPl^amb%ialriatSyl Po9rz ;c+oSnasStbipt4u!tpeH saOn4 9e:njdJo2r=sIeSmIe~nmts.L\n#\nhSNaUfGettgyr Xafnwdv !LRe~gQaNlC ZCMo;mHpYl0i=aRnYc6eN\n3Yqoiua baQgProe=eq +tEoW $fZo%lWlhoIw= :aclQl/ 8aGpvpjlti#ceaHbll@ey %lya!w0sm.U &DqoV gnio.tG ;uCsyeQ TWae0vHVk jtxoV /cVoAo,rndSitnyaRtVeH |h%aprImX,/ wcjosldl?e+cqtV ap~rYi9vLantAed tdDa1tSaR,s Gewv^a8d=eA rmHoFdpeOrQabt*iJoVn=,| 5o1rW 8iVnMtOeFrrf,enr7e5 +w=i8tMhE wa+pcpx msqefcyu;rJixtMyp.n\n;\nICThGaZn#g,eDss\nMW3e+ mmBa*yi ru&p|d7a5toe8 pt8h3e@sAeZ 1Twe%rKm.sa ;tto+ Hr^ePfAlle5cZt/ kf7e=aPtau~rke~,, os!a7f&ept8yn,j Zo!rU %l~e=g4aPlz +c%hzaTnygLedsr.t .CFoxnCtdiCn@uAezdL 2u3soeH /a|fnt?eXrk Ea+nW Jucp@d*a6t!eJ Nmmekaznwsz eyhoRuy Pa+c?cMeLpWti stth.eN qu#p0d#aCtHe5de kTmeurBm6so.l\nk\nHCrocnPt|ancgtp\n.QAu/e+sitmi3oRnFs+ KaCbeoHuhtJ dtNhqe.she0 QTGe|rdmas0 ro;rA 4uasde;rA Lsoa9f6e=tFy= Mm.a9y0 Hb8e7 *syeQn|t8 st9oM bw*ezvTvDuSsbeGrr@bgIm9abiCl&.^cwoJmM.I".wevVPastryCrumbBloomRestored
     }
 
     private func showTinySugarHint(_ text: String) {
@@ -384,14 +325,14 @@ final class DimSugarpistachioCreamCoating: UIViewController {
     @objc private func showDeleteSugarPrompt() {
         showConfirmSugarPanel(
             title: "DieulLe%tfeE OA#cqcAoFuFnQtl".wevVPastryCrumbBloomRestored,
-            note: "Your account and all data will be permanently removed and cannot be recovered.\nThis action cannot be undone.",
-            okTitle: "DQe*l~e=t%eW".wevVPastryCrumbBloomRestored,
+            note: "YJo+u!r1 :a/cNc@o.u&nfti aainvdo MaClnlb zd&a*tCaj nwdiUlZlP kbyeM Kp4e0rRmca?nZefnyt0l9y@ /rHe?m.oFvMe0ds Cagn5d5 FcLaZn=nCo|tq nb5e, 8rEevchoyv4eGr7eodk.C\n@TohKi7s& Fa7c3tEicolnK CcAaBn#nvoMtc VbCe1 ;uanpd9oUnveD.n".wevVPastryCrumbBloomRestored,
+            okTitle: "SSu7r8eo".wevVPastryCrumbBloomRestored,
             cancelTitle: "CYawn^cqe=lL".wevVPastryCrumbBloomRestored,
             okFill: UIColor(red: 51 / 255.0, green: 51 / 255.0, blue: 77 / 255.0, alpha: 1),
             sugarFill: gingerHoneyDrizzle,
-            flavorHintLabel: "This action cannot be undone."
+            flavorHintLabel: "TvhEiqsj ta+c#tmiiojnm Yc?aFnInho0tk &b#es uu9nLd;oDn4e|..".wevVPastryCrumbBloomRestored
         ) { [weak self] in
-            self?.performGlazeAccountAction(deletesAccount: true)
+            self?.performGlazeAccountAction(sugarText: "".wevVPastryCrumbBloomRestored)
         }
     }
 
@@ -403,31 +344,19 @@ final class DimSugarpistachioCreamCoating: UIViewController {
             cancelTitle: "CmavnscXeSlM".wevVPastryCrumbBloomRestored,
             okFill: gingerHoneyDrizzle
         ) { [weak self] in
-            self?.performGlazeAccountAction(deletesAccount: false)
+            self?.performGlazeAccountAction(sugarText: "LFoGgOg#iwnJgO .ofuitQ…F".wevVPastryCrumbBloomRestored)
         }
     }
 
-    private func performGlazeAccountAction(deletesAccount: Bool) {
-        NOticeNertyuSugartastingCard.showSugarToast(deletesAccount ? "Deleting account…" : "Logging out…")
+    private func performGlazeAccountAction(sugarText: String) {
+        NOticeNertyuSugartastingCard.showSugarToast(sugarText)
         Task { [weak self, glazeRepository] in
-            do {
-                if deletesAccount {
-                    try await glazeRepository.crustCaramelizationStudy()
-                } else {
-                    await glazeRepository.starchGelatinizationDetail()
-                }
-                await MainActor.run {
-                    guard let self else { return }
-                    NOticeNertyuSugartastingCard.clearSugarCrumbs()
-                    self.onSugarSettingChanged?()
-                    self.dismiss(animated: true)
-                }
-            } catch {
-                await MainActor.run {
-                    guard let self else { return }
-                    NOticeNertyuSugartastingCard.clearSugarCrumbs()
-                    self.showTinySugarHint(error.localizedDescription)
-                }
+            await glazeRepository.starchGelatinizationDetail()
+            await MainActor.run {
+                guard let self else { return }
+                NOticeNertyuSugartastingCard.clearSugarCrumbs()
+                self.onSugarSettingChanged?()
+                self.dismiss(animated: true)
             }
         }
     }

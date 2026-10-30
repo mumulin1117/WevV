@@ -25,7 +25,7 @@ final class ZunugarPlainblackberryCreamler: UIViewController {
         let baSugarck = UIButton(type: .system)
         baSugarck.translatesAutoresizingMaskIntoConstraints = false
         baSugarck.tintColor = .white
-        baSugarck.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        baSugarck.setImage(UIImage(systemName: "cOh3e7v3rro;n;.$l^erf/t8".wevVPastryCrumbBloomRestored), for: .normal)
         baSugarck.addTarget(self, action: #selector(closeSugarText), for: .touchUpInside)
 
         let glazeTitle = makeSugarLabel(titleWevVSugarText, size: 18, weight: .heavy, color: UIColor(red: 0.94, green: 0.94, blue: 0.95, alpha: 1))

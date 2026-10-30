@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Run production purchase/capture/reconciliation methods with offline StoreKit doubles."""
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import subprocess
 import tempfile
@@ -223,7 +224,7 @@ def main():
         file = temporary / 'Retry.swift'
         file.write_text(original + '\n' + harness)
         binary = temporary / 'retry'
-        subprocess.run(['xcrun', 'swiftc', '-parse-as-library', '-swift-version', '5', '-D', 'WEVV_PURCHASE_TESTING',
+        subprocess.run(['xcrun', 'swiftc', str(STRING_HELPER), '-parse-as-library', '-swift-version', '5', '-D', 'WEVV_PURCHASE_TESTING',
                         '-module-cache-path', str(temporary / 'modules'), str(file), '-o', str(binary)], check=True)
         subprocess.run([str(binary)], check=True)
 

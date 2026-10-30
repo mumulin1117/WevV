@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Offline tests for the production SDK2 purchase ledger; never contacts StoreKit."""
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import argparse
 import os
@@ -168,7 +169,7 @@ def main() -> None:
         directory = Path(temporary)
         source = directory / "PurchaseVerification.swift"
         source.write_text(SOURCE.read_text() + "\n" + SWIFT_TESTS)
-        command = ["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5",
+        command = ["xcrun", "swiftc", str(STRING_HELPER), "-parse-as-library", "-swift-version", "5",
                    "-D", "WEVV_PURCHASE_TESTING", "-module-cache-path", str(directory / "modules")]
         if args.simulator:
             app = directory / "WevVPurchaseLedgerProbe.app"

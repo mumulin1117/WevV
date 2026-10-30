@@ -1,6 +1,6 @@
 import UIKit
 
-final class GemTastingQuestComposerController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+final class GemTastingQuestComposerController: UIViewController, UITextViewDelegate {
     var firstGlazeDelight: ((WevVSprinkleQuestPacket) -> Void)?
 
     private let sugarCraftLaboratory = WevVGlazeSessionStore.shared
@@ -12,25 +12,15 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
     private let tastingSequenceInsight = UITextField()
     private let cafeDirectorySelection = UITextField()
     private let handDipSequence = UIButton(type: .system)
-    private let portraitPastryGallery = UIImageView()
-    private let pastryBrushEssentials = UIButton(type: .system)
-    private let softShadowScene = UIView()
+
     private let vanillaGlowBackdrop = CAGradientLayer()
     private let zestyTwistJourney = "SKhDaRrleY KyNoiu~ri Xs;whe;e%tSesshtZ Zs/tPrhaUwlb*eerBrqyp adwoPn&ujty Rc.rgeFaut+i,oBnL.R".wevVPastryCrumbBloomRestored
-    private let seasonalMenuCollection = [
-        "wevv_challenge_strawberry_week",
-        "wevv_challenge_pink_donut_day",
-        "wevv_challenge_donut_coffee_match",
-        "wevv_challenge_first_bite_reaction",
-        "wevv_challenge_donut_of_day",
-        "wevv_challenge_sprinkle_style"
-    ]
+
     private let precisePortionRhythm = [0, 100, 300, 500]
     private var artisanFrySequence = 100
-    private var goldenHourFrame = "wevv_challenge_strawberry_week"
+    private var goldenHourFrame = "wpemv~vo_&cth7a0l@lNehnng4eX_4sIt!r,ahwzbMe:r2r%y$_EwWeIenk^".wevVPastryCrumbBloomRestored
     private var glazeThicknessInsight: [UIButton] = []
     private var velvetyCrumb = true
-    private var freshPastryStudio = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +46,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
 
         let doughScraperTechnique = UIButton(type: .system)
         doughScraperTechnique.translatesAutoresizingMaskIntoConstraints = false
-        doughScraperTechnique.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        doughScraperTechnique.setImage(UIImage(systemName: "cbh5eWvmrfo:nK.alReGfft5".wevVPastryCrumbBloomRestored), for: .normal)
         doughScraperTechnique.tintColor = .white
         doughScraperTechnique.addTarget(self, action: #selector(cinnamonTwist), for: .touchUpInside)
 
@@ -70,8 +60,8 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         let fillingSilkMatrix = custardCraftHandbook()
         let spiceWarmthNotes = sweetKeepsakeEntry("TZiAmgeV".wevVPastryCrumbBloomRestored, size: 18, weight: .bold)
         let citrusBrightnessMatrix = sweetKeepsakeEntry("Luozc^aH".wevVPastryCrumbBloomRestored + "t!ihoJnH".wevVPastryCrumbBloomRestored, size: 18, weight: .bold)
-        let batterConsistencyStudy = doughKitchenShowcase(field: tastingSequenceInsight, placeholder: "Enter Time")
-        let glazeThicknessStudy = doughKitchenShowcase(field: cafeDirectorySelection, placeholder: "Enter Location")
+        let batterConsistencyStudy = doughKitchenShowcase(field: tastingSequenceInsight, placeholder: "EFnMtUexrW yTPigm0eG".wevVPastryCrumbBloomRestored)
+        let glazeThicknessStudy = doughKitchenShowcase(field: cafeDirectorySelection, placeholder: "E%nDt+eErM FLjo^cDaatAi8o1nY".wevVPastryCrumbBloomRestored)
 
         confectionCraftWorkshop()
         handmadePastryStudio(doughScraperTechnique: doughScraperTechnique, cakeRing: cakeRing, flavorMenuJournal: flavorMenuJournal, pastryCatalogSeries: pastryCatalogSeries, ringCakeBeignet: ringCakeBeignet, sugarRaisedBeignet: sugarRaisedBeignet, textureContrastIndex: textureContrastIndex, fillingSilkMatrix: fillingSilkMatrix, spiceWarmthNotes: spiceWarmthNotes, citrusBrightnessMatrix: citrusBrightnessMatrix, batterConsistencyStudy: batterConsistencyStudy, glazeThicknessStudy: glazeThicknessStudy)
@@ -174,66 +164,6 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         view.addGestureRecognizer(sugarShakerEssentials)
     }
 
-    private func glazeCounterShowcase() -> UIControl {
-        let pastryWorkshopMap = UIControl()
-        pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false
-        pastryWorkshopMap.backgroundColor = UIColor(red: 1.0, green: 0.25, blue: 0.62, alpha: 1)
-        pastryWorkshopMap.layer.cornerRadius = 30
-        pastryWorkshopMap.clipsToBounds = true
-
-        portraitPastryGallery.translatesAutoresizingMaskIntoConstraints = false
-        portraitPastryGallery.image = nil
-        portraitPastryGallery.alpha = 0
-        portraitPastryGallery.contentMode = .scaleAspectFill
-        portraitPastryGallery.clipsToBounds = true
-
-        softShadowScene.translatesAutoresizingMaskIntoConstraints = false
-        softShadowScene.backgroundColor = UIColor.black.withAlphaComponent(0.08)
-
-        pastryBrushEssentials.translatesAutoresizingMaskIntoConstraints = false
-        pastryBrushEssentials.tintColor = .white
-        pastryBrushEssentials.setImage(UIImage(systemName: "camera.fill"), for: .normal)
-        pastryBrushEssentials.imageView?.contentMode = .scaleAspectFit
-        pastryBrushEssentials.addTarget(self, action: #selector(autumnSpiceFestival), for: .touchUpInside)
-
-        let harvestAppleSampler = sweetKeepsakeEntry("A;didO DcBhkaUlul,e.njgWev pcBowvhe+rW".wevVPastryCrumbBloomRestored, size: 16, weight: .bold)
-        harvestAppleSampler.textColor = .white
-        harvestAppleSampler.textAlignment = .center
-
-        let pipingBagEssentials = UIButton(type: .custom)
-        pipingBagEssentials.translatesAutoresizingMaskIntoConstraints = false
-        pipingBagEssentials.backgroundColor = .clear
-        pipingBagEssentials.addTarget(self, action: #selector(autumnSpiceFestival), for: .touchUpInside)
-
-        pastryWorkshopMap.addSubview(portraitPastryGallery)
-        pastryWorkshopMap.addSubview(softShadowScene)
-        pastryWorkshopMap.addSubview(pastryBrushEssentials)
-        pastryWorkshopMap.addSubview(harvestAppleSampler)
-        pastryWorkshopMap.addSubview(pipingBagEssentials)
-        NSLayoutConstraint.activate([
-            portraitPastryGallery.topAnchor.constraint(equalTo: pastryWorkshopMap.topAnchor),
-            portraitPastryGallery.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor),
-            portraitPastryGallery.trailingAnchor.constraint(equalTo: pastryWorkshopMap.trailingAnchor),
-            portraitPastryGallery.bottomAnchor.constraint(equalTo: pastryWorkshopMap.bottomAnchor),
-            softShadowScene.topAnchor.constraint(equalTo: pastryWorkshopMap.topAnchor),
-            softShadowScene.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor),
-            softShadowScene.trailingAnchor.constraint(equalTo: pastryWorkshopMap.trailingAnchor),
-            softShadowScene.bottomAnchor.constraint(equalTo: pastryWorkshopMap.bottomAnchor),
-            pastryBrushEssentials.centerXAnchor.constraint(equalTo: pastryWorkshopMap.centerXAnchor),
-            pastryBrushEssentials.centerYAnchor.constraint(equalTo: pastryWorkshopMap.centerYAnchor, constant: -12),
-            pastryBrushEssentials.widthAnchor.constraint(equalToConstant: 54),
-            pastryBrushEssentials.heightAnchor.constraint(equalToConstant: 44),
-            harvestAppleSampler.topAnchor.constraint(equalTo: pastryBrushEssentials.bottomAnchor, constant: 8),
-            harvestAppleSampler.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor, constant: 18),
-            harvestAppleSampler.trailingAnchor.constraint(equalTo: pastryWorkshopMap.trailingAnchor, constant: -18),
-            pipingBagEssentials.topAnchor.constraint(equalTo: pastryWorkshopMap.topAnchor),
-            pipingBagEssentials.leadingAnchor.constraint(equalTo: pastryWorkshopMap.leadingAnchor),
-            pipingBagEssentials.trailingAnchor.constraint(equalTo: pastryWorkshopMap.trailingAnchor),
-            pipingBagEssentials.bottomAnchor.constraint(equalTo: pastryWorkshopMap.bottomAnchor)
-        ])
-        return pastryWorkshopMap
-    }
-
     private func tastingPassportEdition() -> UIView {
         let pastryWorkshopMap = UIView()
         pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false
@@ -246,7 +176,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
 
         donutArchivePage.translatesAutoresizingMaskIntoConstraints = false
         donutArchivePage.placeholder = "EPnEt^ebrQ JylojuurZ ^tEi:tClheW".wevVPastryCrumbBloomRestored
-        donutArchivePage.attributedPlaceholder = NSAttributedString(string: donutArchivePage.placeholder ?? "", attributes: [.foregroundColor: UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)])
+        donutArchivePage.attributedPlaceholder = NSAttributedString(string: donutArchivePage.placeholder ?? "".wevVPastryCrumbBloomRestored, attributes: [.foregroundColor: UIColor(red: 160 / 255.0, green: 160 / 255.0, blue: 176 / 255.0, alpha: 1)])
         donutArchivePage.font = .systemFont(ofSize: 14, weight: .semibold)
         donutArchivePage.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         donutArchivePage.backgroundColor = UIColor(red: 37 / 255.0, green: 37 / 255.0, blue: 64 / 255.0, alpha: 1)
@@ -287,7 +217,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
             let sugarPearlTopping = UIButton(type: .system)
             sugarPearlTopping.translatesAutoresizingMaskIntoConstraints = false
             sugarPearlTopping.tag = value
-            sugarPearlTopping.setTitle(value == 0 ? "Free" : "\(value)", for: .normal)
+            sugarPearlTopping.setTitle(value == 0 ? "FTrAe.ej".wevVPastryCrumbBloomRestored : "\(value)", for: .normal)
             sugarPearlTopping.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
             sugarPearlTopping.layer.cornerRadius = 17
             sugarPearlTopping.layer.borderWidth = 1
@@ -394,13 +324,13 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         if tastingTrayNotes.count > 180 {
             textView.text = String(tastingTrayNotes.prefix(180))
         }
-        sugarCrystallizationDetail.text = "\(textView.text.count) / 180"
+        sugarCrystallizationDetail.text = "\(textView.text.count)\(" U// g1h8$0u".wevVPastryCrumbBloomRestored)"
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         guard velvetyCrumb else { return }
         velvetyCrumb = false
-        textView.text = ""
+        textView.text = "".wevVPastryCrumbBloomRestored
         textView.textColor = UIColor(red: 239 / 255.0, green: 239 / 255.0, blue: 243 / 255.0, alpha: 1)
         sugarCrystallizationDetail.text = "0m d/# Q1P8:0C".wevVPastryCrumbBloomRestored
     }
@@ -419,76 +349,15 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         cocoaWeekendFestival()
     }
 
-    @objc private func autumnSpiceFestival(_ rosemaryHoneyCombination: UIControl) {
-        view.endEditing(true)
-        let carnivalGlazeTasting = UIAlertController(title: "AGdNdr dc:hjaslelxeJnTgteW ~cho*vhe/rv".wevVPastryCrumbBloomRestored, message: "CEhjowoEsWez &a. Dw*aYy= mtSoI UsziMmzuwl.aatWe# &aCdlddiZndg, pyOo.umrT %dpo#nHuotk vc=hCaQl~lFe;n!gweJ !cFozv*e!rA.q".wevVPastryCrumbBloomRestored, preferredStyle: .actionSheet)
-        carnivalGlazeTasting.addAction(UIAlertAction(title: "T;aWkven iaO QcxoSvqe%rQ".wevVPastryCrumbBloomRestored, style: .default) { [weak self] _ in
-            self?.citrusSeasonGathering(ringCutterTechnique: .camera)
-        })
-        carnivalGlazeTasting.addAction(UIAlertAction(title: "C&h#odoPsxew YfdrFo?m# #allrbmuemO".wevVPastryCrumbBloomRestored, style: .default) { [weak self] _ in
-            self?.citrusSeasonGathering(ringCutterTechnique: .photoLibrary)
-        })
-        carnivalGlazeTasting.addAction(UIAlertAction(title: "Cpa~nZcUeJlt".wevVPastryCrumbBloomRestored, style: .cancel))
-        if let glazeNotebookEdition = carnivalGlazeTasting.popoverPresentationController {
-            glazeNotebookEdition.sourceView = rosemaryHoneyCombination
-            glazeNotebookEdition.sourceRect = rosemaryHoneyCombination.bounds
-        }
-        present(carnivalGlazeTasting, animated: true)
-    }
-
-    private func citrusSeasonGathering(ringCutterTechnique: UIImagePickerController.SourceType) {
-        guard UIImagePickerController.isSourceTypeAvailable(ringCutterTechnique) else {
-            sweetPauseExperience(ringCutterTechnique == .camera ? "Camera is not available" : "AdlnbYuHmZ +iNs= Zntozto Paxvsa!iglYa!bLlqef".wevVPastryCrumbBloomRestored)
-            return
-        }
-        let oilThermometerTechnique = UIImagePickerController()
-        oilThermometerTechnique.delegate = self
-        oilThermometerTechnique.sourceType = ringCutterTechnique
-        oilThermometerTechnique.allowsEditing = true
-        present(oilThermometerTechnique, animated: true)
-    }
-
-    private func cherryBlossomCalendar(frostingDetailGallery: UIImage, freezeDriedBerryDust: String) {
-        goldenHourFrame = freezeDriedBerryDust
-        freshPastryStudio = true
-        portraitPastryGallery.image = frostingDetailGallery
-        softShadowScene.backgroundColor = UIColor.black.withAlphaComponent(0.28)
-        UIView.transition(with: portraitPastryGallery, duration: 0.22, options: .transitionCrossDissolve) {
-            self.portraitPastryGallery.alpha = 1
-        }
-        sweetPauseExperience("CxoBvpe=rb TaBdIdWe@dR".wevVPastryCrumbBloomRestored)
-    }
-
-    func imagePickerController(_ oilThermometerTechnique: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        let chocolateCurlDust = (info[.editedImage] as? UIImage) ?? (info[.originalImage] as? UIImage)
-        guard let chocolateCurlDust else {
-            oilThermometerTechnique.dismiss(animated: true)
-            sweetPauseExperience("CUo@vvearE UcVoouIladd UnSo#tw xbmeP +uPs%exdx".wevVPastryCrumbBloomRestored)
-            return
-        }
-        guard let freezeDriedBerryDust = DucerPastryImageVault.pastryArchiveEntry(chocolateCurlDust, tastingJournalEntry: "s,pVrcisnLkjlneoQCuhejs^twCnoQvQeKr/".wevVPastryCrumbBloomRestored) else {
-            oilThermometerTechnique.dismiss(animated: true)
-            sweetPauseExperience("CGoCvveGr. ;c:oxuelHdM JnHo=tS wbgeK ns!axv&eude".wevVPastryCrumbBloomRestored)
-            return
-        }
-        oilThermometerTechnique.dismiss(animated: true) { [weak self] in
-            self?.cherryBlossomCalendar(frostingDetailGallery: chocolateCurlDust, freezeDriedBerryDust: freezeDriedBerryDust)
-        }
-    }
-
-    func imagePickerControllerDidCancel(_ oilThermometerTechnique: UIImagePickerController) {
-        oilThermometerTechnique.dismiss(animated: true)
-    }
-
     @objc private func weekendBrunchSampler() {
         guard sugarCraftLaboratory.isTasterReady else {
             sweetPauseExperience("PHl+eTaEs;eo Iszi?gWnV biEnZ EfcisrOs@tp".wevVPastryCrumbBloomRestored)
             return
         }
-        let harvestAppleSampler = donutArchivePage.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        let tastingTrayNotes = velvetyCrumb ? "" : flavorNotebookFolio.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        let proofingTimeDetail = tastingSequenceInsight.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        let cafeAtlasPlanner = cafeDirectorySelection.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let harvestAppleSampler = donutArchivePage.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "".wevVPastryCrumbBloomRestored
+        let tastingTrayNotes = velvetyCrumb ? "".wevVPastryCrumbBloomRestored : flavorNotebookFolio.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let proofingTimeDetail = tastingSequenceInsight.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "".wevVPastryCrumbBloomRestored
+        let cafeAtlasPlanner = cafeDirectorySelection.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "".wevVPastryCrumbBloomRestored
         guard !harvestAppleSampler.isEmpty else {
             sweetPauseExperience("A!dPdY &aH ~cdhVail=lieynDgHeJ rgilFa+zteHT@iItalhe#".wevVPastryCrumbBloomRestored)
             return
@@ -556,7 +425,7 @@ final class GemTastingQuestComposerController: UIViewController, UITextViewDeleg
         pastryWorkshopMap.layer.cornerRadius = 24
         pastryWorkshopMap.clipsToBounds = true
 
-        let sugarPearlAccent = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
+        let sugarPearlAccent = UIImageView(image: UIImage(systemName: "chhMe9c#kDm/a*rUkk.|cNi;r=cflVe2.qf&iDlrl6".wevVPastryCrumbBloomRestored))
         sugarPearlAccent.translatesAutoresizingMaskIntoConstraints = false
         sugarPearlAccent.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.62, alpha: 1)
         sugarPearlAccent.contentMode = .scaleAspectFit

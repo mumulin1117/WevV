@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Run the shipping footer timer with fake views; no network or account actions."""
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import subprocess
 import tempfile
@@ -80,7 +81,7 @@ def main():
         swift = folder / 'Verification.swift'
         swift.write_text(harness)
         executable = folder / 'verification'
-        subprocess.run(['xcrun', 'swiftc', '-parse-as-library', '-swift-version', '5',
+        subprocess.run(['xcrun', 'swiftc', str(STRING_HELPER), '-parse-as-library', '-swift-version', '5',
                         '-module-cache-path', str(folder / 'modules'), str(swift), '-o', str(executable)], check=True)
         subprocess.run([str(executable)], check=True, timeout=15)
 

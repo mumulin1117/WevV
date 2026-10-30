@@ -3,9 +3,10 @@
 
 Uses only Python's standard library and macOS CommonCrypto. No network access.
 The SDK 2 resource is loaded by the native SDK 2 session and Bridge integration.
-The legacy resource name remains reserved for migration and key derivation.
+The legacy resource name remains reserved in this packaging tool; key derivation uses the retained native seed.
 """
 
+from wevv_swift_source import STRING_HELPER
 import argparse
 import ctypes
 import ctypes.util
@@ -115,13 +116,13 @@ def resource_material():
     # Read the existing resource derivation input; never copy API encryption keys.
     source = CONTROLLER.read_text()
     values = {}
-    for field in ("crumbArchiveName", "vanillaCipher"):
+    for field in ("vanillaCipher",):
         match = re.search(r"static let " + field + r'\s*=\s*"([^"\\]+)"'
                           r"\.wevVPastryCrumbBloomRestored", source)
         require(match is not None, "Native resource key declaration has changed")
         values[field] = match.group(1)[::2]
     digest = hashlib.sha256(values["vanillaCipher"].encode("utf-8")).digest()
-    return digest[:16], digest[16:], values["crumbArchiveName"]
+    return digest[:16], digest[16:], "vanillaBeanIcing"
 
 
 def crypt(data, decrypt=False):
@@ -142,6 +143,28 @@ def crypt(data, decrypt=False):
                  source, len(data), output, len(output), ctypes.byref(written))
     require(result == 0, "Resource AES operation failed")
     return output.raw[:written.value]
+
+
+def encode_manifest(metadata):
+    data = (json.dumps(metadata, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode()
+    require(0 < len(data) <= 2 * 1024 * 1024, "Resource manifest exceeds its size limit")
+    encrypted = crypt(zlib.compress(zlib.compress(data, 9), 9))
+    require(len(encrypted) <= 2 * 1024 * 1024, "Encrypted manifest exceeds its size limit")
+    return encrypted
+
+
+def decode_manifest(data):
+    limit = 2 * 1024 * 1024
+    require(0 < len(data) <= limit, "Invalid encrypted manifest size")
+    data = crypt(data, decrypt=True)
+    for _ in range(2):
+        stream = zlib.decompressobj()
+        data = stream.decompress(data, limit + 1)
+        require(stream.eof and not stream.unused_data and not stream.unconsumed_tail
+                and 0 < len(data) <= limit, "Invalid compressed manifest")
+    metadata = strict_json(data)
+    require(isinstance(metadata, dict), "Resource manifest must be an object")
+    return metadata
 
 
 def encode_archive(files):
@@ -379,15 +402,16 @@ def pack(dist, profile_path, output, revision, version, connection_config=None):
         "nativeConfiguration": {"archiveFile": network_path.name, "archiveBytes": len(network_data),
                                 "archiveSha256": sha256(network_data), "files": file_records(network_files)},
     }
-    manifest_path = output.with_suffix(".manifest.json")
+    manifest_path = output.with_suffix(".manifest.data")
     atomic_write(output, encrypted)
     atomic_write(network_path, network_data)
-    atomic_write(manifest_path, (json.dumps(metadata, ensure_ascii=False, indent=2) + "\n").encode())
+    atomic_write(manifest_path, encode_manifest(metadata))
+    output.with_suffix(".manifest.json").unlink(missing_ok=True)
     return metadata
 
 
 def verify(bundle, manifest_path, version):
-    metadata, encrypted = strict_json(manifest_path.read_text()), bundle.read_bytes()
+    metadata, encrypted = decode_manifest(manifest_path.read_bytes()), bundle.read_bytes()
     require(metadata.get("schemaVersion") == 1 and metadata.get("archiveFormat") == MAGIC.decode(),
             "Unsupported resource manifest")
     require(metadata.get("compression") == {"algorithm": "zlib", "layers": 2},
@@ -491,11 +515,6 @@ def native_verify(bundle, files, metadata):
     runner = """import Foundation
 import CommonCrypto
 import zlib
-extension String {
-    var wevVPastryCrumbBloomRestored: String {
-        String(enumerated().compactMap { $0.offset.isMultiple(of: 2) ? $0.element : nil })
-    }
-}
 enum WevVArchiveProbe {
     static let probeBundle = Bundle(path: CommandLine.arguments[1])!
     static let probeCacheRoot = URL(fileURLWithPath: CommandLine.arguments[2], isDirectory: true)
@@ -510,14 +529,14 @@ try WevVArchiveProbe.run()
 """ % "\n".join(blocks)
     with tempfile.TemporaryDirectory(prefix="wevv-native-probe-", dir="/private/tmp") as temporary:
         root = Path(temporary)
-        swift, binary = root / "probe.swift", root / "probe"
+        swift, binary = root / "main.swift", root / "probe"
         resource_bundle = root / "SDK2.bundle"
         resource_bundle.mkdir()
         (resource_bundle / bundle.name).symlink_to(bundle.resolve())
-        manifest = resource_bundle / "vanillaBeanIcingSdk2.manifest.json"
-        manifest.write_text(json.dumps(metadata, ensure_ascii=False), encoding="utf-8")
+        manifest = resource_bundle / "vanillaBeanIcingDonut.manifest.data"
+        manifest.write_bytes(encode_manifest(metadata))
         swift.write_text(runner)
-        command = ["xcrun", "swiftc", "-module-cache-path", str(root / "module-cache"), str(swift), "-o", str(binary)]
+        command = ["xcrun", "swiftc", str(STRING_HELPER), "-module-cache-path", str(root / "module-cache"), str(swift), "-o", str(binary)]
         result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         require(result.returncode == 0, "Native archive probe compilation failed")
         result = subprocess.run([str(binary), str(resource_bundle), str(root / "cache")], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -559,7 +578,7 @@ def main(argv=None):
         if args.command == "pack":
             metadata = pack(args.dist, args.profile, args.output, args.profile_revision, version, args.connection_config)
         else:
-            files, metadata = verify(args.bundle, args.manifest or args.bundle.with_suffix(".manifest.json"), version)
+            files, metadata = verify(args.bundle, args.manifest or args.bundle.with_suffix(".manifest.data"), version)
             if args.command == "unpack":
                 restored = unpack(files, metadata, args.destination)
                 print("Restored:", restored)

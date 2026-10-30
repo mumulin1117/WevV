@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Exercise the active public-card/follow/report service with offline transport fixtures."""
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import subprocess
 import tempfile
@@ -87,8 +88,8 @@ def main():
         probe = folder / 'Probe.swift'
         probe.write_text(CHECKS)
         binary = folder / 'probe'
-        subprocess.run(['xcrun', 'swiftc', '-swift-version', '5', '-parse-as-library', '-D',
-                        'WEVV_SOCIAL_TESTING', '-module-cache-path', str(folder / 'modules'),
+        subprocess.run(['xcrun', 'swiftc', str(STRING_HELPER), '-swift-version', '5', '-parse-as-library', '-D',
+                        'WEVV_DONUT_TESTING', '-module-cache-path', str(folder / 'modules'),
                         str(SOURCE), str(probe), '-o', str(binary)], check=True)
         subprocess.run([str(binary)], check=True)
 

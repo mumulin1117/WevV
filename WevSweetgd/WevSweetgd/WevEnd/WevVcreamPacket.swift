@@ -1,7 +1,7 @@
 import Foundation
 
-/// One live-pool cursor per environment/session. Request IDs also reject late refresh replies.
-struct creamPacket {
+
+struct WevVcreamPacket {
     static let caramelMeltDelight = 10
     private(set) var closeWevvBakeryShelf: [pearFilling] = []
     private(set) var cancelGlazeEntryPreparation = 1
@@ -38,7 +38,7 @@ struct creamPacket {
         }
         buildFlavorNoteActionBar = (buildFlavorNoteEntryButton == 1 ? 0 : buildFlavorNoteActionBar) + closeWevvBakeryGate.followingList
         cancelGlazeEntryPreparation = buildFlavorNoteEntryButton + 1
-        // A repeated page must not allow an endless sequence of identical requests.
+
         let buildHomeLiveRoomBand = closeWevvBakeryShelf.count > changedShelf
         blueberryCustard = closeWevvBakeryGate.followingList > 0 && buildHomeLiveRoomBand && (closeWevvBakeryGate.gingerHoneyDrizzle.map {
             buildFlavorNoteActionBar < $0

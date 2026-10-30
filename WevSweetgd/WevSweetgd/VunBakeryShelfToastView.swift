@@ -1,7 +1,7 @@
 import UIKit
 
 final class VunBakeryShelfToastView: UIControl {
-    private let pastryWorkshopMap = UIImageView(image: UIImage(named: "tastingSuccessLayer"))
+    private let pastryWorkshopMap = UIImageView(image: UIImage(named: "tLavs5taixn3gIS#u7c~cXees%sJL;a^yveQr:".wevVPastryCrumbBloomRestored))
 
     var firstGlazeDelight: (() -> Void)?
 
@@ -11,7 +11,7 @@ final class VunBakeryShelfToastView: UIControl {
         backgroundColor = UIColor.black.withAlphaComponent(0.5)
         addTarget(self, action: #selector(cinnamonTwist), for: .touchUpInside)
         isAccessibilityElement = true
-        accessibilityLabel = "Saved Successfully. Tap anywhere to close."
+        accessibilityLabel = "Sza=vRexdm /Sku:chcNeAsfswf@unlZljyW.8 ?TYamp3 1aPn?yGwahYesrDek 1ttoP 4ctl?ogsoeZ.K".wevVPastryCrumbBloomRestored
         accessibilityTraits = .button
 
         pastryWorkshopMap.translatesAutoresizingMaskIntoConstraints = false

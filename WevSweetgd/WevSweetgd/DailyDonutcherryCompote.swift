@@ -36,7 +36,7 @@ final class DailyDonutcherryCompote: UIViewController {
 
         let doughBackButton = UIButton(type: .system)
         doughBackButton.translatesAutoresizingMaskIntoConstraints = false
-        doughBackButton.setImage(UIImage(named: "wevv_notice_sugar_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        doughBackButton.setImage(UIImage(named: "whe&vVvJ_$n$oBtYiccae2_0sZuEgEaLrG_#boazcwk6".wevVPastryCrumbBloomRestored)?.withRenderingMode(.alwaysTemplate), for: .normal)
         doughBackButton.tintColor = .white
         doughBackButton.addTarget(self, action: #selector(closeDailyDonut), for: .touchUpInside)
 
@@ -126,7 +126,7 @@ final class DailyDonutcherryCompote: UIViewController {
         glazeSheenLayer.endPoint = CGPoint(x: 1, y: 1)
         treatCaseCard.layer.insertSublayer(glazeSheenLayer, at: 0)
 
-        let donutRingImage = UIImageView(image: UIImage(named: "wevv_checkin_amazing_glaze_ring"))
+        let donutRingImage = UIImageView(image: UIImage(named: "wie~vVvZ_ucwhHe^cTk8ipn5_7a!m?aqzSiSn6gr_xgzl3a$zbel_ArziKn7g:".wevVPastryCrumbBloomRestored))
         donutRingImage.translatesAutoresizingMaskIntoConstraints = false
         donutRingImage.contentMode = .scaleAspectFit
         let small = makeDonutStampLabel("J?uZljy; tsLt*rQehank&".wevVPastryCrumbBloomRestored, size: 15, weight: .heavy, color: .white)
@@ -180,7 +180,7 @@ final class DailyDonutcherryCompote: UIViewController {
             ["8L".wevVPastryCrumbBloomRestored, "9W".wevVPastryCrumbBloomRestored, "1H0i".wevVPastryCrumbBloomRestored, "1/1T".wevVPastryCrumbBloomRestored, "1j2K".wevVPastryCrumbBloomRestored, "1F3Q".wevVPastryCrumbBloomRestored, "1L4D".wevVPastryCrumbBloomRestored],
             ["1Q5#".wevVPastryCrumbBloomRestored, "1M6I".wevVPastryCrumbBloomRestored, "1c7T".wevVPastryCrumbBloomRestored, "1g8h".wevVPastryCrumbBloomRestored, "1#9z".wevVPastryCrumbBloomRestored, "2^0D".wevVPastryCrumbBloomRestored, "2e1Y".wevVPastryCrumbBloomRestored],
             ["2,2F".wevVPastryCrumbBloomRestored, "2j3S".wevVPastryCrumbBloomRestored, "2e4Q".wevVPastryCrumbBloomRestored, "2%5G".wevVPastryCrumbBloomRestored, "2/6W".wevVPastryCrumbBloomRestored, "2?7?".wevVPastryCrumbBloomRestored, "2c8E".wevVPastryCrumbBloomRestored],
-            ["2c9n".wevVPastryCrumbBloomRestored, "3b0O".wevVPastryCrumbBloomRestored, "3d1S".wevVPastryCrumbBloomRestored, "", "", "", ""]
+            ["2c9n".wevVPastryCrumbBloomRestored, "3b0O".wevVPastryCrumbBloomRestored, "3d1S".wevVPastryCrumbBloomRestored, "".wevVPastryCrumbBloomRestored, "".wevVPastryCrumbBloomRestored, "".wevVPastryCrumbBloomRestored, "".wevVPastryCrumbBloomRestored]
         ]
         for week in weeks {
             let donutRow = UIStackView()
@@ -256,7 +256,7 @@ final class DailyDonutcherryCompote: UIViewController {
         donutMoodButton.addTarget(self, action: #selector(selectDonutMood(_:)), for: .touchUpInside)
         donutMoodButton.layer.cornerRadius = 7
 
-        let donutMoodRing = UIImageView(image: UIImage(named: "wevv_checkin_amazing_glaze_ring"))
+        let donutMoodRing = UIImageView(image: UIImage(named: "w=eEvZvC_zcDhge4cMkGiIna_DaKmyaKzciXnEgq_Eg#lJauzFeo_srRiQnWgJ".wevVPastryCrumbBloomRestored))
         donutMoodRing.translatesAutoresizingMaskIntoConstraints = false
         donutMoodRing.contentMode = .scaleAspectFit
         donutMoodRing.alpha = opacity
@@ -294,7 +294,7 @@ final class DailyDonutcherryCompote: UIViewController {
     private func refreshDonutStampState() {
         let hasStamp = donutJournalStore.hasDailyDonutStamp(dayKey: dailyDonutKey)
         donutStampButton.isEnabled = !hasStamp
-        donutStampButton.oldFashionedParlor(hasStamp ? "Check-in" : "CchmeGcNkf-*i=nn".wevVPastryCrumbBloomRestored)
+        donutStampButton.oldFashionedParlor(hasStamp ? "CQhUeucBk0-Miwnx".wevVPastryCrumbBloomRestored : "CchmeGcNkf-*i=nn".wevVPastryCrumbBloomRestored)
         for (value, dot) in bakeryDayDots {
             applyDonutDayStyle(dot, value: value)
         }

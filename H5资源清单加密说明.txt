@@ -1,0 +1,41 @@
+H5 资源清单压缩加密（2026-10-30）
+
+当前资源：WevSweetgd/WevSweetgd/WevEnd/vanillaBeanIcingDonut.manifest.data
+原 vanillaBeanIcingDonut.manifest.json 已从工作目录和 App 资源中删除。
+
+格式：原 JSON 字节 -> zlib -> zlib -> AES-128-CBC/PKCS7。
+沿用原生资源加密种子，与业务接口加密配置分开管理。
+明文仅在运行时内存中还原；不写入明文清单缓存，不回退到旧 JSON。
+原清单 201256 字节，压缩加密后 59984 字节。
+解密后逐字节与原清单一致，contentVersion 不变，现有解包目录继续复用。
+完整 H5 包和 Network 配置包均未改动。
+
+修改文件及用途：
+- WevSweetgd/WevSweetgd/UKGlazeActortroller.swift
+  预热路径识别和资源还原读取加密清单；两层解压各限制 2 MB；保留当前缓存复用行为。
+- WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift
+  启动配置校验前解密、解压清单，保留原有 JSON 严格检查和资源内容验证。
+- WevSweetgd/WevSweetgd/WevEnd/vanillaBeanIcingDonut.manifest.json
+  删除明文资源。
+- WevSweetgd/WevSweetgd/WevEnd/vanillaBeanIcingDonut.manifest.data
+  新增压缩加密后的资源。
+- scripts/wevv_room_bundle.py
+  pack 生成加密清单并清理同名旧 JSON；verify/unpack/native 验证读取加密清单。
+- scripts/test_wevv_room_bundle.py
+  覆盖往返、明文拒绝、错误密钥、损坏、截断、压缩层数、尾部数据、体积限制及旧 JSON 清理。
+- scripts/verify_wevv_bundle_configuration.py
+  合成配置与实际薄配置验证切换到加密清单，增加畸形清单拒绝验证。
+- scripts/test_wevv_sdk2_host.py
+  使用加密清单验证实际宿主还原、版本识别、热缓存、预热和并发协调。
+- scripts/verify_wevv_h5_configuration.py
+  解密清单后验证真实 H5 配置解析器。
+
+验证：
+- 16 项打包测试通过。
+- 107 项合成配置用例及当前真实薄配置校验通过。
+- 15 项实际 H5 配置解析器验证通过。
+- 实际 Swift 宿主解包、损坏修复、版本隔离、预热/并发与缓存复用验证通过。
+- 打包工具 --native 使用实际 Swift 解包代码还原 1174 个文件并逐文件校验通过。
+- Debug 模拟器和 Release 真机目标构建成功（不签名）。
+- 两种构建产物都只含一份加密清单，均无明文 manifest.json。
+- 未修改登录注册、用户持久化数据、页面布局、SafeArea 或键盘处理；未进行真机 UI 操作。

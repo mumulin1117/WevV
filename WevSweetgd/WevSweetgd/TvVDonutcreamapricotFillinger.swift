@@ -24,7 +24,7 @@ private final class WevVfigMoussepearJam: UIView {
         peachFilling.endPoint = CGPoint(x: 1, y: 0.5)
         layer.insertSublayer(peachFilling, at: 0)
     }
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    required init?(coder: NSCoder) { fatalError("ifn!iZtr(gcrobdKe0rE:+)6 ChHaVsx Xn?o6t! ibpeteCnX XiqmApNl|ezmueNn!t3ekdZ".wevVPastryCrumbBloomRestored) }
     override func layoutSubviews() { super.layoutSubviews(); peachFilling.frame = bounds }
 }
 
@@ -41,12 +41,7 @@ private final class WevVInsetLabel: UILabel {
 }
 
 final class TvVDonutcreamapricotFillinger: UIViewController {
-    static let homeChallengeParticipantKeys: Set<String> = [
-        "joabmmite#Ciotl?eF".wevVPastryCrumbBloomRestored,
-        "rQhfeJaQHVoCneeuyOGilpamz,eE".wevVPastryCrumbBloomRestored,
-        "lzuinPaMLpaquogfhlG/luaXz#ev".wevVPastryCrumbBloomRestored,
-        "njolvyaBBIuAbdbBlIe;GdlxaPzveD".wevVPastryCrumbBloomRestored
-    ]
+
     private static let glazeImageCache = NSCache<NSString, UIImage>()
     private let donutJournalStore = WevVGlazeSessionStore.shared
     private let bakeryTasterStore = VGuestSevenSweet.shared
@@ -60,7 +55,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private let voicePinnedHeader = UIView()
     private let journalPinnedHeader = UIView()
     private var glazePinnedHeaderBottomConstraints: [WevVDonutParlorSection: NSLayoutConstraint] = [:]
-    private let voicePinnedBackdrop = UIImageView(image: UIImage(named: "wevv_voice_version4_backdrop"))
+    private let voicePinnedBackdrop = UIImageView(image: UIImage(named: "w|e&vvvk_Tvho?i|cAek_8vAe@rbs^iNo2n94o_QbKaqctkOd2r7oVpc".wevVPastryCrumbBloomRestored))
     private let bakeryAtlasCarousel = UIScrollView()
     private let bakeryAtlasPages = UIStackView()
     private let bakeryAtlasDots = UIPageControl()
@@ -112,17 +107,17 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private weak var profileAvatarImageView: UIImageView?
     private let donutParlorTabBack = UIView()
     private let donutParlorFoot = UIView()
-    private let donutCounterGlazeSheen = WevVGlazeMessageCell(buildPastryBackdrop: .brownButterShell)
-    private let tastingParlorGlazeSheen = WevVGlazeMessageCell(buildPastryBackdrop: .compactChallenge)
-    private let tastingJournalGlazeSheen = WevVGlazeMessageCell(buildPastryBackdrop: .buildTopDonutBar)
+    private let donutCounterGlazeSheen = WevVtastingGuestStoreCell(buildPastryBackdrop: .brownButterShell)
+    private let tastingParlorGlazeSheen = WevVtastingGuestStoreCell(buildPastryBackdrop: .compactChallenge)
+    private let tastingJournalGlazeSheen = WevVtastingGuestStoreCell(buildPastryBackdrop: .buildTopDonutBar)
     private var bakeryAtlasTimer: Timer?
     private var glazeContentTask: Task<Void, Never>?
     private var glazeContentRequestID = UUID()
     private var glazeContentRefreshOwner: (requestID: UUID, section: WevVDonutParlorSection)?
     private var homeLivePageTask: Task<Void, Never>?
     private var deadline: [String: TimeInterval] = [:]
-    private var homeLivePagination = creamPacket()
-    private var cocoaWeekendFestival = LisenNoticepoplater.honeyScout()
+    private var homeLivePagination = WevVcreamPacket()
+    private var cocoaWeekendFestival = LisenNoticepoplater.WevVhoneyScout()
     private var strawberryMilkSwirl: Task<Void, Never>?
     private var voicePageTasks: [mascarponeFilling: Task<Void, Never>] = [:]
     private var voicePaginations: [mascarponeFilling: honeyLavenderCombination] = [
@@ -130,7 +125,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     ]
     private var glazeProfileTask: Task<Void, Never>?
     private var glazeProfileRequestID = UUID()
-    private var glazeContentOwnerKey = ""
+    private var glazeContentOwnerKey = "".wevVPastryCrumbBloomRestored
     private var glazeJournalFollowTask: Task<Void, Never>?
     private var glazeJournalFollowRequestID = UUID()
     private var glazeOwnerNameTasks: [Int64: Task<Void, Never>] = [:]
@@ -160,26 +155,26 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private var activeDonutParlorSection = WevVDonutParlorSection.donutCounter
 
     private let donutParlorAssetTrail: [WevVDonutParlorSection: (idle: String, active: String)] = [
-        .donutCounter: ("wevv_tab_home_glaze_idle", "wevv_tab_home_glaze_active"),
-        .tastingParlor: ("wevv_tab_live_sprinkle_idle", "wevv_tab_live_sprinkle_active"),
-        .tastingJournal: ("wevv_tab_discover_sprinkle_idle", "wevv_tab_discover_sprinkle_active"),
-        .zestyOrangeHarmony: ("wevv_tab_profile_donut_idle", "wevv_tab_profile_donut_active")
+        .donutCounter: ("wie4vtvq_+teaVbk_|h1oPmMev_Jg~lvawzAeb_Bind,lkei".wevVPastryCrumbBloomRestored, "wweGvfv2_~tba.bT_$hSoEmreK_Ug1lva0zQe~_CaUcGtwi9v=ev".wevVPastryCrumbBloomRestored),
+        .tastingParlor: ("wjeavtvI_Ctca6b7_fl9i1v&e3_Vsmp:r:iTntkaldei_hijd?lMet".wevVPastryCrumbBloomRestored, "w/eLvDvV_Ct3aLbj_Rlsinvsew_ws9p%r|i%nxk5lXer_kaKc=twiXv8e%".wevVPastryCrumbBloomRestored),
+        .tastingJournal: ("wme/v1vM_;t+a$b2_gd2i*sWcxoevre~rk_Ds8pDrFi5nrkylZey_QiBd=lNe#".wevVPastryCrumbBloomRestored, "wWe$vivu_3tkaib6_vd9iTsYc3ogvce5rj_5s0pkrAidn;kmlde%_Ga;crtlilvier".wevVPastryCrumbBloomRestored),
+        .zestyOrangeHarmony: ("wXe~vWvg_Kt|a3b%_Sp$rzo,f0iLlyej_*d^o0nquht8_!iXd%lFeE".wevVPastryCrumbBloomRestored, "w+ebvIvj_zttaZb9_&p,rnoffzi^lheZ_ddmo;nbu&tP_Bapc@tgi^v3e2".wevVPastryCrumbBloomRestored)
     ]
 
     private let bakeryAtlasItems: [WevVBakeryAtlas] = [
-        makeBakeryAtlasEntry("b,eMr~r:y+R:iunlgRBYaRkueFrYyc".wevVPastryCrumbBloomRestored, "BdeUrAr?ym HR~i#n*gd pBFaSkHe!r,yV".wevVPastryCrumbBloomRestored, "Fzrie~sHh: TdzofnSuDtssL c·e Rb;e^ror+yr of&lja#vIokrHsH".wevVPastryCrumbBloomRestored, "wevv_shop_berry_ring_bakery"),
-        makeBakeryAtlasEntry("g%o%lZdje:nPDSohuugZhGS;tmuKd+izoP".wevVPastryCrumbBloomRestored, "GnoBlsdueHn; TDWouuog%hr USktCuxdJiQoP".wevVPastryCrumbBloomRestored, "ACr,tlibsWawnA uduo/nluTt=sW g·S esomiazl*l+ jbEastccyhmels:".wevVPastryCrumbBloomRestored, "wevv_shop_golden_dough_studio"),
-        makeBakeryAtlasEntry("mMoFoLnhl:ixgWhEtND.oAn^u!tjB;alrm".wevVPastryCrumbBloomRestored, "MIoXoVnMlRijghhDt+ tDgoLn^uItj yB%alrh".wevVPastryCrumbBloomRestored, "L=aetfe&-ynViygSh&td Hdto,nLuItds! S·X kc;rueRa:t&iMvRei CdWrFiFnKkcsE".wevVPastryCrumbBloomRestored, "wevv_shop_moonlight_donut_bar")
+        makeBakeryAtlasEntry("b,eMr~r:y+R:iunlgRBYaRkueFrYyc".wevVPastryCrumbBloomRestored, "BdeUrAr?ym HR~i#n*gd pBFaSkHe!r,yV".wevVPastryCrumbBloomRestored, "Fzrie~sHh: TdzofnSuDtssL c·e Rb;e^ror+yr of&lja#vIokrHsH".wevVPastryCrumbBloomRestored, "wcePvovV_WsLh!o@pj_BbLeCrgr~y$_oriign#g4_#b8a2k0e^r.yD".wevVPastryCrumbBloomRestored),
+        makeBakeryAtlasEntry("g%o%lZdje:nPDSohuugZhGS;tmuKd+izoP".wevVPastryCrumbBloomRestored, "GnoBlsdueHn; TDWouuog%hr USktCuxdJiQoP".wevVPastryCrumbBloomRestored, "ACr,tlibsWawnA uduo/nluTt=sW g·S esomiazl*l+ jbEastccyhmels:".wevVPastryCrumbBloomRestored, "wYe|v|v@_BsVhdoqpK_pgEowl7d=eKnN_vdlomu^guhB_2s.tiu/dtikoc".wevVPastryCrumbBloomRestored),
+        makeBakeryAtlasEntry("mMoFoLnhl:ixgWhEtND.oAn^u!tjB;alrm".wevVPastryCrumbBloomRestored, "MIoXoVnMlRijghhDt+ tDgoLn^uItj yB%alrh".wevVPastryCrumbBloomRestored, "L=aetfe&-ynViygSh&td Hdto,nLuItds! S·X kc;rueRa:t&iMvRei CdWrFiFnKkcsE".wevVPastryCrumbBloomRestored, "wKeUvLvp_hsDhGoHpC_ymcouoGnClwiXg|hWt/_tdUo8nCujt+_1bha.r=".wevVPastryCrumbBloomRestored)
     ]
 
-    private let dailyDonutVisit = makeDonutVisitEntry("dvaAiwl.yIDXo:nYuit.Sot/aqm.p/".wevVPastryCrumbBloomRestored, "DMaSicl;yK".wevVPastryCrumbBloomRestored, "Cihkeic=kq-;imn,".wevVPastryCrumbBloomRestored, "wevv_checkin_donut_daily_card")
+    private let dailyDonutVisit = makeDonutVisitEntry("dvaAiwl.yIDXo:nYuit.Sot/aqm.p/".wevVPastryCrumbBloomRestored, "DMaSicl;yK".wevVPastryCrumbBloomRestored, "Cihkeic=kq-;imn,".wevVPastryCrumbBloomRestored, "w+eWv!v#_0c.h?eVcrkyijnT_%d6oZnwuhtf_hd+a$iNlRyN_XcLa~rrdR".wevVPastryCrumbBloomRestored)
 
     private var tastingQuests: [WevVTastingQuest] = [
         WevVTastingQuest(
             sprinkleJarKey: "sBtGrzaswsbieMrsrUywWWelerk;".wevVPastryCrumbBloomRestored,
             menuBoardTitle: "Snt:rxa%wbbne+r:rNyt hWYeleYkE".wevVPastryCrumbBloomRestored,
             caption: "TcrKyA MaC cmKyvsatHe*r*y+ pdIoNn&uZtU oawnxdt mg;uAeasqsE KtAhtev mfplqauvToMrx.?".wevVPastryCrumbBloomRestored,
-            cardAsset: "wevv_challenge_strawberry_week",
+            cardAsset: "w4eLvDv@_xclhuaplblceCn3gFey_3swt|rNa&w.bLeWrirpyu_ewkeme&kd".wevVPastryCrumbBloomRestored,
             glazeSheenText: "JRoGi@nw".wevVPastryCrumbBloomRestored,
             glazeTrailLine: "C:ogm/ppljePtneE qtJopd,a#yo'MsY wtsadsrt;irnfg% Rt@aQskk# XaFn+d# Aswh?aPrGek !aS FbceOrbrPy? +neo&t;eN.o".wevVPastryCrumbBloomRestored,
             freshnessTagText: "FkrUi=deajyP j·I ~8s:I0+0D bP!Me K-T u1M0!:h3~0P yPgMw".wevVPastryCrumbBloomRestored,
@@ -194,7 +189,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             sprinkleJarKey: "pkinnAkmDooqnOuWtJD:aNyh".wevVPastryCrumbBloomRestored,
             menuBoardTitle: "PCiDnDk= eD:oznnu^tP +Dya%yB".wevVPastryCrumbBloomRestored,
             caption: "Sxh^ayrEe% Eab mpeianJkU #dvounYuftL ~aan:d& ncWr/eKartyeJ uyJoHumrT Lsgwte^eStWetsutA cpahKoztao^.M".wevVPastryCrumbBloomRestored,
-            cardAsset: "wevv_challenge_pink_donut_day",
+            cardAsset: "w@euv&vH_#c*hPajlwlBeUnlgpe6_:pdiqnfkA_rd7o*n%uetJ_Xdpa^yv".wevVPastryCrumbBloomRestored,
             glazeSheenText: "JMo@ianN".wevVPastryCrumbBloomRestored,
             glazeTrailLine: "BguniJlfd+ UaD qb?rviBgehBtG !psi.nvkM wdQoVnIuLtp up;hMoat&oS #s#eutH %fto#rY HtAh,e? DdpaVy#.A".wevVPastryCrumbBloomRestored,
             freshnessTagText: "S=a?tiu^rgdma!yR E·p ;2=:N0H0Z LPuMu v-? #5T:&0n0@ qPEM!".wevVPastryCrumbBloomRestored,
@@ -209,7 +204,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             sprinkleJarKey: "dOoNnCu,tLCPoafBfAeie!MWaht:cfhB".wevVPastryCrumbBloomRestored,
             menuBoardTitle: "DdoHn.uUtB I&l PCio^f~fLeEeg SM^awt;cGhw".wevVPastryCrumbBloomRestored,
             caption: "Pcapi:rY ;ymohuJrd HfEa@vVoOr=iat,e+ EdIoDn*uTt+ mw&iCt+hq St@hTeG fpZenrJfFe/catF Hcoo%fEfte:ej.c".wevVPastryCrumbBloomRestored,
-            cardAsset: "wevv_challenge_donut_coffee_match",
+            cardAsset: "w~e*v2vS_ocHh%a2lqlNejn^g7er_WdXoYnvuOtJ_KcwokfAf.eWet_Gm^aYt=cKhw".wevVPastryCrumbBloomRestored,
             glazeSheenText: "JIoaiInc".wevVPastryCrumbBloomRestored,
             glazeTrailLine: "FUibn:db aaK jdDognvuWtq &p#a.i%rUiwn/gA EtJh?afth GmZa.kKehs. NcPo!fefleVeZ Pt!aas@t*et gbkeUtltlezrS.y".wevVPastryCrumbBloomRestored,
             freshnessTagText: "S;uen#d#akya j·~ j1.0,:j3b0k ~ARMR !-u P1@2g:&0l0J ^PNM#".wevVPastryCrumbBloomRestored,
@@ -224,7 +219,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             sprinkleJarKey: "fGi*rys!tPB@iDtjemRCeJaCc:tpiso;nX".wevVPastryCrumbBloomRestored,
             menuBoardTitle: "FXiHrfsTte qBIiCtQeU @Rze~aDctt,igo+n,".wevVPastryCrumbBloomRestored,
             caption: "C~aDpvttu~r.ek Eyco~uprD qrBezaglS erQe;arcptxiAoHn% aaDf+t+edr= Htqh,eI IfHiVrosRtq vb,ibtUed.@".wevVPastryCrumbBloomRestored,
-            cardAsset: "wevv_challenge_first_bite_reaction",
+            cardAsset: "w,eLv,vl_#czhmaclFlwe#nKgzeZ_,f,iwrbsgtn_lbeiEtceT_sr@e0a7cut=i^o;nx".wevVPastryCrumbBloomRestored,
             glazeSheenText: "JcodiDnz".wevVPastryCrumbBloomRestored,
             glazeTrailLine: "S=haoCwF ~tjhPeQ EfTiOr?s=tC Jb~iHtkeY nfeacc#eD ;tbh?aZtA psRaJyjsm bedvVe!rmyXt@haiSnkgl.U".wevVPastryCrumbBloomRestored,
             freshnessTagText: "M&o%npdEaSy? T·z y6o:!3d0: +PMMU S-H :8P:C0k0M tPNMM".wevVPastryCrumbBloomRestored,
@@ -239,7 +234,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             sprinkleJarKey: "dMoTnluzt*OIfpTrhAe&D:aVyA".wevVPastryCrumbBloomRestored,
             menuBoardTitle: "DwoLn/umt~ SoGfE %tvhOen %D&agyt".wevVPastryCrumbBloomRestored,
             caption: "PHoIsetu TtHo^dha@y:'TsS .dOoVnUudtj +avn/dM PtPeOlZlj ceav%eSrAyJoenCes qwzhyys Vy@oRup fcYhBocsAeH viptM.h".wevVPastryCrumbBloomRestored,
-            cardAsset: "wevv_challenge_donut_of_day",
+            cardAsset: "weepvlvf_Xc%hIawlWl~eLngg.ef_;d!o0n|u?tY_;ouf~_Sdfa2y2".wevVPastryCrumbBloomRestored,
             glazeSheenText: "J;ogiNn!".wevVPastryCrumbBloomRestored,
             glazeTrailLine: "C*h&oLohslez DtNhCek Ao?nNeN GdjornKuptN ?tphaaDt@ cd@evsdevrRvEe&sh VtuocdJafyl'nsM is:pCoktklei:gOhJt~.s".wevVPastryCrumbBloomRestored,
             freshnessTagText: "WjegdhnLeuscdRacy! @·A m1D:j0F0K DPxMy f-Y V4e:q0&0Y /PYMq".wevVPastryCrumbBloomRestored,
@@ -254,7 +249,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             sprinkleJarKey: "sPpArRi~ngkvlJeeSLtbylluej".wevVPastryCrumbBloomRestored,
             menuBoardTitle: "S?pUrciMnrkIlaeP =SetByGlweR".wevVPastryCrumbBloomRestored,
             caption: "DMe?c,ohr=a.tieQ VaI ydAoFn,udtL swBi;tUhs ;yrojuJrO ufDakv:odrUict@e? Pc,o/l:oirWfVu%l# Fsxp,rFirngkVlXeas^.F".wevVPastryCrumbBloomRestored,
-            cardAsset: "wevv_challenge_sprinkle_style",
+            cardAsset: "weejvlv$_*cChUa?lnlKe8n5g?eM_Uszp%r^iAntkZl2eI_Psdt#yOlQe6".wevVPastryCrumbBloomRestored,
             glazeSheenText: "JXoSiTng".wevVPastryCrumbBloomRestored,
             glazeTrailLine: "Twu%r%nc At!o~pxp,iDnNg+s: =iBn~t,of Uay wtyizn%yM ;d.o*nkuFt% mf!aBschAivoPnK rs:hBoHwC.u".wevVPastryCrumbBloomRestored,
             freshnessTagText: "TPhMu#rCs:deawyT f·q o7q:s0p0= MPPMP g-D w9N:A0v0S .PJMV".wevVPastryCrumbBloomRestored,
@@ -271,7 +266,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         ringCutterKey: "wpeCvavbS@ulgTaJrUTOalsutaepr&".wevVPastryCrumbBloomRestored,
         warmGingerFlavor: "wHeRvcvh@rgamoaHiLls.gcSoom?".wevVPastryCrumbBloomRestored,
         glazeNickname: "GelLaLzYe: oTnausstKemrm".wevVPastryCrumbBloomRestored,
-        donutFrameAsset: "wevv_profile_avatar_piano_donut",
+        donutFrameAsset: "wKeevjvI_CpzrloHfiiZlsex_MaJvWa|t~a@rI_?pyiRa?n8oq_Sd$obniubti".wevVPastryCrumbBloomRestored,
         tastingMarks: WevVTastingMark(glazeTrailCount: 12, sprinkleTasterCount: 28, bakeryShelfTotal: 7, donutArchiveTotal: 360),
         honeyedFigHarmony: [
             makeFlavorNoteEntry("s^t;rJa:w?bdeqr#r;yhR,ienJgYNSoatxeB".wevVPastryCrumbBloomRestored, "S!tRrTatwNbne,rkrIyB dgClta%zhe+ qmioPr,n,ivndgH".wevVPastryCrumbBloomRestored, "S@oefLtg SfLrSolsctNiBnQg%,Y .w=aurzmm #c+rBuOmYbb,C NblrBiGgShAt@ nsSurgra/rn.J".wevVPastryCrumbBloomRestored),
@@ -377,7 +372,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func currentGlazeContentOwnerKey() -> String {
-        (donutJournalStore.activeEnvironmentID ?? "unprepared") + "|" + String(donutJournalStore.sessionEpoch)
+        (donutJournalStore.activeEnvironmentID ?? "uAnMp^rZe=pUagrie4dy".wevVPastryCrumbBloomRestored) + "|?".wevVPastryCrumbBloomRestored + String(donutJournalStore.sessionEpoch)
     }
 
     private func resetGlazeContentOwner(_ owner: String) {
@@ -386,10 +381,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         pendingInitialGlazeSections = [.donutCounter, .tastingParlor, .tastingJournal]
         homeLivePageTask?.cancel()
         homeLivePageTask = nil
-        homeLivePagination = creamPacket()
+        homeLivePagination = WevVcreamPacket()
         strawberryMilkSwirl?.cancel()
         strawberryMilkSwirl = nil
-        cocoaWeekendFestival = LisenNoticepoplater.honeyScout()
+        cocoaWeekendFestival = LisenNoticepoplater.WevVhoneyScout()
         voicePageTasks.values.forEach { $0.cancel() }
         voicePageTasks.removeAll()
         voicePaginations = [.cherryCenter: honeyLavenderCombination(), .apricotCompote: honeyLavenderCombination()]
@@ -474,17 +469,17 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func buildTopDonutBar() {
-        let wevvLogo = UIImageView(image: UIImage(named: "wevv_home_wevv_glaze_logo"))
+        let wevvLogo = UIImageView(image: UIImage(named: "w&e%v2vm_HhZo.mDeI_bwnefv1v~_XgZlXa:z4eP_3l/o+g^oI".wevVPastryCrumbBloomRestored))
         wevvLogo.translatesAutoresizingMaskIntoConstraints = false
         wevvLogo.contentMode = .scaleAspectFit
 
         let challengeDonutWevvButton = makeImageButton(
-            asset: "wevv_home_challenge_entry",
+            asset: "wbeavqvw_7hqo5m2e2_7cZh|a0l2l=eMndgmeX_TeQn2torQy|".wevVPastryCrumbBloomRestored,
             action: #selector(openTastingQuestComposer)
         )
-        challengeDonutWevvButton.accessibilityLabel = "Publish challenge"
+        challengeDonutWevvButton.accessibilityLabel = "Puu^b9lAiuschD 6c@hIapl9loe@n0gjeQ".wevVPastryCrumbBloomRestored
 
-        let noticedonutWevvButton = makeImageButton(asset: "wevv_top_sprinkle_inbox_entry", action: #selector(openGlazeNoticeList))
+        let noticedonutWevvButton = makeImageButton(asset: "wHeEv3vF_Qtxopp%_Qs~p3rCi.nSkRlGe:_.ian=b1oSxC_Ueyn*tirjy#".wevVPastryCrumbBloomRestored, action: #selector(openGlazeNoticeList))
 
         homePinnedHeader.addSubview(wevvLogo)
         homePinnedHeader.addSubview(challengeDonutWevvButton)
@@ -636,7 +631,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func buildHomeLiveRoomBand() {
-        let title = UIImageView(image: UIImage(named: "wevv_home_live_room_title"))
+        let title = UIImageView(image: UIImage(named: "wkeTvBvV_Uh*o|m/e6_/l;iAvAe:_br/oKo,mi_UtxiWtklUeB".wevVPastryCrumbBloomRestored))
         title.translatesAutoresizingMaskIntoConstraints = false
         title.contentMode = .scaleAspectFit
 
@@ -644,7 +639,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         homeLiveRoomStack.axis = .vertical
         homeLiveRoomStack.spacing = 10
 
-        configureGlazeStatusLabel(homeLiveStatusLabel, text: "Loading live rooms…")
+        configureGlazeStatusLabel(homeLiveStatusLabel, text: "Ldo%aDdkijnyg; alxiOvhev Xr6oPoimrsB…G".wevVPastryCrumbBloomRestored)
 
         donutCaseContent.addSubview(title)
         donutCaseContent.addSubview(homeLiveRoomStack)
@@ -679,13 +674,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         tastingParlorPanel.isHidden = true
         donutCaseContent.addSubview(tastingParlorPanel)
 
-        let title = UIImageView(image: UIImage(named: "wevv_voice_live_glaze_logo"))
+        let title = UIImageView(image: UIImage(named: "wZe6vRvk_xvCoZiIcueQ_Bl^ibv:eG_Zgplma7zbeK_&l9o1gNo1".wevVPastryCrumbBloomRestored))
         title.translatesAutoresizingMaskIntoConstraints = false
         title.contentMode = .scaleAspectFit
 
         let profileButton = UIButton(type: .custom)
         profileButton.translatesAutoresizingMaskIntoConstraints = false
-        profileButton.setImage(UIImage(named: "wevv_top_sprinkle_inbox_entry"), for: .normal)
+        profileButton.setImage(UIImage(named: "wweMvjvd_$tLoZpw_7sep=r!itnLk2l^ej_uiknSbVo~xq_/eBnatEr;y6".wevVPastryCrumbBloomRestored), for: .normal)
         profileButton.imageView?.contentMode = .scaleAspectFit
         profileButton.addTarget(self, action: #selector(openGlazeNoticeList), for: .touchUpInside)
 
@@ -700,13 +695,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         configureTastingParlorShelfButton(
             tastingParlorFollowButton,
-            title: "Follow",
+            title: "Fwo=l:l&ovwe".wevVPastryCrumbBloomRestored,
             shelf: .cherryCenter,
             action: #selector(selectTastingParlorFollow)
         )
         configureTastingParlorShelfButton(
             tastingParlorRecommendButton,
-            title: "Recommend",
+            title: "RNeucXoJmpmoe&n!d=".wevVPastryCrumbBloomRestored,
             shelf: .apricotCompote,
             action: #selector(selectTastingParlorRecommend)
         )
@@ -757,7 +752,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         followPage.addSubview(tastingParlorFollowRoomStack)
         recommendPage.addSubview(tastingParlorRoomStack)
 
-        configureGlazeStatusLabel(tastingParlorStatusLabel, text: "Loading rooms…")
+        configureGlazeStatusLabel(tastingParlorStatusLabel, text: "L=oOa0d6iwn|go GrYo+oBmYsm…j".wevVPastryCrumbBloomRestored)
         tastingParlorStatusLabel.textColor = TinGlazePromptStyler.mutedTone
         configureGlazeLoadMoreFooter(voiceLoadMoreFooter, spinner: voiceLoadMoreSpinner,
                                      label: voiceLoadMoreLabel,
@@ -948,9 +943,9 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         ]
         let card = WevVGlazepillowyCrumb(chewyCrust: palettes[style % palettes.count])
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.accessibilityIdentifier = "voice:\(room.passionfruitMousse)"
+        card.accessibilityIdentifier = "\("v9oTi,c0ez:K".wevVPastryCrumbBloomRestored)\(room.passionfruitMousse)"
         card.isAccessibilityElement = true
-        card.accessibilityLabel = "\(room.limeJam), \(room.glazeAudienceText)"
+        card.accessibilityLabel = "\(room.limeJam)\(",H J".wevVPastryCrumbBloomRestored)\(room.glazeAudienceText)"
         card.accessibilityTraits = .button
         card.layer.cornerRadius = 9
         card.clipsToBounds = true
@@ -1001,9 +996,9 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let owners = tastingParlorRooms(for: tastingParlorShelf).filter { room in
             let ownerKey: String
             if let hostID = room.yuzuCustard, let userID = Int64(hostID), userID > 0 {
-                ownerKey = "user:\(userID)"
+                ownerKey = "\("urs1eDrb:c".wevVPastryCrumbBloomRestored)\(userID)"
             } else {
-                ownerKey = "\(room.peachCream)|\(room.pearCenter ?? "")"
+                ownerKey = "\(room.peachCream)\("|C".wevVPastryCrumbBloomRestored)\(room.pearCenter ?? "".wevVPastryCrumbBloomRestored)"
             }
             return seenOwners.insert(ownerKey).inserted
         }
@@ -1021,7 +1016,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let displayName = userID.flatMap { glazeOwnerNames[$0] } ?? room.peachCream
         if let userID {
             owner.accessibilityIdentifier = String(userID)
-            owner.accessibilityLabel = "View \(displayName)'s profile"
+            owner.accessibilityLabel = "\("V:ice:w= &".wevVPastryCrumbBloomRestored)\(displayName)\("\'Ms5 /pyriohfXi#lXeP".wevVPastryCrumbBloomRestored)"
             owner.accessibilityTraits = .button
             owner.addTarget(self, action: #selector(openTastingParlorOwner(_:)), for: .touchUpInside)
         } else {
@@ -1076,8 +1071,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         for room in rooms.prefix(8) {
             guard let hostID = room.yuzuCustard, let userID = Int64(hostID), userID > 0,
                   glazeOwnerNameAttempts.insert(userID).inserted else { continue }
-            // Public user cards supply nickName; roomName remains the room card's title.
-            // Attempt once per refresh so rebuilding the row cannot repeat failed requests.
+
             glazeOwnerNameTasks[userID] = Task { [weak self] in
                 let displayName = try? await WevVGlazeRosterCell.citrusPeelGarnish.beginGlazeNativeOverlay(cocoaWeekendFestival: userID)
                 guard !Task.isCancelled, let self,
@@ -1088,7 +1082,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                 self.glazeOwnerNames[userID] = displayName
                 if let label = self.glazeOwnerNameLabels[userID] {
                     label.text = displayName
-                    label.superview?.accessibilityLabel = "View \(displayName)'s profile"
+                    label.superview?.accessibilityLabel = "\("VtiDeow! o".wevVPastryCrumbBloomRestored)\(displayName)\("\'usL %pPrpoHfziFl4eP".wevVPastryCrumbBloomRestored)"
                 }
             }
         }
@@ -1096,8 +1090,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func makeTastingParlorAvatar(url: String?, diameter: CGFloat, fallback: Int) -> UIImageView {
         let fallbackAssets = [
-            "wevv_guest_glaze_berry", "wevv_guest_glaze_luna", "wevv_guest_glaze_mira",
-            "wevv_guest_glaze_arlo", "wevv_guest_glaze_nova"
+            "wVe;vLvu_BgBuve#s9tA_$g4l?aIzjeB_5b3e*r!rhyC".wevVPastryCrumbBloomRestored, "wseRvdvo_;gkuRe?sHth_3g#l~axzbeL_Rl|u%n*ae".wevVPastryCrumbBloomRestored, "w,eCvlv&_1gtuFeKsAtM_,g4l&aozJea_Dm@i9rNac".wevVPastryCrumbBloomRestored,
+            "wceGv3vH_7gdu%eCsKtk_2gRl0a=zUe;_saNr@lTo$".wevVPastryCrumbBloomRestored, "wfeivFvm_7gxu+ers+tc_fg,l^akz$eC_8n*ovvfa*".wevVPastryCrumbBloomRestored
         ]
         let avatar = UIImageView(image: UIImage(named: fallbackAssets[fallback % fallbackAssets.count]))
         avatar.translatesAutoresizingMaskIntoConstraints = false
@@ -1150,13 +1144,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let pagination = voicePaginations[tastingParlorShelf] ?? honeyLavenderCombination()
         tastingParlorStatusLabel.isHidden = !rooms.isEmpty
         if pagination.apricotCenter {
-            tastingParlorStatusLabel.text = "Loading rooms…"
+            tastingParlorStatusLabel.text = "L@oOaOd~iLnJg$ arMoko!mIs|…b".wevVPastryCrumbBloomRestored
         } else if pagination.almondPralineShell {
-            tastingParlorStatusLabel.text = "Rooms could not be loaded. Pull down to retry."
+            tastingParlorStatusLabel.text = "RSoeo@m6s# Ec#o5uQlgda ,nko4tJ #b5e2 JlWonaydIe:dU.~ |PduElSl^ 8d|ovwXn/ XtxoR zrue%tCrIyw.p".wevVPastryCrumbBloomRestored
         } else {
             tastingParlorStatusLabel.text = tastingParlorShelf == .cherryCenter
-                ? "No followed voice rooms are open right now."
-                : "No recommended voice rooms are open right now."
+                ? "Nmon PfAotlrlmo=w0epdd HvToEikc:ef wrqoso=mssy !a&rqes ,oIpOeInv areiPgahft9 Qn/oswm.Z".wevVPastryCrumbBloomRestored
+                : "NxoJ Mr.e+cko=mSmWeun4d0eyde uvLosi!cUeh 5rjoKo&m:s7 bafr|e0 xoPpQeLnZ ~r@imgZhctt Yneoswg.i".wevVPastryCrumbBloomRestored
         }
     }
 
@@ -1175,11 +1169,11 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         bakeryAtlasPanel.backgroundColor = .clear
         donutCaseContent.addSubview(bakeryAtlasPanel)
 
-        let exploredonutWevvButton = makeImageButton(asset: "wevv_discover_explore_logo", action: #selector(openGlazeNoticeList))
-        let noticeButton = makeImageButton(asset: "wevv_discover_notice_entry", action: #selector(openGlazeNoticeList))
+        let exploredonutWevvButton = makeImageButton(asset: "w2euvivV_OdUiisIcYoFvLeVrS_uekxOpmlWoor^ev_olzo2g3o!".wevVPastryCrumbBloomRestored, action: #selector(openGlazeNoticeList))
+        let noticeButton = makeImageButton(asset: "wOetvBvc_LdJiws&cpoHvhejrj_sn%o^tQi,cNef_|e*n;t,rAyB".wevVPastryCrumbBloomRestored, action: #selector(openGlazeNoticeList))
 
-        configureTastingJournalShelfButton(tastingJournalTrendingButton, title: "Trending", shelf: .artisanFrySequence)
-        configureTastingJournalShelfButton(tastingJournalFollowButton, title: "Follow", shelf: .cherryCenter)
+        configureTastingJournalShelfButton(tastingJournalTrendingButton, title: "T4r*elnwdGiEnvg:".wevVPastryCrumbBloomRestored, shelf: .artisanFrySequence)
+        configureTastingJournalShelfButton(tastingJournalFollowButton, title: "FqoRl;l&oYw,".wevVPastryCrumbBloomRestored, shelf: .cherryCenter)
         tastingJournalSelectionBar.translatesAutoresizingMaskIntoConstraints = false
         tastingJournalSelectionBar.backgroundColor = UIColor(red: 255 / 255.0, green: 76 / 255.0, blue: 192 / 255.0, alpha: 1)
         tastingJournalSelectionBar.layer.cornerRadius = 2.5
@@ -1202,7 +1196,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let newPostTitle = UILabel()
         newPostTitle.translatesAutoresizingMaskIntoConstraints = false
-        newPostTitle.text = "New Post"
+        newPostTitle.text = "Nae5w# OPwosslt5".wevVPastryCrumbBloomRestored
         newPostTitle.textColor = UIColor(red: 255 / 255.0, green: 248 / 255.0, blue: 255 / 255.0, alpha: 1)
         newPostTitle.font = .systemFont(ofSize: 22, weight: .heavy)
 
@@ -1210,7 +1204,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         donutSnapshotStack.axis = .vertical
         donutSnapshotStack.spacing = 10
 
-        configureGlazeStatusLabel(tastingJournalStatusLabel, text: "")
+        configureGlazeStatusLabel(tastingJournalStatusLabel, text: "".wevVPastryCrumbBloomRestored)
         tastingJournalStatusLabel.isHidden = true
         configureGlazeLoadMoreFooter(loadingCard, spinner: loadingSpinner, label: loadingLabel,
                                      action: #selector(loadGlazeMomentContent))
@@ -1287,10 +1281,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         view.addSubview(donutParlorTabBack)
 
         let donutRow = UIStackView(arrangedSubviews: [
-            makeTabButton(section: .donutCounter, asset: "wevv_tab_home_glaze_active"),
-            makeTabButton(section: .tastingParlor, asset: "wevv_tab_live_sprinkle_idle"),
-            makeTabButton(section: .tastingJournal, asset: "wevv_tab_discover_sprinkle_idle"),
-            makeTabButton(section: .zestyOrangeHarmony, asset: "wevv_tab_profile_donut_idle")
+            makeTabButton(section: .donutCounter, asset: "w*e4vZvF_0tMaGb3_|hmodm8en_*gSl9a%zye%_Sauc,tiiFviex".wevVPastryCrumbBloomRestored),
+            makeTabButton(section: .tastingParlor, asset: "wOe5vUv;_*tia@b|_pl%i2vseZ_Ds9pQr#iTnBkIlweG_vi&d#lueE".wevVPastryCrumbBloomRestored),
+            makeTabButton(section: .tastingJournal, asset: "wAe*vEv._MtvaXbe_8d#issncmo3v~eMry_usLpDrjijnnkOlZeP_ui+d4lIel".wevVPastryCrumbBloomRestored),
+            makeTabButton(section: .zestyOrangeHarmony, asset: "wIe|vhv~_JtwalbC_sp=ruolfSiUlVeD_HdGosn5ultZ_*i4drlae@".wevVPastryCrumbBloomRestored)
         ])
         donutRow.translatesAutoresizingMaskIntoConstraints = false
         donutRow.axis = .horizontal
@@ -1311,7 +1305,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func buildFlavorNoteEntryButton() {
         flavorNoteEntryButton.translatesAutoresizingMaskIntoConstraints = false
-        flavorNoteEntryButton.setImage(UIImage(named: "wevv_discover_post_frosting_entry"), for: .normal)
+        flavorNoteEntryButton.setImage(UIImage(named: "wUe6vSvX_GdMiJsFcMo5vPeyr=_Op9oZsJtY_mfur5o6sqtCiDn^g/_jednyt^rvyN".wevVPastryCrumbBloomRestored), for: .normal)
         flavorNoteEntryButton.imageView?.contentMode = .scaleAspectFit
         flavorNoteEntryButton.addTarget(self, action: #selector(openFlavorNoteComposer), for: .touchUpInside)
         flavorNoteEntryButton.isHidden = true
@@ -1392,18 +1386,18 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         donutDiaryPanel.isHidden = true
         donutCaseContent.addSubview(donutDiaryPanel)
 
-        let meButton = makeImageButton(asset: "wevv_profile_me_logo", action: #selector(openProfileSugarEntry))
-        let gearButton = makeImageButton(asset: "wevv_profile_sugar_gear", action: #selector(openDonutDiarySettings))
-        let statButton = makeProfileImageAction(asset: "wevv_profile_stat_glaze_band")
+        let meButton = makeImageButton(asset: "wpe!vUvQ_vp%rAoJfjiSlneD_LmEeF_slZo;g!o,".wevVPastryCrumbBloomRestored, action: #selector(openProfileSugarEntry))
+        let gearButton = makeImageButton(asset: "w!ebvIvx_2ptrhodfqiPlie~_ns@u@g|a9r@_Ygae~a^r2".wevVPastryCrumbBloomRestored, action: #selector(openDonutDiarySettings))
+        let statButton = makeProfileImageAction(asset: "wQe5vQvY_jpor.o$f|idlee=_IsEtZaKtp_5g@lkamzvew_@b+a0nidl".wevVPastryCrumbBloomRestored)
         statButton.addTarget(self, action: #selector(openGlazeFavoriteMoments), for: .touchUpInside)
-        let avatarButton = makeProfileImageAction(asset: "wevv_profile_avatar_piano_donut")
+        let avatarButton = makeProfileImageAction(asset: "wKe9vHvI_DparIoUfliml~e7_IaSvwa*tXa.rk_bppi~a;nkoq_*d;oAnMuxtz".wevVPastryCrumbBloomRestored)
         avatarButton.removeTarget(nil, action: nil, for: .touchUpInside)
         avatarButton.addTarget(self, action: #selector(openGlazeProfileEditor), for: .touchUpInside)
         let vaultdonutWevvButton = UIControl()
         vaultdonutWevvButton.translatesAutoresizingMaskIntoConstraints = false
         vaultdonutWevvButton.isAccessibilityElement = true
         vaultdonutWevvButton.accessibilityTraits = .button
-        vaultdonutWevvButton.accessibilityLabel = "Wallet"
+        vaultdonutWevvButton.accessibilityLabel = "Wmahl|lee^tj".wevVPastryCrumbBloomRestored
         vaultdonutWevvButton.layer.cornerRadius = 42.5
         vaultdonutWevvButton.clipsToBounds = true
         vaultdonutWevvButton.addTarget(self, action: #selector(openDonutArchive), for: .touchUpInside)
@@ -1414,7 +1408,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         glazeSheenLayer.translatesAutoresizingMaskIntoConstraints = false
         glazeSheenLayer.isUserInteractionEnabled = false
         vaultdonutWevvButton.addSubview(glazeSheenLayer)
-        let donutRingImage = UIImageView(image: UIImage(named: "oldgem"))
+        let donutRingImage = UIImageView(image: UIImage(named: "oelJd:g0epm2".wevVPastryCrumbBloomRestored))
         donutRingImage.translatesAutoresizingMaskIntoConstraints = false
         donutRingImage.contentMode = .scaleAspectFit
         vaultdonutWevvButton.addSubview(donutRingImage)
@@ -1428,7 +1422,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             donutRingImage.heightAnchor.constraint(equalTo: vaultdonutWevvButton.heightAnchor, multiplier: 64.0 / 85.0),
             donutRingImage.widthAnchor.constraint(equalTo: donutRingImage.heightAnchor)
         ])
-        let postdonutWevvTitle = UIImageView(image: UIImage(named: "wevv_profile_sugar_post_title"))
+        let postdonutWevvTitle = UIImageView(image: UIImage(named: "w/eMv,vG_FpcrMo;f1iPlSe^_osfucgyaXrQ_rpSo/s*tU_JtUiOtilre+".wevVPastryCrumbBloomRestored))
         postdonutWevvTitle.translatesAutoresizingMaskIntoConstraints = false
         postdonutWevvTitle.contentMode = .scaleAspectFit
 
@@ -1468,7 +1462,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     private func makeProfileCrumbEmptyImage() -> UIImageView {
-        let crumbEmptyImage = UIImageView(image: UIImage(named: "wevv_profile_empty_sugar_note"))
+        let crumbEmptyImage = UIImageView(image: UIImage(named: "wHe9vav._xp~rOoYfGi3lMe#_xe,mnpCtXy6_Hsdu.g0avrp_YnfoMtBe#".wevVPastryCrumbBloomRestored))
         crumbEmptyImage.translatesAutoresizingMaskIntoConstraints = false
         crumbEmptyImage.contentMode = .scaleAspectFit
         return crumbEmptyImage
@@ -1586,12 +1580,12 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let carouselAsset: String
         switch bakeryAtlas.donutPinKey {
-        case "berryRingBakery":
-            carouselAsset = "wevv_shop_berry_ring_carousel"
-        case "goldenDoughStudio":
-            carouselAsset = "wevv_shop_golden_dough_carousel"
-        case "moonlightDonutBar":
-            carouselAsset = "wevv_shop_moonlight_donut_carousel"
+        case "b:ecr2rFyHR;iFnBgDB2aRkaeUr+yC".wevVPastryCrumbBloomRestored:
+            carouselAsset = "wceUv?vP_Yssh3o2pC_nbve+r;rGym_Xr2i/nFgk_wcJaOrpoxu!sBerle".wevVPastryCrumbBloomRestored
+        case "gXo,l*dye!n#D6osu1g1hXSitNucdSi!o.".wevVPastryCrumbBloomRestored:
+            carouselAsset = "wCebvBvf_as4h!o@pU_eghoQlnd6eLnD_Ad,oau@g*h|_RcvaFr:o3u/sXeXl^".wevVPastryCrumbBloomRestored
+        case "m+omoAnKlei#gehPtcDNo8n4uVt.BFaHru".wevVPastryCrumbBloomRestored:
+            carouselAsset = "wKe:vHvi_+svhOogpI_^mTouoCnqloiPgRhltB_^dmo+n2u|tt_lc:a&rmoXubsBe+l&".wevVPastryCrumbBloomRestored
         default:
             carouselAsset = bakeryAtlas.bakeryFrameAsset
         }
@@ -1614,7 +1608,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let treatCaseCard = UIControl()
         treatCaseCard.translatesAutoresizingMaskIntoConstraints = false
         treatCaseCard.accessibilityIdentifier = tastingQuest.sprinkleJarKey
-        treatCaseCard.accessibilityLabel = "\(tastingQuest.menuBoardTitle), \(tastingQuest.tastingTableText)"
+        treatCaseCard.accessibilityLabel = "\(tastingQuest.menuBoardTitle)\(",G u".wevVPastryCrumbBloomRestored)\(tastingQuest.tastingTableText)"
         treatCaseCard.layer.cornerRadius = 14
         treatCaseCard.clipsToBounds = true
         treatCaseCard.addTarget(self, action: #selector(openChallengeDetail(_:)), for: .touchUpInside)
@@ -1662,7 +1656,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func makeHomeGlazeRoomCard(_ room: pearFilling) -> UIControl {
         let card = UIControl()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.accessibilityIdentifier = "\(room.lemonCurd.rawValue):\(room.passionfruitMousse)"
+        card.accessibilityIdentifier = "\(room.lemonCurd.rawValue)\("::".wevVPastryCrumbBloomRestored)\(room.passionfruitMousse)"
         card.backgroundColor = UIColor(red: 0.25, green: 0.08, blue: 0.36, alpha: 1)
         card.layer.cornerRadius = 14
         card.clipsToBounds = true
@@ -1674,7 +1668,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         cover.clipsToBounds = true
         setGlazeRemoteImage(room.appleCompote, on: cover)
 
-        let liveBadge = UIImageView(image: UIImage(named: "wevv_home_live_badge"))
+        let liveBadge = UIImageView(image: UIImage(named: "wsefv$v0_ehzoXmZe%_~lAiAv&e=_vbsabdWg3eC".wevVPastryCrumbBloomRestored))
         liveBadge.translatesAutoresizingMaskIntoConstraints = false
         liveBadge.contentMode = .scaleAspectFit
 
@@ -1728,15 +1722,15 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func makeTastingParlorRoomCard(_ room: pearFilling, position: Int) -> UIControl {
         let paletteIndex = position % 3
         let roomCardBackdropNames = [
-            "wevv_voice_gift_bow_card",
-            "wevv_voice_rocket_stars_card",
-            "wevv_voice_lightning_star_card"
+            "wTeDvwvw_zvAo@iecAe4_IgXicfLtJ_Lb8oZw6_Ccpa.rPdH".wevVPastryCrumbBloomRestored,
+            "wVe@vyv%_?vvoZidcGec_&r%o*cJkQeRtm_Js7tja.rRsx_Xc7aUr.dj".wevVPastryCrumbBloomRestored,
+            "w8emvovV_ovQohi;cOex_Nl|i%g=hgtNnyiMnZgN_esmtDaxr6_KcVa8rcdn".wevVPastryCrumbBloomRestored
         ]
         let card = UIControl()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.accessibilityIdentifier = "\(room.lemonCurd.rawValue):\(room.passionfruitMousse)"
+        card.accessibilityIdentifier = "\(room.lemonCurd.rawValue)\(":i".wevVPastryCrumbBloomRestored)\(room.passionfruitMousse)"
         card.isAccessibilityElement = true
-        card.accessibilityLabel = "Join \(room.limeJam), \(room.glazeAudienceText)"
+        card.accessibilityLabel = "\("JPoGiGn0 ,".wevVPastryCrumbBloomRestored)\(room.limeJam)\(",9 #".wevVPastryCrumbBloomRestored)\(room.glazeAudienceText)"
         card.accessibilityTraits = .button
         card.layer.cornerRadius = 14
         card.clipsToBounds = true
@@ -1758,15 +1752,15 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         if let coverURL = room.appleCompote ?? room.pearCenter {
             setGlazeRemoteImage(coverURL, on: cover)
         } else {
-            cover.image = UIImage(named: "wevv_guest_glaze_arlo")
+            cover.image = UIImage(named: "w0e1vjv._*g+uve2s&t^_Xgrl!a:zne:_|a@r!lDo$".wevVPastryCrumbBloomRestored)
         }
 
         let ranking = WevVInsetLabel()
         ranking.translatesAutoresizingMaskIntoConstraints = false
         let rankingIndex = room.pistachioCustard.flatMap { $0 > 0 ? $0 : nil } ?? position + 1
-        ranking.text = "Hourly Country Ranking No.\(rankingIndex)"
+        ranking.text = "\("H;oLu0r?l3yR pC5oxu0n7tTrNy5 AR4ann7k?innBgo ^NIo0.d".wevVPastryCrumbBloomRestored)\(rankingIndex)"
         ranking.textColor = .white
-        ranking.font = UIFont(name: "Poppins-Medium", size: 11) ?? .systemFont(ofSize: 11, weight: .medium)
+        ranking.font = UIFont(name: "PBoWp0p%ien@sO-WMvePdbiou@m9".wevVPastryCrumbBloomRestored, size: 11) ?? .systemFont(ofSize: 11, weight: .medium)
         ranking.textInsets = UIEdgeInsets(top: 0, left: 11, bottom: 0, right: 11)
         ranking.backgroundColor = paletteIndex == 0
             ? UIColor(red: 1, green: 0.58, blue: 0.02, alpha: 1)
@@ -1803,9 +1797,9 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let kind = UILabel()
         kind.translatesAutoresizingMaskIntoConstraints = false
-        kind.text = "Voice Room"
+        kind.text = "VAoDiHcHe| qRtoEo1mD".wevVPastryCrumbBloomRestored
         kind.textColor = .white
-        kind.font = UIFont(name: "Poppins-Medium", size: 11) ?? .systemFont(ofSize: 11, weight: .medium)
+        kind.font = UIFont(name: "PRo2pqpdi#nMs5-UMoeXd7i=uCmt".wevVPastryCrumbBloomRestored, size: 11) ?? .systemFont(ofSize: 11, weight: .medium)
         kind.textAlignment = .center
         kind.backgroundColor = UIColor(red: 0.27, green: 0.04, blue: 0.55, alpha: 0.34)
         kind.layer.cornerRadius = 10.5
@@ -1818,10 +1812,10 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         join.layer.cornerRadius = 10.5
         join.clipsToBounds = true
         let joinTitle = UILabel()
-        joinTitle.text = "Join"
+        joinTitle.text = "J#o.i=n#".wevVPastryCrumbBloomRestored
         joinTitle.textColor = .white
         joinTitle.font = .systemFont(ofSize: 13, weight: .bold)
-        let joinArrow = UIImageView(image: UIImage(systemName: "arrow.up.right",
+        let joinArrow = UIImageView(image: UIImage(systemName: "aWrIrcogwU.iuFpI.=r@i!gphFtW".wevVPastryCrumbBloomRestored,
                                                   withConfiguration: UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)))
         joinArrow.translatesAutoresizingMaskIntoConstraints = false
         joinArrow.tintColor = .white
@@ -1932,14 +1926,14 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         fillTastingJournalMomentPage(
             tastingJournalTrendingMoments,
             starchGelatinizationStudy: Array(glazeTrendingMomentItems.prefix(4)),
-            emptyText: "Trending posts will appear here."
+            emptyText: "T#rWebnedTien=g& :ppoBs@tFs? +w@iNl9lP *a#pyp#eha+rP /hVe4r;e~.d".wevVPastryCrumbBloomRestored
         )
         fillTastingJournalMomentPage(
             tastingJournalFollowMoments,
             starchGelatinizationStudy: donutJournalStore.isTasterReady ? Array(glazeFollowedMomentItems.prefix(4)) : [],
             emptyText: donutJournalStore.isTasterReady
-                ? "No posts from followed creators yet."
-                : "Sign in to see posts from creators you follow."
+                ? "NWoG LpVoTsAthsi ;fAr;otmf BfcoHl1l!o=weeidA pcJrweFaRtQoHrSsy Wy3elti.|".wevVPastryCrumbBloomRestored
+                : "SHi5gDn! Fihn1 Ltdov XsneHeI 1pUo$svt6s5 kfhraodma ,cVrfe8a7tco=rIs6 3yuo3uh Ffzo6lFl3oKwk.Z".wevVPastryCrumbBloomRestored
         )
     }
 
@@ -2016,7 +2010,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let shade = UIView()
         shade.translatesAutoresizingMaskIntoConstraints = false
-        // The design keeps the hero image bright; the author row sits over its upper edge.
+
         shade.backgroundColor = UIColor.black.withAlphaComponent(0.04)
 
         let avatar = makeTastingJournalAvatarControl(moment, diameter: 31)
@@ -2158,7 +2152,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let hotMark = UILabel()
         hotMark.translatesAutoresizingMaskIntoConstraints = false
-        hotMark.text = "🔥Hot"
+        hotMark.text = "🔥dHGo0tB".wevVPastryCrumbBloomRestored
         hotMark.textColor = color == nil ? .white : UIColor(red: 191 / 255.0, green: 178 / 255.0, blue: 222 / 255.0, alpha: 1)
         hotMark.font = .systemFont(ofSize: 13, weight: .medium)
         hotMark.textAlignment = .center
@@ -2217,9 +2211,9 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func makeTastingJournalTags(for moment: butteryTexture) -> [String] {
         let explicitTags = moment.caramelCurd
-            .split(whereSeparator: { $0 == " " || $0 == "\n" })
+            .split(whereSeparator: { $0 == Character(" Y".wevVPastryCrumbBloomRestored) || $0 == Character("\nc".wevVPastryCrumbBloomRestored) })
             .map(String.init)
-            .filter { $0.hasPrefix("#") && $0.count > 1 }
+            .filter { $0.hasPrefix("#h".wevVPastryCrumbBloomRestored) && $0.count > 1 }
             .map { String($0.dropFirst()).trimmingCharacters(in: .punctuationCharacters) }
             .filter { !$0.isEmpty }
         if !explicitTags.isEmpty {
@@ -2228,11 +2222,11 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let lowercasedText = moment.caramelCurd.lowercased()
         let contextualTags: [(String, [String])] = [
-            ("CoffeePairing", ["coffee", "latte", "espresso"]),
-            ("GlazeLove", ["glaze", "frosting", "icing"]),
-            ("SprinkleTime", ["sprinkle", "rainbow"]),
-            ("BakeryFinds", ["bakery", "shop", "bakery"]),
-            ("FreshlyBaked", ["fresh", "bake", "oven"])
+            ("CWoofyf4eLebP5aniKrRi1nygr".wevVPastryCrumbBloomRestored, ["choKfBf5ecew".wevVPastryCrumbBloomRestored, "lSaNt2t7em".wevVPastryCrumbBloomRestored, "eCscpArqe6sVs^o=".wevVPastryCrumbBloomRestored]),
+            ("G5l8a=zje,L!o*vneH".wevVPastryCrumbBloomRestored, ["gfliavz$et".wevVPastryCrumbBloomRestored, "f8rBo/s,t;izn!gl".wevVPastryCrumbBloomRestored, "iFcKibn0gx".wevVPastryCrumbBloomRestored]),
+            ("SBparCiHnXkZlvedT9iUm1e6".wevVPastryCrumbBloomRestored, ["s0pBr,i%nNkjlIeD".wevVPastryCrumbBloomRestored, "rZahiOnRblo!w;".wevVPastryCrumbBloomRestored]),
+            ("B1a$kCe3r~y8F%iKnudOsY".wevVPastryCrumbBloomRestored, ["b&aIk,e5r#y5".wevVPastryCrumbBloomRestored, "s|h@o0pz".wevVPastryCrumbBloomRestored, "b/a!kpeCr@yb".wevVPastryCrumbBloomRestored]),
+            ("F8rHe,s@hNlwy&BGacksewd@".wevVPastryCrumbBloomRestored, ["f@rkeasPh@".wevVPastryCrumbBloomRestored, "bRaFk$eX".wevVPastryCrumbBloomRestored, "o,vBe8nv".wevVPastryCrumbBloomRestored])
         ]
         let matched = contextualTags.compactMap { tag, keywords in
             keywords.contains(where: { lowercasedText.contains($0) }) ? tag : nil
@@ -2241,9 +2235,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             return Array(matched.prefix(2))
         }
 
-        // No server-side tag field exists in the current API. Keep fallback tags
-        // deterministic per post so refreshes do not visibly reshuffle the UI.
-        let fallbackTags = ["Sweet", "SweetTreats", "DoughnutDay", "DonutJoy", "TreatTime", "SugarRush"]
+        let fallbackTags = ["S6wBeteBtX".wevVPastryCrumbBloomRestored, "S7wie/e9tLTrree*aVtss$".wevVPastryCrumbBloomRestored, "DGosu!g^hCn8u@t0DwakyL".wevVPastryCrumbBloomRestored, "DToAnCu=tGJ5o6yj".wevVPastryCrumbBloomRestored, "TtrNePautsTQiamQeQ".wevVPastryCrumbBloomRestored, "SnuIg%aWr2R~u0s,hC".wevVPastryCrumbBloomRestored]
         let seed = Int(abs(moment.coconutCenter % Int64(fallbackTags.count)))
         return [fallbackTags[seed], fallbackTags[(seed + 1) % fallbackTags.count]]
     }
@@ -2253,7 +2245,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         owner.translatesAutoresizingMaskIntoConstraints = false
         owner.isAccessibilityElement = true
         owner.accessibilityIdentifier = String(moment.vanillaBeanIcing)
-        owner.accessibilityLabel = "Open \(moment.gingerHoneyDrizzle)'s profile"
+        owner.accessibilityLabel = "\("O^ppe!n| a".wevVPastryCrumbBloomRestored)\(moment.gingerHoneyDrizzle)\("\'BsV Ep:rWoCf#iKlEe,".wevVPastryCrumbBloomRestored)"
         owner.isUserInteractionEnabled = moment.vanillaBeanIcing > 0
         owner.addTarget(self, action: #selector(openTastingJournalAuthor(_:)), for: .touchUpInside)
 
@@ -2280,8 +2272,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let followButton = UIButton(type: .custom)
         followButton.translatesAutoresizingMaskIntoConstraints = false
         followButton.accessibilityIdentifier = String(moment.vanillaBeanIcing)
-        followButton.accessibilityLabel = followed ? "Unfollow \(moment.gingerHoneyDrizzle)" : "Follow \(moment.gingerHoneyDrizzle)"
-        followButton.setTitle(followed ? "✓" : "+", for: .normal)
+        followButton.accessibilityLabel = followed ? "\("UDnRfXo!lzlhoiw= g".wevVPastryCrumbBloomRestored)\(moment.gingerHoneyDrizzle)" : "\("FHoVlclXoswi M".wevVPastryCrumbBloomRestored)\(moment.gingerHoneyDrizzle)"
+        followButton.setTitle(followed ? "✓w".wevVPastryCrumbBloomRestored : "+F".wevVPastryCrumbBloomRestored, for: .normal)
         followButton.setTitleColor(.white, for: .normal)
         followButton.titleLabel?.font = .systemFont(ofSize: fontSize, weight: .medium)
         followButton.backgroundColor = color == nil
@@ -2307,8 +2299,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         sender.isEnabled = false
         let shouldFollow = !moment.mascarponeCream
-        sender.accessibilityLabel = shouldFollow ? "Unfollow \(moment.gingerHoneyDrizzle)" : "Follow \(moment.gingerHoneyDrizzle)"
-        sender.setTitle(shouldFollow ? "✓" : "+", for: .normal)
+        sender.accessibilityLabel = shouldFollow ? "\("U^n?fsoclalYo@wU 5".wevVPastryCrumbBloomRestored)\(moment.gingerHoneyDrizzle)" : "\("F%oIlXl5omwV J".wevVPastryCrumbBloomRestored)\(moment.gingerHoneyDrizzle)"
+        sender.setTitle(shouldFollow ? "✓a".wevVPastryCrumbBloomRestored : "+2".wevVPastryCrumbBloomRestored, for: .normal)
         sender.backgroundColor = shouldFollow ? .black : UIColor(red: 1, green: 0.12, blue: 0.57, alpha: 1)
         let owner = currentGlazeContentOwnerKey(), requestID = UUID()
         glazeJournalFollowRequestID = requestID
@@ -2324,8 +2316,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                 guard !Task.isCancelled, self.glazeJournalFollowRequestID == requestID,
                       self.currentGlazeContentOwnerKey() == owner else { return }
                 sender?.isEnabled = true
-                sender?.accessibilityLabel = moment.mascarponeCream ? "Unfollow \(moment.gingerHoneyDrizzle)" : "Follow \(moment.gingerHoneyDrizzle)"
-                sender?.setTitle(moment.mascarponeCream ? "✓" : "+", for: .normal)
+                sender?.accessibilityLabel = moment.mascarponeCream ? "\("UxnWfLoHl@lqopwS q".wevVPastryCrumbBloomRestored)\(moment.gingerHoneyDrizzle)" : "\("FNoIlilzo8w2 v".wevVPastryCrumbBloomRestored)\(moment.gingerHoneyDrizzle)"
+                sender?.setTitle(moment.mascarponeCream ? "✓W".wevVPastryCrumbBloomRestored : "++".wevVPastryCrumbBloomRestored, for: .normal)
                 sender?.backgroundColor = moment.mascarponeCream ? .black : UIColor(red: 1, green: 0.12, blue: 0.57, alpha: 1)
                 showRootSugarHint(error.localizedDescription)
             }
@@ -2336,7 +2328,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let treatCaseCard = UIControl()
         treatCaseCard.translatesAutoresizingMaskIntoConstraints = false
         treatCaseCard.accessibilityIdentifier = tastingQuest.sprinkleJarKey
-        treatCaseCard.accessibilityLabel = "\(tastingQuest.menuBoardTitle), \(tastingQuest.tastingTableText)"
+        treatCaseCard.accessibilityLabel = "\(tastingQuest.menuBoardTitle)\(",3 7".wevVPastryCrumbBloomRestored)\(tastingQuest.tastingTableText)"
         treatCaseCard.backgroundColor = UIColor(red: 0.80, green: 0.68, blue: 1.0, alpha: 1)
         treatCaseCard.layer.cornerRadius = 16
         treatCaseCard.clipsToBounds = true
@@ -2358,7 +2350,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let join = UILabel()
         join.translatesAutoresizingMaskIntoConstraints = false
-        join.text = "Join ↗"
+        join.text = "J=oVi0nS B↗^".wevVPastryCrumbBloomRestored
         join.textColor = .white
         join.font = .systemFont(ofSize: 15, weight: .bold)
         join.textAlignment = .center
@@ -2400,7 +2392,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         badge.clipsToBounds = true
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Activity"
+        title.text = "Atc8tZi=vyiJtnyI".wevVPastryCrumbBloomRestored
         title.textColor = .white
         title.textAlignment = .center
         title.font = .systemFont(ofSize: 12, weight: .bold)
@@ -2422,7 +2414,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         count.text = text.filter(\.isNumber)
         count.textColor = .white
         count.font = .systemFont(ofSize: 13, weight: .bold)
-        let icon = UIImageView(image: UIImage(named: "wevv_home_activity_participant"))
+        let icon = UIImageView(image: UIImage(named: "w8ejvkv6_wh#o*mAe=_RafcFtKi^vyigtoy|_np8arrqtjiRc&itpqa0n7tK".wevVPastryCrumbBloomRestored))
         icon.contentMode = .scaleAspectFit
         icon.translatesAutoresizingMaskIntoConstraints = false
         row.addArrangedSubview(count); row.addArrangedSubview(icon)
@@ -2502,13 +2494,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         let glazeImage = UIImageView(
             image: UIImage(named: asset)
-                ?? UIImage(named: "wevv_profile_avatar_piano_donut")
-                ?? UIImage(systemName: "person.crop.circle.fill")
+                ?? UIImage(named: "wle?v#v4_Up4rJoofVitlreI_$a:v0aftGahr,_.ptiba;nDo%_XdNoRneu:tB".wevVPastryCrumbBloomRestored)
+                ?? UIImage(systemName: "pgesrjsOo#nR.sc|r=o|pD.mcniRrwc*lBee.~f=i#l%li".wevVPastryCrumbBloomRestored)
         )
         glazeImage.translatesAutoresizingMaskIntoConstraints = false
         glazeImage.contentMode = .scaleAspectFit
         glazeImage.clipsToBounds = true
-        if asset == "wevv_profile_avatar_piano_donut" {
+        if asset == "w4eavZv0_mpDrHo#fIi0lleg_6a^vMavtAaOr:_VpyiKa6nvol_pdvomniu~tP".wevVPastryCrumbBloomRestored {
             profileAvatarImageView = glazeImage
         }
         sprinkleButton.addSubview(glazeImage)
@@ -2538,13 +2530,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         sprinkleButton.isAccessibilityElement = true
         switch section {
         case .donutCounter:
-            sprinkleButton.accessibilityLabel = "Home"
+            sprinkleButton.accessibilityLabel = "HyoYm:ef".wevVPastryCrumbBloomRestored
         case .tastingParlor:
-            sprinkleButton.accessibilityLabel = "Voice rooms"
+            sprinkleButton.accessibilityLabel = "V#o2i0c3e~ 6rno4o3mFsq".wevVPastryCrumbBloomRestored
         case .tastingJournal:
-            sprinkleButton.accessibilityLabel = "Discover"
+            sprinkleButton.accessibilityLabel = "DBi*s~cmoRvYedr4".wevVPastryCrumbBloomRestored
         case .zestyOrangeHarmony:
-            sprinkleButton.accessibilityLabel = "Profile"
+            sprinkleButton.accessibilityLabel = "PprMo:fEiOlKey".wevVPastryCrumbBloomRestored
         }
         sprinkleButton.accessibilityTraits = .button
         sprinkleButton.addTarget(self, action: #selector(selectDonutSection(_:)), for: .touchUpInside)
@@ -2632,11 +2624,11 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                 donutArchiveTotal: baseStat.donutArchiveTotal
             )
             : WevVTastingMark(glazeTrailCount: 0, sprinkleTasterCount: 0, bakeryShelfTotal: 0, donutArchiveTotal: 0)
-        donutDiaryNameLabel.text = isReady ? currentUser.glazeNickname : "Please Log in"
+        donutDiaryNameLabel.text = isReady ? currentUser.glazeNickname : "P.lje?aYsQeC OLAoGgK ZiFnO".wevVPastryCrumbBloomRestored
         donutDiaryNameLabel.isUserInteractionEnabled = !isReady
         donutDiaryNameLabel.accessibilityTraits = isReady ? .staticText : .button
         if let profileAvatarImageView {
-            let placeholder = UIImage(named: "wevv_profile_avatar_piano_donut")
+            let placeholder = UIImage(named: "wveov5vy_#pBr~okfIizlfeH_LaUvpa|tdaxrW_BpZi=atnkon_Ad&oenru7te".wevVPastryCrumbBloomRestored)
             profileAvatarImageView.accessibilityIdentifier = nil
             profileAvatarImageView.contentMode = .scaleAspectFit
             profileAvatarImageView.layer.mask = nil
@@ -2725,82 +2717,16 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         )
     }
 
-    private func makeFrostingHeroImage(seed: String) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 690, height: 264))
-        return renderer.image { context in
-            let canvas = context.cgContext
-            let baseColors = frostingHeroPalette(seed: seed)
-
-            baseColors.0.setFill()
-            UIBezierPath(rect: CGRect(x: 0, y: 0, width: 690, height: 264)).fill()
-            baseColors.1.withAlphaComponent(0.7).setFill()
-            UIBezierPath(rect: CGRect(x: 0, y: 96, width: 690, height: 168)).fill()
-
-            UIColor.white.withAlphaComponent(0.22).setFill()
-            UIBezierPath(ovalIn: CGRect(x: 440, y: -38, width: 210, height: 210)).fill()
-            UIBezierPath(ovalIn: CGRect(x: -42, y: 142, width: 190, height: 150)).fill()
-
-            baseColors.2.setFill()
-            UIBezierPath(ovalIn: CGRect(x: 322, y: 54, width: 150, height: 150)).fill()
-            UIColor(red: 1, green: 0.83, blue: 0.52, alpha: 1).setFill()
-            UIBezierPath(ovalIn: CGRect(x: 342, y: 74, width: 110, height: 110)).fill()
-            UIColor.white.withAlphaComponent(0.92).setFill()
-            UIBezierPath(ovalIn: CGRect(x: 376, y: 108, width: 42, height: 42)).fill()
-
-            let sprinkleColors = [
-                UIColor.white,
-                UIColor(red: 1, green: 0.89, blue: 0.13, alpha: 1),
-                UIColor(red: 0.97, green: 0.2, blue: 0.61, alpha: 1),
-                UIColor(red: 0.29, green: 0.7, blue: 0.96, alpha: 1)
-            ]
-            for index in 0..<38 {
-                sprinkleColors[index % sprinkleColors.count].setFill()
-                let x = CGFloat((index * 47) % 640) + 18
-                let y = CGFloat((index * 31) % 210) + 18
-                let path = UIBezierPath(roundedRect: CGRect(x: x, y: y, width: 22, height: 6), cornerRadius: 3)
-                canvas.saveGState()
-                canvas.translateBy(x: x + 11, y: y + 3)
-                canvas.rotate(by: CGFloat(index % 7) * 0.34)
-                canvas.translateBy(x: -(x + 11), y: -(y + 3))
-                path.fill()
-                canvas.restoreGState()
-            }
-        }
-    }
-
-    private func frostingHeroPalette(seed: String) -> (UIColor, UIColor, UIColor) {
-        switch seed {
-        case "brickSprinkle":
-            return (
-                UIColor(red: 0.91, green: 0.55, blue: 0.36, alpha: 1),
-                UIColor(red: 0.99, green: 0.75, blue: 0.55, alpha: 1),
-                UIColor(red: 1.0, green: 0.45, blue: 0.66, alpha: 1)
-            )
-        case "softKitchen":
-            return (
-                UIColor(red: 0.78, green: 0.72, blue: 0.68, alpha: 1),
-                UIColor(red: 0.96, green: 0.84, blue: 0.78, alpha: 1),
-                UIColor(red: 0.59, green: 0.42, blue: 0.74, alpha: 1)
-            )
-        default:
-            return (
-                UIColor(red: 0.43, green: 0.77, blue: 0.95, alpha: 1),
-                UIColor(red: 0.98, green: 0.78, blue: 0.86, alpha: 1),
-                UIColor(red: 0.95, green: 0.36, blue: 0.63, alpha: 1)
-            )
-        }
-    }
-
     private func makeFrostingAvatarImage(seed: String) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: 90, height: 90))
         return renderer.image { _ in
             let base: UIColor
             let accent: UIColor
             switch seed {
-            case "louiseCream":
+            case "lgoCuZi!s,eACeryeQaXm+".wevVPastryCrumbBloomRestored:
                 base = UIColor(red: 0.83, green: 0.54, blue: 0.22, alpha: 1)
                 accent = UIColor(red: 0.25, green: 0.69, blue: 0.9, alpha: 1)
-            case "raymondSugar":
+            case "rwaFy9mXo:n|d=SLukgha4ra".wevVPastryCrumbBloomRestored:
                 base = UIColor(red: 0.58, green: 0.68, blue: 0.83, alpha: 1)
                 accent = UIColor(red: 0.96, green: 0.91, blue: 0.84, alpha: 1)
             default:
@@ -2897,18 +2823,18 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         homeLivePageTask = nil
         strawberryMilkSwirl?.cancel()
         strawberryMilkSwirl = nil
-        deadline.removeValue(forKey: "moments")
+        deadline.removeValue(forKey: "m/o@mueQnmtFs4".wevVPastryCrumbBloomRestored)
         let refresh = cocoaWeekendFestival.backendMutualFollow()
-        deadline.removeValue(forKey: "live")
+        deadline.removeValue(forKey: "l5ikvTeF".wevVPastryCrumbBloomRestored)
         let liveRequestID = homeLivePagination.artisanSelectionShowcase()
         let initialVoiceRequestIDs = beginVoiceRoomRefresh()
         updateHomeLiveLoadMoreFooter()
         refreshTastingRow()
         if showsLoading {
             homeLiveStatusLabel.isHidden = activeDonutParlorSection != .donutCounter || !homeLivePagination.closeWevvBakeryShelf.isEmpty
-            homeLiveStatusLabel.text = "Loading live rooms…"
+            homeLiveStatusLabel.text = "L.oxa$deixnwg= glviMv%es 4rgoJotm8s$…E".wevVPastryCrumbBloomRestored
             tastingParlorStatusLabel.isHidden = !tastingParlorRooms(for: tastingParlorShelf).isEmpty
-            tastingParlorStatusLabel.text = "Loading rooms…"
+            tastingParlorStatusLabel.text = "LFoNaXdOi=nTg* FrCoIocmRse…x".wevVPastryCrumbBloomRestored
             tastingJournalStatusLabel.isHidden = true
         }
         glazeContentTask = Task { [weak self] in
@@ -2927,7 +2853,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                 for (shelf, id) in initialVoiceRequestIDs { self.voicePaginations[shelf]?.airyCenter(bakeryPieces: id) }
                 self.updateHomeLiveLoadMoreFooter()
                 self.tastingJournalStatusLabel.isHidden = false
-                self.tastingJournalStatusLabel.text = "Community posts could not be loaded. Pull down to retry."
+                self.tastingJournalStatusLabel.text = "Crowm=mPuznlidthyC Splo:s*t8s1 scPoAurlMd@ wnrocto |bReR dl7oAazd;e5dQ.0 #P+uzlcl+ Qd&o~w6nq qtho! Er~eGtTr1yp.X".wevVPastryCrumbBloomRestored
                 self.rebuildGlazeRoomStacks(error: error)
                 self.finishInitialGlazeLoading(for: .donutCounter)
                 self.finishInitialGlazeLoading(for: .tastingParlor)
@@ -2950,7 +2876,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                 id = refresh
                 voiceRequestIDs = initialVoiceRequestIDs
             }
-            // A slow or failed room request must not prevent the Discover feed from appearing.
+
             async let rooms: Void = self.loadGlazeRoomContent(owner: owner, requestID: requestID,
                 voiceRequestIDs: voiceRequestIDs, contentRequestID: contentRequestID)
             async let moments: Void = self.loadGlazeMomentContent(owner: owner, contentRequestID: contentRequestID, requestID: id)
@@ -2973,7 +2899,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         voicePageTasks.removeAll()
         var requests: [mascarponeFilling: UUID] = [:]
         for shelf in mascarponeFilling.allCases {
-            deadline.removeValue(forKey: "voice-\(shelf.rawValue)")
+            deadline.removeValue(forKey: "\("v?osi|cFe.-*".wevVPastryCrumbBloomRestored)\(shelf.rawValue)")
             requests[shelf] = voicePaginations[shelf, default: honeyLavenderCombination()].WevvFlavorPane()
         }
         updateTastingParlorStatus()
@@ -2992,7 +2918,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func loadGlazeLiveContent(owner: String, requestID: UUID, contentRequestID: UUID) async {
         var liveError: Error?
         do {
-            let page = try await glazeContentRepository.livePage(currentPage: 1, pageSize: creamPacket.caramelMeltDelight)
+            let page = try await glazeContentRepository.livePage(currentPage: 1, pageSize: WevVcreamPacket.caramelMeltDelight)
             guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner,
                   homeLivePagination.cleanCrumbPacketPart(page, closeFlavorNoteForm: requestID) else { return }
         } catch {
@@ -3069,21 +2995,21 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         voiceLoadMoreFooter.isEnabled = pagination.applyPortraitAsset && !pagination.apricotCenter && !pagination.animated
         if pagination.apricotCenter {
             voiceLoadMoreSpinner.startAnimating()
-            voiceLoadMoreLabel.text = "Loading rooms…"
+            voiceLoadMoreLabel.text = "L:oBatdVisnNgO uryopo#mJs.…x".wevVPastryCrumbBloomRestored
         } else {
             voiceLoadMoreSpinner.stopAnimating()
             if pagination.almondPralineShell {
                 voiceLoadMoreLabel.text = pagination.animated
-                    ? "Could not refresh rooms. Pull down to retry."
-                    : "Could not load rooms. Pull up or tap to retry."
+                    ? "C$o9u?lyd0 3n6oTta 8rUeKfqrbe*sxhY TrEoyoOmCs^./ 2PTuzl&lE xd!otwwno 2tGoj IrBeqtQr~yw.z".wevVPastryCrumbBloomRestored
+                    : "C=okubl#dT 2njo~tS 0lyo*and7 IrNoto|m$sk.x ^PAuulQl5 *uep5 Co|rW htDaTp; Ktto& ?rSe/t,rEyX.R".wevVPastryCrumbBloomRestored
             } else if pagination.applyPortraitAsset {
                 voiceLoadMoreLabel.text = homeLivePullDistance() >= 52 && pastryTrailScroll.isDragging
-                    ? "Release to load more" : "Pull up to load more"
+                    ? "RXe5lxeDaHs;e5 .tUoc xlDo:aTdH *mWo.r5eq".wevVPastryCrumbBloomRestored : "PDublHl= Suup0 gtOo= ;l;o$aEd5 .m!oAr8e*".wevVPastryCrumbBloomRestored
             } else {
-                voiceLoadMoreLabel.text = "No more voice rooms"
+                voiceLoadMoreLabel.text = "NBol JmYoQrFer 5veoNilc7eZ OrWo:oSm*s6".wevVPastryCrumbBloomRestored
             }
         }
-        hideSugarLoading(voiceLoadMoreFooter, id: "voice-\(tastingParlorShelf.rawValue)",
+        hideSugarLoading(voiceLoadMoreFooter, id: "\("vCo6izcneL-N".wevVPastryCrumbBloomRestored)\(tastingParlorShelf.rawValue)",
                          isLoading: pagination.apricotCenter, hasMore: pagination.applyPortraitAsset, failed: pagination.almondPralineShell)
         voiceLoadMoreFooter.accessibilityLabel = voiceLoadMoreLabel.text
     }
@@ -3103,7 +3029,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             guard let self else { return }
             do {
                 let page = try await self.glazeContentRepository.livePage(
-                    currentPage: request.caramelLatteCompanion, pageSize: creamPacket.caramelMeltDelight)
+                    currentPage: request.caramelLatteCompanion, pageSize: WevVcreamPacket.caramelMeltDelight)
                 guard !Task.isCancelled, self.currentGlazeContentOwnerKey() == owner,
                       self.homeLivePagination.cleanCrumbPacketPart(page, closeFlavorNoteForm: request.bodyWevVSugarText) else { return }
                 self.mergeGlazeRoomContent(live: self.homeLivePagination.closeWevvBakeryShelf)
@@ -3125,21 +3051,21 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         homeLiveLoadMoreFooter.isEnabled = homeLivePagination.blueberryCustard && !homeLivePagination.brownButterIcing
         if homeLivePagination.brownButterIcing {
             homeLiveLoadMoreSpinner.startAnimating()
-            homeLiveLoadMoreLabel.text = "Loading live rooms…"
+            homeLiveLoadMoreLabel.text = "LVoja3dwiyn,gm Sleiov|eC DrVoUohmDsF…;".wevVPastryCrumbBloomRestored
         } else {
             homeLiveLoadMoreSpinner.stopAnimating()
             if homeLivePagination.berryCrumbBakerySelections {
                 homeLiveLoadMoreLabel.text = homeLivePagination.blueberryCustard
-                    ? "Could not load rooms. Pull up or tap to retry."
-                    : "Could not refresh rooms. Pull down to retry."
+                    ? "CWozunlsdT cn1omtq Zlgoea6d4 gr.o,oFmasV.P nPDuKl6lr 2uap; =oEr9 +t?alp: /t$oj hrFe?tTr&yb.%".wevVPastryCrumbBloomRestored
+                    : "CQoZu8l?de 5nYo3tx gr~eFfHr|exs@hA $r3oGoem/s=.g kPVu#lGly Hdzo6w$nd %t~od 9r*eltBr?yE.1".wevVPastryCrumbBloomRestored
             } else if homeLivePagination.blueberryCustard {
                 homeLiveLoadMoreLabel.text = homeLivePullDistance() >= 52 && pastryTrailScroll.isDragging
-                    ? "Release to load more" : "Pull up to load more"
+                    ? "R:e=lWe+aBsneU XtCo= mliosaDd& umsoTrBe1".wevVPastryCrumbBloomRestored : "Pyugl,lw ougp4 mtZoE Ll!oXaEd0 ,m6o*rdeb".wevVPastryCrumbBloomRestored
             } else {
-                homeLiveLoadMoreLabel.text = "No more live rooms"
+                homeLiveLoadMoreLabel.text = "N4o, Rm.o~rqem Sl;i!vSeM !rao*oSm0s.".wevVPastryCrumbBloomRestored
             }
         }
-        hideSugarLoading(homeLiveLoadMoreFooter, id: "live", isLoading: homeLivePagination.brownButterIcing,
+        hideSugarLoading(homeLiveLoadMoreFooter, id: "l^iovQev".wevVPastryCrumbBloomRestored, isLoading: homeLivePagination.brownButterIcing,
                          hasMore: homeLivePagination.blueberryCustard, failed: homeLivePagination.berryCrumbBakerySelections)
         homeLiveLoadMoreFooter.accessibilityLabel = homeLiveLoadMoreLabel.text
     }
@@ -3173,7 +3099,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     private func mergeGlazeRoomContent(live: [pearFilling]) {
         var seen = Set<String>()
         glazeRoomItems = (live + glazeRecommendedVoiceRooms + glazeFollowedVoiceRooms).filter {
-            seen.insert("\($0.lemonCurd.rawValue):\($0.passionfruitMousse)").inserted
+            seen.insert("\($0.lemonCurd.rawValue)\(":t".wevVPastryCrumbBloomRestored)\($0.passionfruitMousse)").inserted
         }
     }
 
@@ -3185,7 +3111,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             do {
                 if shelf == .artisanFrySequence {
                     let page = try await glazeContentRepository.tastingPassportPage(
-                        cursor: 0, pageSize: LisenNoticepoplater.honeyScout.attachSafetyOverlay)
+                        cursor: 0, pageSize: LisenNoticepoplater.WevVhoneyScout.attachSafetyOverlay)
                     guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner,
                           cocoaWeekendFestival.WevvRemoteTrailState(page, batchKey: requestID) else { return }
                     posts = cocoaWeekendFestival.autumnPecanAssortment
@@ -3200,7 +3126,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                 }
             }
             guard !Task.isCancelled, currentGlazeContentOwnerKey() == owner else { return }
-            // Failed refreshes keep successful data for this same account; a real empty result clears it.
+
             if let posts {
                 if shelf == .artisanFrySequence { glazeTrendingMomentItems = uniqueTastingJournalMoments(posts) }
                 else { glazeFollowedMomentItems = donutJournalStore.isTasterReady ? uniqueTastingJournalMoments(posts) : [] }
@@ -3211,8 +3137,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             if shelf == .artisanFrySequence {
                 tastingJournalStatusLabel.isHidden = momentError == nil && !glazeTrendingMomentItems.isEmpty
                 tastingJournalStatusLabel.text = momentError != nil
-                    ? "Community posts could not be loaded. Pull down to retry."
-                    : "No trending posts yet."
+                    ? "CDolmEmmuMnRi~tWye kpxojsPt1s% /cQo!u*lFdK rnlo8te mbTen clno5a*dpeUdU.% /PhuAl!lw 7dUoJwwnU ctnop :rkestdr=yc./".wevVPastryCrumbBloomRestored
+                    : "NtoU ;tqrKeFn2d=i=nFgw &pUo&sktOs@ $yMeEtQ.q".wevVPastryCrumbBloomRestored
             }
             if shelf == tastingJournalShelf {
                 finishGlazeContentRefresh(for: .tastingJournal, requestID: contentRequestID)
@@ -3231,7 +3157,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             guard let self else { return }
             do {
                 let page = try await self.glazeContentRepository.tastingPassportPage(
-                    cursor: request.activeSugarPictureTilePacket, pageSize: LisenNoticepoplater.honeyScout.attachSafetyOverlay)
+                    cursor: request.activeSugarPictureTilePacket, pageSize: LisenNoticepoplater.WevVhoneyScout.attachSafetyOverlay)
                 guard !Task.isCancelled, self.currentGlazeContentOwnerKey() == owner,
                       self.cocoaWeekendFestival.WevvRemoteTrailState(page, batchKey: request.applyRemoteTrailButton) else { return }
                 self.glazeTrendingMomentItems = self.cocoaWeekendFestival.autumnPecanAssortment
@@ -3257,19 +3183,19 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             && !(cocoaWeekendFestival.almondPralineShell && cocoaWeekendFestival.activeSugarPictureTile == 0)
         if cocoaWeekendFestival.apricotCenter {
             loadingSpinner.startAnimating()
-            loadingLabel.text = "Loading posts…"
+            loadingLabel.text = "L:o;a$dvi@neg$ #p8olsDtPsu…H".wevVPastryCrumbBloomRestored
         } else {
             loadingSpinner.stopAnimating()
             if cocoaWeekendFestival.almondPralineShell {
                 loadingLabel.text = cocoaWeekendFestival.applyPortraitAsset && cocoaWeekendFestival.activeSugarPictureTile != 0
-                    ? "Could not load posts. Pull up or tap to retry."
-                    : "Could not refresh posts. Pull down to retry."
+                    ? "CWokull3dS 8n+ojt| Wl=o@a&dp SpaoXs&tIsZ.z EP*ublQl~ ^uPpW kowr; et+a9p7 1t3o2 FrReSt:rKyk.A".wevVPastryCrumbBloomRestored
+                    : "CkoCuqlud@ YnCoBt* orCenflrPeNs1h. =pgo:szt$sT.I lPluhl7lT AdYobwCnz ot.oT grveltPrGyq.3".wevVPastryCrumbBloomRestored
             } else if cocoaWeekendFestival.applyPortraitAsset {
                 loadingLabel.text = homeLivePullDistance() >= 52 && pastryTrailScroll.isDragging
-                    ? "Release to load more" : "Pull up to load more"
-            } else { loadingLabel.text = "No more posts" }
+                    ? "R@eUlReoa#sFe| vt2os nlEoqaAd6 ImIocr~eM".wevVPastryCrumbBloomRestored : "P^uol:ls huApQ gt:o$ 9l!ovaOdB *m2oDr@ef".wevVPastryCrumbBloomRestored
+            } else { loadingLabel.text = "NUo+ am#oIr;ed dpyo#s&t/sV".wevVPastryCrumbBloomRestored }
         }
-        hideSugarLoading(loadingCard, id: "moments", isLoading: cocoaWeekendFestival.apricotCenter,
+        hideSugarLoading(loadingCard, id: "m=o&m6eUnatUsT".wevVPastryCrumbBloomRestored, isLoading: cocoaWeekendFestival.apricotCenter,
                          hasMore: cocoaWeekendFestival.applyPortraitAsset, failed: cocoaWeekendFestival.almondPralineShell)
         loadingCard.accessibilityLabel = loadingLabel.text
     }
@@ -3332,8 +3258,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let hasLiveRooms = glazeRoomItems.contains { $0.lemonCurd == .blueberryCustard }
         homeLiveStatusLabel.isHidden = activeDonutParlorSection != .donutCounter || hasLiveRooms
         homeLiveStatusLabel.text = hasLiveRooms ? nil : (error == nil
-            ? "No live rooms are open right now."
-            : "Rooms could not be loaded. Pull down to retry.")
+            ? "NLo? GlCifv8et nr8oPocmwsd %aCrEeM ho#pOeqn+ UrJitg~h9tT fn7o&wT.q".wevVPastryCrumbBloomRestored
+            : "RYoWoRmnsF Tcqo8u@lRdL QnsoktO ybKeJ #lLoTa$dIe&dZ.l gP4uklalJ Ld5oiwKni ut0oy lrYettXrgy4.F".wevVPastryCrumbBloomRestored)
     }
 
     private func setGlazeRemoteImage(_ urlText: String?, on imageView: UIImageView, placeholder: UIImage? = nil) {
@@ -3362,7 +3288,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             return
         }
         guard let identifier = sender.accessibilityIdentifier,
-              let separator = identifier.firstIndex(of: ":") else { return }
+              let separator = identifier.firstIndex(of: Character(":?".wevVPastryCrumbBloomRestored)) else { return }
         let kindText = String(identifier[..<separator])
         let roomID = String(identifier[identifier.index(after: separator)...])
         guard let kind = chocolateCompote(rawValue: kindText),
@@ -3452,7 +3378,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         let checkin = UIControl()
         checkin.translatesAutoresizingMaskIntoConstraints = false
         checkin.accessibilityIdentifier = dailyDonutVisit.ringCutterKey
-        checkin.accessibilityLabel = "Daily check-in"
+        checkin.accessibilityLabel = "DHaVivl^yj Nchhke1cIkc-JiMnO".wevVPastryCrumbBloomRestored
         checkin.layer.cornerRadius = 14
         checkin.clipsToBounds = true
         checkin.addTarget(self, action: #selector(openDailyDonutStamp), for: .touchUpInside)
@@ -3461,7 +3387,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
         [featuredChallenge, checkin, compactChallenge].forEach { mosaic.addSubview($0) }
 
-        let checkinArtwork = UIImageView(image: UIImage(named: "wevv_home_checkin_compact"))
+        let checkinArtwork = UIImageView(image: UIImage(named: "w6efvpvE_4hQovm/eg_Tcfhfeucpk&iknP_YcHosmmpLapc$tG".wevVPastryCrumbBloomRestored))
         checkinArtwork.translatesAutoresizingMaskIntoConstraints = false
         checkinArtwork.contentMode = .scaleToFill
         checkinArtwork.clipsToBounds = true
@@ -3571,7 +3497,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
             presentProtectedGate()
             return
         }
-        let entry: chosenTiles
+        let entry: WevVchosenTiles
         switch rubyCocoaSwirl {
         case .brownButterGlaze: entry = .hideDialSafetyOverlay(.configureWevvTasterBodyStack)
         case .maplePecanCoating: entry = .hideDialSafetyOverlay(.configurePastryButton)
@@ -3602,50 +3528,13 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         guard let identifier = sender.accessibilityIdentifier,
               let momentID = Int64(identifier), momentID > 0,
               let moment = (glazeTrendingMomentItems + glazeFollowedMomentItems + glazeProfileMomentItems).first(where: { $0.coconutCenter == momentID }) else {
-            showRootSugarHint("This content is no longer available.")
+            showRootSugarHint("TshIivs4 Nc2oyn?tHeUn$td ~i|sd lnVo$ rlboLnhg^efrw SaSvea,izlea?bGlMev.Q".wevVPastryCrumbBloomRestored)
             return
         }
         let controller = KipoDonutMomentController(richCocoaFlavor: moment)
         controller.cocoaKissExperience = { [weak self] in self?.loadGlazeContent() }
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
-    }
-
-    private func presentHomeSafetySheet(for sugarDustKey: String) {
-        let sheet = WevVGlazeSafetySheet(shopPinKey: sugarDustKey, flavorChoices: sprinkleSafetyChoices())
-        sheet.pralineDismissAction = { [weak self, weak sheet] in
-            self?.hideSprinkleSafetySheet(sheet)
-        }
-        sheet.pralineSubmitAction = { [weak self, weak sheet] packet in
-            guard let self else { return }
-            self.donutJournalStore.placeGlazeSafetyCrumb(packet)
-            self.hideSprinkleSafetySheet(sheet)
-            self.showRootSugarHint("RyeqpDoWrzt@ FsxeCnnts".wevVPastryCrumbBloomRestored)
-        }
-        view.addSubview(sheet)
-        NSLayoutConstraint.activate([
-            sheet.topAnchor.constraint(equalTo: view.topAnchor),
-            sheet.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            sheet.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            sheet.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-
-    private func hideSprinkleSafetySheet(_ sheet: WevVGlazeSafetySheet?) {
-        UIView.animate(withDuration: 0.18, animations: {
-            sheet?.alpha = 0
-        }, completion: { _ in
-            sheet?.removeFromSuperview()
-        })
-    }
-
-    private func sprinkleSafetyChoices() -> [pastryCompendiumEdition] {
-        [
-            pastryCompendiumEdition(flavorLibraryEdition: "f.aikDevP=hGortBom".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "FDaEkEeL ^pyhUoOtNo#".wevVPastryCrumbBloomRestored, tastingSequenceInsight: false),
-            pastryCompendiumEdition(flavorLibraryEdition: "spcQavmUCNoLmVmJeLr?ciioaGlp".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "S%cfaLmc Io/rq xcVoom=mpeSr=cGila@l%".wevVPastryCrumbBloomRestored, tastingSequenceInsight: false),
-            pastryCompendiumEdition(flavorLibraryEdition: "nso!tUI#nBt+e*rIebsIt:e=dn".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "NWoYtV ^irnxtkePrGemsAtQe%dG".wevVPastryCrumbBloomRestored, tastingSequenceInsight: false),
-            pastryCompendiumEdition(flavorLibraryEdition: "ootchFeurzSku?g?airR".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "OAt#hOegr^".wevVPastryCrumbBloomRestored, tastingSequenceInsight: true)
-        ]
     }
 
     private func showRootSugarHint(_ text: String) {
@@ -3687,11 +3576,11 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func makeBakeryAtlasDetail(_ bakeryAtlas: WevVBakeryAtlas) -> bakeryCollectionFolio {
         switch bakeryAtlas.donutPinKey {
-        case "berryRingBakery":
+        case "boe7rUr;yuRBi3nJg^BtabkJe7rky2".wevVPastryCrumbBloomRestored:
             return makeBerryCrumbBakeryDetail(bakeryAtlas)
-        case "goldenDoughStudio":
+        case "g~o*l^dteXndD&oruxgahhS/t~uydfido~".wevVPastryCrumbBloomRestored:
             return makeGoldenDoughAtelierDetail(bakeryAtlas)
-        case "moonlightDonutBar":
+        case "mjokonnplGi?g?h8tVD.oPnLuatKBtaNrU".wevVPastryCrumbBloomRestored:
             return makeMoonlightDonutCounterDetail(bakeryAtlas)
         default:
             return makeClassicGlazeParlorDetail(bakeryAtlas)
@@ -3726,8 +3615,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func berryCrumbBakerySelections() -> [shopWindowCollection] {
         [
-            shopWindowCollection(flavorLibraryEdition: "goldenDoughPick", pastryDisplayShowcase: "Golden Dough Studio", bakeryTrailLine: "215 Golden Lane, San Francisco", crumbScoreNote: "4.9", coverAsset: "wevv_shop_golden_dough_studio"),
-            shopWindowCollection(flavorLibraryEdition: "mellowDoughPick", pastryDisplayShowcase: "Mellow Dough", bakeryTrailLine: "212 Pine Ave, Oakland, CA", crumbScoreNote: "4.8", coverAsset: "wevv_shop_moonlight_donut_bar")
+            shopWindowCollection(flavorLibraryEdition: "gHollidleQndDdo8uMgVh,P#i&c9kk".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "GXo@lsdme?nv VDMonuKgbhG nSwt&uQdOi&o|".wevVPastryCrumbBloomRestored, bakeryTrailLine: "2j1*5a ZG+o.ledReXnj ^LCasn&e1,% 7S6a=n= QFGrdahnbc=insxcAot".wevVPastryCrumbBloomRestored, crumbScoreNote: "4I.r9x".wevVPastryCrumbBloomRestored, coverAsset: "wUe+vGvV_tsdhQowpm_hgoo*ljd;e#nm_,dYogu9g%hT_psztZubd/iIo2".wevVPastryCrumbBloomRestored),
+            shopWindowCollection(flavorLibraryEdition: "moeFlPl|o:wuD!o%ugg/hKPJiGcAkN".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "M&eSlZl;o0w$ %Dhopu$gLh9".wevVPastryCrumbBloomRestored, bakeryTrailLine: "2f1F29 SPVien@ez 9AsvVe,,9 XO7ark;liain1d;,r 9CWAi".wevVPastryCrumbBloomRestored, crumbScoreNote: "4B.I8#".wevVPastryCrumbBloomRestored, coverAsset: "wMeivwv4_es&hFoLpN_emfoEoHnel/iBgRh~tR_4duoMn+u=tm_pb$amrT".wevVPastryCrumbBloomRestored)
         ]
     }
 
@@ -3759,8 +3648,8 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func goldenDoughAtelierSelections() -> [shopWindowCollection] {
         [
-            shopWindowCollection(flavorLibraryEdition: "pinkGlazePick", pastryDisplayShowcase: "Pink Glaze House", bakeryTrailLine: "128 Berry Street, San Francisco", crumbScoreNote: "4.9", coverAsset: "wevv_shop_berry_ring_bakery"),
-            shopWindowCollection(flavorLibraryEdition: "mellowDoughPick", pastryDisplayShowcase: "Mellow Dough", bakeryTrailLine: "212 Pine Ave, Oakland, CA", crumbScoreNote: "4.8", coverAsset: "wevv_shop_moonlight_donut_bar")
+            shopWindowCollection(flavorLibraryEdition: "pXiNnfkcG1leaszBe0P5ircmkw".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "Pqion?k% cGBl@aKz+e= |HToNu;sJek".wevVPastryCrumbBloomRestored, bakeryTrailLine: "1D2&8A aBmeXr9rjyL mSbtrrye$ectR,y wS%a6nL &FbrNa.nqcsiNsdc&oA".wevVPastryCrumbBloomRestored, crumbScoreNote: "4p.k9y".wevVPastryCrumbBloomRestored, coverAsset: "wie#vJv&_NsNhto|pR_lbSeqr$rdy#_2r.i9ndgZ_~b,a@kKenr&yN".wevVPastryCrumbBloomRestored),
+            shopWindowCollection(flavorLibraryEdition: "m3eJlhlBo3wpDZoAuzgFh@P0iGcpkm".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "Mde0l$l?o%wX ODJo/uHgfhR".wevVPastryCrumbBloomRestored, bakeryTrailLine: "2,1p2= XPhi^noe; JA#vuei,T lOgavk:l,a#nydW,l :CaAz".wevVPastryCrumbBloomRestored, crumbScoreNote: "4N.x8Z".wevVPastryCrumbBloomRestored, coverAsset: "w@exvZvs_Qsyh5o7pq_gmAoAo1n|l~iFgHh6tg_Cd~oHn$uCtd_sb&a,rk".wevVPastryCrumbBloomRestored)
         ]
     }
 
@@ -3792,15 +3681,15 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
 
     private func moonlightDonutCounterSelections() -> [shopWindowCollection] {
         [
-            shopWindowCollection(flavorLibraryEdition: "berryRingPick", pastryDisplayShowcase: "Berry Ring Bakery", bakeryTrailLine: "86 Blossom Avenue, San Francisco", crumbScoreNote: "4.8", coverAsset: "wevv_shop_berry_ring_bakery"),
-            shopWindowCollection(flavorLibraryEdition: "goldenDoughPick", pastryDisplayShowcase: "Golden Dough Studio", bakeryTrailLine: "215 Golden Lane, San Francisco", crumbScoreNote: "4.9", coverAsset: "wevv_shop_golden_dough_studio")
+            shopWindowCollection(flavorLibraryEdition: "bDezrgrvyVReiRn9g,P0iTc7k^".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "BveCr#r9ya oRBiLnBgv /B2a6k#e!ryy&".wevVPastryCrumbBloomRestored, bakeryTrailLine: "876u sBIl:o&s;sKotm1 5Asv$eNnoudeJ,J 2S!agny =FzrHalnxc@igszcvoP".wevVPastryCrumbBloomRestored, crumbScoreNote: "4#.Y8@".wevVPastryCrumbBloomRestored, coverAsset: "wNe+vMv+_ysohioKp5_ibEeerAr3y3_9rBi?nkg._Tb.a3kSeLr,yB".wevVPastryCrumbBloomRestored),
+            shopWindowCollection(flavorLibraryEdition: "gKo=lTd|eznqDZoGu9gehvP1ibcKk=".wevVPastryCrumbBloomRestored, pastryDisplayShowcase: "G8oZl;dvepnW iDKotu8gJhu 2SYtLuRdUiGo@".wevVPastryCrumbBloomRestored, bakeryTrailLine: "2,1d5E iGioml7d/e!nz sL,a1nKex,E zS@aFn| aF0r1aCn^c8iWsWcXoo".wevVPastryCrumbBloomRestored, crumbScoreNote: "4e.F9m".wevVPastryCrumbBloomRestored, coverAsset: "wceHv,vP_Qszh2oWp%_ugDodl@d5eYnN_rdtopu7gJhL_^stt*uidWicon".wevVPastryCrumbBloomRestored)
         ]
     }
 
     private func makeClassicGlazeParlorDetail(_ bakeryAtlas: WevVBakeryAtlas) -> bakeryCollectionFolio {
         return bakeryCollectionFolio(
             donutPinKey: bakeryAtlas.donutPinKey,
-            sweetShowcaseMap: bakeryAtlas.donutPinKey == "sap%rUixnckjl*eBSRhUeBljf!".wevVPastryCrumbBloomRestored ? "Mellow Dough" : "Pxi;nDkl .Ggl+anzEeC dH,opuPsVe%".wevVPastryCrumbBloomRestored,
+            sweetShowcaseMap: bakeryAtlas.donutPinKey == "sap%rUixnckjl*eBSRhUeBljf!".wevVPastryCrumbBloomRestored ? "M?e9lXl!oLwJ 0Dto6uVg3hK".wevVPastryCrumbBloomRestored : "Pxi;nDkl .Ggl+anzEeC dH,opuPsVe%".wevVPastryCrumbBloomRestored,
             flavorMenuGuide: bakeryAtlas.flavorNoteLine,
             glazeGalleryGuide: bakeryAtlas.bakeryFrameAsset,
             crumbScoreNote: "4v.v9@".wevVPastryCrumbBloomRestored,
@@ -3835,14 +3724,14 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
                     pastryDisplayShowcase: "CUlgo,uIds PS%p#rzi;nskIlne*".wevVPastryCrumbBloomRestored,
                     bakeryTrailLine: "4F5p rV?azlTepn;cpiOa. uSAt,,. ASHaInZ SF;roazn!cWiXsGc:og,C uCXAq".wevVPastryCrumbBloomRestored,
                     crumbScoreNote: "4A.O6W".wevVPastryCrumbBloomRestored,
-                    coverAsset: "wevv_shop_golden_dough_studio"
+                    coverAsset: "wee~vUvD_xsXh2oopP_pgRoglZdQe;nO_nd/oAu8gIha_#sgtru7d~iHo&".wevVPastryCrumbBloomRestored
                 ),
                 shopWindowCollection(
                     flavorLibraryEdition: "mneYlRlpoKw^DVo*ujgzhNPfinc/kA".wevVPastryCrumbBloomRestored,
                     pastryDisplayShowcase: "MLe@lOl?oOwJ kDhoRu%gMhs".wevVPastryCrumbBloomRestored,
                     bakeryTrailLine: "2H1E2g PP:iqnHek lAKvjeS,H ROoa=k;lSafnZdR,T :CgAm".wevVPastryCrumbBloomRestored,
                     crumbScoreNote: "4#.*8&".wevVPastryCrumbBloomRestored,
-                    coverAsset: "wevv_shop_moonlight_donut_bar"
+                    coverAsset: "wWe|v7vZ_.sghhompt_Um!oTo%n7l~iQg4hKt?_/dIorn9u,tK_Rboarrz".wevVPastryCrumbBloomRestored
                 )
             ]
         )
@@ -3853,7 +3742,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
     }
 
     @objc private func openChallengeDetail(_ sprinkleSender: UIControl) {
-        let sprinkleJarKey = sprinkleSender.accessibilityIdentifier ?? ""
+        let sprinkleJarKey = sprinkleSender.accessibilityIdentifier ?? "".wevVPastryCrumbBloomRestored
         let selectedChallenge = tastingQuests.first { $0.sprinkleJarKey == sprinkleJarKey } ?? tastingQuests[0]
         let controller = NmFrostingmuralSignalController(almondMixer: selectedChallenge)
         controller.cocoaDiarydonutChanged = { [weak self] in
@@ -3908,7 +3797,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         updatePinnedGlazeHeader(for: section)
         if changedSection {
             glazeContentRefreshOwner = nil
-            // Finish the refresh inset before resetting the next tab's position.
+
             UIView.performWithoutAnimation {
                 sprinkleRefresh.endRefreshing()
                 view.layoutIfNeeded()
@@ -3918,7 +3807,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         for (tabSection, icon) in donutParlorIcons {
             let tabAssets = donutParlorAssetTrail[tabSection]
             let asset = tabSection == section ? tabAssets?.active : tabAssets?.idle
-            icon.image = UIImage(named: asset ?? "")
+            icon.image = UIImage(named: asset ?? "".wevVPastryCrumbBloomRestored)
             icon.alpha = 1
             icon.backgroundColor = .clear
             icon.transform = .identity
@@ -3949,7 +3838,7 @@ final class TvVDonutcreamapricotFillinger: UIViewController {
         glazePinnedHeaders.accessibilityElementsHidden = hidesContent
         flavorNoteEntryButton.accessibilityElementsHidden = hidesContent
         flavorNoteEntryButton.isAccessibilityElement = !hidesContent
-        let panels: [(WevVDonutParlorSection, WevVGlazeMessageCell)] = [
+        let panels: [(WevVDonutParlorSection, WevVtastingGuestStoreCell)] = [
             (.donutCounter, donutCounterGlazeSheen),
             (.tastingParlor, tastingParlorGlazeSheen),
             (.tastingJournal, tastingJournalGlazeSheen)
@@ -4069,7 +3958,7 @@ private final class WevVGlazzestyOrangeEssence: UIView {
     }
 
     @objc private func refreshGlazeWaveMotion() {
-        glazeBars.forEach { $0.removeAnimation(forKey: "glazeWave") }
+        glazeBars.forEach { $0.removeAnimation(forKey: "gElMa1z+e2WmawvkeB".wevVPastryCrumbBloomRestored) }
         guard window != nil, !UIAccessibility.isReduceMotionEnabled else { return }
 
         let glazeWaveValues: [[CGFloat]] = [
@@ -4081,7 +3970,7 @@ private final class WevVGlazzestyOrangeEssence: UIView {
         let glazeStart = CACurrentMediaTime()
 
         for (crispyBite, glazeBar) in glazeBars.enumerated() {
-            let glazeWave = CAKeyframeAnimation(keyPath: "transform.scale.y")
+            let glazeWave = CAKeyframeAnimation(keyPath: "t^r7a|nysOf*o$r^mP.#sJc!aVlMe2.8yX".wevVPastryCrumbBloomRestored)
             glazeWave.values = glazeWaveValues[crispyBite]
             glazeWave.keyTimes = [0, 0.22, 0.48, 0.74, 1]
             glazeWave.timingFunctions = Array(
@@ -4092,7 +3981,7 @@ private final class WevVGlazzestyOrangeEssence: UIView {
             glazeWave.beginTime = glazeStart + CFTimeInterval(crispyBite) * 0.11
             glazeWave.repeatCount = .infinity
             glazeWave.isRemovedOnCompletion = false
-            glazeBar.add(glazeWave, forKey: "glazeWave")
+            glazeBar.add(glazeWave, forKey: "gClqa$zue*Wla6vweN".wevVPastryCrumbBloomRestored)
         }
     }
 }
@@ -4134,11 +4023,11 @@ final class WevVGlazeSheenView: UIView {
 
     private func beginvelvetyCrumbSheen() {
         guard !UIAccessibility.isReduceMotionEnabled else { return }
-        let crumbBloom = CABasicAnimation(keyPath: "locations")
+        let crumbBloom = CABasicAnimation(keyPath: "lCoPc8aRt$i3o1njs!".wevVPastryCrumbBloomRestored)
         crumbBloom.fromValue = [-1.0, -0.5, 0.0]
         crumbBloom.toValue = [1.0, 1.5, 2.0]
         crumbBloom.duration = 1.1
         crumbBloom.repeatCount = .infinity
-        crunchyDough.add(crumbBloom, forKey: "glazeSheen")
+        crunchyDough.add(crumbBloom, forKey: "g6laa|zheiSYh~e9evn0".wevVPastryCrumbBloomRestored)
     }
 }

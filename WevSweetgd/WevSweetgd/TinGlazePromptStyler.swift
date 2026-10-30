@@ -12,7 +12,7 @@ enum TinGlazePromptStyler {
         sprinkleRefresh.tintColor = strawberryGlazeTone
         sprinkleRefresh.backgroundColor = .clear
         sprinkleRefresh.attributedTitle = NSAttributedString(
-            string: "Pull to refresh",
+            string: "PWu4lWla mt?oB 6rwe.f;rse6sMh|".wevVPastryCrumbBloomRestored,
             attributes: [.foregroundColor: mutedTone,
                          .font: UIFont.systemFont(ofSize: 13, weight: .medium)]
         )
@@ -62,76 +62,9 @@ enum TinGlazePromptStyler {
         animateSugarToast(crumbNook)
     }
 
-    @discardableResult
-    static func showSugarLoading(in view: UIView, text: String) -> UIView {
-        let loadingShade = UIControl()
-        loadingShade.translatesAutoresizingMaskIntoConstraints = false
-        loadingShade.backgroundColor = UIColor.black.withAlphaComponent(0.24)
-        loadingShade.alpha = 0
 
-        let loadingCard = UIView()
-        loadingCard.translatesAutoresizingMaskIntoConstraints = false
-        loadingCard.backgroundColor = creamTone.withAlphaComponent(0.98)
-        loadingCard.layer.cornerRadius = 20
-        loadingCard.layer.borderWidth = 1
-        loadingCard.layer.borderColor = softPinkTone.cgColor
-        loadingCard.layer.shadowColor = UIColor.black.cgColor
-        loadingCard.layer.shadowOpacity = 0.2
-        loadingCard.layer.shadowRadius = 18
-        loadingCard.layer.shadowOffset = CGSize(width: 0, height: 8)
 
-        let loadingSpinner = UIActivityIndicatorView(style: .medium)
-        loadingSpinner.translatesAutoresizingMaskIntoConstraints = false
-        loadingSpinner.color = strawberryGlazeTone
-        loadingSpinner.startAnimating()
 
-        let loadingLabel = UILabel()
-        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
-        loadingLabel.text = text
-        loadingLabel.textAlignment = .center
-        loadingLabel.textColor = inkTone
-        loadingLabel.font = .systemFont(ofSize: 14, weight: .semibold)
-        loadingLabel.numberOfLines = 2
-
-        loadingShade.addSubview(loadingCard)
-        loadingCard.addSubview(loadingSpinner)
-        loadingCard.addSubview(loadingLabel)
-        view.addSubview(loadingShade)
-
-        NSLayoutConstraint.activate([
-            loadingShade.topAnchor.constraint(equalTo: view.topAnchor),
-            loadingShade.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loadingShade.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            loadingShade.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            loadingCard.centerXAnchor.constraint(equalTo: loadingShade.centerXAnchor),
-            loadingCard.centerYAnchor.constraint(equalTo: loadingShade.centerYAnchor),
-            loadingCard.leadingAnchor.constraint(greaterThanOrEqualTo: loadingShade.leadingAnchor, constant: 48),
-            loadingCard.trailingAnchor.constraint(lessThanOrEqualTo: loadingShade.trailingAnchor, constant: -48),
-            loadingCard.widthAnchor.constraint(lessThanOrEqualToConstant: 240),
-            loadingSpinner.topAnchor.constraint(equalTo: loadingCard.topAnchor, constant: 18),
-            loadingSpinner.centerXAnchor.constraint(equalTo: loadingCard.centerXAnchor),
-            loadingSpinner.widthAnchor.constraint(equalToConstant: 22),
-            loadingSpinner.heightAnchor.constraint(equalToConstant: 22),
-            loadingLabel.topAnchor.constraint(equalTo: loadingSpinner.bottomAnchor, constant: 10),
-            loadingLabel.leadingAnchor.constraint(equalTo: loadingCard.leadingAnchor, constant: 20),
-            loadingLabel.trailingAnchor.constraint(equalTo: loadingCard.trailingAnchor, constant: -20),
-            loadingLabel.bottomAnchor.constraint(equalTo: loadingCard.bottomAnchor, constant: -18)
-        ])
-
-        UIView.animate(withDuration: 0.18) {
-            loadingShade.alpha = 1
-        }
-        return loadingShade
-    }
-
-    static func hideSugarLoading(_ loadingShade: UIView) {
-        guard loadingShade.superview != nil else { return }
-        UIView.animate(withDuration: 0.16, animations: {
-            loadingShade.alpha = 0
-        }, completion: { _ in
-            loadingShade.removeFromSuperview()
-        })
-    }
 
     private static func pinSugarToast(donutParlor: UIView, flavorParlor: UIView, crumbLabel: UILabel, glazeParlor: UIView, treatParlor: UIView?, pastryParlor: CGFloat) {
         let bottomTarget = treatParlor?.topAnchor ?? glazeParlor.safeAreaLayoutGuide.bottomAnchor
@@ -197,7 +130,7 @@ enum TinGlazePromptStyler {
         pecanFlavor.layer.cornerRadius = 24
         pecanFlavor.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
-        let hazelnutFlavor = UIImageView(image: UIImage(named: "hazelnutFlavor")?.withRenderingMode(.alwaysOriginal))
+        let hazelnutFlavor = UIImageView(image: UIImage(named: "hya;z7ePl3n/udtMF$lAajvdoMrQ".wevVPastryCrumbBloomRestored)?.withRenderingMode(.alwaysOriginal))
         hazelnutFlavor.translatesAutoresizingMaskIntoConstraints = false
         hazelnutFlavor.backgroundColor = .clear
         hazelnutFlavor.contentMode = .scaleAspectFit

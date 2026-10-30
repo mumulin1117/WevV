@@ -1,0 +1,304 @@
+iOS工程清理记录
+日期：2026-10-30
+
+范围：只清理无调用声明、诊断打印、Swift注释以及失效历史测试脚本。保留现有业务、页面、登录存储、支付补单和 SDK2 资源。
+
+删除统计（嵌套声明可能属于同一删除块，不按字节重复累加）：
+- 纯诊断 DEBUG 块：14
+- 诊断语句：14
+- 诊断/旧资源声明：3
+- 纯诊断文件：1
+- 无引用方法：45
+- 无引用模型类型：50
+- 无引用类：2
+- 从保留代码中清理 Swift 注释 trivia：196
+- 删除依赖已不存在的 WeeNo 源码的历史测试脚本：5
+
+修改文件及用途：
+- WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift
+  无引用方法 15
+- WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift
+  无引用方法 1
+- WevSweetgd/WevSweetgd/NOticeNertyuSugartastingCard.swift
+  无引用方法 2
+- WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift
+  无引用方法 5
+- WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift
+  无引用方法 2
+- WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift
+  无引用方法 5
+- WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/UKGlazeActortroller.swift
+  纯诊断 DEBUG 块 4；诊断语句 14；诊断/旧资源声明 3
+- WevSweetgd/WevSweetgd/VGuestSevenSweet.swift
+  无引用方法 3
+- WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift
+  纯诊断 DEBUG 块 2
+- WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/DrawcreamScoutSugarStyle.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/GDonutdenCrumbCenterler.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+  纯诊断 DEBUG 块 4
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeConversationCell.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/chosenTiles.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/conversationAvatar.swift
+  纯诊断 DEBUG 块 4；纯诊断文件 1
+- WevSweetgd/WevSweetgd/WevEnd/creamPacket.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift
+  无引用方法 2
+- WevSweetgd/WevSweetgd/WevEnd/glazeNameField.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/honeyLavenderCombination.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevEnd/honeyScout.swift
+  仅清理注释/空白
+- WevSweetgd/WevSweetgd/WevVDonustencilDepth.swift
+  无引用模型类型 2
+- WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift
+  无引用类 1
+- WevSweetgd/WevSweetgd/glazeGalleryGuide.swift
+  无引用方法 2
+- WevSweetgd/WevSweetgd/kettleGlazeSequence.swift
+  无引用方法 8；无引用模型类型 48；无引用类 1
+- scripts/test_wevv_room_mapper.py
+  回归脚本改用保留的有效入口；移除已删除诊断实现的依赖
+- scripts/verify_wevv_h5_lifecycle.py
+  回归脚本改用保留的有效入口；移除已删除诊断实现的依赖
+- scripts/verify_wevv_h5_loading.py
+  回归脚本改用保留的有效入口；移除已删除诊断实现的依赖
+- scripts/verify_wevv_im_diagnostics.py
+  回归脚本改用保留的有效入口；移除已删除诊断实现的依赖
+- scripts/verify_wevv_native_integration.py
+  删除依赖已删除 WeeNo 源码的失效历史测试/辅助脚本
+- scripts/verify_wevv_native_recharge.py
+  删除依赖已删除 WeeNo 源码的失效历史测试/辅助脚本
+- scripts/verify_wevv_session_runtime.py
+  回归脚本改用保留的有效入口；移除已删除诊断实现的依赖
+- scripts/verify_wevv_social_service.py
+  删除依赖已删除 WeeNo 源码的失效历史测试/辅助脚本
+- scripts/verify_wevv_unused_archive.py
+  删除依赖已删除 WeeNo 源码的失效历史测试/辅助脚本
+- scripts/wevv_archive_source.py
+  删除依赖已删除 WeeNo 源码的失效历史测试/辅助脚本
+- scripts/wevv_room_bundle.py
+  旧资源名移至工具内部保留；当前加密种子、算法和产物不变
+
+删除声明明细：
+WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift
+  - markDoughRingTasterReady [无引用方法]
+  - markDoughRingTasterReady [无引用方法]
+  - refreshDoughRingTasterProfile [无引用方法]
+  - clearSugarCrumbs [无引用方法]
+  - dissolveGlazeTasterPacket [无引用方法]
+  - storeGlazeCredentials [无引用方法]
+  - markCreamMicGrant [无引用方法]
+  - placeGlazeSafetyCrumb [无引用方法]
+  - placeRoomSafetyCrumb [无引用方法]
+  - placeGuestSafetyCrumb [无引用方法]
+  - placeSugarMoment [无引用方法]
+  - addGlazeGold [无引用方法]
+  - flourBlendDetail [无引用方法]
+  - updateGlazeGoldCount [无引用方法]
+  - defaultSugarHandle [无引用方法]
+WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift
+  - glazeCounterShowcase [无引用方法]
+WevSweetgd/WevSweetgd/NOticeNertyuSugartastingCard.swift
+  - showTinySugarHint [无引用方法]
+  - showSugarConfirm [无引用方法]
+WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift
+  - proofingTimeDetail [无引用方法]
+  - flavorIntensityNotes [无引用方法]
+  - makeChallengeDimLayer [无引用方法]
+  - makeGoldShortageCard [无引用方法]
+  - pinGoldShortageLayer [无引用方法]
+WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift
+  - showSugarLoading [无引用方法]
+  - hideSugarLoading [无引用方法]
+WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift
+  - makeFrostingHeroImage [无引用方法]
+  - frostingHeroPalette [无引用方法]
+  - presentHomeSafetySheet [无引用方法]
+  - hideSprinkleSafetySheet [无引用方法]
+  - sprinkleSafetyChoices [无引用方法]
+WevSweetgd/WevSweetgd/UKGlazeActortroller.swift
+  - crumbArchiveName [诊断/旧资源声明]
+  - glazeLoadStartedAt [诊断/旧资源声明]
+  - traceGlazeLoad [诊断/旧资源声明]
+WevSweetgd/WevSweetgd/VGuestSevenSweet.swift
+  - toggleGlazeFollow [无引用方法]
+  - toggleSugarShield [无引用方法]
+  - clearGlazeRelationsForFreshTaster [无引用方法]
+WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift
+WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift
+WevSweetgd/WevSweetgd/WevEnd/conversationAvatar.swift
+WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift
+  - flavorMenuGuide [无引用方法]
+  - glazeAtlasPage [无引用方法]
+WevSweetgd/WevSweetgd/WevVDonustencilDepth.swift
+  - WevVDonutSnapshot [无引用模型类型]
+  - WevVDonutTaster [无引用模型类型]
+WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift
+  - WevVGlazeSafetySheet [无引用类]
+WevSweetgd/WevSweetgd/glazeGalleryGuide.swift
+  - pastryDiaryCollection [无引用方法]
+  - sweetKeepsakeEntry [无引用方法]
+WevSweetgd/WevSweetgd/kettleGlazeSequence.swift
+  - pastryCompendiumGuide [无引用方法]
+  - donutCarnivalCalendar [无引用方法]
+  - senchaTasting [无引用方法]
+  - rechargeGlazeBalance [无引用方法]
+  - flourBlendDetail [无引用方法]
+  - steamExpansionStudy [无引用方法]
+  - batterConsistencyDetail [无引用方法]
+  - aromaSpectrumNotes [无引用方法]
+  - coldProofRhythm [无引用模型类型]
+  - kettleGlazeSequence [无引用模型类型]
+  - batchBakeRhythm [无引用模型类型]
+  - spiralTwistRhythm [无引用模型类型]
+  - latticeDrizzleSequence [无引用模型类型]
+  - slowRiseCraft [无引用模型类型]
+  - carefulCrimpRhythm [无引用模型类型]
+  - sourdoughBeignet [无引用模型类型]
+  - potatoDoughnut [无引用模型类型]
+  - yeastVariety [无引用模型类型]
+  - oldFashionedFritter [无引用模型类型]
+  - buttermilkSelection [无引用模型类型]
+  - appleCiderDoughnut [无引用模型类型]
+  - frenchCrullerVariety [无引用模型类型]
+  - twistKnotRing [无引用模型类型]
+  - ricottaFritterRing [无引用模型类型]
+  - berryBeignetFritter [无引用模型类型]
+  - jamBerlinerTwist [无引用模型类型]
+  - appleCiderRing [无引用模型类型]
+  - appleFritterBeignet [无引用模型类型]
+  - twistKnotCruller [无引用模型类型]
+  - sugarRaisedTwist [无引用模型类型]
+  - glazedRingBeignet [无引用模型类型]
+  - berryBeignetTwist [无引用模型类型]
+  - cakeCruller [无引用模型类型]
+  - appleCiderTwist [无引用模型类型]
+  - jamBerlinerCruller [无引用模型类型]
+  - zestyOrangeAccent [无引用模型类型]
+  - creamyCaramelAroma [无引用模型类型]
+  - aromaticCardamomHarmony [无引用模型类型]
+  - nuttyPecanNuance [无引用模型类型]
+  - warmGingerAroma [无引用模型类型]
+  - silkyMochaContrast [无引用模型类型]
+  - citrusBergamotFlavor [无引用模型类型]
+  - tropicalMangoHarmony [无引用模型类型]
+  - smokyMapleHarmony [无引用模型类型]
+  - zestyOrangeEssence [无引用模型类型]
+  - creamyCaramelHarmony [无引用模型类型]
+  - pistachioCrumble [无引用模型类型]
+  - raspberryDustTopping [无引用模型类型]
+  - raspberryDustGarnish [无引用模型类型]
+  - chocolateCurlScatter [无引用模型类型]
+  - doubleProofRhythm [无引用模型类型]
+  - butterFoldRhythm [无引用模型类型]
+  - overnightRiseProcess [无引用模型类型]
+  - sesameBrittleTopping [无引用模型类型]
+  - overnightRiseSequence [无引用模型类型]
+  - grahamCrumbleDust [无引用模型类型]
+  - WevVGlazeVaultRepository [无引用类]
+
+保留的当前契约：
+- legacyToken、SAPI 换票、兼容 Header 仍被当前接口使用，不属于废弃 SDK。
+- SDK2 解密解包缓存、五方法 Bridge、登录会话、IM 初始化、StoreKit 交易持久化/补单保留。
+- Swift 字符串中的 H5 JavaScript 内容和资源中的协议标记保持不变。
+
+验证结果：
+- Debug iOS Simulator 构建成功。
+- Release generic iOS 真机目标构建成功（CODE_SIGNING_ALLOWED=NO）。
+- 所有保留的 Swift token 和字符串与修改前一致，差异仅为已记录的删除块及注释/空白。
+- git diff --check 通过。
+- Release App 内没有 .py/.swift 测试文件；删除的诊断源文件不在编译输入中。
+- 三个 SDK2 资源 SHA256 与修改前一致：
+  WevSweetgd/WevSweetgd/WevEnd/vanillaBeanIcingSdk2.data 24f4b572e98c772eb6bd24f1f04ee97403c88c0a06790c299cd46ba1321d3410
+  WevSweetgd/WevSweetgd/WevEnd/vanillaBeanIcingSdk2Network.data 368dde0e2a7b97f24a53ec1ad527fb9afb60618ab787e2075c4bb034b7fc284e
+  WevSweetgd/WevSweetgd/WevEnd/vanillaBeanIcingSdk2.manifest.json 23d34ea0d9a1351778672a57d64cdcc5d70f52d44b455cc57bb5e8a201dd99d3
+- 离线回归通过：资源打包/还原、网络基础、配置校验、登录会话、媒体传输、动态接口、SDK2 宿主、H5 路由/加载/生命周期/Bridge、支付协调/补单、直播/语聊分页、尾部加载提示及房间字段映射。
+- 实际 H5 配置解析器的 15 项离线校验通过。
+
+验证边界：本轮未进行真机 UI 操作或真实交易；UI 布局和键盘逻辑未修改。
+Xcode 用户界面状态文件为开始前已有修改，本轮未主动修改。
+
+第二轮：原生 UI 与模型残留清理（2026-10-30）
+本轮额外删除 34 个声明：24 个属性、8 个方法、2 个模型类型。
+另删除废弃封面选择链路的两项协议声明，以及只写入不读取的控件数组追加语句。
+
+按文件说明：
+- WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift
+  删除无人调用的本地动态/挑战读取封装及对应解析器、未使用的会话便捷读取属性、旧持久化键常量和本地动态模型；不删除已有持久化数据；当前凭据存取、挑战发布写入、收藏和评价流程保留。
+  删除：
+- WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift
+  删除没有按钮或手势绑定的旧封面选择弹窗、仅为其服务的图片选择回调与预览控件、未读取的状态及旧图片数组；现有提交与默认封面不变。
+  删除：
+- WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift
+  删除未绑定入口的旧充值弹窗跳转方法。
+  删除：
+- WevSweetgd/WevSweetgd/SugarMomentEbuController.swift
+  删除未使用的旧图片数组及只写入不读取的控件数组；现有动态上传交互保留。
+  删除：
+- WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift
+  清理未使用的挑战参与者 ID 集合，保留首页、语聊、动态、个人中心全部现有入口。
+  删除：
+- WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift
+  清理未使用的欢迎/认证配色常量，登录注册 UI 与流程保留。
+  删除：
+- WevSweetgd/WevSweetgd/VGuestSevenSweet.swift
+  删除没有原生入口的关注/粉丝/黑名单本地列表读取封装；仍被挑战参与者等页面使用的资料模型和数据保留。
+  删除：
+- WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift
+  清理未使用的旧文字颜色常量，保留正在使用的举报表单。
+  删除：
+- WevSweetgd/WevSweetgd/pastryCompendiumEdition.swift
+  删除无引用的旧资料模型；同文件正在使用的模型保留。
+  删除：
+- scripts/verify_wevv_session_runtime.py
+  退出登录断言改为直接检查保留的完整凭据对象为空，继续验证持久化凭据与 Keychain 清理。
+
+核验：
+- 对全部原生类型建立引用图，未发现仍可确认无入口的整页 UI 类型；App/Scene 入口分别由 @main 与 Info.plist 注册。
+- 核对 Storyboard/XIB、选择器绑定与运行时类/方法查询，避免将系统委托和间接入口误删。
+- 保留 Swift token 与字符串逐项对比通过；当前 H5 三个资源文件哈希未变。
+- 登录会话 35 项、活跃社交 26 项、H5 导航 31 项与真实动态接口离线回归通过。
+- Debug 模拟器与 Release 真机目标编译通过（不签名）。
+- 未进行真机 UI 操作；没有改动现有页面布局、键盘处理或接口请求流程。
+
+编译修复与 Assets 合并（2026-10-30）：
+- 删除 WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift 的重复副本，保留内容完全一致的 WevVtastingGuestStoreCell.swift，解决类型重复声明。
+- WevSweetgd/WevSweetgd/WevEnd/Assets.xcassets/hazelnutFlavor.imageset 移至 WevSweetgd/WevSweetgd/Assets.xcassets/hazelnutFlavor.imageset。
+- WevSweetgd/WevSweetgd/WevEnd/Assets.xcassets/tastingSuccessLayer.imageset 移至 WevSweetgd/WevSweetgd/Assets.xcassets/tastingSuccessLayer.imageset。
+- WevSweetgd/WevSweetgd/WevEnd/Assets.xcassets/artisanDoughAtelier.imageset 移至 WevSweetgd/WevSweetgd/Assets.xcassets/artisanDoughAtelier.imageset。
+- 删除 WevEnd/Assets.xcassets/Contents.json 及已空的 Assets.xcassets 目录；主目录配置保持不变。
+- scripts/verify_wevv_media_transfer.py 跟随既有类重命名，改用 WevVpastelBackdropGalleryler.swift 和对应类名；39 项回归通过。
+- 三组资源无名称冲突，7 个图片倍率版本及其 Contents.json 内容哈希均不变；UIImage(named:) 调用不变。
+- 合并后 Release 的全部命名资源记录与合并前一致（含名称、倍率、尺寸、图像摘要和适用机型等）。
+- 正常 Debug 模拟器与 Release 真机目标均编译成功，不使用 EXCLUDED_SOURCE_FILE_NAMES 或任何源码排除参数。
+- 未修改页面布局、登录会话、用户持久化数据或键盘处理。
+
+重装登录态修复（2026-10-30）：
+- 原因：glazeGalleryGuide.sweetKeepsakeEntry(scope:) 原先仅依赖钥匙串中的账号凭据，卸载后沙盒被清除，但残留凭据仍可能被读取。
+- WevSweetgd/WevSweetgd/glazeGalleryGuide.swift：登录凭据在钥匙串保存成功后，在沙盒记录对应摘要；恢复时必须同时匹配沙盒记录和钥匙串内容。缺少记录或摘要不符则拒绝恢复并尝试清除该环境旧凭据。
+- 正常退出先移除沙盒摘要，即使钥匙串删除失败也不会恢复旧登录。临时无法访问钥匙串时不会删除仍有效的本地绑定，避免暂时锁定造成永久丢失。
+- 仅在首次迁移且沙盒仍保留旧版已登录标记时，兼容当前环境凭据；迁移只执行一次，不能借重新登录恢复其他环境的旧凭据。
+- 新增持久化键继续使用随机干扰字符方式处理；本地只记录凭据摘要，不额外保存明文 Token。
+- 技术设备标识与交易材料不清除。
+- scripts/verify_wevv_keepsake_installation.py：实际存储实现的 27 项隔离回归，覆盖卸载重装、跨进程重启、升级、跨环境隔离、Token 轮换、删除/写入失败、临时不可访问及模拟器备用存储。修改前代码可复现同一重装用例失败。
+- scripts/verify_wevv_session_runtime.py：测试边界跟随既有媒体类重命名，35 项会话回归通过。
+- 正常 Debug 模拟器与 Release 真机目标构建通过；未卸载、重启或操作用户设备上的 App。

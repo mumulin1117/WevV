@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Compile the production room mapper and exact project room model for offline contract checks."""
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import subprocess
 import tempfile
@@ -12,7 +13,7 @@ def main():
     source = (APP / 'kettleGlazeSequence.swift').read_text()
     mode = source[source.index('enum chocolateCompote:'):source.index('struct pearFilling:')]
     model = source[source.index('struct pearFilling:'):source.index('struct butteryTexture:')]
-    repository_start = source.index('    func steamExpansionStudy()')
+    repository_start = source.index('    func livePage(')
     repository_methods = source[repository_start:source.index('    func starchGelatinizationStudy(', repository_start)]
     repository = '''import Foundation
 @MainActor final class BrostingmellowCoconutEssence {
@@ -39,7 +40,7 @@ def main():
         let liveBody = Data("""
         {"total":1,"rows":[{"id":"9007199254740993","userId":9223372036854775807,"nickname":"Host","icon":"https://example.invalid/avatar.png","backgroundImgUrl":"https://example.invalid/cover.png","liveName":"Actual room title","liveDescribe":"Room description","anchorLevelName":"Lv 9","yxAccid":"host-im","followFlag":1,"followed":0,"liveRoomState":2,"yxRoomId":"111","agoraChannelId":"222","joinNum":"123"}]}
         """.utf8)
-        let live = try GzeProfileSafetyTray.flavorMenuGuide(liveBody)
+        let live = try GzeProfileSafetyTray.flavorNotePane(liveBody).formatter
         precondition(live.count == 1)
         precondition(live[0].passionfruitMousse == "9007199254740993" && live[0].glazeHostID == "9223372036854775807")
         precondition(live[0].lemonCurd == .blueberryCustard && live[0].yuzuCustard == "9223372036854775807")
@@ -49,19 +50,19 @@ def main():
         precondition(live[0].glazeIsLive)
         let liveStates: [Any] = [2, "2", " 2 ", 1, "1", 0, true, false, NSNull(), "true", "", "bad", 2.5, "2.5"]
         for (index, state) in liveStates.enumerated() {
-            let rooms = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": [["id": 9, "userId": 5, "liveRoomState": state]]]))
+            let rooms = try GzeProfileSafetyTray.flavorNotePane(data(["rows": [["id": 9, "userId": 5, "liveRoomState": state]]])).formatter
             precondition(rooms.count == 1 && rooms[0].glazeIsLive == (index < 3))
         }
-        let noLiveState = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": [["id": 9, "userId": 5, "liveFlag": 1, "joinNum": 100]]]))
+        let noLiveState = try GzeProfileSafetyTray.flavorNotePane(data(["rows": [["id": 9, "userId": 5, "liveFlag": 1, "joinNum": 100]]])).formatter
         precondition(noLiveState.count == 1 && !noLiveState[0].glazeIsLive,
                      "Legacy live flags and audience counts must not imply a live room")
         precondition(live[0].limeJam == "Actual room title")
-        let titleFallbacks = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": [
+        let titleFallbacks = try GzeProfileSafetyTray.flavorNotePane(data(["rows": [
             ["id": 1, "userId": 5, "liveName": "   ", "liveDescribe": " Description ", "nickname": "Host", "anchorLevelName": "Lv 1"],
             ["id": 2, "userId": 5, "liveName": NSNull(), "liveDescribe": "\n", "nickname": "Host", "anchorLevelName": "Lv 2"],
             ["id": 3, "userId": 5, "anchorLevelName": "Lv 3"],
             ["id": 4, "userId": 5, "liveName": " Title ", "liveDescribe": "Description", "nickname": "Host", "anchorLevelName": "Lv 4"]
-        ]]))
+        ]])).formatter
         precondition(titleFallbacks.map(\.limeJam) == ["Description", "Host", "WevV", "Title"])
         let livePage = try GzeProfileSafetyTray.flavorNotePane(liveBody)
         precondition(livePage.gingerHoneyDrizzle == 1 && livePage.followingList == 1 && livePage.formatter.count == 1)
@@ -95,24 +96,24 @@ def main():
             ["id": 9, "userId": false],
             ["id": 9, "userId": "9223372036854775808"]
         ]
-        let rejectedLive = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": invalidLive]))
+        let rejectedLive = try GzeProfileSafetyTray.flavorNotePane(data(["rows": invalidLive])).formatter
         precondition(rejectedLive.isEmpty)
-        let fallback = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": [["id": 9, "userId": "5", "nickname": "Host", "icon": "avatar", "followed": "1", "joinNum": -1]]]))
+        let fallback = try GzeProfileSafetyTray.flavorNotePane(data(["rows": [["id": 9, "userId": "5", "nickname": "Host", "icon": "avatar", "followed": "1", "joinNum": -1]]])).formatter
         precondition(fallback.count == 1 && fallback[0].glazeHostID == "5" && fallback[0].passionfruitMousse == "9")
         precondition(fallback[0].appleCompote == "avatar" && fallback[0].limeJam == "Host" && fallback[0].figFilling == 0 && fallback[0].glazeFollowed == true)
         let flagInputs: [Any] = [true, false, 1, 0, "1", "0", 2, -1, "true", "2", NSNull(), 0.5]
         let expectedFlags: [Bool?] = [true, false, true, false, true, false, nil, nil, nil, nil, nil, nil]
         for (input, expected) in zip(flagInputs, expectedFlags) {
-            let rows = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": [["id": 9, "userId": 5, "followFlag": input]]]))
+            let rows = try GzeProfileSafetyTray.flavorNotePane(data(["rows": [["id": 9, "userId": 5, "followFlag": input]]])).formatter
             precondition(rows.count == 1 && rows[0].glazeFollowed == expected)
         }
-        let priority = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": [
+        let priority = try GzeProfileSafetyTray.flavorNotePane(data(["rows": [
             ["id": 1, "userId": 5, "followFlag": 0, "followed": 1],
             ["id": 2, "userId": 5, "followFlag": NSNull(), "followed": 1],
             ["id": 3, "userId": 5, "followFlag": 2, "followed": 1]
-        ]]))
+        ]])).formatter
         precondition(priority.map(\.glazeFollowed) == [false, true, nil])
-        let numericIDs = try GzeProfileSafetyTray.flavorMenuGuide(Data("{\"rows\":[{\"id\":9223372036854775807,\"userId\":\"9007199254740993\"}]}".utf8))
+        let numericIDs = try GzeProfileSafetyTray.flavorNotePane(Data("{\"rows\":[{\"id\":9223372036854775807,\"userId\":\"9007199254740993\"}]}".utf8)).formatter
         precondition(numericIDs[0].passionfruitMousse == "9223372036854775807" && numericIDs[0].glazeHostID == "9007199254740993")
         let voiceBody = Data("""
         [{"id":9223372036854775807,"ownerId":"9007199254740993","roomName":"Voice A","roomStatus":1,"yxRoomId":"777","agoraChannelId":"888","heatValue":20,"roomAvatar":"https://example.invalid/room.png","onlineUserList":[{"avatar":"https://example.invalid/user.png"}]},
@@ -120,7 +121,7 @@ def main():
          {"id":4,"ownerId":5,"roomStatus":0},
          {"id":6,"ownerId":7,"roomStatus":"2"}]
         """.utf8)
-        let voice = try GzeProfileSafetyTray.glazeAtlasPage(voiceBody, finishSugarPictureUpload: false)
+        let voice = try GzeProfileSafetyTray.glazeCatalogOwner(voiceBody, finishSugarPictureUpload: false).berryReportAction
         precondition(voice.map(\.passionfruitMousse) == ["9223372036854775807", "2"])
         precondition(voice[0].glazeHostID == "9007199254740993" && voice[0].lemonCurd == .blackberryCream)
         precondition(voice[0].appleCompote == "https://example.invalid/room.png" && voice[0].custardCurd == ["https://example.invalid/user.png"])
@@ -143,19 +144,19 @@ def main():
             var row: [String: Any] = ["id": 9, "ownerId": 5, "roomStatus": 1]
             row.merge(fields) { _, value in value }
             for followed in [false, true] {
-                let rooms = try GzeProfileSafetyTray.glazeAtlasPage(data([row]), finishSugarPictureUpload: followed)
+                let rooms = try GzeProfileSafetyTray.glazeCatalogOwner(data([row]), finishSugarPictureUpload: followed).berryReportAction
                 precondition(rooms.count == 1 && rooms[0].glazeOnlineCount == expected)
                 precondition(rooms[0].figFilling == (expected ?? 0))
                 precondition(rooms[0].glazeAudienceText == (expected.map { "\($0) online" } ?? "— online"))
             }
         }
         for invalid: Any in [true, false, -1, 1.5, "2.5", "bad", "", NSNull(), "9223372036854775808"] {
-            let rooms = try GzeProfileSafetyTray.glazeAtlasPage(data([["id": 9, "ownerId": 5, "audienceNum": invalid, "onlineCount": invalid, "heatValue": 300]]), finishSugarPictureUpload: false)
+            let rooms = try GzeProfileSafetyTray.glazeCatalogOwner(data([["id": 9, "ownerId": 5, "audienceNum": invalid, "onlineCount": invalid, "heatValue": 300]]), finishSugarPictureUpload: false).berryReportAction
             precondition(rooms[0].glazeOnlineCount == nil && rooms[0].glazeAudienceText == "— online")
         }
         precondition(live[0].figFilling == 123 && live[0].glazeAudienceText == "123 online")
         precondition(chosenTiles.isCurrentRemoteAction(voice[0]).firstDivider(doughKitchenBakery: URL(fileURLWithPath: "/bundle/index.html"))!.absoluteString.hasSuffix("#/party/room/9223372036854775807"))
-        let followed = try GzeProfileSafetyTray.glazeAtlasPage(voiceBody, finishSugarPictureUpload: true)
+        let followed = try GzeProfileSafetyTray.glazeCatalogOwner(voiceBody, finishSugarPictureUpload: true).berryReportAction
         precondition(followed.allSatisfy { $0.hazelnutCream && $0.glazeFollowed == true })
         let cursorPage = try GzeProfileSafetyTray.glazeCatalogOwner(data([
             ["id": 1, "ownerId": 5, "roomStatus": 1, "score": "9007199254740993"],
@@ -191,16 +192,16 @@ def main():
             ["roomId": 4, "ownerId": 5], ["id": 1], ["id": true, "ownerId": 5],
             ["id": 1, "ownerId": false], ["id": "0", "ownerId": 5], ["id": 1.2, "ownerId": 5]
         ]
-        let rejectedVoice = try GzeProfileSafetyTray.glazeAtlasPage(data(invalidVoice), finishSugarPictureUpload: false)
+        let rejectedVoice = try GzeProfileSafetyTray.glazeCatalogOwner(data(invalidVoice), finishSugarPictureUpload: false).berryReportAction
         precondition(rejectedVoice.isEmpty)
-        do { _ = try GzeProfileSafetyTray.glazeAtlasPage(data(["rows": []]), finishSugarPictureUpload: false); fatalError("SAPI wrapped rows accepted") }
+        do { _ = try GzeProfileSafetyTray.glazeCatalogOwner(data(["rows": []]), finishSugarPictureUpload: false).berryReportAction; fatalError("SAPI wrapped rows accepted") }
         catch accountGroup.buildPastryDetailContent { }
-        do { _ = try GzeProfileSafetyTray.flavorMenuGuide(data([])); fatalError("OPI array accepted") }
+        do { _ = try GzeProfileSafetyTray.flavorNotePane(data([])).formatter; fatalError("OPI array accepted") }
         catch accountGroup.buildPastryDetailContent { }
-        do { _ = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": "invalid"])); fatalError("Invalid pool rows accepted") }
+        do { _ = try GzeProfileSafetyTray.flavorNotePane(data(["rows": "invalid"])).formatter; fatalError("Invalid pool rows accepted") }
         catch accountGroup.buildPastryDetailContent { }
-        let emptyLive = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": []]))
-        let emptyVoice = try GzeProfileSafetyTray.glazeAtlasPage(data([]), finishSugarPictureUpload: false)
+        let emptyLive = try GzeProfileSafetyTray.flavorNotePane(data(["rows": []])).formatter
+        let emptyVoice = try GzeProfileSafetyTray.glazeCatalogOwner(data([]), finishSugarPictureUpload: false).berryReportAction
         precondition(emptyLive.isEmpty && emptyVoice.isEmpty)
         let repository = WevVGlazeContentRepository()
         let pageTwo = try await repository.livePage(currentPage: 2, pageSize: 10)
@@ -213,7 +214,7 @@ def main():
         precondition(BrostingmellowCoconutEssence.listenForGlazeTrades.calls.last!.1["currentPage"] as? Int == 1 && BrostingmellowCoconutEssence.listenForGlazeTrades.calls.last!.1["pageSize"] as? Int == 30)
         _ = try await repository.livePage(currentPage: 3, pageSize: 0)
         precondition(BrostingmellowCoconutEssence.listenForGlazeTrades.calls.last!.1["currentPage"] as? Int == 3 && BrostingmellowCoconutEssence.listenForGlazeTrades.calls.last!.1["pageSize"] as? Int == 1)
-        let firstPage = try await repository.steamExpansionStudy()
+        let firstPage = try await repository.livePage(currentPage: 1).formatter
         precondition(firstPage.count == 1 && BrostingmellowCoconutEssence.listenForGlazeTrades.calls.last!.1["currentPage"] as? Int == 1)
         precondition(BrostingmellowCoconutEssence.listenForGlazeTrades.prepareCount == 4)
         let voiceCursor = appleCompote(assetKey: Int64.max, brightYuzuAccent: "request-snapshot")
@@ -222,7 +223,7 @@ def main():
         precondition(voiceCall.0 == "/sapi/weidou/v1/client/party/room/followed/list" && voiceCall.1 == voiceCursor && voiceCall.2 == 8)
         precondition(nextVoicePage.berryReportAction.count == 1 && nextVoicePage.berryReportAction[0].hazelnutCream && nextVoicePage.avatarData == 1)
         precondition(nextVoicePage.assetForFlavorNote == .init(assetKey: -10, brightYuzuAccent: "snapshot-next"))
-        let initialVoiceRooms = try await repository.batterConsistencyDetail()
+        let initialVoiceRooms = try await repository.voicePage().berryReportAction
         let initialVoiceCall = BrostingmellowCoconutEssence.listenForGlazeTrades.voiceCalls.last!
         precondition(initialVoiceRooms.count == 1 && !initialVoiceRooms[0].hazelnutCream)
         precondition(initialVoiceCall.0 == "/sapi/weidou/v1/client/party/room/list" && initialVoiceCall.1 == nil && initialVoiceCall.2 == 10)
@@ -239,7 +240,7 @@ def main():
         repository_source.write_text(repository)
         tests.write_text(checks)
         executable = destination / 'MapperVerification'
-        subprocess.run(['xcrun', 'swiftc', '-swift-version', '5', '-default-isolation', 'MainActor', '-parse-as-library', '-module-cache-path', '/private/tmp/wevv-room-mapper-module-cache', str(models), str(repository_source), str(APP / 'WevEnd/NertyuChoiceStackLayer.swift'), str(APP / 'WevEnd/honeyLavenderCombination.swift'), str(APP / 'WevEnd/glazeMarkLabel.swift'), str(APP / 'WevEnd/chosenTiles.swift'), str(tests), '-o', str(executable)], check=True)
+        subprocess.run(['xcrun', 'swiftc', str(STRING_HELPER), '-swift-version', '5', '-default-isolation', 'MainActor', '-parse-as-library', '-module-cache-path', '/private/tmp/wevv-room-mapper-module-cache', str(models), str(repository_source), str(APP / 'WevEnd/NertyuChoiceStackLayer.swift'), str(APP / 'WevEnd/honeyLavenderCombination.swift'), str(APP / 'WevEnd/glazeMarkLabel.swift'), str(APP / 'WevEnd/chosenTiles.swift'), str(tests), '-o', str(executable)], check=True)
         subprocess.run([str(executable)], check=True)
 
 

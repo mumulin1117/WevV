@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Exercise the real live pagination state without UIKit, network, or user data."""
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import runpy
 import subprocess
@@ -122,7 +123,7 @@ def main():
         harness.write_text("import Foundation\n" + models + "\n" + declaration(mapper, 'struct glazeMarkLabel')
             + "\n" + (SOURCE / 'WevEnd/creamPacket.swift').read_text() + CHECKS)
         executable = folder / "verification"
-        subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
+        subprocess.run(["xcrun", "swiftc", str(STRING_HELPER), "-parse-as-library", "-swift-version", "5", "-default-isolation", "MainActor",
             "-module-cache-path", str(folder / "modules"), str(harness), "-o", str(executable)], check=True)
         subprocess.run([str(executable)], check=True, timeout=30)
 

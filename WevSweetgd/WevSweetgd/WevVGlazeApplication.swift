@@ -1,24 +1,11 @@
 import UIKit
 
 
-extension String {
-    var wevVPastryCrumbBloomRestored: String {
-        wevVGlazeCrumbRibbonFolded()
-    }
-
-    private func wevVGlazeCrumbRibbonFolded() -> String {
-        reduce(into: (crumbs: String(), keepsNext: true)) { pastryRibbon, glazeScalar in
-            defer { pastryRibbon.keepsNext.toggle() }
-            guard pastryRibbon.keepsNext else { return }
-            pastryRibbon.crumbs.append(glazeScalar)
-        }.crumbs
-    }
-}
 
 @main
 class WevVGlazeApplication: UIResponder, UIApplicationDelegate {
 
-    private let wevvGlazeSceneName = "WevVSprinkleScene"
+    private let wevvGlazeSceneName = "W1elv^V6S^pwrhi3n@krl~e5Ssc^e!n$e!".wevVPastryCrumbBloomRestored
 
     func application(_ wevvGlazeApp: UIApplication, didFinishLaunchingWithOptions wevvLaunchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DrawcreamScoutSugarStyle.donutCheckinCalendar.donutDiaryFolio()

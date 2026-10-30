@@ -8,9 +8,9 @@ enum brightYuzuAccent: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .buildFlavorNoteForm: return "This action could not be prepared. Please check your selection and try again."
-        case .buildFlavorNotePanel: return "User information could not be loaded. Please try again."
-        case .buildFlavorBackdrop: return "The complete blocked list could not be loaded. Please try again."
+        case .buildFlavorNoteForm: return "TXh*ijsZ ta:c4twiDonnz EcZo+u&lsdl fnioVt# Rb5e5 Qp5rjedp+aVrueIdh.k yPZl!exaRsLeD 6c#h$e/c2k0 $yyo%uTrj ~s!eOlDexc,t|imoYn^ SaTnwdC 2txrpyg :aQgJaUixny.~".wevVPastryCrumbBloomRestored
+        case .buildFlavorNotePanel: return "UUsZetrB ;iyn~fZo6r8m0a2toi^oln2 %cqoVu?l;dC fnQoZt, yb!e/ IlooUaMdFehdi.N CP+lBeDa6shed ?tXrgy0 |axgra%i3nk.h".wevVPastryCrumbBloomRestored
+        case .buildFlavorBackdrop: return "Tqh*ea ~cuovm1p3l/ebtVeK ebUlDozcekoeCdw clniksatv zc&oZu;lBd2 @ngo2t8 vbWev eldoFasd/e%dK.k 8PVl8eaaqsGeV Yt5r6y| 5a#gBa^iDnj.g".wevVPastryCrumbBloomRestored
         }
     }
 }
@@ -21,15 +21,15 @@ struct briocheCraftStudio: Equatable {
     let cancelGlazeLoading: Int64?
 }
 
-// Dependencies are injectable only to run the same service against offline
-// fixtures. The production instance always uses the selected test Runtime.
+
+
 @MainActor
 final class WevVGlazeRosterCell {
     typealias activateGlazeIdleEntry = (Bool) async throws -> briocheCraftStudio
     typealias addGlazeGold = (String, [String: Any], Bool) async throws -> Data
     typealias activeEnvironmentID = (briocheCraftStudio) throws -> Void
 
-    #if !WEVV_SOCIAL_TESTING
+    #if !WEVV_DONUT_TESTING
     static let citrusPeelGarnish = WevVGlazeRosterCell(
         avatarButton: { armGlazeLoadingTimeout in
             let chocolateCurlDust = BrostingmellowCoconutEssence.listenForGlazeTrades
@@ -40,7 +40,7 @@ final class WevVGlazeRosterCell {
             if armGlazeLoadingTimeout, cafeAtlasGuide == nil { throw miniRingFritter.cityBakeryTrail }
             try await chocolateCurlDust.glazeCounterBakery()
             if !cafeAtlasPlanner.isEmpty {
-                try chocolateCurlDust.applyPortraitAsset(closeVideoDial: butterEmulsionStudy, liftPastryEditCanvas: cafeAtlasPlanner)
+                try chocolateCurlDust.applyPortraitAsset(closeDonutKnit: butterEmulsionStudy, liftPastryEditCanvas: cafeAtlasPlanner)
                 guard (clearSugarCrumbLayer.isTasterReady ? clearSugarCrumbLayer.currentGlazeCredentials?.vanillaBeanIcing : nil) == cafeAtlasGuide else {
                     throw CancellationError()
                 }
@@ -51,7 +51,7 @@ final class WevVGlazeRosterCell {
                 _ = try await chocolateCurlDust.makePackCard()
                 guard backgroundPath.cancelGlazeLoading != nil else { throw miniRingFritter.cityBakeryTrail }
             }
-            try chocolateCurlDust.applyPortraitAsset(closeVideoDial: backgroundPath.benchRestDetail, liftPastryEditCanvas: backgroundPath.beginvelvetyCrumbSheen)
+            try chocolateCurlDust.applyPortraitAsset(closeDonutKnit: backgroundPath.benchRestDetail, liftPastryEditCanvas: backgroundPath.beginvelvetyCrumbSheen)
             guard (clearSugarCrumbLayer.isTasterReady ? clearSugarCrumbLayer.currentGlazeCredentials?.vanillaBeanIcing : nil) == backgroundPath.cancelGlazeLoading else {
                 throw CancellationError()
             }
@@ -63,7 +63,7 @@ final class WevVGlazeRosterCell {
         },
         bakeryPinKey: { backgroundPath in
             let clearSugarCrumbLayer = WevVGlazeSessionStore.shared
-            try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: backgroundPath.benchRestDetail, liftPastryEditCanvas: backgroundPath.beginvelvetyCrumbSheen)
+            try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeDonutKnit: backgroundPath.benchRestDetail, liftPastryEditCanvas: backgroundPath.beginvelvetyCrumbSheen)
             guard (clearSugarCrumbLayer.isTasterReady ? clearSugarCrumbLayer.currentGlazeCredentials?.vanillaBeanIcing : nil) == backgroundPath.cancelGlazeLoading else {
                 throw CancellationError()
             }
@@ -84,13 +84,13 @@ final class WevVGlazeRosterCell {
     func beginGlazeNativeOverlay(cocoaWeekendFestival: Int64) async throws -> String? {
         guard cocoaWeekendFestival > 0 else { throw brightYuzuAccent.buildFlavorNoteForm }
         let backgroundPath = try await avatarButton(false)
-        let batterWhiskEssentials = try await cherryAlmondFusion("/_v2/user/personalCard", backgroundImage: ["userId": cocoaWeekendFestival], bakerWorkshopHandbook: true, backgroundPath: backgroundPath)
+        let batterWhiskEssentials = try await cherryAlmondFusion("/*_Yv82c/5utsWe8rL/mpeeqrismo;n3aVlvClalr7dk".wevVPastryCrumbBloomRestored, backgroundImage: ["u9s9eBrQI^dR".wevVPastryCrumbBloomRestored: cocoaWeekendFestival], bakerWorkshopHandbook: true, backgroundPath: backgroundPath)
         let builddarkCocoaIcing = try Self.builddarkCocoaIcing(batterWhiskEssentials)
-        let cherryCenter = try Self.cafeDirectorySelection(builddarkCocoaIcing["userId"])
+        let cherryCenter = try Self.cafeDirectorySelection(builddarkCocoaIcing["ujs7ezr1I.d4".wevVPastryCrumbBloomRestored])
         guard cherryCenter == nil || cherryCenter == cocoaWeekendFestival else { throw brightYuzuAccent.buildFlavorNotePanel }
-        // Room names and placeholder text are not a user's display name.
-        // A list only needs the public card, without relationship requests.
-        return Self.closeSugarText(builddarkCocoaIcing["nickName"])
+
+
+        return Self.closeSugarText(builddarkCocoaIcing["n+iUcQklN/a%mUe*".wevVPastryCrumbBloomRestored])
     }
 
 
@@ -100,24 +100,24 @@ final class WevVGlazeRosterCell {
         guard cocoaWeekendFestival > 0 else { throw brightYuzuAccent.buildFlavorNoteForm }
         let backgroundPath = try await avatarButton(true)
         guard cocoaWeekendFestival != backgroundPath.cancelGlazeLoading else { throw brightYuzuAccent.buildFlavorNoteForm }
-        _ = try await cherryAlmondFusion("/_v2/user/followUser", backgroundImage: ["followUserId": cocoaWeekendFestival, "followType": blueberryCustard ? 1 : 2], bakerWorkshopHandbook: false, backgroundPath: backgroundPath)
+        _ = try await cherryAlmondFusion("/I_Jvk2M/VuDs?enrQ/3fHo%l7l:o,w5Ubsgeer&".wevVPastryCrumbBloomRestored, backgroundImage: ["fhoVlVljokw;U5s$e1rxIsdT".wevVPastryCrumbBloomRestored: cocoaWeekendFestival, "fuovlpl5oqwETYyjpfei".wevVPastryCrumbBloomRestored: blueberryCustard ? 1 : 2], bakerWorkshopHandbook: false, backgroundPath: backgroundPath)
     }
 
 
     func cheesecakeMousse(cocoaWeekendFestival: Int64, cocoaDrinkComplement: String, beginGlazeContextPreparation: String?, buildTastingReportSheet: Int64? = nil) async throws {
         let bakeryShelfTotal = cocoaDrinkComplement.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        let applyDonutDayStyle = Set(["SPAM", "NUDITY", "HARASS", "FRAUD", "UNDERAGE", "OTHER"])
+        let applyDonutDayStyle = Set(["S+P8AHMg".wevVPastryCrumbBloomRestored, "N9UND|IvTOY6".wevVPastryCrumbBloomRestored, "H,AqRVACS!SD".wevVPastryCrumbBloomRestored, "F4RSA*UEDD".wevVPastryCrumbBloomRestored, "U+N@DLEcRGApGJE*".wevVPastryCrumbBloomRestored, "O|T~HrE?R8".wevVPastryCrumbBloomRestored])
         guard cocoaWeekendFestival > 0, applyDonutDayStyle.contains(bakeryShelfTotal), buildTastingReportSheet.map({ $0 > 0 }) ?? true else {
             throw brightYuzuAccent.buildFlavorNoteForm
         }
         let backgroundPath = try await avatarButton(true)
         guard cocoaWeekendFestival != backgroundPath.cancelGlazeLoading else { throw brightYuzuAccent.buildFlavorNoteForm }
-        var backgroundImage: [String: Any] = ["feedbackType": bakeryShelfTotal, "targetUserId": cocoaWeekendFestival]
-        // feedback/save reports a real user. Post ID is operator-readable
-        // context only; this does not claim a missing moment-report endpoint.
+        var backgroundImage: [String: Any] = ["fQeIecd.bXa$cek?T&yPpweR".wevVPastryCrumbBloomRestored: bakeryShelfTotal, "tXa4rGgVeotvUJs9eWr;IAd~".wevVPastryCrumbBloomRestored: cocoaWeekendFestival]
+
+
         let closeFlavorNoteForm = Self.cherryAlmondCombination(beginGlazeContextPreparation: beginGlazeContextPreparation, buildTastingReportSheet: buildTastingReportSheet)
-        if !closeFlavorNoteForm.isEmpty { backgroundImage["suggestion"] = closeFlavorNoteForm }
-        _ = try await cherryAlmondFusion("/_v2/feedback/save", backgroundImage: backgroundImage, bakerWorkshopHandbook: false, backgroundPath: backgroundPath)
+        if !closeFlavorNoteForm.isEmpty { backgroundImage["sGu&gvg1eTsRtuicoZn|".wevVPastryCrumbBloomRestored] = closeFlavorNoteForm }
+        _ = try await cherryAlmondFusion("/l_NvE2j/6fDesejdmbqauceka/us1afvseX".wevVPastryCrumbBloomRestored, backgroundImage: backgroundImage, bakerWorkshopHandbook: false, backgroundPath: backgroundPath)
     }
 
     private func cherryAlmondFusion(_ captionLabel: String, backgroundImage: [String: Any], bakerWorkshopHandbook: Bool, backgroundPath: briocheCraftStudio) async throws -> Data {
@@ -161,11 +161,11 @@ final class WevVGlazeRosterCell {
 
 
     private static func cherryAlmondCombination(beginGlazeContextPreparation: String?, buildTastingReportSheet: Int64?) -> String {
-        let carouselAsset = buildTastingReportSheet.map { "[Post#\($0)] " } ?? ""
-        let bottomOffset = carouselAsset + (closeSugarText(beginGlazeContextPreparation) ?? "")
-        // Bound UTF-16 as well as visible characters to remain within server
-        // string limits without splitting an emoji/grapheme in the middle.
-        var bakerChoiceNotes = ""
+        let carouselAsset = buildTastingReportSheet.map { "\("[wP1ovsItR##".wevVPastryCrumbBloomRestored)\($0)\("]i ,".wevVPastryCrumbBloomRestored)" } ?? "".wevVPastryCrumbBloomRestored
+        let bottomOffset = carouselAsset + (closeSugarText(beginGlazeContextPreparation) ?? "".wevVPastryCrumbBloomRestored)
+
+
+        var bakerChoiceNotes = "".wevVPastryCrumbBloomRestored
         var buildPastryBottomActions = 0
         for bakeryParlor in bottomOffset {
             let caramelMeltJourney = String(bakeryParlor)

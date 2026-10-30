@@ -180,11 +180,11 @@ class ArchiveTests(unittest.TestCase):
             self.assertEqual(metadata["profileAliasCounts"], {"path": 185, "field": 965, "header": 7})
             self.assertEqual(metadata["environment"], "production")
             self.assertEqual(metadata["nativeRouting"], provenance["nativeRouting"])
-            self.assertEqual(bundle.verify(output, output.with_suffix(".manifest.json"), "1.3")[0], files)
+            self.assertEqual(bundle.verify(output, output.with_suffix(".manifest.data"), "1.3")[0], files)
             metadata["environment"] = "test"
-            output.with_suffix(".manifest.json").write_text(json.dumps(metadata))
+            output.with_suffix(".manifest.data").write_bytes(bundle.encode_manifest(metadata))
             with self.assertRaises(bundle.BundleError):
-                bundle.verify(output, output.with_suffix(".manifest.json"), "1.3")
+                bundle.verify(output, output.with_suffix(".manifest.data"), "1.3")
 
     @unittest.skipUnless(sys.platform == "darwin", "macOS CommonCrypto required")
     def test_complete_package_is_deterministic_and_checks_manifest_and_host_version(self):
@@ -194,9 +194,11 @@ class ArchiveTests(unittest.TestCase):
             original_app = (dist / "config/app-config.js").read_bytes()
             original_profile = profile.read_bytes()
             output = root / "sdk2.data"
+            output.with_suffix(".manifest.json").write_text("retired plaintext")
             metadata = bundle.pack(dist, profile, output, 2, "1.3")
             encrypted = output.read_bytes()
-            manifest = output.with_suffix(".manifest.json")
+            self.assertFalse(output.with_suffix(".manifest.json").exists())
+            manifest = output.with_suffix(".manifest.data")
             original_manifest = manifest.read_bytes()
             files, checked = bundle.verify(output, manifest, "1.3")
             self.assertEqual(metadata, checked)
@@ -212,13 +214,31 @@ class ArchiveTests(unittest.TestCase):
                                    ("sdkProtocolVersion", "1.0.0"),
                                    ("appId", "invalid")):
                 altered = dict(metadata, **{field: changed})
-                manifest.write_text(json.dumps(altered))
+                manifest.write_bytes(bundle.encode_manifest(altered))
                 with self.subTest(field=field), self.assertRaises(bundle.BundleError):
                     bundle.verify(output, manifest, "1.3")
             manifest.write_bytes(original_manifest)
             output.write_bytes(bytes([encrypted[0] ^ 1]) + encrypted[1:])
             with self.assertRaises(bundle.BundleError):
                 bundle.verify(output, manifest, "1.3")
+
+    @unittest.skipUnless(sys.platform == "darwin", "macOS CommonCrypto required")
+    def test_manifest_is_encrypted_bounded_and_rejects_plaintext_and_corruption(self):
+        metadata = {"schemaVersion": 1, "nativeRouting": {"bootstrapBaseUrl": "https://fixture.invalid"}}
+        encrypted = bundle.encode_manifest(metadata)
+        self.assertEqual(bundle.decode_manifest(encrypted), metadata)
+        self.assertNotIn(b"bootstrapBaseUrl", encrypted)
+        payload = json.dumps(metadata).encode()
+        invalid = [payload, encrypted[:-1], bytes([encrypted[0] ^ 1]) + encrypted[1:],
+                   bundle.crypt(zlib.compress(payload)),
+                   bundle.crypt(zlib.compress(zlib.compress(payload) + b"trailing")),
+                   bundle.crypt(zlib.compress(zlib.compress(b"x" * (2 * 1024 * 1024 + 1))))]
+        for data in invalid:
+            with self.subTest(size=len(data)), self.assertRaises((bundle.BundleError, zlib.error, ValueError)):
+                bundle.decode_manifest(data)
+        with patch.object(bundle, "resource_material", return_value=(b"x" * 16, b"y" * 16, "unused")):
+            with self.assertRaises((bundle.BundleError, zlib.error)):
+                bundle.decode_manifest(encrypted)
 
     @unittest.skipUnless(sys.platform == "darwin", "macOS CommonCrypto required")
     def test_resource_crypto_rejects_wrong_key_and_corruption(self):

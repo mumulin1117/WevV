@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Compile the real native entry builder and validate every URL with the delivered SDK JS."""
 
+from wevv_swift_source import STRING_HELPER
 import argparse
 import json
 from pathlib import Path
@@ -99,7 +100,7 @@ def main():
         (temp / "Models.swift").write_text(room_types)
         (temp / "main.swift").write_text(SWIFT_FIXTURES)
         process = subprocess.run([
-            swiftc, "-module-cache-path", str(temp / "module-cache"),
+            swiftc, str(STRING_HELPER), "-module-cache-path", str(temp / "module-cache"),
             str(temp / "Models.swift"), str(SOURCE / 'WevEnd/chosenTiles.swift'), str(temp / "main.swift"),
             "-o", str(temp / "verify-entries")
         ], text=True, capture_output=True)

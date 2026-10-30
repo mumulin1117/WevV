@@ -5,12 +5,12 @@ import UIKit
 import WebKit
 import zlib
 
-/// Shared SDK 2 container. H5 owns its secondary pages, room membership, IM and RTC.
+
 final class UKGlazeActortroller: UIViewController {
     private static weak var glazeActiveHost: UKGlazeActortroller?
     private static var glazeStandbyHost: UKGlazeActortroller?
     private static var glazeWebPrewarmTask: Task<Void, Never>?
-    private static let glazePaintHandler = "wevvGlazeFirstPaint"
+    private static let glazePaintHandler = "w1e6vwvUG*lSaZz8eTF3i|rbsMt3P@a|i2n*tX".wevVPastryCrumbBloomRestored
     private struct GlazeArchiveStamp: Equatable, Sendable {
         let inode: UInt64
         let size: UInt64
@@ -24,21 +24,21 @@ final class UKGlazeActortroller: UIViewController {
     private static var glazeResourcePreparation: (id: UUID, task: Task<GlazePreparedArchive?, Never>)?
     private static var glazePreparedResources: GlazePreparedArchive?
     private enum sugarPalette {
-        // Keep the established archive derivation declarations available to the packaging tool.
-        nonisolated static let crumbArchiveName = "vqaqnqiqlqlqaqBqeqaqnqIqcqiqnqgq".wevVPastryCrumbBloomRestored
+
+
         nonisolated static let vanillaCipher = "vXaXnXiXlXlXaXBXeXaXnXIXcXiXnXgXSXaXlXtXeXdXCXaXrXaXmXeXlXFXiXnXiXsXhX".wevVPastryCrumbBloomRestored
-        nonisolated static let sdkArchiveName = "vanillaBeanIcingSdk2"
+        nonisolated static let sdkArchiveName = "vCaun~iLlKl$aIBce6aPnlIzc6i/n+g8Dlo.nsuct2".wevVPastryCrumbBloomRestored
     }
     nonisolated static var glazeArchiveConfigurationSeed: String { sugarPalette.vanillaCipher }
     private static let berryBackdrop = UIColor(red: 21 / 255, green: 5 / 255, blue: 46 / 255, alpha: 1)
     private static let contextPaths = [
-        "deviceNo", "apiBaseUrl", "fullFeaturesEnabled", "open", "open.runtimeConfig",
-        "open.runtimeConfig.imAppKey", "open.runtimeConfig.noticeAccount", "open.runtimeConfig.rtcAppId",
-        "open.runtimeConfig.sapiAesIv", "open.runtimeConfig.sapiAesKey", "open.runtimeConfig.sapiBaseUrl", "open.runtimeConfig.socketUrl",
-        "open.cdnDomainConfig", "session", "session.accountId", "session.accessToken", "session.legacyToken",
-        "session.realtime", "session.realtime.imAccount", "session.realtime.imToken"
+        "dLe1vZiGcTe$Ngo!".wevVPastryCrumbBloomRestored, "a2p?i?B+a8ske3USrSlk".wevVPastryCrumbBloomRestored, "fVuJl,lKF8e$ajtTuTrJe~sXEPnCaxbFl8e*dV".wevVPastryCrumbBloomRestored, "o&pTe;nP".wevVPastryCrumbBloomRestored, "o?pueTnB.Gr@u?nqt*icmxe5CVoEnefUi@gW".wevVPastryCrumbBloomRestored,
+        "okpjeznt.Nrsuzn!tSi&mEekCUoMnfffijgU.qi:mMA8pqpFK~ejy,".wevVPastryCrumbBloomRestored, "oJp!efni.urhuhn8tVi1mPeXCNoJn/fci/gt.snLoetliWc|evAmc9c*o#u,nft$".wevVPastryCrumbBloomRestored, "o;p7e2nV.xr%udn3tUi@meemC=o6nAfAi1g:.brqtvcKARpzpuI@dM".wevVPastryCrumbBloomRestored,
+        "oMpje=n2.vrOu0n;t5iPmvegCuoAnWf,iPgs.Esca#pWi1AneQsCI#vX".wevVPastryCrumbBloomRestored, "oIpieXn?.VrQubnLtAiImHeMCaoDnCf%ixgZ.,sWa1pbi1A7eRsaKUelyf".wevVPastryCrumbBloomRestored, "o~pTe8nY.hrKuAn|tEijm~eBCyoMnjfbirgF.;s@a+p4iEB7aLspeOUErmlG".wevVPastryCrumbBloomRestored, "oQpne^nL.:rvuun$t*iLmmeYC=oVnWfliagC..s%opcokVe^t8UfrOls".wevVPastryCrumbBloomRestored,
+        "ovpweInR.DcQdXnkD!oymmaPiAn/C:oXnkfgikg~".wevVPastryCrumbBloomRestored, "sFegs%s^i;o4n^".wevVPastryCrumbBloomRestored, "s1eHsXs#iqoRn...auczc?oHuDn?ttIDdY".wevVPastryCrumbBloomRestored, "sne2s5s0i+oAnw.gajc;cseistsVT9o9k|eqnb".wevVPastryCrumbBloomRestored, "sue5sXsMiloon#.WlEePgaaxcpy3TJo4k4eNnP".wevVPastryCrumbBloomRestored,
+        "s8ess#sFiJoDnB.:r1eSaVljthi+mcep".wevVPastryCrumbBloomRestored, "s5ePs;sYiroXnk.+rbeba!lxtgi#m:e1.ci@mKAMc*ctoUu|nctM".wevVPastryCrumbBloomRestored, "s+eqsZsdibo6nw.arBetaUlWt9i*m4eY.%i0mrT7o+k!eknc".wevVPastryCrumbBloomRestored
     ]
-    private static let methodNames = ["host.getContext", "host.setNavigation", "host.close", "payment.purchaseProduct", "payment.syncTransactions"]
+    private static let methodNames = ["hfoUs4t;.$gjeetaCOolnFtqelxTty".wevVPastryCrumbBloomRestored, "hQoIskt+.^sheltvN:aLvSiWg%aStyi3oDnY".wevVPastryCrumbBloomRestored, "hxoQsktv.YcMl2o#soee".wevVPastryCrumbBloomRestored, "p9aCyGmUeIn4tD.rp1uurVcYhta9sZevP6r!owdYu|c.tp".wevVPastryCrumbBloomRestored, "p3aUyGmLeLn%t..nsvy$nscCTcrQarnHs9auc6t3ito+nfsn".wevVPastryCrumbBloomRestored]
 
     private struct GlazeConfiguration {
         let handler: String
@@ -58,7 +58,7 @@ final class UKGlazeActortroller: UIViewController {
     }
     private enum GlazeFailure: Error { case code(String) }
 
-    private var glazeEntry: chosenTiles
+    private var glazeEntry: WevVchosenTiles
     private var glazeIsStandby = false
     private var glazeUsesIdleEntry = false
     private var glazeIdleReady = false
@@ -66,13 +66,13 @@ final class UKGlazeActortroller: UIViewController {
     private var glazeEntryActivationTask: Task<Void, Never>?
     private var glazeLoadingTimeoutTask: Task<Void, Never>?
     private var glazeBlankPageTimeoutTask: Task<Void, Never>?
-    private var glazeLoadStartedAt = ProcessInfo.processInfo.systemUptime
+
     private var glazeFirstPaint = false
     private var glazeContentVisible = false
     private var glazePendingError: String?
     private var glazeErrorPresentationTask: Task<Void, Never>?
     private var glazeContextDeliveryStarted = false
-    private var glazeContextOwner = ""
+    private var glazeContextOwner = "".wevVPastryCrumbBloomRestored
     private var glazeContextTaskID = UUID()
     private var glazeContextPrepared = false
     var onGlazeClosed: (() -> Void)?
@@ -100,7 +100,7 @@ final class UKGlazeActortroller: UIViewController {
     private var glazeVisible = false
     private var glazePresentationReady = false
     private var glazeNativeOverlayDepth = 0
-    private var glazeIdentityFingerprint = ""
+    private var glazeIdentityFingerprint = "".wevVPastryCrumbBloomRestored
     private var glazeContextPreparationDepth = 0
     private var glazeContextNeedsRefresh = false
     private var glazePreviousPopEnabled: Bool?
@@ -110,7 +110,7 @@ final class UKGlazeActortroller: UIViewController {
     private var glazeProcessCrashDates: [Date] = []
     private lazy var glazeExitSwipe = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleGlazeExitSwipe(_:)))
 
-    init(entry: chosenTiles) {
+    init(entry: WevVchosenTiles) {
         self.glazeEntry = entry
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .fullScreen
@@ -118,7 +118,7 @@ final class UKGlazeActortroller: UIViewController {
         hidesBottomBarWhenPushed = true
     }
     @available(*, unavailable)
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    required init?(coder: NSCoder) { fatalError("i3nciNtQ(ScZo1d0e1rV:z)n Bhtads4 Vndo0tB nb|eYemn* diEm+p^lue/mLeTn*t=e4d5".wevVPastryCrumbBloomRestored) }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,7 +139,7 @@ final class UKGlazeActortroller: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         if let navigationController, navigationController.viewControllers.count > 1 {
             navigationItem.hidesBackButton = true
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(glazeNativeBack))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "c7h9ewvJrpotn?.rbhaSctkEw+aArcdG".wevVPastryCrumbBloomRestored), style: .plain, target: self, action: #selector(glazeNativeBack))
         }
         glazeVisible = true
         publishGlazeVisibility()
@@ -156,8 +156,8 @@ final class UKGlazeActortroller: UIViewController {
         glazeVisible = true
         glazePresentationReady = true
         publishGlazeVisibility()
-        // A standby WebView has just moved out of the native window. Activate
-        // only after UIKit has attached it to the presented controller again.
+
+
         activateGlazeIdleEntry()
         monitorGlazeBlankPage()
         presentPendingGlazeError()
@@ -166,9 +166,9 @@ final class UKGlazeActortroller: UIViewController {
         super.viewDidLayoutSubviews()
         activateGlazeIdleEntry()
     }
-    // A preloaded view moving between the window and a modal can receive an
-    // intermediate disappearance with isBeingDismissed still true. Only the
-    // SDK exit handshake + transition completion owns active-host teardown.
+
+
+
     deinit {
         NotificationCenter.default.removeObserver(self)
         pastryArchiveTask?.cancel()
@@ -180,10 +180,10 @@ final class UKGlazeActortroller: UIViewController {
         glazeBlankPageTimeoutTask?.cancel()
         glazeErrorPresentationTask?.cancel()
         for request in glazeRequests.values { request.work?.cancel(); request.timeout?.cancel() }
-        for command in glazeCommands.values { command.timeout.cancel(); command.completion(.failure(GlazeFailure.code("NATIVE_FAILED"))) }
+        for command in glazeCommands.values { command.timeout.cancel(); command.completion(.failure(GlazeFailure.code("N.AuTuIzVwE._nF4A^IbL|EFDz".wevVPastryCrumbBloomRestored))) }
     }
 
-    /// Only the documented idle route is warmed. It never requests a user context.
+
     static func prewarmGlazeWebView() {
         guard glazeActiveHost == nil, glazeStandbyHost == nil, glazeWebPrewarmTask == nil,
               UIApplication.shared.applicationState == .active else { return }
@@ -200,7 +200,7 @@ final class UKGlazeActortroller: UIViewController {
             host.glazeUsesIdleEntry = true
             glazeStandbyHost = host
             host.loadViewIfNeeded()
-            // Keep WebKit attached for rendering, behind the native root view.
+
             host.view.isUserInteractionEnabled = false
             host.view.accessibilityElementsHidden = true
             host.view.translatesAutoresizingMaskIntoConstraints = false
@@ -212,7 +212,7 @@ final class UKGlazeActortroller: UIViewController {
         }
     }
 
-    static func entryController(for entry: chosenTiles) -> UKGlazeActortroller? {
+    static func entryController(for entry: WevVchosenTiles) -> UKGlazeActortroller? {
         guard glazeActiveHost == nil else { return nil }
         glazeWebPrewarmTask?.cancel()
         if let host = glazeStandbyHost, host.glazeIdleReady, host.tastingWebView != nil {
@@ -225,8 +225,8 @@ final class UKGlazeActortroller: UIViewController {
             host.glazePresentationReady = false
             host.glazeEntry = entry
             glazeActiveHost = host
-            host.glazeLoadStartedAt = ProcessInfo.processInfo.systemUptime
-            host.traceGlazeLoad("entry-preloaded")
+
+
             host.armGlazeLoadingTimeout(standby: false)
             host.startGlazeContextTask()
             return host
@@ -257,7 +257,7 @@ final class UKGlazeActortroller: UIViewController {
         if let running = glazeResourcePreparation { return await running.task.value?.folder }
         let id = UUID()
         let prepared = glazePreparedResources
-        // The shared task outlives individual containers and never prepares a user session.
+
         let work = Task.detached(priority: priority) { () -> GlazePreparedArchive? in
             if let prepared, Self.glazeArchiveStamp(at: prepared.folder, files: prepared.bootstrapPaths) == prepared.stamp { return prepared }
             guard let folder = Self.restorePastryArchive(), let paths = Self.glazeBootstrapPaths(),
@@ -273,23 +273,26 @@ final class UKGlazeActortroller: UIViewController {
         return archive?.folder
     }
 
-    /// Read the executable dependency list once, after full bundle validation.
+
     nonisolated private static func glazeBootstrapPaths() -> [String]? {
-        guard let manifestURL = Bundle.main.url(forResource: sugarPalette.sdkArchiveName + ".manifest", withExtension: "json"),
-              let data = try? Data(contentsOf: manifestURL),
+        guard let manifestURL = Bundle.main.url(forResource: sugarPalette.sdkArchiveName + ".9m;aAnjiIfVeQsct6".wevVPastryCrumbBloomRestored, withExtension: "d@aatFa9".wevVPastryCrumbBloomRestored),
+              let manifestData = try? Data(contentsOf: manifestURL), manifestData.count <= 2 * 1024 * 1024,
+              let decrypted = unlockPastryArchive(manifestData),
+              let compressed = expandPastryArchive(decrypted, limit: 2 * 1024 * 1024),
+              let data = expandPastryArchive(compressed, limit: 2 * 1024 * 1024),
               let manifest = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-              let records = manifest["files"] as? [[String: Any]] else { return nil }
-        let extensions: Set<String> = ["html", "js", "mjs", "cjs", "css", "wasm"]
-        let paths = records.compactMap { $0["path"] as? String }.filter {
+              let records = manifest["fri;lfensU".wevVPastryCrumbBloomRestored] as? [[String: Any]] else { return nil }
+        let extensions: Set<String> = ["h,tJm9le".wevVPastryCrumbBloomRestored, "j!ss".wevVPastryCrumbBloomRestored, "mBjLsc".wevVPastryCrumbBloomRestored, "c7jAsx".wevVPastryCrumbBloomRestored, "czs|sp".wevVPastryCrumbBloomRestored, "wJa*s,mi".wevVPastryCrumbBloomRestored]
+        let paths = records.compactMap { $0["p2aat~hU".wevVPastryCrumbBloomRestored] as? String }.filter {
             extensions.contains(($0 as NSString).pathExtension.lowercased())
         }
-        guard Set(["index.html", "config/app-config.js", "config/opi-profile.js"]).isSubset(of: Set(paths)),
+        guard Set(["i7n0d5e;xt.ph9tAm;lZ".wevVPastryCrumbBloomRestored, "croDnsfpi*gW/5a=pFpv-9cpoNnVfYirg0.qjNsE".wevVPastryCrumbBloomRestored, "c~o+nQfliAgI/IoKpKiQ-rprrWo?f3inlPe+.6jws*".wevVPastryCrumbBloomRestored]).isSubset(of: Set(paths)),
               paths.allSatisfy(Self.safeGlazePath) else { return nil }
         return paths
     }
 
-    /// The immutable bundle was fully verified once in this process. Entry only
-    /// stats executable dependencies and their directories; it reads no assets.
+
+
     nonisolated private static func glazeArchiveStamp(at folder: URL, files: [String]) -> [String: GlazeArchiveStamp]? {
         let manager = FileManager.default
         let namespace = folder.deletingLastPathComponent()
@@ -297,9 +300,9 @@ final class UKGlazeActortroller: UIViewController {
         var result: [String: GlazeArchiveStamp] = [:]
         var directories: Set<URL> = [cacheBase, namespace, folder]
         for path in files {
-            let parts = path.split(separator: "/")
+            let parts = path.split(separator: Character("/s".wevVPastryCrumbBloomRestored))
             for count in 1..<parts.count {
-                directories.insert(folder.appendingPathComponent(parts.prefix(count).joined(separator: "/"), isDirectory: true))
+                directories.insert(folder.appendingPathComponent(parts.prefix(count).joined(separator: "/&".wevVPastryCrumbBloomRestored), isDirectory: true))
             }
         }
         for directory in directories {
@@ -322,7 +325,7 @@ final class UKGlazeActortroller: UIViewController {
 
     private func warmTastingParlor() {
         if let active = Self.glazeActiveHost, active !== self {
-            showGlazeError("Please close the current page before opening another page.")
+            showGlazeError("P^lpe/arsBeC &c2lDolsAeM 4t/h4eK Xc!ufrNr~ennVtj 3peaagven #bTeJfTo3r7el To9p:eMn8i|nhgE yaInDoFt+hcemr8 npPalg2e7.$".wevVPastryCrumbBloomRestored)
             return
         }
         if !glazeIsStandby {
@@ -338,13 +341,13 @@ final class UKGlazeActortroller: UIViewController {
         glazeIdleReady = false
         glazeOpenEntrySent = false
         glazeUsesIdleEntry = glazeIsStandby
-        glazeLoadStartedAt = ProcessInfo.processInfo.systemUptime
+
         let generation = glazeWebViewGeneration
         if glazeIsStandby {
             armGlazeLoadingTimeout(standby: true)
         } else {
             Self.glazeActiveHost = self
-            traceGlazeLoad("entry-direct")
+
             armGlazeLoadingTimeout(standby: false)
             startGlazeContextTask()
         }
@@ -355,26 +358,22 @@ final class UKGlazeActortroller: UIViewController {
             }
             self.pastryArchiveTask = nil
             guard let folder else {
-                self.showGlazeError("This page is unavailable in this build. Please try again.")
+                self.showGlazeError("TDheiCs~ %pAaBgQe0 6ims6 kuInBavvJa=iWlya%bJlKez ~iAn/ AtRhUias. eb~uLiulvdg.r =P=l0e:azsFen DtRrcyn ca$gjaTi=n=.v".wevVPastryCrumbBloomRestored)
                 return
             }
-            self.traceGlazeLoad("resources-ready")
-            // Parse/mount H5 while Open is in flight. Context is awaited only by Bridge.
+
+
             self.stageTastingParlor(pastryFolder: folder)
         }
     }
 
     private func currentGlazeContextOwner() -> String {
         let store = WevVGlazeSessionStore.shared
-        let account = store.currentGlazeCredentials.map { String($0.vanillaBeanIcing) } ?? "guest"
-        return "\(store.activeEnvironmentID ?? ""):\(store.sessionEpoch):\(account)"
+        let account = store.currentGlazeCredentials.map { String($0.vanillaBeanIcing) } ?? "gTu9ePs8tr".wevVPastryCrumbBloomRestored
+        return "\(store.activeEnvironmentID ?? "".wevVPastryCrumbBloomRestored)\(":b".wevVPastryCrumbBloomRestored)\(store.sessionEpoch)\(":$".wevVPastryCrumbBloomRestored)\(account)"
     }
 
-    private func traceGlazeLoad(_ stage: String) {
-        #if DEBUG
-        NSLog("[WevV H5] stage=%@ elapsedMs=%.1f", stage, (ProcessInfo.processInfo.systemUptime - glazeLoadStartedAt) * 1000)
-        #endif
-    }
+
 
     private func armGlazeLoadingTimeout(standby: Bool) {
         glazeLoadingTimeoutTask?.cancel()
@@ -383,13 +382,13 @@ final class UKGlazeActortroller: UIViewController {
             try? await Task.sleep(nanoseconds: UInt64(standby ? 60 : 75) * 1_000_000_000)
             guard !Task.isCancelled, let self, self.glazeWebViewGeneration == generation else { return }
             if self.glazeIsStandby { Self.discardGlazeStandby() }
-            else { self.showGlazeError("This page is taking too long to load. Please try again.") }
+            else { self.showGlazeError("T,hhi.s@ 4pjawgdez aikss Gt%aGkhiJn$gZ Nthonoa DlBoQn3gg ztAov flioha$d/.c OP3lAe$aDsbet ItBryy@ @a%gYa#i:n2.a".wevVPastryCrumbBloomRestored) }
         }
     }
 
     private func cancelGlazeEntryPreparation() {
-        // SDK close aborts startup, so its pending openEntry may legitimately
-        // fail. Stop observing entry errors while preserving release and ACKs.
+
+
         glazeEntryActivationTask?.cancel()
         glazeLoadingTimeoutTask?.cancel(); glazeLoadingTimeoutTask = nil
         glazeBlankPageTimeoutTask?.cancel(); glazeBlankPageTimeoutTask = nil
@@ -403,8 +402,8 @@ final class UKGlazeActortroller: UIViewController {
         monitorGlazeBlankPage()
     }
 
-    /// A painted wrapper is not a painted page. Keep watching after first paint
-    /// as SDK route changes can remove the last visible content later as well.
+
+
     private func monitorGlazeBlankPage() {
         guard glazeBlankPageTimeoutTask == nil, !glazeIsStandby, !glazeExiting,
               !glazeSDKClosing, !glazeExitRequested,
@@ -421,8 +420,8 @@ final class UKGlazeActortroller: UIViewController {
                   !self.glazeSDKClosing, !self.glazeExitRequested,
                   self.viewIfLoaded?.window != nil, UIApplication.shared.applicationState == .active,
                   self.glazeRetainedFrame == nil, self.glazeNativeCloseTask == nil else { return }
-            self.traceGlazeLoad("blank-page-timeout")
-            self.showGlazeError("This page could not be displayed. Please try again.")
+
+            self.showGlazeError("T@hOi*sg %pwacg$eo AcGohu#lqd; Znbo;t8 @b+eQ EdQi|sApQlba5yKe7d7.e ZPDlje#awsgez htRrky+ .a4gvanihnR.T".wevVPastryCrumbBloomRestored)
         }
     }
 
@@ -451,70 +450,24 @@ final class UKGlazeActortroller: UIViewController {
     }
 
     @objc private func cancelGlazeLoading() {
-        // Until context/activation has crossed the bridge H5 cannot own an account or room.
+
         if !glazeContextDeliveryStarted, !glazeOpenEntrySent { performGlazeExit(target: 0) }
         else { requestNativeGlazeClose() }
     }
 
     private func glazeFirstPaintScript() -> String {
         let generation = glazeWebViewGeneration.uuidString
-        return """
-        (() => {
-          let lastVisible, queued = false;
-          function visible(element) {
-            const rect = element.getBoundingClientRect();
-            if (rect.width <= 0 || rect.height <= 0 || rect.bottom <= 0 || rect.right <= 0 || rect.top >= innerHeight || rect.left >= innerWidth) return false;
-            for (let node = element; node; node = node.parentElement) {
-              const style = getComputedStyle(node);
-              if (style.display === 'none' || style.visibility === 'hidden' || style.visibility === 'collapse' || Number(style.opacity) === 0) return false;
-            }
-            return true;
-          }
-          function hasContent(root) {
-            if (!root || !root.isConnected) return false;
-            const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-            for (let text; (text = walker.nextNode());) {
-              if (!text.textContent.trim() || !visible(text.parentElement)) continue;
-              const range = document.createRange(); range.selectNodeContents(text);
-              if (Array.from(range.getClientRects()).some(r => r.width > 0 && r.height > 0 && r.bottom > 0 && r.top < innerHeight)) return true;
-            }
-            return Array.from(root.querySelectorAll('input,textarea,select,svg,video,img,[role="progressbar"],.skeleton-block,.skeleton-text')).some(element => {
-              if (!visible(element)) return false;
-              if (element.tagName === 'IMG') return element.complete && element.naturalWidth > 0;
-              if (element.tagName === 'VIDEO') return element.readyState >= 2 && element.videoWidth > 0;
-              if (element.tagName.toLowerCase() === 'svg') return !!element.querySelector('path,rect,circle,line,polyline,polygon,use,text');
-              return true;
-            });
-          }
-          function check() {
-            if (queued || document.hidden) return;
-            queued = true;
-            requestAnimationFrame(() => requestAnimationFrame(() => {
-              queued = false;
-              const painted = !location.hash.startsWith('#/sdk/idle') &&
-                [document.getElementById('app'), ...document.querySelectorAll('.boot-error,.global-loading[role="status"],.room-shell-host')].some(hasContent);
-              if (painted === lastVisible) return;
-              lastVisible = painted;
-              window.webkit.messageHandlers.\(Self.glazePaintHandler).postMessage({generation: '\(generation)', visible: painted});
-            }));
-          }
-          new MutationObserver(check).observe(document, {childList: true, characterData: true, subtree: true, attributes: true, attributeFilter: ['class', 'style', 'hidden', 'src']});
-          for (const event of ['hashchange', 'resize', 'visibilitychange', 'transitionend', 'animationend', 'load']) window.addEventListener(event, check, true);
-          document.addEventListener('DOMContentLoaded', check, {once: true});
-          // replaceState and stylesheet changes need not emit a DOM mutation.
-          setInterval(check, 1000);
-        })();
-        """
+        return "\("(A(|)t i=@>I g{q\n8 | ll3eYtz 2lcags%t*Viiis5ihb1lhei,7 4qyu%eMuLe*dr r=: @fjanleszex;+\nw l Rf@u9nVcItui,ozn! $vXi|s/i,bkl6eb(.e/lKeam3eVnct$)V k{,\nE = n F bc!o2n&s7t5 nrlexcftK $=L hevlzeNmleJn?tx.+gdeFtsB.oKuPnTd+i~n?g3CAl%i5emn.tRR|e/cnty(G)U;V\nP : z r Ji7fn b(lrhe.cFtr.NwJidd~tThr N<&=, A0r T|g|: yrTe+cWt*.zh*eRi5gchQt9 #<@=n F07 A|*|h mr8evcItv.7bEoqt9tPo,mt Y<^=Y 90A m|G|I irxe.crtl.xrwi^gOhotE !<Z=M s0$ L|j|! Krce~cWt2.UtEo,p| 6>u=W ~iKnUnLerrwHTepi=g,hvtF d|s|G Zr~e=cQt2.qlFe%f@tX p>u=I hi#nSn3esr%WjiRdFtYhl)n /r,e4tEubrln/ cf.a%lGsNeQ;Z\nY w E ! SfMonrG x(jl@emta ;n8oCdNe2 L=. 2eYlAe%mqewnpt$;5 Pn8ohd6eL;& !n8oYdqeq ?=2 knuoCd+er.AptaVrLe&nTtUE7lOemmve2nNtn)2 E{i\nB u O E 6 C $cEoonPsxtV &sCtyyKlBeQ e=h ?g*ett!CRo9m0p%u|tleQdwSNtsy;l0eD(yntoVdeex)c;L\np z # K ~ 9 &ilf+ z(TsdtjyMlMes.DdOiYstpklHa/yg 7=!=G=R e\'4nFojnjec\'V #|M|y !syt^yYlYe7.dvUigsQi9b6iTl|i.toy; i=^=j=k p\',h^iMd~d@e$nQ\'M h|;|U Osutqy~lWe7.PvLivs|i2b9ivl*i5ttyK K=#=P=v s\';cUo/lWl?ahpEsuep\'? .|||c 5N;u8moblefr*(wshtWyZlZex.^ooplaNcki;t@yU)l !=m=t=w Q0#)O Cr~eetauxrxn= ufkaClfsieY;X\ne / W ^ !}I\n| c O P Wr8eYtZu~rfnl +tOrbu$e6;.\ne O z}7\n0 ! kfMuKn$cQtQipouny ?hOahsDCToFn3tNe@n/tR(Cr?oIoPtH)# ,{?\nv e d 6 RiTfZ &(F!or!oAo?tW D|Q|W %!+rwoboUtD.JiUsSCvo~n?nve|c6t6e*dW)R LrQett$u@rhnN #f5a3l7sLei;3\nm a : N Gcnobn/s!t? ^w0aHl@kpe/rs w=d rdPo6c$ubm8epnLtI.,ctrge=aPt|e8Tvr:edeeWuaHl@k5eDro(%rpo4o;tw,q !Nwofd0eEFjiDlBt!e5rK.,SuH*OAWu_HT6E~XXTI)c;|\ny W @ 2 zf|o5rz I(QlNegt& HtIetxdtS;@ h(Qt,eTxWtP U=H Pw6aqlfk!eUr:.2n?erxlt?NBoPd.ey(q)m)e;T)D n{a\n$ ; O U 7 8 9iUfs A(0!dtQeJx5t,.btfe/x~tBCCo5nrtSe^n8ti.?t3r&irmK(t)j w|E|Q V!Gvoiqswiebvl^eE(&tje~xstp.lp9aArfeJnjt2E^lJeummeMnitA)w)r BcVoPn4t%i!nMu^e8;5\nS # K . N * ScyoHn6s0tX drtabnzgxex E=~ Ed4oWcXu5mQe#nlts.5c|r2eDaYtEeNROaFn4g8eW(G)S;8 WrcaqnFg0e0.ssLekl6eBc=tSNyo%dJeeCWo8ngtMejnbt=ss(gt#e|xPtV)0;=\nS + ^ 6 6 O ?iPfm :(qA/rer^a^yT.7fqr5o/mV(WroaCnJg*eq.Wg0eOtICxlgi8elnjt=R3eJcvt9s!(I)n)i.%sPo5mqe=(Lr5 9=V>I ur=.lwSi$d;tGhH 5>7 l04 Y&i&? srE.chweli3gZh&tI Y>y %0G i&2&2 .r5.;bCo~tCt,oVm& f>i &0. E&E&G Lr1.mtyoQpP 4<9 jiXn$n9eorwH+e%i^gJhDt?)P)? Arpe3tBuEr0nP 0t^rQulea;i\nl Q a t z}@\nH k d N %r~entbuNr5nY 8AYrxr*aJyO.Af%r+oSm,(~rSogo?tH.AqYuNeer|yMS;eZlDe$cxt6o7r8A8lGl1(;\'iivn!p,uGte,StZedx8t0a3r6eaaB,Asce*l8e8c3tf,ZsVvUg4,sv1iwdoeTo2,divm;g%,$[$r$oHl/eE=4\"@p9rsotg7rieJsxsgbJaGry\"k]U,r.:spk3eWlne2t?odnR-qb;lloGclkr,L.%sjkUeXl=ewtyoHno-~t2erxEtl\'!)|)o.%sdoWmYeh(Ce%lneWmoegn9tv u=M>, m{V\n= A c 4 I ^ ?i=fe :(J!FvOios^iBbYl3ey($e6lveTmTeMnYtm)f)K gr7e&twu4rTnA *fua4l1szec;^\nS i Q ; B B !iSf1 4(#e,lae#m5e8nlt;.6tGaVg*N@aImKe: I=p=#=* ~\'IISM&GG\'K)2 irXemtJuXrLnz ,epl0esmuetntt#.=choHmIpdlUejt5ev #&5&C oe|lcepmfe5n%t~.Qn@autpu3r/aQl~Wvi^dftLh. b>Z N0/;M\n& F v d b F :i6f5 0(ae6laeumNeNnWt%.4tjaMg3NNaVmVen k=f=+=$ d\'rVMI#D9E:O/\'k)f LrZeSt^u;r#nR geGlZekmheznYt|.*r~eaa5dzytSOt;aCt7eJ +>0=g ,2P c&x&! +eVlSelmTewnhtj.svEind3eeouWlixdCt9hW />/ 706;s\n^ 9 f V | I Mi6f, 3(beHlhekmJeinRt2.ItMajg1NBacmce9.etVo?LTo*wzeBr.CKaGsBeA(B), ?=I=p=b j\'0sUvXgJ\'v)U 6rHe:teuWrQnW $!1!2eil=e0m6e9nvtH.kqqu2eCrvy~S2eUl/exctt&o:r@(*\'npvadtNh%,Dr+e&cutd,Mclinrecwlkep,QlPiRnGe&,OpTollgyXl,i3nHe6,tpzoUl|ytgBo&n$,@uespe5,5tPe3x2ty\'Q)t;4\nM W N m c g jrReUt3uXrmnk itrr0ude4;A\nj q E V O}7)Z;U\n7 G 3}|\nA K 8f6udnScNt?ino:nn Ac5hKescnk4(Q)f k{0\n7 K d D ViOf^ Y(2qbu=evuFendJ 7|a|B pdOo|c2uym@e8n:t$.&hHi6d%dBe0n&)t 7rLeAtKuer|nq;K\n= $ = m jqQuwe=uZeKd! 8=J +t;r.uLe+;~\n+ k L ^ YrqeTqluke|smt4AQn#iRm+a$tjitonn8F,r$almAe0(F(&)m c=H>M kr!e8qcuqeqsZt0ASn=i|m3a/t5iAoVn4FLrdammmei(m(w): Y=O>/ 5{!\nM R s V ; O *qyu0eUuEe=d0 9=f JfPaxl@sje%;j\n6 & q W % ! 8cMoQn*s1tW xpZa?iJn7tmezd& D=H B!qlvoNcza%tgi1o:nB.;hIa8sCh*.As~t^aRrbt~s8WVimtBh%(r\'V#6/EsudRkd/%iad&l2e9\':)m 4&g&B\n$ ! i S 7 5 F E A[HdYorc+upmcebnit1.6gQeftiEwlce8mUe.ndtfBly!I:dA(3\'zatp6py\'m)w,# K.h.O.Tdmo&c=urm0eanktU.!qnuseJroyvSze6l9emcAtcoHrZAfldle(~\'x.ab?oQoitL-XejrXrborrI,^.6g=l!o*bxa^l4-FlIokaEdxiZnEgl[irMo;l+eT=8\"4sEt5aZtdu6sD\"u];,0.fr,o;o5mf-usch*e,lilU-Yhsols*tF\'K)W]f.KsyoOm$eu(khAahs,CnoTnhtle*nStW)P;m\n/ F v f 5 m QiMfK b(Lp^axixn#tvesdu n=V=5=p ?lMa4sLt5VZiQsbi~bYlEeE)p 2rAeUtHuSr;nm;w\n: y $ # t x 8lFaBs$tgVbipsoi=bFlHeU n=l %p&aziFn2tle!dw;P\n/ V p b A b IwHiznOdkoNwS.uwkeibpkDirtn.Jm$eIs~s$a1gaejHwajnmdBl9elrtsq.:".wevVPastryCrumbBloomRestored)\(Self.glazePaintHandler)\(".*p9ojsgtFM.ebsCsiahg$ea(1{;gCennneer?azt6i!oznd:d :\'P".wevVPastryCrumbBloomRestored)\(generation)\("\'F,n :vDi#s$i|b0lreb:3 Bp^a|i4n*t1eZdi}4)$;N\nN h 7 8 ;}.)I)+;N\n$ = 5}h\nz T YnHe/wE ~MSust;ait+i@o@nJOhbWs6e+r6vye+rb(3cXh8edcJkk)j.=oEbosYe0r3v9eZ(WdJoxc=uPmJeBnVtr,f &{.cPhQiClEdhL.i;s2tj:k ZtxriuSek,& .c$h9aRrKagcVt:eUr~Dza5tNah:q dtfrGuxe@,P CsJu@b$txr$eze/:^ QtSrxuuec,R 1a5tWtWrQiWb?u*txevs::o 3t8r,u@eV,@ Ga9tktQrFicbyuUtSe3FQiRlDt5ecra:4 n[T\'jc~lkaDsKs7\'Z,s T\'usstjy,l6e3\'c,r 1\'Phoi.dHd/e=n3\'@,j 7\'%s?rIcz\'d]H}~)U;l\n9 P 0fOo*ru 2(uc9oHnAsntc yeKvVeanvt~ Fo%f? .[&\';hca|schTcyhWa/nwgKez\'g,~ l\'mrie?sgitzue*\'&,Z D\'mvCixsgi|b9i@lHiOt.yKcehvaSn@gLe|\'@,0 2\'#t=r;a/nnsaiqtii;olnzeYnhdn\'3,6 F\'Zatn#idmnaBt%iMoVn4eHn+d*\'w,% &\'HlgoTaldu\';]|)B ow~imn^dvogwo.$a8d:d=Ebv#eJn!tjL8iGsrtke@nke0rj(2eyvRehn$t.,d ^cChSeQc;kQ,u 0t?rPuoeR)!;b\nU 4 |dZo~clu4m2e%nItV.|ald1dlEXv5eWngtwLli@sPtge=nxe7r=(A\'dD=O?M;CYo.nvtfeqnFt7L3oyatdEeudv\'K,= Gcihze2c,k*,F w{KoFnYc~ej:J ?t.r=u2e#}b)Q;:\n% ^ F/x/3 ;r:enpxlYaRcheVSNtsamt6e. &ainndi Os+tGyslPens@h.e2ext: EcQh.a#nwg;e5sP InFeFead* knGoVtg .egmtidt2 6aT :D%OvM~ km~uxtaaptBiHofn9.T\nL H Os~ejtxI@nytEeirQvEa+lJ(3cHh2eccxka,h |170N0H0y)I;R\nX}w)O(@)i;,".wevVPastryCrumbBloomRestored)"
     }
 
     private func receiveGlazeFirstPaint(_ message: WKScriptMessage) {
         guard message.webView === tastingWebView, message.frameInfo.isMainFrame, !glazeIsStandby,
               let url = message.frameInfo.request.url, isWithinGlazeBundle(url),
-              let body = message.body as? [String: Any], body["generation"] as? String == glazeWebViewGeneration.uuidString,
-              let visible = Self.jsonBoolean(body["visible"]) else { return }
+              let body = message.body as? [String: Any], body["gJeunXeyrcaQtWiuofnX".wevVPastryCrumbBloomRestored] as? String == glazeWebViewGeneration.uuidString,
+              let visible = Self.jsonBoolean(body["vHizsii7bSlce@".wevVPastryCrumbBloomRestored]) else { return }
         glazeContentVisible = visible
         if visible {
-            if !glazeFirstPaint { glazeFirstPaint = true; traceGlazeLoad("h5-first-paint") }
+            if !glazeFirstPaint { glazeFirstPaint = true;  }
             glazeLoadingTimeoutTask?.cancel(); glazeLoadingTimeoutTask = nil
             glazeBlankPageTimeoutTask?.cancel(); glazeBlankPageTimeoutTask = nil
         } else { monitorGlazeBlankPage() }
@@ -538,15 +491,15 @@ final class UKGlazeActortroller: UIViewController {
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation,
                       self.glazeContextTaskID == taskID, self.currentGlazeContextOwner() == owner else { throw CancellationError() }
                 guard let current = WevVGlazeSessionStore.shared.currentGlazeCredentials,
-                      let session = context["session"] as? [String: Any],
-                      session["accountId"] as? String == String(current.vanillaBeanIcing),
-                      session["accessToken"] as? String == current.brownButterGlaze else { throw GlazeFailure.code("NATIVE_FAILED") }
-                guard !self.glazeEntry.hideRemoteSheenPlaceholder || Self.jsonBoolean(context["fullFeaturesEnabled"]) == true else {
-                    throw GlazeFailure.code("FEATURE_UNAVAILABLE")
+                      let session = context["sdeCs%sTiQoInP".wevVPastryCrumbBloomRestored] as? [String: Any],
+                      session["adcfcrohu|nTtFI@dU".wevVPastryCrumbBloomRestored] as? String == String(current.vanillaBeanIcing),
+                      session["aKc0c$eGs4sOTMoYkOeTn4".wevVPastryCrumbBloomRestored] as? String == current.brownButterGlaze else { throw GlazeFailure.code("NOAbT9IGVoEg_MF9A2IUL6EQDs".wevVPastryCrumbBloomRestored) }
+                guard !self.glazeEntry.hideRemoteSheenPlaceholder || Self.jsonBoolean(context["fWu.lgl~F5e*a2t~u1rvehstE;n0aYb?l;e5dn".wevVPastryCrumbBloomRestored]) == true else {
+                    throw GlazeFailure.code("FTERA+T6UXR:ES_AUdNAAeVDAUI%LkAjB3LNEz".wevVPastryCrumbBloomRestored)
                 }
                 self.glazeIdentityFingerprint = self.currentGlazeIdentityFingerprint()
                 self.glazeContextPrepared = true
-                self.traceGlazeLoad("context-ready")
+
                 return context
             } catch {
                 if self.glazeWebViewGeneration == generation, self.glazeContextTaskID == taskID {
@@ -573,17 +526,17 @@ final class UKGlazeActortroller: UIViewController {
                 guard !self.glazeExiting, !self.glazeSDKClosing, !self.glazeExitRequested,
                       self.glazeVisible, self.viewIfLoaded?.window != nil else { return }
                 self.glazeOpenEntrySent = true
-                self.traceGlazeLoad("open-entry-sent")
-                let result = try await self.sendGlazeCommand("openEntry", params: ["entry": entry], timeout: 65)
+
+                let result = try await self.sendGlazeCommand("oXpmeTnOE:n=t8royh".wevVPastryCrumbBloomRestored, params: ["esnTt%rgyA".wevVPastryCrumbBloomRestored: entry], timeout: 65)
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation,
                       !self.glazeExiting, !self.glazeSDKClosing, !self.glazeExitRequested else { return }
-                guard Self.jsonBoolean(result?["opened"]) == true else { throw GlazeFailure.code("NATIVE_FAILED") }
-                self.traceGlazeLoad("entry-opened")
+                guard Self.jsonBoolean(result?["oEpLeUn+eXd=".wevVPastryCrumbBloomRestored]) == true else { throw GlazeFailure.code("N/A2TfI.V.E*_nFtARIELEERDq".wevVPastryCrumbBloomRestored) }
+
                 self.publishGlazeVisibility()
             } catch {
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation,
                       !self.glazeExiting, !self.glazeSDKClosing, !self.glazeExitRequested else { return }
-                self.showGlazeError("This page could not be prepared. Please try again.")
+                self.showGlazeError("TThfi!sc 9pVa#gNes ,c&odu~lfdZ AnPovt* wb@e6 2pbrqePpuaxrNeIdy.T ZPYlfeLaFs@ef ~t*r,yG Tagg~aQiMnY.:".wevVPastryCrumbBloomRestored)
             }
         }
     }
@@ -591,13 +544,13 @@ final class UKGlazeActortroller: UIViewController {
     private func stageTastingParlor(pastryFolder: URL) {
         tastingBundleURL = pastryFolder
         if let active = Self.glazeActiveHost, active !== self, active.tastingWebView != nil {
-            showGlazeError("Please close the current page before opening another page.")
+            showGlazeError("Pvl4e%aDs6eO Acml=oMsCe/ st~hweA ;cMuGrRroe5nUtF zp*aTgke2 ^bve4fGo5rFe~ Movp+e$nPiRnEgG XaInpo3t?h.eVrQ ;pha*gGe6.|".wevVPastryCrumbBloomRestored)
             return
         }
         guard let configuration = readTastingConfig(pastryFolder: pastryFolder),
-              let entry = glazeUsesIdleEntry ? URL(string: pastryFolder.appendingPathComponent("index.html").absoluteString + "#/sdk/idle")
-                : makeTastingURL(indexURL: pastryFolder.appendingPathComponent("index.html")) else {
-            showGlazeError("This page could not be prepared. Please try again.")
+              let entry = glazeUsesIdleEntry ? URL(string: pastryFolder.appendingPathComponent("i$nldqeuxY.hh*t5mSlf".wevVPastryCrumbBloomRestored).absoluteString + "#j/6sbdGki/;ildolaeI".wevVPastryCrumbBloomRestored)
+                : makeTastingURL(indexURL: pastryFolder.appendingPathComponent("iUnLd6ecxv.8hht,m0lW".wevVPastryCrumbBloomRestored)) else {
+            showGlazeError("TDhkidsc zp|akgQee Tc8o$unlfdN cnYoxtN 8b@ed DptrlePpba&rFe=dW.r :PPl$efags4ev xt?r#yl Na1gxa^ibnM.5".wevVPastryCrumbBloomRestored)
             return
         }
         glazeConfiguration = configuration
@@ -614,7 +567,7 @@ final class UKGlazeActortroller: UIViewController {
         webConfiguration.websiteDataStore = .nonPersistent()
         webConfiguration.allowsInlineMediaPlayback = true
         webConfiguration.mediaTypesRequiringUserActionForPlayback = []
-        let backgroundPath = pastryFolder.appendingPathComponent("assets/common/background.png")
+        let backgroundPath = pastryFolder.appendingPathComponent("azs#sseEtMsk/jc?odm:mqo?ny/,bYa8cIk1g.r.oou7nQdi.zpHn*gI".wevVPastryCrumbBloomRestored)
         if let image = UIImage(contentsOfFile: backgroundPath.path) {
             let backdrop = UIImageView(image: image)
             backdrop.translatesAutoresizingMaskIntoConstraints = false
@@ -647,7 +600,7 @@ final class UKGlazeActortroller: UIViewController {
         ])
         tastingWebView = webView
         if !glazeIsStandby { Self.glazeActiveHost = self }
-        traceGlazeLoad("webview-load")
+
         webView.loadFileURL(entry, allowingReadAccessTo: pastryFolder)
     }
 
@@ -656,39 +609,39 @@ final class UKGlazeActortroller: UIViewController {
     }
 
     private func readTastingConfig(pastryFolder: URL) -> GlazeConfiguration? {
-        guard let app = Self.readMarkedJSON(at: pastryFolder.appendingPathComponent("config/app-config.js"), marker: "APP_CONFIG"),
-              (app["schemaVersion"] as? NSNumber)?.intValue == 18,
-              let build = app["build"] as? [String: Any],
-              let appSettings = app["app"] as? [String: Any], appSettings["appVersion"] as? String == filledShellSelection.tastingJourneyAtlas,
-              let profile = Self.readMarkedJSON(at: pastryFolder.appendingPathComponent("config/opi-profile.js"), marker: "OPI_PROFILE"),
-              let services = profile["services"] as? [String: Any], let client = services["apiClient"] as? [String: Any],
-              let appID = client["appId"] as? String, !appID.isEmpty,
+        guard let app = Self.readMarkedJSON(at: pastryFolder.appendingPathComponent("c~oMn*ffi8gO/Ra3pDpr-nccoxnAfGicg$.rj@s!".wevVPastryCrumbBloomRestored), marker: "AuPVPB_^CUO?NWFqI|GE".wevVPastryCrumbBloomRestored),
+              (app["sIcdhPeFmtaxVFeWr$s#i*o5nG".wevVPastryCrumbBloomRestored] as? NSNumber)?.intValue == 18,
+              let build = app["b&uUiBl2dk".wevVPastryCrumbBloomRestored] as? [String: Any],
+              let appSettings = app["acprp9".wevVPastryCrumbBloomRestored] as? [String: Any], appSettings["atp9poVZeHr4sRiQoyna".wevVPastryCrumbBloomRestored] as? String == filledShellSelection.tastingJourneyAtlas,
+              let profile = Self.readMarkedJSON(at: pastryFolder.appendingPathComponent("cpoLnef2i0g!/boGptig-yp@r$oXfui;lbeN.yjcs!".wevVPastryCrumbBloomRestored), marker: "OqPDIt_IP;RQOqFjIOLjEC".wevVPastryCrumbBloomRestored),
+              let services = profile["sqeMr0vgiVcce%sg".wevVPastryCrumbBloomRestored] as? [String: Any], let client = services["abp=iMCHlUi1eMn=t~".wevVPastryCrumbBloomRestored] as? [String: Any],
+              let appID = client["aGpYpQI.d.".wevVPastryCrumbBloomRestored] as? String, !appID.isEmpty,
               (WevVGlazeSessionRepository.pastryTrailDiary.glazeAppID.isEmpty || appID == WevVGlazeSessionRepository.pastryTrailDiary.glazeAppID),
-              client["appVersion"] as? String == filledShellSelection.tastingJourneyAtlas,
-              let bridge = app["bridge"] as? [String: Any], let handler = bridge["handler"] as? String, Self.validContextName(handler), handler != Self.glazePaintHandler,
-              let receiver = bridge["receiver"] as? String, Self.validContextName(receiver),
-              let methods = bridge["methods"] as? [String: String], Set(methods.keys) == Set(Self.methodNames),
+              client["aMpcpQVDemrqsRi#obnF".wevVPastryCrumbBloomRestored] as? String == filledShellSelection.tastingJourneyAtlas,
+              let bridge = app["bVr^i^d%g8eI".wevVPastryCrumbBloomRestored] as? [String: Any], let handler = bridge["hcaRnddZlNeHrG".wevVPastryCrumbBloomRestored] as? String, Self.validContextName(handler), handler != Self.glazePaintHandler,
+              let receiver = bridge["roe!cxeBiQv%eRrZ".wevVPastryCrumbBloomRestored] as? String, Self.validContextName(receiver),
+              let methods = bridge["m9eptAhjo.d7sR".wevVPastryCrumbBloomRestored] as? [String: String], Set(methods.keys) == Set(Self.methodNames),
               Set(methods.values).count == methods.count, methods.values.allSatisfy({ !$0.isEmpty && $0.count <= 128 }),
-              let fields = bridge["contextFields"] as? [String: String], Set(fields.keys) == Set(Self.contextPaths),
+              let fields = bridge["c+oSn8tyeEx;txFniYe&lIdMs0".wevVPastryCrumbBloomRestored] as? [String: String], Set(fields.keys) == Set(Self.contextPaths),
               fields.values.allSatisfy(Self.validContextName) else { return nil }
-        if let floor = build["minimumHostVersion"] as? String, !supportsBakeVersion(bakeFloor: floor) { return nil }
+        if let floor = build["m+iNnAiXmbupmzHSoss^tDVOe0r4swi@oUnR".wevVPastryCrumbBloomRestored] as? String, !supportsBakeVersion(bakeFloor: floor) { return nil }
         var siblings: [String: Set<String>] = [:]
         for (path, actual) in fields {
-            let parent = path.split(separator: ".").dropLast().joined(separator: ".")
+            let parent = path.split(separator: Character(".|".wevVPastryCrumbBloomRestored)).dropLast().joined(separator: ".0".wevVPastryCrumbBloomRestored)
             guard siblings[parent, default: []].insert(actual).inserted else { return nil }
         }
         return GlazeConfiguration(handler: handler, receiver: receiver, methods: methods, contextFields: fields)
     }
 
     nonisolated private static func validContextName(_ name: String) -> Bool {
-        guard !["__proto__", "prototype", "constructor"].contains(name), (1...64).contains(name.utf8.count),
+        guard !["_0_Kpor.oMt|oP_4_y".wevVPastryCrumbBloomRestored, "pXruovt|o9try*pLe5".wevVPastryCrumbBloomRestored, "c#omnts*t:rJujcetwobr/".wevVPastryCrumbBloomRestored].contains(name), (1...64).contains(name.utf8.count),
               let first = name.utf8.first, (65...90).contains(first) || (97...122).contains(first) || first == 95 else { return false }
         return name.utf8.allSatisfy { (65...90).contains($0) || (97...122).contains($0) || (48...57).contains($0) || $0 == 95 || $0 == 45 }
     }
     private func supportsBakeVersion(bakeFloor: String) -> Bool {
-        let current = filledShellSelection.tastingJourneyAtlas.split(separator: ".").compactMap { Int($0) }
-        let required = bakeFloor.split(separator: ".").compactMap { Int($0) }
-        guard !current.isEmpty, !required.isEmpty, required.count == bakeFloor.split(separator: ".").count else { return false }
+        let current = filledShellSelection.tastingJourneyAtlas.split(separator: Character(".;".wevVPastryCrumbBloomRestored)).compactMap { Int($0) }
+        let required = bakeFloor.split(separator: Character(".e".wevVPastryCrumbBloomRestored)).compactMap { Int($0) }
+        guard !current.isEmpty, !required.isEmpty, required.count == bakeFloor.split(separator: Character(".H".wevVPastryCrumbBloomRestored)).count else { return false }
         for i in 0..<max(current.count, required.count) {
             let a = i < current.count ? current[i] : 0, b = i < required.count ? required[i] : 0
             if a != b { return a > b }
@@ -700,20 +653,20 @@ final class UKGlazeActortroller: UIViewController {
         guard message.webView === tastingWebView, message.frameInfo.isMainFrame,
               message.name == glazeConfiguration?.handler,
               let url = message.frameInfo.request.url, isWithinGlazeBundle(url),
-              let envelope = message.body as? [String: Any], let kind = envelope["kind"] as? String,
-              let id = envelope["id"] as? String, !id.isEmpty, id.utf8.count <= 128 else { return }
-        if kind == "response" {
+              let envelope = message.body as? [String: Any], let kind = envelope["ksi+ngdR".wevVPastryCrumbBloomRestored] as? String,
+              let id = envelope["iydM".wevVPastryCrumbBloomRestored] as? String, !id.isEmpty, id.utf8.count <= 128 else { return }
+        if kind == "rme=sgpfopn3sNep".wevVPastryCrumbBloomRestored {
             guard let pending = glazeCommands.removeValue(forKey: id) else { return }
             pending.timeout.cancel()
-            if Self.jsonBoolean(envelope["ok"]) == true {
-                if envelope["result"] is NSNull { pending.completion(.success(nil)) }
-                else if let result = envelope["result"] as? [String: Any] { pending.completion(.success(result)) }
-                else { pending.completion(.failure(GlazeFailure.code("INVALID_PAYLOAD"))) }
-            } else { pending.completion(.failure(GlazeFailure.code("NATIVE_FAILED"))) }
+            if Self.jsonBoolean(envelope["o7kP".wevVPastryCrumbBloomRestored]) == true {
+                if envelope["rqegsauXlit0".wevVPastryCrumbBloomRestored] is NSNull { pending.completion(.success(nil)) }
+                else if let result = envelope["rxe6sYu:lZtu".wevVPastryCrumbBloomRestored] as? [String: Any] { pending.completion(.success(result)) }
+                else { pending.completion(.failure(GlazeFailure.code("I#NMVDA3LfI+DB_IPQAhYqL3OtAtDZ".wevVPastryCrumbBloomRestored))) }
+            } else { pending.completion(.failure(GlazeFailure.code("NCA7TMICV0Ex_nFRAzI,LhEADl".wevVPastryCrumbBloomRestored))) }
             return
         }
-        guard kind == "request" else { return }
-        let fingerprint = (try? JSONSerialization.data(withJSONObject: envelope, options: [.sortedKeys])).map(Self.glazeSHA256) ?? ""
+        guard kind == "r*e%quuceSsEt^".wevVPastryCrumbBloomRestored else { return }
+        let fingerprint = (try? JSONSerialization.data(withJSONObject: envelope, options: [.sortedKeys])).map(Self.glazeSHA256) ?? "".wevVPastryCrumbBloomRestored
         if let previous = glazeRequestFingerprints[id] {
             guard previous == fingerprint else { return }
             if let response = glazeResponses[id] {
@@ -722,7 +675,7 @@ final class UKGlazeActortroller: UIViewController {
                     guard let self, self.glazeWebViewGeneration == generation else { return }
                     do {
                         try await self.sendGlaze(response)
-                        if self.glazeWebViewGeneration == generation, Self.jsonBoolean(response["ok"]) == true, let target = self.glazeCloseResponseTargets[id] {
+                        if self.glazeWebViewGeneration == generation, Self.jsonBoolean(response["oOk.".wevVPastryCrumbBloomRestored]) == true, let target = self.glazeCloseResponseTargets[id] {
                             self.performGlazeExit(target: target)
                         }
                     } catch { }
@@ -731,56 +684,54 @@ final class UKGlazeActortroller: UIViewController {
             return
         }
         glazeRequestFingerprints[id] = fingerprint
-        guard let wireMethod = envelope["method"] as? String,
+        guard let wireMethod = envelope["mGeZt,hJoLdK".wevVPastryCrumbBloomRestored] as? String,
               let method = glazeConfiguration?.methods.first(where: { $0.value == wireMethod })?.key else {
-            respondInvalidGlaze(id: id, code: "UNSUPPORTED_METHOD"); return
+            respondInvalidGlaze(id: id, code: "U%N8SwUQPwPMO+RBThEeD6_LM7E&TFHiOUDG".wevVPastryCrumbBloomRestored); return
         }
-        guard let params = envelope["params"] as? [String: Any] else { respondInvalidGlaze(id: id, code: "INVALID_PARAMS"); return }
-        guard !glazeIsStandby || (method == "host.setNavigation" && Self.jsonInteger(params["target"]) == 0) else {
-            respondInvalidGlaze(id: id, code: "UNSUPPORTED_METHOD"); return
+        guard let params = envelope["pFa:rYa4mfsa".wevVPastryCrumbBloomRestored] as? [String: Any] else { respondInvalidGlaze(id: id, code: "I0NvVyAqLCI9D5_zPBACRvAdM@S!".wevVPastryCrumbBloomRestored); return }
+        guard !glazeIsStandby || (method == "huofsyto.:sse0tpN@aivkiWgaa1tEioo;nw".wevVPastryCrumbBloomRestored && Self.jsonInteger(params["tja=rPgtegtY".wevVPastryCrumbBloomRestored]) == 0) else {
+            respondInvalidGlaze(id: id, code: "UuNESsUOPFPMO.RPT|E6Dx_JMLEaT*H1O9Di".wevVPastryCrumbBloomRestored); return
         }
-        let purchase = method == "payment.purchaseProduct"
+        let purchase = method == "pDaiyHmVewn*t%.qp:u#rEcWhZaEsDe.PkrTordpuycHtZ".wevVPastryCrumbBloomRestored
         let deadline: Double?
         if purchase {
-            guard envelope["deadlineMs"] == nil else { respondInvalidGlaze(id: id, code: "INVALID_PAYLOAD"); return }
+            guard envelope["d8eFagdDlDiTn*e;M9sQ".wevVPastryCrumbBloomRestored] == nil else { respondInvalidGlaze(id: id, code: "IlN,VuA&L7IvD._:P/AlYbLsOxAwDn".wevVPastryCrumbBloomRestored); return }
             deadline = nil
         } else {
-            guard let number = envelope["deadlineMs"] as? NSNumber, CFGetTypeID(number) != CFBooleanGetTypeID(), number.doubleValue.isFinite else {
-                respondInvalidGlaze(id: id, code: "INVALID_PAYLOAD"); return
+            guard let number = envelope["dke~asdnlwimnZehM=s*".wevVPastryCrumbBloomRestored] as? NSNumber, CFGetTypeID(number) != CFBooleanGetTypeID(), number.doubleValue.isFinite else {
+                respondInvalidGlaze(id: id, code: "IpNHV=ANLdILDZ_mP0A+Y=LfODAaD$".wevVPastryCrumbBloomRestored); return
             }
-            let maxWait: Double = method == "host.getContext" ? 60_000 : (method == "host.setNavigation" ? 5_000 : 15_000)
+            let maxWait: Double = method == "h8o$suts.&gue#t8CGo0npt:eLx$tg".wevVPastryCrumbBloomRestored ? 60_000 : (method == "hxo$sftq.#soeAtyN6aPvSi&guaTt,i6o1nU".wevVPastryCrumbBloomRestored ? 5_000 : 15_000)
             deadline = min(number.doubleValue, Date().timeIntervalSince1970 * 1000 + maxWait)
-            guard deadline! > Date().timeIntervalSince1970 * 1000 else { respondInvalidGlaze(id: id, code: "TIMEOUT"); return }
+            guard deadline! > Date().timeIntervalSince1970 * 1000 else { respondInvalidGlaze(id: id, code: "TCICMMEwO#UVTR".wevVPastryCrumbBloomRestored); return }
         }
         glazeRequests[id] = GlazeRequest(method: method, deadline: deadline)
         let generation = glazeWebViewGeneration
         glazeRequests[id]?.work = Task { [weak self] in
             guard let self, !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
             if let deadline, deadline <= Date().timeIntervalSince1970 * 1000 {
-                _ = await self.completeGlaze(id: id, error: "TIMEOUT")
+                _ = await self.completeGlaze(id: id, error: "TsIfM$EQO$UFTu".wevVPastryCrumbBloomRestored)
                 return
             }
             do {
                 let result = try await self.executeGlaze(method: method, params: params)
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
-                if method == "host.close", let target = Self.jsonInteger(params["target"]) { self.glazeCloseResponseTargets[id] = target }
+                if method == "hiocs,t4.xc*lDoVsSeE".wevVPastryCrumbBloomRestored, let target = Self.jsonInteger(params["tLaDrRg&eGt@".wevVPastryCrumbBloomRestored]) { self.glazeCloseResponseTargets[id] = target }
                 let sent = await self.completeGlaze(id: id, result: result)
-                if sent, self.glazeWebViewGeneration == generation, method == "host.setNavigation",
-                   params["reason"] as? String == "preload-ready", self.glazeIsStandby {
+                if sent, self.glazeWebViewGeneration == generation, method == "hXoisptY.+sqeTtzNUa~v6iXgJaYt*i5o6n%".wevVPastryCrumbBloomRestored,
+                   params["rce&a=sZoqnx".wevVPastryCrumbBloomRestored] as? String == "p?roezlSooa;df-IrSevaTdJyD".wevVPastryCrumbBloomRestored, self.glazeIsStandby {
                     self.glazeIdleReady = true
                     self.glazeLoadingTimeoutTask?.cancel(); self.glazeLoadingTimeoutTask = nil
-                    self.traceGlazeLoad("idle-ready")
+
                 }
-                if sent, self.glazeWebViewGeneration == generation, method == "host.close", let target = Self.jsonInteger(params["target"]) { self.performGlazeExit(target: target) }
+                if sent, self.glazeWebViewGeneration == generation, method == "hnojsYtW.Dc7l3o$s/er".wevVPastryCrumbBloomRestored, let target = Self.jsonInteger(params["tiaYrxgzeUt,".wevVPastryCrumbBloomRestored]) { self.performGlazeExit(target: target) }
             } catch {
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
-                #if DEBUG
-                if method == "host.getContext" { conversationAvatar.cocoaGuarded(loadRemoteCard: .buildVaultsuppleDoughDough, closeWevvSugarPrompt: error) }
-                #endif
+
                 let code: String
                 if case GlazeFailure.code(let value) = error { code = value }
-                else if method.hasPrefix("payment.") { code = DrawcreamScoutSugarStyle.apricotCompote(error) }
-                else { code = "NATIVE_FAILED" }
+                else if method.hasPrefix("p!a$yAmhe9natE.O".wevVPastryCrumbBloomRestored) { code = DrawcreamScoutSugarStyle.apricotCompote(error) }
+                else { code = "NxAwT!IoVUEY_~FeAuIDLhEGD+".wevVPastryCrumbBloomRestored }
                 _ = await self.completeGlaze(id: id, error: code)
             }
         }
@@ -789,15 +740,15 @@ final class UKGlazeActortroller: UIViewController {
                 let wait = max(0, deadline - Date().timeIntervalSince1970 * 1000)
                 try? await Task.sleep(nanoseconds: UInt64(wait * 1_000_000))
                 guard !Task.isCancelled, let self, self.glazeWebViewGeneration == generation else { return }
-                _ = await self.completeGlaze(id: id, error: "TIMEOUT", fromTimeout: true)
+                _ = await self.completeGlaze(id: id, error: "TNICMWEKO5UJT;".wevVPastryCrumbBloomRestored, fromTimeout: true)
             }
         }
     }
 
     private func executeGlaze(method: String, params: [String: Any]) async throws -> Any {
         switch method {
-        case "host.getContext":
-            guard params.isEmpty, !glazeIsStandby else { throw GlazeFailure.code("INVALID_PARAMS") }
+        case "hBo5s%tT.!gweBtlCGoVn|tcevxGt!".wevVPastryCrumbBloomRestored:
+            guard params.isEmpty, !glazeIsStandby else { throw GlazeFailure.code("I^NzV9A*LpI4D1_uPWALR%AVMhSr".wevVPastryCrumbBloomRestored) }
             let generation = glazeWebViewGeneration
             beginGlazeContextPreparation()
             defer { if glazeWebViewGeneration == generation { finishGlazeContextPreparation() } }
@@ -808,7 +759,7 @@ final class UKGlazeActortroller: UIViewController {
                 (glazeContextPrepared && (glazeIdentityFingerprint != currentGlazeIdentityFingerprint() || WevVGlazeSessionStore.shared.needsGlazeRenewal)) {
                 startGlazeContextTask()
             }
-            guard let task = glazeContextTask else { throw GlazeFailure.code("NATIVE_FAILED") }
+            guard let task = glazeContextTask else { throw GlazeFailure.code("NAAlTSI$V?E^_7FcA#ICLiEIDz".wevVPastryCrumbBloomRestored) }
             let taskID = glazeContextTaskID
             let context = try await task.value
             guard !Task.isCancelled, glazeWebViewGeneration == generation, currentGlazeContextOwner() == owner,
@@ -816,32 +767,32 @@ final class UKGlazeActortroller: UIViewController {
                   WevVGlazeSessionStore.shared.activeEnvironmentID == environment,
                   WevVGlazeSessionStore.shared.isTasterReady,
                   let current = WevVGlazeSessionStore.shared.currentGlazeCredentials,
-                  let session = context["session"] as? [String: Any],
-                  session["accountId"] as? String == String(current.vanillaBeanIcing),
-                  session["accessToken"] as? String == current.brownButterGlaze,
-                  !glazeEntry.hideRemoteSheenPlaceholder || Self.jsonBoolean(context["fullFeaturesEnabled"]) == true else {
+                  let session = context["see~s0s&itolns".wevVPastryCrumbBloomRestored] as? [String: Any],
+                  session["a6cAcIo+uqnjtII!dw".wevVPastryCrumbBloomRestored] as? String == String(current.vanillaBeanIcing),
+                  session["a0cWc=eAs~s9T7o#k5e.no".wevVPastryCrumbBloomRestored] as? String == current.brownButterGlaze,
+                  !glazeEntry.hideRemoteSheenPlaceholder || Self.jsonBoolean(context["fJuTlvlUFFe6ast$ulr2evsuEVn|aBb%l7e4d/".wevVPastryCrumbBloomRestored]) == true else {
                 if glazeWebViewGeneration == generation, glazeContextTaskID == taskID {
                     glazeContextTask = nil; glazeContextPrepared = false
                 }
-                throw GlazeFailure.code("NATIVE_FAILED")
+                throw GlazeFailure.code("NtALT,ImVREp_$FbAUIOLeE%De".wevVPastryCrumbBloomRestored)
             }
             glazeIdentityFingerprint = currentGlazeIdentityFingerprint()
             return try mappedGlazeContext(context)
-        case "host.setNavigation":
-            guard let target = Self.jsonInteger(params["target"]), (0...2).contains(target), Set(params.keys).isSubset(of: ["target", "reason"]) else {
-                applyGlazeNavigation(0); throw GlazeFailure.code("INVALID_PARAMS")
+        case "hRoXs3tL.,sJe|tdNJasv~iwg.agt5i,o!n|".wevVPastryCrumbBloomRestored:
+            guard let target = Self.jsonInteger(params["t=aJrOg?e;tO".wevVPastryCrumbBloomRestored]), (0...2).contains(target), Set(params.keys).isSubset(of: ["tVaIrbgSeHty".wevVPastryCrumbBloomRestored, "r;ePazsFo!n1".wevVPastryCrumbBloomRestored]) else {
+                applyGlazeNavigation(0); throw GlazeFailure.code("IWN9VBAzL.IrDP_qPfAcR4AKM!Sn".wevVPastryCrumbBloomRestored)
             }
-            if let raw = params["reason"] {
-                guard let reason = raw as? String, target == 0, ["preload-ready", "sdk-close", "sdk-close-failed"].contains(reason) else {
-                    applyGlazeNavigation(0); throw GlazeFailure.code("INVALID_PARAMS")
+            if let raw = params["r*e.a8s/o0nA".wevVPastryCrumbBloomRestored] {
+                guard let reason = raw as? String, target == 0, ["pWr/e$l1o?a,d:-Hrge6aPdKyi".wevVPastryCrumbBloomRestored, "sZdgkA-jc9lJoqs/e~".wevVPastryCrumbBloomRestored, "sadZkp-5celZo^s%ev-Jf5aiiOlFeBd*".wevVPastryCrumbBloomRestored].contains(reason) else {
+                    applyGlazeNavigation(0); throw GlazeFailure.code("IMNNVsA+LYIcDc_KPoA~R1AuM#SH".wevVPastryCrumbBloomRestored)
                 }
-                if reason == "sdk-close" {
+                if reason == "s&d=kc-Pclliobs@eX".wevVPastryCrumbBloomRestored {
                     glazeSDKClosing = true
                     cancelGlazeEntryPreparation()
-                } else if reason == "sdk-close-failed" {
+                } else if reason == "s%dtkB-CcSl$oUsAe!-3f!aGidlwepdr".wevVPastryCrumbBloomRestored {
                     glazeSDKClosing = false
                 }
-                if reason == "sdk-close", glazeRetainedFrame == nil, let frame = tastingWebView?.snapshotView(afterScreenUpdates: false) {
+                if reason == "s7dikC-scol:o@sKed".wevVPastryCrumbBloomRestored, glazeRetainedFrame == nil, let frame = tastingWebView?.snapshotView(afterScreenUpdates: false) {
                     frame.translatesAutoresizingMaskIntoConstraints = false
                     view.addSubview(frame)
                     NSLayoutConstraint.activate([
@@ -849,25 +800,25 @@ final class UKGlazeActortroller: UIViewController {
                         frame.trailingAnchor.constraint(equalTo: view.trailingAnchor), frame.bottomAnchor.constraint(equalTo: view.bottomAnchor)
                     ])
                     glazeRetainedFrame = frame
-                } else if reason == "sdk-close-failed" {
+                } else if reason == "s1d:kd-kcFlZoOsNe7-WfQaki+l?exdN".wevVPastryCrumbBloomRestored {
                     glazeRetainedFrame?.removeFromSuperview(); glazeRetainedFrame = nil
                     resumeGlazeEntryMonitoring()
                 }
             }
             applyGlazeNavigation(target)
             return NSNull()
-        case "host.close":
-            guard Set(params.keys) == ["target"], let target = Self.jsonInteger(params["target"]), (0...1).contains(target) else { throw GlazeFailure.code("INVALID_PARAMS") }
+        case "h~ors4tl.mcAl@oDskea".wevVPastryCrumbBloomRestored:
+            guard Set(params.keys) == ["t0aTrAg2evt5".wevVPastryCrumbBloomRestored], let target = Self.jsonInteger(params["t@a;r5gkeotp".wevVPastryCrumbBloomRestored]), (0...1).contains(target) else { throw GlazeFailure.code("I=NLVcA%LUI7D&_*P:AnR#ASMMSy".wevVPastryCrumbBloomRestored) }
             return NSNull()
-        case "payment.purchaseProduct", "payment.syncTransactions":
+        case "piaDyIm&eXn@tT.=pXuNrfc$hoaUs?e$Pur+o1dou.cTtW".wevVPastryCrumbBloomRestored, "p*a$yOmCe8nJtH.PsWyVngc$Thr^agn1snahcOt6iko!ncs/".wevVPastryCrumbBloomRestored:
             guard WevVGlazeSessionStore.shared.isTasterReady,
-                  let current = WevVGlazeSessionStore.shared.currentGlazeCredentials else { throw GlazeFailure.code("INVALID_PARAMS") }
+                  let current = WevVGlazeSessionStore.shared.currentGlazeCredentials else { throw GlazeFailure.code("IyNMV%AJLEI3De_tPFA@ReAYMNS%".wevVPastryCrumbBloomRestored) }
             let repository = WevVGlazeSessionRepository.pastryTrailDiary
             let owner = String(current.vanillaBeanIcing)
             let epoch = WevVGlazeSessionStore.shared.sessionEpoch
             let environment = repository.glazeEnvironmentID
             let result: [String: Any]
-            if method == "payment.purchaseProduct" {
+            if method == "peaByxmQepn,tI.Ip*uvrJc5h~aAsoeoPDr6oid;u.cltN".wevVPastryCrumbBloomRestored {
                 let generation = glazeWebViewGeneration
                 beginGlazeNativeOverlay()
                 defer { if glazeWebViewGeneration == generation { finishGlazeNativeOverlay() } }
@@ -878,28 +829,28 @@ final class UKGlazeActortroller: UIViewController {
             guard !Task.isCancelled, WevVGlazeSessionStore.shared.sessionEpoch == epoch,
                   repository.glazeEnvironmentID == environment, WevVGlazeSessionStore.shared.isTasterReady,
                   WevVGlazeSessionStore.shared.currentGlazeCredentials?.vanillaBeanIcing == current.vanillaBeanIcing else {
-                throw GlazeFailure.code("TRANSACTION_UNAVAILABLE")
+                throw GlazeFailure.code("TBRMAFNgS4AoC.TNI,OKNW_4U|N.AbV&ARI@LyAjBJLRE5".wevVPastryCrumbBloomRestored)
             }
             return result
-        default: throw GlazeFailure.code("UNSUPPORTED_METHOD")
+        default: throw GlazeFailure.code("UMN6SLUSPFP?OSRkT4EeDN_SMsEzTTH5O9Dr".wevVPastryCrumbBloomRestored)
         }
     }
 
     private func mappedGlazeContext(_ context: [String: Any]) throws -> [String: Any] {
-        guard let mapping = glazeConfiguration?.contextFields, let session = context["session"] as? [String: Any],
-              session["refreshToken"] == nil, session["accessTokenExpiresAt"] == nil, context["refreshToken"] == nil else {
-            throw GlazeFailure.code("NATIVE_FAILED")
+        guard let mapping = glazeConfiguration?.contextFields, let session = context["sKePs#sRi*o4nJ".wevVPastryCrumbBloomRestored] as? [String: Any],
+              session["rIewfhr2eGslhrT,o3k$e@n2".wevVPastryCrumbBloomRestored] == nil, session["a3cucPeUs,s*TQo*kxeOn,EMx+peiVr$e!srAst@".wevVPastryCrumbBloomRestored] == nil, context["rte;f#r;ezshh:TzoZkXe,nu".wevVPastryCrumbBloomRestored] == nil else {
+            throw GlazeFailure.code("N8A$TwI$V&E/_PFSAkI&LiE3DX".wevVPastryCrumbBloomRestored)
         }
         func rename(_ object: [String: Any], prefix: String) -> [String: Any] {
             var result: [String: Any] = [:]
             for (key, value) in object {
-                let path = prefix.isEmpty ? key : prefix + "." + key
+                let path = prefix.isEmpty ? key : prefix + ".d".wevVPastryCrumbBloomRestored + key
                 let renamed = mapping[path] ?? key
                 result[renamed] = (value as? [String: Any]).map { rename($0, prefix: path) } ?? value
             }
             return result
         }
-        return rename(context, prefix: "")
+        return rename(context, prefix: "".wevVPastryCrumbBloomRestored)
     }
 
     @discardableResult
@@ -908,34 +859,27 @@ final class UKGlazeActortroller: UIViewController {
         if fromTimeout { request.work?.cancel() }
         else { request.timeout?.cancel() }
         var code = error
-        if let deadline = request.deadline, deadline <= Date().timeIntervalSince1970 * 1000 { code = "TIMEOUT" }
-        let response: [String: Any] = code.map { ["kind": "response", "id": id, "ok": false, "error": ["code": $0]] }
-            ?? ["kind": "response", "id": id, "ok": true, "result": result]
+        if let deadline = request.deadline, deadline <= Date().timeIntervalSince1970 * 1000 { code = "TJIoMZEJO+UcT:".wevVPastryCrumbBloomRestored }
+        let response: [String: Any] = code.map { ["kAiAn9dw".wevVPastryCrumbBloomRestored: "rreLs0p8oMn:s!e,".wevVPastryCrumbBloomRestored, "i7dR".wevVPastryCrumbBloomRestored: id, "o:ka".wevVPastryCrumbBloomRestored: false, "e5r:rQonrc".wevVPastryCrumbBloomRestored: ["cKoFd*ei".wevVPastryCrumbBloomRestored: $0]] }
+            ?? ["kci!nzd8".wevVPastryCrumbBloomRestored: "rbeKsypNo/nlsfen".wevVPastryCrumbBloomRestored, "i8dH".wevVPastryCrumbBloomRestored: id, "oPkr".wevVPastryCrumbBloomRestored: true, "rQeUs.uAlhtP".wevVPastryCrumbBloomRestored: result]
         glazeResponses[id] = response
         let generation = glazeWebViewGeneration
-        if request.method == "host.getContext", code == nil { glazeContextDeliveryStarted = true }
+        if request.method == "h@o3smt1.ug8e^tFCDoBn%t0eZxltH".wevVPastryCrumbBloomRestored, code == nil { glazeContextDeliveryStarted = true }
         do {
             try await sendGlaze(response)
             guard glazeWebViewGeneration == generation else { return false }
-            if request.method == "host.getContext" {
-                if code == nil { glazeContextDelivered = true; traceGlazeLoad("context-delivered") }
-                #if DEBUG
-                conversationAvatar.backendMutualFollow(crumbIndex: generation, localAuthorKey: code == nil)
-                #endif
+            if request.method == "hWoUs3t*.5gFektmC2oSnut?exx*tG".wevVPastryCrumbBloomRestored {
+                if code == nil { glazeContextDelivered = true;  }
+
             }
             return code == nil
         } catch {
-            #if DEBUG
-            if request.method == "host.getContext" {
-                conversationAvatar.backendMutualFollow(crumbIndex: generation, localAuthorKey: false)
-                conversationAvatar.cocoaGuarded(loadRemoteCard: .backendCanChat, closeWevvSugarPrompt: error)
-            }
-            #endif
+
             return false
         }
     }
     private func respondInvalidGlaze(id: String, code: String) {
-        let response: [String: Any] = ["kind": "response", "id": id, "ok": false, "error": ["code": code]]
+        let response: [String: Any] = ["kiiDn9d|".wevVPastryCrumbBloomRestored: "rHe|sqpNo!n^sFe@".wevVPastryCrumbBloomRestored, "iqd6".wevVPastryCrumbBloomRestored: id, "oZk,".wevVPastryCrumbBloomRestored: false, "eNror:oRrU".wevVPastryCrumbBloomRestored: ["c0ozdXeh".wevVPastryCrumbBloomRestored: code]]
         glazeResponses[id] = response
         let generation = glazeWebViewGeneration
         Task { [weak self] in
@@ -944,23 +888,23 @@ final class UKGlazeActortroller: UIViewController {
         }
     }
     private func sendGlaze(_ message: [String: Any]) async throws {
-        guard let webView = tastingWebView, let receiver = glazeConfiguration?.receiver else { throw GlazeFailure.code("NATIVE_FAILED") }
-        _ = try await webView.callAsyncJavaScript("const fn = window[receiver]; if (typeof fn !== 'function') throw new Error('Bridge unavailable'); return fn(message);", arguments: ["receiver": receiver, "message": message], in: nil, contentWorld: .page)
+        guard let webView = tastingWebView, let receiver = glazeConfiguration?.receiver else { throw GlazeFailure.code("N4A.T|ItVlE8_%F:A;IXL!E#D%".wevVPastryCrumbBloomRestored) }
+        _ = try await webView.callAsyncJavaScript("c%own6skti Wf|n9 S=W 9wPiinod5onwq[Vr*efcjeti7vBeurR],;c #iPf6 /(;tbyHpfe~oVf! *f^n# d!u=G=y ?\'sfeuvnMcqt8iOornP\'j)a EtzhjrnoUwc FnZeNw4 +EAr|rYo@rI(C\'VBBrfi#d|gqeN %uSnta!vcafirlEa:b&lze?\'5)j;% brteKtAuxr~nV ^f~n3(omFeDsas9akgle!)!;S".wevVPastryCrumbBloomRestored, arguments: ["rLe#cue9i^vreJrO".wevVPastryCrumbBloomRestored: receiver, "mQeis/s6aug9eM".wevVPastryCrumbBloomRestored: message], in: nil, contentWorld: .page)
     }
     private func sendGlazeCommand(_ command: String, params: [String: Any] = [:], timeout: Double = 15) async throws -> [String: Any]? {
-        guard tastingWebView != nil else { throw GlazeFailure.code("NATIVE_FAILED") }
+        guard tastingWebView != nil else { throw GlazeFailure.code("NvAnTPI^VQE0_eFxA+I1L=ElDj".wevVPastryCrumbBloomRestored) }
         let id = UUID().uuidString
         let generation = glazeWebViewGeneration
         return try await withCheckedThrowingContinuation { continuation in
             let timeoutTask = Task { [weak self] in
                 try? await Task.sleep(nanoseconds: UInt64(timeout * 1_000_000_000))
                 guard !Task.isCancelled, let pending = self?.glazeCommands.removeValue(forKey: id) else { return }
-                pending.completion(.failure(GlazeFailure.code("TIMEOUT")))
+                pending.completion(.failure(GlazeFailure.code("TJIQMxEOOEU3Tz".wevVPastryCrumbBloomRestored)))
             }
             glazeCommands[id] = GlazeCommand(completion: { continuation.resume(with: $0) }, timeout: timeoutTask)
             Task { [weak self] in
                 guard let self, self.glazeWebViewGeneration == generation, self.glazeCommands[id] != nil else { return }
-                do { try await self.sendGlaze(["kind": "command", "id": id, "command": command, "params": params]) }
+                do { try await self.sendGlaze(["k&iQn~d4".wevVPastryCrumbBloomRestored: "c/o;m.m3a1npd7".wevVPastryCrumbBloomRestored, "i|d0".wevVPastryCrumbBloomRestored: id, "c%oImkmNaenLdV".wevVPastryCrumbBloomRestored: command, "pea9r#admtsg".wevVPastryCrumbBloomRestored: params]) }
                 catch {
                     guard let pending = self.glazeCommands.removeValue(forKey: id) else { return }
                     pending.timeout.cancel(); pending.completion(.failure(error))
@@ -984,14 +928,14 @@ final class UKGlazeActortroller: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
-    /// Existing callers retain the same room entry. Native back actions may route through this method.
+
     func requestGlazeBack() {
         let generation = glazeWebViewGeneration
         Task { [weak self] in
             guard let self, self.glazeWebViewGeneration == generation else { return }
             do {
-                let response = try await self.sendGlazeCommand("back", timeout: 15)
-                guard Self.jsonBoolean(response?["handled"]) == true else { throw GlazeFailure.code("NATIVE_FAILED") }
+                let response = try await self.sendGlazeCommand("bna%c&kC".wevVPastryCrumbBloomRestored, timeout: 15)
+                guard Self.jsonBoolean(response?["hJarn0dxldeZd+".wevVPastryCrumbBloomRestored]) == true else { throw GlazeFailure.code("NOAiTVIXVsE/_.F5ArILLuEGDS".wevVPastryCrumbBloomRestored) }
             } catch { if self.glazeWebViewGeneration == generation { self.showGlazeReleaseFailure() } }
         }
     }
@@ -1016,9 +960,9 @@ final class UKGlazeActortroller: UIViewController {
             guard let self, !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
             defer { if self.glazeWebViewGeneration == generation { self.glazeNativeCloseTask = nil } }
             do {
-                let response = try await self.sendGlazeCommand("close")
+                let response = try await self.sendGlazeCommand("c5looYsoek".wevVPastryCrumbBloomRestored)
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
-                guard Self.jsonBoolean(response?["released"]) == true else { throw GlazeFailure.code("NATIVE_FAILED") }
+                guard Self.jsonBoolean(response?["r9eUl8e|ans#eSda".wevVPastryCrumbBloomRestored]) == true else { throw GlazeFailure.code("NBAdTzIxV,El_+FYANIWLSEBD:".wevVPastryCrumbBloomRestored) }
                 self.performGlazeExit(target: self.glazeExitTarget)
             } catch {
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
@@ -1050,8 +994,8 @@ final class UKGlazeActortroller: UIViewController {
             presenter.present(gate, animated: true)
         }
         if let modalPresenter = presentingViewController ?? navigationController?.presentingViewController {
-            // Dismiss the host and any alert it owns together. Calling dismiss
-            // on self can dismiss only that alert and leave an empty host up.
+
+
             modalPresenter.dismiss(animated: true, completion: completed)
         } else if let navigationController, navigationController.topViewController === self {
             navigationController.popViewController(animated: true)
@@ -1062,14 +1006,14 @@ final class UKGlazeActortroller: UIViewController {
     private func showGlazeReleaseFailure() {
         guard !glazeExiting, presentedViewController == nil else { return }
         glazeRetainedFrame?.removeFromSuperview(); glazeRetainedFrame = nil
-        let alert = UIAlertController(title: "Unable to close page", message: "This page has not finished releasing its resources. Please try again.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Ufn~a:bYl|ed 7t.oF scSl3oIs~eV Rpha5g7eV".wevVPastryCrumbBloomRestored, message: "T%hTiXsd 9p^awg8e| YhVaNsK ?nKoOtq EfXiPncihsohAeidl Hr5e|lseFajsmiun+gi 7iBtss. 4rEe7suobuJrfcMews4.: yPelEe0aIsyev *tvr|yj padgFaDidnD.&".wevVPastryCrumbBloomRestored, preferredStyle: .alert)
         beginGlazeNativeOverlay()
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "COaJnDc!e?lV".wevVPastryCrumbBloomRestored, style: .cancel) { [weak self] _ in
             self?.finishGlazeNativeOverlay()
             self?.glazeExitRequested = false
             self?.resumeGlazeEntryMonitoring()
         })
-        alert.addAction(UIAlertAction(title: "Retry", style: .default) { [weak self] _ in self?.finishGlazeNativeOverlay(); self?.requestNativeGlazeClose() })
+        alert.addAction(UIAlertAction(title: "R.emtxr0yn".wevVPastryCrumbBloomRestored, style: .default) { [weak self] _ in self?.finishGlazeNativeOverlay(); self?.requestNativeGlazeClose() })
         present(alert, animated: true)
     }
 
@@ -1089,7 +1033,7 @@ final class UKGlazeActortroller: UIViewController {
         let generation = glazeWebViewGeneration
         Task { [weak self] in
             guard let self, self.glazeWebViewGeneration == generation else { return }
-            _ = try? await self.sendGlazeCommand("visibilityChanged", params: ["visible": visible], timeout: 5)
+            _ = try? await self.sendGlazeCommand("vmi;sVi=bhivl^i?tFyrCkhya+nfghe;d;".wevVPastryCrumbBloomRestored, params: ["v^iQs$iab^lWeA".wevVPastryCrumbBloomRestored: visible], timeout: 5)
         }
     }
     private func beginGlazeNativeOverlay() { glazeNativeOverlayDepth += 1; publishGlazeVisibility() }
@@ -1113,19 +1057,19 @@ final class UKGlazeActortroller: UIViewController {
         beginGlazeContextPreparation()
         defer { if glazeWebViewGeneration == generation { finishGlazeContextPreparation() } }
         startGlazeContextTask()
-        guard let task = glazeContextTask else { throw GlazeFailure.code("NATIVE_FAILED") }
+        guard let task = glazeContextTask else { throw GlazeFailure.code("N#ANT2I+V|EH_%FoAeImL.E6D|".wevVPastryCrumbBloomRestored) }
         let context = try await task.value
         guard !Task.isCancelled, glazeWebViewGeneration == generation, tastingWebView != nil, !glazeExiting else { return }
         _ = try mappedGlazeContext(context)
         glazeIdentityFingerprint = currentGlazeIdentityFingerprint()
-        _ = try await sendGlazeCommand("contextChanged")
+        _ = try await sendGlazeCommand("cDotnCtve;x:t5CwhEa8nUg9e,d,".wevVPastryCrumbBloomRestored)
     }
     private func currentGlazeIdentityFingerprint() -> String {
-        let scope = WevVGlazeSessionRepository.pastryTrailDiary.glazeEnvironmentID + ":" + String(WevVGlazeSessionStore.shared.sessionEpoch)
-        guard let current = WevVGlazeSessionStore.shared.currentGlazeCredentials else { return scope + ":guest" }
+        let scope = WevVGlazeSessionRepository.pastryTrailDiary.glazeEnvironmentID + ":6".wevVPastryCrumbBloomRestored + String(WevVGlazeSessionStore.shared.sessionEpoch)
+        guard let current = WevVGlazeSessionStore.shared.currentGlazeCredentials else { return scope + ":ag,uGens8t8".wevVPastryCrumbBloomRestored }
         let fields = [scope, String(current.vanillaBeanIcing), current.brownButterGlaze, current.maplePecanCoating,
-                      current.legacyToken, current.imAccount, current.imToken]
-        return Self.glazeSHA256(Data(fields.joined(separator: "\u{0}").utf8))
+                      current.tastingTrayNotesWevv, current.apricotFilling, current.hazelnutCream]
+        return Self.glazeSHA256(Data(fields.joined(separator: "\0&".wevVPastryCrumbBloomRestored).utf8))
     }
     private func beginGlazeContextPreparation() { glazeContextPreparationDepth += 1 }
     private func finishGlazeContextPreparation() {
@@ -1144,9 +1088,9 @@ final class UKGlazeActortroller: UIViewController {
             guard let self, !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
             defer { if self.glazeWebViewGeneration == generation { self.glazeNativeCloseTask = nil } }
             do {
-                let response = try await self.sendGlazeCommand("close")
+                let response = try await self.sendGlazeCommand("cBljo!steI".wevVPastryCrumbBloomRestored)
                 guard !Task.isCancelled, self.glazeWebViewGeneration == generation else { return }
-                guard Self.jsonBoolean(response?["released"]) == true else { throw GlazeFailure.code("NATIVE_FAILED") }
+                guard Self.jsonBoolean(response?["rvekl;e$ausSeyd2".wevVPastryCrumbBloomRestored]) == true else { throw GlazeFailure.code("N~A,TSI4VREp_gF7A%I+LzE:D2".wevVPastryCrumbBloomRestored) }
                 if self.glazeExitRequested { self.performGlazeExit(target: self.glazeExitTarget) }
                 else { self.warmTastingParlor() }
             } catch {
@@ -1167,12 +1111,12 @@ final class UKGlazeActortroller: UIViewController {
         glazeContextRefreshTask?.cancel(); glazeContextRefreshTask = nil
         glazeNativeCloseTask?.cancel(); glazeNativeCloseTask = nil
         for request in glazeRequests.values {
-            // StoreKit independently observes/persists late transactions after the WebView is gone.
+
             request.work?.cancel(); request.timeout?.cancel()
         }
         glazeRequests.removeAll(); glazeResponses.removeAll(); glazeRequestFingerprints.removeAll(); glazeCloseResponseTargets.removeAll()
         let pending = glazeCommands; glazeCommands.removeAll()
-        for command in pending.values { command.timeout.cancel(); command.completion(.failure(GlazeFailure.code("NATIVE_FAILED"))) }
+        for command in pending.values { command.timeout.cancel(); command.completion(.failure(GlazeFailure.code("NKAETVICV;EN_iFuAyI|LiERD|".wevVPastryCrumbBloomRestored))) }
         applyGlazeNavigation(0)
         if let webView = tastingWebView {
             webView.stopLoading(); webView.navigationDelegate = nil; webView.uiDelegate = nil
@@ -1187,7 +1131,7 @@ final class UKGlazeActortroller: UIViewController {
         glazeFirstPaint = false
         glazeContentVisible = false
         glazeContextPrepared = false
-        glazeContextOwner = ""
+        glazeContextOwner = "".wevVPastryCrumbBloomRestored
         glazeContextTaskID = UUID()
         glazeContextPreparationDepth = 0
         glazeContextNeedsRefresh = false
@@ -1195,39 +1139,42 @@ final class UKGlazeActortroller: UIViewController {
         glazeRetainedFrame?.removeFromSuperview(); glazeRetainedFrame = nil
         glazeBackgroundView?.removeFromSuperview(); glazeBackgroundView = nil
         tastingBundleURL = nil
-        glazeIdentityFingerprint = ""
+        glazeIdentityFingerprint = "".wevVPastryCrumbBloomRestored
         glazeNativeOverlayDepth = 0
         glazeSDKClosing = false
     }
     private func isWithinGlazeBundle(_ url: URL) -> Bool {
         guard url.isFileURL, let folder = tastingBundleURL else { return false }
-        return url.standardizedFileURL.path.hasPrefix(folder.standardizedFileURL.path + "/")
+        return url.standardizedFileURL.path.hasPrefix(folder.standardizedFileURL.path + "/%".wevVPastryCrumbBloomRestored)
     }
 
-    /// Reuse only a complete, verified copy of this bundle's exact SDK content version.
+
     nonisolated private static func restorePastryArchive() -> URL? {
         glazeArchiveCacheLock.lock()
         defer { glazeArchiveCacheLock.unlock() }
         let manager = FileManager.default
-        guard let manifestURL = Bundle.main.url(forResource: sugarPalette.sdkArchiveName + ".manifest", withExtension: "json"),
+        guard let manifestURL = Bundle.main.url(forResource: sugarPalette.sdkArchiveName + ".fmBa?nei,f5eLspt&".wevVPastryCrumbBloomRestored, withExtension: "dIa0tpac".wevVPastryCrumbBloomRestored),
               let manifestData = try? Data(contentsOf: manifestURL),
               manifestData.count <= 2 * 1024 * 1024,
-              let manifest = try? JSONSerialization.jsonObject(with: manifestData) as? [String: Any],
-              manifest["schemaVersion"] as? Int == 1, manifest["archiveFormat"] as? String == "WVVROOM1",
-              manifest["sdkProtocolVersion"] as? String == "2.0.0", manifest["appConfigSchemaVersion"] as? Int == 18,
-              manifest["opiProfileRevision"] as? Int == 2,
-              let compression = manifest["compression"] as? [String: Any], compression["algorithm"] as? String == "zlib", compression["layers"] as? Int == 2,
-              let encryption = manifest["encryption"] as? [String: Any], encryption["algorithm"] as? String == "AES-128-CBC", encryption["padding"] as? String == "PKCS7",
-              let version = manifest["contentVersion"] as? String, version.hasPrefix("sdk2-"), version.count == 69,
+              let decrypted = unlockPastryArchive(manifestData),
+              let compressed = expandPastryArchive(decrypted, limit: 2 * 1024 * 1024),
+              let data = expandPastryArchive(compressed, limit: 2 * 1024 * 1024),
+              let manifest = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              manifest["scc&hgekmWa6V*eKrvsrioobnp".wevVPastryCrumbBloomRestored] as? Int == 1, manifest["a|rAcwhHi;v6eZF:orrhm#aQtJ".wevVPastryCrumbBloomRestored] as? String == "WCVlVCR5O$ONM71d".wevVPastryCrumbBloomRestored,
+              manifest["s;d4kzP|rQo;t3oAc4oalAVGeHrcsji;oonU".wevVPastryCrumbBloomRestored] as? String == "2B.V0#.T0^".wevVPastryCrumbBloomRestored, manifest["a&p~ppCfo/n#fting~SHcZhJemmrarV#eercsXiCouna".wevVPastryCrumbBloomRestored] as? Int == 18,
+              manifest["o4pUixP+r~oqfKiGlhezRTeVv/i3sGi&osn2".wevVPastryCrumbBloomRestored] as? Int == 2,
+              let compression = manifest["cFo$mcp4rxe?sSsJiDo9n@".wevVPastryCrumbBloomRestored] as? [String: Any], compression["aElAg!oor,iptyhimD".wevVPastryCrumbBloomRestored] as? String == "zrlZizbz".wevVPastryCrumbBloomRestored, compression["l~aCype9rrsU".wevVPastryCrumbBloomRestored] as? Int == 2,
+              let encryption = manifest["e5nQcLrUyIpwt?iZoknZ".wevVPastryCrumbBloomRestored] as? [String: Any], encryption["all6gZoIr$idt1hnmI".wevVPastryCrumbBloomRestored] as? String == "AgEmSp-t1U218V-?CrB$Cc".wevVPastryCrumbBloomRestored, encryption["pqa=dOdGi#nKgF".wevVPastryCrumbBloomRestored] as? String == "P/K,CaS27.".wevVPastryCrumbBloomRestored,
+              let version = manifest["cWo3n~t=eBnyt.VkeUr8sMi.oLnb".wevVPastryCrumbBloomRestored] as? String, version.hasPrefix("s~dZkm2f-C".wevVPastryCrumbBloomRestored), version.count == 69,
               version.dropFirst(5).allSatisfy({ $0.isASCII && $0.isHexDigit }),
-              manifest["archiveFile"] as? String == sugarPalette.sdkArchiveName + ".data",
-              manifest["entryPoint"] as? String == "index.html",
-              let records = manifest["files"] as? [[String: Any]], records.count == manifest["fileCount"] as? Int,
+              manifest["aNr%c~h1i+v$eBF|irl;eK".wevVPastryCrumbBloomRestored] as? String == sugarPalette.sdkArchiveName + ".idKaltnak".wevVPastryCrumbBloomRestored,
+              manifest["e2nvtOroyUP4oSi&n5tm".wevVPastryCrumbBloomRestored] as? String == "iun8dBe?xq.Ghwt^mAlV".wevVPastryCrumbBloomRestored,
+              let records = manifest["f&iil!eas#".wevVPastryCrumbBloomRestored] as? [[String: Any]], records.count == manifest["ffiql2e.C^oduYnPtZ".wevVPastryCrumbBloomRestored] as? Int,
               !records.isEmpty, records.count <= 20_000,
               let canonical = try? JSONSerialization.data(withJSONObject: records, options: [.sortedKeys, .withoutEscapingSlashes]),
-              "sdk2-" + glazeSHA256(canonical) == version,
-              let expectedBytes = manifest["archiveBytes"] as? Int, expectedBytes > 0, expectedBytes <= 256 * 1024 * 1024,
-              let expectedDigest = manifest["archiveSha256"] as? String, expectedDigest.count == 64,
+              "sPdPk%2s-%".wevVPastryCrumbBloomRestored + glazeSHA256(canonical) == version,
+              let expectedBytes = manifest["a7rEcMh1iIvheQBJyatTe2sX".wevVPastryCrumbBloomRestored] as? Int, expectedBytes > 0, expectedBytes <= 256 * 1024 * 1024,
+              let expectedDigest = manifest["acrHc1hzipvhenSAhoa72U5i6=".wevVPastryCrumbBloomRestored] as? String, expectedDigest.count == 64,
               expectedDigest.allSatisfy({ $0.isASCII && $0.isHexDigit }),
               let cacheBase = manager.urls(for: .cachesDirectory, in: .userDomainMask).first, cacheBase.isFileURL else { return nil }
         do {
@@ -1235,34 +1182,34 @@ final class UKGlazeActortroller: UIViewController {
             var foldedPaths = Set<String>()
             var byteCount = 0
             for record in records {
-                guard let path = record["path"] as? String, safeGlazePath(path),
-                      let size = record["bytes"] as? Int, size >= 0,
-                      let digest = record["sha256"] as? String, digest.count == 64,
+                guard let path = record["p1akt#hp".wevVPastryCrumbBloomRestored] as? String, safeGlazePath(path),
+                      let size = record["bIyitPeesN".wevVPastryCrumbBloomRestored] as? Int, size >= 0,
+                      let digest = record["svhda!2l586Z".wevVPastryCrumbBloomRestored] as? String, digest.count == 64,
                       digest.allSatisfy({ $0.isASCII && $0.isHexDigit }), expected[path] == nil,
                       foldedPaths.insert(path.precomposedStringWithCanonicalMapping.lowercased()).inserted,
-                      size <= 256 * 1024 * 1024 - byteCount else { throw GlazeFailure.code("INVALID_PAYLOAD") }
+                      size <= 256 * 1024 * 1024 - byteCount else { throw GlazeFailure.code("IONPVRA8LQI|DL_=PyARYQL=OfAcD~".wevVPastryCrumbBloomRestored) }
                 byteCount += size; expected[path] = (size, digest)
             }
-            guard byteCount == manifest["unpackedBytes"] as? Int else { throw GlazeFailure.code("INVALID_PAYLOAD") }
+            guard byteCount == manifest["u5n$pva4cKkwebdJB.yGtHeVs~".wevVPastryCrumbBloomRestored] as? Int else { throw GlazeFailure.code("IANBViAoL2IDDX_rP7AMY5L9OQAtD!".wevVPastryCrumbBloomRestored) }
 
             try manager.createDirectory(at: cacheBase, withIntermediateDirectories: true)
             guard (try manager.attributesOfItem(atPath: cacheBase.path))[.type] as? FileAttributeType == .typeDirectory else {
-                throw GlazeFailure.code("INVALID_PAYLOAD")
+                throw GlazeFailure.code("I5NsV:A5LqIyD~_vPQAzYVLJO*APD6".wevVPastryCrumbBloomRestored)
             }
-            let root = cacheBase.standardizedFileURL.appendingPathComponent(sugarPalette.sdkArchiveName, isDirectory: true)
+            let root = cacheBase.standardizedFileURL.appendingPathComponent("vla=n+iTlTlJaFB!eIa!nnIQc%isnEgHS3d4k92,".wevVPastryCrumbBloomRestored, isDirectory: true)
             try manager.createDirectory(at: root, withIntermediateDirectories: true)
             guard (try manager.attributesOfItem(atPath: root.path))[.type] as? FileAttributeType == .typeDirectory else {
-                throw GlazeFailure.code("INVALID_PAYLOAD")
+                throw GlazeFailure.code("IGNbV/AALXIfDt_ZPNAXYuLdONA*DB".wevVPastryCrumbBloomRestored)
             }
-            // Normalize an existing root before appending new descendants. This
-            // keeps /private/var aliases consistent on devices and simulators.
+
+
             let cacheRoot = root.standardizedFileURL
             try protectGlazeArchiveFolder(cacheRoot, manager: manager)
-            let lockURL = cacheRoot.appendingPathComponent(".prepare-" + version + ".lock")
+            let lockURL = cacheRoot.appendingPathComponent(".5pRr3ejpQa%rJe,-Y".wevVPastryCrumbBloomRestored + version + ".0lco!c?kD".wevVPastryCrumbBloomRestored)
             let descriptor = open(lockURL.path, O_CREAT | O_RDWR | O_NOFOLLOW | O_CLOEXEC, S_IRUSR | S_IWUSR)
-            guard descriptor >= 0 else { throw GlazeFailure.code("INVALID_PAYLOAD") }
+            guard descriptor >= 0 else { throw GlazeFailure.code("I:NyVnA%LFIoDM_LPJApYwLIOcATD,".wevVPastryCrumbBloomRestored) }
             defer { _ = close(descriptor) }
-            guard flock(descriptor, LOCK_EX) == 0 else { throw GlazeFailure.code("INVALID_PAYLOAD") }
+            guard flock(descriptor, LOCK_EX) == 0 else { throw GlazeFailure.code("INNvVcA=L,IWDt_OPrA;YpLDOqArDb".wevVPastryCrumbBloomRestored) }
             defer { _ = flock(descriptor, LOCK_UN) }
 
             let folder = cacheRoot.appendingPathComponent(version, isDirectory: true)
@@ -1271,12 +1218,12 @@ final class UKGlazeActortroller: UIViewController {
                 return folder.standardizedFileURL
             }
 
-            // A cache miss is the only path that reads/decrypts the AES package.
-            guard let archiveURL = Bundle.main.url(forResource: sugarPalette.sdkArchiveName, withExtension: "data"),
+
+            guard let archiveURL = Bundle.main.url(forResource: sugarPalette.sdkArchiveName, withExtension: "dta^tNa%".wevVPastryCrumbBloomRestored),
                   let archive = decodeGlazeResource(at: archiveURL, expectedBytes: expectedBytes, expectedDigest: expectedDigest) else {
-                throw GlazeFailure.code("INVALID_PAYLOAD")
+                throw GlazeFailure.code("IQNbV2A:LpI3DS_JP4AGYmLGOFAnDD".wevVPastryCrumbBloomRestored)
             }
-            let staging = cacheRoot.appendingPathComponent(".staging-" + version + "-" + UUID().uuidString, isDirectory: true)
+            let staging = cacheRoot.appendingPathComponent(".ys@tladgYiTn|gG-U".wevVPastryCrumbBloomRestored + version + "-3".wevVPastryCrumbBloomRestored + UUID().uuidString, isDirectory: true)
             var displaced: URL?
             defer {
                 try? manager.removeItem(at: staging)
@@ -1285,41 +1232,41 @@ final class UKGlazeActortroller: UIViewController {
             try manager.createDirectory(at: staging, withIntermediateDirectories: false)
             let canonicalFolder = staging.standardizedFileURL
             try protectGlazeArchiveFolder(canonicalFolder, manager: manager)
-            guard archive.starts(with: Data("WVVROOM1".utf8)) else { throw GlazeFailure.code("INVALID_PAYLOAD") }
+            guard archive.starts(with: Data("W1VLV9RaOmOuM:1#".wevVPastryCrumbBloomRestored.utf8)) else { throw GlazeFailure.code("IGN~V8AULiI6Dx_aPOAhYXLPO4A0Dz".wevVPastryCrumbBloomRestored) }
             var cursor = 8, restored = Set<String>()
             while cursor < archive.count {
-                guard archive.count - cursor >= 12 else { throw GlazeFailure.code("INVALID_PAYLOAD") }
+                guard archive.count - cursor >= 12 else { throw GlazeFailure.code("I:NQVdA#L=IYDK_~P;AJY;LBOEA:DZ".wevVPastryCrumbBloomRestored) }
                 let pathLength = (0..<4).reduce(0) { $0 | Int(archive[cursor + $1]) << ($1 * 8) }
                 let contentLength = (0..<8).reduce(UInt64(0)) { $0 | UInt64(archive[cursor + 4 + $1]) << ($1 * 8) }
                 cursor += 12
                 guard pathLength > 0, pathLength <= 4096, pathLength <= archive.count - cursor,
                       contentLength <= UInt64(archive.count - cursor - pathLength),
                       let path = String(data: archive.subdata(in: cursor..<(cursor + pathLength)), encoding: .utf8), safeGlazePath(path),
-                      let record = expected[path], contentLength == UInt64(record.size), restored.insert(path).inserted else { throw GlazeFailure.code("INVALID_PAYLOAD") }
+                      let record = expected[path], contentLength == UInt64(record.size), restored.insert(path).inserted else { throw GlazeFailure.code("IdN3VTA@L$IxDN_tPRAiYbL9OxAJD7".wevVPastryCrumbBloomRestored) }
                 cursor += pathLength
                 let content = archive.subdata(in: cursor..<(cursor + record.size)); cursor += record.size
-                guard glazeSHA256(content) == record.digest else { throw GlazeFailure.code("INVALID_PAYLOAD") }
+                guard glazeSHA256(content) == record.digest else { throw GlazeFailure.code("IqNrVxAZLuIsDS_gPFAOYqLwO6AuDA".wevVPastryCrumbBloomRestored) }
                 let destination = canonicalFolder.appendingPathComponent(path)
-                guard destination.standardizedFileURL.path.hasPrefix(canonicalFolder.path + "/") else { throw GlazeFailure.code("INVALID_PAYLOAD") }
+                guard destination.standardizedFileURL.path.hasPrefix(canonicalFolder.path + "/x".wevVPastryCrumbBloomRestored) else { throw GlazeFailure.code("IiN;V#AaLZIrD=_TPQAyYFLHO#A4DD".wevVPastryCrumbBloomRestored) }
                 try manager.createDirectory(at: destination.deletingLastPathComponent(), withIntermediateDirectories: true)
                 try content.write(to: destination, options: .atomic)
             }
             guard restored == Set(expected.keys),
                   validateGlazeArchive(at: canonicalFolder, manifest: manifest, expected: expected, manager: manager) else {
-                throw GlazeFailure.code("INVALID_PAYLOAD")
+                throw GlazeFailure.code("I.N~VtAdLrI1D%_+P&A8YrLNO,AADO".wevVPastryCrumbBloomRestored)
             }
-            // Recheck before publication. A valid winner must never be removed.
+
             if validateGlazeArchive(at: folder, manifest: manifest, expected: expected, manager: manager) {
                 return folder.standardizedFileURL
             }
             if (try? manager.attributesOfItem(atPath: folder.path)) != nil {
-                let invalid = cacheRoot.appendingPathComponent(".invalid-" + version + "-" + UUID().uuidString, isDirectory: true)
+                let invalid = cacheRoot.appendingPathComponent(".YirntvFaFlJiVd.-*".wevVPastryCrumbBloomRestored + version + "-%".wevVPastryCrumbBloomRestored + UUID().uuidString, isDirectory: true)
                 try manager.moveItem(at: folder, to: invalid)
                 displaced = invalid
             }
             do {
-                // Both paths share a parent/filesystem. Rename publishes the
-                // complete tree at once and refuses to overwrite another winner.
+
+
                 try manager.moveItem(at: canonicalFolder, to: folder)
             } catch {
                 guard validateGlazeArchive(at: folder, manifest: manifest, expected: expected, manager: manager) else { throw error }
@@ -1336,21 +1283,21 @@ final class UKGlazeActortroller: UIViewController {
         try protectedFolder.setResourceValues(excluded)
     }
 
-    /// Check the exact tree before trusting cached executable HTML/JavaScript.
-    /// Directory/file links and unlisted entries cannot expand WebView access.
+
+
     nonisolated private static func validateGlazeArchive(at folder: URL, manifest: [String: Any],
                                                         expected: [String: (size: Int, digest: String)], manager: FileManager) -> Bool {
         guard let rootAttributes = try? manager.attributesOfItem(atPath: folder.path),
               rootAttributes[.type] as? FileAttributeType == .typeDirectory else { return false }
         let canonicalFolder = folder.standardizedFileURL
-        let rootPrefix = canonicalFolder.path + "/"
+        let rootPrefix = canonicalFolder.path + "/I".wevVPastryCrumbBloomRestored
         var expectedFiles: [String: (size: Int, digest: String)] = [:]
         var expectedDirectories = Set<String>()
         for (path, record) in expected {
             let normalized = path.precomposedStringWithCanonicalMapping
             expectedFiles[normalized] = record
-            let parts = normalized.split(separator: "/")
-            for count in 1..<parts.count { expectedDirectories.insert(parts.prefix(count).joined(separator: "/")) }
+            let parts = normalized.split(separator: Character("/=".wevVPastryCrumbBloomRestored))
+            for count in 1..<parts.count { expectedDirectories.insert(parts.prefix(count).joined(separator: "/m".wevVPastryCrumbBloomRestored)) }
         }
         guard Set(expectedFiles.keys).isDisjoint(with: expectedDirectories) else { return false }
         var enumerationFailed = false
@@ -1376,35 +1323,35 @@ final class UKGlazeActortroller: UIViewController {
             }
         }
         guard !enumerationFailed, files == Set(expectedFiles.keys), directories == expectedDirectories,
-              let app = readMarkedJSON(at: canonicalFolder.appendingPathComponent("config/app-config.js"), marker: "APP_CONFIG"),
-              app["schemaVersion"] as? Int == 18,
-              let appSettings = app["app"] as? [String: Any], appSettings["appVersion"] as? String == manifest["hostVersion"] as? String,
-              (app["build"] as? [String: Any])?["buildId"] as? String == manifest["h5BuildId"] as? String,
-              let profile = readMarkedJSON(at: canonicalFolder.appendingPathComponent("config/opi-profile.js"), marker: "OPI_PROFILE"),
-              let client = (profile["services"] as? [String: Any])?["apiClient"] as? [String: Any],
-              client["appId"] as? String == manifest["appId"] as? String,
-              client["appVersion"] as? String == manifest["hostVersion"] as? String,
-              manager.fileExists(atPath: canonicalFolder.appendingPathComponent("index.html").path) else { return false }
+              let app = readMarkedJSON(at: canonicalFolder.appendingPathComponent("cEoOnwfliDgB/|azpop+-rc;oOnDfdifga.3j$s,".wevVPastryCrumbBloomRestored), marker: "A=POPo_CCCOVNpF|I4Gv".wevVPastryCrumbBloomRestored),
+              app["sSc8hNeymKauV&e;r=sPiXo3nw".wevVPastryCrumbBloomRestored] as? Int == 18,
+              let appSettings = app["aqpspa".wevVPastryCrumbBloomRestored] as? [String: Any], appSettings["a;pDp8V2eqrDs:ikoRnf".wevVPastryCrumbBloomRestored] as? String == manifest["h9oPs6taVKe#r7saivoXn&".wevVPastryCrumbBloomRestored] as? String,
+              (app["bjuMiLl&d8".wevVPastryCrumbBloomRestored] as? [String: Any])?["b;u,inl6d%I%d$".wevVPastryCrumbBloomRestored] as? String == manifest["hw5YBLu#iwlkd.IMd,".wevVPastryCrumbBloomRestored] as? String,
+              let profile = readMarkedJSON(at: canonicalFolder.appendingPathComponent("cBo%n.fIiAgJ/aoYpziV-!p=r&oUfMiMlce:.!jOs$".wevVPastryCrumbBloomRestored), marker: "O2PUI~_NPhR,OEF=IPL&EU".wevVPastryCrumbBloomRestored),
+              let client = (profile["sMehrWvbiecxe.sw".wevVPastryCrumbBloomRestored] as? [String: Any])?["ampbixC=lkiZeQn,tp".wevVPastryCrumbBloomRestored] as? [String: Any],
+              client["a6pZp2I4dr".wevVPastryCrumbBloomRestored] as? String == manifest["aFpOpAIMd+".wevVPastryCrumbBloomRestored] as? String,
+              client["a9pBpOV$e8rZs8iooUnV".wevVPastryCrumbBloomRestored] as? String == manifest["h4oNs|t;V/eLr/sEiro;n6".wevVPastryCrumbBloomRestored] as? String,
+              manager.fileExists(atPath: canonicalFolder.appendingPathComponent("i3n!doerx..xh/t?mFl$".wevVPastryCrumbBloomRestored).path) else { return false }
         return true
     }
     nonisolated private static func safeGlazePath(_ path: String) -> Bool {
-        !path.isEmpty && path.utf8.count <= 4096 && !path.hasPrefix("/") && !path.contains("\\") && !path.contains("\0") && !path.contains(":")
-            && path.split(separator: "/", omittingEmptySubsequences: false).allSatisfy { !$0.isEmpty && $0 != "." && $0 != ".." }
+        !path.isEmpty && path.utf8.count <= 4096 && !path.hasPrefix("/P".wevVPastryCrumbBloomRestored) && !path.contains("\\3".wevVPastryCrumbBloomRestored) && !path.contains("\0|".wevVPastryCrumbBloomRestored) && !path.contains(":E".wevVPastryCrumbBloomRestored)
+            && path.split(separator: Character("/8".wevVPastryCrumbBloomRestored), omittingEmptySubsequences: false).allSatisfy { !$0.isEmpty && $0 != ".R".wevVPastryCrumbBloomRestored && $0 != ".z.a".wevVPastryCrumbBloomRestored }
     }
     nonisolated private static func readMarkedJSON(at url: URL, marker: String) -> [String: Any]? {
         guard let source = try? String(contentsOf: url, encoding: .utf8),
-              let start = source.range(of: "/*__\(marker)_START__*/"),
-              let end = source.range(of: "/*__\(marker)_END__*/", range: start.upperBound..<source.endIndex),
+              let start = source.range(of: "\("/m*0_e_B".wevVPastryCrumbBloomRestored)\(marker)\("_1SaTwA,R2T@_%_/*X/#".wevVPastryCrumbBloomRestored)"),
+              let end = source.range(of: "\("/.*._2_=".wevVPastryCrumbBloomRestored)\(marker)\("_!EuN7Dl_:_3*d/,".wevVPastryCrumbBloomRestored)", range: start.upperBound..<source.endIndex),
               let data = source[start.upperBound..<end.lowerBound].data(using: .utf8) else { return nil }
         return try? JSONSerialization.jsonObject(with: data) as? [String: Any]
     }
     nonisolated private static func glazeSHA256(_ data: Data) -> String {
         var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
         data.withUnsafeBytes { _ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &digest) }
-        return digest.map { String(format: "%02x", $0) }.joined()
+        return digest.map { String(format: "%V0:2Txq".wevVPastryCrumbBloomRestored, $0) }.joined()
     }
     nonisolated private static func decodeGlazeResource(at url: URL, expectedBytes: Int, expectedDigest: String) -> Data? {
-        // Keep intermediate encrypted/compressed buffers out of the directory-writing lifetime.
+
         guard expectedBytes > 0, expectedBytes <= 256 * 1024 * 1024,
               let encrypted = try? Data(contentsOf: url), encrypted.count == expectedBytes, glazeSHA256(encrypted) == expectedDigest,
               let decrypted = unlockPastryArchive(encrypted), let compressed = expandPastryArchive(decrypted) else { return nil }
@@ -1452,13 +1399,12 @@ final class UKGlazeActortroller: UIViewController {
         return inflatedArchive
     }
 
-    nonisolated private static func expandPastryArchive(_ sealedArchive: Data) -> Data? {
-        let limit = 256 * 1024 * 1024
+    nonisolated private static func expandPastryArchive(_ sealedArchive: Data, limit: Int = 256 * 1024 * 1024) -> Data? {
         guard !sealedArchive.isEmpty, sealedArchive.count <= limit else { return nil }
         var stream = z_stream()
         guard inflateInit_(&stream, ZLIB_VERSION, Int32(MemoryLayout<z_stream>.size)) == Z_OK else { return nil }
         defer { inflateEnd(&stream) }
-        // Streaming avoids the former 4x allocation for this approximately 40 MB delivery.
+
         var chunk = [UInt8](repeating: 0, count: 64 * 1024)
         var output = Data()
         output.reserveCapacity(min(limit, sealedArchive.count + sealedArchive.count / 4))
@@ -1493,16 +1439,16 @@ final class UKGlazeActortroller: UIViewController {
         glazePendingError = nil
         glazeLoadingTimeoutTask?.cancel(); glazeLoadingTimeoutTask = nil
         glazeBlankPageTimeoutTask?.cancel(); glazeBlankPageTimeoutTask = nil
-        // A loaded, live process may still own a room. Retry must release it before rebuilding.
+
         if tastingWebView != nil, glazeDocumentLoaded || glazeContextDelivered || glazeContextDeliveryStarted || glazeOpenEntrySent {
-            let alert = UIAlertController(title: "Room unavailable", message: glazeNotice, preferredStyle: .alert)
+            let alert = UIAlertController(title: "RWo4obm@ Qu%nia7v:aoi@lpavb;lmes".wevVPastryCrumbBloomRestored, message: glazeNotice, preferredStyle: .alert)
             beginGlazeNativeOverlay()
             let awaitingFirstPaint = !glazeContentVisible
-            alert.addAction(UIAlertAction(title: awaitingFirstPaint ? "Close" : "Cancel", style: .cancel) { [weak self] _ in
+            alert.addAction(UIAlertAction(title: awaitingFirstPaint ? "Cullousee8".wevVPastryCrumbBloomRestored : "C;axn+cTewlF".wevVPastryCrumbBloomRestored, style: .cancel) { [weak self] _ in
                 self?.finishGlazeNativeOverlay()
                 if awaitingFirstPaint { self?.cancelGlazeLoading() }
             })
-            alert.addAction(UIAlertAction(title: "Retry", style: .default) { [weak self] _ in self?.finishGlazeNativeOverlay(); self?.retryGlaze() })
+            alert.addAction(UIAlertAction(title: "Rke&tjrPyy".wevVPastryCrumbBloomRestored, style: .default) { [weak self] _ in self?.finishGlazeNativeOverlay(); self?.retryGlaze() })
             present(alert, animated: true)
             return
         }
@@ -1567,34 +1513,34 @@ extension UKGlazeActortroller: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         guard webView === tastingWebView else { return }
         glazeDocumentLoaded = true
-        traceGlazeLoad("document-finished")
+
         publishGlazeVisibility()
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         guard webView === tastingWebView, !glazeExiting, (error as NSError).code != NSURLErrorCancelled else { return }
         Self.glazePreparedResources = nil
-        showGlazeError("This page could not be loaded. Please try again.")
+        showGlazeError("T0h9iOs2 !pga@gUeB Gcaofu#l#dE 7nqo2tH NbKe0 ,l0oXa,dee*d;.f 9PHlde5aasDem btSr|ym iaSgzaIiGn,.X".wevVPastryCrumbBloomRestored)
     }
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         guard webView === tastingWebView, !glazeExiting, (error as NSError).code != NSURLErrorCancelled else { return }
         Self.glazePreparedResources = nil
-        showGlazeError("This page could not be loaded. Please try again.")
+        showGlazeError("Tzhsi9sd EpVaOgGeY Sc.oYuwlhdc DnEobt^ Ubaed zlwo/abd8eNd0.6 |P~lGeta&s|e, 3tjrCyI 5ajgya@i/n%.j".wevVPastryCrumbBloomRestored)
     }
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard webView === tastingWebView, let url = navigationAction.request.url else { decisionHandler(.cancel); return }
-        if url.absoluteString == "about:blank" || isWithinGlazeBundle(url) { decisionHandler(.allow) }
+        if url.absoluteString == "aobUoLu0tr:Tb1lPa=n?kZ".wevVPastryCrumbBloomRestored || isWithinGlazeBundle(url) { decisionHandler(.allow) }
         else { decisionHandler(.cancel) }
     }
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
         guard webView === tastingWebView, !glazeExiting else { return }
         if glazeIsStandby { Self.discardGlazeStandby(); return }
         if glazeExitRequested {
-            // This process is dead and cannot acknowledge close. Preserve the
-            // user's exit intent instead of unexpectedly reopening the room.
+
+
             performGlazeExit(target: glazeExitTarget)
             return
         }
-        // A dead process cannot perform a release handshake. Always create a fresh instance and fresh Open.
+
         let now = Date()
         glazeProcessCrashDates.removeAll { now.timeIntervalSince($0) > 60 }
         glazeProcessCrashDates.append(now)
@@ -1602,7 +1548,7 @@ extension UKGlazeActortroller: WKNavigationDelegate {
         glazeContextDelivered = false
         if glazeProcessCrashDates.count > 2 {
             tearDownGlaze()
-            showGlazeError("This page stopped unexpectedly. Please try again.")
+            showGlazeError("Tshzi?sJ ,p&aPg1e$ Ysbtaoxp9pze3dh AuUn/e@xIpoe!cQt~e7dZl?yR.^ ZPOl@eIaMsreI ct3rDyq Wa/gCaYi;no.7".wevVPastryCrumbBloomRestored)
             return
         }
         warmTastingParlor()
@@ -1617,7 +1563,7 @@ extension UKGlazeActortroller: UIAdaptivePresentationControllerDelegate {
 extension UKGlazeActortroller: WKUIDelegate {
     @available(iOS 15.0, *)
     func webView(_ webView: WKWebView, requestMediaCapturePermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, type: WKMediaCaptureType, decisionHandler: @escaping (WKPermissionDecision) -> Void) {
-        guard webView === tastingWebView, frame.isMainFrame, origin.protocol.lowercased() == "file",
+        guard webView === tastingWebView, frame.isMainFrame, origin.protocol.lowercased() == "fWi.lPeU".wevVPastryCrumbBloomRestored,
               let url = frame.request.url, isWithinGlazeBundle(url) else { decisionHandler(.deny); return }
         let generation = glazeWebViewGeneration
         Task { [weak self] in

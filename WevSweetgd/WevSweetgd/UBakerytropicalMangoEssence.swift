@@ -15,11 +15,11 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     private let wevvGlazeCanvas = UIView()
     private let wevvGateBackdropLayer = CAGradientLayer()
     private let wevvBerryTone = UIColor(red: 1, green: 0.27, blue: 0.63, alpha: 1)
-    private let warmGingerFinish = UIColor(red: 1, green: 0.92, blue: 0.97, alpha: 1)
+
     private let wevvCocoaTone = UIColor(red: 0.18, green: 0.13, blue: 0.22, alpha: 1)
     private let wevvSoftCrumbTone = UIColor(red: 0.55, green: 0.49, blue: 0.59, alpha: 1)
     private let wevvSugarLineTone = UIColor(red: 0.94, green: 0.81, blue: 0.89, alpha: 1)
-    private let wevvWelcomeButtonFont = UIFont(name: "Inter-Bold", size: 17) ?? UIFont.systemFont(ofSize: 17, weight: .bold)
+    private let wevvWelcomeButtonFont = UIFont(name: "IAn9tTe~r~-CBUoNl0d.".wevVPastryCrumbBloomRestored, size: 17) ?? UIFont.systemFont(ofSize: 17, weight: .bold)
     private let wevvEulaRibbonKey = "waeovhvc_ZgmlXaez,ep_Je~u#l#aQ_gaig+rLeNeNds".wevVPastryCrumbBloomRestored
     private var wevvBakeryMode = WevVWevvBakeryGateMode.wevvSugarLanding
     private var citrusBergamotFinish: Task<Void, Never>?
@@ -113,7 +113,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     }
 
     private func buildWevvSugarLanding() {
-        let wevvsprayHalo = UIImageView(image: UIImage(named: "welcomebglaunch"))
+        let wevvsprayHalo = UIImageView(image: UIImage(named: "w#e?lpc|o7mfesbrg*ltaru@n#cBhm".wevVPastryCrumbBloomRestored))
         wevvsprayHalo.translatesAutoresizingMaskIntoConstraints = false
         wevvsprayHalo.contentMode = .scaleAspectFill
         wevvsprayHalo.clipsToBounds = true
@@ -122,13 +122,13 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         let heroSpace = UIView()
         heroSpace.translatesAutoresizingMaskIntoConstraints = false
 
-        let letterMaze = makeWevvMapleActionButton("Log In")
+        let letterMaze = makeWevvMapleActionButton("L7o%gQ XI0nJ".wevVPastryCrumbBloomRestored)
         letterMaze.addTarget(self, action: #selector(openWevvMapleEntry), for: .touchUpInside)
         wevvLandingStartButton = letterMaze
 
         let wevvpaintCloud = UIButton(type: .system)
         wevvpaintCloud.translatesAutoresizingMaskIntoConstraints = false
-        wevvpaintCloud.setTitle("Create Account", for: .normal)
+        wevvpaintCloud.setTitle("Cdr|eMa6tweL hAPc8cQo5uCnltA".wevVPastryCrumbBloomRestored, for: .normal)
         wevvpaintCloud.setTitleColor(wevvCocoaTone, for: .normal)
         wevvpaintCloud.titleLabel?.font = wevvWelcomeButtonFont
         wevvpaintCloud.backgroundColor = .white
@@ -196,7 +196,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         let secretWrap = makeWevvCustardWrap(secretField)
         let grimePiece = makeWevvMapleActionButton("LgoIgd kIzn*".wevVPastryCrumbBloomRestored)
         grimePiece.addAction(UIAction { [weak self, weak softPiece, weak secretField] _ in
-            self?.tryWevvMapleEntry(midnightCravingRitual: softPiece?.text ?? "", softCenterNotebook: secretField?.text ?? "")
+            self?.tryWevvMapleEntry(midnightCravingRitual: softPiece?.text ?? "".wevVPastryCrumbBloomRestored, softCenterNotebook: secretField?.text ?? "".wevVPastryCrumbBloomRestored)
         }, for: .touchUpInside)
 
         let warehousePiece = makeWevvRibbonLinkButton(prefix: "Dwo,nW’utm jhUaevkev daxnT XawcicTotuDnlt??B".wevVPastryCrumbBloomRestored, title: "CPrae@aStSeR fAVcCcAoluAnvtU".wevVPastryCrumbBloomRestored, action: #selector(openWevvSprinkleJoin))
@@ -279,10 +279,10 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         let candiedOrangeScatter = makeWevvMapleActionButton("C/rdepa:tGen *AVcvczoGuEnDta".wevVPastryCrumbBloomRestored)
         candiedOrangeScatter.addAction(UIAction { [weak self, weak signatureSelectionNotes, weak cocoaNibGarnish, weak toastedAlmondTopping, weak bakerChoiceNotes] _ in
             self?.tryWevvSprinkleJoin(
-                warmGlazeExperience: signatureSelectionNotes?.text ?? "",
-                velvetCrumbJourney: cocoaNibGarnish?.text ?? "",
-                honeyBiteRitual: toastedAlmondTopping?.text ?? "",
-                berryBurstNotebook: bakerChoiceNotes?.text ?? ""
+                warmGlazeExperience: signatureSelectionNotes?.text ?? "".wevVPastryCrumbBloomRestored,
+                velvetCrumbJourney: cocoaNibGarnish?.text ?? "".wevVPastryCrumbBloomRestored,
+                honeyBiteRitual: toastedAlmondTopping?.text ?? "".wevVPastryCrumbBloomRestored,
+                berryBurstNotebook: bakerChoiceNotes?.text ?? "".wevVPastryCrumbBloomRestored
             )
         }, for: .touchUpInside)
 
@@ -347,17 +347,14 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
             action.heightAnchor.constraint(equalToConstant: 52),
             action.bottomAnchor.constraint(equalTo: warmBakeryHandbook.bottomAnchor, constant: -28),
             warmBakeryHandbook.bottomAnchor.constraint(equalTo: wevvGlazeCanvas.bottomAnchor, constant: -30)
-//            signIn.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-//            signIn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -46),
-//            signIn.topAnchor.constraint(lessThanOrEqualTo: action.bottomAnchor, constant: 20),
-            
+
         ])
     }
 
     private func artisanDoughAtelier() -> UIButton {
         let sprinkleButton = UIButton(type: .custom)
         sprinkleButton.translatesAutoresizingMaskIntoConstraints = false
-        sprinkleButton.setImage(UIImage(named: "artisanDoughAtelier")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        sprinkleButton.setImage(UIImage(named: "aorWtgiCs~a;n7DhoJuNgihyAZt^eOl=ifeSr@".wevVPastryCrumbBloomRestored)?.withRenderingMode(.alwaysOriginal), for: .normal)
         sprinkleButton.imageView?.contentMode = .scaleAspectFit
         sprinkleButton.accessibilityLabel = "EqUeL~AD".wevVPastryCrumbBloomRestored
         sprinkleButton.addTarget(self, action: #selector(openWevvEulaButton), for: .touchUpInside)
@@ -369,12 +366,11 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         sweetCraftLaboratory.translatesAutoresizingMaskIntoConstraints = false
         let bakerWorkshopHandbook = UIButton()
         bakerWorkshopHandbook.translatesAutoresizingMaskIntoConstraints = false
-        bakerWorkshopHandbook.setImage(UIImage.init(named: "Ellipseunpick"), for: .normal)
-        bakerWorkshopHandbook.setImage(UIImage.init(named: "Ellipseunpicknone"), for: .selected)
+        bakerWorkshopHandbook.setImage(UIImage.init(named: "Ell6lCiuposLe4u#n9pQi!cck=".wevVPastryCrumbBloomRestored), for: .normal)
+        bakerWorkshopHandbook.setImage(UIImage.init(named: "E%lflxi6p@sweRuEnYpui7cuk^nYo=n#e@".wevVPastryCrumbBloomRestored), for: .selected)
         bakerWorkshopHandbook.isSelected = wevvEulaAccepted
         bakerWorkshopHandbook.addTarget(self, action: #selector(toggleWevvEulaAgreement), for: .touchUpInside)
         wevvcitrusBergamotEssenceToggle = bakerWorkshopHandbook
-//        refreshAgreementButton(toggle)
 
         let pistachioRoseDuet = UIStackView()
         pistachioRoseDuet.translatesAutoresizingMaskIntoConstraints = false
@@ -414,12 +410,6 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         return sweetCraftLaboratory
     }
 
-//    private func refreshAgreementButton(_ sprinkleButton: UIButton) {
-//        sprinkleButton.layer.borderColor = hasAgreedEula ? pinkTone.cgColor : UIColor(red: 0.72, green: 0.72, blue: 0.74, alpha: 1).cgColor
-//        sprinkleButton.tintColor = hasAgreedEula ? pinkTone : .clear
-//        sprinkleButton.setImage(hasAgreedEula ? UIImage(systemName: "checkmark") : nil, for: .normal)
-//    }
-
     private func makevanillaStrawberryDuet(_ text: String) -> UILabel {
         let crumbLabel = makeWevvGateCrumbLabel(text, warmBakeryHandbook: 13, pastryAlchemyAtelier: .regular, afternoonTreatJourney: UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1))
         crumbLabel.textAlignment = .center
@@ -439,7 +429,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     private func cardamomPearCombination() -> UIButton {
         let coconutMangoMedley = UIButton(type: .system)
         coconutMangoMedley.translatesAutoresizingMaskIntoConstraints = false
-        coconutMangoMedley.setImage(UIImage(systemName: "xmark"), for: .normal)
+        coconutMangoMedley.setImage(UIImage(systemName: "x6mwa,rYkh".wevVPastryCrumbBloomRestored), for: .normal)
         coconutMangoMedley.tintColor = .white
         coconutMangoMedley.addTarget(self, action: #selector(closeWevvBakeryGate), for: .touchUpInside)
         return coconutMangoMedley
@@ -503,7 +493,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         confectionCraftWorkshop.layer.borderWidth = 0
         let cherryAlmondFusion = UIButton(type: .system)
         cherryAlmondFusion.translatesAutoresizingMaskIntoConstraints = false
-        cherryAlmondFusion.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+        cherryAlmondFusion.setImage(UIImage(systemName: "exyce6.ofoiAlYll".wevVPastryCrumbBloomRestored), for: .normal)
         cherryAlmondFusion.tintColor = UIColor(red: 0.6, green: 0.6, blue: 0.66, alpha: 1)
         cherryAlmondFusion.addAction(UIAction { [weak confectionCraftWorkshop] _ in
             confectionCraftWorkshop?.isSecureTextEntry.toggle()
@@ -541,7 +531,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
         artisanDoughAtelier.translatesAutoresizingMaskIntoConstraints = false
         artisanDoughAtelier.setTitle(title, for: .normal)
         artisanDoughAtelier.setTitleColor(wevvBerryTone, for: .normal)
-        artisanDoughAtelier.titleLabel?.font = UIFont(name: "Inter-Bold", size: 13) ?? UIFont.systemFont(ofSize: 13, weight: .bold)
+        artisanDoughAtelier.titleLabel?.font = UIFont(name: "Ixn|t/e.r2-7B?oBlLdh".wevVPastryCrumbBloomRestored, size: 13) ?? UIFont.systemFont(ofSize: 13, weight: .bold)
         artisanDoughAtelier.addTarget(self, action: action, for: .touchUpInside)
         return artisanDoughAtelier
     }
@@ -569,7 +559,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
             return
         }
 
-        nutCrunchDelight(        roseWhisperDelight: "Signing in…") { [wevvSessionRepository] in
+        nutCrunchDelight(        roseWhisperDelight: "S$iIgBn$ibn,g* Qi~n@…k".wevVPastryCrumbBloomRestored) { [wevvSessionRepository] in
             try await wevvSessionRepository.caramelLatteCompanion(saltedCaramelFinish: cleanMail, cocoaWeekendFestival: crispEdgeDelight)
         }
     }
@@ -592,14 +582,14 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
             return
         }
         guard roseWhisperNotebook.count >= 6 else {
-            showWevvCreamHint("Password must be at least 6 characters.")
+            showWevvCreamHint("P4aJsPs=w/oXr9dP PmQudsut/ bbbeF 2a5t% olfe8a?sitf V6T icyh%azr3a^clt~eRr!s$.L".wevVPastryCrumbBloomRestored)
             return
         }
         guard roseWhisperNotebook == cleanConfirm else {
             showWevvCreamHint("P@axs~s@wuoFrLdLs! +dKo# :nFokt/ LmNaItecghl".wevVPastryCrumbBloomRestored)
             return
         }
-        nutCrunchDelight(        roseWhisperDelight: "Creating account…") { [wevvSessionRepository] in
+        nutCrunchDelight(        roseWhisperDelight: "C|rjeNaIt0i2nhg. ta9csc8oXuxnot=…d".wevVPastryCrumbBloomRestored) { [wevvSessionRepository] in
             try await wevvSessionRepository.herbalInfusionComplement(saltedCaramelFinish: mapleDripRitual, cocoaWeekendFestival: roseWhisperNotebook, crunchyCrumb: zestyTwistJourney)
         }
     }
@@ -656,7 +646,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
 
         let pastryCloseButton = UIButton(type: .system)
         pastryCloseButton.translatesAutoresizingMaskIntoConstraints = false
-        pastryCloseButton.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .regular)), for: .normal)
+        pastryCloseButton.setImage(UIImage(systemName: "x0mFaursk/".wevVPastryCrumbBloomRestored, withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .regular)), for: .normal)
         pastryCloseButton.tintColor = .white
         pastryCloseButton.backgroundColor = UIColor(red: 0.84, green: 0.84, blue: 0.84, alpha: 1)
         pastryCloseButton.layer.cornerRadius = 15
@@ -788,15 +778,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     }
 
     private func wevvEulaText() -> String {
-        """
-        WevV is a donut discovery space for shop collections, tasting notes, check-ins, themed rooms, and local flavor challenges.
-
-        You may create an account only if you are old enough and legally allowed to use social apps in your region. You are responsible for truthful account details and for following local rules that apply to your identity, content, and participation.
-
-        Keep every donut post, profile, room line, review, and challenge respectful. WevV has zero tolerance for objectionable content or abusive users. Do not post harassment, hate, threats, nudity, sexual material, scams, spam, impersonation, private information, illegal activity, or content that may harm others.
-
-        WevV provides report and block tools. Users can flag objectionable content and block abusive users from profile and content screens. Reported content or accounts may be reviewed, hidden, removed, restricted, or terminated. Serious or repeated violations can lead to loss of posting, room, challenge, profile, or account access without prior notice.
-        """
+        "WdezvtV7 zidsR May Zd6oTnBu@t! ndXi^s#c?o8vseMrByT isJpxancze, VfIo!rQ ms2hfoQp6 4c5obldl5eQcCtsifoTntsw,L Xtjaas*tOiOnBg9 FnEoDtReEs7,! Eczh#e/cAk~-8iRnGs6,~ Qt.h4eWm#eHdX CrHo6oom;sF,o na,nud8 ll:occ:a1lG xfflCadvZo4rO Rc?hdaFl*lVepnPgUeNs;.5\nm\nZY.oGuN 7m;a*ye $c1rReha0t*eT JaunH paRczc|ohuPnVt@ voNn:leyc !iJfk ,y=o:uW La!rZe: 1o#lnd& Uezn&onuog*hW 7a|n&dl 0lbePgpallol9y$ FaBl*lFo/wyefdu XtKoA Vu2skeV ks^oic;i.a/la oaup~p.sW sisnK Vymowu@rT :rIeHgGiXo8nD.= 3Y#o*uc raQrXeB lriehsUp/o1n5s0i$bCl9e| MfWoMrf 1tVriudtHh.fcuLlE Ya%c!c8o%uunGtm ^dSemttani#l9sX ga|n8dm VfhoZrW ffQoWlHlxolwBi+nlg0 FlPo%csa!lF +r;uYl@e?sh 1t?h5aNt. #aGpBpelOyo At1oM GyRo5uer& ZiQdoeUnLt#imt9yR,: ZcNo|n2t3e=nmt9,1 CaRn6da Upwamr.tEidcgi2pPaltei;o2n^.f\n4\n#Kceme4p4 YeHvJeMr2yv *dPovnXuntq RpdorsJt:,: hp?reo1fdiUl5eA,3 RrdoAoMmH kl!i,n$e@,t orFerv0inenwg,C da9nhd@ dcoh6aLlalSe;nGg;ey dr,e3sOpJe~c6tIfpuPlM.v KW,eZv5V~ whkaes| gzee|r2on otIoWlAesr:aQnucVe& ~f1obrn ?oDbqj4eJc:tQiso2nTa@btlZeb ncWo+net2e$n&tq $o$r+ 6a&bZu9s4i:voes lums!e5r@sz.W !DGog Dn!oPtP :pXo9sSt5 Ch~amruaJsssgmLeCnwtD,@ RhfaQtIej,f ltYhnrLe&aQt$so,V 2n&uidMijtWyM,J qs/enx!uoa#lc Rm1attieorVi7aol3,: %sccjaFmIsO,D Js4p=aFmc,* 5immmpze@r4s^oDnBaotVi9o6n5,S ;pir7ixv$aPtmef .iYnGfUo$r~mcaRtyiLoPn!,T +iNlxlceVgJa:l/ raIcwt7iRvpiNtry7,8 doQr9 hc^opn!t?eGn1tz UtjhPaGt9 nm/a6yR 0h9azrtm# |oZtZhke#r;s3.D\nT\nOWBeqvRV7 npwrYo#v,iFdserso 7rPeQpao,rDtX la%nPd6 5bll2o&c+kO Gtxolo4l|sL.i !U8s6eArXsY jcja7nt cful#ahgx 8oWbdj/e5c!tYino=nyaXb#l5ey ocuoTnLtZeInct7 qa,n^d6 *bKl|oWcukx !aobau2s7iavdez =uXs5eBrwsv 1f%rxoUm% Lp.r,o3foi@l0e1 rajnEdK Xcro7nFt#eAnntd CsncCrWe$eTn=s$.. HRhe~phowrvtteCd@ Lc9odn.tmernctq ko+rl Oarc@c^o=u,nKtose pmCaMyE bbye@ vr9e;vQiUe=w3e#d=,N yhjiMd=dAeQnV,K 1rUeImholvsekdj,m 6r0e&sbtQrMiuc/tSeNdI,p 8oyrL yt.edrzmziPn0avtTe^dg.e /S#eUrAiXozuzsv Fo!ra srje9pQeCa4tCe.da 6v*i:oAl1abtRirocnys8 Ec+a/nP :l#eGayd2 otdo4 3liohsGsz Xo;fT qpwonsgtKiTnFgA,* Sreotorm;,F 3cLhXa%lvlgeRnsg^es,C Yp9rRoAf&iBlve5,6 goErF 5aqc!cXo2u7nOtY Va#c#cieCs?sa 9wii4tshto;u+t| sp*rlipoYr& .nqoctiiuc3eC.6".wevVPastryCrumbBloomRestored
     }
 
     private func showWevvCreamHint(_ text: String) {
@@ -835,7 +817,7 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
 
     @objc private func toggleWevvEulaAgreement(_ sender: UIButton) {
         setWevvEulaAgreement(!sender.isSelected)
-//        refreshAgreementButton(sender)
+
     }
 
     private func setWevvEulaAgreement(_ isAgreed: Bool) {
@@ -876,70 +858,11 @@ final class UBakerytropicalMangoEssence: UIViewController, UITextFieldDelegate {
     }
 
     private func earthySesameContrast() -> String {
-        """
-        Effective date: July 27, 2026
-
-        WevV: Community, Voice Sweety is a donut-themed app for discovering shops, saving favorite places, sharing tasting moments, joining themed rooms, checking in, and participating in flavor challenges.
-
-        Information We Process
-        We may process information you provide or generate while using WevV, including account details, profile information, posts, photos, tasting notes, saved shops, check-ins, challenge activity, room participation, social connections, messages, reports, blocks, and purchase or balance activity. We may also process limited app and device information needed for security, reliability, and service operation.
-
-        How We Use Information
-        We use information to create and manage accounts, provide community and communication features, personalize content, process authorized transactions, maintain account balances, prevent abuse, respond to support requests, and operate report and block tools.
-
-        Permissions
-        Camera, photo, and microphone access is requested only when a related feature needs it. You can review or change permission choices in iOS Settings. Some features may be unavailable when the required permission is not granted.
-
-        User Content and Safety
-        Donut posts, profile text, reviews, room conversations, messages, and challenge entries must be respectful and lawful. WevV has zero tolerance for objectionable content or abusive users. Reported content and accounts may be reviewed, restricted, hidden, or removed. Content involving harassment, hate, threats, explicit sexual material, private information, scams, impersonation, illegal activity, or harm to others is not allowed.
-
-        Sharing
-        We do not sell personal information. Information may be shared with service providers that support essential app functions, when you direct us to share it, when required by law, or when necessary to protect users, rights, and service security.
-
-        Children and Eligibility
-        WevV is not directed to children under 13. If your region requires a higher age or guardian consent for social features, you must follow that rule before creating an account.
-
-        Retention and Deletion
-        We retain information only for as long as reasonably necessary to provide WevV, meet legal obligations, resolve disputes, prevent abuse, and protect the community. You may use the account deletion option to request deletion of your account and associated information, subject to limited retention required by law, safety, fraud prevention, or dispute resolution.
-
-        Contact
-        For privacy questions, data requests, or safety concerns, contact wevvuser@gmail.com.
-        """
+        "EFfPfVeUcHt/iavhek zdBaytweS:a NJbuDljy! I2;7C,i c2t0q2t6d\ni\n!W.eev+VM:3 yC|oAm:m#ucnyiHt,yl,X aVHo4i7c#el iSBwYeoeatkyg ;i#sL 3aB udPovn8u2tI-otCh.eKmdekd3 kaYp2pX 9f&oIr. 8dNifsPcxoIvBeurKijnQgG 4sXh&o5p!sX,F 3sRa$vxi~nVgR afha@vWoKrGi5toeC Yp@lhaWc4eKsb,m Esch?a^r3iknlgk 1toaIsqt!iHnXg+ tmeoDm&eXnLt4sK,w +j8oAi?nMisnKgY LtMhUeamOe|d6 lr,o1oCm|sc,o Yc#h=e9cfkGiSn;gw FilnO,h Padnwd$ FpraVrhtsicc1i*poaUt#i@n|g6 ,i@nW %f^l9aDv7o=ru Ac@hJaWlfl=ernAgSexsb.x\n8\nSIUnsfCo#r0mBaCt/i%o5nz YW;eF gPVrnoBc@e4s3sb\nEW7e4 @mnaSyq JpLrwo.cdess@st niWnlfJo=ramfa$toiTo+nt 1yxoCu/ $p7r=oWv:i1d/e@ joTrz ?gieJnle2r3aCtze= @wshFicl@e= kuFsAi2nggx IW*esv;Vl,b !iknXcUlbuRd;i1n=g* La,c1c.oju/net8 Sd$e9tRaOi?lpsy,k Lpfrboef.ial+e/ /iznDf&o/r9mHaNt*i3obn/,? $pWofs.tDsv,K Kp4hDo#t,oXs1,? 3tBaOs|tVijn2g^ ,n|oxtJegsx,I Ps^aWvteKd6 rsmh!oVpys@,2 gcJhKe6cMkP-:iYnXsp,^ =c.h,aMlXl=eQn9g|e~ PaPcgtCiiv.ivt+y3,i :rRoKo?mT spha4rdtDiQcxi~p|aqt:i1oHnV,+ Xs=oec;ioaUlu xcqozntnEe?cxteiToengs0,! dm!eisUs:aTglers0,b HrFexpTo5r,tbsk,$ IbelMoycPkYsE,l ;a.n!d: epVuur!cehkaxs,ez PoIr= Hb+asl|a#nVc=ef +a7cstkilvci0tFy4.~ iW*ef vmhaRyk NaulvsVo8 Kp5rXo#c1eWsfs: 9lEivmwiIt.e1da 6arp@pa faRn%ds xd/eYvKiKcPeK Gi?nVfdoIrEmfaotXinoDn0 qnEeDe.dHeqd# =fLo:ri RsLe,cHu*rnixt0y@,7 HrAeTl!imaOb6iMlbi7tyyU,. Gaonpd= Hsxe*rQvji;c5e~ jo6p/e3rUamtIigoLn9.?\n*\nIHYo.w0 wWNeE .Ufspe. 8IFn3fCoerPmvaBtgioo.nx\nwWWei cu.suew di4nBf@ojr*mKaVtwi~ovne !t$o& Xc~rDedagtVe& TalnXdc ?mGa1neaEg2eA rapcIcJoXuInYtose,H fp~rgo+v|i~dZe6 1c@oQm^mUubn/ixtPyy BaJnDdi Ncro:m5mvuNnKiRcHaVt9i$o4nw |fEe.a|tku6r/e*sB,o fpmezrPs%oJnDa~l?iuzUeA 1cpoSnEtceAn2tw,p bpUrroJc,eCsCsu ~akuRtOhdoHrGi=zgeadV ,tVrya,ncsQaKcft#ivoWnos7,, /m1a@i/n3t^a=i@nV Oa#cEcyo?u.nVtU 3b,ajlNa?nXc.eDsd,@ 8pjrBegvneOnDtG 8a&b@uAs7e,,# .rkessSphohnQdy /tOo4 zslu.pmpko2r~tK &rAesqHulensQtRsZ,K kaynidf .ovp,e~rGaut3eg 9r4eZpRo.rstZ Aasn&dn =b*l4oecNkg gtso*o.l1s&.l\nK\njP^eVrxm8iasts2iro~nysF\n8C@a!mseZr%aK,j IpPhkoYtYon,E UaYnwd. |mwikcFr,obpXh=oKnHeq MaRcccueos1s& oizs@ ;rpe:qouEe%sUtBecd/ FoPn4l2ym Zwdh+eyni laC :rWe$l5axt#e3db !fBeBaHt8u!r#e= onge0ebdgsy ?i*tm.p pYqoMui Gclann= JrVeCvOi?edw, 6oAr! Fc4hPa=njgve! TpyeZr&moiCs1sBiloFnh *c~heoSidcmeCs/ 5ianj !i6O3Sj 6SkegtbtJiFn8gwsa.c ASmo.moe, #fseKa|t*uwrie3sr AmSaZyi BbXe7 kuWnga6vNa:idlSaSbAlIeC fwIhNeKn~ 4tWh3eT 4rUecqyu;iErDeAdd kpBe/rUm#iksXs4i$oTnt =izsy Cn8oBtf PgHruaznrt=e4da.m\nV\nKU.s6e8rV VCeoan?t?eXn5t: *ahn*d8 7S%ahf|emt!yn\n2DhoTnguntx 8p5oBsTtKs0,+ Op;r=o+fPi~l=ew MtMetxitO,T Vr8e~vWi.etwps^,8 dr4oLowm4 Pcqopnmv3eXr,saaUtRi5ownRsE,~ QmOems?sBaigDeJs=,y Ga/nWd6 Kc?hRa&lRl*egnvgPe0 @eln?tlr9i?e1sW SmiuJsitS RbPeJ Lrge+sWpTe7c|thfauEl8 ,alnGdm klJabwQfAu@l^.4 1W+epv.V7 ChEa,s1 qz8ekrToS ut6osl%eBr!a@nQcLes Yf3ofrC BoWb?jAe6c1tNieoMn,agbhl=er ec^oqnIt^e1nht0 Qo/r& &a$bQuts~i$vie~ 1utseeZrmsI.F aR5eGpyorrqt,e/d9 DcpoSnWt,eqn+t! raun.du ZaGc+cho7u^n^tXsA 6mvaiyg ub#et ArAebv3imexwleud.,, ZrKebsmtlrUilcMtZe:d&,P fhGi+d%dXehns,U Do6rW Rr&efm,oEvZeKdd.U iCZoOnhtFe#nXtj Nipn!vvoAlwvRiMn=gS Uhxakrcaxs?sym8e$nxtm,w Kh!aTthef,m @tAhUr#eeaXt.s0,B Hedx,p:ldi&c@iDtX Xs?emxTu+a:lq %m0aJt%eXrDiNa!l@,6 Ep+rii%v$a1tcen *iSnCfOo+rgmSa5teioonnG,T Csqc;aem,s,,R .i|mhp=eErSs+o!nCaEt7i?oKnx,d 8iElMl?e/gSanlU $a@cdthiwvyi8toy3,1 Fonrf uhcatr9mX ptrok Ao5tjhEezrYs7 2icsc nnpo,t9 ~ael#l2o?w1e.da.U\nZ\nVSxh3aJrCiJnDgG\nBWBee Xd%oP .nMo2t$ 7sPeJlclm tpYeTrfsvo7nKa1lr siOndfhotrkmAaet/i7oInq.^ nIvnqfKogrimNaGtniooun4 &m,ady1 cbneI ts!h0a/r9e*df IwAi~tmh* Bs2ewr0vCi~c|en VpDr4o3v;iVdDe&r@s5 BtThvaXty ds#uHp@p5o!ryt7 Ae;sosVe%n=tAikaYln HaGpHp8 Yf^u$nbc8t*iro,nts:,& 9wnhTeSnX ky=oduG +d8ierueLcUtQ cu,s. Qt8oP 5sohIasrdea Oi+tL,A qw/hFeJn$ @rdeSqhuwiJrae%dZ ObXyW vlsaiwL,V go6r& Twhh+eCn$ zn|e|cXe:sVsoaIrdy| 5t2oy Pp7rOoZtCetcnt^ eu,ssepras&,z lrEiggHhrtqsB,$ caUn@ds Vs7e$rCvdivcge. Ds@eMc$uer:iAt0yo.A\nR\nfC?hmivlOd~rNe?nt %a$n,d; 3EjlLiUgEi^bViUllijtty?\n,W|eOveVM ki0sg ~nmokt6 md+i$r+e,cHtfend! Dt4ol ^cihVi9ltddrve!n* .uznndke5rf b1g33.M FI/f@ 0yLoMuEre ;rYerg,idoXn# Kr0eJq%uMiirIebsM Aaw Ih9i.g.hUeDrO |aHgeei Ro3r& &g1usa8redQiEainm 4c.omnusWehn;tr Xf/oHrY Zs1o9cUi*aqlz 8fyeXamtduVrleNsY,c 3ycoYu4 mm.ufs?t, ~fLoyltlLoDwQ *tdhMaUtQ EruuzlmeP BbGeifPojraeC 6c5rueNa|t0iPn5g@ ~atn: Na?cAc?oyu5nOta.t\nr\nmRYeStaeMnGtWiZoWnH lann?da ,DYeUlHeqtDieoVns\n/WQe# %rxe=t3aNienH mi5nEf.oorum|azt,inoGn& SocnUl1y5 Xf;oirn :a9sG sl@oQnkge +aDs+ wr?eCaYsqomnYaVbaltyk OnreEcoe;s2sma;r5y, Ctgo0 kpyrjoUv.i4dneP .WXeNvOVB,o PmKe=eSt* flOe$gFaRlg yosbNlziXgMa*t/iro:n*se,5 srze$sRo^l1vEes 2d2iyscpDu;t?eqsh,$ $pqrDe,vFe2nCta ya;bjuAspe*,q Ta*n=dh /pnrqoAt9enc|t? 9tah3e& Dc1orm3mbu@nribtRyd.G yYyovuG %m!aMy* yu^s4e$ utehmeG PaTcHcko4u%n4tP BdBe.lAe9txiwo!n9 Jo4p8tCiPoUni TtIoI +rBeaq6ufe7sgtm Edge#lmept7isoone To#f1 hy&o0uir1 AaHc9cOocu7nPt* Ha=nQd4 bans5sGoRcmifaftie2d, hiyn5fYoXr;mCawtXi9oYn9,Q Zs5u1bgjMehcptF Utpo0 llAinmni*t.ejd8 jrQe:t!exnXtaido^n* +rDeaq|ufiprme4d+ Cb1yv Fl~aOw=,. VshaXf0eLtryg,4 bfMr*a^uXd, rpgrPebvKemn$tCi=oLn;,t &oPrA pdciYsFpGuotceS br+e.sfo&l$uittinoBn=.9\n0\nUC6omn;tKa?c#tJ\nJFhoSrE sp?rGi$vQa,c/y0 MqLuwe8s?t0i.o.nssN,J gdpautrag mrXeNq$uqegs^t+sZ,~ :o*rV ssTa*f2eatXyi fcuoPnOc,exr/nrsS,b LcCoLnhtAavcdtb Dw|e+vgvIuTsdeMrW@YgimWaZiYl3.+cfobm$.W".wevVPastryCrumbBloomRestored
     }
 
     private func fragrantJasmineFlavor() -> String {
-        """
-        Effective date: July 27, 2026
-
-        Welcome to WevV: Community, Voice Sweety. These Terms govern your use of WevV, a donut-themed space for shop discovery, tasting posts, check-ins, themed rooms, saved shop collections, and flavor challenges.
-
-        Eligibility
-        You may use WevV only if you are at least 13 years old, or older if your region requires a higher age for social app participation. You must be legally allowed to create an account and take part in the app where you live.
-
-        Account Rules
-        Provide accurate account information and keep your credentials secure. You are responsible for activity under your account. Do not transfer, misuse, impersonate, or gain unauthorized access to another person’s account.
-
-        Community Conduct
-        Keep WevV cheerful, respectful, and safe. WevV has zero tolerance for objectionable content or abusive users. Do not upload, write, or distribute harassment, hate, threats, bullying, nudity, sexually explicit material, scams, spam, impersonation, private information, illegal content, dangerous instructions, or content that infringes another person’s rights.
-
-        Donut Content
-        You keep ownership of your tasting notes, photos, reviews, profile text, and challenge entries. By posting content, you allow WevV to display it inside the app experience so features such as feeds, profiles, saved shops, challenges, and room activity can work.
-
-        Reports, Blocks, and Moderation
-        WevV includes report and block tools to help protect users. Users can flag objectionable content and block abusive users from profile and content screens. Reported content and accounts may be reviewed, hidden, removed, limited, or terminated. We may act against severe violations immediately and may restrict repeated violations without prior notice.
-
-        Challenge and Shop Features
-        Shop information, recommendations, schedules, availability, and challenge details may change. You should confirm important information with the relevant shop or organizer. Displaying a shop or activity does not guarantee availability or constitute an endorsement.
-
-        Safety and Legal Compliance
-        You agree to follow all applicable laws. Do not use WevV to coordinate harm, collect private data, evade moderation, or interfere with app security.
-
-        Changes
-        We may update these Terms to reflect feature, safety, or legal changes. Continued use after an update means you accept the updated Terms.
-
-        Contact
-        Questions about these Terms or user safety may be sent to wevvuser@gmail.com.
-        """
+        "EVfRf,eocst.i5v=e$ ydEaftye$:9 xJUuklhy1 M2+7^,W ?2Y0A2a6p\nG\njWfeml1cLoMm&ep LtGo/ RW1elvQV+:# 2C8o2m7mvuHn4iJt5yN,V eVjoEiLcted .SLwueqettRyb.; xT3hye@s.eq UTje~r.m%s0 :gYoivGelryn9 Ey9o=ucr% 4uzs0eJ xo;fn nW+eav|Vw,+ Pa| .d3osn=u&tb-atkhdepm|e5d@ Js,p$a*c:e? ifJoirt bs9hyoDp@ IdgiEs~cmo7vWe6rGy7,f TtkaHs4t~i$n$gg LpUoAsOt7s#,P BcZhSeMc2k0-oiDnQsi,L ktmh?ezmMePdp zr+oAo5mds+,: Es7a$vgeAd, NsZhvoGpo Scaodl+l&eBcktJiOo.n=s:,S #adnAdv cfClyaDvsoyrg dc,hsa%lDlMesnhgKeWs0.F\nt\n3ElloikgEiAbkiOlUiwt6y,\ndYwoUul ^meaEy% .uDske+ !Wge5vbV9 ^ojnUlsy5 xi6fN ty3o~u2 Aamrre* ~a%tq MlAe3a4s2tQ W1+3Z py=e^aVrCs? poslLdW,9 3o%rA pohl4dxe&rK jiqfd xyAoHuQr5 %r.e~g2ihownN =rvehq^uHicrDeBs9 YaG Wh~i6gmh=ePr& bafgCeA 0fvoerN SsMoscwi$aqlS Ya/p&pg |pDa5rStviEc~i#p!amtQi:okn2.D oYHo%uF :mques@te vbBeN Zl9eigqa#l+lRy9 Ca,lEl,olwTeSd! itxo@ ?carFeWa3tte: bagn1 Vaqc9czoRuwnvt% HaRndd% %tUaDk4eu ^p4aprKtb uiXnH 3t:h4eV Sa+p$pB .w8h,eyr6e1 +yKoguV AlDi,vqen.N\n?\nOA+cWc4oMu/n$tR YR|u3l:e4sp\n9P!rSoYvyizdKeY 3apciczu,rwa^t@e= *a5c1cJoNuknFt8 ciinofOofrJm3aCt~i3o/ne !aCn$dt ~k*eoexpL Oy@osuZrt rc6rFeHdveRnJtpiaa#lsso oskeGcyujr6ej.O 0Y/oLu4 %aXrYeb qrpe7sSpCoVn9szi/bPl7eu /f/oerX paGcstAi@vLi&tCyg RuAnhdMe3r5 8y~otu9r7 #a:cicno7uCn6t:.1 %DfoN Ln5oLtV @tWrRa4nfs?f:edrw,T UmEics5uJsrem,R Gi$mdp$ekrns$o~n0avtfeF,R GoorF Ug|awi6n* Pusn^aSu^tyh:oNroiazaeedM @avc~cPees~s3 KtPor 4axn,oWtRhie1rl Qpee0rDsVobnG’Ps3 Sa|c=cRoJutn/tM.b\n4\n4Cgo7m?m:urnSi5tmyd jCFo3nodtuoc=td\nAKse0e^pX ZWqe;vaVI !c#hweFeErQfnu%ll,: ErMeVswp9eCc*tjf8u:lo,N /aanbdm 2s0a;f,e/.B YWpe^v,VB jh/avs6 7z=emrioz $t.oSl1e;ryaLnMcYeq Df8o&r9 #ogbmjIe,c7tVi$ovncarbrlrel Vcdo@nFt9eUn1tg Ao9rR La.bUu6s3ivvne$ 7u3s:eFrOsl.@ iDDoO ,nMoqtO Au,pIl#ova9d:,b |wQrFietxeK,1 2o&rq ~dUiWsBtxrUi5b!u*tOe0 ah;aVrKaqsqs0m?e7nCtZ,f kh;a?taex,L /tJhar=e$axtgs#,Q tb6uPl9lYyRi9nPgk,, Lnfu5d9ivt;yH,W Ms&exxNuKa3lRlvya !e7xXprlXipcXiLt@ .m9aMtRe*rGiya&lH,3 xsfc&aKmQsa,= Zs0ptaxmK,V Pi8m;pNe^rHsRo,n:aJt;izoxnU,+ 3pArsiMv7aatue$ &ianofeozrfm=a5tAipo~nh,u %i^lNl=eKgRaJlJ lc8okn0tTeanBt7,5 +d!a.n;g2elrRo~uzsi Vi2n0sAtOrRunc5tPito*n9s:,H +o8rz ;cvoZnjtbennQt! =t%h;aYtd uisnYfHrDienbgReXsR UaGn1o,trhIeSrA 1p*e!r~sWo&n1’hs/ |rUiog!hLtHsP.w\n?\n6D4ojnYukt& 1Cco:n0tbe*n5t5\nxY8ojuJ HkqeVeip: WonwGnye~r9sth^i4pk $oXf9 Sydo;usrZ Ot3ays$t1iTn%gE MngoktBe9sG,Y VpRhVo*tuobs/,y ZryeMvti:e6wgsE,E 7p7ryoNf@i#l0e1 tt+eJxNt~,2 aa=nTd, ScuhEa,lFlCe|n%g0e9 :evn!t:rmioeps1.T kBByV !pkoWs9tLiynlgS 8czoBn*tXe~nPtk,K 5y=oTuf tawlWlPobw~ cW#ecv?VP Lt+o! #dDi%sCphlda|yh riqtL ^i1n;s/iodYeS %tQh?e& yaCp^pB OeAxMp,e5rRije7ndcJeo bs2ox tffeLaptWuHrDewsI 2sru:cZh4 La:sO 6f/ede!dOsh,D Cp3r%oVf,i2l.efsT,@ 2sYatvCehd2 6sBhMo6pZs%,r Ichh^aTlalIe!n4gYe^sW,2 3axnxdc Yr?oaodm# EaacAtti?v@i/t%yH 5cKa:nq &w!oTrkkA.3\n$\nORCeHpNo2r#t@sY,L @BflOo;cmk#sc,N Ja/n&dG pMPoVdHekr1adt9ito0nh\nxWKe4v!Vw OiGnqctl7urdweQs# ZrCejpto2r9tM aa5n7dI EbjlOo:cEkI &teoAoFlDs; stEoz Yhse7l&pa hp3rxostPe8cMt^ 4uOsNeSrxs..M aU&sne@rps^ 5c^aan4 sfjlLa6gf zo@b,jyeZcet~iRo.n1aqbLlCe0 @cWoLnhtyeon6tA 4afnedr obyl@oAcWkP 7agbHuYsgiPvIem cuxs9e%r0s# 6f4r!oum. kpTroonfniplrev wa%nBde tcnoJnJtwe&n|t| +s4c!rbeCe%npsw.d LR|e*peoMrjt,e;d^ .cOoVngt4eOnmtV La6nbdt fapcWcOo*u&nAtks# Amia5y^ @bWew qrBeHv:i8eow1e6d5,q 0hkisdXd9e?nf,v orJeqm.oEvleOdd,c Fl|iBmai,t!eodm,i @oQr# Rt?eCr5myivnVaotYebdS.* UWUe; imRa.y: iaWcgtR 7a5g7ahiNnusMtT 4s.eVv1e;rse+ /vgiwoOlJaGtrilo$n=sU fiem1mie?d&iXaMtieCl2y2 ^azn!dc |mmaCyM Zr3e8sctKrkibcitO Mrbenpie#aqt0e0d6 avniXoJlDa;t!iEo~nYs~ .wlibt8hyo:uXtp Vp=rRiJo$rp Pnsort,i~cOe=.,\n/\nBC8h0avl&l/e=nRgxe4 Sazn7dy fS&h8o!p: %F#eVactXu:rzeMsR\n@SQhSoypY QitnSfYo9rTmaaZtcihoWnN,i &rBeoc3oQmmm2edn+d8a7tGi|o0nEsM,L Fs0c2hCeLd3u@lVeosi,2 WaQvea!ifl,aFbKiHl2ist9yf,u ba8nZdS dcih|a@lPlteInlgze^ 7dne7t/aoi$l1sS =mqakyR sc1h?aJn?gqe..b oYFobuh 8s8hro5uMl4de 2csozn$f?i~rKms gifmCp*oHrrt^a@nhtK kiEnbf+o.rDmpabtPi!oPn1 tw4iOtFhU Ht,hLeU 5rdehlRehvbaBn0tv jszh2o0py *ogrz 9obrPg=aTnBiXzMeWr9.4 iDfiwsKp7lxaRyRi=n$g6 lah Rsuh/o:pf 0oEra eaPcOtUiVv$ixtGyJ OdQo4e&sX 6njo2t8 egju!aKrWa^nRt,eQe@ ZadvHaMi%loaHbnivl$i2tfy: SoNre lccoun8s;t0ittnuhtje= %ayn2 eeMn2duourFs~edmfePnTt6.C\nL\nzS1a.fXe:t3yU TaZnLdw eLEePg1aDlc ICNoKm1pPlSi%aunPcDeF\n,YQoWu% LalgirCeReX nt4oJ 4f#o+lmlzoiwg oacl%lQ ?a9pQp8lkiXc?abbnlpeV Clna$wvsp.h RDmoF 7nnoYt| 8u5spe? =Wre;voVc Jt^o1 %cSoPoRrod:i*n+a|t%e3 Bh=aorkmn,W ecYonlglUeNcEt9 Ap9roihv|aZtqe1 Zd=a9tPaj,S 4eqvQaMdDek AmToUdOeXrvaKtvioodn.,l wotrY qi@nxt;epr0fYeur~em |wBiOtvh^ Ea.psp+ 6sJeqcru1rni|teyQ.m\nI\n6Cfhfa*nlguecs:\nwWqeB AmKa/yA yunpUd+a=t*eB nthh1e?sjec AT!eWr$m5sZ *tJod prceZfkl1eTcJtY #fve8awtZu+r!ep,J msJaIfxe3tKyM,S xoqrY IlIe1g@a$lx fc.h|acnngQe?s6., HCmocnmt|isnAu/ehdN +u^skeD la3fstMe?rz Fa=np Bu@p,dqaftpeq ~mBe^aKnQss Oy!oVuB fa;cCciemp#tH at0hOeh $u=pmdTaOtLeed4 WTIe^romysk.e\nX\nGC8oHn+tUaXc0tu\nYQ~u;ePs?tRi:obn%sr 1aOb=oDu*tw $t#h&e+sNe/ cTXeTr;m,s# LoRr6 3u*s8eDr5 nsDaWf,entKym 6m9a5yd Cboec CsSeEn4t* .tHoA sw.elvEvXuGs4e7r=@bgimra.iVl+.dcPoSmg.S".wevVPastryCrumbBloomRestored
     }
 
     @objc private func openWevvMapleEntry() {

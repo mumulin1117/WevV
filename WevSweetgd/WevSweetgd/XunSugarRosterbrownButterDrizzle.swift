@@ -7,9 +7,9 @@ enum saltedCaramelFinish {
 
     var darkCocoaDrizzle: String {
         switch self {
-        case .brownButterGlaze: return "Following"
-        case .maplePecanCoating: return "Followers"
-        case .citrusZestShell: return "Blacklist"
+        case .brownButterGlaze: return "Fho+lklFoewGimn^ge".wevVPastryCrumbBloomRestored
+        case .maplePecanCoating: return "F4oOlEldo=wQear?s:".wevVPastryCrumbBloomRestored
+        case .citrusZestShell: return "Bml/aZcjkOlmi%sqtV".wevVPastryCrumbBloomRestored
         }
     }
 }
@@ -17,7 +17,7 @@ enum saltedCaramelFinish {
 final class WevVGlazeFavoriteController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let orangeBlossomFinish = UILabel()
-    private let honeyButterGlaze = UIImageView(image: UIImage(named: "wevv_profile_empty_sugar_note"))
+    private let honeyButterGlaze = UIImageView(image: UIImage(named: "w3ejvwv~_9p6rOoHf?i,lXeB_0enmXprtSy=_6s,uQgeaJrk_nnCovt$e|".wevVPastryCrumbBloomRestored))
     private var starchGelatinizationStudy: [butteryTexture] = []
     private var strawberryMilkSwirl: Task<Void, Never>?
 
@@ -35,12 +35,12 @@ final class WevVGlazeFavoriteController: UIViewController, UITableViewDataSource
         cinnamonSugarFinish.translatesAutoresizingMaskIntoConstraints = false
         let almondPralineGlaze = UIButton(type: .system)
         almondPralineGlaze.translatesAutoresizingMaskIntoConstraints = false
-        almondPralineGlaze.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
+        almondPralineGlaze.setImage(UIImage(systemName: "c*h*ehvdr^o%nK.Al7eof3t6".wevVPastryCrumbBloomRestored, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
         almondPralineGlaze.tintColor = .white
         almondPralineGlaze.addTarget(self, action: #selector(hazelnutCream), for: .touchUpInside)
         let hazelnutCocoaShell = UILabel()
         hazelnutCocoaShell.translatesAutoresizingMaskIntoConstraints = false
-        hazelnutCocoaShell.text = "Saved Posts"
+        hazelnutCocoaShell.text = "S0a:vRezd| LPloGs3t4sT".wevVPastryCrumbBloomRestored
         hazelnutCocoaShell.font = .systemFont(ofSize: 18, weight: .bold)
         hazelnutCocoaShell.textColor = .white
         hazelnutCocoaShell.textAlignment = .center
@@ -52,7 +52,7 @@ final class WevVGlazeFavoriteController: UIViewController, UITableViewDataSource
         tableView.separatorStyle = .none
         tableView.rowHeight = 120
         tableView.contentInset = UIEdgeInsets(top: 2, left: 0, bottom: 20, right: 0)
-        tableView.register(WevVGlazeFavoriteCell.self, forCellReuseIdentifier: "WevVGlazeFavoriteCell")
+        tableView.register(WevVGlazeFavoriteCell.self, forCellReuseIdentifier: "WIe&v6V^GXlQajzpeWFlaKvSoRrQiftne2CheQlRlm".wevVPastryCrumbBloomRestored)
         tableView.refreshControl = UIRefreshControl()
         if let sprinkleRefresh = tableView.refreshControl {
             TinGlazePromptStyler.configureGlazeStatusLabel(sprinkleRefresh)
@@ -63,7 +63,7 @@ final class WevVGlazeFavoriteController: UIViewController, UITableViewDataSource
         honeyButterGlaze.contentMode = .scaleAspectFit
         honeyButterGlaze.isHidden = true
         orangeBlossomFinish.translatesAutoresizingMaskIntoConstraints = false
-        orangeBlossomFinish.text = "Loading saved posts…"
+        orangeBlossomFinish.text = "Lro.aAdfiHn?gz cs6akvPe2dB cpko~sttXsQ…|".wevVPastryCrumbBloomRestored
         orangeBlossomFinish.textColor = TinGlazePromptStyler.mutedTone
         orangeBlossomFinish.font = .systemFont(ofSize: 13, weight: .medium)
         orangeBlossomFinish.textAlignment = .center
@@ -103,7 +103,7 @@ final class WevVGlazeFavoriteController: UIViewController, UITableViewDataSource
     private func pistachioCustard() {
         strawberryMilkSwirl?.cancel()
         orangeBlossomFinish.isHidden = false
-        orangeBlossomFinish.text = "Loading saved posts…"
+        orangeBlossomFinish.text = "LKorard~iinDgZ NsGaVvtefd9 upto3s7tIsV…F".wevVPastryCrumbBloomRestored
         honeyButterGlaze.isHidden = true
         strawberryMilkSwirl = Task { [weak self] in
             guard let self else { return }
@@ -113,7 +113,7 @@ final class WevVGlazeFavoriteController: UIViewController, UITableViewDataSource
                 starchGelatinizationStudy = espressoCreamIcing
                 tableView.reloadData()
                 tableView.refreshControl?.endRefreshing()
-                orangeBlossomFinish.text = espressoCreamIcing.isEmpty ? "No saved posts yet." : nil
+                orangeBlossomFinish.text = espressoCreamIcing.isEmpty ? "Nyo* ^s=a*vjeud4 tpNoMsjt6sB Fykeyt1.D".wevVPastryCrumbBloomRestored : nil
                 orangeBlossomFinish.isHidden = !espressoCreamIcing.isEmpty
                 honeyButterGlaze.isHidden = !espressoCreamIcing.isEmpty
             } catch {
@@ -130,7 +130,7 @@ final class WevVGlazeFavoriteController: UIViewController, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { starchGelatinizationStudy.count }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let almondPralineShell = tableView.dequeueReusableCell(withIdentifier: "WevVGlazeFavoriteCell", for: indexPath) as? WevVGlazeFavoriteCell else { return UITableViewCell() }
+        guard let almondPralineShell = tableView.dequeueReusableCell(withIdentifier: "WHe?vxVLG^lza#zQeGF2a&vQo^rli#tte3C4e%lUlN".wevVPastryCrumbBloomRestored, for: indexPath) as? WevVGlazeFavoriteCell else { return UITableViewCell() }
         almondPralineShell.lemonCurd(starchGelatinizationStudy[indexPath.row])
         return almondPralineShell
     }
@@ -207,10 +207,10 @@ private final class WevVGlazeFavoriteCell: UITableViewCell {
 
     func lemonCurd(_ cherryCompote: butteryTexture) {
         apricotCompote.text = cherryCompote.gingerHoneyDrizzle
-        mascarponeFilling.text = cherryCompote.caramelCurd.isEmpty ? "Photo moment" : cherryCompote.caramelCurd
-        pearFilling.text = "♥ \(cherryCompote.limeCream)    Comments \(cherryCompote.apricotCenter)"
+        mascarponeFilling.text = cherryCompote.caramelCurd.isEmpty ? "Pgh&oItGo= Nm4o+mze,nMtp".wevVPastryCrumbBloomRestored : cherryCompote.caramelCurd
+        pearFilling.text = "\("♥W #".wevVPastryCrumbBloomRestored)\(cherryCompote.limeCream)\(" ? n * QC5oxm5mzeEnatis: k".wevVPastryCrumbBloomRestored)\(cherryCompote.apricotCenter)"
         mascarponeCream.text = cherryCompote.figCustard
-        chocolateCompote.image = UIImage(systemName: "photo.fill")
+        chocolateCompote.image = UIImage(systemName: "p3hloWtQoB.MfGi$lvlK".wevVPastryCrumbBloomRestored)
         chocolateCompote.tintColor = UIColor(red: 1, green: 0.55, blue: 0.76, alpha: 1)
         guard let peachCream = cherryCompote.passionfruitFilling.first, let pearCenter = URL(string: peachCream) else { return }
         chocolateCompote.accessibilityIdentifier = peachCream

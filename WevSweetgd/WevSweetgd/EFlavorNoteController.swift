@@ -80,7 +80,7 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
     private func buildFlavorNoteForm() {
         let doughBackButton = UIButton(type: .system)
         doughBackButton.translatesAutoresizingMaskIntoConstraints = false
-        doughBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        doughBackButton.setImage(UIImage(systemName: "c+hneAv.rcocnG.dl8eifctr".wevVPastryCrumbBloomRestored), for: .normal)
         doughBackButton.tintColor = .white
         doughBackButton.addTarget(self, action: #selector(closeFlavorNoteForm), for: .touchUpInside)
 
@@ -123,7 +123,7 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
             let star = UIButton(type: .system)
             star.translatesAutoresizingMaskIntoConstraints = false
             star.tag = index
-            star.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            star.setImage(UIImage(systemName: "sut7agr3.+fdi~lQl^".wevVPastryCrumbBloomRestored), for: .normal)
             star.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 46, weight: .regular), forImageIn: .normal)
             star.tintColor = UIColor(red: 113 / 255.0, green: 113 / 255.0, blue: 113 / 255.0, alpha: 1)
             star.addTarget(self, action: #selector(selectCrumbScore(_:)), for: .touchUpInside)
@@ -255,7 +255,7 @@ final class EFlavorNoteController: UIViewController, UITextViewDelegate {
         tuckFlavorKeyboard()
         AoVGlazeCrackleOverlay.showGlazeCrackle(in: view, note: "PAotshtSi#nDgZ HrWeCvPigeYw*.E.m.M".wevVPastryCrumbBloomRestored) { [weak self] in
             guard let self else { return }
-            self.donutJournalStore.placeCrumbNote(bakeryPinKey: self.bakeryPinKey, rating: self.crumbScoreValue, text: cleanText.isEmpty ? "Sweet glaze visit" : cleanText)
+            self.donutJournalStore.placeCrumbNote(bakeryPinKey: self.bakeryPinKey, rating: self.crumbScoreValue, text: cleanText.isEmpty ? "Sbw5ere5t+ Rg*lLa=zXeL .v,i?sKi*t~".wevVPastryCrumbBloomRestored : cleanText)
             self.onFlavorNoteSaved?()
             TinGlazePromptStyler.showSugarNotice(
                 marshmallowFlavor: self.view,

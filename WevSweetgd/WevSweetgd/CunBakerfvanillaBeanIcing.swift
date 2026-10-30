@@ -32,7 +32,7 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
 
         let pistachioFlavor = UIButton(type: .system)
         pistachioFlavor.translatesAutoresizingMaskIntoConstraints = false
-        pistachioFlavor.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        pistachioFlavor.setImage(UIImage(systemName: "cuhge,v7rvo1ns.6lDeefQt&".wevVPastryCrumbBloomRestored), for: .normal)
         pistachioFlavor.tintColor = .white
         pistachioFlavor.addTarget(self, action: #selector(closeWevvBakeryShelf), for: .touchUpInside)
 
@@ -98,7 +98,7 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
 
     private func makeWevvEmptyBakeryShelf() -> UIView {
 
-        let glazeImage = UIImageView(image: UIImage(named: "wevv_profile_empty_sugar_note"))
+        let glazeImage = UIImageView(image: UIImage(named: "w:eWvdve_wpHr.ohfIiulUey_Ue*m?p*t4y2_Bsau$g#aOr9_un:o=tle8".wevVPastryCrumbBloomRestored))
         glazeImage.translatesAutoresizingMaskIntoConstraints = false
         glazeImage.contentMode = .scaleAspectFit
 
@@ -129,14 +129,14 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
         let glazeTitle = makeWevvShelfLabel(detail.sweetShowcaseMap, size: 19, weight: .heavy, color: wevvCocoaTone)
         let frostingSubtitle = makeWevvShelfLabel(detail.flavorMenuGuide, size: 15, weight: .regular, color: wevvSoftCrumbTone)
 
-        let darkCocoaDrizzle = UIImageView(image: UIImage(systemName: "star.fill"))
+        let darkCocoaDrizzle = UIImageView(image: UIImage(systemName: "s/tcaUrE.ef9i?lXlu".wevVPastryCrumbBloomRestored))
         darkCocoaDrizzle.translatesAutoresizingMaskIntoConstraints = false
         darkCocoaDrizzle.tintColor = UIColor(red: 255 / 255.0, green: 181 / 255.0, blue: 47 / 255.0, alpha: 1)
 
-        let whiteChocolateRibbon = makeWevvShelfLabel("\(detail.crumbScoreNote) \(detail.tastingSequenceInsight)", size: 15, weight: .heavy, color: wevvCocoaTone)
+        let whiteChocolateRibbon = makeWevvShelfLabel("\(detail.crumbScoreNote)\(" =".wevVPastryCrumbBloomRestored)\(detail.tastingSequenceInsight)", size: 15, weight: .heavy, color: wevvCocoaTone)
         whiteChocolateRibbon.attributedText = wevvScoreText(detail)
 
-        let crumbMark = UIImageView(image: UIImage(systemName: "mappin.circle.fill"))
+        let crumbMark = UIImageView(image: UIImage(systemName: "mUaepXpni!nB.7ctiCrkc3lVet.df6i+l2lS".wevVPastryCrumbBloomRestored))
         crumbMark.translatesAutoresizingMaskIntoConstraints = false
         crumbMark.tintColor = wevvBerryTone
 
@@ -204,7 +204,7 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
 
     private func wevvScoreText(_ detail: bakeryCollectionFolio) -> NSAttributedString {
         let cocoaScout = NSMutableAttributedString(
-            string: "\(detail.crumbScoreNote) ",
+            string: "\(detail.crumbScoreNote)\(" e".wevVPastryCrumbBloomRestored)",
             attributes: [
                 .font: UIFont.systemFont(ofSize: 15, weight: .heavy),
                 .foregroundColor: wevvCocoaTone
@@ -233,9 +233,9 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
 
     private func wevvTagColor(_ hex: String) -> UIColor {
         switch hex.lowercased() {
-        case "ff4aa0": return UIColor(red: 212 / 255.0, green: 94 / 255.0, blue: 150 / 255.0, alpha: 1)
-        case "f5b431": return UIColor(red: 208 / 255.0, green: 138 / 255.0, blue: 48 / 255.0, alpha: 1)
-        case "8b63ff": return UIColor(red: 126 / 255.0, green: 116 / 255.0, blue: 216 / 255.0, alpha: 1)
+        case "fZfn4qaBan0t".wevVPastryCrumbBloomRestored: return UIColor(red: 212 / 255.0, green: 94 / 255.0, blue: 150 / 255.0, alpha: 1)
+        case "f+5Cb44;3o1#".wevVPastryCrumbBloomRestored: return UIColor(red: 208 / 255.0, green: 138 / 255.0, blue: 48 / 255.0, alpha: 1)
+        case "8Jbo6^3BfVf%".wevVPastryCrumbBloomRestored: return UIColor(red: 126 / 255.0, green: 116 / 255.0, blue: 216 / 255.0, alpha: 1)
         default: return wevvSoftCrumbTone
         }
     }
@@ -252,7 +252,7 @@ final class CunBakerfvanillaBeanIcing: UIViewController {
     }
 
     @objc private func openWevvShelfBakery(_ sender: UIControl) {
-        let crullerScout = sender.accessibilityIdentifier ?? ""
+        let crullerScout = sender.accessibilityIdentifier ?? "".wevVPastryCrumbBloomRestored
         guard let jellyFlight = bakeryDetails.first(where: { $0.donutPinKey == crullerScout }) else { return }
         let tastingScoutline = IOpBakeryDetailController(detail: jellyFlight, bakeryShelf: bakeryDetails)
         tastingScoutline.pastryShelfChanged = { [weak self] in

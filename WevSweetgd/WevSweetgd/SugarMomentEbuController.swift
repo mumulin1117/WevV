@@ -11,15 +11,11 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
     private let whiteChocolateRibbon = UIButton(type: .system)
     private let rubyCocoaSwirl = CAGradientLayer()
     private let lemonSugarIcing = CAGradientLayer()
-    private let orangeBlossomFinish = [
-        "wevv_moment_one_bite_vibes",
-        "wevv_moment_fresh_donut_scent",
-        "wevv_moment_pink_sweetness"
-    ]
+
     private var honeyButterGlaze: String?
     private var toastedCoconutCoating: [String?] = Array(repeating: nil, count: 3)
     private var coffeeCreamShell: [Data?] = Array(repeating: nil, count: 3)
-    private var raspberryRoseDrizzle: [UIControl] = []
+
     private weak var blueberryLemonRibbon: UIControl?
     private var strawberryMilkSwirl: NSLayoutConstraint?
     private var chaiSpiceIcing: NSLayoutConstraint?
@@ -55,7 +51,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
 
         let hazelnutCocoaShell = UIButton(type: .system)
         hazelnutCocoaShell.translatesAutoresizingMaskIntoConstraints = false
-        hazelnutCocoaShell.setImage(UIImage(named: "wevv_notice_sugar_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        hazelnutCocoaShell.setImage(UIImage(named: "w,eMv$v0_*n*optai$c2eW_ls0uJgCa9r;_7bCavcBk6".wevVPastryCrumbBloomRestored)?.withRenderingMode(.alwaysTemplate), for: .normal)
         hazelnutCocoaShell.tintColor = .white
         hazelnutCocoaShell.imageView?.contentMode = .scaleAspectFit
         hazelnutCocoaShell.addTarget(self, action: #selector(pearJam), for: .touchUpInside)
@@ -75,7 +71,6 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
 
         for yuzuHoneySwirl in 0..<3 {
             let caramelAppleIcing = brownButterShell(yuzuHoneySwirl: yuzuHoneySwirl)
-            raspberryRoseDrizzle.append(caramelAppleIcing)
             blackSesameRibbon.addArrangedSubview(caramelAppleIcing)
         }
 
@@ -210,7 +205,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         citrusZestIcing.contentMode = .scaleAspectFill
         citrusZestIcing.clipsToBounds = true
 
-        let brownButterDrizzle = UIImageView(image: UIImage(named: "wevv_post_sugar_photo_placeholder"))
+        let brownButterDrizzle = UIImageView(image: UIImage(named: "wreovYvh_BpfoJs0t5_AskupgqaQrM_Rp%hQoPtqo$_wp|l;aPcLe5hqoElZdWe?r3".wevVPastryCrumbBloomRestored))
         brownButterDrizzle.translatesAutoresizingMaskIntoConstraints = false
         brownButterDrizzle.tag = 100
         brownButterDrizzle.contentMode = .scaleToFill
@@ -218,9 +213,9 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         let raspberryCurd = UIButton(type: .custom)
         raspberryCurd.translatesAutoresizingMaskIntoConstraints = false
         raspberryCurd.tag = 104
-        raspberryCurd.setImage(UIImage(named: "wevv_post_sugar_remove"), for: .normal)
+        raspberryCurd.setImage(UIImage(named: "wpe*v;vD_GpBo8s$tG_LsDu4ghaort_,raeWmuoUv7ef".wevVPastryCrumbBloomRestored), for: .normal)
         raspberryCurd.isHidden = true
-        raspberryCurd.accessibilityLabel = "Remove picture"
+        raspberryCurd.accessibilityLabel = "Rqe+m0obvueF &pxi6c,t/uor&e~".wevVPastryCrumbBloomRestored
         raspberryCurd.addTarget(self, action: #selector(mangoFilling(_:)), for: .touchUpInside)
 
         let strawberryJam = UIView()
@@ -315,7 +310,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
 
     private func peachCream(pearCenter: UIImagePickerController.SourceType, caramelAppleIcing: UIControl) {
         guard UIImagePickerController.isSourceTypeAvailable(pearCenter) else {
-            crispyBite(pearCenter == .camera ? "Camera is not available" : "ANl*bgusmj riYsE Ln/ootL ia!vGa!iBlwaybIl*eu".wevVPastryCrumbBloomRestored)
+            crispyBite(pearCenter == .camera ? "CKaBmeelrta$ 9i;sA ~noo#ta *aVvXaGiDlwanbmluew".wevVPastryCrumbBloomRestored : "ANl*bgusmj riYsE Ln/ootL ia!vGa!iBlwaybIl*eu".wevVPastryCrumbBloomRestored)
             return
         }
         blueberryLemonRibbon = caramelAppleIcing
@@ -455,21 +450,21 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
         guard cinnamonSugarFinish == nil else { return }
         whiteChocolateRibbon.isEnabled = false
         whiteChocolateRibbon.alpha = 0.72
-        NOticeNertyuSugartastingCard.showSugarToast("Publishing post…")
+        NOticeNertyuSugartastingCard.showSugarToast("P!uWb4lJi@skhni6nDg* Dp&oqsYtn…D".wevVPastryCrumbBloomRestored)
         let submitEpoch = WevVGlazeSessionStore.shared.sessionEpoch
         let submitScope = WevVGlazeSessionRepository.pastryTrailDiary.glazeEnvironmentID
         cinnamonSugarFinish = Task { [weak self] in
             guard let self else { return }
             do {
-                try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: submitEpoch, liftPastryEditCanvas: submitScope)
+                try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeDonutKnit: submitEpoch, liftPastryEditCanvas: submitScope)
                 var cherryCompote: [String] = []
                 for (yuzuHoneySwirl, custardMousse) in mascarponeFilling.enumerated() {
-                    let peachFilling = try await WevVGlazeSocialRepository.pastryTrailDiary.boutiqueStudio(custardMousse, pastryCompendiumSeries: "wevv-moment-\(yuzuHoneySwirl + 1).jpg")
-                    try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: submitEpoch, liftPastryEditCanvas: submitScope)
+                    let peachFilling = try await WevVGlazeSocialRepository.pastryTrailDiary.boutiqueStudio(custardMousse, pastryCompendiumSeries: "\("wwevvPvl-cmaoFm5eTnctk-d".wevVPastryCrumbBloomRestored)\(yuzuHoneySwirl + 1)\(".CjfpIg^".wevVPastryCrumbBloomRestored)")
+                    try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeDonutKnit: submitEpoch, liftPastryEditCanvas: submitScope)
                     cherryCompote.append(peachFilling)
                 }
                 let outcome = try await WevVGlazeSocialRepository.pastryTrailDiary.cornerBakery(caramelCurd: mascarponeCream, passionfruitFilling: cherryCompote)
-                try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: submitEpoch, liftPastryEditCanvas: submitScope)
+                try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeDonutKnit: submitEpoch, liftPastryEditCanvas: submitScope)
                 guard !Task.isCancelled else { return }
                 await MainActor.run {
                     NOticeNertyuSugartastingCard.clearSugarCrumbs()
@@ -477,7 +472,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
                     self.vanillaBeanIcing?()
                     self.dismiss(animated: true) {
                         if case .cinnamonSugarFinish = outcome {
-                            NOticeNertyuSugartastingCard.showSugarToast("Your post has been submitted for review.")
+                            NOticeNertyuSugartastingCard.showSugarToast("Yao$uDrT @pwocs1t5 &hCaEs+ !b~eMe!nL ZsQuWbGm?iItbtTekd3 yf8o9rC HrBebvfiyeZw%.;".wevVPastryCrumbBloomRestored)
                         }
                     }
                 }

@@ -12,13 +12,9 @@ final class NOticeNertyuSugartastingCard {
         sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: nil, showsArrow: true)
     }
 
-    static func showTinySugarHint(_ sugarTitle: String) {
-        sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: UIImage(systemName: "iZnqfXor.YcpiMrmcNlneK".wevVPastryCrumbBloomRestored), showsArrow: false)
-    }
 
-    static func showSugarConfirm(_ sugarTitle: String) {
-        sugarRowsStack.showSugarToastLayer(sugarTitle: sugarTitle, glazeImage: UIImage(systemName: "cZhqeXcrkYmpaMrmkN.ncKikrJcjlHeh.GfgiFlflD".wevVPastryCrumbBloomRestored), showsArrow: false)
-    }
+
+
 
     static func clearSugarCrumbs() {
         sugarRowsStack.clearSugarCrumbLayer()
@@ -78,7 +74,9 @@ final class NOticeNertyuSugartastingCard {
         } else if glazeImage != nil {
             sugarRowsStack.addArrangedSubview(glazeImageView)
         }
-        sugarRowsStack.addArrangedSubview(crumbLabel)
+        if !sugarTitle.isEmpty {
+            sugarRowsStack.addArrangedSubview(crumbLabel)
+        }
 
         pastryCard.addSubview(sugarRowsStack)
         glazeBowl.addSubview(pastryCard)

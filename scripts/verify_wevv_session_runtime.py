@@ -4,6 +4,7 @@
 No application defaults, Keychain, network endpoint or real credentials are used.
 Each scenario runs in a fresh process so production singleton lifetime is preserved.
 """
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import subprocess
 import tempfile
@@ -29,11 +30,6 @@ def declaration(text, marker):
 
 MOCK_IO = r'''
 import Foundation
-extension String {
-    var wevVPastryCrumbBloomRestored: String {
-        String(enumerated().compactMap { $0.offset % 2 == 0 ? $0.element : nil })
-    }
-}
 extension Notification.Name { static let bakeryTrailMap = Notification.Name("OfflineProfileChanged") }
 struct tastingPassportEdition {
     let glazeNotebookEdition: String; let rainbowSprinkleDesign: String
@@ -81,8 +77,8 @@ enum glazeGalleryGuide {
     init(cocoaWeekendFestival: String, blushDrizzleDetail: String) throws {}
 }
 enum UKGlazeActortroller { static let glazeArchiveConfigurationSeed = "offline-seed" }
-@MainActor final class WevVGlazeMessageController {
-    static let citrusPeelGarnish = WevVGlazeMessageController()
+@MainActor final class WevVpastelBackdropGalleryler {
+    static let citrusPeelGarnish = WevVpastelBackdropGalleryler()
     func cocoaRaspberryMedley(batterWhiskEssentials: Data, blackberryCream: String, buildTastingParlorPanel: String) async throws -> String {
         throw accountGroup.cancelTastingReport("offline media boundary")
     }
@@ -194,8 +190,8 @@ TESTS = r'''
                 brownButterGlaze: "access-" + suffix, maplePecanCoating: "refresh-" + suffix,
                 citrusZestShell: Date().addingTimeInterval(expiredAccess ? -10 : 1800),
                 darkCocoaDrizzle: Date().addingTimeInterval(3600), whiteChocolateRibbon: true,
-                legacyToken: "legacy-" + suffix, imAccount: "im-" + suffix, imToken: "im-token-" + suffix,
-                environmentID: environment ?? runtime.closeCreamRingEdit, registered: false), startingNewSession: startingNewSession)
+                tastingTrayNotesWevv: "legacy-" + suffix, apricotFilling: "im-" + suffix, hazelnutCream: "im-token-" + suffix,
+                cinnamonSugarFinish: environment ?? runtime.closeCreamRingEdit, cherryCompote: false), startingNewSession: startingNewSession)
         }
         if scenario.hasPrefix("h5-cold-") || scenario == "h5-other-account-open-during-refresh" {
             let scope = "test|12211334|https://test.invalid"
@@ -283,8 +279,8 @@ TESTS = r'''
                 vanillaBeanIcing: 1, saltedCaramelFinish: "offline1@example.invalid",
                 brownButterGlaze: "access-test", maplePecanCoating: "refresh-test",
                 citrusZestShell: Date().addingTimeInterval(1800), darkCocoaDrizzle: Date().addingTimeInterval(3600),
-                whiteChocolateRibbon: true, legacyToken: "legacy-test", imAccount: "im-test", imToken: "im-token-test",
-                environmentID: testScope, registered: true))
+                whiteChocolateRibbon: true, tastingTrayNotesWevv: "legacy-test", apricotFilling: "im-test", hazelnutCream: "im-token-test",
+                cinnamonSugarFinish: testScope, cherryCompote: true))
             // Keep the same fixture AppID and URL: the explicit environment must itself isolate credentials.
             OfflineProfileSelection.environment = "production"
         }
@@ -305,8 +301,8 @@ TESTS = r'''
                 vanillaBeanIcing: 1, saltedCaramelFinish: "offline1@example.invalid",
                 brownButterGlaze: "access-initial", maplePecanCoating: "refresh-initial",
                 citrusZestShell: Date().addingTimeInterval(1800), darkCocoaDrizzle: Date().addingTimeInterval(3600),
-                whiteChocolateRibbon: true, legacyToken: "legacy-initial", imAccount: "im-initial", imToken: "im-token-initial",
-                environmentID: "production|39114002|https://initial.invalid", registered: true))
+                whiteChocolateRibbon: true, tastingTrayNotesWevv: "legacy-initial", apricotFilling: "im-initial", hazelnutCream: "im-token-initial",
+                cinnamonSugarFinish: "production|39114002|https://initial.invalid", cherryCompote: true))
         }
         if scenario == "production-domain-migration" {
             // Domain migration is a new credential boundary even with the same formal App ID.
@@ -316,8 +312,8 @@ TESTS = r'''
                 vanillaBeanIcing: 1, saltedCaramelFinish: "offline1@example.invalid",
                 brownButterGlaze: "access-old-domain", maplePecanCoating: "refresh-old-domain",
                 citrusZestShell: Date().addingTimeInterval(1800), darkCocoaDrizzle: Date().addingTimeInterval(3600),
-                whiteChocolateRibbon: true, legacyToken: "legacy-old-domain", imAccount: "im-old-domain", imToken: "im-token-old-domain",
-                environmentID: oldScope, registered: true))
+                whiteChocolateRibbon: true, tastingTrayNotesWevv: "legacy-old-domain", apricotFilling: "im-old-domain", hazelnutCream: "im-token-old-domain",
+                cinnamonSugarFinish: oldScope, cherryCompote: true))
             store.placeGlazeShelf(bakeryPinKey: "offline-shop")
             store.placeJoinedGlazeQuest("offline-event")
             store.placeDailyGlazeStamp(dayKey: "offline-day", mood: "sweet")
@@ -382,7 +378,7 @@ TESTS = r'''
             try install(2, "production")
             let context = try await runtime.glazeLogCollection()
             try check(context["apiBaseUrl"] as? String == "https://production.invalid", "H5 receives production OPI base")
-            try check(store.currentGlazeCredentials?.environmentID == productionScope, "persisted session remains in formal business scope")
+            try check(store.currentGlazeCredentials?.cinnamonSugarFinish == productionScope, "persisted session remains in formal business scope")
         case "production-server-selected-domain":
             let scope = "production|39114002|https://selected.invalid"
             try check(runtime.closeCreamRingEdit == scope && store.activeEnvironmentID == scope,
@@ -418,7 +414,7 @@ TESTS = r'''
             try check(context["apiBaseUrl"] as? String == "https://getaway.wevvstream.online"
                       && session?["accessToken"] as? String == "access-new-domain",
                       "H5 gets the new domain with only the new domain's signed-in session")
-            try check(glazeGalleryGuide.packets[oldScope] == oldPacket && store.currentGlazeCredentials?.environmentID == scope,
+            try check(glazeGalleryGuide.packets[oldScope] == oldPacket && store.currentGlazeCredentials?.cinnamonSugarFinish == scope,
                       "new-domain login does not overwrite or migrate the original credential packet")
         case "guest-isolation":
             let guest = try await runtime.beginSugarPictureUpload()
@@ -476,7 +472,7 @@ TESTS = r'''
             }
             await WevVGlazeSessionRepository.pastryTrailDiary.starchGelatinizationDetail()
             try check(revoked && !store.isTasterReady && store.currentGlazeCredentials == nil
-                && store.currentGlazeToken.isEmpty && store.currentTasterEmail.isEmpty,
+                && store.currentTasterEmail.isEmpty,
                 "logout removes all access/refresh/legacy/IM credentials from the persisted session")
             try check(glazeGalleryGuide.sweetKeepsakeEntry(scope: oldScope) == nil && glazeGalleryGuide.legacyPacket == nil
                 && TestDefaults.shared.values["wevv_glaze_token"] == nil
@@ -562,7 +558,7 @@ TESTS = r'''
                 throw accountGroup.brownButterPecanCombination(503)
             }
             let profile = try await WevVGlazeSessionRepository.pastryTrailDiary.caramelLatteCompanion(saltedCaramelFinish: "offline@example.invalid", cocoaWeekendFestival: "123456")
-            try check(profile.ringCutterKey == "1" && store.isTasterReady && store.currentGlazeCredentials?.registered == false, "saved new registration survives temporary profile failure")
+            try check(profile.ringCutterKey == "1" && store.isTasterReady && store.currentGlazeCredentials?.cherryCompote == false, "saved new registration survives temporary profile failure")
         case "persistence-failure":
             glazeGalleryGuide.refuseWrite = true
             do { _ = try await WevVGlazeSessionRepository.pastryTrailDiary.caramelLatteCompanion(saltedCaramelFinish: "offline@example.invalid", cocoaWeekendFestival: "123456"); throw NSError(domain: "WriteFailureReportedSuccess", code: 7) }
@@ -697,8 +693,8 @@ def main():
                 (SOURCES / 'WevEnd/glazeNameField.swift').read_text()]
     for marker in ("struct almondPralineGlaze", "struct citrusZestIcing", "struct plumMousse",
                    "private struct mochiCruller", "enum miniRingFritter", "enum filledShellSelection",
-                   "final class WevVGlazeTransport", "private struct ricottaFritterRing",
-                   "private struct berryBeignetFritter", "private struct chocolateBomboloniSelection",
+                   "final class WevVGlazeTransport",
+                   "private struct chocolateBomboloniSelection",
                    "final class WevVGlazeSessionRepository"):
         selected.append(declaration(model, marker))
     selected.append((SOURCES / "DoughRingTasterProfile.swift").read_text().replace("UserDefaults.standard", "TestDefaults.shared"))
@@ -724,7 +720,7 @@ def main():
         mock_io = MOCK_IO.replace("__ACTUAL_OPEN_STATE__", open_state).replace("__ACTUAL_OPEN_METHOD__", open_method)
         source.write_text(mock_io + "\n" + "\n\n".join(selected) + "\n" + TESTS)
         executable = folder / "verification"
-        subprocess.run(["xcrun", "swiftc", "-parse-as-library", "-swift-version", "5",
+        subprocess.run(["xcrun", "swiftc", str(STRING_HELPER), "-parse-as-library", "-swift-version", "5",
                         "-default-isolation", "MainActor", "-module-cache-path", str(folder / "modules"),
                         str(source), "-o", str(executable)], check=True)
         for scenario in scenarios:

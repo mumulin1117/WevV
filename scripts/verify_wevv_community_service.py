@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Compile and exercise the actual community service with isolated semantic transport fixtures."""
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import subprocess
 import tempfile
@@ -160,7 +161,7 @@ def main():
         (root / 'RuntimeStubs.swift').write_text(stubs)
         (root / 'Verify.swift').write_text(tests)
         binary = root / 'Verify'
-        subprocess.run(['xcrun','swiftc','-swift-version','5','-default-isolation','MainActor','-parse-as-library','-module-cache-path','/private/tmp/wevv-community-module-cache',str(root/'Models.swift'),str(root/'RuntimeStubs.swift'),str(APP/'WevEnd/NertyuChoiceStackLayer.swift'),str(APP/'WevEnd/LisenNoticepoplater.swift'),str(root/'Verify.swift'),'-o',str(binary)],check=True)
+        subprocess.run(['xcrun','swiftc',str(STRING_HELPER),'-swift-version','5','-default-isolation','MainActor','-parse-as-library','-module-cache-path','/private/tmp/wevv-community-module-cache',str(root/'Models.swift'),str(root/'RuntimeStubs.swift'),str(APP/'WevEnd/NertyuChoiceStackLayer.swift'),str(APP/'WevEnd/LisenNoticepoplater.swift'),str(root/'Verify.swift'),'-o',str(binary)],check=True)
         subprocess.run([str(binary)],check=True)
 
 

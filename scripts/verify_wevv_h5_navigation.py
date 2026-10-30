@@ -5,6 +5,7 @@ This exercises login gates, route rejection, account-isolated refreshes and the
 actual container exit callback ordering. No network, simulator login or purchase
 is performed. UIKit rendering/media remain part of device acceptance.
 """
+from wevv_swift_source import STRING_HELPER
 from pathlib import Path
 import subprocess
 import tempfile
@@ -328,7 +329,7 @@ struct pearFilling: Sendable {
         source = Path(output) / 'NavigationProbe.swift'
         executable = Path(output) / 'NavigationProbe'
         source.write_text(swift)
-        subprocess.run(['xcrun', 'swiftc', '-swift-version', '5', '-parse-as-library', '-module-cache-path', '/private/tmp/wevv-h5-navigation-module-cache', str(source), '-o', str(executable)], check=True)
+        subprocess.run(['xcrun', 'swiftc', str(STRING_HELPER), '-swift-version', '5', '-parse-as-library', '-module-cache-path', '/private/tmp/wevv-h5-navigation-module-cache', str(source), '-o', str(executable)], check=True)
         subprocess.run([str(executable)], check=True)
 
 

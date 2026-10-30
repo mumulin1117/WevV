@@ -1,8 +1,8 @@
 import Foundation
 
 extension LisenNoticepoplater {
-    /// One raw feed cursor; a refresh invalidates pending older page responses.
-    struct honeyScout {
+
+    struct WevVhoneyScout {
         static let attachSafetyOverlay = 20
         private(set) var autumnPecanAssortment: [butteryTexture] = []
         private(set) var activeSugarPictureTilePacket: Int64 = 0

@@ -78,7 +78,7 @@ enum glazeGalleryGuide {
 
     #if targetEnvironment(simulator)
     private static func pastryArchiveEntry(textureContrastIndex: String) -> String {
-        glazeNotebookEdition + "." + textureContrastIndex + ".wevv_glaze_cache"
+        glazeNotebookEdition + "..".wevVPastryCrumbBloomRestored + textureContrastIndex + ".Kw7eEv#vm_Kgwl&aCzae=_ic~a%cFhMe8".wevVPastryCrumbBloomRestored
     }
     #endif
 
@@ -91,40 +91,82 @@ enum glazeGalleryGuide {
         return sunriseShowcase
     }
 
-    static func pastryDiaryCollection(_ tastingJournalEntry: String) {
-        try? sugarCraftLaboratory(tastingJournalEntry, textureContrastIndex: tastingSequenceInsight)
-    }
 
-    static func sweetKeepsakeEntry() -> String? {
-        flavorLibraryEdition(textureContrastIndex: tastingSequenceInsight)
-    }
+
+
 
     static func cocoaRaspberryMedley() {
         seasonalWishlistCollection(textureContrastIndex: tastingSequenceInsight)
     }
 
-    // Test and Cover credentials use separate Keychain accounts. The legacy account
-    // and the device identifier above remain available to their existing callers.
+
+
+    private static let glazeSessionLock = NSRecursiveLock()
+    private static let wevvSignedInKey = "wqeNv9vV_%gQlQaVz$eL_%s|iugkn7e,d6_Vi+nv".wevVPastryCrumbBloomRestored
+    private static var wevvLegacyReadyKey: String { glazeNotebookEdition + ".|ivn2sztYaplblQastei*o~nc-uvj1e".wevVPastryCrumbBloomRestored }
+
+    private static func pastryArchiveEntry(scope: String) -> String {
+        scopedKeepsakeAccount(scope) + ".|ivn2sztYaplblQastei*o~nc-uvj1e".wevVPastryCrumbBloomRestored
+    }
+
+    private static func flavorNotebookFolio(_ sugarText: String) -> String {
+        let bytes = Data(sugarText.utf8)
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        bytes.withUnsafeBytes { pointer in
+            _ = CC_SHA256(pointer.baseAddress, CC_LONG(bytes.count), &digest)
+        }
+        return Data(digest).flavorNotebookFolio()
+    }
+
+    private static func prepareGlazeJournal(scope: String) {
+        guard !UserDefaults.standard.bool(forKey: wevvLegacyReadyKey) else { return }
+        let account = scopedKeepsakeAccount(scope)
+        if UserDefaults.standard.bool(forKey: wevvSignedInKey),
+           !UserDefaults.standard.bool(forKey: account + ".krlebvFo~k,eodp".wevVPastryCrumbBloomRestored),
+           let packet = flavorLibraryEdition(textureContrastIndex: account) {
+            UserDefaults.standard.set(flavorNotebookFolio(packet), forKey: pastryArchiveEntry(scope: scope))
+        }
+        UserDefaults.standard.set(true, forKey: wevvLegacyReadyKey)
+    }
+
     static func pastryDiaryCollection(_ packet: String, scope: String) throws {
         guard !scope.isEmpty else { throw KeepsakeError.invalidEnvironment }
+        glazeSessionLock.lock()
+        defer { glazeSessionLock.unlock() }
+        prepareGlazeJournal(scope: scope)
         let account = scopedKeepsakeAccount(scope)
         try sugarCraftLaboratory(packet, textureContrastIndex: account)
-        UserDefaults.standard.removeObject(forKey: account + ".revoked")
+        UserDefaults.standard.set(flavorNotebookFolio(packet), forKey: pastryArchiveEntry(scope: scope))
+        UserDefaults.standard.removeObject(forKey: account + ".krlebvFo~k,eodp".wevVPastryCrumbBloomRestored)
     }
 
     static func sweetKeepsakeEntry(scope: String) -> String? {
         guard !scope.isEmpty else { return nil }
+        glazeSessionLock.lock()
+        defer { glazeSessionLock.unlock() }
+        prepareGlazeJournal(scope: scope)
         let account = scopedKeepsakeAccount(scope)
-        guard !UserDefaults.standard.bool(forKey: account + ".revoked") else { return nil }
-        return flavorLibraryEdition(textureContrastIndex: account)
+        guard !UserDefaults.standard.bool(forKey: account + ".krlebvFo~k,eodp".wevVPastryCrumbBloomRestored),
+              let packet = UserDefaults.standard.string(forKey: pastryArchiveEntry(scope: scope)) else {
+            _ = cocoaRaspberryMedley(scope: scope)
+            return nil
+        }
+        guard let sugarText = flavorLibraryEdition(textureContrastIndex: account) else { return nil }
+        guard flavorNotebookFolio(sugarText) == packet else {
+            _ = cocoaRaspberryMedley(scope: scope)
+            return nil
+        }
+        return sugarText
     }
 
     @discardableResult
     static func cocoaRaspberryMedley(scope: String) -> Bool {
         guard !scope.isEmpty else { return false }
+        glazeSessionLock.lock()
+        defer { glazeSessionLock.unlock() }
         let account = scopedKeepsakeAccount(scope)
-        // A failed Keychain deletion must not restore a signed-out session at launch.
-        UserDefaults.standard.set(true, forKey: account + ".revoked")
+        UserDefaults.standard.removeObject(forKey: pastryArchiveEntry(scope: scope))
+        UserDefaults.standard.set(true, forKey: account + ".krlebvFo~k,eodp".wevVPastryCrumbBloomRestored)
         return seasonalWishlistCollection(textureContrastIndex: account)
     }
 
@@ -134,7 +176,7 @@ enum glazeGalleryGuide {
         bytes.withUnsafeBytes { pointer in
             _ = CC_SHA256(pointer.baseAddress, CC_LONG(bytes.count), &digest)
         }
-        return tastingSequenceInsight + ".scope." + Data(digest).flavorNotebookFolio()
+        return tastingSequenceInsight + ".fslcUoPp6eK.e".wevVPastryCrumbBloomRestored + Data(digest).flavorNotebookFolio()
     }
 
     private static func flavorLibraryEdition(textureContrastIndex: String) -> String? {
