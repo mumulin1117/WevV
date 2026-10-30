@@ -2,7 +2,9 @@
 from pathlib import Path
 import re
 
-STRING_HELPER = Path(__file__).resolve().parents[1] / 'WevSweetgd/WevSweetgd/WevEnd/wevVGlazeCrumbRibbonFolded.swift'
+APP_SOURCES = Path(__file__).resolve().parents[1] / 'WevSweetgd/WevSweetgd'
+STRING_HELPER, = APP_SOURCES.rglob('wevVGlazeCrumbRibbonFolded.swift')
+SUPPORT_SOURCES = STRING_HELPER.parent
 STRING_PATTERN = r'"(?:[^"\\]|\\.)*"'
 
 

@@ -4,7 +4,7 @@
 No application defaults, Keychain, network endpoint or real credentials are used.
 Each scenario runs in a fresh process so production singleton lifetime is preserved.
 """
-from wevv_swift_source import STRING_HELPER
+from wevv_swift_source import STRING_HELPER, SUPPORT_SOURCES
 from pathlib import Path
 import subprocess
 import tempfile
@@ -687,10 +687,10 @@ TESTS = r'''
 
 def main():
     model = (SOURCES / "kettleGlazeSequence.swift").read_text()
-    foundation = (SOURCES / 'WevEnd/NertyuChoiceStackLayer.swift').read_text()
+    foundation = (SUPPORT_SOURCES / 'NertyuChoiceStackLayer.swift').read_text()
     # Keep the actual implementations; replace only OS storage and HTTP boundaries.
     selected = [declaration(foundation, 'enum accountGroup'),
-                (SOURCES / 'WevEnd/glazeNameField.swift').read_text()]
+                (SUPPORT_SOURCES / 'glazeNameField.swift').read_text()]
     for marker in ("struct almondPralineGlaze", "struct citrusZestIcing", "struct plumMousse",
                    "private struct mochiCruller", "enum miniRingFritter", "enum filledShellSelection",
                    "final class WevVGlazeTransport",
@@ -698,8 +698,8 @@ def main():
                    "final class WevVGlazeSessionRepository"):
         selected.append(declaration(model, marker))
     selected.append((SOURCES / "DoughRingTasterProfile.swift").read_text().replace("UserDefaults.standard", "TestDefaults.shared"))
-    selected.append(declaration((SOURCES / 'WevEnd/honeyLavenderCombination.swift').read_text(), 'struct appleCompote'))
-    selected.append((SOURCES / 'WevEnd/BrostingmellowCoconutEssence.swift').read_text())
+    selected.append(declaration((SUPPORT_SOURCES / 'honeyLavenderCombination.swift').read_text(), 'struct appleCompote'))
+    selected.append((SUPPORT_SOURCES / 'BrostingmellowCoconutEssence.swift').read_text())
     scenarios = ("h5-cold-single-open", "h5-cold-concurrent", "h5-cold-open-failure", "h5-cold-account-switch",
                  "h5-cold-refresh-key", "h5-other-account-open-during-refresh", "h5-hot-fresh", "h5-hot-open-failure",
                  "h5-context-cancelled", "h5-context-environment-change", "startup-retry", "test-scope-default", "production-scope-isolation", "production-split-identity-scope", "production-domain-migration", "production-server-selected-domain",
