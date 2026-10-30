@@ -1,0 +1,69 @@
+第四批自主命名替换记录（glazeNameField、honeyLavenderCombination、honeyScout）
+
+直接替换 41 个不同名称，源码替换位置 262 处。
+词汇来源：WeeNo命名提取/归档内声明的自主命名.txt
+所有 class 名称、文件主类型名、系统协议及 CodingKeys 固定名称保持不变。
+原有字符串片段保持不变，无存储键、资源和页面布局修改。
+
+源码文件：
+- WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift（71 处）
+- WevSweetgd/WevSweetgd/kettleGlazeSequence.swift（9 处）
+- WevSweetgd/WevSweetgd/WevEnd/honeyLavenderCombination.swift（89 处）
+- WevSweetgd/WevSweetgd/WevEnd/glazeNameField.swift（12 处）
+- WevSweetgd/WevSweetgd/WevEnd/honeyScout.swift（68 处）
+- WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift（10 处）
+- WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift（3 处）
+
+回归脚本：
+scripts/test_wevv_voice_pagination.py
+scripts/test_wevv_room_mapper.py
+scripts/verify_wevv_session_runtime.py
+
+名称映射：
+accountDeletion -> LmnTasterCardController
+activityPayment -> WevVGlazeVideoDialController
+beginNextPage -> WevVWevvTastingQuestCard
+beginRefresh -> WevvFlavorPane
+completeGlaze -> WevvRemoteTrailState
+count -> XunSugarRosterbrownButterDrizzle
+currentPage -> activeSugarPictureTile
+cursor -> activeSugarPictureTilePacket
+cursorAdvanced -> addVaultmuralAura
+fail -> airyCenter
+failed -> almondPralineShell
+failedRefresh -> animated
+glazeVaultHeroLayer -> appleCompote
+glazeVaultHeroView -> applyDonutAvatarChoice
+hasMore -> applyPortraitAsset
+id -> applyRemoteTrailButton
+isLoading -> apricotCenter
+loadingCursor -> apricotCompote
+messaging -> apricotFilling
+nextCursor -> assetForFlavorNote
+offset -> assetKey
+page -> assetName
+pageSize -> attachSafetyOverlay
+postReporting -> autumnMaplePalette
+posts -> autumnPecanAssortment
+previousCount -> autumnPecanSelection
+rawCount -> avatarData
+receive -> backendCanChat
+refresh -> backendMutualFollow
+refreshing -> bakeGlazeVaultPack
+request -> bakeryPieces
+requestID -> batchKey
+restored -> beginSugarPictureUpload
+result -> benchRestDetail
+rooms -> berryReportAction
+savedPosts -> blackberryCream
+seen -> blueberryCompote
+shortVideos -> blueberryCustard
+showGlazeError -> boundary
+snapshotID -> brightYuzuAccent
+start -> brownButterDrizzle
+
+Validation:
+- Debug simulator and Release device builds passed.
+- Voice pagination 43; mapper; session 35; feed pagination 20 checks passed.
+- Existing string segments, class names and all custom declarations audited.
+- Historical full integration script cannot run because its WeeNo source fixture is absent before this batch.

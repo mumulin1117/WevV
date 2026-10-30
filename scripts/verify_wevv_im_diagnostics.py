@@ -50,11 +50,11 @@ SWIFT = r'''import Foundation
         for raw in ["", "token-value", "https://invalid", "1234567890123", "401\nsecret"] {
             check(conversationAvatar.isSugarGuarded(raw) == "redacted")
         }
-        let business = conversationAvatar.confectionStudioCounter(GlazeVaultTradeError.business(code: "40101", message: "SECRET_TOKEN_FULL"))
+        let business = conversationAvatar.confectionStudioCounter(accountGroup.artisanSelectionShowcase(bakeryDetails: "40101", cancelGlazeLoading: "SECRET_TOKEN_FULL"))
         check(business.bindPastryEditDismissTap == "business" && business.buildCreamRingEditPage == "40101")
-        let maliciousCode = conversationAvatar.confectionStudioCounter(GlazeVaultTradeError.business(code: "SECRET_TOKEN_FULL", message: "SECRET_APPKEY"))
+        let maliciousCode = conversationAvatar.confectionStudioCounter(accountGroup.artisanSelectionShowcase(bakeryDetails: "SECRET_TOKEN_FULL", cancelGlazeLoading: "SECRET_APPKEY"))
         check(maliciousCode.buildCreamRingEditPage == "redacted")
-        let contract = conversationAvatar.confectionStudioCounter(GlazeVaultTradeError.missingContract("SECRET_TOKEN_FULL"))
+        let contract = conversationAvatar.confectionStudioCounter(accountGroup.cancelTastingReport("SECRET_TOKEN_FULL"))
         check(contract.bindPastryEditDismissTap == "missing-contract" && contract.buildCreamRingEditPage == "none")
         let unknown = conversationAvatar.confectionStudioCounter(NSError(domain: "SECRET_TOKEN_FULL", code: 123, userInfo: [NSLocalizedDescriptionKey: "SECRET_APPKEY"]))
         check(unknown.bindPastryEditDismissTap == "other" && unknown.buildCreamRingEditPage == "none")
@@ -62,7 +62,7 @@ SWIFT = r'''import Foundation
         check(web.bindPastryEditDismissTap == "webkit" && web.buildCreamRingEditPage == "4")
         let url = conversationAvatar.confectionStudioCounter(URLError(.notConnectedToInternet, userInfo: [NSURLErrorFailingURLErrorKey: "https://invalid?token=SECRET_TOKEN_FULL"]))
         check(url.bindPastryEditDismissTap == "url" && url.buildCreamRingEditPage == "-1009")
-        let http = conversationAvatar.confectionStudioCounter(GlazeVaultTradeError.http(401))
+        let http = conversationAvatar.confectionStudioCounter(accountGroup.brownButterPecanCombination(401))
         check(http.bindPastryEditDismissTap == "http" && http.buildCreamRingEditPage == "401")
         let cancelled = conversationAvatar.confectionStudioCounter(CancellationError())
         check(cancelled.bindPastryEditDismissTap == "cancelled" && cancelled.buildCreamRingEditPage == "none")
@@ -105,8 +105,8 @@ def main():
     end = source.index("    private func respondInvalidGlaze(", start)
     actual = source[start:end]
     network = (SOURCES / 'WevEnd/NertyuChoiceStackLayer.swift').read_text()
-    error_start = network.index('enum GlazeVaultTradeError:')
-    error_end = network.index('\n@MainActor\nstruct WevVGlazeVaultPack', error_start)
+    error_start = network.index('enum accountGroup:')
+    error_end = network.index('\n@MainActor\nstruct activeDonutParlorSection', error_start)
     network_error = network[error_start:error_end]
     with tempfile.TemporaryDirectory(prefix="wevv-im-checks-") as directory:
         folder = Path(directory)

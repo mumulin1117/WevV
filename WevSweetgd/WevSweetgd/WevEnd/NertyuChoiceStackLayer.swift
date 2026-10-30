@@ -3,300 +3,300 @@ import CoreFoundation
 import CommonCrypto
 
 /// Failures retain only contract/error metadata. Request bodies, credentials and keys are never logged.
-enum GlazeVaultTradeError: Error, LocalizedError, Sendable {
-    case http(Int)
-    case business(code: String, message: String)
-    case invalidConfiguration
-    case invalidResponse
-    case missingContract(String)
+enum accountGroup: Error, LocalizedError, Sendable {
+    case brownButterPecanCombination(Int)
+    case artisanSelectionShowcase(bakeryDetails: String, cancelGlazeLoading: String)
+    case buildPastryBackdrop
+    case buildPastryDetailContent
+    case cancelTastingReport(String)
 
-    nonisolated var isAuthenticationFailure: Bool {
+    nonisolated var buildPastryScroll: Bool {
         switch self {
-        case .http(let status): return status == 401
-        case .business(let code, _): return code == "401" || ["40101", "40102", "40103", "40104", "40105"].contains(code)
+        case .brownButterPecanCombination(let crumbArchiveName): return crumbArchiveName == 401
+        case .artisanSelectionShowcase(let bakeryDetails, _): return bakeryDetails == "401" || ["40101", "40102", "40103", "40104", "40105"].contains(bakeryDetails)
         default: return false
         }
     }
 
     nonisolated var errorDescription: String? {
         switch self {
-        case .http(let status): return "The service could not complete the request (HTTP \(status)). Please retry."
-        case .business(_, let message): return message.isEmpty ? "The service could not complete the request. Please retry." : message
-        case .invalidConfiguration: return "The service configuration is unavailable. Please retry."
-        case .invalidResponse: return "The service returned an invalid response. Please retry."
-        case .missingContract: return "This feature is not available on the current service. Please try again later."
+        case .brownButterPecanCombination(let crumbArchiveName): return "The service could not complete the request (HTTP \(crumbArchiveName)). Please retry."
+        case .artisanSelectionShowcase(_, let cancelGlazeLoading): return cancelGlazeLoading.isEmpty ? "The service could not complete the request. Please retry." : cancelGlazeLoading
+        case .buildPastryBackdrop: return "The service configuration is unavailable. Please retry."
+        case .buildPastryDetailContent: return "The service returned an invalid response. Please retry."
+        case .cancelTastingReport: return "This feature is not available on the current service. Please try again later."
         }
     }
 }
 
 @MainActor
-struct WevVGlazeVaultPack {
-    let appID: String
-    let bootstrapAppID: String
-    let environment: String
-    let initialBaseURL: URL
-    let bootstrapBaseURL: URL
-    let appVersion: String
-    private(set) var protocolName: String
-    fileprivate let encryptionKey: Data
-    fileprivate let encryptionIV: Data
-    fileprivate let paths: [String: String]
-    fileprivate let fields: [String: String]
-    fileprivate let reverseFields: [String: String]
-    fileprivate let headers: [String: String]
-    fileprivate let responseArrayEnvelopeFields: [String]
+struct activeDonutParlorSection {
+    let almondFlavor: String
+    let armGlazeLoadingTimeout: String
+    let berryCrumbBakeryNotes: String
+    let buildFlavorBackdrop: URL
+    let aromaSpectrumNotes: URL
+    let almondPralineShell: String
+    private(set) var citrusPeelGarnish: String
+    fileprivate let beginvelvetyCrumbSheen: Data
+    fileprivate let beginVoiceRoomRefresh: Data
+    fileprivate let chosenFlavor: [String: String]
+    fileprivate let blueberryCustard: [String: String]
+    fileprivate let cocoaVelvetMotif: [String: String]
+    fileprivate let brightYuzuAccent: [String: String]
+    fileprivate let cocoaKissExperience: [String]
 
     /// Native launch routing belongs to the native bundle manifest. The H5
     /// Profile has a strict services schema and cannot carry these extra keys.
     /// Older standalone native fixtures may still use their original inline
     /// routing when no manifest metadata is supplied.
-    init(javaScript: Data, nativeRouting: [String: Any]? = nil) throws {
-        guard let source = String(data: javaScript, encoding: .utf8),
-              let start = source.range(of: "/*__OPI_PROFILE_START__*/"),
-              let end = source.range(of: "/*__OPI_PROFILE_END__*/", range: start.upperBound..<source.endIndex),
-              let json = String(source[start.upperBound..<end.lowerBound]).data(using: .utf8),
-              let root = try JSONSerialization.jsonObject(with: json) as? [String: Any],
-              let services = root["services"] as? [String: Any],
-              let client = services["apiClient"] as? [String: Any],
-              let appID = client["appId"] as? String, !appID.isEmpty,
-              let version = client["appVersion"] as? String, !version.isEmpty,
-              let initialURL = Self.secureURL(services["apiBaseUrl"], scheme: "https"),
-              let protocolName = client["protocol"] as? String,
-              ["opi-v2-aes", "opi-v2-aes-semantic"].contains(protocolName),
-              let key = (client["encryptionKey"] as? String)?.data(using: .utf8), key.count == kCCKeySizeAES128,
-              let iv = (client["encryptionIv"] as? String)?.data(using: .utf8), iv.count == kCCBlockSizeAES128,
-              let aliases = root["aliases"] as? [String: Any],
-              let paths = aliases["path"] as? [String: String], !paths.isEmpty,
-              let fields = aliases["field"] as? [String: String], !fields.isEmpty,
-              let headers = aliases["header"] as? [String: String] else {
-            throw GlazeVaultTradeError.invalidConfiguration
+    init(buildTastingJournalPanel: Data, caramelAppleIcing: [String: Any]? = nil) throws {
+        guard let creamProfile = String(data: buildTastingJournalPanel, encoding: .utf8),
+              let crispEdgeCrust = creamProfile.range(of: "/*__OPI_PROFILE_START__*/"),
+              let benchRestDetail = creamProfile.range(of: "/*__OPI_PROFILE_END__*/", range: crispEdgeCrust.upperBound..<creamProfile.endIndex),
+              let buildTastingParlorPanel = String(creamProfile[crispEdgeCrust.upperBound..<benchRestDetail.lowerBound]).data(using: .utf8),
+              let coconutMangoMedley = try JSONSerialization.jsonObject(with: buildTastingParlorPanel) as? [String: Any],
+              let contextualTags = coconutMangoMedley["services"] as? [String: Any],
+              let bakeryDaySlot = contextualTags["apiClient"] as? [String: Any],
+              let almondFlavor = bakeryDaySlot["appId"] as? String, !almondFlavor.isEmpty,
+              let currentDonutDiaryTaster = bakeryDaySlot["appVersion"] as? String, !currentDonutDiaryTaster.isEmpty,
+              let buildFlavorNoteEntryButton = Self.contentLength(contextualTags["apiBaseUrl"], confirmButton: "https"),
+              let citrusPeelGarnish = bakeryDaySlot["protocol"] as? String,
+              ["opi-v2-aes", "opi-v2-aes-semantic"].contains(citrusPeelGarnish),
+              let buildTastingReportSheet = (bakeryDaySlot["encryptionKey"] as? String)?.data(using: .utf8), buildTastingReportSheet.count == kCCKeySizeAES128,
+              let buildSugarSettingsPage = (bakeryDaySlot["encryptionIv"] as? String)?.data(using: .utf8), buildSugarSettingsPage.count == kCCBlockSizeAES128,
+              let agrtastingFlightShowcaseee = coconutMangoMedley["aliases"] as? [String: Any],
+              let chosenFlavor = agrtastingFlightShowcaseee["path"] as? [String: String], !chosenFlavor.isEmpty,
+              let blueberryCustard = agrtastingFlightShowcaseee["field"] as? [String: String], !blueberryCustard.isEmpty,
+              let brightYuzuAccent = agrtastingFlightShowcaseee["header"] as? [String: String] else {
+            throw accountGroup.buildPastryBackdrop
         }
-        let routing: [String: Any]
-        if let nativeRouting {
-            guard Set(nativeRouting.keys) == Set(["environment", "bootstrapBaseUrl", "bootstrapAppId"]),
-                  Set(services.keys) == Set(["apiBaseUrl", "apiClient"]),
-                  let bootstrapID = nativeRouting["bootstrapAppId"] as? String,
-                  !bootstrapID.isEmpty,
-                  bootstrapID.utf8.allSatisfy({ (48...57).contains($0) }),
-                  Self.secureURL(nativeRouting["bootstrapBaseUrl"], scheme: "https") != nil else {
-                throw GlazeVaultTradeError.invalidConfiguration
+        let completeGlaze: [String: Any]
+        if let caramelAppleIcing {
+            guard Set(caramelAppleIcing.keys) == Set(["environment", "bootstrapBaseUrl", "bootstrapAppId"]),
+                  Set(contextualTags.keys) == Set(["apiBaseUrl", "apiClient"]),
+                  let artisanDoughAtelier = caramelAppleIcing["bootstrapAppId"] as? String,
+                  !artisanDoughAtelier.isEmpty,
+                  artisanDoughAtelier.utf8.allSatisfy({ (48...57).contains($0) }),
+                  Self.contentLength(caramelAppleIcing["bootstrapBaseUrl"], confirmButton: "https") != nil else {
+                throw accountGroup.buildPastryBackdrop
             }
-            routing = nativeRouting
-        } else { routing = services }
-        let environment: String
-        if let rawEnvironment = routing["environment"] {
-            guard let value = rawEnvironment as? String, ["test", "production"].contains(value) else {
-                throw GlazeVaultTradeError.invalidConfiguration
+            completeGlaze = caramelAppleIcing
+        } else { completeGlaze = contextualTags }
+        let berryCrumbBakeryNotes: String
+        if let clearSugarCrumbLayer = completeGlaze["environment"] {
+            guard let crustSnapInsight = clearSugarCrumbLayer as? String, ["test", "production"].contains(crustSnapInsight) else {
+                throw accountGroup.buildPastryBackdrop
             }
-            environment = value
-        } else { environment = "test" }
-        let bootstrapAppID: String
-        if let rawBootstrapAppID = routing["bootstrapAppId"] {
-            guard let value = rawBootstrapAppID as? String,
-                  !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                throw GlazeVaultTradeError.invalidConfiguration
+            berryCrumbBakeryNotes = crustSnapInsight
+        } else { berryCrumbBakeryNotes = "test" }
+        let armGlazeLoadingTimeout: String
+        if let cleanDonutAvatar = completeGlaze["bootstrapAppId"] {
+            guard let crustSnapInsight = cleanDonutAvatar as? String,
+                  !crustSnapInsight.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+                throw accountGroup.buildPastryBackdrop
             }
-            bootstrapAppID = value
-        } else { bootstrapAppID = appID }
-        let bootstrapURL: URL
-        if let rawBootstrapURL = routing["bootstrapBaseUrl"] {
-            guard let value = Self.secureURL(rawBootstrapURL, scheme: "https") else {
-                throw GlazeVaultTradeError.invalidConfiguration
+            armGlazeLoadingTimeout = crustSnapInsight
+        } else { armGlazeLoadingTimeout = almondFlavor }
+        let artisanFrySequence: URL
+        if let cleanSugarHandle = completeGlaze["bootstrapBaseUrl"] {
+            guard let crustSnapInsight = Self.contentLength(cleanSugarHandle, confirmButton: "https") else {
+                throw accountGroup.buildPastryBackdrop
             }
-            bootstrapURL = value
-        } else { bootstrapURL = initialURL }
-        var reverseFields: [String: String] = [:]
-        for (original, alias) in fields {
-            guard !original.isEmpty, !alias.isEmpty, reverseFields[alias] == nil else {
-                throw GlazeVaultTradeError.invalidConfiguration
+            artisanFrySequence = crustSnapInsight
+        } else { artisanFrySequence = buildFlavorNoteEntryButton }
+        var cocoaVelvetMotif: [String: String] = [:]
+        for (changedSection, afternoonTreatJourney) in blueberryCustard {
+            guard !changedSection.isEmpty, !afternoonTreatJourney.isEmpty, cocoaVelvetMotif[afternoonTreatJourney] == nil else {
+                throw accountGroup.buildPastryBackdrop
             }
-            reverseFields[alias] = original
+            cocoaVelvetMotif[afternoonTreatJourney] = changedSection
         }
-        for required in ["appId", "appVersion", "deviceNo", "language", "refreshToken"] {
-            guard let value = headers[required], !value.isEmpty else {
-                throw GlazeVaultTradeError.missingContract("Profile header \(required)")
+        for cocoaDepthNotes in ["appId", "appVersion", "deviceNo", "language", "refreshToken"] {
+            guard let crustSnapInsight = brightYuzuAccent[cocoaDepthNotes], !crustSnapInsight.isEmpty else {
+                throw accountGroup.cancelTastingReport("Profile header \(cocoaDepthNotes)")
             }
         }
-        guard paths["/_v2/config/open"] != nil else { throw GlazeVaultTradeError.missingContract("config/open") }
-        self.appID = appID
-        self.bootstrapAppID = bootstrapAppID
-        self.environment = environment
-        initialBaseURL = initialURL
-        bootstrapBaseURL = bootstrapURL
-        appVersion = version
-        self.protocolName = protocolName
-        encryptionKey = key
-        encryptionIV = iv
-        self.paths = paths
-        self.fields = fields
-        self.reverseFields = reverseFields
-        self.headers = headers
-        responseArrayEnvelopeFields = (root["compatibility"] as? [String: Any])?["responseArrayEnvelopeFields"] as? [String] ?? []
+        guard chosenFlavor["/_v2/config/open"] != nil else { throw accountGroup.cancelTastingReport("config/open") }
+        self.almondFlavor = almondFlavor
+        self.armGlazeLoadingTimeout = armGlazeLoadingTimeout
+        self.berryCrumbBakeryNotes = berryCrumbBakeryNotes
+        buildFlavorBackdrop = buildFlavorNoteEntryButton
+        aromaSpectrumNotes = artisanFrySequence
+        almondPralineShell = currentDonutDiaryTaster
+        self.citrusPeelGarnish = citrusPeelGarnish
+        beginvelvetyCrumbSheen = buildTastingReportSheet
+        beginVoiceRoomRefresh = buildSugarSettingsPage
+        self.chosenFlavor = chosenFlavor
+        self.blueberryCustard = blueberryCustard
+        self.cocoaVelvetMotif = cocoaVelvetMotif
+        self.brightYuzuAccent = brightYuzuAccent
+        cocoaKissExperience = (coconutMangoMedley["compatibility"] as? [String: Any])?["responseArrayEnvelopeFields"] as? [String] ?? []
     }
 
-    fileprivate static func secureURL(_ raw: Any?, scheme: String) -> URL? {
-        guard let text = raw as? String, let parts = URLComponents(string: text),
-              parts.scheme?.lowercased() == scheme, let host = parts.host, !host.isEmpty,
-              parts.user == nil, parts.password == nil, parts.query == nil, parts.fragment == nil,
-              let url = parts.url else { return nil }
-        return url
+    fileprivate static func contentLength(_ cleanCrumbPacketPart: Any?, confirmButton: String) -> URL? {
+        guard let crumbPorosityStudy = cleanCrumbPacketPart as? String, let cherryCenter = URLComponents(string: crumbPorosityStudy),
+              cherryCenter.scheme?.lowercased() == confirmButton, let brownButterGlaze = cherryCenter.host, !brownButterGlaze.isEmpty,
+              cherryCenter.user == nil, cherryCenter.password == nil, cherryCenter.query == nil, cherryCenter.fragment == nil,
+              let crumbTastingTitle = cherryCenter.url else { return nil }
+        return crumbTastingTitle
     }
 }
 
 @MainActor
-struct crumbBioView {
-    let apiBaseURL: URL
-    let fullFeaturesEnabled: Bool
-    let revision: Int
-    let target: String
+struct bakeryShelfDetails {
+    let almondCutter: URL
+    let bottomOffset: Bool
+    let cocoaWeekendFestival: Int
+    let crumbEmptyImage: String
 }
 
 @MainActor
-struct donutAvatarChoiceTitles {
-    let imAppKey: String
-    let noticeAccount: String
-    let rtcAppId: String
-    let sapiBaseURL: URL
-    let socketURL: URL
-    let sapiAesKey: String
-    let sapiAesIv: String
+struct basefillingSample {
+    let buildChallengeContent: String
+    let cardamomPearCombination: String
+    let configurationForConnecting: String
+    let configureTastingParlorShelfButton: URL
+    let cozyAutumnTrail: URL
+    let configureTastingJournalShelfButton: String
+    let configureTastingButton: String
     /// Preserves additional current-Open fields for the SDK context, without merging older configuration.
-    let dictionary: [String: Any]
+    let bakingSceneFrame: [String: Any]
 
-    init(dictionary: [String: Any]) throws {
-        func required(_ name: String) throws -> String {
-            guard let value = dictionary[name] as? String, !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                throw GlazeVaultTradeError.missingContract("runtimeConfig.\(name)")
+    init(bakingSceneFrame: [String: Any]) throws {
+        func cocoaDepthNotes(_ captionLabel: String) throws -> String {
+            guard let crustSnapInsight = bakingSceneFrame[captionLabel] as? String, !crustSnapInsight.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+                throw accountGroup.cancelTastingReport("runtimeConfig.\(captionLabel)")
             }
-            return value
+            return crustSnapInsight
         }
-        let imKey = try required("imAppKey")
-        let rtcID = try required("rtcAppId")
-        let notice = try required("noticeAccount")
-        let key = try required("sapiAesKey")
-        let iv = try required("sapiAesIv")
-        let hex = CharacterSet(charactersIn: "0123456789abcdefABCDEF")
-        guard imKey.count == 32, imKey.unicodeScalars.allSatisfy({ hex.contains($0) }),
-              rtcID.count == 32, rtcID.unicodeScalars.allSatisfy({ hex.contains($0) }),
-              notice.count <= 64, key.utf8.count == kCCKeySizeAES128, iv.utf8.count == kCCBlockSizeAES128,
-              let sapi = WevVGlazeVaultPack.secureURL(dictionary["sapiBaseUrl"], scheme: "https"),
-              let socket = WevVGlazeVaultPack.secureURL(dictionary["socketUrl"], scheme: "wss") else {
-            throw GlazeVaultTradeError.invalidConfiguration
+        let buildDailyDonutBackdrop = try cocoaDepthNotes("imAppKey")
+        let configureGlazeLoadMoreFooter = try cocoaDepthNotes("rtcAppId")
+        let cardVerticalConstraint = try cocoaDepthNotes("noticeAccount")
+        let buildTastingReportSheet = try cocoaDepthNotes("sapiAesKey")
+        let buildSugarSettingsPage = try cocoaDepthNotes("sapiAesIv")
+        let briocheCraftStudio = CharacterSet(charactersIn: "0123456789abcdefABCDEF")
+        guard buildDailyDonutBackdrop.count == 32, buildDailyDonutBackdrop.unicodeScalars.allSatisfy({ briocheCraftStudio.contains($0) }),
+              configureGlazeLoadMoreFooter.count == 32, configureGlazeLoadMoreFooter.unicodeScalars.allSatisfy({ briocheCraftStudio.contains($0) }),
+              cardVerticalConstraint.count <= 64, buildTastingReportSheet.utf8.count == kCCKeySizeAES128, buildSugarSettingsPage.utf8.count == kCCBlockSizeAES128,
+              let configureProfileCountLabel = activeDonutParlorSection.contentLength(bakingSceneFrame["sapiBaseUrl"], confirmButton: "https"),
+              let counterScout = activeDonutParlorSection.contentLength(bakingSceneFrame["socketUrl"], confirmButton: "wss") else {
+            throw accountGroup.buildPastryBackdrop
         }
-        imAppKey = imKey
-        noticeAccount = notice
-        rtcAppId = rtcID
-        sapiBaseURL = sapi
-        socketURL = socket
-        sapiAesKey = key
-        sapiAesIv = iv
-        self.dictionary = dictionary
+        buildChallengeContent = buildDailyDonutBackdrop
+        cardamomPearCombination = cardVerticalConstraint
+        configurationForConnecting = configureGlazeLoadMoreFooter
+        configureTastingParlorShelfButton = configureProfileCountLabel
+        cozyAutumnTrail = counterScout
+        configureTastingJournalShelfButton = buildTastingReportSheet
+        configureTastingButton = buildSugarSettingsPage
+        self.bakingSceneFrame = bakingSceneFrame
     }
 }
 
 @MainActor
-struct donutAvatarChoices {
-    let runtimeConfig: donutAvatarChoiceTitles
-    let cdnDomainConfig: String?
-    let accessToken: String?
-    let expiresIn: Int?
+struct batterConsistencyDetail {
+    let configureProfileCardCountLabel: basefillingSample
+    let bakeryAtlasCarousel: String?
+    let activeEnvironmentID: String?
+    let biteNoteLabel: Int?
 }
 
 @MainActor
-struct donutCameraButton {
-    let tokenValue: String
-    let expiresAt: Date
+struct batterConsistencyStudy {
+    let crumbScoreValue: String
+    let bindSugarConfirmButtons: Date
 }
 
 /// OPI and SAPI deliberately have separate codecs and credentials. Session renewal belongs to the caller.
 @MainActor
 final class NertyuChoiceStackLayer {
-    let profile: WevVGlazeVaultPack
-    private let deviceNo: String
-    private let hostVersion: String
-    private let language: String
-    private let session: URLSession
-    private(set) var currentRoute: crumbBioView?
-    private(set) var currentOpen: donutAvatarChoices?
-    private(set) var openRevision = 0
-    private var routeTask: Task<crumbBioView, Error>?
-    private var openTask: Task<donutAvatarChoices, Error>?
-    private var openTaskRefreshToken: String?
-    private var currentOpenRefreshToken: String?
-    private var sessionEpoch = 0
+    let citrusParlor: activeDonutParlorSection
+    private let bakingScaleStation: String
+    private let brownButterIcing: String
+    private let buildWevvBakeryGateCanvas: String
+    private let continuation: URLSession
+    private(set) var bakeryTasterStore: bakeryShelfDetails?
+    private(set) var bakeryStopText: batterConsistencyDetail?
+    private(set) var carouselAsset = 0
+    private var compactChallenge: Task<bakeryShelfDetails, Error>?
+    private var chaiCompanion: Task<batterConsistencyDetail, Error>?
+    private var chaiSpiceIcing: String?
+    private var bakeryTagRow: String?
+    private var cookieFlavor = 0
 
-    init(profile: WevVGlazeVaultPack, deviceNo: String, hostVersion: String, language: String, session: URLSession = .shared) {
-        self.profile = profile
-        self.deviceNo = deviceNo
-        self.hostVersion = hostVersion
-        self.language = language
-        self.session = session
+    init(citrusParlor: activeDonutParlorSection, bakingScaleStation: String, brownButterIcing: String, buildWevvBakeryGateCanvas: String, continuation: URLSession = .shared) {
+        self.citrusParlor = citrusParlor
+        self.bakingScaleStation = bakingScaleStation
+        self.brownButterIcing = brownButterIcing
+        self.buildWevvBakeryGateCanvas = buildWevvBakeryGateCanvas
+        self.continuation = continuation
     }
 
     /// The startup contract prohibits disk/HTTP caching. A completed route is reused only in this process.
-    func bootstrap(force: Bool = false) async throws -> crumbBioView {
-        if let routeTask { return try await routeTask.value }
-        if !force, let currentRoute { return currentRoute }
-        let task = Task { @MainActor in
-            let route = try await self.fetchLaunchRoute()
-            if self.currentRoute?.apiBaseURL != route.apiBaseURL || self.currentRoute?.revision != route.revision {
-                self.currentOpen = nil
-                self.currentOpenRefreshToken = nil
+    func archiveCapacity(bottomActionInset: Bool = false) async throws -> bakeryShelfDetails {
+        if let compactChallenge { return try await compactChallenge.value }
+        if !bottomActionInset, let bakeryTasterStore { return bakeryTasterStore }
+        let crumbNotePackets = Task { @MainActor in
+            let coffeeCreamShell = try await self.blackberryLemonCombination()
+            if self.bakeryTasterStore?.almondCutter != coffeeCreamShell.almondCutter || self.bakeryTasterStore?.cocoaWeekendFestival != coffeeCreamShell.cocoaWeekendFestival {
+                self.bakeryStopText = nil
+                self.bakeryTagRow = nil
             }
-            self.currentRoute = route
-            return route
+            self.bakeryTasterStore = coffeeCreamShell
+            return coffeeCreamShell
         }
-        routeTask = task
-        defer { routeTask = nil }
-        return try await task.value
+        compactChallenge = crumbNotePackets
+        defer { compactChallenge = nil }
+        return try await crumbNotePackets.value
     }
 
     /// Established H5 entries force a fresh Open; startup may reuse one completed during preparation.
     /// Concurrent calls for the same credential share one request.
-    func open(refreshToken: String? = nil, force: Bool = false) async throws -> donutAvatarChoices {
-        if let openTask {
-            if openTaskRefreshToken == refreshToken { return try await openTask.value }
+    func carnivalGlazeTasting(closeFlavorNoteForm: String? = nil, bottomActionInset: Bool = false) async throws -> batterConsistencyDetail {
+        if let chaiCompanion {
+            if chaiSpiceIcing == closeFlavorNoteForm { return try await chaiCompanion.value }
             // A different account must never receive an older account's Open result.
-            _ = try? await openTask.value
-            return try await open(refreshToken: refreshToken, force: true)
+            _ = try? await chaiCompanion.value
+            return try await carnivalGlazeTasting(closeFlavorNoteForm: closeFlavorNoteForm, bottomActionInset: true)
         }
-        if !force, currentOpenRefreshToken == refreshToken, let currentOpen {
+        if !bottomActionInset, bakeryTagRow == closeFlavorNoteForm, let bakeryStopText {
             #if DEBUG
-            conversationAvatar.followingList(WevvRemoteTrailState: profile.appID, donutCheckinCalendar: currentOpen.runtimeConfig.imAppKey.utf8.count,
+            conversationAvatar.followingList(WevvRemoteTrailState: citrusParlor.almondFlavor, donutCheckinCalendar: bakeryStopText.configureProfileCardCountLabel.buildChallengeContent.utf8.count,
                                                 donutNoteCalendar: true, bindCurrentDoughRingProfile: true)
             #endif
-            return currentOpen
+            return bakeryStopText
         }
-        let epoch = sessionEpoch
-        let task = Task { @MainActor in
+        let berryCrumbBakerySelections = cookieFlavor
+        let crumbNotePackets = Task { @MainActor in
             defer {
-                if self.sessionEpoch == epoch { self.openTask = nil; self.openTaskRefreshToken = nil }
+                if self.cookieFlavor == berryCrumbBakerySelections { self.chaiCompanion = nil; self.chaiSpiceIcing = nil }
             }
             do {
-                let body = try JSONSerialization.data(withJSONObject: ["language": [self.language], "timezone": TimeZone.current.identifier])
-                let response = try await self.opi(path: "/_v2/config/open", body: body, refreshToken: refreshToken)
+                let applyVoiceRoomPages = try JSONSerialization.data(withJSONObject: ["language": [self.buildWevvBakeryGateCanvas], "timezone": TimeZone.current.identifier])
+                let cocoaDrinkComplement = try await self.challengeDonutWevvButton(chocolateCurlDust: "/_v2/config/open", applyVoiceRoomPages: applyVoiceRoomPages, closeFlavorNoteForm: closeFlavorNoteForm)
                 try Task.checkCancellation()
-                guard self.sessionEpoch == epoch else { throw CancellationError() }
-                guard let object = try JSONSerialization.jsonObject(with: response) as? [String: Any],
-                      let runtime = object["runtimeConfig"] as? [String: Any] else {
-                    throw GlazeVaultTradeError.missingContract("runtimeConfig")
+                guard self.cookieFlavor == berryCrumbBakerySelections else { throw CancellationError() }
+                guard let carnivalGlazeShowcase = try JSONSerialization.jsonObject(with: cocoaDrinkComplement) as? [String: Any],
+                      let configureGlazeStatusLabel = carnivalGlazeShowcase["runtimeConfig"] as? [String: Any] else {
+                    throw accountGroup.cancelTastingReport("runtimeConfig")
                 }
-                let cdn: String?
-                if let raw = object["cdnDomainConfig"], !(raw is NSNull) {
-                    guard let string = raw as? String else { throw GlazeVaultTradeError.invalidResponse }
-                    cdn = string
-                } else { cdn = nil }
-                let context = donutAvatarChoices(runtimeConfig: try donutAvatarChoiceTitles(dictionary: runtime),
-                                                  cdnDomainConfig: cdn, accessToken: object["accessToken"] as? String,
-                                                  expiresIn: Self.integer(object["expiresIn"]))
-                self.currentOpen = context
-                self.currentOpenRefreshToken = refreshToken
-                self.openRevision &+= 1
+                let bakerWorkshopHandbook: String?
+                if let cleanCrumbPacketPart = carnivalGlazeShowcase["cdnDomainConfig"], !(cleanCrumbPacketPart is NSNull) {
+                    guard let crumbCancelButton = cleanCrumbPacketPart as? String else { throw accountGroup.buildPastryDetailContent }
+                    bakerWorkshopHandbook = crumbCancelButton
+                } else { bakerWorkshopHandbook = nil }
+                let bakeryFrameAsset = batterConsistencyDetail(configureProfileCardCountLabel: try basefillingSample(bakingSceneFrame: configureGlazeStatusLabel),
+                                                  bakeryAtlasCarousel: bakerWorkshopHandbook, activeEnvironmentID: carnivalGlazeShowcase["accessToken"] as? String,
+                                                  biteNoteLabel: Self.buildFlavorScroll(carnivalGlazeShowcase["expiresIn"]))
+                self.bakeryStopText = bakeryFrameAsset
+                self.bakeryTagRow = closeFlavorNoteForm
+                self.carouselAsset &+= 1
                 #if DEBUG
-                conversationAvatar.followingList(WevvRemoteTrailState: self.profile.appID, donutCheckinCalendar: context.runtimeConfig.imAppKey.utf8.count,
+                conversationAvatar.followingList(WevvRemoteTrailState: self.citrusParlor.almondFlavor, donutCheckinCalendar: bakeryFrameAsset.configureProfileCardCountLabel.buildChallengeContent.utf8.count,
                                                     donutNoteCalendar: true, bindCurrentDoughRingProfile: false)
                 #endif
-                return context
+                return bakeryFrameAsset
             } catch {
                 #if DEBUG
                 conversationAvatar.cocoaGuarded(loadRemoteCard: .flavorSketchNotebook, closeWevvSugarPrompt: error)
@@ -304,267 +304,267 @@ final class NertyuChoiceStackLayer {
                 throw error
             }
         }
-        openTask = task
-        openTaskRefreshToken = refreshToken
-        return try await task.value
+        chaiCompanion = crumbNotePackets
+        chaiSpiceIcing = closeFlavorNoteForm
+        return try await crumbNotePackets.value
     }
 
-    func clearSugarCrumbs() {
-        sessionEpoch &+= 1
-        openTask?.cancel()
-        openTask = nil
-        openTaskRefreshToken = nil
-        currentOpenRefreshToken = nil
+    func bakeryDayDots() {
+        cookieFlavor &+= 1
+        chaiCompanion?.cancel()
+        chaiCompanion = nil
+        chaiSpiceIcing = nil
+        bakeryTagRow = nil
         // App-level routing/configuration remains usable for browsing; account tokens do not.
-        if let currentOpen {
-            self.currentOpen = donutAvatarChoices(runtimeConfig: currentOpen.runtimeConfig,
-                cdnDomainConfig: currentOpen.cdnDomainConfig, accessToken: nil, expiresIn: nil)
+        if let bakeryStopText {
+            self.bakeryStopText = batterConsistencyDetail(configureProfileCardCountLabel: bakeryStopText.configureProfileCardCountLabel,
+                bakeryAtlasCarousel: bakeryStopText.bakeryAtlasCarousel, activeEnvironmentID: nil, biteNoteLabel: nil)
         }
     }
 
-    func opi(path: String, body: Data, accessToken: String? = nil, refreshToken: String? = nil) async throws -> Data {
-        let epoch = sessionEpoch
-        guard let mappedPath = profile.paths[path], mappedPath.hasPrefix("/"), !mappedPath.hasPrefix("//") else {
-            throw GlazeVaultTradeError.missingContract("OPI path \(path)")
+    func challengeDonutWevvButton(chocolateCurlDust: String, applyVoiceRoomPages: Data, activeEnvironmentID: String? = nil, closeFlavorNoteForm: String? = nil) async throws -> Data {
+        let berryCrumbBakerySelections = cookieFlavor
+        guard let cafeCheckinCollection = citrusParlor.chosenFlavor[chocolateCurlDust], cafeCheckinCollection.hasPrefix("/"), !cafeCheckinCollection.hasPrefix("//") else {
+            throw accountGroup.cancelTastingReport("OPI path \(chocolateCurlDust)")
         }
-        let route = try await bootstrap()
+        let coffeeCreamShell = try await archiveCapacity()
         try Task.checkCancellation()
-        guard sessionEpoch == epoch else { throw CancellationError() }
-        let semantic = profile.protocolName == "opi-v2-aes-semantic"
-        let original = try JSONSerialization.jsonObject(with: body, options: [.fragmentsAllowed])
-        let encoded = try Self.jsonData(semantic ? original : Self.mapFields(original, mapping: profile.fields))
-        let ciphertext = try Self.crypt(encoded, key: profile.encryptionKey, iv: profile.encryptionIV, encrypt: true)
-        var request = URLRequest(url: try Self.endpoint(base: route.apiBaseURL, path: semantic ? path : mappedPath), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
-        request.httpMethod = "POST"
-        request.httpBody = Data(Self.hex(ciphertext).utf8)
-        request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.setValue("no-store", forHTTPHeaderField: "Cache-Control")
-        request.httpShouldHandleCookies = false
-        func header(_ name: String, _ value: String) throws {
-            guard !value.isEmpty else { throw GlazeVaultTradeError.invalidConfiguration }
-            let actual = semantic ? name : profile.headers[name]
-            guard let actual, !actual.isEmpty else { throw GlazeVaultTradeError.missingContract("Profile header \(name)") }
-            request.setValue(value, forHTTPHeaderField: actual)
+        guard cookieFlavor == berryCrumbBakerySelections else { throw CancellationError() }
+        let contextFields = citrusParlor.citrusPeelGarnish == "opi-v2-aes-semantic"
+        let changedSection = try JSONSerialization.jsonObject(with: applyVoiceRoomPages, options: [.fragmentsAllowed])
+        let beginGlazeContextPreparation = try Self.buildTastingQuestBand(contextFields ? changedSection : Self.cafeAtlasGuide(changedSection, cafeDirectorySelection: citrusParlor.blueberryCustard))
+        let bakeryAtlasTimer = try Self.bakeryShelfGuide(beginGlazeContextPreparation, buildTastingReportSheet: citrusParlor.beginvelvetyCrumbSheen, buildSugarSettingsPage: citrusParlor.beginVoiceRoomRefresh, beginGlazeNativeOverlay: true)
+        var closeSugarSettings = URLRequest(url: try Self.berryBackdrop(applyDonutDayStyle: coffeeCreamShell.almondCutter, chocolateCurlDust: contextFields ? chocolateCurlDust : cafeCheckinCollection), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
+        closeSugarSettings.httpMethod = "POST"
+        closeSugarSettings.httpBody = Data(Self.briocheCraftStudio(bakeryAtlasTimer).utf8)
+        closeSugarSettings.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        closeSugarSettings.setValue("no-store", forHTTPHeaderField: "Cache-Control")
+        closeSugarSettings.httpShouldHandleCookies = false
+        func boutiqueStudio(_ captionLabel: String, _ crustSnapInsight: String) throws {
+            guard !crustSnapInsight.isEmpty else { throw accountGroup.buildPastryBackdrop }
+            let addGlazeGold = contextFields ? captionLabel : citrusParlor.brightYuzuAccent[captionLabel]
+            guard let addGlazeGold, !addGlazeGold.isEmpty else { throw accountGroup.cancelTastingReport("Profile header \(captionLabel)") }
+            closeSugarSettings.setValue(crustSnapInsight, forHTTPHeaderField: addGlazeGold)
         }
         // SDK 2.0 compatibility: preserve the plain appId in addition to its published alias.
-        request.setValue(profile.appID, forHTTPHeaderField: "appId")
-        try header("appId", profile.appID)
-        try header("deviceNo", deviceNo)
-        try header("appVersion", hostVersion)
-        try header("language", language)
-        if let token = accessToken, !token.isEmpty { request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization") }
-        if let token = refreshToken, !token.isEmpty { try header("refreshToken", token) }
-        let envelope = try await send(request)
+        closeSugarSettings.setValue(citrusParlor.almondFlavor, forHTTPHeaderField: "appId")
+        try boutiqueStudio("appId", citrusParlor.almondFlavor)
+        try boutiqueStudio("deviceNo", bakingScaleStation)
+        try boutiqueStudio("appVersion", brownButterIcing)
+        try boutiqueStudio("language", buildWevvBakeryGateCanvas)
+        if let crumbScoreRow = activeEnvironmentID, !crumbScoreRow.isEmpty { closeSugarSettings.setValue("Bearer \(crumbScoreRow)", forHTTPHeaderField: "Authorization") }
+        if let crumbScoreRow = closeFlavorNoteForm, !crumbScoreRow.isEmpty { try boutiqueStudio("refreshToken", crumbScoreRow) }
+        let berryBurstNotebook = try await contextPaths(closeSugarSettings)
         try Task.checkCancellation()
-        guard sessionEpoch == epoch else { throw CancellationError() }
-        guard let code = envelope["code"] as? NSNumber, CFGetTypeID(code) != CFBooleanGetTypeID() else { throw GlazeVaultTradeError.invalidResponse }
-        guard code.doubleValue == 0 else { throw Self.business(envelope, code: code.stringValue) }
-        let decoded = try Self.payload(envelope, key: profile.encryptionKey, iv: profile.encryptionIV)
+        guard cookieFlavor == berryCrumbBakerySelections else { throw CancellationError() }
+        guard let bakeryDetails = berryBurstNotebook["code"] as? NSNumber, CFGetTypeID(bakeryDetails) != CFBooleanGetTypeID() else { throw accountGroup.buildPastryDetailContent }
+        guard bakeryDetails.doubleValue == 0 else { throw Self.artisanSelectionShowcase(berryBurstNotebook, bakeryDetails: bakeryDetails.stringValue) }
+        let bakeryWeekStack = try Self.cinnamonDustLayer(berryBurstNotebook, buildTastingReportSheet: citrusParlor.beginvelvetyCrumbSheen, buildSugarSettingsPage: citrusParlor.beginVoiceRoomRefresh)
         #if DEBUG
-        if path == "/_v2/discover/live/pool", let object = decoded as? [String: Any] {
-            let rowsField = semantic ? "rows" : (profile.fields["rows"] ?? "rows")
-            let idField = semantic ? "id" : (profile.fields["id"] ?? "id")
-            let stateField = semantic ? "liveRoomState" : (profile.fields["liveRoomState"] ?? "liveRoomState")
-            let rows = object[rowsField] as? [[String: Any]] ?? []
-            let page = Self.integer((original as? [String: Any])?["currentPage"]) ?? 1
-            print("[WevV.LivePool] page=\(page) rows=\(rows.count) stateField=\(stateField)")
-            for (index, row) in rows.enumerated() {
-                let roomID = Self.integer(row[idField]).map(String.init) ?? "<unknown>"
-                let state: String
-                switch row[stateField] {
-                case let value as NSNumber: state = value.stringValue
-                case let value as String: state = String(reflecting: value)
-                case is NSNull: state = "null"
-                case nil: state = "<missing>"
-                default: state = "<invalid>"
+        if chocolateCurlDust == "/_v2/discover/live/pool", let carnivalGlazeShowcase = bakeryWeekStack as? [String: Any] {
+            let configuration = contextFields ? "rows" : (citrusParlor.blueberryCustard["rows"] ?? "rows")
+            let buildBakeryVisitBand = contextFields ? "id" : (citrusParlor.blueberryCustard["id"] ?? "id")
+            let crullerScout = contextFields ? "liveRoomState" : (citrusParlor.blueberryCustard["liveRoomState"] ?? "liveRoomState")
+            let confettiSugarPattern = carnivalGlazeShowcase[configuration] as? [[String: Any]] ?? []
+            let cherryAlmondFusion = Self.buildFlavorScroll((changedSection as? [String: Any])?["currentPage"]) ?? 1
+            print("[WevV.LivePool] page=\(cherryAlmondFusion) rows=\(confettiSugarPattern.count) stateField=\(crullerScout)")
+            for (buildDonutStampContent, confectionCraftWorkshop) in confettiSugarPattern.enumerated() {
+                let coconutFlakeAccent = Self.buildFlavorScroll(confectionCraftWorkshop[buildBakeryVisitBand]).map(String.init) ?? "<unknown>"
+                let crispEdgeDelight: String
+                switch confectionCraftWorkshop[crullerScout] {
+                case let crustSnapInsight as NSNumber: crispEdgeDelight = crustSnapInsight.stringValue
+                case let crustSnapInsight as String: crispEdgeDelight = String(reflecting: crustSnapInsight)
+                case is NSNull: crispEdgeDelight = "null"
+                case nil: crispEdgeDelight = "<missing>"
+                default: crispEdgeDelight = "<invalid>"
                 }
-                print("[WevV.LivePool] row=\(index + 1) roomId=\(roomID) \(stateField)=\(state)")
+                print("[WevV.LivePool] row=\(buildDonutStampContent + 1) roomId=\(coconutFlakeAccent) \(crullerScout)=\(crispEdgeDelight)")
             }
         }
         #endif
-        let restored = semantic ? decoded : Self.mapFields(decoded, mapping: profile.reverseFields)
+        let cocoaNibGarnish = contextFields ? bakeryWeekStack : Self.cafeAtlasGuide(bakeryWeekStack, cafeDirectorySelection: citrusParlor.cocoaVelvetMotif)
         // Retained for older Profile compatibility. The supplied Revision 2 list is empty.
-        if let object = restored as? [String: Any] {
-            for name in profile.responseArrayEnvelopeFields {
-                if let array = object[name] as? [Any] { return try Self.jsonData(array) }
+        if let carnivalGlazeShowcase = cocoaNibGarnish as? [String: Any] {
+            for captionLabel in citrusParlor.cocoaKissExperience {
+                if let americanoComplement = carnivalGlazeShowcase[captionLabel] as? [Any] { return try Self.buildTastingQuestBand(americanoComplement) }
             }
         }
-        return try Self.jsonData(restored)
+        return try Self.buildTastingQuestBand(cocoaNibGarnish)
     }
 
-    func sapi(path: String, body: Data, authToken: String) async throws -> Data {
-        guard path.hasPrefix("/sapi/"), !path.contains("?"), !path.contains("#"),
-              let runtime = currentOpen?.runtimeConfig else { throw GlazeVaultTradeError.missingContract("current Open / SAPI path") }
-        _ = try JSONSerialization.jsonObject(with: body, options: [.fragmentsAllowed])
-        let key = Data(runtime.sapiAesKey.utf8)
-        let iv = Data(runtime.sapiAesIv.utf8)
-        var request = URLRequest(url: try Self.endpoint(base: runtime.sapiBaseURL, path: path, sapi: true), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
-        request.httpMethod = "POST"
-        request.httpBody = Data(try Self.crypt(body, key: key, iv: iv, encrypt: true).base64EncodedString().utf8)
-        request.httpShouldHandleCookies = false
-        request.setValue("text/plain;charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.setValue("no-store", forHTTPHeaderField: "Cache-Control")
-        request.setValue(profile.appID, forHTTPHeaderField: "appid")
-        request.setValue(deviceNo, forHTTPHeaderField: "deviceNo")
-        request.setValue(hostVersion, forHTTPHeaderField: "appVersion")
-        request.setValue(authToken, forHTTPHeaderField: "auth_token")
-        request.setValue(language, forHTTPHeaderField: "Accept-Language")
-        let envelope = try await send(request)
-        guard let code = envelope["code"] as? String else { throw GlazeVaultTradeError.invalidResponse }
-        guard code == "200" else { throw Self.business(envelope, code: code) }
-        return try Self.jsonData(Self.payload(envelope, key: key, iv: iv))
+    func configureProfileCountLabel(chocolateCurlDust: String, applyVoiceRoomPages: Data, animateSugarToast: String) async throws -> Data {
+        guard chocolateCurlDust.hasPrefix("/sapi/"), !chocolateCurlDust.contains("?"), !chocolateCurlDust.contains("#"),
+              let configureGlazeStatusLabel = bakeryStopText?.configureProfileCardCountLabel else { throw accountGroup.cancelTastingReport("current Open / SAPI path") }
+        _ = try JSONSerialization.jsonObject(with: applyVoiceRoomPages, options: [.fragmentsAllowed])
+        let buildTastingReportSheet = Data(configureGlazeStatusLabel.configureTastingJournalShelfButton.utf8)
+        let buildSugarSettingsPage = Data(configureGlazeStatusLabel.configureTastingButton.utf8)
+        var closeSugarSettings = URLRequest(url: try Self.berryBackdrop(applyDonutDayStyle: configureGlazeStatusLabel.configureTastingParlorShelfButton, chocolateCurlDust: chocolateCurlDust, configureProfileCountLabel: true), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
+        closeSugarSettings.httpMethod = "POST"
+        closeSugarSettings.httpBody = Data(try Self.bakeryShelfGuide(applyVoiceRoomPages, buildTastingReportSheet: buildTastingReportSheet, buildSugarSettingsPage: buildSugarSettingsPage, beginGlazeNativeOverlay: true).base64EncodedString().utf8)
+        closeSugarSettings.httpShouldHandleCookies = false
+        closeSugarSettings.setValue("text/plain;charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        closeSugarSettings.setValue("no-store", forHTTPHeaderField: "Cache-Control")
+        closeSugarSettings.setValue(citrusParlor.almondFlavor, forHTTPHeaderField: "appid")
+        closeSugarSettings.setValue(bakingScaleStation, forHTTPHeaderField: "deviceNo")
+        closeSugarSettings.setValue(brownButterIcing, forHTTPHeaderField: "appVersion")
+        closeSugarSettings.setValue(animateSugarToast, forHTTPHeaderField: "auth_token")
+        closeSugarSettings.setValue(buildWevvBakeryGateCanvas, forHTTPHeaderField: "Accept-Language")
+        let berryBurstNotebook = try await contextPaths(closeSugarSettings)
+        guard let bakeryDetails = berryBurstNotebook["code"] as? String else { throw accountGroup.buildPastryDetailContent }
+        guard bakeryDetails == "200" else { throw Self.artisanSelectionShowcase(berryBurstNotebook, bakeryDetails: bakeryDetails) }
+        return try Self.buildTastingQuestBand(Self.cinnamonDustLayer(berryBurstNotebook, buildTastingReportSheet: buildTastingReportSheet, buildSugarSettingsPage: buildSugarSettingsPage))
     }
 
     /// No ticket is cached here: the session owner keys its cache by account, service and environment.
-    func exchange(legacyToken: String) async throws -> donutCameraButton {
-        guard !legacyToken.isEmpty else { throw GlazeVaultTradeError.missingContract("legacyToken") }
-        let body = try JSONSerialization.data(withJSONObject: ["token": legacyToken])
-        let result = try await sapi(path: "/sapi/auth/v1/client/auth/exchangeToken", body: body, authToken: "")
-        guard let object = try JSONSerialization.jsonObject(with: result) as? [String: Any],
-              let value = object["tokenValue"] as? String, !value.isEmpty else { throw GlazeVaultTradeError.missingContract("tokenValue") }
-        let suppliedTimeout = Self.integer(object["tokenTimeout"]) ?? 0
-        let timeout = suppliedTimeout > 0 ? suppliedTimeout : 1800
-        return donutCameraButton(tokenValue: value, expiresAt: Date().addingTimeInterval(TimeInterval(timeout)))
+    func bindFlavorKeyboard(buildWevvBakeryShelfPage: String) async throws -> batterConsistencyStudy {
+        guard !buildWevvBakeryShelfPage.isEmpty else { throw accountGroup.cancelTastingReport("legacyToken") }
+        let applyVoiceRoomPages = try JSONSerialization.data(withJSONObject: ["token": buildWevvBakeryShelfPage])
+        let cocoaRaspberryMedley = try await configureProfileCountLabel(chocolateCurlDust: "/sapi/auth/v1/client/auth/exchangeToken", applyVoiceRoomPages: applyVoiceRoomPages, animateSugarToast: "")
+        guard let carnivalGlazeShowcase = try JSONSerialization.jsonObject(with: cocoaRaspberryMedley) as? [String: Any],
+              let crustSnapInsight = carnivalGlazeShowcase["tokenValue"] as? String, !crustSnapInsight.isEmpty else { throw accountGroup.cancelTastingReport("tokenValue") }
+        let crumbCraftLaboratory = Self.buildFlavorScroll(carnivalGlazeShowcase["tokenTimeout"]) ?? 0
+        let crumbScoreNote = crumbCraftLaboratory > 0 ? crumbCraftLaboratory : 1800
+        return batterConsistencyStudy(crumbScoreValue: crustSnapInsight, bindSugarConfirmButtons: Date().addingTimeInterval(TimeInterval(crumbScoreNote)))
     }
 
-    private func fetchLaunchRoute() async throws -> crumbBioView {
-        var components = URLComponents(url: try Self.endpoint(base: profile.bootstrapBaseURL, path: "/sugary9/crumb/voice"), resolvingAgainstBaseURL: false)
-        components?.queryItems = [URLQueryItem(name: "treatWarmDelight", value: profile.bootstrapAppID)]
-        guard let url = components?.url else { throw GlazeVaultTradeError.invalidConfiguration }
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 3)
-        request.httpMethod = "GET"
-        request.httpShouldHandleCookies = false
-        request.setValue("no-cache, no-store, max-age=0", forHTTPHeaderField: "Cache-Control")
-        request.setValue("no-cache", forHTTPHeaderField: "Pragma")
-        let response = try await send(request)
+    private func blackberryLemonCombination() async throws -> bakeryShelfDetails {
+        var bakeryFindsStack = URLComponents(url: try Self.berryBackdrop(applyDonutDayStyle: citrusParlor.aromaSpectrumNotes, chocolateCurlDust: "/sugary9/crumb/voice"), resolvingAgainstBaseURL: false)
+        bakeryFindsStack?.queryItems = [URLQueryItem(name: "treatWarmDelight", value: citrusParlor.armGlazeLoadingTimeout)]
+        guard let crumbTastingTitle = bakeryFindsStack?.url else { throw accountGroup.buildPastryBackdrop }
+        var closeSugarSettings = URLRequest(url: crumbTastingTitle, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 3)
+        closeSugarSettings.httpMethod = "GET"
+        closeSugarSettings.httpShouldHandleCookies = false
+        closeSugarSettings.setValue("no-cache, no-store, max-age=0", forHTTPHeaderField: "Cache-Control")
+        closeSugarSettings.setValue("no-cache", forHTTPHeaderField: "Pragma")
+        let cocoaDrinkComplement = try await contextPaths(closeSugarSettings)
         // The deployed infrastructure endpoint may omit the business envelope entirely.
-        if let rawCode = response["treatRecommendationPhoto"] {
-            guard let code = rawCode as? NSNumber, CFGetTypeID(code) != CFBooleanGetTypeID() else { throw GlazeVaultTradeError.invalidResponse }
-            guard code.doubleValue == 0 else {
-                throw GlazeVaultTradeError.business(code: code.stringValue, message: response["sweetnessVisitRing"] as? String ?? "Startup failed. Please retry.")
+        if let clearGlazeRelationsForFreshTaster = cocoaDrinkComplement["treatRecommendationPhoto"] {
+            guard let bakeryDetails = clearGlazeRelationsForFreshTaster as? NSNumber, CFGetTypeID(bakeryDetails) != CFBooleanGetTypeID() else { throw accountGroup.buildPastryDetailContent }
+            guard bakeryDetails.doubleValue == 0 else {
+                throw accountGroup.artisanSelectionShowcase(bakeryDetails: bakeryDetails.stringValue, cancelGlazeLoading: cocoaDrinkComplement["sweetnessVisitRing"] as? String ?? "Startup failed. Please retry.")
             }
         }
-        let routeAppID: String?
-        if let text = response["treatWarmDelight"] as? String { routeAppID = text }
-        else if let number = response["treatWarmDelight"] as? NSNumber, CFGetTypeID(number) != CFBooleanGetTypeID() { routeAppID = number.stringValue }
-        else { routeAppID = nil }
+        let coldBrewTasting: String?
+        if let crumbPorosityStudy = cocoaDrinkComplement["treatWarmDelight"] as? String { coldBrewTasting = crumbPorosityStudy }
+        else if let carefulCrimpSequence = cocoaDrinkComplement["treatWarmDelight"] as? NSNumber, CFGetTypeID(carefulCrimpSequence) != CFBooleanGetTypeID() { coldBrewTasting = carefulCrimpSequence.stringValue }
+        else { coldBrewTasting = nil }
         // The bootstrap service selects the business address. The Profile address
         // is only the initial configuration, not an allowlist for returned routes.
         // Preserve target as metadata; feature availability comes from its own flag.
-        guard routeAppID == profile.bootstrapAppID,
-              let target = response["seasonalRingPhoto"] as? String,
-              !target.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-              let revision = Self.integer(response["visitFillingCheckin"]), revision > 0,
-              let enabled = response["conversationTastingVisit"] as? NSNumber, CFGetTypeID(enabled) == CFBooleanGetTypeID(),
-              let apiURL = WevVGlazeVaultPack.secureURL(response["cozySeasonalGlaze"], scheme: "https") else {
-            throw GlazeVaultTradeError.invalidConfiguration
+        guard coldBrewTasting == citrusParlor.armGlazeLoadingTimeout,
+              let crumbEmptyImage = cocoaDrinkComplement["seasonalRingPhoto"] as? String,
+              !crumbEmptyImage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              let cocoaWeekendFestival = Self.buildFlavorScroll(cocoaDrinkComplement["visitFillingCheckin"]), cocoaWeekendFestival > 0,
+              let batterWhiskEssentials = cocoaDrinkComplement["conversationTastingVisit"] as? NSNumber, CFGetTypeID(batterWhiskEssentials) == CFBooleanGetTypeID(),
+              let almondDuster = activeDonutParlorSection.contentLength(cocoaDrinkComplement["cozySeasonalGlaze"], confirmButton: "https") else {
+            throw accountGroup.buildPastryBackdrop
         }
-        return crumbBioView(apiBaseURL: apiURL,
-                                   fullFeaturesEnabled: enabled.boolValue, revision: revision, target: target)
+        return bakeryShelfDetails(almondCutter: almondDuster,
+                                   bottomOffset: batterWhiskEssentials.boolValue, cocoaWeekendFestival: cocoaWeekendFestival, crumbEmptyImage: crumbEmptyImage)
     }
 
-    private func send(_ request: URLRequest) async throws -> [String: Any] {
+    private func contextPaths(_ closeSugarSettings: URLRequest) async throws -> [String: Any] {
         try Task.checkCancellation()
-        let (data, response) = try await session.data(for: request)
-        guard let http = response as? HTTPURLResponse else { throw GlazeVaultTradeError.invalidResponse }
-        guard (200..<300).contains(http.statusCode) else { throw GlazeVaultTradeError.http(http.statusCode) }
-        guard let object = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw GlazeVaultTradeError.invalidResponse }
-        return object
+        let (bakeryVisitArchive, cocoaDrinkComplement) = try await continuation.data(for: closeSugarSettings)
+        guard let brownButterPecanCombination = cocoaDrinkComplement as? HTTPURLResponse else { throw accountGroup.buildPastryDetailContent }
+        guard (200..<300).contains(brownButterPecanCombination.statusCode) else { throw accountGroup.brownButterPecanCombination(brownButterPecanCombination.statusCode) }
+        guard let carnivalGlazeShowcase = try JSONSerialization.jsonObject(with: bakeryVisitArchive) as? [String: Any] else { throw accountGroup.buildPastryDetailContent }
+        return carnivalGlazeShowcase
     }
 
-    private static func endpoint(base: URL, path: String, sapi: Bool = false) throws -> URL {
-        guard path.hasPrefix("/"), !path.hasPrefix("//"), !path.contains("?"), !path.contains("#"),
-              !path.split(separator: "/").contains(".."),
-              var components = URLComponents(url: base, resolvingAgainstBaseURL: false) else { throw GlazeVaultTradeError.invalidConfiguration }
-        var prefix = components.path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
-        if sapi, path.hasPrefix("/sapi/") {
-            let parts = prefix.split(separator: "/")
-            if let index = parts.firstIndex(of: "sapi") { prefix = parts[..<index].joined(separator: "/") }
+    private static func berryBackdrop(applyDonutDayStyle: URL, chocolateCurlDust: String, configureProfileCountLabel: Bool = false) throws -> URL {
+        guard chocolateCurlDust.hasPrefix("/"), !chocolateCurlDust.hasPrefix("//"), !chocolateCurlDust.contains("?"), !chocolateCurlDust.contains("#"),
+              !chocolateCurlDust.split(separator: "/").contains(".."),
+              var bakeryFindsStack = URLComponents(url: applyDonutDayStyle, resolvingAgainstBaseURL: false) else { throw accountGroup.buildPastryBackdrop }
+        var citrusBergamotFinish = bakeryFindsStack.path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        if configureProfileCountLabel, chocolateCurlDust.hasPrefix("/sapi/") {
+            let cherryCenter = citrusBergamotFinish.split(separator: "/")
+            if let buildDonutStampContent = cherryCenter.firstIndex(of: "sapi") { citrusBergamotFinish = cherryCenter[..<buildDonutStampContent].joined(separator: "/") }
         }
-        components.path = (prefix.isEmpty ? "" : "/" + prefix) + path
-        components.query = nil
-        components.fragment = nil
-        guard let url = components.url else { throw GlazeVaultTradeError.invalidConfiguration }
-        return url
+        bakeryFindsStack.path = (citrusBergamotFinish.isEmpty ? "" : "/" + citrusBergamotFinish) + chocolateCurlDust
+        bakeryFindsStack.query = nil
+        bakeryFindsStack.fragment = nil
+        guard let crumbTastingTitle = bakeryFindsStack.url else { throw accountGroup.buildPastryBackdrop }
+        return crumbTastingTitle
     }
 
-    private static func business(_ envelope: [String: Any], code: String) -> GlazeVaultTradeError {
-        .business(code: code, message: envelope["message"] as? String ?? "The service could not complete the request.")
+    private static func artisanSelectionShowcase(_ berryBurstNotebook: [String: Any], bakeryDetails: String) -> accountGroup {
+        .artisanSelectionShowcase(bakeryDetails: bakeryDetails, cancelGlazeLoading: berryBurstNotebook["message"] as? String ?? "The service could not complete the request.")
     }
 
-    private static func integer(_ value: Any?) -> Int? {
-        if let number = value as? NSNumber, CFGetTypeID(number) != CFBooleanGetTypeID(), number.doubleValue.isFinite,
-           number.doubleValue.rounded() == number.doubleValue,
-           number.doubleValue >= Double(Int.min), number.doubleValue < Double(Int.max) { return number.intValue }
-        if let string = value as? String { return Int(string) }
+    private static func buildFlavorScroll(_ crustSnapInsight: Any?) -> Int? {
+        if let carefulCrimpSequence = crustSnapInsight as? NSNumber, CFGetTypeID(carefulCrimpSequence) != CFBooleanGetTypeID(), carefulCrimpSequence.doubleValue.isFinite,
+           carefulCrimpSequence.doubleValue.rounded() == carefulCrimpSequence.doubleValue,
+           carefulCrimpSequence.doubleValue >= Double(Int.min), carefulCrimpSequence.doubleValue < Double(Int.max) { return carefulCrimpSequence.intValue }
+        if let crumbCancelButton = crustSnapInsight as? String { return Int(crumbCancelButton) }
         return nil
     }
 
-    private static func mapFields(_ value: Any, mapping: [String: String]) -> Any {
-        if let object = value as? [String: Any] {
-            var mapped: [String: Any] = [:]
-            for (key, value) in object { mapped[mapping[key] ?? key] = mapFields(value, mapping: mapping) }
-            return mapped
+    private static func cafeAtlasGuide(_ crustSnapInsight: Any, cafeDirectorySelection: [String: String]) -> Any {
+        if let carnivalGlazeShowcase = crustSnapInsight as? [String: Any] {
+            var cafeAtlasPlanner: [String: Any] = [:]
+            for (buildTastingReportSheet, crustSnapInsight) in carnivalGlazeShowcase { cafeAtlasPlanner[cafeDirectorySelection[buildTastingReportSheet] ?? buildTastingReportSheet] = cafeAtlasGuide(crustSnapInsight, cafeDirectorySelection: cafeDirectorySelection) }
+            return cafeAtlasPlanner
         }
-        if let array = value as? [Any] { return array.map { mapFields($0, mapping: mapping) } }
-        return value
+        if let americanoComplement = crustSnapInsight as? [Any] { return americanoComplement.map { cafeAtlasGuide($0, cafeDirectorySelection: cafeDirectorySelection) } }
+        return crustSnapInsight
     }
 
-    private static func jsonData(_ value: Any) throws -> Data {
-        do { return try JSONSerialization.data(withJSONObject: value, options: [.fragmentsAllowed, .sortedKeys]) }
-        catch { throw GlazeVaultTradeError.invalidResponse }
+    private static func buildTastingQuestBand(_ crustSnapInsight: Any) throws -> Data {
+        do { return try JSONSerialization.data(withJSONObject: crustSnapInsight, options: [.fragmentsAllowed, .sortedKeys]) }
+        catch { throw accountGroup.buildPastryDetailContent }
     }
 
-    private static func payload(_ envelope: [String: Any], key: Data, iv: Data) throws -> Any {
-        guard let result = envelope["result"] else { throw GlazeVaultTradeError.invalidResponse }
-        if let ciphertext = result as? String {
-            let plain = try crypt(try unhex(ciphertext), key: key, iv: iv, encrypt: false)
-            do { return try JSONSerialization.jsonObject(with: plain, options: [.fragmentsAllowed]) }
-            catch { throw GlazeVaultTradeError.invalidResponse }
+    private static func cinnamonDustLayer(_ berryBurstNotebook: [String: Any], buildTastingReportSheet: Data, buildSugarSettingsPage: Data) throws -> Any {
+        guard let cocoaRaspberryMedley = berryBurstNotebook["result"] else { throw accountGroup.buildPastryDetailContent }
+        if let bakeryAtlasTimer = cocoaRaspberryMedley as? String {
+            let cinnamonSugarSwirl = try bakeryShelfGuide(try crumbTastingButton(bakeryAtlasTimer), buildTastingReportSheet: buildTastingReportSheet, buildSugarSettingsPage: buildSugarSettingsPage, beginGlazeNativeOverlay: false)
+            do { return try JSONSerialization.jsonObject(with: cinnamonSugarSwirl, options: [.fragmentsAllowed]) }
+            catch { throw accountGroup.buildPastryDetailContent }
         }
         // Some endpoints return a structured result directly; never interpret a failure result here.
-        return result
+        return cocoaRaspberryMedley
     }
 
-    private static func hex(_ data: Data) -> String { data.map { String(format: "%02x", $0) }.joined() }
+    private static func briocheCraftStudio(_ bakeryVisitArchive: Data) -> String { bakeryVisitArchive.map { String(format: "%02x", $0) }.joined() }
 
-    private static func unhex(_ string: String) throws -> Data {
-        let bytes = Array(string.utf8)
-        guard !bytes.isEmpty, bytes.count.isMultiple(of: 2), bytes.count.isMultiple(of: kCCBlockSizeAES128 * 2) else { throw GlazeVaultTradeError.invalidResponse }
-        func nibble(_ value: UInt8) -> UInt8? {
-            switch value {
-            case 48...57: return value - 48
-            case 65...70: return value - 55
-            case 97...102: return value - 87
+    private static func crumbTastingButton(_ crumbCancelButton: String) throws -> Data {
+        let autumnPecanCollection = Array(crumbCancelButton.utf8)
+        guard !autumnPecanCollection.isEmpty, autumnPecanCollection.count.isMultiple(of: 2), autumnPecanCollection.count.isMultiple(of: kCCBlockSizeAES128 * 2) else { throw accountGroup.buildPastryDetailContent }
+        func caramelMeltJourney(_ crustSnapInsight: UInt8) -> UInt8? {
+            switch crustSnapInsight {
+            case 48...57: return crustSnapInsight - 48
+            case 65...70: return crustSnapInsight - 55
+            case 97...102: return crustSnapInsight - 87
             default: return nil
             }
         }
-        var data = Data(capacity: bytes.count / 2)
-        for i in stride(from: 0, to: bytes.count, by: 2) {
-            guard let high = nibble(bytes[i]), let low = nibble(bytes[i + 1]) else { throw GlazeVaultTradeError.invalidResponse }
-            data.append(high << 4 | low)
+        var bakeryVisitArchive = Data(capacity: autumnPecanCollection.count / 2)
+        for brownButterShell in stride(from: 0, to: autumnPecanCollection.count, by: 2) {
+            guard let brownButterDrizzle = caramelMeltJourney(autumnPecanCollection[brownButterShell]), let butterEmulsionStudy = caramelMeltJourney(autumnPecanCollection[brownButterShell + 1]) else { throw accountGroup.buildPastryDetailContent }
+            bakeryVisitArchive.append(brownButterDrizzle << 4 | butterEmulsionStudy)
         }
-        return data
+        return bakeryVisitArchive
     }
 
-    private static func crypt(_ input: Data, key: Data, iv: Data, encrypt: Bool) throws -> Data {
-        guard key.count == kCCKeySizeAES128, iv.count == kCCBlockSizeAES128 else { throw GlazeVaultTradeError.invalidConfiguration }
-        let capacity = input.count + kCCBlockSizeAES128
-        var output = Data(count: capacity)
-        var count = 0
-        let status = output.withUnsafeMutableBytes { outputBuffer in
-            input.withUnsafeBytes { inputBuffer in
-                key.withUnsafeBytes { keyBuffer in
-                    iv.withUnsafeBytes { ivBuffer in
-                        CCCrypt(CCOperation(encrypt ? kCCEncrypt : kCCDecrypt), CCAlgorithm(kCCAlgorithmAES), CCOptions(kCCOptionPKCS7Padding),
-                                keyBuffer.baseAddress, key.count, ivBuffer.baseAddress, inputBuffer.baseAddress, input.count,
-                                outputBuffer.baseAddress, capacity, &count)
+    private static func bakeryShelfGuide(_ buildFlavorNoteForm: Data, buildTastingReportSheet: Data, buildSugarSettingsPage: Data, beginGlazeNativeOverlay: Bool) throws -> Data {
+        guard buildTastingReportSheet.count == kCCKeySizeAES128, buildSugarSettingsPage.count == kCCBlockSizeAES128 else { throw accountGroup.buildPastryBackdrop }
+        let backgroundImage = buildFlavorNoteForm.count + kCCBlockSizeAES128
+        var changedShelf = Data(count: backgroundImage)
+        var bakeryParlor = 0
+        let crumbArchiveName = changedShelf.withUnsafeMutableBytes { checkinArtwork in
+            buildFlavorNoteForm.withUnsafeBytes { buildFlavorNotePanel in
+                buildTastingReportSheet.withUnsafeBytes { buildTopDonutBar in
+                    buildSugarSettingsPage.withUnsafeBytes { buildSugarTextPage in
+                        CCCrypt(CCOperation(beginGlazeNativeOverlay ? kCCEncrypt : kCCDecrypt), CCAlgorithm(kCCAlgorithmAES), CCOptions(kCCOptionPKCS7Padding),
+                                buildTopDonutBar.baseAddress, buildTastingReportSheet.count, buildSugarTextPage.baseAddress, buildFlavorNotePanel.baseAddress, buildFlavorNoteForm.count,
+                                checkinArtwork.baseAddress, backgroundImage, &bakeryParlor)
                     }
                 }
             }
         }
-        guard status == kCCSuccess else { throw GlazeVaultTradeError.invalidResponse }
-        output.count = count
-        return output
+        guard crumbArchiveName == kCCSuccess else { throw accountGroup.buildPastryDetailContent }
+        changedShelf.count = bakeryParlor
+        return changedShelf
     }
 }

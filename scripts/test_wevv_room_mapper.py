@@ -18,14 +18,14 @@ def main():
 @MainActor final class BrostingmellowCoconutEssence {
     static let listenForGlazeTrades = BrostingmellowCoconutEssence()
     var calls: [(String, [String: Any])] = []
-    var voiceCalls: [(String, glazeVaultHeroLayer?, Int)] = []
+    var voiceCalls: [(String, appleCompote?, Int)] = []
     var prepareCount = 0
     func glazeCounterBakery() async throws { prepareCount += 1 }
     func bakeryPieces(glazeCatalogRefresh: String, autumnPecanSelection: [String: Any]) async throws -> Data {
         calls.append((glazeCatalogRefresh, autumnPecanSelection))
         return Data("{\\"total\\":15,\\"rows\\":[{\\"id\\":9,\\"userId\\":5,\\"liveName\\":\\"Room title\\"}]}".utf8)
     }
-    func makeSprinkleAuthorAvatar(glazeCatalogRefresh: String, cancelCitrusTray: glazeVaultHeroLayer? = nil, frostingScroll: Int = 10) async throws -> Data {
+    func makeSprinkleAuthorAvatar(glazeCatalogRefresh: String, cancelCitrusTray: appleCompote? = nil, frostingScroll: Int = 10) async throws -> Data {
         voiceCalls.append((glazeCatalogRefresh, cancelCitrusTray, frostingScroll))
         return Data(#"[{"id":5,"ownerId":7,"roomStatus":1,"score":-10,"snapshotId":"snapshot-next"}]"#.utf8)
     }
@@ -161,31 +161,31 @@ def main():
             ["id": 1, "ownerId": 5, "roomStatus": 1, "score": "9007199254740993"],
             ["id": 2, "ownerId": 6, "roomStatus": 0, "score": String(Int64.min), "snapshotId": "snapshot-last"]
         ]), finishSugarPictureUpload: false)
-        precondition(cursorPage.rawCount == 2 && cursorPage.rooms.map(\.passionfruitMousse) == ["1"])
-        precondition(cursorPage.nextCursor == .init(offset: Int64.min, snapshotID: "snapshot-last"))
+        precondition(cursorPage.avatarData == 2 && cursorPage.berryReportAction.map(\.passionfruitMousse) == ["1"])
+        precondition(cursorPage.assetForFlavorNote == .init(assetKey: Int64.min, brightYuzuAccent: "snapshot-last"))
         let filteredLastPage = try GzeProfileSafetyTray.glazeCatalogOwner(data([
             ["id": 1, "ownerId": 5, "score": 4],
             ["id": false, "ownerId": 6, "score": "9007199254740993"]
         ]), finishSugarPictureUpload: true)
-        precondition(filteredLastPage.rawCount == 2 && filteredLastPage.rooms.count == 1)
-        precondition(filteredLastPage.nextCursor == .init(offset: 9007199254740993, snapshotID: nil))
+        precondition(filteredLastPage.avatarData == 2 && filteredLastPage.berryReportAction.count == 1)
+        precondition(filteredLastPage.assetForFlavorNote == .init(assetKey: 9007199254740993, brightYuzuAccent: nil))
         for score: Int64 in [0, -1, Int64.min, Int64.max] {
             let page = try GzeProfileSafetyTray.glazeCatalogOwner(data([["id": 1, "ownerId": 5, "score": score, "snapshotId": "   "]]), finishSugarPictureUpload: false)
-            precondition(page.nextCursor == .init(offset: score, snapshotID: nil))
+            precondition(page.assetForFlavorNote == .init(assetKey: score, brightYuzuAccent: nil))
         }
         let numericSnapshot = try GzeProfileSafetyTray.glazeCatalogOwner(data([["id": 1, "ownerId": 5, "score": 0, "snapshotId": Int64.max]]), finishSugarPictureUpload: false)
-        precondition(numericSnapshot.nextCursor == .init(offset: 0, snapshotID: String(Int64.max)))
+        precondition(numericSnapshot.assetForFlavorNote == .init(assetKey: 0, brightYuzuAccent: String(Int64.max)))
         let trimmedSnapshot = try GzeProfileSafetyTray.glazeCatalogOwner(data([["id": 1, "ownerId": 5, "score": 0, "snapshotId": "  snapshot-next  "]]), finishSugarPictureUpload: false)
-        precondition(trimmedSnapshot.nextCursor == .init(offset: 0, snapshotID: "snapshot-next"))
+        precondition(trimmedSnapshot.assetForFlavorNote == .init(assetKey: 0, brightYuzuAccent: "snapshot-next"))
         let invalidScores: [Any] = [true, false, 1.5, "1.5", "9223372036854775808", "-9223372036854775809", NSNull(), "bad", [], [:]]
         for score in invalidScores {
             let page = try GzeProfileSafetyTray.glazeCatalogOwner(data([["id": 1, "ownerId": 5, "score": score]]), finishSugarPictureUpload: false)
-            precondition(page.rawCount == 1 && page.rooms.count == 1 && page.nextCursor == nil)
+            precondition(page.avatarData == 1 && page.berryReportAction.count == 1 && page.assetForFlavorNote == nil)
         }
         let missingLastScore = try GzeProfileSafetyTray.glazeCatalogOwner(data([["id": 1, "ownerId": 5, "score": 42], ["id": 2, "ownerId": 6]]), finishSugarPictureUpload: false)
-        precondition(missingLastScore.rawCount == 2 && missingLastScore.nextCursor == nil)
+        precondition(missingLastScore.avatarData == 2 && missingLastScore.assetForFlavorNote == nil)
         let emptyVoicePage = try GzeProfileSafetyTray.glazeCatalogOwner(data([]), finishSugarPictureUpload: false)
-        precondition(emptyVoicePage.rooms.isEmpty && emptyVoicePage.rawCount == 0 && emptyVoicePage.nextCursor == nil)
+        precondition(emptyVoicePage.berryReportAction.isEmpty && emptyVoicePage.avatarData == 0 && emptyVoicePage.assetForFlavorNote == nil)
         let invalidVoice: [[String: Any]] = [
             ["ownerId": 5, "yxRoomId": "1", "agoraChannelId": "2"],
             ["roomId": 4, "ownerId": 5], ["id": 1], ["id": true, "ownerId": 5],
@@ -194,11 +194,11 @@ def main():
         let rejectedVoice = try GzeProfileSafetyTray.glazeAtlasPage(data(invalidVoice), finishSugarPictureUpload: false)
         precondition(rejectedVoice.isEmpty)
         do { _ = try GzeProfileSafetyTray.glazeAtlasPage(data(["rows": []]), finishSugarPictureUpload: false); fatalError("SAPI wrapped rows accepted") }
-        catch GlazeVaultTradeError.invalidResponse { }
+        catch accountGroup.buildPastryDetailContent { }
         do { _ = try GzeProfileSafetyTray.flavorMenuGuide(data([])); fatalError("OPI array accepted") }
-        catch GlazeVaultTradeError.invalidResponse { }
+        catch accountGroup.buildPastryDetailContent { }
         do { _ = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": "invalid"])); fatalError("Invalid pool rows accepted") }
-        catch GlazeVaultTradeError.invalidResponse { }
+        catch accountGroup.buildPastryDetailContent { }
         let emptyLive = try GzeProfileSafetyTray.flavorMenuGuide(data(["rows": []]))
         let emptyVoice = try GzeProfileSafetyTray.glazeAtlasPage(data([]), finishSugarPictureUpload: false)
         precondition(emptyLive.isEmpty && emptyVoice.isEmpty)
@@ -216,12 +216,12 @@ def main():
         let firstPage = try await repository.steamExpansionStudy()
         precondition(firstPage.count == 1 && BrostingmellowCoconutEssence.listenForGlazeTrades.calls.last!.1["currentPage"] as? Int == 1)
         precondition(BrostingmellowCoconutEssence.listenForGlazeTrades.prepareCount == 4)
-        let voiceCursor = glazeVaultHeroLayer(offset: Int64.max, snapshotID: "request-snapshot")
+        let voiceCursor = appleCompote(assetKey: Int64.max, brightYuzuAccent: "request-snapshot")
         let nextVoicePage = try await repository.voicePage(carnivalGlazeShowcase: .cherryCenter, cursor: voiceCursor, pageSize: 8)
         let voiceCall = BrostingmellowCoconutEssence.listenForGlazeTrades.voiceCalls.last!
         precondition(voiceCall.0 == "/sapi/weidou/v1/client/party/room/followed/list" && voiceCall.1 == voiceCursor && voiceCall.2 == 8)
-        precondition(nextVoicePage.rooms.count == 1 && nextVoicePage.rooms[0].hazelnutCream && nextVoicePage.rawCount == 1)
-        precondition(nextVoicePage.nextCursor == .init(offset: -10, snapshotID: "snapshot-next"))
+        precondition(nextVoicePage.berryReportAction.count == 1 && nextVoicePage.berryReportAction[0].hazelnutCream && nextVoicePage.avatarData == 1)
+        precondition(nextVoicePage.assetForFlavorNote == .init(assetKey: -10, brightYuzuAccent: "snapshot-next"))
         let initialVoiceRooms = try await repository.batterConsistencyDetail()
         let initialVoiceCall = BrostingmellowCoconutEssence.listenForGlazeTrades.voiceCalls.last!
         precondition(initialVoiceRooms.count == 1 && !initialVoiceRooms[0].hazelnutCream)

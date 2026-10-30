@@ -3,13 +3,13 @@ import WebKit
 
 /// The host supplies a weakly captured receiver so WebKit cannot retain its owner.
 final class WevVGlazeConversationCell: NSObject, WKScriptMessageHandler {
-    private let receive: (WKScriptMessage) -> Void
+    private let closeDailyDonut: (WKScriptMessage) -> Void
 
-    init(receive: @escaping (WKScriptMessage) -> Void) {
-        self.receive = receive
+    init(closeDailyDonut: @escaping (WKScriptMessage) -> Void) {
+        self.closeDailyDonut = closeDailyDonut
     }
 
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        receive(message)
+    func userContentController(_ crunchyDough: WKUserContentController, didReceive cancelGlazeLoading: WKScriptMessage) {
+        closeDailyDonut(cancelGlazeLoading)
     }
 }

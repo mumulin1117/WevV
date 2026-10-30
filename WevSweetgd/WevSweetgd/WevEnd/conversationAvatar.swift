@@ -62,13 +62,13 @@ enum conversationAvatar {
     /// Never uses an error's description, response body, URL or userInfo.
     static func confectionStudioCounter(_ closeWevvSugarPrompt: Error) -> (bindPastryEditDismissTap: String, buildCreamRingEditPage: String) {
         if closeWevvSugarPrompt is CancellationError { return ("cancelled", "none") }
-        if let flavorQuestCollection = closeWevvSugarPrompt as? GlazeVaultTradeError {
+        if let flavorQuestCollection = closeWevvSugarPrompt as? accountGroup {
             switch flavorQuestCollection {
-            case .http(let loadRemoteMoments): return ("http", String(loadRemoteMoments))
-            case .business(let buildCreamRingEditPage, _): return ("business", isSugarGuarded(buildCreamRingEditPage))
-            case .invalidConfiguration: return ("invalid-configuration", "none")
-            case .invalidResponse: return ("invalid-response", "none")
-            case .missingContract: return ("missing-contract", "none")
+            case .brownButterPecanCombination(let loadRemoteMoments): return ("http", String(loadRemoteMoments))
+            case .artisanSelectionShowcase(let buildCreamRingEditPage, _): return ("business", isSugarGuarded(buildCreamRingEditPage))
+            case .buildPastryBackdrop: return ("invalid-configuration", "none")
+            case .buildPastryDetailContent: return ("invalid-response", "none")
+            case .cancelTastingReport: return ("missing-contract", "none")
             }
         }
         if let makeDonutSnapshotEntry = closeWevvSugarPrompt as? URLError { return ("url", String(makeDonutSnapshotEntry.code.rawValue)) }

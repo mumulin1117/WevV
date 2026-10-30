@@ -292,11 +292,11 @@ struct Fixture: Decodable {
             do {
                 let configuration = try CreamRingDellController(bakerChoiceJournal: bundle, cocoaWeekendFestival: seed, blushDrizzleDetail: fixture.hostVersion)
                 accepted = true
-                precondition(configuration.cherryCenter.appID == fixture.expectedAppID)
+                precondition(configuration.cherryCenter.almondFlavor == fixture.expectedAppID)
                 if let routing = fixture.expectedRouting {
-                    precondition(configuration.cherryCenter.environment == routing.environment)
-                    precondition(configuration.cherryCenter.bootstrapAppID == routing.bootstrapAppId)
-                    precondition(configuration.cherryCenter.bootstrapBaseURL.absoluteString == routing.bootstrapBaseUrl)
+                    precondition(configuration.cherryCenter.berryCrumbBakeryNotes == routing.environment)
+                    precondition(configuration.cherryCenter.armGlazeLoadingTimeout == routing.bootstrapAppId)
+                    precondition(configuration.cherryCenter.aromaSpectrumNotes.absoluteString == routing.bootstrapBaseUrl)
                 }
                 precondition(configuration.bakeryFindKey.hasPrefix("sdk2-"))
                 if let version = fixture.contentVersion { precondition(configuration.bakeryFindKey == version) }

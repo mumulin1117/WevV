@@ -606,8 +606,8 @@ final class UKGlazeActortroller: UIViewController {
             if message.name == Self.glazePaintHandler { self?.receiveGlazeFirstPaint(message) }
             else { self?.receiveGlaze(message) }
         }
-        controller.add(WevVGlazeConversationCell(receive: receiveMessage), name: configuration.handler)
-        controller.add(WevVGlazeConversationCell(receive: receiveMessage), name: Self.glazePaintHandler)
+        controller.add(WevVGlazeConversationCell(closeDailyDonut: receiveMessage), name: configuration.handler)
+        controller.add(WevVGlazeConversationCell(closeDailyDonut: receiveMessage), name: Self.glazePaintHandler)
         controller.addUserScript(WKUserScript(source: glazeFirstPaintScript(), injectionTime: .atDocumentStart, forMainFrameOnly: true))
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = controller

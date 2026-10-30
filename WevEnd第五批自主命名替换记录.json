@@ -1,0 +1,3454 @@
+{
+  "scope": [
+    "WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift",
+    "WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift",
+    "WevSweetgd/WevSweetgd/WevEnd/WevVGlazeConversationCell.swift"
+  ],
+  "nameCount": 266,
+  "symbolCount": 458,
+  "sourceEditCount": 1825,
+  "vocabulary": "Existing custom declarations outside WevEnd; see vocabularyProvenance",
+  "mapping": {
+    "GlazeVaultTradeError": "accountGroup",
+    "Request": "activateGlazeIdleEntry",
+    "WevVGlazeVaultPack": "activeDonutParlorSection",
+    "accessToken": "activeEnvironmentID",
+    "actual": "addGlazeGold",
+    "alias": "afternoonTreatJourney",
+    "aliases": "agrtastingFlightShowcaseee",
+    "allowsInteraction": "allBakeryAtlasDetails",
+    "apiBaseURL": "almondCutter",
+    "apiURL": "almondDuster",
+    "appID": "almondFlavor",
+    "appVersion": "almondPralineShell",
+    "array": "americanoComplement",
+    "authToken": "animateSugarToast",
+    "base": "applyDonutDayStyle",
+    "before": "applyGlazeNavigation",
+    "body": "applyVoiceRoomPages",
+    "boolean": "apricotCompote",
+    "bootstrap": "archiveCapacity",
+    "bootstrapAppID": "armGlazeLoadingTimeout",
+    "bootstrapBaseURL": "aromaSpectrumNotes",
+    "bootstrapID": "artisanDoughAtelier",
+    "bootstrapURL": "artisanFrySequence",
+    "business": "artisanSelectionShowcase",
+    "bytes": "autumnPecanCollection",
+    "cached": "autumnSpiceFestival",
+    "cachedPosts": "avatarButton",
+    "cachedScope": "awaitingFirstPaint",
+    "capacity": "backgroundImage",
+    "captureSignedInScope": "backgroundPath",
+    "caramelPecanMedley": "bakerChoiceJournal",
+    "card": "bakerChoiceNotes",
+    "cdn": "bakerWorkshopHandbook",
+    "cdnDomainConfig": "bakeryAtlasCarousel",
+    "choiceStackPacket": "bakeryAtlasDiary",
+    "choiceTitle": "bakeryAtlasDots",
+    "chosenAsset": "bakeryAtlasItems",
+    "chosenAssetPacket": "bakeryAtlasPages",
+    "chosenDonutAvatarAsset": "bakeryAtlasPanel",
+    "ciphertext": "bakeryAtlasTimer",
+    "clean": "bakeryCalendarCard",
+    "clearSugarCrumbs": "bakeryDayDots",
+    "client": "bakeryDaySlot",
+    "code": "bakeryDetails",
+    "comment": "bakeryFindKey",
+    "comments": "bakeryFinder",
+    "components": "bakeryFindsStack",
+    "content": "bakeryFindsTitle",
+    "context": "bakeryFrameAsset",
+    "count": "bakeryParlor",
+    "create": "bakeryPinKey",
+    "crumbBioView": "bakeryShelfDetails",
+    "crypt": "bakeryShelfGuide",
+    "current": "bakeryShelfKeys",
+    "currentLevel": "bakeryShelfTotal",
+    "currentOpen": "bakeryStopText",
+    "currentOpenRefreshToken": "bakeryTagRow",
+    "currentRoute": "bakeryTasterStore",
+    "currentScope": "bakeryTrailCountLabel",
+    "cursor": "bakeryTrailLabel",
+    "cursorID": "bakeryTrailLine",
+    "cursors": "bakeryTrailMap",
+    "customTransport": "bakeryTrailRow",
+    "data": "bakeryVisitArchive",
+    "decoded": "bakeryWeekStack",
+    "deviceNo": "bakingScaleStation",
+    "dictionary": "bakingSceneFrame",
+    "displayRange": "bananaToffeeHarmony",
+    "donutAvatarChoiceTitles": "basefillingSample",
+    "donutAvatarChoices": "batterConsistencyDetail",
+    "donutCameraButton": "batterConsistencyStudy",
+    "enabled": "batterWhiskEssentials",
+    "encoded": "beginGlazeContextPreparation",
+    "encrypt": "beginGlazeNativeOverlay",
+    "encryptionIV": "beginVoiceRoomRefresh",
+    "encryptionKey": "beginvelvetyCrumbSheen",
+    "end": "benchRestDetail",
+    "endpoint": "berryBackdrop",
+    "envelope": "berryBurstNotebook",
+    "environment": "berryCrumbBakeryNotes",
+    "epoch": "berryCrumbBakerySelections",
+    "exchange": "bindFlavorKeyboard",
+    "expected": "bindFlavorNoteDismissTap",
+    "expiresAt": "bindSugarConfirmButtons",
+    "expiresIn": "biteNoteLabel",
+    "feed": "blackberryCream",
+    "fetchLaunchRoute": "blackberryLemonCombination",
+    "fields": "blueberryCustard",
+    "first": "blushDrizzleDetail",
+    "flag": "bodyWevVSugarText",
+    "followedOnly": "bootstrapPaths",
+    "force": "bottomActionInset",
+    "fullFeaturesEnabled": "bottomOffset",
+    "hasMore": "bottomTarget",
+    "header": "boutiqueStudio",
+    "headers": "brightYuzuAccent",
+    "hex": "briocheCraftStudio",
+    "high": "brownButterDrizzle",
+    "host": "brownButterGlaze",
+    "hostVersion": "brownButterIcing",
+    "http": "brownButterPecanCombination",
+    "i": "brownButterShell",
+    "id": "brunchRouteRoute",
+    "idField": "buildBakeryVisitBand",
+    "imAppKey": "buildChallengeContent",
+    "imKey": "buildDailyDonutBackdrop",
+    "imageCheck": "buildDonutDiaryPanel",
+    "imageURLs": "buildDonutParlorBackdrop",
+    "imageUploadEnabled": "buildDonutParlorFoot",
+    "images": "buildDonutParlorTabBar",
+    "index": "buildDonutStampContent",
+    "initialBaseURL": "buildFlavorBackdrop",
+    "initialScope": "buildFlavorNoteActionBar",
+    "initialURL": "buildFlavorNoteEntryButton",
+    "input": "buildFlavorNoteForm",
+    "inputBuffer": "buildFlavorNotePanel",
+    "integer": "buildFlavorScroll",
+    "interactionScope": "buildHomeLiveRoomBand",
+    "interactionUnavailable": "buildInitialGlazeSheenPanels",
+    "invalidConfiguration": "buildPastryBackdrop",
+    "invalidParameters": "buildPastryBottomActions",
+    "invalidResponse": "buildPastryDetailContent",
+    "isAuthenticationFailure": "buildPastryScroll",
+    "isLastPage": "buildPastrySheet",
+    "isSignedIn": "buildPastryTrailScroll",
+    "iv": "buildSugarSettingsPage",
+    "ivBuffer": "buildSugarTextPage",
+    "javaScript": "buildTastingJournalPanel",
+    "json": "buildTastingParlorPanel",
+    "jsonData": "buildTastingQuestBand",
+    "key": "buildTastingReportSheet",
+    "keyBuffer": "buildTopDonutBar",
+    "language": "buildWevvBakeryGateCanvas",
+    "legacyToken": "buildWevvBakeryShelfPage",
+    "like": "buildWevvSprinkleJoin",
+    "liked": "buildWevvSugarLanding",
+    "list": "builddarkCocoaIcing",
+    "loginRequired": "butterAromaNotes",
+    "low": "butterEmulsionStudy",
+    "mapFields": "cafeAtlasGuide",
+    "mapped": "cafeAtlasPlanner",
+    "mappedPath": "cafeCheckinCollection",
+    "mapping": "cafeDirectorySelection",
+    "maxPages": "cancelGlazeEntryPreparation",
+    "message": "cancelGlazeLoading",
+    "missingContract": "cancelTastingReport",
+    "moment": "candiedOrangeScatter",
+    "momentID": "canonicalFolder",
+    "momentUnavailable": "cappuccinoCompanion",
+    "name": "captionLabel",
+    "nativeRouting": "caramelAppleIcing",
+    "next": "caramelLatteCompanion",
+    "nextCursor": "caramelMeltDelight",
+    "nibble": "caramelMeltJourney",
+    "notice": "cardVerticalConstraint",
+    "noticeAccount": "cardamomPearCombination",
+    "number": "carefulCrimpSequence",
+    "object": "carnivalGlazeShowcase",
+    "open": "carnivalGlazeTasting",
+    "openRevision": "carouselAsset",
+    "openTask": "chaiCompanion",
+    "openTaskRefreshToken": "chaiSpiceIcing",
+    "opi": "challengeDonutWevvButton",
+    "original": "changedSection",
+    "output": "changedShelf",
+    "outputBuffer": "checkinArtwork",
+    "owner": "cherryAlmondCombination",
+    "page": "cherryAlmondFusion",
+    "parentID": "cherryBlossomCalendar",
+    "parts": "cherryCenter",
+    "path": "chocolateCurlDust",
+    "paths": "chosenFlavor",
+    "payload": "cinnamonDustLayer",
+    "pendingReview": "cinnamonSugarFinish",
+    "plain": "cinnamonSugarSwirl",
+    "positiveID": "cinnamonTwist",
+    "post": "cinnamonVector",
+    "posts": "citrusBergamotEssence",
+    "prefix": "citrusBergamotFinish",
+    "prepare": "citrusBrightnessMatrix",
+    "preparedScope": "citrusCounter",
+    "profile": "citrusParlor",
+    "protocolName": "citrusPeelGarnish",
+    "publicationRejected": "citrusSeasonGathering",
+    "publish": "citrusZestShell",
+    "publishConfig": "cityBakeryTrail",
+    "publishEnabled": "cleanConfirm",
+    "published": "cleanCrumbBio",
+    "raw": "cleanCrumbPacketPart",
+    "rawBootstrapAppID": "cleanDonutAvatar",
+    "rawBootstrapURL": "cleanSugarHandle",
+    "rawCode": "clearGlazeRelationsForFreshTaster",
+    "rawEnvironment": "clearSugarCrumbLayer",
+    "receive": "closeDailyDonut",
+    "refreshToken": "closeFlavorNoteForm",
+    "replies": "closePastryDetail",
+    "reply": "closePastrySheet",
+    "request": "closeSugarSettings",
+    "requireInteraction": "closeSugarText",
+    "requireSignedIn": "closeWevvBakeryGate",
+    "requireSignedInScope": "closeWevvBakeryShelf",
+    "requireSuccess": "cocoaCounter",
+    "required": "cocoaDepthNotes",
+    "requiresSignIn": "cocoaDiarydonutChanged",
+    "response": "cocoaDrinkComplement",
+    "responseArrayEnvelopeFields": "cocoaKissExperience",
+    "restored": "cocoaNibGarnish",
+    "result": "cocoaRaspberryMedley",
+    "reverseFields": "cocoaVelvetMotif",
+    "revision": "cocoaWeekendFestival",
+    "roomID": "coconutFlakeAccent",
+    "root": "coconutMangoMedley",
+    "route": "coffeeCreamShell",
+    "routeAppID": "coldBrewTasting",
+    "routeTask": "compactChallenge",
+    "routing": "completeGlaze",
+    "row": "confectionCraftWorkshop",
+    "rows": "confettiSugarPattern",
+    "rowsField": "configuration",
+    "rtcAppId": "configurationForConnecting",
+    "rtcID": "configureGlazeLoadMoreFooter",
+    "runtime": "configureGlazeStatusLabel",
+    "runtimeConfig": "configureProfileCardCountLabel",
+    "sapi": "configureProfileCountLabel",
+    "sapiAesIv": "configureTastingButton",
+    "sapiAesKey": "configureTastingJournalShelfButton",
+    "sapiBaseURL": "configureTastingParlorShelfButton",
+    "scheme": "confirmButton",
+    "scope": "confirmVanillaChoice",
+    "secureURL": "contentLength",
+    "seen": "contentRequestID",
+    "semantic": "contextFields",
+    "send": "contextPaths",
+    "services": "contextualTags",
+    "session": "continuation",
+    "sessionEpoch": "cookieFlavor",
+    "shared": "cornerBakery",
+    "signedIn": "cornerRadius",
+    "size": "cortadoCompanion",
+    "socket": "counterScout",
+    "socketURL": "cozyAutumnTrail",
+    "source": "creamProfile",
+    "start": "crispEdgeCrust",
+    "state": "crispEdgeDelight",
+    "stateField": "crullerScout",
+    "status": "crumbArchiveName",
+    "string": "crumbCancelButton",
+    "suppliedParent": "crumbCaption",
+    "suppliedTimeout": "crumbCraftLaboratory",
+    "target": "crumbEmptyImage",
+    "targetLevel": "crumbEraseButton",
+    "task": "crumbNotePackets",
+    "text": "crumbPorosityStudy",
+    "timeline": "crumbScoreButtons",
+    "timeout": "crumbScoreNote",
+    "token": "crumbScoreRow",
+    "tokenValue": "crumbScoreValue",
+    "total": "crumbTasting",
+    "unhex": "crumbTastingButton",
+    "url": "crumbTastingTitle",
+    "urls": "crunchyCrumb",
+    "userContentController": "crunchyDough",
+    "validImageURLs": "crustCaramelizationStudy",
+    "validateImages": "crustSnapIndex",
+    "value": "crustSnapInsight",
+    "version": "currentDonutDiaryTaster"
+  },
+  "vocabularyProvenance": {
+    "GlazeVaultTradeError": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 170,
+        "kind": "local"
+      }
+    ],
+    "Request": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 561,
+        "kind": "function"
+      }
+    ],
+    "WevVGlazeVaultPack": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 160,
+        "kind": "property"
+      }
+    ],
+    "accessToken": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 86,
+        "kind": "property"
+      }
+    ],
+    "actual": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 521,
+        "kind": "function"
+      }
+    ],
+    "alias": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 549,
+        "kind": "parameter"
+      }
+    ],
+    "aliases": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 737,
+        "kind": "parameter"
+      }
+    ],
+    "allowsInteraction": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 3851,
+        "kind": "function"
+      }
+    ],
+    "apiBaseURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 151,
+        "kind": "local"
+      }
+    ],
+    "apiURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 50,
+        "kind": "property"
+      }
+    ],
+    "appID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 169,
+        "kind": "argumentLabel"
+      }
+    ],
+    "appVersion": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 278,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 192,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/XunSugarRosterbrownButterDrizzle.swift",
+        "line": 133,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 96,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1508,
+        "kind": "enumCase"
+      }
+    ],
+    "array": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 407,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 416,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 151,
+        "kind": "local"
+      }
+    ],
+    "authToken": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 155,
+        "kind": "function"
+      }
+    ],
+    "base": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 238,
+        "kind": "function"
+      }
+    ],
+    "before": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 980,
+        "kind": "function"
+      }
+    ],
+    "body": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 3057,
+        "kind": "function"
+      }
+    ],
+    "boolean": [
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 258,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/XunSugarRosterbrownButterDrizzle.swift",
+        "line": 151,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 134,
+        "kind": "enumCase"
+      }
+    ],
+    "bootstrap": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 1427,
+        "kind": "local"
+      }
+    ],
+    "bootstrapAppID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 379,
+        "kind": "function"
+      }
+    ],
+    "bootstrapBaseURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 996,
+        "kind": "function"
+      }
+    ],
+    "bootstrapID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 357,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 540,
+        "kind": "local"
+      }
+    ],
+    "bootstrapURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 208,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 29,
+        "kind": "property"
+      }
+    ],
+    "business": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 737,
+        "kind": "parameter"
+      }
+    ],
+    "bytes": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1628,
+        "kind": "parameter"
+      }
+    ],
+    "cached": [
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 422,
+        "kind": "function"
+      }
+    ],
+    "cachedPosts": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1399,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1477,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1498,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1504,
+        "kind": "parameter"
+      }
+    ],
+    "cachedScope": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 1500,
+        "kind": "local"
+      }
+    ],
+    "capacity": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1745,
+        "kind": "local"
+      }
+    ],
+    "captureSignedInScope": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 617,
+        "kind": "local"
+      }
+    ],
+    "caramelPecanMedley": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 154,
+        "kind": "parameter"
+      }
+    ],
+    "card": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 276,
+        "kind": "local"
+      }
+    ],
+    "cdn": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 370,
+        "kind": "local"
+      }
+    ],
+    "cdnDomainConfig": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 64,
+        "kind": "property"
+      }
+    ],
+    "choiceStackPacket": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 726,
+        "kind": "property"
+      }
+    ],
+    "choiceTitle": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 66,
+        "kind": "property"
+      }
+    ],
+    "chosenAsset": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 169,
+        "kind": "property"
+      }
+    ],
+    "chosenAssetPacket": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 65,
+        "kind": "property"
+      }
+    ],
+    "chosenDonutAvatarAsset": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 103,
+        "kind": "property"
+      }
+    ],
+    "ciphertext": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 118,
+        "kind": "property"
+      }
+    ],
+    "clean": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 47,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 65,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 73,
+        "kind": "parameter"
+      }
+    ],
+    "clearSugarCrumbs": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 13,
+        "kind": "property"
+      }
+    ],
+    "client": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 217,
+        "kind": "local"
+      }
+    ],
+    "code": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 7,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 15,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 4,
+        "kind": "property"
+      }
+    ],
+    "comment": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 523,
+        "kind": "local"
+      }
+    ],
+    "comments": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVDonustencilDepth.swift",
+        "line": 12,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 232,
+        "kind": "parameter"
+      }
+    ],
+    "components": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 112,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 130,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 136,
+        "kind": "parameter"
+      }
+    ],
+    "content": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 111,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 130,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 136,
+        "kind": "parameter"
+      }
+    ],
+    "context": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVDonustencilDepth.swift",
+        "line": 7,
+        "kind": "property"
+      }
+    ],
+    "count": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 40,
+        "kind": "local"
+      }
+    ],
+    "create": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 4,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 18,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 58,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 389,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 394,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 402,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 419,
+        "kind": "parameter"
+      }
+    ],
+    "crumbBioView": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 88,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NOticeNertyuSugartastingCard.swift",
+        "line": 124,
+        "kind": "local"
+      }
+    ],
+    "crypt": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 669,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DucerPastryImageVault.swift",
+        "line": 28,
+        "kind": "function"
+      }
+    ],
+    "current": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 87,
+        "kind": "local"
+      }
+    ],
+    "currentLevel": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 12,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 24,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVDonustencilDepth.swift",
+        "line": 52,
+        "kind": "property"
+      }
+    ],
+    "currentOpen": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVDonustencilDepth.swift",
+        "line": 25,
+        "kind": "property"
+      }
+    ],
+    "currentOpenRefreshToken": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 220,
+        "kind": "local"
+      }
+    ],
+    "currentRoute": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 52,
+        "kind": "property"
+      }
+    ],
+    "currentScope": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 107,
+        "kind": "property"
+      }
+    ],
+    "cursor": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 143,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 160,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 171,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 355,
+        "kind": "local"
+      }
+    ],
+    "cursorID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/artisanShowcase.swift",
+        "line": 40,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/artisanShowcase.swift",
+        "line": 52,
+        "kind": "property"
+      }
+    ],
+    "cursors": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 5,
+        "kind": "property"
+      }
+    ],
+    "customTransport": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 218,
+        "kind": "local"
+      }
+    ],
+    "data": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1480,
+        "kind": "enumCase"
+      }
+    ],
+    "decoded": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 173,
+        "kind": "local"
+      }
+    ],
+    "deviceNo": [
+      {
+        "path": "WevSweetgd/WevSweetgd/glazeGalleryGuide.swift",
+        "line": 36,
+        "kind": "closureParameter"
+      }
+    ],
+    "dictionary": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1383,
+        "kind": "enumCase"
+      }
+    ],
+    "displayRange": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 389,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 496,
+        "kind": "local"
+      }
+    ],
+    "donutAvatarChoiceTitles": [
+      {
+        "path": "WevSweetgd/WevSweetgd/VGuestSevenSweet.swift",
+        "line": 43,
+        "kind": "property"
+      }
+    ],
+    "donutAvatarChoices": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 973,
+        "kind": "function"
+      }
+    ],
+    "donutCameraButton": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 505,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 508,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1460,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1464,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 352,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 73,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 118,
+        "kind": "parameter"
+      }
+    ],
+    "enabled": [
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 124,
+        "kind": "parameter"
+      }
+    ],
+    "encoded": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 1130,
+        "kind": "function"
+      }
+    ],
+    "encrypt": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 1095,
+        "kind": "function"
+      }
+    ],
+    "encryptionIV": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 2971,
+        "kind": "function"
+      }
+    ],
+    "encryptionKey": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 4135,
+        "kind": "function"
+      }
+    ],
+    "end": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 454,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 347,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 536,
+        "kind": "function"
+      }
+    ],
+    "endpoint": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 33,
+        "kind": "property"
+      }
+    ],
+    "envelope": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 577,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 19,
+        "kind": "property"
+      }
+    ],
+    "environment": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 3720,
+        "kind": "function"
+      }
+    ],
+    "epoch": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 3727,
+        "kind": "function"
+      }
+    ],
+    "exchange": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 238,
+        "kind": "function"
+      }
+    ],
+    "expected": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 177,
+        "kind": "function"
+      }
+    ],
+    "expiresAt": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 316,
+        "kind": "function"
+      }
+    ],
+    "expiresIn": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 274,
+        "kind": "local"
+      }
+    ],
+    "feed": [
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 238,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 252,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 258,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 335,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 356,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 129,
+        "kind": "enumCase"
+      }
+    ],
+    "fetchLaunchRoute": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 457,
+        "kind": "local"
+      }
+    ],
+    "fields": [
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 232,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 252,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 258,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 334,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 355,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 128,
+        "kind": "enumCase"
+      }
+    ],
+    "first": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1147,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1151,
+        "kind": "enumCase"
+      }
+    ],
+    "flag": [
+      {
+        "path": "WevSweetgd/WevSweetgd/ZunugarPlainblackberryCreamler.swift",
+        "line": 5,
+        "kind": "property"
+      }
+    ],
+    "followedOnly": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 21,
+        "kind": "property"
+      }
+    ],
+    "force": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 55,
+        "kind": "local"
+      }
+    ],
+    "fullFeaturesEnabled": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 25,
+        "kind": "parameter"
+      }
+    ],
+    "hasMore": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 137,
+        "kind": "local"
+      }
+    ],
+    "header": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1611,
+        "kind": "function"
+      }
+    ],
+    "headers": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 292,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 365,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 453,
+        "kind": "enumCase"
+      }
+    ],
+    "hex": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 327,
+        "kind": "parameter"
+      }
+    ],
+    "high": [
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 213,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 252,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 258,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 331,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 352,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 375,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 97,
+        "kind": "enumCase"
+      }
+    ],
+    "host": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 8,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 7,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/XunSugarRosterbrownButterDrizzle.swift",
+        "line": 4,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 11,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 25,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 35,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 739,
+        "kind": "parameter"
+      }
+    ],
+    "hostVersion": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 187,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 139,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 90,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 95,
+        "kind": "enumCase"
+      }
+    ],
+    "http": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 429,
+        "kind": "function"
+      }
+    ],
+    "i": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 278,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 198,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 97,
+        "kind": "enumCase"
+      }
+    ],
+    "id": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 699,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 826,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 937,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 955,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1557,
+        "kind": "property"
+      }
+    ],
+    "idField": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 510,
+        "kind": "function"
+      }
+    ],
+    "imAppKey": [
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 71,
+        "kind": "function"
+      }
+    ],
+    "imKey": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 24,
+        "kind": "function"
+      }
+    ],
+    "imageCheck": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1390,
+        "kind": "function"
+      }
+    ],
+    "imageURLs": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 410,
+        "kind": "function"
+      }
+    ],
+    "imageUploadEnabled": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1328,
+        "kind": "function"
+      }
+    ],
+    "images": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1282,
+        "kind": "function"
+      }
+    ],
+    "index": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 28,
+        "kind": "function"
+      }
+    ],
+    "initialBaseURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 49,
+        "kind": "function"
+      }
+    ],
+    "initialScope": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 183,
+        "kind": "function"
+      }
+    ],
+    "initialURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1312,
+        "kind": "function"
+      }
+    ],
+    "input": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 80,
+        "kind": "function"
+      }
+    ],
+    "inputBuffer": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1360,
+        "kind": "function"
+      }
+    ],
+    "integer": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 55,
+        "kind": "function"
+      }
+    ],
+    "interactionScope": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 638,
+        "kind": "function"
+      }
+    ],
+    "interactionUnavailable": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1347,
+        "kind": "function"
+      }
+    ],
+    "invalidConfiguration": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 60,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/FimVSugarGradientBand.swift",
+        "line": 35,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/FimVSugarGradientBand.swift",
+        "line": 45,
+        "kind": "function"
+      }
+    ],
+    "invalidParameters": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 165,
+        "kind": "function"
+      }
+    ],
+    "invalidResponse": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 89,
+        "kind": "function"
+      }
+    ],
+    "isAuthenticationFailure": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 67,
+        "kind": "function"
+      }
+    ],
+    "isLastPage": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 46,
+        "kind": "function"
+      }
+    ],
+    "isSignedIn": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 425,
+        "kind": "function"
+      }
+    ],
+    "iv": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 29,
+        "kind": "function"
+      }
+    ],
+    "ivBuffer": [
+      {
+        "path": "WevSweetgd/WevSweetgd/ZunugarPlainblackberryCreamler.swift",
+        "line": 22,
+        "kind": "function"
+      }
+    ],
+    "javaScript": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1172,
+        "kind": "function"
+      }
+    ],
+    "json": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 676,
+        "kind": "function"
+      }
+    ],
+    "jsonData": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 572,
+        "kind": "function"
+      }
+    ],
+    "key": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 305,
+        "kind": "function"
+      }
+    ],
+    "keyBuffer": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 476,
+        "kind": "function"
+      }
+    ],
+    "language": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 70,
+        "kind": "function"
+      }
+    ],
+    "legacyToken": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 30,
+        "kind": "function"
+      }
+    ],
+    "like": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 262,
+        "kind": "function"
+      }
+    ],
+    "liked": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 115,
+        "kind": "function"
+      }
+    ],
+    "list": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 151,
+        "kind": "function"
+      }
+    ],
+    "loginRequired": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 610,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 615,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 629,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 636,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 622,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 21,
+        "kind": "property"
+      }
+    ],
+    "low": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 452,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 392,
+        "kind": "function"
+      }
+    ],
+    "mapFields": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 725,
+        "kind": "property"
+      }
+    ],
+    "mapped": [
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 491,
+        "kind": "local"
+      }
+    ],
+    "mappedPath": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1508,
+        "kind": "enumCase"
+      }
+    ],
+    "mapping": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 738,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 13,
+        "kind": "property"
+      }
+    ],
+    "maxPages": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 390,
+        "kind": "function"
+      }
+    ],
+    "message": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 453,
+        "kind": "function"
+      }
+    ],
+    "missingContract": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 432,
+        "kind": "function"
+      }
+    ],
+    "moment": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 279,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 352,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 362,
+        "kind": "enumCase"
+      }
+    ],
+    "momentID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 1286,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 1345,
+        "kind": "local"
+      }
+    ],
+    "momentUnavailable": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 406,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 415,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 116,
+        "kind": "parameter"
+      }
+    ],
+    "name": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 2844,
+        "kind": "local"
+      }
+    ],
+    "nativeRouting": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 61,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 77,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 199,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 252,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 258,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 285,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 316,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 329,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 342,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 347,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 369,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 387,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 400,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 86,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 94,
+        "kind": "enumCase"
+      }
+    ],
+    "next": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 835,
+        "kind": "function"
+      }
+    ],
+    "nextCursor": [
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 547,
+        "kind": "function"
+      }
+    ],
+    "nibble": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 641,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 698,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 705,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 715,
+        "kind": "local"
+      }
+    ],
+    "notice": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 278,
+        "kind": "property"
+      }
+    ],
+    "noticeAccount": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 439,
+        "kind": "function"
+      }
+    ],
+    "number": [
+      {
+        "path": "WevSweetgd/WevSweetgd/glazeGalleryGuide.swift",
+        "line": 29,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 224,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 509,
+        "kind": "function"
+      }
+    ],
+    "object": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 973,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 977,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 985,
+        "kind": "parameter"
+      }
+    ],
+    "open": [
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 424,
+        "kind": "local"
+      }
+    ],
+    "openRevision": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1587,
+        "kind": "local"
+      }
+    ],
+    "openTask": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 409,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 418,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 198,
+        "kind": "local"
+      }
+    ],
+    "openTaskRefreshToken": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 160,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 25,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 97,
+        "kind": "enumCase"
+      }
+    ],
+    "opi": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 481,
+        "kind": "local"
+      }
+    ],
+    "original": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 3889,
+        "kind": "local"
+      }
+    ],
+    "output": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 877,
+        "kind": "local"
+      }
+    ],
+    "outputBuffer": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 3464,
+        "kind": "local"
+      }
+    ],
+    "owner": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 429,
+        "kind": "parameter"
+      }
+    ],
+    "page": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 384,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 504,
+        "kind": "local"
+      }
+    ],
+    "parentID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 761,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 922,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 451,
+        "kind": "function"
+      }
+    ],
+    "parts": [
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 252,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 133,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 209,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1495,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1506,
+        "kind": "enumCase"
+      }
+    ],
+    "path": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 366,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 463,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 464,
+        "kind": "local"
+      }
+    ],
+    "paths": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 19,
+        "kind": "property"
+      }
+    ],
+    "payload": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 321,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 358,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 363,
+        "kind": "enumCase"
+      }
+    ],
+    "pendingReview": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 160,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 26,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/XunSugarRosterbrownButterDrizzle.swift",
+        "line": 34,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 100,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 242,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 267,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 296,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 322,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 369,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 457,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 498,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 511,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 590,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 600,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 641,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 681,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1331,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1346,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1363,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1388,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1420,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1437,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1452,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1467,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1482,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1513,
+        "kind": "parameter"
+      }
+    ],
+    "plain": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 251,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 151,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 158,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 96,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 292,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 452,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1385,
+        "kind": "enumCase"
+      }
+    ],
+    "positiveID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 260,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 263,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/VunBakeryShelfToastView.swift",
+        "line": 38,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 517,
+        "kind": "function"
+      }
+    ],
+    "post": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 1425,
+        "kind": "local"
+      }
+    ],
+    "posts": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 349,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 362,
+        "kind": "enumCase"
+      }
+    ],
+    "prefix": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 25,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 348,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 362,
+        "kind": "enumCase"
+      }
+    ],
+    "prepare": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 637,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1329,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 72,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 118,
+        "kind": "parameter"
+      }
+    ],
+    "preparedScope": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 49,
+        "kind": "property"
+      }
+    ],
+    "profile": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 44,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 51,
+        "kind": "property"
+      }
+    ],
+    "protocolName": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 365,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 104,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 140,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 259,
+        "kind": "local"
+      }
+    ],
+    "publicationRejected": [
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 439,
+        "kind": "function"
+      }
+    ],
+    "publish": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 123,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 9,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/XunSugarRosterbrownButterDrizzle.swift",
+        "line": 6,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 13,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 27,
+        "kind": "enumCase"
+      }
+    ],
+    "publishConfig": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 702,
+        "kind": "enumCase"
+      }
+    ],
+    "publishEnabled": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 581,
+        "kind": "local"
+      }
+    ],
+    "published": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 255,
+        "kind": "local"
+      }
+    ],
+    "raw": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 630,
+        "kind": "function"
+      }
+    ],
+    "rawBootstrapAppID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 256,
+        "kind": "local"
+      }
+    ],
+    "rawBootstrapURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 254,
+        "kind": "local"
+      }
+    ],
+    "rawCode": [
+      {
+        "path": "WevSweetgd/WevSweetgd/VGuestSevenSweet.swift",
+        "line": 387,
+        "kind": "function"
+      }
+    ],
+    "rawEnvironment": [
+      {
+        "path": "WevSweetgd/WevSweetgd/NOticeNertyuSugartastingCard.swift",
+        "line": 111,
+        "kind": "function"
+      }
+    ],
+    "receive": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DailyDonutcherryCompote.swift",
+        "line": 326,
+        "kind": "function"
+      }
+    ],
+    "refreshToken": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 271,
+        "kind": "function"
+      }
+    ],
+    "replies": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 511,
+        "kind": "function"
+      }
+    ],
+    "reply": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 254,
+        "kind": "function"
+      }
+    ],
+    "request": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 435,
+        "kind": "function"
+      }
+    ],
+    "requireInteraction": [
+      {
+        "path": "WevSweetgd/WevSweetgd/ZunugarPlainblackberryCreamler.swift",
+        "line": 101,
+        "kind": "function"
+      }
+    ],
+    "requireSignedIn": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 961,
+        "kind": "function"
+      }
+    ],
+    "requireSignedInScope": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 266,
+        "kind": "function"
+      }
+    ],
+    "requireSuccess": [
+      {
+        "path": "WevSweetgd/WevSweetgd/VGuestSevenSweet.swift",
+        "line": 17,
+        "kind": "property"
+      }
+    ],
+    "required": [
+      {
+        "path": "WevSweetgd/WevSweetgd/glazeGalleryGuide.swift",
+        "line": 29,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 598,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 574,
+        "kind": "parameter"
+      }
+    ],
+    "requiresSignIn": [
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 33,
+        "kind": "property"
+      }
+    ],
+    "response": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 435,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 450,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1087,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1094,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 23,
+        "kind": "property"
+      }
+    ],
+    "responseArrayEnvelopeFields": [
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 4,
+        "kind": "property"
+      }
+    ],
+    "restored": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 270,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 350,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 362,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 189,
+        "kind": "local"
+      }
+    ],
+    "result": [
+      {
+        "path": "WevSweetgd/WevSweetgd/glazeGalleryGuide.swift",
+        "line": 102,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/glazeGalleryGuide.swift",
+        "line": 123,
+        "kind": "function"
+      }
+    ],
+    "reverseFields": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1068,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1073,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1357,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1360,
+        "kind": "enumCase"
+      }
+    ],
+    "revision": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 125,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 787,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 792,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 835,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 838,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 893,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 379,
+        "kind": "function"
+      }
+    ],
+    "roomID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 298,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 353,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 362,
+        "kind": "enumCase"
+      }
+    ],
+    "root": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 440,
+        "kind": "local"
+      }
+    ],
+    "route": [
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 21,
+        "kind": "property"
+      }
+    ],
+    "routeAppID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 842,
+        "kind": "function"
+      }
+    ],
+    "routeTask": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 3460,
+        "kind": "local"
+      }
+    ],
+    "routing": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 906,
+        "kind": "function"
+      }
+    ],
+    "row": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 367,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 495,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 108,
+        "kind": "function"
+      }
+    ],
+    "rows": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1176,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1181,
+        "kind": "enumCase"
+      }
+    ],
+    "rowsField": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1597,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 597,
+        "kind": "local"
+      }
+    ],
+    "rtcAppId": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeApplication.swift",
+        "line": 29,
+        "kind": "argumentLabel"
+      }
+    ],
+    "rtcID": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 605,
+        "kind": "function"
+      }
+    ],
+    "runtime": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1163,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 11,
+        "kind": "function"
+      }
+    ],
+    "runtimeConfig": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 2584,
+        "kind": "function"
+      }
+    ],
+    "sapi": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 2577,
+        "kind": "function"
+      }
+    ],
+    "sapiAesIv": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 385,
+        "kind": "function"
+      }
+    ],
+    "sapiAesKey": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1887,
+        "kind": "function"
+      }
+    ],
+    "sapiBaseURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 849,
+        "kind": "function"
+      }
+    ],
+    "scheme": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 276,
+        "kind": "property"
+      }
+    ],
+    "scope": [
+      {
+        "path": "WevSweetgd/WevSweetgd/WevVGlazeSafetySheet.swift",
+        "line": 240,
+        "kind": "function"
+      }
+    ],
+    "secureURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 1293,
+        "kind": "local"
+      }
+    ],
+    "seen": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 2891,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 2985,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 2992,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 3011,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 3180,
+        "kind": "parameter"
+      }
+    ],
+    "semantic": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 47,
+        "kind": "property"
+      }
+    ],
+    "send": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 34,
+        "kind": "property"
+      }
+    ],
+    "services": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 2230,
+        "kind": "local"
+      }
+    ],
+    "session": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 954,
+        "kind": "closureParameter"
+      }
+    ],
+    "sessionEpoch": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 229,
+        "kind": "parameter"
+      }
+    ],
+    "shared": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1594,
+        "kind": "function"
+      }
+    ],
+    "signedIn": [
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 517,
+        "kind": "parameter"
+      }
+    ],
+    "size": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 408,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 417,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 165,
+        "kind": "local"
+      }
+    ],
+    "socket": [
+      {
+        "path": "WevSweetgd/WevSweetgd/VGuestSevenSweet.swift",
+        "line": 21,
+        "kind": "property"
+      }
+    ],
+    "socketURL": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 788,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 793,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 798,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 801,
+        "kind": "enumCase"
+      }
+    ],
+    "source": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 404,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 440,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 454,
+        "kind": "local"
+      }
+    ],
+    "start": [
+      {
+        "path": "WevSweetgd/WevSweetgd/KipoDonutMomentController.swift",
+        "line": 25,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 124,
+        "kind": "parameter"
+      }
+    ],
+    "state": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 562,
+        "kind": "local"
+      }
+    ],
+    "stateField": [
+      {
+        "path": "WevSweetgd/WevSweetgd/CunBakerfvanillaBeanIcing.swift",
+        "line": 255,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/VGuestSevenSweet.swift",
+        "line": 40,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/ZunugarPlainblackberryCreamler.swift",
+        "line": 7,
+        "kind": "parameter"
+      }
+    ],
+    "status": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+        "line": 28,
+        "kind": "property"
+      }
+    ],
+    "string": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 220,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 316,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 326,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TinGlazePromptStyler.swift",
+        "line": 335,
+        "kind": "parameter"
+      }
+    ],
+    "suppliedParent": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 7,
+        "kind": "parameter"
+      }
+    ],
+    "suppliedTimeout": [
+      {
+        "path": "WevSweetgd/WevSweetgd/UBakerytropicalMangoEssence.swift",
+        "line": 327,
+        "kind": "parameter"
+      }
+    ],
+    "target": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1462,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 1471,
+        "kind": "local"
+      }
+    ],
+    "targetLevel": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DimSugarpistachioCreamCoating.swift",
+        "line": 152,
+        "kind": "local"
+      }
+    ],
+    "task": [
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 233,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DoughRingTasterProfile.swift",
+        "line": 419,
+        "kind": "function"
+      }
+    ],
+    "text": [
+      {
+        "path": "WevSweetgd/WevSweetgd/glazeGalleryGuide.swift",
+        "line": 30,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/DucerPastryImageVault.swift",
+        "line": 15,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 453,
+        "kind": "enumCase"
+      }
+    ],
+    "timeline": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 13,
+        "kind": "property"
+      }
+    ],
+    "timeout": [
+      {
+        "path": "WevSweetgd/WevSweetgd/artisanShowcase.swift",
+        "line": 13,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/artisanShowcase.swift",
+        "line": 22,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/artisanShowcase.swift",
+        "line": 41,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/artisanShowcase.swift",
+        "line": 50,
+        "kind": "property"
+      }
+    ],
+    "token": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 217,
+        "kind": "local"
+      }
+    ],
+    "tokenValue": [
+      {
+        "path": "WevSweetgd/WevSweetgd/EFlavorNoteController.swift",
+        "line": 14,
+        "kind": "property"
+      }
+    ],
+    "total": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 259,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 314,
+        "kind": "closureParameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 334,
+        "kind": "parameter"
+      }
+    ],
+    "unhex": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 171,
+        "kind": "local"
+      }
+    ],
+    "url": [
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 104,
+        "kind": "local"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 130,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift",
+        "line": 136,
+        "kind": "parameter"
+      }
+    ],
+    "urls": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 838,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 893,
+        "kind": "parameter"
+      }
+    ],
+    "userContentController": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 4101,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+        "line": 525,
+        "kind": "parameter"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1497,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1507,
+        "kind": "enumCase"
+      }
+    ],
+    "validImageURLs": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 891,
+        "kind": "function"
+      }
+    ],
+    "validateImages": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 1580,
+        "kind": "function"
+      }
+    ],
+    "value": [
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 579,
+        "kind": "property"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+        "line": 585,
+        "kind": "enumCase"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift",
+        "line": 517,
+        "kind": "function"
+      },
+      {
+        "path": "WevSweetgd/WevSweetgd/GemTastingQuestComposerController.swift",
+        "line": 124,
+        "kind": "parameter"
+      }
+    ],
+    "version": [
+      {
+        "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+        "line": 2711,
+        "kind": "function"
+      }
+    ]
+  },
+  "sourceFiles": [
+    {
+      "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+      "edits": 4,
+      "sha256Before": "32055cdb1c82bacf6ef33b8eff20fd64a2dceea9b6ce2e50ec2ac6d4dfe7adfe",
+      "sha256After": "cddb8cca9232a56dd78fdfaa88b74c2c3a0f1ebddbdf6a03c192d5bba617199a"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/SugarMomentEbuController.swift",
+      "edits": 1,
+      "sha256Before": "4d91a7e4452b90a61fe0927783ad0bd8111e60116842580f14b98b1cae586677",
+      "sha256After": "82f422348614cf309f2b16786514ec761383d93d92e54da6d3334069acd0ab5a"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+      "edits": 65,
+      "sha256Before": "8be5dc8e53a09a9ed21f8864474dd1639ad08d43fb132e019c399f72a828d5c9",
+      "sha256After": "a29ce58f3a93f41e3187c3cbb814c5e2b819be7d9d5135b64a65b901228fb153"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/UKGlazeActortroller.swift",
+      "edits": 2,
+      "sha256Before": "20b2b1b769900e47a16bf7482853c5670a577a3feea0b81a6e138a93ae162c22",
+      "sha256After": "209a528676a52b34ad25fd20803052151022f666f78089b1fc0268351b87f4c2"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/LisenNoticepoplater.swift",
+      "edits": 591,
+      "sha256Before": "b877c74c6d121b1aa98950cf86118397b86a0495f8ec7bd71bb01f8cfed70016",
+      "sha256After": "5e5088d1b27d48d36e641f1443ebc281bf928bf20b90aa93027db2002878a1d8"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/NertyuChoiceStackLayer.swift",
+      "edits": 1040,
+      "sha256Before": "0b9f026c16a757396f84cc5ccbe902ab272a3e728cd969ee1a89f155a6fdb650",
+      "sha256After": "3e4df83500c5a5b370a1867dee1a736f9babef15c33d51c3d534d239cb9eb64a"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift",
+      "edits": 2,
+      "sha256Before": "6467bbfdea2f1932064362bd64c32ae70e71e566e446453dff1e21a96f672806",
+      "sha256After": "28bfb78f8a6faaf7bac462f2b8a8622be9ef512d9a6efac1c5407739ed3d5556"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/CreamRingDellController.swift",
+      "edits": 7,
+      "sha256Before": "8b12b43b999984e95abbaeb3f459ffbe09377cefc8cba4da8f4a5a61701df247",
+      "sha256After": "1f408905216f4c7e913391b708cefebc01b41a0bd7dadad647ca6727b8b9a885"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/honeyScout.swift",
+      "edits": 5,
+      "sha256Before": "9f15bd7d97439a05daae6724570a6cc9bdec6d0165eee8db56b596d49188dee3",
+      "sha256After": "992bffab1cb774d084c6ce0d20e33881b01405ff21a81c3f5cbb8d12861e783d"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift",
+      "edits": 4,
+      "sha256Before": "ebda09b9cb020093d6d95f15e100782e9a86d0a8b54ba0733cf073e3cb5071c4",
+      "sha256After": "8e62e6ca515e4bf6b43f2167afa41a37fac977cab212146e56d627253c4fbc7f"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/conversationAvatar.swift",
+      "edits": 6,
+      "sha256Before": "26d0460dde1c876ce72c7858beb0a08f3aa6132903da8992a6b1f53ff5f2f1d5",
+      "sha256After": "b6c2ca0a86ed79c0419951212080b9a68f73980acf7a0ce49ebdb6ca6e233ea9"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift",
+      "edits": 90,
+      "sha256Before": "5d7e0ca2be80b2fe1757303101919cb3de7440849f5d34b304e8b2ad608b927b",
+      "sha256After": "a7d483010b8046acd63036ae259d53d6ef06229d1450453627bda7b49e05d33c"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/WevVGlazeConversationCell.swift",
+      "edits": 8,
+      "sha256Before": "7ad538b9a089e91205bf1d09fe9236a3307b8f143583a1afc7ac5254e1670a80",
+      "sha256After": "7465419b2bec377b1ac658bf24790cea5ade7272ea1165deda4ea393171ece79"
+    }
+  ],
+  "preservedTypes": [
+    "LisenNoticepoplater",
+    "NertyuChoiceStackLayer",
+    "WevVGlazeConversationCell"
+  ],
+  "checks": {
+    "allCustomDeclarationsRenamed": true,
+    "wordsDeclaredOutsideWevEnd": true,
+    "originalStringSegmentsUnchanged": true,
+    "changesAreOnlyIdentifierTokenReplacements": true,
+    "classNamesUnchanged": true,
+    "protocolNamesAndCodableKeysPreserved": true
+  },
+  "regressionScripts": [
+    "scripts/test_wevv_room_mapper.py",
+    "scripts/verify_wevv_bundle_configuration.py",
+    "scripts/verify_wevv_community_service.py",
+    "scripts/verify_wevv_im_diagnostics.py",
+    "scripts/verify_wevv_session_runtime.py",
+    "scripts/verify_wevv_media_transfer.py",
+    "scripts/WevVGlazeNetworkVerification.swift"
+  ],
+  "validation": {
+    "debugSimulatorBuild": "passed",
+    "releaseDeviceBuild": "passed",
+    "networkContract": "passed; offline URLProtocol startup/Open/OPI/SAPI, aliases, encryption, session isolation",
+    "communityService": "passed",
+    "roomMapper": "passed",
+    "bundleConfiguration": 101,
+    "sessionRuntime": 35,
+    "imDiagnosticsDebug": 31,
+    "imDiagnosticsRelease": 31,
+    "mediaTransfer": 39,
+    "sourceAndNetworkTestLiteralStrings": "unchanged",
+    "declarationCoverage": "passed; class and required protocol names preserved"
+  }
+}

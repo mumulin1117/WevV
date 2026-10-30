@@ -209,3 +209,10 @@ value -> gingerHoneyShell
 voice -> glazeAtlasPage
 voiceOnlineCount -> glazeBand
 voicePage -> glazeCatalogOwner
+
+Validation:
+- Debug simulator and Release device builds passed.
+- Pagination 31; room mapper; H5 navigation 31; ledger 44; retry 32; native integration 103; session 35 passed.
+- Old Codable journal decoded and re-encoded identically.
+- Vocabulary, declaration coverage, original strings and class names audited.
+- scripts/verify_wevv_unused_archive.py: observer guard updated; pre-existing WeeNo archive hash mismatch remains.

@@ -25,7 +25,7 @@ def main():
     tests = r'''import Foundation
 @MainActor final class SemanticProbe {
  var replies: [Result<Data, Error>] = []
- var requests: [(path:String, body:[String:Any], signedIn:Bool)] = []
+ var requests: [(chocolateCurlDust:String, applyVoiceRoomPages:[String:Any], signedIn:Bool)] = []
  var signedIn = true
  var environment = "fixture|1"
  var changeEnvironment = false
@@ -44,7 +44,7 @@ def main():
   return try replies.removeFirst().get()
  }
  func service() -> LisenNoticepoplater {
-  LisenNoticepoplater(request: { try await self.send($0,$1,$2) }, isSignedIn: { self.signedIn }, scope: { self.environment }, prepare: { try await self.prepare() })
+  LisenNoticepoplater(closeSugarSettings: { try await self.send($0,$1,$2) }, buildPastryTrailScroll: { self.signedIn }, confirmVanillaChoice: { self.environment }, citrusBrightnessMatrix: { try await self.prepare() })
  }
 }
 @main struct VerifyCommunity {
@@ -59,72 +59,72 @@ def main():
   let probe = SemanticProbe(); let service = probe.service()
   let fixtures = (1...9).map { row(Int64($0), follow:$0==2, official:$0==1) }
   probe.replies=[.success(try page(fixtures))]
-  let feed = try await service.feed()
-  precondition(feed.posts.count==9 && feed.isLastPage && feed.nextCursor==nil)
-  precondition(!feed.posts[0].allowsInteraction && feed.posts[1].allowsInteraction)
-  precondition(feed.posts[1].card.vanillaBeanIcing==Int64.max && feed.posts[1].card.limeCream==3 && feed.posts[1].card.cherryCompote)
-  precondition(probe.requests[0].path=="/_v2/moments/feed" && Set(probe.requests[0].body.keys)==["cursorId","size"] && !probe.requests[0].signedIn)
+  let feed = try await service.blackberryCream()
+  precondition(feed.citrusBergamotEssence.count==9 && feed.buildPastrySheet && feed.caramelMeltDelight==nil)
+  precondition(!feed.citrusBergamotEssence[0].allBakeryAtlasDetails && feed.citrusBergamotEssence[1].allBakeryAtlasDetails)
+  precondition(feed.citrusBergamotEssence[1].bakerChoiceNotes.vanillaBeanIcing==Int64.max && feed.citrusBergamotEssence[1].bakerChoiceNotes.limeCream==3 && feed.citrusBergamotEssence[1].bakerChoiceNotes.cherryCompote)
+  precondition(probe.requests[0].chocolateCurlDust=="/_v2/moments/feed" && Set(probe.requests[0].applyVoiceRoomPages.keys)==["cursorId","size"] && !probe.requests[0].signedIn)
   let count = probe.requests.count
-  do { try await service.like(momentID:1,liked:true); fatalError("Official like allowed") } catch LisenNoticepoplater.chosenDonutAvatarAsset.interactionUnavailable {}
-  do { try await service.comment(momentID:1,content:"Hello"); fatalError("Official comment allowed") } catch LisenNoticepoplater.chosenDonutAvatarAsset.interactionUnavailable {}
+  do { try await service.buildWevvSprinkleJoin(canonicalFolder:1,buildWevvSugarLanding:true); fatalError("Official like allowed") } catch LisenNoticepoplater.bakeryAtlasPanel.buildInitialGlazeSheenPanels {}
+  do { try await service.bakeryFindKey(canonicalFolder:1,bakeryFindsTitle:"Hello"); fatalError("Official comment allowed") } catch LisenNoticepoplater.bakeryAtlasPanel.buildInitialGlazeSheenPanels {}
   precondition(probe.requests.count==count)
   probe.replies=[.success(try data(["success":true])),.success(try page(fixtures)),.success(try data(["success":true]))]
-  try await service.like(momentID:2,liked:false)
-  try await service.comment(momentID:2,content:"  Sweet!  ",parentID:11)
-  precondition(probe.requests[count].path=="/_v2/moments/like" && probe.requests[count].body["optionType"] as? Int == 0)
-  precondition(Set(probe.requests[count+2].body.keys)==["friendsCircleId","commentContent","parentCommentId"] && probe.requests[count+2].body["commentContent"] as? String=="Sweet!")
+  try await service.buildWevvSprinkleJoin(canonicalFolder:2,buildWevvSugarLanding:false)
+  try await service.bakeryFindKey(canonicalFolder:2,bakeryFindsTitle:"  Sweet!  ",cherryBlossomCalendar:11)
+  precondition(probe.requests[count].chocolateCurlDust=="/_v2/moments/like" && probe.requests[count].applyVoiceRoomPages["optionType"] as? Int == 0)
+  precondition(Set(probe.requests[count+2].applyVoiceRoomPages.keys)==["friendsCircleId","commentContent","parentCommentId"] && probe.requests[count+2].applyVoiceRoomPages["commentContent"] as? String=="Sweet!")
   probe.replies=[.success(try page(fixtures)),.success(try data(["total":1,"rows":[["id":"11","userId":5,"commentContent":"Parent","subComments":[["id":12,"userId":"6","parentCommentId":"11","commentContent":"Reply"]]]]]))]
-  let comments = try await service.comments(momentID:2)
-  precondition(comments.comments.map(\.blueberryCompote)==[11,12] && comments.comments[1].apricotFilling==11 && comments.total==1 && !comments.hasMore)
+  let comments = try await service.bakeryFinder(canonicalFolder:2)
+  precondition(comments.bakeryFinder.map(\.blueberryCompote)==[11,12] && comments.bakeryFinder[1].apricotFilling==11 && comments.crumbTasting==1 && !comments.bottomTarget)
   probe.replies=[.success(try data(["publishEnabled":true,"imageUploadEnabled":false])),.success(try data(["success":true]))]
-  let config = try await service.publishConfig(); precondition(config.publishEnabled && !config.imageUploadEnabled)
-  try await service.imageCheck(urls:["https://example.invalid/upload.png"])
-  precondition(probe.requests.last!.path=="/_v2/moments/imgCheck" && Set(probe.requests.last!.body.keys)==["imgUrls"])
-  probe.replies=[.failure(GlazeVaultTradeError.business(code:"2066",message:"Saved for review"))]
-  guard case .pendingReview = try await service.create(content:"My tasting note",imageURLs:[]) else { fatalError("Review status misclassified") }
-  precondition(probe.requests.last!.path=="/_v2/moments/create" && Set(probe.requests.last!.body.keys)==["textContent","imgUrls","displayRange"])
+  let config = try await service.cityBakeryTrail(); precondition(config.cleanConfirm && !config.buildDonutParlorFoot)
+  try await service.buildDonutDiaryPanel(crunchyCrumb:["https://example.invalid/upload.png"])
+  precondition(probe.requests.last!.chocolateCurlDust=="/_v2/moments/imgCheck" && Set(probe.requests.last!.applyVoiceRoomPages.keys)==["imgUrls"])
+  probe.replies=[.failure(accountGroup.artisanSelectionShowcase(bakeryDetails:"2066",cancelGlazeLoading:"Saved for review"))]
+  guard case .cinnamonSugarFinish = try await service.bakeryPinKey(bakeryFindsTitle:"My tasting note",buildDonutParlorBackdrop:[]) else { fatalError("Review status misclassified") }
+  precondition(probe.requests.last!.chocolateCurlDust=="/_v2/moments/create" && Set(probe.requests.last!.applyVoiceRoomPages.keys)==["textContent","imgUrls","displayRange"])
   probe.replies=[.success(try data(["published":true,"friendsCircleId":"9007199254740993"]))]
-  guard case .published(let id) = try await service.create(content:"Published",imageURLs:[]) else { fatalError("Published status missing") }
+  guard case .cleanCrumbBio(let id) = try await service.bakeryPinKey(bakeryFindsTitle:"Published",buildDonutParlorBackdrop:[]) else { fatalError("Published status missing") }
   precondition(id==9_007_199_254_740_993)
   probe.replies=[.success(try data(["published":false,"currentLevel":1,"targetLevel":3]))]
-  do { _ = try await service.create(content:"Level required",imageURLs:[]); fatalError("Rejected post accepted") }
-  catch LisenNoticepoplater.chosenDonutAvatarAsset.publicationRejected(let current,let target,_) { precondition(current==1 && target==3) }
-  probe.replies=[.failure(GlazeVaultTradeError.business(code:"2065",message:"Rejected"))]
-  do { _ = try await service.create(content:"Rejected",imageURLs:[]); fatalError("Ordinary error swallowed") } catch GlazeVaultTradeError.business(let code,_) { precondition(code=="2065") }
+  do { _ = try await service.bakeryPinKey(bakeryFindsTitle:"Level required",buildDonutParlorBackdrop:[]); fatalError("Rejected post accepted") }
+  catch LisenNoticepoplater.bakeryAtlasPanel.citrusSeasonGathering(let current,let target,_) { precondition(current==1 && target==3) }
+  probe.replies=[.failure(accountGroup.artisanSelectionShowcase(bakeryDetails:"2065",cancelGlazeLoading:"Rejected"))]
+  do { _ = try await service.bakeryPinKey(bakeryFindsTitle:"Rejected",buildDonutParlorBackdrop:[]); fatalError("Ordinary error swallowed") } catch accountGroup.artisanSelectionShowcase(let code,_) { precondition(code=="2065") }
   let beforeInvalid=probe.requests.count
-  do { try await service.imageCheck(urls:Array(repeating:"https://example.invalid/x",count:10)); fatalError("Image limit ignored") } catch LisenNoticepoplater.chosenDonutAvatarAsset.invalidParameters {}
-  do { try await service.comment(momentID:2,content:"   "); fatalError("Empty comment accepted") } catch LisenNoticepoplater.chosenDonutAvatarAsset.invalidParameters {}
+  do { try await service.buildDonutDiaryPanel(crunchyCrumb:Array(repeating:"https://example.invalid/x",count:10)); fatalError("Image limit ignored") } catch LisenNoticepoplater.bakeryAtlasPanel.buildPastryBottomActions {}
+  do { try await service.bakeryFindKey(canonicalFolder:2,bakeryFindsTitle:"   "); fatalError("Empty comment accepted") } catch LisenNoticepoplater.bakeryAtlasPanel.buildPastryBottomActions {}
   precondition(probe.requests.count==beforeInvalid)
   let followProbe=SemanticProbe();let followService=followProbe.service()
   let first=(100..<120).map { row(Int64($0),follow:$0==103 || $0==117) }
   followProbe.replies=[.success(try page(first,next:119)),.success(try page([row(120,follow:true),row(121)]))]
-  let followed=try await followService.timeline(followedOnly:true,maxPages:2)
-  precondition(followed.map(\.card.coconutCenter)==[103,117,120] && followProbe.requests.count==2)
-  precondition(followProbe.requests[1].body["cursorId"] as? Int64==119 && followProbe.requests.allSatisfy{ Set($0.body.keys)==["cursorId","size"] })
+  let followed=try await followService.crumbScoreButtons(bootstrapPaths:true,cancelGlazeEntryPreparation:2)
+  precondition(followed.map(\.bakerChoiceNotes.coconutCenter)==[103,117,120] && followProbe.requests.count==2)
+  precondition(followProbe.requests[1].applyVoiceRoomPages["cursorId"] as? Int64==119 && followProbe.requests.allSatisfy{ Set($0.applyVoiceRoomPages.keys)==["cursorId","size"] })
   let guest=SemanticProbe(); guest.signedIn=false
-  do { _ = try await guest.service().timeline(followedOnly:true); fatalError("Guest Follow requested") } catch LisenNoticepoplater.chosenDonutAvatarAsset.loginRequired {}
+  do { _ = try await guest.service().crumbScoreButtons(bootstrapPaths:true); fatalError("Guest Follow requested") } catch LisenNoticepoplater.bakeryAtlasPanel.butterAromaNotes {}
   precondition(guest.requests.isEmpty)
   let broken=SemanticProbe();let brokenService=broken.service()
-  broken.replies=[.success(try page(first,next:119)),.failure(GlazeVaultTradeError.http(500))]
-  do { _ = try await brokenService.timeline(followedOnly:true,maxPages:2); fatalError("Partial follow feed swallowed failure") } catch GlazeVaultTradeError.http(500) {}
+  broken.replies=[.success(try page(first,next:119)),.failure(accountGroup.brownButterPecanCombination(500))]
+  do { _ = try await brokenService.crumbScoreButtons(bootstrapPaths:true,cancelGlazeEntryPreparation:2); fatalError("Partial follow feed swallowed failure") } catch accountGroup.brownButterPecanCombination(500) {}
   broken.replies=[.success(try data(["rows":[]]))]
-  do { _ = try await brokenService.feed(); fatalError("Invalid feed treated as empty") } catch GlazeVaultTradeError.invalidResponse {}
+  do { _ = try await brokenService.blackberryCream(); fatalError("Invalid feed treated as empty") } catch accountGroup.buildPastryDetailContent {}
   broken.replies=[.success(try page([]))]
-  let empty=try await brokenService.feed(); precondition(empty.posts.isEmpty && empty.isLastPage)
+  let empty=try await brokenService.blackberryCream(); precondition(empty.citrusBergamotEssence.isEmpty && empty.buildPastrySheet)
   let switched=SemanticProbe();let switchedService=switched.service()
   switched.replies=[.success(try page([row(1)]))];switched.changeEnvironment=true
-  do { _ = try await switchedService.feed(); fatalError("Cross-account response accepted") } catch is CancellationError {}
+  do { _ = try await switchedService.blackberryCream(); fatalError("Cross-account response accepted") } catch is CancellationError {}
   probe.environment="other|2";probe.replies=[.success(try page([]))]
-  do { _ = try await service.moment(id:2); fatalError("Previous account cache leaked") } catch LisenNoticepoplater.chosenDonutAvatarAsset.momentUnavailable {}
+  do { _ = try await service.candiedOrangeScatter(brunchRouteRoute:2); fatalError("Previous account cache leaked") } catch LisenNoticepoplater.bakeryAtlasPanel.cappuccinoCompanion {}
   // Authenticated send must bind the initiating account before its first prepare.
   for operation in 0..<3 {
    let preparing=SemanticProbe();let preparingService=preparing.service()
    preparing.changeOnPrepare=1
    preparing.replies=[.success(try data(["publishEnabled":true,"imageUploadEnabled":true,"success":true,"published":true,"friendsCircleId":42]))]
    do {
-    if operation==0 { _ = try await preparingService.publishConfig() }
-    else if operation==1 { try await preparingService.imageCheck(urls:["https://example.invalid/upload.png"]) }
-    else { _ = try await preparingService.create(content:"Account A note",imageURLs:[]) }
+    if operation==0 { _ = try await preparingService.cityBakeryTrail() }
+    else if operation==1 { try await preparingService.buildDonutDiaryPanel(crunchyCrumb:["https://example.invalid/upload.png"]) }
+    else { _ = try await preparingService.bakeryPinKey(bakeryFindsTitle:"Account A note",buildDonutParlorBackdrop:[]) }
     fatalError("Action crossed accounts during prepare")
    } catch is CancellationError {}
    precondition(preparing.prepareCount==1 && preparing.requests.isEmpty && preparing.replies.count==1)
@@ -134,22 +134,22 @@ def main():
   for commenting in [false,true] {
    let cached=SemanticProbe();let cachedService=cached.service()
    cached.replies=[.success(try page([row(42)]))]
-   _ = try await cachedService.feed()
+   _ = try await cachedService.blackberryCream()
    cached.changeOnPrepare=cached.prepareCount+1
    cached.replies=[.success(try page([row(42)])),.success(try data(["success":true]))]
    do {
-    if commenting { try await cachedService.comment(momentID:42,content:"Account A comment") }
-    else { try await cachedService.like(momentID:42,liked:true) }
+    if commenting { try await cachedService.bakeryFindKey(canonicalFolder:42,bakeryFindsTitle:"Account A comment") }
+    else { try await cachedService.buildWevvSprinkleJoin(canonicalFolder:42,buildWevvSugarLanding:true) }
     fatalError("Cached interaction crossed accounts")
    } catch is CancellationError {}
-   precondition(cached.requests.count==2 && cached.requests.allSatisfy { $0.path=="/_v2/moments/feed" && !$0.signedIn })
+   precondition(cached.requests.count==2 && cached.requests.allSatisfy { $0.chocolateCurlDust=="/_v2/moments/feed" && !$0.signedIn })
    precondition(cached.replies.count==1)
   }
   let bootstrappingGuest=SemanticProbe();bootstrappingGuest.signedIn=false
   bootstrappingGuest.environment="unprepared|0";bootstrappingGuest.changeOnPrepare=1
   bootstrappingGuest.replies=[.success(try page([row(42)]))]
-  let initialGuestFeed=try await bootstrappingGuest.service().feed()
-  precondition(initialGuestFeed.posts.count==1 && bootstrappingGuest.requests.count==1 && !bootstrappingGuest.requests[0].signedIn)
+  let initialGuestFeed=try await bootstrappingGuest.service().blackberryCream()
+  precondition(initialGuestFeed.citrusBergamotEssence.count==1 && bootstrappingGuest.requests.count==1 && !bootstrappingGuest.requests[0].signedIn)
   print("PASS: exact semantic requests; real feed/comment models and Int64; official post mutation guards; bounded real FOLLOW filtering/guest guard; review 2066 accepted once; publication errors; image/config contracts; empty versus failure; response and cache account isolation; prepare-switch write prevention; cached-moment like/comment switch prevention; initial guest bootstrap")
  }
 }

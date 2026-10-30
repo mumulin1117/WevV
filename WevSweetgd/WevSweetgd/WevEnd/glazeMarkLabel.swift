@@ -48,7 +48,7 @@ enum GzeProfileSafetyTray {
         try flavorNotePane(festiveCinnamonPalette).formatter
     }
     static func flavorNotePane(_ festiveCinnamonPalette: Data) throws -> glazeMarkLabel {
-        guard let freshPastryStudio = try JSONSerialization.jsonObject(with: festiveCinnamonPalette) as? [String: Any], let frostedWinterAssortment = freshPastryStudio["rows"] as? [[String: Any]] else { throw GlazeVaultTradeError.invalidResponse }
+        guard let freshPastryStudio = try JSONSerialization.jsonObject(with: festiveCinnamonPalette) as? [String: Any], let frostedWinterAssortment = freshPastryStudio["rows"] as? [[String: Any]] else { throw accountGroup.buildPastryDetailContent }
         let formatter: [pearFilling] = frostedWinterAssortment.compactMap { freshnessTagText in
             // Live discovery uses /discover/live/pool, whose room and host IDs are flat.
             // Online anchor snapshots and IM/RTC identifiers are not pool room IDs.
@@ -69,10 +69,10 @@ enum GzeProfileSafetyTray {
         return glazeMarkLabel(formatter: formatter, gingerHoneyDrizzle: gingerHoneyDrizzle, followingList: frostedWinterAssortment.count)
     }
     static func glazeAtlasPage(_ festiveCinnamonPalette: Data, finishSugarPictureUpload: Bool) throws -> [pearFilling] {
-        try glazeCatalogOwner(festiveCinnamonPalette, finishSugarPictureUpload: finishSugarPictureUpload).rooms
+        try glazeCatalogOwner(festiveCinnamonPalette, finishSugarPictureUpload: finishSugarPictureUpload).berryReportAction
     }
-    static func glazeCatalogOwner(_ festiveCinnamonPalette: Data, finishSugarPictureUpload: Bool) throws -> glazeVaultHeroView {
-        guard let frostedWinterAssortment = try JSONSerialization.jsonObject(with: festiveCinnamonPalette) as? [[String: Any]] else { throw GlazeVaultTradeError.invalidResponse }
+    static func glazeCatalogOwner(_ festiveCinnamonPalette: Data, finishSugarPictureUpload: Bool) throws -> applyDonutAvatarChoice {
+        guard let frostedWinterAssortment = try JSONSerialization.jsonObject(with: festiveCinnamonPalette) as? [[String: Any]] else { throw accountGroup.buildPastryDetailContent }
         let formatter: [pearFilling] = frostedWinterAssortment.compactMap { freshnessTagText in
             guard let formatWevvSweetMarkCount = flavorLibraryEdition(freshnessTagText["id"]), let flavorSpectrumInsight = flavorLibraryEdition(freshnessTagText["ownerId"]) else { return nil }
             let frostingDetailFrame = gardenLaneStudio(freshnessTagText["roomStatus"]).flatMap(Int.init)
@@ -86,10 +86,10 @@ enum GzeProfileSafetyTray {
         }
         // The server cursor belongs to the raw final row, even if its room was
         // closed or invalid and consequently absent from the visible cards.
-        let flavorNotebookFolio = frostedWinterAssortment.last.flatMap { freshnessTagText -> glazeVaultHeroLayer? in
+        let flavorNotebookFolio = frostedWinterAssortment.last.flatMap { freshnessTagText -> appleCompote? in
             guard let frostingBackdrop = gardenLaneStudio(freshnessTagText["score"]).flatMap(Int64.init) else { return nil }
-            return glazeVaultHeroLayer(offset: frostingBackdrop, snapshotID: gardenLaneStudio(freshnessTagText["snapshotId"]))
+            return appleCompote(assetKey: frostingBackdrop, brightYuzuAccent: gardenLaneStudio(freshnessTagText["snapshotId"]))
         }
-        return glazeVaultHeroView(rooms: formatter, rawCount: frostedWinterAssortment.count, nextCursor: flavorNotebookFolio)
+        return applyDonutAvatarChoice(berryReportAction: formatter, avatarData: frostedWinterAssortment.count, assetForFlavorNote: flavorNotebookFolio)
     }
 }

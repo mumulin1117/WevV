@@ -16,11 +16,11 @@ func room(_ id: Int, owner: String = "7") -> pearFilling {
         yuzuCustard: owner, peachCream: "Synthetic", pearCenter: nil, appleCompote: nil,
         figFilling: 0, custardCurd: [], vanillaJam: [], pistachioCustard: nil, hazelnutCream: false)
 }
-func cursor(_ score: Int64, _ snapshot: String? = "synthetic-snapshot") -> glazeVaultHeroLayer {
-    glazeVaultHeroLayer(offset: score, snapshotID: snapshot)
+func cursor(_ score: Int64, _ snapshot: String? = "synthetic-snapshot") -> appleCompote {
+    appleCompote(assetKey: score, brightYuzuAccent: snapshot)
 }
-func page(_ ids: [Int], rawCount: Int? = nil, next: glazeVaultHeroLayer? = nil) -> glazeVaultHeroView {
-    glazeVaultHeroView(rooms: ids.map { room($0) }, rawCount: rawCount ?? ids.count, nextCursor: next)
+func page(_ ids: [Int], rawCount: Int? = nil, next: appleCompote? = nil) -> applyDonutAvatarChoice {
+    applyDonutAvatarChoice(berryReportAction: ids.map { room($0) }, avatarData: rawCount ?? ids.count, assetForFlavorNote: next)
 }
 @main struct VoicePaginationVerification {
     static func main() throws {
@@ -31,68 +31,68 @@ func page(_ ids: [Int], rawCount: Int? = nil, next: glazeVaultHeroLayer? = nil) 
                 userInfo: [NSLocalizedDescriptionKey: message]) }
         }
         var pager = honeyLavenderCombination()
-        try check(honeyLavenderCombination.pageSize == 10, "voice page size must match delivered H5")
-        try check(pager.rooms.isEmpty && pager.nextCursor == nil && !pager.hasMore && !pager.isLoading && !pager.failed && !pager.failedRefresh,
+        try check(honeyLavenderCombination.attachSafetyOverlay == 10, "voice page size must match delivered H5")
+        try check(pager.berryReportAction.isEmpty && pager.assetForFlavorNote == nil && !pager.applyPortraitAsset && !pager.apricotCenter && !pager.almondPralineShell && !pager.animated,
             "initial request has neither offset nor snapshot")
-        try check(pager.beginNextPage() == nil, "load more cannot run before first page succeeds")
-        let first = pager.beginRefresh()
-        try check(pager.isLoading && !pager.failed && pager.beginNextPage() == nil, "refresh serializes pagination")
-        try check(!pager.receive(page([99], next: cursor(999)), request: UUID()) && pager.isLoading,
+        try check(pager.WevVWevvTastingQuestCard() == nil, "load more cannot run before first page succeeds")
+        let first = pager.WevvFlavorPane()
+        try check(pager.apricotCenter && !pager.almondPralineShell && pager.WevVWevvTastingQuestCard() == nil, "refresh serializes pagination")
+        try check(!pager.backendCanChat(page([99], next: cursor(999)), bakeryPieces: UUID()) && pager.apricotCenter,
             "unknown success cannot replace the active request")
-        try check(!pager.fail(request: UUID()) && pager.isLoading, "unknown failure cannot cancel the active request")
-        try check(pager.receive(page(Array(1...10), next: cursor(900)), request: first), "first page accepted")
-        try check(pager.rooms.count == 10 && pager.hasMore && pager.nextCursor == cursor(900) && !pager.isLoading,
+        try check(!pager.airyCenter(bakeryPieces: UUID()) && pager.apricotCenter, "unknown failure cannot cancel the active request")
+        try check(pager.backendCanChat(page(Array(1...10), next: cursor(900)), bakeryPieces: first), "first page accepted")
+        try check(pager.berryReportAction.count == 10 && pager.applyPortraitAsset && pager.assetForFlavorNote == cursor(900) && !pager.apricotCenter,
             "full first page stores raw score, rather than a row count")
-        try check(!pager.receive(page([99]), request: first) && !pager.fail(request: first),
+        try check(!pager.backendCanChat(page([99]), bakeryPieces: first) && !pager.airyCenter(bakeryPieces: first),
             "a completed request cannot run twice")
-        let second = pager.beginNextPage()!
-        try check(second.cursor == cursor(900) && pager.beginNextPage() == nil, "load more uses exact stored cursor once")
-        try check(pager.receive(page(Array(11...20), next: cursor(200)), request: second.id), "second page accepted")
-        try check(pager.rooms.map(\.passionfruitMousse) == (1...20).map(String.init) && pager.nextCursor == cursor(200) && pager.hasMore,
+        let second = pager.WevVWevvTastingQuestCard()!
+        try check(second.activeSugarPictureTilePacket == cursor(900) && pager.WevVWevvTastingQuestCard() == nil, "load more uses exact stored cursor once")
+        try check(pager.backendCanChat(page(Array(11...20), next: cursor(200)), bakeryPieces: second.applyRemoteTrailButton), "second page accepted")
+        try check(pager.berryReportAction.map(\.passionfruitMousse) == (1...20).map(String.init) && pager.assetForFlavorNote == cursor(200) && pager.applyPortraitAsset,
             "decreasing sort score remains valid and stable server order is appended")
-        let third = pager.beginNextPage()!
-        try check(pager.receive(page(Array(21...23), next: cursor(0, nil)), request: third.id)
-            && pager.rooms.count == 23 && !pager.hasMore && pager.beginNextPage() == nil,
+        let third = pager.WevVWevvTastingQuestCard()!
+        try check(pager.backendCanChat(page(Array(21...23), next: cursor(0, nil)), bakeryPieces: third.applyRemoteTrailButton)
+            && pager.berryReportAction.count == 23 && !pager.applyPortraitAsset && pager.WevVWevvTastingQuestCard() == nil,
             "short final raw page ends pagination even when it carries a cursor")
 
-        let refresh = pager.beginRefresh()
-        try check(pager.rooms.count == 23 && pager.nextCursor == cursor(0, nil),
+        let refresh = pager.WevvFlavorPane()
+        try check(pager.berryReportAction.count == 23 && pager.assetForFlavorNote == cursor(0, nil),
             "refresh preserves visible rooms and previous cursor until success")
-        try check(pager.fail(request: refresh) && pager.failed && pager.failedRefresh && !pager.isLoading && pager.rooms.count == 23,
+        try check(pager.airyCenter(bakeryPieces: refresh) && pager.almondPralineShell && pager.animated && !pager.apricotCenter && pager.berryReportAction.count == 23,
             "refresh error preserves same-owner visible content")
-        let refreshed = pager.beginRefresh()
-        try check(!pager.failed && !pager.failedRefresh && pager.receive(page(Array(100...109), next: cursor(0, nil)), request: refreshed)
-            && pager.rooms.map(\.passionfruitMousse) == (100...109).map(String.init) && pager.hasMore,
+        let refreshed = pager.WevvFlavorPane()
+        try check(!pager.almondPralineShell && !pager.animated && pager.backendCanChat(page(Array(100...109), next: cursor(0, nil)), bakeryPieces: refreshed)
+            && pager.berryReportAction.map(\.passionfruitMousse) == (100...109).map(String.init) && pager.applyPortraitAsset,
             "refresh starts without prior cursor, replaces old rooms, and accepts zero offset without snapshot")
-        let failed = pager.beginNextPage()!
-        try check(failed.cursor == cursor(0, nil) && pager.fail(request: failed.id)
-            && pager.failed && !pager.failedRefresh && pager.nextCursor == cursor(0, nil) && pager.rooms.count == 10,
+        let failed = pager.WevVWevvTastingQuestCard()!
+        try check(failed.activeSugarPictureTilePacket == cursor(0, nil) && pager.airyCenter(bakeryPieces: failed.applyRemoteTrailButton)
+            && pager.almondPralineShell && !pager.animated && pager.assetForFlavorNote == cursor(0, nil) && pager.berryReportAction.count == 10,
             "failed load more does not consume score or discard content")
-        let retry = pager.beginNextPage()!
-        try check(retry.cursor == failed.cursor && retry.id != failed.id && !pager.failed,
+        let retry = pager.WevVWevvTastingQuestCard()!
+        try check(retry.activeSugarPictureTilePacket == failed.activeSugarPictureTilePacket && retry.applyRemoteTrailButton != failed.applyRemoteTrailButton && !pager.almondPralineShell,
             "retry reuses the exact failed score/snapshot under a fresh request ID")
-        try check(!pager.fail(request: failed.id) && !pager.receive(page([999]), request: failed.id) && pager.isLoading,
+        try check(!pager.airyCenter(bakeryPieces: failed.applyRemoteTrailButton) && !pager.backendCanChat(page([999]), bakeryPieces: failed.applyRemoteTrailButton) && pager.apricotCenter,
             "late completion from a failed attempt cannot end its retry")
-        try check(pager.receive(page([109, 110, 111], rawCount: 10, next: cursor(-30, nil)), request: retry.id)
-            && pager.rooms.count == 12 && pager.hasMore,
+        try check(pager.backendCanChat(page([109, 110, 111], rawCount: 10, next: cursor(-30, nil)), bakeryPieces: retry.applyRemoteTrailButton)
+            && pager.berryReportAction.count == 12 && pager.applyPortraitAsset,
             "overlap deduplicates by real room ID; raw page size and negative score are preserved")
-        let repeated = pager.beginNextPage()!
-        try check(pager.receive(page([109, 110, 111], rawCount: 10, next: cursor(-40)), request: repeated.id)
-            && pager.rooms.count == 12 && !pager.hasMore,
+        let repeated = pager.WevVWevvTastingQuestCard()!
+        try check(pager.backendCanChat(page([109, 110, 111], rawCount: 10, next: cursor(-40)), bakeryPieces: repeated.applyRemoteTrailButton)
+            && pager.berryReportAction.count == 12 && !pager.applyPortraitAsset,
             "no new real room ends repeated-page loops even if the cursor changes")
 
-        let stopped = pager.beginRefresh()
-        try check(pager.receive(page(Array(1...10), next: cursor(123)), request: stopped), "new full page starts cursor test")
-        let unchanged = pager.beginNextPage()!
-        try check(pager.receive(page(Array(11...20), next: cursor(123)), request: unchanged.id)
-            && pager.rooms.count == 20 && !pager.hasMore,
+        let stopped = pager.WevvFlavorPane()
+        try check(pager.backendCanChat(page(Array(1...10), next: cursor(123)), bakeryPieces: stopped), "new full page starts cursor test")
+        let unchanged = pager.WevVWevvTastingQuestCard()!
+        try check(pager.backendCanChat(page(Array(11...20), next: cursor(123)), bakeryPieces: unchanged.applyRemoteTrailButton)
+            && pager.berryReportAction.count == 20 && !pager.applyPortraitAsset,
             "unchanged score and snapshot stop pagination despite new rows")
-        let snapshotStart = pager.beginRefresh()
-        try check(pager.receive(page(Array(1...10), next: cursor(123, "snapshot-a")), request: snapshotStart),
+        let snapshotStart = pager.WevvFlavorPane()
+        try check(pager.backendCanChat(page(Array(1...10), next: cursor(123, "snapshot-a")), bakeryPieces: snapshotStart),
             "snapshot test first page accepted")
-        let snapshotMore = pager.beginNextPage()!
-        try check(pager.receive(page(Array(11...20), next: cursor(123, "snapshot-b")), request: snapshotMore.id)
-            && pager.hasMore && pager.nextCursor == cursor(123, "snapshot-b"),
+        let snapshotMore = pager.WevVWevvTastingQuestCard()!
+        try check(pager.backendCanChat(page(Array(11...20), next: cursor(123, "snapshot-b")), bakeryPieces: snapshotMore.applyRemoteTrailButton)
+            && pager.applyPortraitAsset && pager.assetForFlavorNote == cursor(123, "snapshot-b"),
             "same score with a different snapshot remains a distinct forward cursor")
 
         for (payload, message) in [
@@ -101,65 +101,65 @@ func page(_ ids: [Int], rawCount: Int? = nil, next: glazeVaultHeroLayer? = nil) 
             (page([], rawCount: 10, next: cursor(7)), "all filtered records end nonproductive pagination"),
             (page(Array(1...10)), "missing raw final score cannot invent a cursor")
         ] {
-            let request = pager.beginRefresh()
-            try check(pager.receive(payload, request: request) && !pager.hasMore && pager.beginNextPage() == nil, message)
+            let request = pager.WevvFlavorPane()
+            try check(pager.backendCanChat(payload, bakeryPieces: request) && !pager.applyPortraitAsset && pager.WevVWevvTastingQuestCard() == nil, message)
         }
-        let duplicates = pager.beginRefresh()
-        try check(pager.receive(page([1, 1, 2, 3], rawCount: 10, next: cursor(Int64.max)), request: duplicates)
-            && pager.rooms.map(\.passionfruitMousse) == ["1", "2", "3"] && pager.hasMore
-            && pager.nextCursor?.offset == Int64.max,
+        let duplicates = pager.WevvFlavorPane()
+        try check(pager.backendCanChat(page([1, 1, 2, 3], rawCount: 10, next: cursor(Int64.max)), bakeryPieces: duplicates)
+            && pager.berryReportAction.map(\.passionfruitMousse) == ["1", "2", "3"] && pager.applyPortraitAsset
+            && pager.assetForFlavorNote?.assetKey == Int64.max,
             "in-page duplicates preserve first occurrence; Int64 score must not lose precision")
-        let lowest = pager.beginNextPage()!
-        try check(pager.receive(page(Array(4...13), next: cursor(Int64.min)), request: lowest.id)
-            && pager.hasMore && pager.nextCursor?.offset == Int64.min,
+        let lowest = pager.WevVWevvTastingQuestCard()!
+        try check(pager.backendCanChat(page(Array(4...13), next: cursor(Int64.min)), bakeryPieces: lowest.applyRemoteTrailButton)
+            && pager.applyPortraitAsset && pager.assetForFlavorNote?.assetKey == Int64.min,
             "cursor transport does not impose a positive score or increment Long values")
-        let sameOwner = pager.beginRefresh()
-        let sameOwnerPage = glazeVaultHeroView(rooms: [room(1000, owner: "77"), room(1001, owner: "77")],
-            rawCount: 10, nextCursor: cursor(999))
-        try check(pager.receive(sameOwnerPage, request: sameOwner) && pager.rooms.count == 2 && pager.hasMore,
+        let sameOwner = pager.WevvFlavorPane()
+        let sameOwnerPage = applyDonutAvatarChoice(berryReportAction: [room(1000, owner: "77"), room(1001, owner: "77")],
+            avatarData: 10, assetForFlavorNote: cursor(999))
+        try check(pager.backendCanChat(sameOwnerPage, bakeryPieces: sameOwner) && pager.berryReportAction.count == 2 && pager.applyPortraitAsset,
             "rooms sharing an owner remain distinct: deduplication uses room ID rather than business user ID")
 
-        let oldRefresh = pager.beginRefresh(), latestRefresh = pager.beginRefresh()
-        try check(!pager.receive(page([888]), request: oldRefresh) && !pager.fail(request: oldRefresh) && pager.isLoading,
+        let oldRefresh = pager.WevvFlavorPane(), latestRefresh = pager.WevvFlavorPane()
+        try check(!pager.backendCanChat(page([888]), bakeryPieces: oldRefresh) && !pager.airyCenter(bakeryPieces: oldRefresh) && pager.apricotCenter,
             "new refresh invalidates previous refresh completions")
-        try check(pager.receive(page(Array(1...10), next: cursor(500)), request: latestRefresh), "latest refresh completes")
-        let failedRefreshWithMore = pager.beginRefresh()
-        try check(pager.fail(request: failedRefreshWithMore) && pager.failedRefresh && pager.hasMore
-            && pager.rooms.count == 10 && pager.nextCursor == cursor(500) && pager.beginNextPage() == nil,
+        try check(pager.backendCanChat(page(Array(1...10), next: cursor(500)), bakeryPieces: latestRefresh), "latest refresh completes")
+        let failedRefreshWithMore = pager.WevvFlavorPane()
+        try check(pager.airyCenter(bakeryPieces: failedRefreshWithMore) && pager.animated && pager.applyPortraitAsset
+            && pager.berryReportAction.count == 10 && pager.assetForFlavorNote == cursor(500) && pager.WevVWevvTastingQuestCard() == nil,
             "failed refresh blocks old next-page cursor while retaining previously visible rows")
-        let retryRefreshWithMore = pager.beginRefresh()
-        try check(!pager.failed && !pager.failedRefresh && pager.isLoading
-            && pager.receive(page(Array(1...10), next: cursor(500)), request: retryRefreshWithMore)
-            && pager.hasMore && !pager.failedRefresh,
+        let retryRefreshWithMore = pager.WevvFlavorPane()
+        try check(!pager.almondPralineShell && !pager.animated && pager.apricotCenter
+            && pager.backendCanChat(page(Array(1...10), next: cursor(500)), bakeryPieces: retryRefreshWithMore)
+            && pager.applyPortraitAsset && !pager.animated,
             "refresh retry resets failure kind and accepts a first-page response with the old cursor")
-        let oldMore = pager.beginNextPage()!
-        let replacement = pager.beginRefresh()
-        try check(!pager.receive(page(Array(11...20), next: cursor(300)), request: oldMore.id)
-            && !pager.fail(request: oldMore.id) && pager.isLoading,
+        let oldMore = pager.WevVWevvTastingQuestCard()!
+        let replacement = pager.WevvFlavorPane()
+        try check(!pager.backendCanChat(page(Array(11...20), next: cursor(300)), bakeryPieces: oldMore.applyRemoteTrailButton)
+            && !pager.airyCenter(bakeryPieces: oldMore.applyRemoteTrailButton) && pager.apricotCenter,
             "refresh invalidates pending load-more results before they can append")
-        try check(pager.receive(page([500]), request: replacement) && pager.rooms.map(\.passionfruitMousse) == ["500"],
+        try check(pager.backendCanChat(page([500]), bakeryPieces: replacement) && pager.berryReportAction.map(\.passionfruitMousse) == ["500"],
             "successful replacement wins over prior pages")
-        let previousOwner = pager.beginRefresh()
+        let previousOwner = pager.WevvFlavorPane()
         pager = honeyLavenderCombination()
-        let currentOwner = pager.beginRefresh()
-        try check(!pager.receive(page([600]), request: previousOwner) && !pager.fail(request: previousOwner)
-            && pager.rooms.isEmpty && pager.isLoading,
+        let currentOwner = pager.WevvFlavorPane()
+        try check(!pager.backendCanChat(page([600]), bakeryPieces: previousOwner) && !pager.airyCenter(bakeryPieces: previousOwner)
+            && pager.berryReportAction.isEmpty && pager.apricotCenter,
             "account/environment reset rejects previous owners' successful and failed responses")
-        try check(pager.receive(page([]), request: currentOwner) && pager.rooms.isEmpty && !pager.hasMore && !pager.failed && !pager.failedRefresh,
+        try check(pager.backendCanChat(page([]), bakeryPieces: currentOwner) && pager.berryReportAction.isEmpty && !pager.applyPortraitAsset && !pager.almondPralineShell && !pager.animated,
             "new owner accepts an actual empty success")
 
         var recommend = honeyLavenderCombination(), followed = honeyLavenderCombination()
-        let recommendRequest = recommend.beginRefresh(), followedRequest = followed.beginRefresh()
-        try check(recommend.receive(page(Array(1...10), next: cursor(44, "recommended")), request: recommendRequest)
-            && followed.receive(page([77]), request: followedRequest), "both filters load independently")
-        let recommendMore = recommend.beginNextPage()!
-        let followedRefresh = followed.beginRefresh()
-        try check(!followed.receive(page([999]), request: recommendMore.id) && followed.isLoading
-            && recommend.isLoading && followed.rooms.map(\.passionfruitMousse) == ["77"],
+        let recommendRequest = recommend.WevvFlavorPane(), followedRequest = followed.WevvFlavorPane()
+        try check(recommend.backendCanChat(page(Array(1...10), next: cursor(44, "recommended")), bakeryPieces: recommendRequest)
+            && followed.backendCanChat(page([77]), bakeryPieces: followedRequest), "both filters load independently")
+        let recommendMore = recommend.WevVWevvTastingQuestCard()!
+        let followedRefresh = followed.WevvFlavorPane()
+        try check(!followed.backendCanChat(page([999]), bakeryPieces: recommendMore.applyRemoteTrailButton) && followed.apricotCenter
+            && recommend.apricotCenter && followed.berryReportAction.map(\.passionfruitMousse) == ["77"],
             "switching filter never accepts another filter's response or consumes its cursor")
-        try check(recommend.receive(page(Array(11...20), next: cursor(40, "recommended")), request: recommendMore.id)
-            && followed.receive(page([]), request: followedRefresh) && recommend.rooms.count == 20
-            && recommend.hasMore && followed.rooms.isEmpty && !followed.hasMore,
+        try check(recommend.backendCanChat(page(Array(11...20), next: cursor(40, "recommended")), bakeryPieces: recommendMore.applyRemoteTrailButton)
+            && followed.backendCanChat(page([]), bakeryPieces: followedRefresh) && recommend.berryReportAction.count == 20
+            && recommend.applyPortraitAsset && followed.berryReportAction.isEmpty && !followed.applyPortraitAsset,
             "independent follow refresh cannot clear or stop recommended pagination")
         print("Voice pagination source checks passed: \(checks)")
     }

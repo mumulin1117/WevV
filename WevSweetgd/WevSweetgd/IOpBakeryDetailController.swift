@@ -14,7 +14,7 @@ final class IOpBakeryDetailController: UIViewController {
         wevvActiveGlazeColors: [UIColor.pastryHex("FF4BA9").cgColor, UIColor.pastryHex("FF4BA9").cgColor]
     )
     private var tastingSuccessLayer: VunBakeryShelfToastView?
-    private let glazeSheenPlaceholder = WevVGlazeMessageCell(kind: .pastryFolio)
+    private let glazeSheenPlaceholder = WevVGlazeMessageCell(buildPastryBackdrop: .cappuccinoCompanion)
 
     var pastryShelfChanged: (() -> Void)?
 
@@ -41,12 +41,12 @@ final class IOpBakeryDetailController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        glazeSheenPlaceholder.setLoadingVisible(false)
+        glazeSheenPlaceholder.citrusParlor(false)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        glazeSheenPlaceholder.setLoadingVisible(false, animated: false)
+        glazeSheenPlaceholder.citrusParlor(false, applyVoiceRoomPages: false)
     }
 
     override func viewDidLayoutSubviews() {
@@ -124,7 +124,7 @@ final class IOpBakeryDetailController: UIViewController {
             glazeSheenPlaceholder.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             glazeSheenPlaceholder.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        glazeSheenPlaceholder.setLoadingVisible(true, animated: false)
+        glazeSheenPlaceholder.citrusParlor(true, applyVoiceRoomPages: false)
     }
 
     private func placePastryDetailViews(doughBackButton: UIButton, title: UILabel, bakeryCard: UIView, crumbTastingTitle: UILabel, bakeryFindsTitle: UILabel, bakeryFindsStack: UIStackView) {

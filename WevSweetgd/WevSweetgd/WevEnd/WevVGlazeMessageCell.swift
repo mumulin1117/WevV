@@ -3,69 +3,70 @@ import UIKit
 /// A temporary representation of feed requests or a detail page's first presentation.
 /// The host decides when a request has settled; this view owns only presentation.
 final class WevVGlazeMessageCell: UIView {
-    enum glazeNameLabel {
-        case home, voice, moments
-        case sprinkleChallenge, pastryFolio
+    enum bottomTarget: String, CustomStringConvertible {
+        case brownButterShell = "home", compactChallenge = "voice", buildTopDonutBar = "moments"
+        case clearGlazeRelationsForFreshTaster = "sprinkleChallenge", cappuccinoCompanion = "pastryFolio"
+        var description: String { rawValue }
     }
 
-    private struct glazePackCards {
-        let backdrop: [UIColor]
-        let surface: UIColor
-        let block: UIColor
-        let detail: UIColor
-        let highlight: UIColor
+    private struct boutiqueStudio {
+        let artisanFrySequence: [UIColor]
+        let closePastryDetail: UIColor
+        let awaitingFirstPaint: UIColor
+        let beginGlazeContextPreparation: UIColor
+        let brownButterIcing: UIColor
 
         // Match the packaged H5's sRGB color-mix skeleton tokens.
-        static let shared = glazePackCards(
-            backdrop: [UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1), UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1)],
-            surface: UIColor(red: 6.4 / 255.0, green: 5.44 / 255.0, blue: 38.12 / 255.0, alpha: 1),
-            block: UIColor(red: 35.2 / 255.0, green: 29.92 / 255.0, blue: 61.16 / 255.0, alpha: 1),
-            detail: UIColor(red: 35.2 / 255.0, green: 29.92 / 255.0, blue: 61.16 / 255.0, alpha: 1),
-            highlight: UIColor(red: 78.3 / 255.0, green: 47.38 / 255.0, blue: 112.42 / 255.0, alpha: 1)
+        static let citrusPeelGarnish = boutiqueStudio(
+            artisanFrySequence: [UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1), UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 33 / 255.0, alpha: 1)],
+            closePastryDetail: UIColor(red: 6.4 / 255.0, green: 5.44 / 255.0, blue: 38.12 / 255.0, alpha: 1),
+            awaitingFirstPaint: UIColor(red: 35.2 / 255.0, green: 29.92 / 255.0, blue: 61.16 / 255.0, alpha: 1),
+            beginGlazeContextPreparation: UIColor(red: 35.2 / 255.0, green: 29.92 / 255.0, blue: 61.16 / 255.0, alpha: 1),
+            brownButterIcing: UIColor(red: 78.3 / 255.0, green: 47.38 / 255.0, blue: 112.42 / 255.0, alpha: 1)
         )
     }
 
-    private let kind: glazeNameLabel
-    private let palette: glazePackCards
-    private let backdrop = CAGradientLayer()
-    private let scrollView = UIScrollView()
-    private let content = UIStackView()
-    private var tiles: [glazeSaveTask] = []
-    private var loadingVisible = false
-    private var transitionID: UInt = 0
-    private var applicationActive = UIApplication.shared.applicationState == .active
+    private let buildPastryBackdrop: bottomTarget
+    private let candiedOrangeScatter: boutiqueStudio
+    private let artisanFrySequence = CAGradientLayer()
+    private let cinnamonDustLayer = UIScrollView()
+    private let bakeryTrailMap = UIStackView()
+    private var closeWevvBakeryShelf: [glazeSaveTask] = []
+    private var buildPastrySheet = false
+    private var cocoaDepthNotes: UInt = 0
+    private var apricotCompote = UIApplication.shared.applicationState == .active
 
-    init(kind: glazeNameLabel) {
-        self.kind = kind
-        self.palette = .shared
+    init(buildPastryBackdrop: bottomTarget) {
+        self.buildPastryBackdrop = buildPastryBackdrop
+        self.candiedOrangeScatter = .citrusPeelGarnish
         super.init(frame: .zero)
         isHidden = true
         clipsToBounds = true
         isAccessibilityElement = true
         accessibilityTraits = .staticText
-        switch kind {
-        case .home: accessibilityLabel = "Loading live rooms"
-        case .voice: accessibilityLabel = "Loading voice rooms"
-        case .moments: accessibilityLabel = "Loading community posts"
-        case .sprinkleChallenge: accessibilityLabel = "Loading challenge details"
-        case .pastryFolio: accessibilityLabel = "Loading shop details"
+        switch buildPastryBackdrop {
+        case .brownButterShell: accessibilityLabel = "Loading live rooms"
+        case .compactChallenge: accessibilityLabel = "Loading voice rooms"
+        case .buildTopDonutBar: accessibilityLabel = "Loading community posts"
+        case .clearGlazeRelationsForFreshTaster: accessibilityLabel = "Loading challenge details"
+        case .cappuccinoCompanion: accessibilityLabel = "Loading shop details"
         }
-        accessibilityIdentifier = "wevv.initialLoading.\(kind)"
-        backgroundColor = palette.backdrop.first
-        backdrop.colors = palette.backdrop.map(\.cgColor)
-        backdrop.startPoint = CGPoint(x: 0.15, y: 0)
-        backdrop.endPoint = CGPoint(x: 0.9, y: 1)
-        layer.insertSublayer(backdrop, at: 0)
-        buildLayout()
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive),
+        accessibilityIdentifier = "wevv.initialLoading.\(buildPastryBackdrop)"
+        backgroundColor = candiedOrangeScatter.artisanFrySequence.first
+        artisanFrySequence.colors = candiedOrangeScatter.artisanFrySequence.map(\.cgColor)
+        artisanFrySequence.startPoint = CGPoint(x: 0.15, y: 0)
+        artisanFrySequence.endPoint = CGPoint(x: 0.9, y: 1)
+        layer.insertSublayer(artisanFrySequence, at: 0)
+        bakeryDayDots()
+        NotificationCenter.default.addObserver(self, selector: #selector(archiveCapacity),
                                                name: UIApplication.willResignActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive),
+        NotificationCenter.default.addObserver(self, selector: #selector(apricotFilling),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reduceMotionChanged),
+        NotificationCenter.default.addObserver(self, selector: #selector(checkinArtwork),
                                                name: UIAccessibility.reduceMotionStatusDidChangeNotification, object: nil)
     }
 
-    required init?(coder: NSCoder) { nil }
+    required init?(coder bakeryStopText: NSCoder) { nil }
 
     deinit { NotificationCenter.default.removeObserver(self) }
 
@@ -74,36 +75,36 @@ final class WevVGlazeMessageCell: UIView {
         // Layer geometry follows the Auto Layout managed view, never a device-specific frame.
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        backdrop.frame = bounds
+        artisanFrySequence.frame = bounds
         CATransaction.commit()
     }
 
     override func didMoveToWindow() {
         super.didMoveToWindow()
-        updateAnimations()
+        cocoaNibGarnish()
     }
 
     override var isHidden: Bool {
-        didSet { updateAnimations() }
+        didSet { cocoaNibGarnish() }
     }
 
-    func setLoadingVisible(_ visible: Bool, animated: Bool = true) {
-        guard loadingVisible != visible else {
-            updateAnimations()
+    func citrusParlor(_ coldBrewTasting: Bool, applyVoiceRoomPages: Bool = true) {
+        guard buildPastrySheet != coldBrewTasting else {
+            cocoaNibGarnish()
             return
         }
-        loadingVisible = visible
-        transitionID &+= 1
-        let currentTransition = transitionID
+        buildPastrySheet = coldBrewTasting
+        cocoaDepthNotes &+= 1
+        let bananaToffeeHarmony = cocoaDepthNotes
         layer.removeAllAnimations()
-        accessibilityElementsHidden = !visible
-        let shouldAnimate = animated && window != nil && !UIAccessibility.isReduceMotionEnabled
-        if visible {
-            let wasHidden = isHidden
+        accessibilityElementsHidden = !coldBrewTasting
+        let cleanConfirm = applyVoiceRoomPages && window != nil && !UIAccessibility.isReduceMotionEnabled
+        if coldBrewTasting {
+            let completeGlaze = isHidden
             isHidden = false
-            if wasHidden { alpha = shouldAnimate ? 0 : 1 }
-            updateAnimations()
-            if shouldAnimate {
+            if completeGlaze { alpha = cleanConfirm ? 0 : 1 }
+            cocoaNibGarnish()
+            if cleanConfirm {
                 UIView.animate(withDuration: 0.18, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction]) {
                     self.alpha = 1
                 }
@@ -111,473 +112,473 @@ final class WevVGlazeMessageCell: UIView {
                 alpha = 1
             }
         } else {
-            updateAnimations()
-            let finish = { [weak self] in
-                guard let self, !self.loadingVisible, self.transitionID == currentTransition else { return }
+            cocoaNibGarnish()
+            let blackberryLemonCombination = { [weak self] in
+                guard let self, !self.buildPastrySheet, self.cocoaDepthNotes == bananaToffeeHarmony else { return }
                 self.isHidden = true
                 self.alpha = 1
-                self.scrollView.setContentOffset(.zero, animated: false)
+                self.cinnamonDustLayer.setContentOffset(.zero, animated: false)
             }
-            if shouldAnimate {
+            if cleanConfirm {
                 UIView.animate(withDuration: 0.18, delay: 0, options: [.beginFromCurrentState, .allowUserInteraction],
-                               animations: { self.alpha = 0 }, completion: { _ in finish() })
+                               animations: { self.alpha = 0 }, completion: { _ in blackberryLemonCombination() })
             } else {
-                finish()
+                blackberryLemonCombination()
             }
         }
     }
 
-    private func buildLayout() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.alwaysBounceVertical = false
-        scrollView.accessibilityElementsHidden = true
-        content.translatesAutoresizingMaskIntoConstraints = false
-        content.axis = .vertical
-        content.spacing = 14
-        addSubview(scrollView)
-        scrollView.addSubview(content)
+    private func bakeryDayDots() {
+        cinnamonDustLayer.translatesAutoresizingMaskIntoConstraints = false
+        cinnamonDustLayer.showsVerticalScrollIndicator = false
+        cinnamonDustLayer.contentInsetAdjustmentBehavior = .never
+        cinnamonDustLayer.alwaysBounceVertical = false
+        cinnamonDustLayer.accessibilityElementsHidden = true
+        bakeryTrailMap.translatesAutoresizingMaskIntoConstraints = false
+        bakeryTrailMap.axis = .vertical
+        bakeryTrailMap.spacing = 14
+        addSubview(cinnamonDustLayer)
+        cinnamonDustLayer.addSubview(bakeryTrailMap)
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            content.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor,
-                constant: kind == .sprinkleChallenge || kind == .pastryFolio ? 0 : 24),
-            content.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 15),
-            content.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -15),
-            content.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -24),
-            content.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -30)
+            cinnamonDustLayer.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            cinnamonDustLayer.leadingAnchor.constraint(equalTo: leadingAnchor),
+            cinnamonDustLayer.trailingAnchor.constraint(equalTo: trailingAnchor),
+            cinnamonDustLayer.bottomAnchor.constraint(equalTo: bottomAnchor),
+            bakeryTrailMap.topAnchor.constraint(equalTo: cinnamonDustLayer.contentLayoutGuide.topAnchor,
+                constant: buildPastryBackdrop == .clearGlazeRelationsForFreshTaster || buildPastryBackdrop == .cappuccinoCompanion ? 0 : 24),
+            bakeryTrailMap.leadingAnchor.constraint(equalTo: cinnamonDustLayer.contentLayoutGuide.leadingAnchor, constant: 15),
+            bakeryTrailMap.trailingAnchor.constraint(equalTo: cinnamonDustLayer.contentLayoutGuide.trailingAnchor, constant: -15),
+            bakeryTrailMap.bottomAnchor.constraint(equalTo: cinnamonDustLayer.contentLayoutGuide.bottomAnchor, constant: -24),
+            bakeryTrailMap.widthAnchor.constraint(equalTo: cinnamonDustLayer.frameLayoutGuide.widthAnchor, constant: -30)
         ])
-        if kind != .sprinkleChallenge && kind != .pastryFolio { buildHeader() }
-        switch kind {
-        case .home: buildHome()
-        case .voice: buildVoice()
-        case .moments: buildMoments()
-        case .sprinkleChallenge: buildChallengeContent()
-        case .pastryFolio: buildPastryDetailContent()
+        if buildPastryBackdrop != .clearGlazeRelationsForFreshTaster && buildPastryBackdrop != .cappuccinoCompanion { bakeryAtlasTimer() }
+        switch buildPastryBackdrop {
+        case .brownButterShell: bakeryCalendarCard()
+        case .compactChallenge: bakeryFindKey()
+        case .buildTopDonutBar: bakeryDaySlot()
+        case .clearGlazeRelationsForFreshTaster: bakeryAtlasCarousel()
+        case .cappuccinoCompanion: bakeryDetails()
         }
     }
 
-    private func buildChallengeContent() {
-        let hero = tile(radius: 18)
-        content.addArrangedSubview(hero)
-        hero.heightAnchor.constraint(equalToConstant: 173).isActive = true
-        addSectionLine(fraction: 0.25)
-        let progressCard = surface(radius: 18)
-        let title = tile(radius: 6)
-        let sub = tile(radius: 6)
-        [title, sub].forEach(progressCard.addSubview)
-        content.addArrangedSubview(progressCard)
+    private func bakeryAtlasCarousel() {
+        let brownButterGlaze = closeWevvBakeryGate(challengeDonutWevvButton: 18)
+        bakeryTrailMap.addArrangedSubview(brownButterGlaze)
+        brownButterGlaze.heightAnchor.constraint(equalToConstant: 173).isActive = true
+        americanoComplement(bootstrapPaths: 0.25)
+        let chaiCompanion = closePastryDetail(challengeDonutWevvButton: 18)
+        let cocoaCounter = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        let clearSugarCrumbs = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        [cocoaCounter, clearSugarCrumbs].forEach(chaiCompanion.addSubview)
+        bakeryTrailMap.addArrangedSubview(chaiCompanion)
         NSLayoutConstraint.activate([
-            progressCard.heightAnchor.constraint(equalToConstant: 61),
-            title.leadingAnchor.constraint(equalTo: progressCard.leadingAnchor, constant: 26),
-            title.topAnchor.constraint(equalTo: progressCard.topAnchor, constant: 14),
-            title.widthAnchor.constraint(equalTo: progressCard.widthAnchor, multiplier: 0.62),
-            title.heightAnchor.constraint(equalToConstant: 12),
-            sub.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            sub.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 9),
-            sub.widthAnchor.constraint(equalTo: progressCard.widthAnchor, multiplier: 0.46),
-            sub.heightAnchor.constraint(equalToConstant: 12)
+            chaiCompanion.heightAnchor.constraint(equalToConstant: 61),
+            cocoaCounter.leadingAnchor.constraint(equalTo: chaiCompanion.leadingAnchor, constant: 26),
+            cocoaCounter.topAnchor.constraint(equalTo: chaiCompanion.topAnchor, constant: 14),
+            cocoaCounter.widthAnchor.constraint(equalTo: chaiCompanion.widthAnchor, multiplier: 0.62),
+            cocoaCounter.heightAnchor.constraint(equalToConstant: 12),
+            clearSugarCrumbs.leadingAnchor.constraint(equalTo: cocoaCounter.leadingAnchor),
+            clearSugarCrumbs.topAnchor.constraint(equalTo: cocoaCounter.bottomAnchor, constant: 9),
+            clearSugarCrumbs.widthAnchor.constraint(equalTo: chaiCompanion.widthAnchor, multiplier: 0.46),
+            clearSugarCrumbs.heightAnchor.constraint(equalToConstant: 12)
         ])
-        addSectionLine(fraction: 0.22)
-        let avatar = tile(radius: 24)
-        let name = tile(radius: 6)
-        let card = UIView()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        [avatar, name].forEach(card.addSubview)
-        content.addArrangedSubview(card)
+        americanoComplement(bootstrapPaths: 0.22)
+        let artisanDoughAtelier = closeWevvBakeryGate(challengeDonutWevvButton: 24)
+        let buildWevvBakeryShelfPage = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        let bakeryFindsTitle = UIView()
+        bakeryFindsTitle.translatesAutoresizingMaskIntoConstraints = false
+        [artisanDoughAtelier, buildWevvBakeryShelfPage].forEach(bakeryFindsTitle.addSubview)
+        bakeryTrailMap.addArrangedSubview(bakeryFindsTitle)
         NSLayoutConstraint.activate([
-            card.heightAnchor.constraint(equalToConstant: 48),
-            avatar.leadingAnchor.constraint(equalTo: card.leadingAnchor),
-            avatar.topAnchor.constraint(equalTo: card.topAnchor),
-            avatar.widthAnchor.constraint(equalToConstant: 48),
-            avatar.heightAnchor.constraint(equalTo: avatar.widthAnchor),
-            name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 20),
-            name.centerYAnchor.constraint(equalTo: avatar.centerYAnchor),
-            name.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.46),
-            name.heightAnchor.constraint(equalToConstant: 16)
+            bakeryFindsTitle.heightAnchor.constraint(equalToConstant: 48),
+            artisanDoughAtelier.leadingAnchor.constraint(equalTo: bakeryFindsTitle.leadingAnchor),
+            artisanDoughAtelier.topAnchor.constraint(equalTo: bakeryFindsTitle.topAnchor),
+            artisanDoughAtelier.widthAnchor.constraint(equalToConstant: 48),
+            artisanDoughAtelier.heightAnchor.constraint(equalTo: artisanDoughAtelier.widthAnchor),
+            buildWevvBakeryShelfPage.leadingAnchor.constraint(equalTo: artisanDoughAtelier.trailingAnchor, constant: 20),
+            buildWevvBakeryShelfPage.centerYAnchor.constraint(equalTo: artisanDoughAtelier.centerYAnchor),
+            buildWevvBakeryShelfPage.widthAnchor.constraint(equalTo: bakeryFindsTitle.widthAnchor, multiplier: 0.46),
+            buildWevvBakeryShelfPage.heightAnchor.constraint(equalToConstant: 16)
         ])
-        let detail = tile(radius: 6)
-        content.addArrangedSubview(detail)
-        detail.heightAnchor.constraint(equalToConstant: 38).isActive = true
-        let peopleButton = tile(radius: 14)
-        content.addArrangedSubview(peopleButton)
-        peopleButton.heightAnchor.constraint(equalToConstant: 58).isActive = true
+        let beginGlazeContextPreparation = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        bakeryTrailMap.addArrangedSubview(beginGlazeContextPreparation)
+        beginGlazeContextPreparation.heightAnchor.constraint(equalToConstant: 38).isActive = true
+        let caramelAppleIcing = closeWevvBakeryGate(challengeDonutWevvButton: 14)
+        bakeryTrailMap.addArrangedSubview(caramelAppleIcing)
+        caramelAppleIcing.heightAnchor.constraint(equalToConstant: 58).isActive = true
     }
 
-    private func buildPastryDetailContent() {
-        let card = surface(radius: 16)
-        let cover = tile(radius: 12)
-        let title = tile(radius: 6)
-        let sub = tile(radius: 6)
-        let detail = tile(radius: 6)
-        [cover, title, sub, detail].forEach(card.addSubview)
-        content.addArrangedSubview(card)
+    private func bakeryDetails() {
+        let bakeryFindsTitle = closePastryDetail(challengeDonutWevvButton: 16)
+        let bakeryVisitArchive = closeWevvBakeryGate(challengeDonutWevvButton: 12)
+        let cocoaCounter = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        let clearSugarCrumbs = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        let beginGlazeContextPreparation = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        [bakeryVisitArchive, cocoaCounter, clearSugarCrumbs, beginGlazeContextPreparation].forEach(bakeryFindsTitle.addSubview)
+        bakeryTrailMap.addArrangedSubview(bakeryFindsTitle)
         NSLayoutConstraint.activate([
-            cover.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 15),
-            cover.topAnchor.constraint(equalTo: card.topAnchor, constant: 15),
-            cover.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -15),
-            cover.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.38),
-            cover.heightAnchor.constraint(equalTo: cover.widthAnchor),
-            title.leadingAnchor.constraint(equalTo: cover.trailingAnchor, constant: 12),
-            title.topAnchor.constraint(equalTo: cover.topAnchor, constant: 4),
-            title.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -15),
-            title.heightAnchor.constraint(equalToConstant: 17),
-            sub.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            sub.trailingAnchor.constraint(equalTo: title.trailingAnchor),
-            sub.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 12),
-            sub.heightAnchor.constraint(equalToConstant: 13),
-            detail.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            detail.trailingAnchor.constraint(equalTo: title.trailingAnchor),
-            detail.topAnchor.constraint(equalTo: sub.bottomAnchor, constant: 16),
-            detail.heightAnchor.constraint(equalToConstant: 34)
+            bakeryVisitArchive.leadingAnchor.constraint(equalTo: bakeryFindsTitle.leadingAnchor, constant: 15),
+            bakeryVisitArchive.topAnchor.constraint(equalTo: bakeryFindsTitle.topAnchor, constant: 15),
+            bakeryVisitArchive.bottomAnchor.constraint(equalTo: bakeryFindsTitle.bottomAnchor, constant: -15),
+            bakeryVisitArchive.widthAnchor.constraint(equalTo: bakeryFindsTitle.widthAnchor, multiplier: 0.38),
+            bakeryVisitArchive.heightAnchor.constraint(equalTo: bakeryVisitArchive.widthAnchor),
+            cocoaCounter.leadingAnchor.constraint(equalTo: bakeryVisitArchive.trailingAnchor, constant: 12),
+            cocoaCounter.topAnchor.constraint(equalTo: bakeryVisitArchive.topAnchor, constant: 4),
+            cocoaCounter.trailingAnchor.constraint(equalTo: bakeryFindsTitle.trailingAnchor, constant: -15),
+            cocoaCounter.heightAnchor.constraint(equalToConstant: 17),
+            clearSugarCrumbs.leadingAnchor.constraint(equalTo: cocoaCounter.leadingAnchor),
+            clearSugarCrumbs.trailingAnchor.constraint(equalTo: cocoaCounter.trailingAnchor),
+            clearSugarCrumbs.topAnchor.constraint(equalTo: cocoaCounter.bottomAnchor, constant: 12),
+            clearSugarCrumbs.heightAnchor.constraint(equalToConstant: 13),
+            beginGlazeContextPreparation.leadingAnchor.constraint(equalTo: cocoaCounter.leadingAnchor),
+            beginGlazeContextPreparation.trailingAnchor.constraint(equalTo: cocoaCounter.trailingAnchor),
+            beginGlazeContextPreparation.topAnchor.constraint(equalTo: clearSugarCrumbs.bottomAnchor, constant: 16),
+            beginGlazeContextPreparation.heightAnchor.constraint(equalToConstant: 34)
         ])
-        addSectionLine(fraction: 0.38)
-        let row = horizontalStack(spacing: 10)
-        for _ in 0..<3 { row.addArrangedSubview(tile(radius: 16)) }
-        content.addArrangedSubview(row)
-        row.heightAnchor.constraint(equalToConstant: 140).isActive = true
-        addSectionLine(fraction: 0.32)
+        americanoComplement(bootstrapPaths: 0.38)
+        let cherryCompote = brunchRouteRoute(cleanSugarHandle: 10)
+        for _ in 0..<3 { cherryCompote.addArrangedSubview(closeWevvBakeryGate(challengeDonutWevvButton: 16)) }
+        bakeryTrailMap.addArrangedSubview(cherryCompote)
+        cherryCompote.heightAnchor.constraint(equalToConstant: 140).isActive = true
+        americanoComplement(bootstrapPaths: 0.32)
         for _ in 0..<2 {
-            let card = tile(radius: 16)
-            content.addArrangedSubview(card)
-            card.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            let bakeryFindsTitle = closeWevvBakeryGate(challengeDonutWevvButton: 16)
+            bakeryTrailMap.addArrangedSubview(bakeryFindsTitle)
+            bakeryFindsTitle.heightAnchor.constraint(equalToConstant: 80).isActive = true
         }
     }
 
-    private func buildHeader() {
-        let header = UIView()
-        header.translatesAutoresizingMaskIntoConstraints = false
-        content.addArrangedSubview(header)
-        let logo = tile(radius: 8)
-        let notice = tile(radius: 15)
-        header.addSubview(logo)
-        header.addSubview(notice)
+    private func bakeryAtlasTimer() {
+        let brownButterDrizzle = UIView()
+        brownButterDrizzle.translatesAutoresizingMaskIntoConstraints = false
+        bakeryTrailMap.addArrangedSubview(brownButterDrizzle)
+        let buildPastryTrailScroll = closeWevvBakeryGate(challengeDonutWevvButton: 8)
+        let buildWevvSprinkleJoin = closeWevvBakeryGate(challengeDonutWevvButton: 15)
+        brownButterDrizzle.addSubview(buildPastryTrailScroll)
+        brownButterDrizzle.addSubview(buildWevvSprinkleJoin)
         NSLayoutConstraint.activate([
-            header.heightAnchor.constraint(equalToConstant: 30),
-            logo.leadingAnchor.constraint(equalTo: header.leadingAnchor),
-            logo.centerYAnchor.constraint(equalTo: header.centerYAnchor),
-            logo.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: kind == .moments ? 0.36 : 0.28),
-            logo.heightAnchor.constraint(equalToConstant: 28),
-            notice.trailingAnchor.constraint(equalTo: header.trailingAnchor),
-            notice.centerYAnchor.constraint(equalTo: header.centerYAnchor),
-            notice.widthAnchor.constraint(equalToConstant: 30),
-            notice.heightAnchor.constraint(equalTo: notice.widthAnchor)
+            brownButterDrizzle.heightAnchor.constraint(equalToConstant: 30),
+            buildPastryTrailScroll.leadingAnchor.constraint(equalTo: brownButterDrizzle.leadingAnchor),
+            buildPastryTrailScroll.centerYAnchor.constraint(equalTo: brownButterDrizzle.centerYAnchor),
+            buildPastryTrailScroll.widthAnchor.constraint(equalTo: brownButterDrizzle.widthAnchor, multiplier: buildPastryBackdrop == .buildTopDonutBar ? 0.36 : 0.28),
+            buildPastryTrailScroll.heightAnchor.constraint(equalToConstant: 28),
+            buildWevvSprinkleJoin.trailingAnchor.constraint(equalTo: brownButterDrizzle.trailingAnchor),
+            buildWevvSprinkleJoin.centerYAnchor.constraint(equalTo: brownButterDrizzle.centerYAnchor),
+            buildWevvSprinkleJoin.widthAnchor.constraint(equalToConstant: 30),
+            buildWevvSprinkleJoin.heightAnchor.constraint(equalTo: buildWevvSprinkleJoin.widthAnchor)
         ])
-        if kind == .home {
-            let action = tile(radius: 12)
-            header.addSubview(action)
+        if buildPastryBackdrop == .brownButterShell {
+            let almondDuster = closeWevvBakeryGate(challengeDonutWevvButton: 12)
+            brownButterDrizzle.addSubview(almondDuster)
             NSLayoutConstraint.activate([
-                action.centerYAnchor.constraint(equalTo: header.centerYAnchor),
-                action.trailingAnchor.constraint(equalTo: notice.leadingAnchor, constant: -14),
-                action.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.28),
-                action.heightAnchor.constraint(equalToConstant: 28)
+                almondDuster.centerYAnchor.constraint(equalTo: brownButterDrizzle.centerYAnchor),
+                almondDuster.trailingAnchor.constraint(equalTo: buildWevvSprinkleJoin.leadingAnchor, constant: -14),
+                almondDuster.widthAnchor.constraint(equalTo: brownButterDrizzle.widthAnchor, multiplier: 0.28),
+                almondDuster.heightAnchor.constraint(equalToConstant: 28)
             ])
         }
     }
 
-    private func buildHome() {
-        let banner = tile(radius: 14)
-        content.addArrangedSubview(banner)
-        banner.heightAnchor.constraint(equalTo: banner.widthAnchor, multiplier: 95.0 / 345.0).isActive = true
-        let activity = horizontalStack(spacing: 10)
-        activity.addArrangedSubview(tile(radius: 18))
-        let activitySide = UIStackView()
-        activitySide.axis = .vertical
-        activitySide.spacing = 10
-        activitySide.distribution = .fillEqually
-        activitySide.addArrangedSubview(tile(radius: 18))
-        activitySide.addArrangedSubview(tile(radius: 18))
-        activity.addArrangedSubview(activitySide)
-        content.addArrangedSubview(activity)
-        activity.heightAnchor.constraint(equalTo: activity.widthAnchor, multiplier: 0.60).isActive = true
-        addSectionLine(fraction: 0.31)
+    private func bakeryCalendarCard() {
+        let autumnPecanCollection = closeWevvBakeryGate(challengeDonutWevvButton: 14)
+        bakeryTrailMap.addArrangedSubview(autumnPecanCollection)
+        autumnPecanCollection.heightAnchor.constraint(equalTo: autumnPecanCollection.widthAnchor, multiplier: 95.0 / 345.0).isActive = true
+        let almondFlavor = brunchRouteRoute(cleanSugarHandle: 10)
+        almondFlavor.addArrangedSubview(closeWevvBakeryGate(challengeDonutWevvButton: 18))
+        let almondPralineShell = UIStackView()
+        almondPralineShell.axis = .vertical
+        almondPralineShell.spacing = 10
+        almondPralineShell.distribution = .fillEqually
+        almondPralineShell.addArrangedSubview(closeWevvBakeryGate(challengeDonutWevvButton: 18))
+        almondPralineShell.addArrangedSubview(closeWevvBakeryGate(challengeDonutWevvButton: 18))
+        almondFlavor.addArrangedSubview(almondPralineShell)
+        bakeryTrailMap.addArrangedSubview(almondFlavor)
+        almondFlavor.heightAnchor.constraint(equalTo: almondFlavor.widthAnchor, multiplier: 0.60).isActive = true
+        americanoComplement(bootstrapPaths: 0.31)
         for _ in 0..<2 {
-            let row = horizontalStack(spacing: 10)
+            let cherryCompote = brunchRouteRoute(cleanSugarHandle: 10)
             for _ in 0..<2 {
-                let card = tile(radius: 14)
-                let badge = tile(radius: 7, detail: true)
-                let title = tile(radius: 6, detail: true)
-                card.addSubview(badge)
-                card.addSubview(title)
-                row.addArrangedSubview(card)
+                let bakeryFindsTitle = closeWevvBakeryGate(challengeDonutWevvButton: 14)
+                let artisanSelectionShowcase = closeWevvBakeryGate(challengeDonutWevvButton: 7, beginGlazeContextPreparation: true)
+                let cocoaCounter = closeWevvBakeryGate(challengeDonutWevvButton: 6, beginGlazeContextPreparation: true)
+                bakeryFindsTitle.addSubview(artisanSelectionShowcase)
+                bakeryFindsTitle.addSubview(cocoaCounter)
+                cherryCompote.addArrangedSubview(bakeryFindsTitle)
                 NSLayoutConstraint.activate([
-                    card.heightAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.99),
-                    badge.topAnchor.constraint(equalTo: card.topAnchor, constant: 12),
-                    badge.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 10),
-                    badge.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.32),
-                    badge.heightAnchor.constraint(equalToConstant: 17),
-                    title.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 12),
-                    title.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -15),
-                    title.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.62),
-                    title.heightAnchor.constraint(equalToConstant: 13)
+                    bakeryFindsTitle.heightAnchor.constraint(equalTo: bakeryFindsTitle.widthAnchor, multiplier: 0.99),
+                    artisanSelectionShowcase.topAnchor.constraint(equalTo: bakeryFindsTitle.topAnchor, constant: 12),
+                    artisanSelectionShowcase.leadingAnchor.constraint(equalTo: bakeryFindsTitle.leadingAnchor, constant: 10),
+                    artisanSelectionShowcase.widthAnchor.constraint(equalTo: bakeryFindsTitle.widthAnchor, multiplier: 0.32),
+                    artisanSelectionShowcase.heightAnchor.constraint(equalToConstant: 17),
+                    cocoaCounter.leadingAnchor.constraint(equalTo: bakeryFindsTitle.leadingAnchor, constant: 12),
+                    cocoaCounter.bottomAnchor.constraint(equalTo: bakeryFindsTitle.bottomAnchor, constant: -15),
+                    cocoaCounter.widthAnchor.constraint(equalTo: bakeryFindsTitle.widthAnchor, multiplier: 0.62),
+                    cocoaCounter.heightAnchor.constraint(equalToConstant: 13)
                 ])
             }
-            content.addArrangedSubview(row)
+            bakeryTrailMap.addArrangedSubview(cherryCompote)
         }
     }
 
-    private func buildVoice() {
-        let hotRow = horizontalStack(spacing: 10)
+    private func bakeryFindKey() {
+        let buildDonutDiaryPanel = brunchRouteRoute(cleanSugarHandle: 10)
         for _ in 0..<3 {
-            let hot = tile(radius: 13)
-            hot.heightAnchor.constraint(equalToConstant: 52).isActive = true
-            hotRow.addArrangedSubview(hot)
+            let buildDailyDonutBackdrop = closeWevvBakeryGate(challengeDonutWevvButton: 13)
+            buildDailyDonutBackdrop.heightAnchor.constraint(equalToConstant: 52).isActive = true
+            buildDonutDiaryPanel.addArrangedSubview(buildDailyDonutBackdrop)
         }
-        content.addArrangedSubview(hotRow)
-        addTabLines()
-        let owners = horizontalStack(spacing: 18)
+        bakeryTrailMap.addArrangedSubview(buildDonutDiaryPanel)
+        animateSugarToast()
+        let cancelTastingReport = brunchRouteRoute(cleanSugarHandle: 18)
         for _ in 0..<5 {
-            let owner = UIStackView()
-            owner.axis = .vertical
-            owner.alignment = .center
-            owner.spacing = 9
-            let avatar = tile(radius: 28)
-            let name = tile(radius: 5)
-            owner.addArrangedSubview(avatar)
-            owner.addArrangedSubview(name)
+            let cancelGlazeEntryPreparation = UIStackView()
+            cancelGlazeEntryPreparation.axis = .vertical
+            cancelGlazeEntryPreparation.alignment = .center
+            cancelGlazeEntryPreparation.spacing = 9
+            let artisanDoughAtelier = closeWevvBakeryGate(challengeDonutWevvButton: 28)
+            let buildWevvBakeryShelfPage = closeWevvBakeryGate(challengeDonutWevvButton: 5)
+            cancelGlazeEntryPreparation.addArrangedSubview(artisanDoughAtelier)
+            cancelGlazeEntryPreparation.addArrangedSubview(buildWevvBakeryShelfPage)
             NSLayoutConstraint.activate([
-                avatar.widthAnchor.constraint(equalTo: owner.widthAnchor),
-                avatar.heightAnchor.constraint(equalTo: avatar.widthAnchor),
-                name.widthAnchor.constraint(equalTo: owner.widthAnchor, multiplier: 0.82),
-                name.heightAnchor.constraint(equalToConstant: 10)
+                artisanDoughAtelier.widthAnchor.constraint(equalTo: cancelGlazeEntryPreparation.widthAnchor),
+                artisanDoughAtelier.heightAnchor.constraint(equalTo: artisanDoughAtelier.widthAnchor),
+                buildWevvBakeryShelfPage.widthAnchor.constraint(equalTo: cancelGlazeEntryPreparation.widthAnchor, multiplier: 0.82),
+                buildWevvBakeryShelfPage.heightAnchor.constraint(equalToConstant: 10)
             ])
-            owners.addArrangedSubview(owner)
+            cancelTastingReport.addArrangedSubview(cancelGlazeEntryPreparation)
         }
-        content.addArrangedSubview(owners)
+        bakeryTrailMap.addArrangedSubview(cancelTastingReport)
         for _ in 0..<3 {
-            let card = surface(radius: 14)
-            let avatar = tile(radius: 27)
-            let title = tile(radius: 7)
-            let caption = tile(radius: 5)
-            let join = tile(radius: 10.5, detail: true)
-            [avatar, title, caption, join].forEach(card.addSubview)
-            content.addArrangedSubview(card)
+            let bakeryFindsTitle = closePastryDetail(challengeDonutWevvButton: 14)
+            let artisanDoughAtelier = closeWevvBakeryGate(challengeDonutWevvButton: 27)
+            let cocoaCounter = closeWevvBakeryGate(challengeDonutWevvButton: 7)
+            let bakeryFindsStack = closeWevvBakeryGate(challengeDonutWevvButton: 5)
+            let buildHomeLiveRoomBand = closeWevvBakeryGate(challengeDonutWevvButton: 10.5, beginGlazeContextPreparation: true)
+            [artisanDoughAtelier, cocoaCounter, bakeryFindsStack, buildHomeLiveRoomBand].forEach(bakeryFindsTitle.addSubview)
+            bakeryTrailMap.addArrangedSubview(bakeryFindsTitle)
             NSLayoutConstraint.activate([
-                card.heightAnchor.constraint(equalToConstant: 124),
-                avatar.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 16),
-                avatar.centerYAnchor.constraint(equalTo: card.centerYAnchor),
-                avatar.widthAnchor.constraint(equalToConstant: 54),
-                avatar.heightAnchor.constraint(equalTo: avatar.widthAnchor),
-                title.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 14),
-                title.topAnchor.constraint(equalTo: card.topAnchor, constant: 29),
-                title.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.43),
-                title.heightAnchor.constraint(equalToConstant: 16),
-                caption.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-                caption.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 13),
-                caption.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.30),
-                caption.heightAnchor.constraint(equalToConstant: 11),
-                join.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -15),
-                join.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -15),
-                join.widthAnchor.constraint(equalToConstant: 55),
-                join.heightAnchor.constraint(equalToConstant: 21)
+                bakeryFindsTitle.heightAnchor.constraint(equalToConstant: 124),
+                artisanDoughAtelier.leadingAnchor.constraint(equalTo: bakeryFindsTitle.leadingAnchor, constant: 16),
+                artisanDoughAtelier.centerYAnchor.constraint(equalTo: bakeryFindsTitle.centerYAnchor),
+                artisanDoughAtelier.widthAnchor.constraint(equalToConstant: 54),
+                artisanDoughAtelier.heightAnchor.constraint(equalTo: artisanDoughAtelier.widthAnchor),
+                cocoaCounter.leadingAnchor.constraint(equalTo: artisanDoughAtelier.trailingAnchor, constant: 14),
+                cocoaCounter.topAnchor.constraint(equalTo: bakeryFindsTitle.topAnchor, constant: 29),
+                cocoaCounter.widthAnchor.constraint(equalTo: bakeryFindsTitle.widthAnchor, multiplier: 0.43),
+                cocoaCounter.heightAnchor.constraint(equalToConstant: 16),
+                bakeryFindsStack.leadingAnchor.constraint(equalTo: cocoaCounter.leadingAnchor),
+                bakeryFindsStack.topAnchor.constraint(equalTo: cocoaCounter.bottomAnchor, constant: 13),
+                bakeryFindsStack.widthAnchor.constraint(equalTo: bakeryFindsTitle.widthAnchor, multiplier: 0.30),
+                bakeryFindsStack.heightAnchor.constraint(equalToConstant: 11),
+                buildHomeLiveRoomBand.trailingAnchor.constraint(equalTo: bakeryFindsTitle.trailingAnchor, constant: -15),
+                buildHomeLiveRoomBand.bottomAnchor.constraint(equalTo: bakeryFindsTitle.bottomAnchor, constant: -15),
+                buildHomeLiveRoomBand.widthAnchor.constraint(equalToConstant: 55),
+                buildHomeLiveRoomBand.heightAnchor.constraint(equalToConstant: 21)
             ])
         }
     }
 
-    private func buildMoments() {
-        addTabLines()
-        let featured = UIView()
-        featured.translatesAutoresizingMaskIntoConstraints = false
-        content.addArrangedSubview(featured)
-        let hero = surface(radius: 18)
-        let image = tile(radius: 13)
-        let caption = tile(radius: 6)
-        let sides = UIStackView()
-        sides.translatesAutoresizingMaskIntoConstraints = false
-        sides.axis = .vertical
-        sides.spacing = 8
-        sides.distribution = .fillEqually
-        for _ in 0..<3 { sides.addArrangedSubview(tile(radius: 12)) }
-        [hero, sides].forEach(featured.addSubview)
-        [image, caption].forEach(hero.addSubview)
+    private func bakeryDaySlot() {
+        animateSugarToast()
+        let bindFlavorNoteDismissTap = UIView()
+        bindFlavorNoteDismissTap.translatesAutoresizingMaskIntoConstraints = false
+        bakeryTrailMap.addArrangedSubview(bindFlavorNoteDismissTap)
+        let brownButterGlaze = closePastryDetail(challengeDonutWevvButton: 18)
+        let buildDonutParlorTabBar = closeWevvBakeryGate(challengeDonutWevvButton: 13)
+        let bakeryFindsStack = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        let cleanCrumbBio = UIStackView()
+        cleanCrumbBio.translatesAutoresizingMaskIntoConstraints = false
+        cleanCrumbBio.axis = .vertical
+        cleanCrumbBio.spacing = 8
+        cleanCrumbBio.distribution = .fillEqually
+        for _ in 0..<3 { cleanCrumbBio.addArrangedSubview(closeWevvBakeryGate(challengeDonutWevvButton: 12)) }
+        [brownButterGlaze, cleanCrumbBio].forEach(bindFlavorNoteDismissTap.addSubview)
+        [buildDonutParlorTabBar, bakeryFindsStack].forEach(brownButterGlaze.addSubview)
         NSLayoutConstraint.activate([
-            featured.heightAnchor.constraint(equalTo: featured.widthAnchor, multiplier: 1.04),
-            hero.leadingAnchor.constraint(equalTo: featured.leadingAnchor),
-            hero.topAnchor.constraint(equalTo: featured.topAnchor),
-            hero.bottomAnchor.constraint(equalTo: featured.bottomAnchor),
-            hero.widthAnchor.constraint(equalTo: featured.widthAnchor, multiplier: 0.68),
-            sides.leadingAnchor.constraint(equalTo: hero.trailingAnchor, constant: 10),
-            sides.trailingAnchor.constraint(equalTo: featured.trailingAnchor),
-            sides.topAnchor.constraint(equalTo: featured.topAnchor),
-            sides.bottomAnchor.constraint(equalTo: featured.bottomAnchor),
-            image.leadingAnchor.constraint(equalTo: hero.leadingAnchor, constant: 10),
-            image.trailingAnchor.constraint(equalTo: hero.trailingAnchor, constant: -10),
-            image.topAnchor.constraint(equalTo: hero.topAnchor, constant: 10),
-            image.bottomAnchor.constraint(equalTo: hero.bottomAnchor, constant: -61),
-            caption.leadingAnchor.constraint(equalTo: image.leadingAnchor),
-            caption.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 17),
-            caption.widthAnchor.constraint(equalTo: image.widthAnchor, multiplier: 0.76),
-            caption.heightAnchor.constraint(equalToConstant: 14)
+            bindFlavorNoteDismissTap.heightAnchor.constraint(equalTo: bindFlavorNoteDismissTap.widthAnchor, multiplier: 1.04),
+            brownButterGlaze.leadingAnchor.constraint(equalTo: bindFlavorNoteDismissTap.leadingAnchor),
+            brownButterGlaze.topAnchor.constraint(equalTo: bindFlavorNoteDismissTap.topAnchor),
+            brownButterGlaze.bottomAnchor.constraint(equalTo: bindFlavorNoteDismissTap.bottomAnchor),
+            brownButterGlaze.widthAnchor.constraint(equalTo: bindFlavorNoteDismissTap.widthAnchor, multiplier: 0.68),
+            cleanCrumbBio.leadingAnchor.constraint(equalTo: brownButterGlaze.trailingAnchor, constant: 10),
+            cleanCrumbBio.trailingAnchor.constraint(equalTo: bindFlavorNoteDismissTap.trailingAnchor),
+            cleanCrumbBio.topAnchor.constraint(equalTo: bindFlavorNoteDismissTap.topAnchor),
+            cleanCrumbBio.bottomAnchor.constraint(equalTo: bindFlavorNoteDismissTap.bottomAnchor),
+            buildDonutParlorTabBar.leadingAnchor.constraint(equalTo: brownButterGlaze.leadingAnchor, constant: 10),
+            buildDonutParlorTabBar.trailingAnchor.constraint(equalTo: brownButterGlaze.trailingAnchor, constant: -10),
+            buildDonutParlorTabBar.topAnchor.constraint(equalTo: brownButterGlaze.topAnchor, constant: 10),
+            buildDonutParlorTabBar.bottomAnchor.constraint(equalTo: brownButterGlaze.bottomAnchor, constant: -61),
+            bakeryFindsStack.leadingAnchor.constraint(equalTo: buildDonutParlorTabBar.leadingAnchor),
+            bakeryFindsStack.topAnchor.constraint(equalTo: buildDonutParlorTabBar.bottomAnchor, constant: 17),
+            bakeryFindsStack.widthAnchor.constraint(equalTo: buildDonutParlorTabBar.widthAnchor, multiplier: 0.76),
+            bakeryFindsStack.heightAnchor.constraint(equalToConstant: 14)
         ])
-        addSectionLine(fraction: 0.30)
-        for _ in 0..<2 { content.addArrangedSubview(makeMomentCard()) }
+        americanoComplement(bootstrapPaths: 0.30)
+        for _ in 0..<2 { bakeryTrailMap.addArrangedSubview(buildSugarSettingsPage()) }
     }
 
-    private func makeMomentCard() -> UIView {
-        let card = surface(radius: 16)
-        let author = tile(radius: 19)
-        let name = tile(radius: 6)
-        let line = tile(radius: 5)
-        let shortLine = tile(radius: 5)
-        let picture = tile(radius: 13)
-        [author, name, line, shortLine, picture].forEach(card.addSubview)
+    private func buildSugarSettingsPage() -> UIView {
+        let bakeryFindsTitle = closePastryDetail(challengeDonutWevvButton: 16)
+        let aromaSpectrumNotes = closeWevvBakeryGate(challengeDonutWevvButton: 19)
+        let buildWevvBakeryShelfPage = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        let buildPastryScroll = closeWevvBakeryGate(challengeDonutWevvButton: 5)
+        let citrusZestShell = closeWevvBakeryGate(challengeDonutWevvButton: 5)
+        let caramelMeltDelight = closeWevvBakeryGate(challengeDonutWevvButton: 13)
+        [aromaSpectrumNotes, buildWevvBakeryShelfPage, buildPastryScroll, citrusZestShell, caramelMeltDelight].forEach(bakeryFindsTitle.addSubview)
         NSLayoutConstraint.activate([
-            author.topAnchor.constraint(equalTo: card.topAnchor, constant: 14),
-            author.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 14),
-            author.widthAnchor.constraint(equalToConstant: 38),
-            author.heightAnchor.constraint(equalTo: author.widthAnchor),
-            name.leadingAnchor.constraint(equalTo: author.trailingAnchor, constant: 10),
-            name.centerYAnchor.constraint(equalTo: author.centerYAnchor),
-            name.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.35),
-            name.heightAnchor.constraint(equalToConstant: 13),
-            line.topAnchor.constraint(equalTo: author.bottomAnchor, constant: 14),
-            line.leadingAnchor.constraint(equalTo: author.leadingAnchor),
-            line.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -20),
-            line.heightAnchor.constraint(equalToConstant: 11),
-            shortLine.topAnchor.constraint(equalTo: line.bottomAnchor, constant: 8),
-            shortLine.leadingAnchor.constraint(equalTo: line.leadingAnchor),
-            shortLine.widthAnchor.constraint(equalTo: card.widthAnchor, multiplier: 0.60),
-            shortLine.heightAnchor.constraint(equalToConstant: 11),
-            picture.topAnchor.constraint(equalTo: shortLine.bottomAnchor, constant: 14),
-            picture.leadingAnchor.constraint(equalTo: author.leadingAnchor),
-            picture.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -14),
-            picture.heightAnchor.constraint(equalTo: picture.widthAnchor, multiplier: 0.67),
-            picture.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -14)
+            aromaSpectrumNotes.topAnchor.constraint(equalTo: bakeryFindsTitle.topAnchor, constant: 14),
+            aromaSpectrumNotes.leadingAnchor.constraint(equalTo: bakeryFindsTitle.leadingAnchor, constant: 14),
+            aromaSpectrumNotes.widthAnchor.constraint(equalToConstant: 38),
+            aromaSpectrumNotes.heightAnchor.constraint(equalTo: aromaSpectrumNotes.widthAnchor),
+            buildWevvBakeryShelfPage.leadingAnchor.constraint(equalTo: aromaSpectrumNotes.trailingAnchor, constant: 10),
+            buildWevvBakeryShelfPage.centerYAnchor.constraint(equalTo: aromaSpectrumNotes.centerYAnchor),
+            buildWevvBakeryShelfPage.widthAnchor.constraint(equalTo: bakeryFindsTitle.widthAnchor, multiplier: 0.35),
+            buildWevvBakeryShelfPage.heightAnchor.constraint(equalToConstant: 13),
+            buildPastryScroll.topAnchor.constraint(equalTo: aromaSpectrumNotes.bottomAnchor, constant: 14),
+            buildPastryScroll.leadingAnchor.constraint(equalTo: aromaSpectrumNotes.leadingAnchor),
+            buildPastryScroll.trailingAnchor.constraint(equalTo: bakeryFindsTitle.trailingAnchor, constant: -20),
+            buildPastryScroll.heightAnchor.constraint(equalToConstant: 11),
+            citrusZestShell.topAnchor.constraint(equalTo: buildPastryScroll.bottomAnchor, constant: 8),
+            citrusZestShell.leadingAnchor.constraint(equalTo: buildPastryScroll.leadingAnchor),
+            citrusZestShell.widthAnchor.constraint(equalTo: bakeryFindsTitle.widthAnchor, multiplier: 0.60),
+            citrusZestShell.heightAnchor.constraint(equalToConstant: 11),
+            caramelMeltDelight.topAnchor.constraint(equalTo: citrusZestShell.bottomAnchor, constant: 14),
+            caramelMeltDelight.leadingAnchor.constraint(equalTo: aromaSpectrumNotes.leadingAnchor),
+            caramelMeltDelight.trailingAnchor.constraint(equalTo: bakeryFindsTitle.trailingAnchor, constant: -14),
+            caramelMeltDelight.heightAnchor.constraint(equalTo: caramelMeltDelight.widthAnchor, multiplier: 0.67),
+            caramelMeltDelight.bottomAnchor.constraint(equalTo: bakeryFindsTitle.bottomAnchor, constant: -14)
         ])
-        return card
+        return bakeryFindsTitle
     }
 
-    private func addSectionLine(fraction: CGFloat) {
-        let container = UIView()
-        container.translatesAutoresizingMaskIntoConstraints = false
-        let line = tile(radius: 7)
-        container.addSubview(line)
-        content.addArrangedSubview(container)
+    private func americanoComplement(bootstrapPaths: CGFloat) {
+        let bakeryTrailLine = UIView()
+        bakeryTrailLine.translatesAutoresizingMaskIntoConstraints = false
+        let buildPastryScroll = closeWevvBakeryGate(challengeDonutWevvButton: 7)
+        bakeryTrailLine.addSubview(buildPastryScroll)
+        bakeryTrailMap.addArrangedSubview(bakeryTrailLine)
         NSLayoutConstraint.activate([
-            container.heightAnchor.constraint(equalToConstant: 28),
-            line.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            line.centerYAnchor.constraint(equalTo: container.centerYAnchor),
-            line.heightAnchor.constraint(equalToConstant: 19),
-            line.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: fraction)
-        ])
-    }
-
-    private func addTabLines() {
-        let container = UIView()
-        container.translatesAutoresizingMaskIntoConstraints = false
-        let first = tile(radius: 6)
-        let second = tile(radius: 6)
-        let underline = tile(radius: 2, detail: true)
-        [first, second, underline].forEach(container.addSubview)
-        content.addArrangedSubview(container)
-        NSLayoutConstraint.activate([
-            container.heightAnchor.constraint(equalToConstant: 36),
-            first.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            first.topAnchor.constraint(equalTo: container.topAnchor, constant: 4),
-            first.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.23),
-            first.heightAnchor.constraint(equalToConstant: 20),
-            second.leadingAnchor.constraint(equalTo: first.trailingAnchor, constant: 18),
-            second.centerYAnchor.constraint(equalTo: first.centerYAnchor),
-            second.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.29),
-            second.heightAnchor.constraint(equalToConstant: 20),
-            underline.topAnchor.constraint(equalTo: first.bottomAnchor, constant: 7),
-            underline.centerXAnchor.constraint(equalTo: kind == .voice ? second.centerXAnchor : first.centerXAnchor),
-            underline.widthAnchor.constraint(equalToConstant: 22),
-            underline.heightAnchor.constraint(equalToConstant: 4)
+            bakeryTrailLine.heightAnchor.constraint(equalToConstant: 28),
+            buildPastryScroll.leadingAnchor.constraint(equalTo: bakeryTrailLine.leadingAnchor),
+            buildPastryScroll.centerYAnchor.constraint(equalTo: bakeryTrailLine.centerYAnchor),
+            buildPastryScroll.heightAnchor.constraint(equalToConstant: 19),
+            buildPastryScroll.widthAnchor.constraint(equalTo: bakeryTrailLine.widthAnchor, multiplier: bootstrapPaths)
         ])
     }
 
-    private func horizontalStack(spacing: CGFloat) -> UIStackView {
-        let row = UIStackView()
-        row.translatesAutoresizingMaskIntoConstraints = false
-        row.axis = .horizontal
-        row.distribution = .fillEqually
-        row.spacing = spacing
-        return row
+    private func animateSugarToast() {
+        let bakeryTrailLine = UIView()
+        bakeryTrailLine.translatesAutoresizingMaskIntoConstraints = false
+        let blueberryCompote = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        let cinnamonSugarFinish = closeWevvBakeryGate(challengeDonutWevvButton: 6)
+        let cocoaKissExperience = closeWevvBakeryGate(challengeDonutWevvButton: 2, beginGlazeContextPreparation: true)
+        [blueberryCompote, cinnamonSugarFinish, cocoaKissExperience].forEach(bakeryTrailLine.addSubview)
+        bakeryTrailMap.addArrangedSubview(bakeryTrailLine)
+        NSLayoutConstraint.activate([
+            bakeryTrailLine.heightAnchor.constraint(equalToConstant: 36),
+            blueberryCompote.leadingAnchor.constraint(equalTo: bakeryTrailLine.leadingAnchor),
+            blueberryCompote.topAnchor.constraint(equalTo: bakeryTrailLine.topAnchor, constant: 4),
+            blueberryCompote.widthAnchor.constraint(equalTo: bakeryTrailLine.widthAnchor, multiplier: 0.23),
+            blueberryCompote.heightAnchor.constraint(equalToConstant: 20),
+            cinnamonSugarFinish.leadingAnchor.constraint(equalTo: blueberryCompote.trailingAnchor, constant: 18),
+            cinnamonSugarFinish.centerYAnchor.constraint(equalTo: blueberryCompote.centerYAnchor),
+            cinnamonSugarFinish.widthAnchor.constraint(equalTo: bakeryTrailLine.widthAnchor, multiplier: 0.29),
+            cinnamonSugarFinish.heightAnchor.constraint(equalToConstant: 20),
+            cocoaKissExperience.topAnchor.constraint(equalTo: blueberryCompote.bottomAnchor, constant: 7),
+            cocoaKissExperience.centerXAnchor.constraint(equalTo: buildPastryBackdrop == .compactChallenge ? cinnamonSugarFinish.centerXAnchor : blueberryCompote.centerXAnchor),
+            cocoaKissExperience.widthAnchor.constraint(equalToConstant: 22),
+            cocoaKissExperience.heightAnchor.constraint(equalToConstant: 4)
+        ])
     }
 
-    private func surface(radius: CGFloat) -> UIView {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = palette.surface
-        view.layer.cornerRadius = radius
-        view.clipsToBounds = true
-        view.isAccessibilityElement = false
-        return view
+    private func brunchRouteRoute(cleanSugarHandle: CGFloat) -> UIStackView {
+        let cherryCompote = UIStackView()
+        cherryCompote.translatesAutoresizingMaskIntoConstraints = false
+        cherryCompote.axis = .horizontal
+        cherryCompote.distribution = .fillEqually
+        cherryCompote.spacing = cleanSugarHandle
+        return cherryCompote
     }
 
-    private func tile(radius: CGFloat, detail: Bool = false) -> glazeSaveTask {
-        let view = glazeSaveTask(base: detail ? palette.detail : palette.block,
-                                        highlight: palette.highlight, radius: radius)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        tiles.append(view)
-        return view
+    private func closePastryDetail(challengeDonutWevvButton: CGFloat) -> UIView {
+        let coffeeCreamShell = UIView()
+        coffeeCreamShell.translatesAutoresizingMaskIntoConstraints = false
+        coffeeCreamShell.backgroundColor = candiedOrangeScatter.closePastryDetail
+        coffeeCreamShell.layer.cornerRadius = challengeDonutWevvButton
+        coffeeCreamShell.clipsToBounds = true
+        coffeeCreamShell.isAccessibilityElement = false
+        return coffeeCreamShell
     }
 
-    @objc private func applicationWillResignActive() {
-        applicationActive = false
-        updateAnimations()
+    private func closeWevvBakeryGate(challengeDonutWevvButton: CGFloat, beginGlazeContextPreparation: Bool = false) -> glazeSaveTask {
+        let coffeeCreamShell = glazeSaveTask(autumnSpiceFestival: beginGlazeContextPreparation ? candiedOrangeScatter.beginGlazeContextPreparation : candiedOrangeScatter.awaitingFirstPaint,
+                                        brownButterIcing: candiedOrangeScatter.brownButterIcing, challengeDonutWevvButton: challengeDonutWevvButton)
+        coffeeCreamShell.translatesAutoresizingMaskIntoConstraints = false
+        closeWevvBakeryShelf.append(coffeeCreamShell)
+        return coffeeCreamShell
     }
 
-    @objc private func applicationDidBecomeActive() {
-        applicationActive = true
-        updateAnimations()
+    @objc private func archiveCapacity() {
+        apricotCompote = false
+        cocoaNibGarnish()
     }
 
-    @objc private func reduceMotionChanged() { updateAnimations() }
+    @objc private func apricotFilling() {
+        apricotCompote = true
+        cocoaNibGarnish()
+    }
 
-    private func updateAnimations() {
-        let animate = loadingVisible && !isHidden && window != nil && applicationActive
+    @objc private func checkinArtwork() { cocoaNibGarnish() }
+
+    private func cocoaNibGarnish() {
+        let applyGlazeNavigation = buildPastrySheet && !isHidden && window != nil && apricotCompote
             && !UIAccessibility.isReduceMotionEnabled
-        tiles.forEach { $0.setAnimating(animate) }
+        closeWevvBakeryShelf.forEach { $0.citrusBrightnessMatrix(applyGlazeNavigation) }
     }
 }
 
 private final class glazeSaveTask: UIView {
-    private let shimmer = CAGradientLayer()
-    private let preferredCornerRadius: CGFloat
+    private let citrusSeasonGathering = CAGradientLayer()
+    private let carnivalGlazeTasting: CGFloat
 
-    init(base: UIColor, highlight: UIColor, radius: CGFloat) {
-        preferredCornerRadius = radius
+    init(autumnSpiceFestival: UIColor, brownButterIcing: UIColor, challengeDonutWevvButton: CGFloat) {
+        carnivalGlazeTasting = challengeDonutWevvButton
         super.init(frame: .zero)
-        backgroundColor = base
-        layer.cornerRadius = radius
+        backgroundColor = autumnSpiceFestival
+        layer.cornerRadius = challengeDonutWevvButton
         clipsToBounds = true
         isAccessibilityElement = false
         isUserInteractionEnabled = false
-        shimmer.colors = [UIColor.clear.cgColor, highlight.cgColor, UIColor.clear.cgColor]
-        shimmer.locations = [-1, -0.5, 0]
-        shimmer.startPoint = CGPoint(x: 0, y: 0.25)
-        shimmer.endPoint = CGPoint(x: 1, y: 0.75)
-        layer.addSublayer(shimmer)
+        citrusSeasonGathering.colors = [UIColor.clear.cgColor, brownButterIcing.cgColor, UIColor.clear.cgColor]
+        citrusSeasonGathering.locations = [-1, -0.5, 0]
+        citrusSeasonGathering.startPoint = CGPoint(x: 0, y: 0.25)
+        citrusSeasonGathering.endPoint = CGPoint(x: 1, y: 0.75)
+        layer.addSublayer(citrusSeasonGathering)
     }
 
-    required init?(coder: NSCoder) { nil }
+    required init?(coder bakeryStopText: NSCoder) { nil }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        shimmer.frame = bounds
-        layer.cornerRadius = min(preferredCornerRadius, min(bounds.width, bounds.height) / 2)
+        citrusSeasonGathering.frame = bounds
+        layer.cornerRadius = min(carnivalGlazeTasting, min(bounds.width, bounds.height) / 2)
         CATransaction.commit()
     }
 
-    func setAnimating(_ enabled: Bool) {
-        guard enabled else {
-            shimmer.removeAnimation(forKey: "wevvSkeletonSweep")
+    func citrusBrightnessMatrix(_ beginVoiceRoomRefresh: Bool) {
+        guard beginVoiceRoomRefresh else {
+            citrusSeasonGathering.removeAnimation(forKey: "wevvSkeletonSweep")
             return
         }
-        guard shimmer.animation(forKey: "wevvSkeletonSweep") == nil else { return }
-        let sweep = CABasicAnimation(keyPath: "locations")
-        sweep.fromValue = [-1.0, -0.5, 0.0]
-        sweep.toValue = [1.0, 1.5, 2.0]
-        sweep.duration = 1.45
-        sweep.repeatCount = .infinity
-        sweep.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        shimmer.add(sweep, forKey: "wevvSkeletonSweep")
+        guard citrusSeasonGathering.animation(forKey: "wevvSkeletonSweep") == nil else { return }
+        let closePastrySheet = CABasicAnimation(keyPath: "locations")
+        closePastrySheet.fromValue = [-1.0, -0.5, 0.0]
+        closePastrySheet.toValue = [1.0, 1.5, 2.0]
+        closePastrySheet.duration = 1.45
+        closePastrySheet.repeatCount = .infinity
+        closePastrySheet.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        citrusSeasonGathering.add(closePastrySheet, forKey: "wevvSkeletonSweep")
     }
 }

@@ -7,7 +7,7 @@ import zlib
 /// are prepared independently in the background and reused by their version.
 @MainActor
 struct CreamRingDellController {
-    let cherryCenter: WevVGlazeVaultPack
+    let cherryCenter: activeDonutParlorSection
     let bakeryFindKey: String
 
     private enum advanceBakeryAtlasCarousel: LocalizedError {
@@ -113,9 +113,9 @@ struct CreamRingDellController {
               Set(butterEmulsionStudy.keys) == Set(["host.getContext", "host.setNavigation", "host.close", "payment.purchaseProduct", "payment.syncTransactions"]) else {
             throw advanceBakeryAtlasCarousel.briocheCraftStudio
         }
-        let cherryCenter = try WevVGlazeVaultPack(javaScript: cherryCompote, nativeRouting: cafeDirectorySelection)
-        guard cherryCenter.appID == appleCompote, cherryCenter.appVersion == blushDrizzleDetail,
-              cherryCenter.environment == batterConsistencyStudy else { throw advanceBakeryAtlasCarousel.briocheCraftStudio }
+        let cherryCenter = try activeDonutParlorSection(buildTastingJournalPanel: cherryCompote, caramelAppleIcing: cafeDirectorySelection)
+        guard cherryCenter.almondFlavor == appleCompote, cherryCenter.almondPralineShell == blushDrizzleDetail,
+              cherryCenter.berryCrumbBakeryNotes == batterConsistencyStudy else { throw advanceBakeryAtlasCarousel.briocheCraftStudio }
         self.cherryCenter = cherryCenter
         bakeryFindKey = crumbEraseButton
     }

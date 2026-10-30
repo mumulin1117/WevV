@@ -476,7 +476,7 @@ final class SugarMomentEbuController: UIViewController, UITextViewDelegate, UIIm
                     self.cinnamonSugarFinish = nil
                     self.vanillaBeanIcing?()
                     self.dismiss(animated: true) {
-                        if case .pendingReview = outcome {
+                        if case .cinnamonSugarFinish = outcome {
                             NOticeNertyuSugartastingCard.showSugarToast("Your post has been submitted for review.")
                         }
                     }

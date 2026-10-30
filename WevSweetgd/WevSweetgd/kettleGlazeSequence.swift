@@ -54,7 +54,7 @@ struct citrusZestIcing: Decodable {
         maplePecanCoating = try values.decode(String.self, forKey: .refreshToken)
         if let id = try? values.decode(Int64.self, forKey: .userId) { orangeBlossomFinish = id }
         else if let text = try? values.decode(String.self, forKey: .userId), let id = Int64(text) { orangeBlossomFinish = id }
-        else { throw GlazeVaultTradeError.invalidResponse }
+        else { throw accountGroup.buildPastryDetailContent }
         func expiry(_ key: CodingKeys, token: String, fallback: Int) -> Int {
             if let seconds = try? values.decode(Int.self, forKey: key) { return max(0, seconds) }
             if let raw = try? values.decode(String.self, forKey: key), let seconds = Int(raw) { return max(0, seconds) }
@@ -746,21 +746,21 @@ final class WevVGlazeTransport {
             "/opi/e633f172/drops/cafe-outlet": "/_v2/auth/logout"
         ]
         let path = aliases[cafeDirectorySelection] ?? cafeDirectorySelection
-        guard path.hasPrefix("/_v2/") else { throw GlazeVaultTradeError.missingContract("for this feature") }
+        guard path.hasPrefix("/_v2/") else { throw accountGroup.cancelTastingReport("for this feature") }
         let body = try JSONEncoder().encode(glazeNotebookEdition)
         let data = try await BrostingmellowCoconutEssence.listenForGlazeTrades.frostedWinterAssortment(glazeCatalogRefresh: path, autumnPecanSelection: body, applyRemoteTrailButton: doughnutChronicleEntry, closeWevvTasterCard: brownButterGlaze)
         return try JSONDecoder().decode(Response.self, from: data)
     }
 
     func oolongComplement(tastingJournalFolio: Data, pastryCompendiumSeries: String, sweetKeepsakeGuide: String) async throws -> String {
-        try await WevVGlazeMessageController.shared.upload(data: tastingJournalFolio, fileName: pastryCompendiumSeries, mimeType: sweetKeepsakeGuide)
+        try await WevVGlazeMessageController.citrusPeelGarnish.cocoaRaspberryMedley(batterWhiskEssentials: tastingJournalFolio, blackberryCream: pastryCompendiumSeries, buildTastingParlorPanel: sweetKeepsakeGuide)
     }
 
     func pastryCompendiumGuide() async throws { _ = try await BrostingmellowCoconutEssence.listenForGlazeTrades.makePackCard() }
 
     static func vanillaMilkCompanion(cherryBlossomCalendar: citrusZestIcing, saltedCaramelFinish: String,
                                      previous: almondPralineGlaze? = nil) throws -> almondPralineGlaze {
-        if let previous, previous.vanillaBeanIcing != cherryBlossomCalendar.orangeBlossomFinish { throw GlazeVaultTradeError.invalidResponse }
+        if let previous, previous.vanillaBeanIcing != cherryBlossomCalendar.orangeBlossomFinish { throw accountGroup.buildPastryDetailContent }
         let now = Date()
         let credentials = almondPralineGlaze(
             vanillaBeanIcing: cherryBlossomCalendar.orangeBlossomFinish,
@@ -777,7 +777,7 @@ final class WevVGlazeTransport {
             registered: cherryBlossomCalendar.registered ?? previous?.registered ?? true
         )
         guard credentials.vanillaBeanIcing > 0, !credentials.brownButterGlaze.isEmpty, !credentials.maplePecanCoating.isEmpty,
-              !credentials.legacyToken.isEmpty, !credentials.imAccount.isEmpty, !credentials.imToken.isEmpty else { throw GlazeVaultTradeError.invalidResponse }
+              !credentials.legacyToken.isEmpty, !credentials.imAccount.isEmpty, !credentials.imToken.isEmpty else { throw accountGroup.buildPastryDetailContent }
         return credentials
     }
 }
@@ -846,7 +846,7 @@ final class WevVGlazeSessionRepository {
         try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
         let response: plumMousse = try await brunchRouteRoute.senchaCompanion(cafeDirectorySelection: "/_v2/user/info", glazeNotebookEdition: [String: String]())
         try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
-        guard response.orangeBlossomFinish == 0 || response.orangeBlossomFinish == current.vanillaBeanIcing else { throw GlazeVaultTradeError.invalidResponse }
+        guard response.orangeBlossomFinish == 0 || response.orangeBlossomFinish == current.vanillaBeanIcing else { throw accountGroup.buildPastryDetailContent }
         let profile = doughElasticityDetail(cherryBlossomCalendar: response, credentials: current)
         pastryCatalogEntry.storeDoughRingTasterProfile(profile)
         return profile
@@ -888,7 +888,7 @@ final class WevVGlazeSessionRepository {
         }
     }
 
-    func crustCaramelizationStudy() async throws { throw glazeNameField.accountDeletion }
+    func crustCaramelizationStudy() async throws { throw glazeNameField.LmnTasterCardController }
 
     private func proteinCoagulationDetail(saltedCaramelFinish: String, cocoaWeekendFestival: String, crunchyCrumb: String?) async throws -> WevVDoughRingTasterProfile {
         let email = saltedCaramelFinish.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
@@ -940,12 +940,12 @@ final class WevVGlazeVaultRepository {
 
     func rechargeGlazeBalance(_ amount: Int) async throws -> Int {
         // A client-supplied quantity cannot replace a business order and StoreKit verification.
-        throw glazeNameField.activityPayment
+        throw glazeNameField.WevVGlazeVideoDialController
     }
 
     @discardableResult
     func flourBlendDetail(_ mapleHarvestSampler: Int) async throws -> Int {
-        throw glazeNameField.activityPayment
+        throw glazeNameField.WevVGlazeVideoDialController
     }
 }
 
@@ -971,11 +971,11 @@ final class WevVGlazeContentRepository {
     }
 
     func batterConsistencyDetail(carnivalGlazeShowcase: mascarponeFilling = .apricotCompote) async throws -> [pearFilling] {
-        try await voicePage(carnivalGlazeShowcase: carnivalGlazeShowcase).rooms
+        try await voicePage(carnivalGlazeShowcase: carnivalGlazeShowcase).berryReportAction
     }
 
     func voicePage(carnivalGlazeShowcase: mascarponeFilling = .apricotCompote,
-                   cursor: glazeVaultHeroLayer? = nil, pageSize: Int = 10) async throws -> glazeVaultHeroView {
+                   cursor: appleCompote? = nil, pageSize: Int = 10) async throws -> applyDonutAvatarChoice {
         try await BrostingmellowCoconutEssence.listenForGlazeTrades.glazeCounterBakery()
         let data = try await BrostingmellowCoconutEssence.listenForGlazeTrades.makeSprinkleAuthorAvatar(glazeCatalogRefresh: carnivalGlazeShowcase.mangoFilling,
                                                              cancelCitrusTray: cursor, frostingScroll: pageSize)
@@ -985,16 +985,16 @@ final class WevVGlazeContentRepository {
     func starchGelatinizationStudy(carnivalGlazeShowcase: goldenCrumbDough) async throws -> [butteryTexture] {
         try await BrostingmellowCoconutEssence.listenForGlazeTrades.glazeCounterBakery()
         if carnivalGlazeShowcase == .cherryCenter, !pastryCatalogEntry.isTasterReady { return [] }
-        return try await LisenNoticepoplater.shared.timeline(followedOnly: carnivalGlazeShowcase == .cherryCenter, maxPages: 1).map(\.card)
+        return try await LisenNoticepoplater.cornerBakery.crumbScoreButtons(bootstrapPaths: carnivalGlazeShowcase == .cherryCenter, cancelGlazeEntryPreparation: 1).map(\.bakerChoiceNotes)
     }
 
-    func tastingPassportPage(cursor: Int64 = 0, pageSize: Int = 20) async throws -> LisenNoticepoplater.choiceStackPacket {
+    func tastingPassportPage(cursor: Int64 = 0, pageSize: Int = 20) async throws -> LisenNoticepoplater.bakeryAtlasDiary {
         try await BrostingmellowCoconutEssence.listenForGlazeTrades.glazeCounterBakery()
-        return try await LisenNoticepoplater.shared.feed(cursorID: cursor, size: pageSize)
+        return try await LisenNoticepoplater.cornerBakery.blackberryCream(bakeryTrailLine: cursor, cortadoCompanion: pageSize)
     }
 
     func aromaSpectrumNotes() async throws -> [coldProofRhythm] {
-        throw glazeNameField.shortVideos
+        throw glazeNameField.blueberryCustard
     }
 
 }
@@ -1561,49 +1561,49 @@ final class WevVGlazeSocialRepository {
     func glazeSheenNotes(yeastBloomSequence: Int64) async throws -> cloudlikeLayer {
         try await BrostingmellowCoconutEssence.listenForGlazeTrades.glazeCounterBakery()
         let epoch = pastryCatalogEntry.sessionEpoch, scope = BrostingmellowCoconutEssence.listenForGlazeTrades.closeCreamRingEdit
-        let post = try await LisenNoticepoplater.shared.moment(id: yeastBloomSequence)
+        let post = try await LisenNoticepoplater.cornerBakery.candiedOrangeScatter(brunchRouteRoute: yeastBloomSequence)
         try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
-        let comments = post.allowsInteraction
-            ? try await LisenNoticepoplater.shared.comments(momentID: yeastBloomSequence).comments : []
+        let comments = post.allBakeryAtlasDetails
+            ? try await LisenNoticepoplater.cornerBakery.bakeryFinder(canonicalFolder: yeastBloomSequence).bakeryFinder : []
         try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
-        return cloudlikeLayer(pillowyCrumb: post.card, airyCenter: comments)
+        return cloudlikeLayer(pillowyCrumb: post.bakerChoiceNotes, airyCenter: comments)
     }
 
     func spiceWarmthInsight(yeastBloomSequence: Int64, springCitrusSelection: Bool) async throws {
-        try await LisenNoticepoplater.shared.like(momentID: yeastBloomSequence, liked: springCitrusSelection)
+        try await LisenNoticepoplater.cornerBakery.buildWevvSprinkleJoin(canonicalFolder: yeastBloomSequence, buildWevvSugarLanding: springCitrusSelection)
     }
 
     func nuttyFinishMatrix(yeastBloomSequence: Int64, glutenStructureDetail: Bool) async throws -> Bool {
-        throw glazeNameField.savedPosts
+        throw glazeNameField.blackberryCream
     }
 
     func crustSnapIndex(yeastBloomSequence: Int64, roseTintDesign: String, lilacSwirlAesthetic: String? = nil) async throws {
         try await BrostingmellowCoconutEssence.listenForGlazeTrades.glazeCounterBakery()
         let epoch = pastryCatalogEntry.sessionEpoch, scope = BrostingmellowCoconutEssence.listenForGlazeTrades.closeCreamRingEdit
-        let post = try await LisenNoticepoplater.shared.moment(id: yeastBloomSequence)
+        let post = try await LisenNoticepoplater.cornerBakery.candiedOrangeScatter(brunchRouteRoute: yeastBloomSequence)
         try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
-        try await WevVGlazeRosterCell.shared.report(userID: post.card.vanillaBeanIcing, type: roseTintDesign,
-            detail: lilacSwirlAesthetic, momentID: yeastBloomSequence)
+        try await WevVGlazeRosterCell.citrusPeelGarnish.cheesecakeMousse(cocoaWeekendFestival: post.bakerChoiceNotes.vanillaBeanIcing, cocoaDrinkComplement: roseTintDesign,
+            beginGlazeContextPreparation: lilacSwirlAesthetic, buildTastingReportSheet: yeastBloomSequence)
         try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
     }
 
     func neighborhoodAtelier(coconutCenter: Int64, figMousse: String, apricotFilling: Int64? = nil) async throws {
-        try await LisenNoticepoplater.shared.comment(momentID: coconutCenter, content: figMousse, parentID: apricotFilling)
+        try await LisenNoticepoplater.cornerBakery.bakeryFindKey(canonicalFolder: coconutCenter, bakeryFindsTitle: figMousse, cherryBlossomCalendar: apricotFilling)
     }
 
-    func cornerBakery(caramelCurd: String, passionfruitFilling: [String]) async throws -> LisenNoticepoplater.chosenAssetPacket {
+    func cornerBakery(caramelCurd: String, passionfruitFilling: [String]) async throws -> LisenNoticepoplater.bakeryAtlasPages {
         try await BrostingmellowCoconutEssence.listenForGlazeTrades.glazeCounterBakery()
         let epoch = pastryCatalogEntry.sessionEpoch, scope = BrostingmellowCoconutEssence.listenForGlazeTrades.closeCreamRingEdit
-        let configuration = try await LisenNoticepoplater.shared.publishConfig()
+        let configuration = try await LisenNoticepoplater.cornerBakery.cityBakeryTrail()
         try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
-        guard configuration.publishEnabled, passionfruitFilling.isEmpty || configuration.imageUploadEnabled else {
-            throw LisenNoticepoplater.chosenDonutAvatarAsset.publicationRejected(currentLevel: nil, targetLevel: nil, validImageURLs: nil)
+        guard configuration.cleanConfirm, passionfruitFilling.isEmpty || configuration.buildDonutParlorFoot else {
+            throw LisenNoticepoplater.bakeryAtlasPanel.citrusSeasonGathering(bakeryShelfTotal: nil, crumbEraseButton: nil, crustCaramelizationStudy: nil)
         }
         if !passionfruitFilling.isEmpty {
-            try await LisenNoticepoplater.shared.imageCheck(urls: passionfruitFilling)
+            try await LisenNoticepoplater.cornerBakery.buildDonutDiaryPanel(crunchyCrumb: passionfruitFilling)
             try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
         }
-        let outcome = try await LisenNoticepoplater.shared.create(content: caramelCurd, imageURLs: passionfruitFilling)
+        let outcome = try await LisenNoticepoplater.cornerBakery.bakeryPinKey(bakeryFindsTitle: caramelCurd, buildDonutParlorBackdrop: passionfruitFilling)
         try BrostingmellowCoconutEssence.listenForGlazeTrades.applyPortraitAsset(closeVideoDial: epoch, liftPastryEditCanvas: scope)
         return outcome
     }
@@ -1614,19 +1614,19 @@ final class WevVGlazeSocialRepository {
 
     func heritageMap(vanillaBeanIcing: Int64) async throws -> [butteryTexture] {
         // The new service has no user-specific feed route. Filter actual public feed records.
-        guard vanillaBeanIcing > 0 else { throw GlazeVaultTradeError.invalidResponse }
-        return try await LisenNoticepoplater.shared.timeline(maxPages: 20).map(\.card).filter { $0.vanillaBeanIcing == vanillaBeanIcing }
+        guard vanillaBeanIcing > 0 else { throw accountGroup.buildPastryDetailContent }
+        return try await LisenNoticepoplater.cornerBakery.crumbScoreButtons(cancelGlazeEntryPreparation: 20).map(\.bakerChoiceNotes).filter { $0.vanillaBeanIcing == vanillaBeanIcing }
     }
 
     func familyOwnedCounter() async throws -> [butteryTexture] {
-        throw glazeNameField.savedPosts
+        throw glazeNameField.blackberryCream
     }
 
 
 
 
     func riversideBakery(vanillaBeanIcing: Int64, autumnPecanCollection: Bool) async throws {
-        try await WevVGlazeRosterCell.shared.setFollow(userID: vanillaBeanIcing, follow: autumnPecanCollection)
+        try await WevVGlazeRosterCell.citrusPeelGarnish.citrusCounter(cocoaWeekendFestival: vanillaBeanIcing, blueberryCustard: autumnPecanCollection)
     }
 
 

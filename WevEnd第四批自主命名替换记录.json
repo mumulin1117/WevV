@@ -1,0 +1,415 @@
+{
+  "scope": [
+    "WevSweetgd/WevSweetgd/WevEnd/glazeNameField.swift",
+    "WevSweetgd/WevSweetgd/WevEnd/honeyLavenderCombination.swift",
+    "WevSweetgd/WevSweetgd/WevEnd/honeyScout.swift"
+  ],
+  "nameCount": 41,
+  "symbolCount": 53,
+  "sourceEditCount": 262,
+  "vocabulary": "WeeNo命名提取/归档内声明的自主命名.txt",
+  "mapping": {
+    "accountDeletion": "LmnTasterCardController",
+    "activityPayment": "WevVGlazeVideoDialController",
+    "beginNextPage": "WevVWevvTastingQuestCard",
+    "beginRefresh": "WevvFlavorPane",
+    "completeGlaze": "WevvRemoteTrailState",
+    "count": "XunSugarRosterbrownButterDrizzle",
+    "currentPage": "activeSugarPictureTile",
+    "cursor": "activeSugarPictureTilePacket",
+    "cursorAdvanced": "addVaultmuralAura",
+    "fail": "airyCenter",
+    "failed": "almondPralineShell",
+    "failedRefresh": "animated",
+    "glazeVaultHeroLayer": "appleCompote",
+    "glazeVaultHeroView": "applyDonutAvatarChoice",
+    "hasMore": "applyPortraitAsset",
+    "id": "applyRemoteTrailButton",
+    "isLoading": "apricotCenter",
+    "loadingCursor": "apricotCompote",
+    "messaging": "apricotFilling",
+    "nextCursor": "assetForFlavorNote",
+    "offset": "assetKey",
+    "page": "assetName",
+    "pageSize": "attachSafetyOverlay",
+    "postReporting": "autumnMaplePalette",
+    "posts": "autumnPecanAssortment",
+    "previousCount": "autumnPecanSelection",
+    "rawCount": "avatarData",
+    "receive": "backendCanChat",
+    "refresh": "backendMutualFollow",
+    "refreshing": "bakeGlazeVaultPack",
+    "request": "bakeryPieces",
+    "requestID": "batchKey",
+    "restored": "beginSugarPictureUpload",
+    "result": "benchRestDetail",
+    "rooms": "berryReportAction",
+    "savedPosts": "blackberryCream",
+    "seen": "blueberryCompote",
+    "shortVideos": "blueberryCustard",
+    "showGlazeError": "boundary",
+    "snapshotID": "brightYuzuAccent",
+    "start": "brownButterDrizzle"
+  },
+  "vocabularyProvenance": {
+    "accountDeletion": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 8,
+        "kind": "vocabulary"
+      }
+    ],
+    "activityPayment": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 16,
+        "kind": "vocabulary"
+      }
+    ],
+    "beginNextPage": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 17,
+        "kind": "vocabulary"
+      }
+    ],
+    "beginRefresh": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 18,
+        "kind": "vocabulary"
+      }
+    ],
+    "completeGlaze": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 19,
+        "kind": "vocabulary"
+      }
+    ],
+    "count": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 20,
+        "kind": "vocabulary"
+      }
+    ],
+    "currentPage": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 23,
+        "kind": "vocabulary"
+      }
+    ],
+    "cursor": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 24,
+        "kind": "vocabulary"
+      }
+    ],
+    "cursorAdvanced": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 25,
+        "kind": "vocabulary"
+      }
+    ],
+    "fail": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 28,
+        "kind": "vocabulary"
+      }
+    ],
+    "failed": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 30,
+        "kind": "vocabulary"
+      }
+    ],
+    "failedRefresh": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 31,
+        "kind": "vocabulary"
+      }
+    ],
+    "glazeVaultHeroLayer": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 32,
+        "kind": "vocabulary"
+      }
+    ],
+    "glazeVaultHeroView": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 33,
+        "kind": "vocabulary"
+      }
+    ],
+    "hasMore": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 34,
+        "kind": "vocabulary"
+      }
+    ],
+    "id": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 35,
+        "kind": "vocabulary"
+      }
+    ],
+    "isLoading": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 36,
+        "kind": "vocabulary"
+      }
+    ],
+    "loadingCursor": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 37,
+        "kind": "vocabulary"
+      }
+    ],
+    "messaging": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 38,
+        "kind": "vocabulary"
+      }
+    ],
+    "nextCursor": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 41,
+        "kind": "vocabulary"
+      }
+    ],
+    "offset": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 42,
+        "kind": "vocabulary"
+      }
+    ],
+    "page": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 43,
+        "kind": "vocabulary"
+      }
+    ],
+    "pageSize": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 46,
+        "kind": "vocabulary"
+      }
+    ],
+    "postReporting": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 48,
+        "kind": "vocabulary"
+      }
+    ],
+    "posts": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 49,
+        "kind": "vocabulary"
+      }
+    ],
+    "previousCount": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 50,
+        "kind": "vocabulary"
+      }
+    ],
+    "rawCount": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 52,
+        "kind": "vocabulary"
+      }
+    ],
+    "receive": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 54,
+        "kind": "vocabulary"
+      }
+    ],
+    "refresh": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 55,
+        "kind": "vocabulary"
+      }
+    ],
+    "refreshing": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 56,
+        "kind": "vocabulary"
+      }
+    ],
+    "request": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 58,
+        "kind": "vocabulary"
+      }
+    ],
+    "requestID": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 61,
+        "kind": "vocabulary"
+      }
+    ],
+    "restored": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 62,
+        "kind": "vocabulary"
+      }
+    ],
+    "result": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 64,
+        "kind": "vocabulary"
+      }
+    ],
+    "rooms": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 65,
+        "kind": "vocabulary"
+      }
+    ],
+    "savedPosts": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 72,
+        "kind": "vocabulary"
+      }
+    ],
+    "seen": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 76,
+        "kind": "vocabulary"
+      }
+    ],
+    "shortVideos": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 77,
+        "kind": "vocabulary"
+      }
+    ],
+    "showGlazeError": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 80,
+        "kind": "vocabulary"
+      }
+    ],
+    "snapshotID": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 81,
+        "kind": "vocabulary"
+      }
+    ],
+    "start": [
+      {
+        "path": "WeeNo命名提取/归档内声明的自主命名.txt",
+        "line": 82,
+        "kind": "vocabulary"
+      }
+    ]
+  },
+  "sourceFiles": [
+    {
+      "path": "WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift",
+      "edits": 71,
+      "sha256Before": "19a109e914375c87ecc5b5afbaac860bc35a104aeeae19e791e45823907759f0",
+      "sha256After": "32055cdb1c82bacf6ef33b8eff20fd64a2dceea9b6ce2e50ec2ac6d4dfe7adfe"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/kettleGlazeSequence.swift",
+      "edits": 9,
+      "sha256Before": "8005c22510bc258e13975587384fb1e86cd1f24b4961a713644415a8994512ed",
+      "sha256After": "8be5dc8e53a09a9ed21f8864474dd1639ad08d43fb132e019c399f72a828d5c9"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/honeyLavenderCombination.swift",
+      "edits": 89,
+      "sha256Before": "deff9da0b0774d14f973d2283734e0459e91d06551a46f6b7b6a07d3b0785f89",
+      "sha256After": "608eda0c2c98a9ee58b476d2910ede7e9e3977adf4b804a42402dd920856ea92"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/glazeNameField.swift",
+      "edits": 12,
+      "sha256Before": "e405a3825abc0a3ac35b84a7d8e12f8781c8b0ed78def9455e7d6145b2197036",
+      "sha256After": "cac963ee890cebccaff81a487f422d94c751eb1478073be2ef77886bdb64eb6a"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/honeyScout.swift",
+      "edits": 68,
+      "sha256Before": "da7ba810aca7fdbc5cba23d038076b9931ff3f64a20606d08a372aa684951a4b",
+      "sha256After": "9f15bd7d97439a05daae6724570a6cc9bdec6d0165eee8db56b596d49188dee3"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/glazeMarkLabel.swift",
+      "edits": 10,
+      "sha256Before": "75221fcaf234815b0adce03f2fee2757e85cebc7d7ae99e793de18e1384bea4f",
+      "sha256After": "ebda09b9cb020093d6d95f15e100782e9a86d0a8b54ba0733cf073e3cb5071c4"
+    },
+    {
+      "path": "WevSweetgd/WevSweetgd/WevEnd/BrostingmellowCoconutEssence.swift",
+      "edits": 3,
+      "sha256Before": "b78c23a4f0312be587aac8b59c7c0ae668e99e6944cb4baed1ac7cc51f163ef7",
+      "sha256After": "5d7e0ca2be80b2fe1757303101919cb3de7440849f5d34b304e8b2ad608b927b"
+    }
+  ],
+  "preservedTypes": [
+    "glazeNameField",
+    "honeyLavenderCombination",
+    "honeyScout"
+  ],
+  "checks": {
+    "allCustomDeclarationsRenamed": true,
+    "wordsFromUserVocabulary": true,
+    "originalStringSegmentsUnchanged": true,
+    "changesAreOnlyIdentifierTokenReplacements": true,
+    "classNamesUnchanged": true,
+    "protocolNamesAndCodableKeysPreserved": true
+  },
+  "regressionScripts": [
+    "scripts/test_wevv_voice_pagination.py",
+    "scripts/test_wevv_room_mapper.py",
+    "scripts/verify_wevv_session_runtime.py"
+  ],
+  "validation": {
+    "debugSimulatorBuild": "passed",
+    "releaseDeviceBuild": "passed",
+    "voicePagination": 43,
+    "roomMapper": "passed",
+    "sessionRuntime": 35,
+    "feedPagination": 20,
+    "declarationAndStringAudit": "passed",
+    "nativeIntegrationLimitation": "Pre-existing missing WeeNo/Sources/LmnTasterCardController.swift prevents running the historical full integration script; no archive files restored"
+  }
+}

@@ -12,7 +12,7 @@ SOURCE = ROOT / 'WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift'
 
 MOCKS = r'''
 import Foundation
-enum GlazeVaultTradeError: Error { case http(Int) }
+enum accountGroup: Error { case brownButterPecanCombination(Int) }
 struct MediaAccount { let vanillaBeanIcing: Int64 }
 @MainActor final class WevVGlazeSessionStore {
     static let shared = WevVGlazeSessionStore()
@@ -27,7 +27,7 @@ struct MediaAccount { let vanillaBeanIcing: Int64 }
     var signHook: (() async throws -> Data)?
     func glazeCounterBakery() async throws {}
     func makePackCard() async throws -> MediaAccount {
-        guard let makeRemoteLabel = WevVGlazeSessionStore.shared.currentGlazeCredentials else { throw GlazeVaultTradeError.http(401) }
+        guard let makeRemoteLabel = WevVGlazeSessionStore.shared.currentGlazeCredentials else { throw accountGroup.brownButterPecanCombination(401) }
         return makeRemoteLabel
     }
     func applyPortraitAsset(closeVideoDial: Int, liftPastryEditCanvas: String) throws {
@@ -82,11 +82,11 @@ TESTS = r'''
         func perform(data: Data? = nil, mime: String = "image/jpeg", fileName: String = "wevv-test.jpg", status: Int = 200,
                      overrideURL: URL? = nil) async throws -> (String, URLRequest, Data) {
             var captured: (URLRequest, Data)?
-            let transfer = WevVGlazeMessageController(sender: { request, body in
+            let transfer = WevVGlazeMessageController(citrusBergamotEssence: { request, body in
                 uploads += 1; captured = (request, body)
                 return (Data(), response(request, status: status, overrideURL: overrideURL))
             })
-            let url = try await transfer.upload(data: data ?? jpeg, fileName: fileName, mimeType: mime)
+            let url = try await transfer.cocoaRaspberryMedley(batterWhiskEssentials: data ?? jpeg, blackberryCream: fileName, buildTastingParlorPanel: mime)
             guard let captured else { throw NSError(domain: "MediaRegression", code: 2) }
             return (url, captured.0, captured.1)
         }
@@ -177,10 +177,10 @@ TESTS = r'''
 
         for cancelled in [false, true] {
             try reset(); let uploadGate = Gate()
-            let transfer = WevVGlazeMessageController(sender: { request, _ in
+            let transfer = WevVGlazeMessageController(citrusBergamotEssence: { request, _ in
                 await uploadGate.wait(); return (Data(), response(request))
             })
-            let uploading = Task { try await transfer.upload(data: jpeg, fileName: "test.jpg", mimeType: "image/jpeg") }
+            let uploading = Task { try await transfer.cocoaRaspberryMedley(batterWhiskEssentials: jpeg, blackberryCream: "test.jpg", buildTastingParlorPanel: "image/jpeg") }
             try await awaitEntry(uploadGate)
             if cancelled { uploading.cancel() }
             else { store.sessionEpoch += 1; store.currentGlazeCredentials = MediaAccount(vanillaBeanIcing: 8) }

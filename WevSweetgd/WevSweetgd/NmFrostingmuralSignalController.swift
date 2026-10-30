@@ -10,7 +10,7 @@ final class NmFrostingmuralSignalController: UIViewController {
     private weak var sprinklePeopleButton: UIControl?
     private let glazeHeroLayer = CAGradientLayer()
     private let sprinklePeopleLayer = CAGradientLayer()
-    private let glazeSheenPlaceholder = WevVGlazeMessageCell(kind: .sprinkleChallenge)
+    private let glazeSheenPlaceholder = WevVGlazeMessageCell(buildPastryBackdrop: .clearGlazeRelationsForFreshTaster)
 
     private var frostingGuestKeys: [String] {
         let pralineCrunchTopping = [
@@ -60,12 +60,12 @@ final class NmFrostingmuralSignalController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        glazeSheenPlaceholder.setLoadingVisible(false)
+        glazeSheenPlaceholder.citrusParlor(false)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        glazeSheenPlaceholder.setLoadingVisible(false, animated: false)
+        glazeSheenPlaceholder.citrusParlor(false, applyVoiceRoomPages: false)
     }
 
     private func buildChallengeContent() {
@@ -98,7 +98,7 @@ final class NmFrostingmuralSignalController: UIViewController {
             glazeSheenPlaceholder.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             glazeSheenPlaceholder.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        glazeSheenPlaceholder.setLoadingVisible(true, animated: false)
+        glazeSheenPlaceholder.citrusParlor(true, applyVoiceRoomPages: false)
     }
 
     private func placegrahamCrumbleDustContent(doughBackButton: UIButton, title: UILabel, hero: UIView, progressTitle: UILabel, progressCard: UIView, hostLabel: UILabel, marshmallowFluffFinish: UIView, lavenderSugarCrumble: UILabel, citrusPeelGarnish: UIControl) {

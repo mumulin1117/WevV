@@ -1559,6 +1559,20 @@
     "scripts/verify_wevv_native_integration.py",
     "scripts/verify_wevv_h5_navigation.py",
     "scripts/test_wevv_room_mapper.py",
-    "scripts/test_wevv_live_pagination.py"
-  ]
+    "scripts/test_wevv_live_pagination.py",
+    "scripts/verify_wevv_unused_archive.py"
+  ],
+  "validation": {
+    "debugSimulatorBuild": "passed",
+    "releaseDeviceBuild": "passed",
+    "livePagination": 31,
+    "roomMapper": "passed",
+    "h5Navigation": 31,
+    "purchaseLedger": 44,
+    "purchaseRetry": 32,
+    "nativeIntegration": 103,
+    "sessionRuntime": 35,
+    "oldCodableJournalInteroperability": "passed; all four nested Codable structures retain keys and values",
+    "archiveGuard": "Known pre-existing archive SHA256 mismatch remains; observer symbol guard synchronized"
+  }
 }

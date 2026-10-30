@@ -1,0 +1,236 @@
+第六批自主命名替换记录（WevVGlazeMessageCell、WevVGlazeMessageController、WevVGlazeRosterCell）
+
+直接替换 207 个不同名称，源码替换位置 1515 处。
+词汇来源：WevEnd 外现有 Swift 自定义声明；每项出处见 JSON。
+所有 class 名、UIKit override、required init(coder:) 和 URLSessionTaskDelegate 方法外部标签保持不变。
+为内部参数分离系统固定标签；内部参数名称直接使用对应词汇。
+骨骼枚举新增显式原始值及系统 CustomStringConvertible.description，保留原无障碍标识的插值输出。
+原有字符串、上传接口字段、颜色数值、布局及动画时序不变。
+
+源码文件：
+- WevSweetgd/WevSweetgd/TvVDonutcreamapricotFillinger.swift（11 处）
+- WevSweetgd/WevSweetgd/IOpBakeryDetailController.swift（7 处）
+- WevSweetgd/WevSweetgd/kettleGlazeSequence.swift（15 处）
+- WevSweetgd/WevSweetgd/NmFrostingmuralSignalController.swift（7 处）
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageController.swift（436 处）
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeMessageCell.swift（776 处）
+- WevSweetgd/WevSweetgd/WevEnd/WevVGlazeRosterCell.swift（263 处）
+
+回归脚本：
+scripts/verify_wevv_media_transfer.py
+scripts/verify_wevv_session_runtime.py
+scripts/verify_wevv_active_social.py
+
+名称映射：
+Begin -> activateGlazeIdleEntry
+Check -> activeEnvironmentID
+Send -> addGlazeGold
+UploadSender -> afternoonTreatJourney
+accessID -> agrtastingFlightShowcaseee
+account -> allBakeryAtlasDetails
+accountID -> almondCutter
+action -> almondDuster
+activity -> almondFlavor
+activitySide -> almondPralineShell
+addSectionLine -> americanoComplement
+addTabLines -> animateSugarToast
+allowed -> applyDonutDayStyle
+animate -> applyGlazeNavigation
+animated -> applyVoiceRoomPages
+append -> apricotCenter
+applicationActive -> apricotCompote
+applicationDidBecomeActive -> apricotFilling
+applicationWillResignActive -> archiveCapacity
+authenticated -> armGlazeLoadingTimeout
+author -> aromaSpectrumNotes
+avatar -> artisanDoughAtelier
+backdrop -> artisanFrySequence
+badge -> artisanSelectionShowcase
+banner -> autumnPecanCollection
+base -> autumnSpiceFestival
+begin -> avatarButton
+block -> awaitingFirstPaint
+body -> backgroundImage
+boundary -> backgroundPath
+bounded -> bakerChoiceNotes
+browsing -> bakerWorkshopHandbook
+buildChallengeContent -> bakeryAtlasCarousel
+buildHeader -> bakeryAtlasTimer
+buildHome -> bakeryCalendarCard
+buildLayout -> bakeryDayDots
+buildMoments -> bakeryDaySlot
+buildPastryDetailContent -> bakeryDetails
+buildVoice -> bakeryFindKey
+bytes -> bakeryFinder
+caption -> bakeryFindsStack
+card -> bakeryFindsTitle
+cdn -> bakeryFrameAsset
+character -> bakeryParlor
+check -> bakeryPinKey
+checkExpiration -> bakeryShelfGuide
+checkIdentity -> bakeryShelfKeys
+code -> bakeryShelfTotal
+coder -> bakeryStopText
+completionHandler -> bakeryTagRow
+condition -> bakeryTasterStore
+conditions -> bakeryTrailCountLabel
+configuration -> bakeryTrailLabel
+container -> bakeryTrailLine
+content -> bakeryTrailMap
+count -> bakeryTrailRow
+cover -> bakeryVisitArchive
+creamScout -> bakeryWeekStack
+crumbAsset -> bakingScaleStation
+crumbBioPlaceholder -> bakingSceneFrame
+currentTransition -> bananaToffeeHarmony
+data -> batterWhiskEssentials
+detail -> beginGlazeContextPreparation
+displayName -> beginGlazeNativeOverlay
+enabled -> beginVoiceRoomRefresh
+environmentID -> beginvelvetyCrumbSheen
+epoch -> benchRestDetail
+expected -> berryBackdrop
+expiration -> berryBurstNotebook
+expiredSignature -> berryCrumbBakeryNotes
+expiresAt -> berryCrumbBakerySelections
+extension -> bindFlavorKeyboard
+featured -> bindFlavorNoteDismissTap
+field -> bindSugarConfirmButtons
+fields -> biteNoteLabel
+fileName -> blackberryCream
+finish -> blackberryLemonCombination
+first -> blueberryCompote
+follow -> blueberryCustard
+format -> blushDrizzleDetail
+formatter -> bodyWevVSugarText
+fraction -> bootstrapPaths
+fractionalExpiration -> bottomActionInset
+full -> bottomOffset
+glazeNameLabel -> bottomTarget
+glazePackCards -> boutiqueStudio
+glazeSugarCountLabel -> brightYuzuAccent
+glazeVaultGrid -> briocheCraftStudio
+header -> brownButterDrizzle
+hero -> brownButterGlaze
+highlight -> brownButterIcing
+home -> brownButterShell
+horizontalStack -> brunchRouteRoute
+host -> buildBakeryVisitBand
+hot -> buildDailyDonutBackdrop
+hotRow -> buildDonutDiaryPanel
+http -> buildDonutParlorBackdrop
+identifier -> buildDonutParlorFoot
+image -> buildDonutParlorTabBar
+imageFormat -> buildDonutStampContent
+incompletePagination -> buildFlavorBackdrop
+integer -> buildFlavorNoteActionBar
+invalidImage -> buildFlavorNoteEntryButton
+invalidInput -> buildFlavorNoteForm
+invalidResponse -> buildFlavorNotePanel
+invalidSignature -> buildFlavorScroll
+join -> buildHomeLiveRoomBand
+key -> buildInitialGlazeSheenPanels
+kind -> buildPastryBackdrop
+length -> buildPastryBottomActions
+line -> buildPastryScroll
+loadingVisible -> buildPastrySheet
+logo -> buildPastryTrailScroll
+makeMomentCard -> buildSugarSettingsPage
+maximum -> buildSugarTextPage
+maximumImageBytes -> buildTastingJournalPanel
+mimeType -> buildTastingParlorPanel
+minimum -> buildTastingQuestBand
+momentID -> buildTastingReportSheet
+moments -> buildTopDonutBar
+multipart -> buildWevvBakeryGateCanvas
+name -> buildWevvBakeryShelfPage
+notice -> buildWevvSprinkleJoin
+number -> buildWevvSugarLanding
+object -> builddarkCocoaIcing
+objectKey -> butterAromaNotes
+observedEpoch -> butterEmulsionStudy
+observedOwner -> cafeAtlasGuide
+observedScope -> cafeAtlasPlanner
+operation -> cafeCheckinCollection
+optionalInteger -> cafeDirectorySelection
+owner -> cancelGlazeEntryPreparation
+ownerID -> cancelGlazeLoading
+owners -> cancelTastingReport
+palette -> candiedOrangeScatter
+parts -> canonicalFolder
+pastryFolio -> cappuccinoCompanion
+path -> captionLabel
+peopleButton -> caramelAppleIcing
+permission -> caramelLatteCompanion
+picture -> caramelMeltDelight
+piece -> caramelMeltJourney
+policy -> cardVerticalConstraint
+policyData -> cardamomPearCombination
+policyExpiration -> carefulCrimpSequence
+policyObject -> carnivalGlazeShowcase
+preferredCornerRadius -> carnivalGlazeTasting
+prefix -> carouselAsset
+progressCard -> chaiCompanion
+publicBase -> chaiSpiceIcing
+radius -> challengeDonutWevvButton
+raw -> changedSection
+rawCDN -> changedShelf
+reduceMotionChanged -> checkinArtwork
+report -> cheesecakeMousse
+reportSuggestion -> cherryAlmondCombination
+request -> cherryAlmondFusion
+response -> cherryBlossomCalendar
+returnedID -> cherryCenter
+row -> cherryCompote
+runtime -> chocolateCurlDust
+scope -> chosenFlavor
+scrollView -> cinnamonDustLayer
+second -> cinnamonSugarFinish
+seconds -> cinnamonSugarSwirl
+secureURL -> cinnamonTwist
+send -> cinnamonVector
+sender -> citrusBergamotEssence
+session -> citrusBergamotFinish
+setAnimating -> citrusBrightnessMatrix
+setFollow -> citrusCounter
+setLoadingVisible -> citrusParlor
+shared -> citrusPeelGarnish
+shimmer -> citrusSeasonGathering
+shortLine -> citrusZestShell
+shouldAnimate -> cleanConfirm
+sides -> cleanCrumbBio
+signature -> cleanCrumbPacketPart
+signed -> cleanDonutAvatar
+spacing -> cleanSugarHandle
+sprinkleChallenge -> clearGlazeRelationsForFreshTaster
+store -> clearSugarCrumbLayer
+sub -> clearSugarCrumbs
+suffix -> closeDailyDonut
+suggestion -> closeFlavorNoteForm
+surface -> closePastryDetail
+sweep -> closePastrySheet
+task -> closeSugarSettings
+text -> closeSugarText
+tile -> closeWevvBakeryGate
+tiles -> closeWevvBakeryShelf
+title -> cocoaCounter
+transitionID -> cocoaDepthNotes
+trimmed -> cocoaDiarydonutChanged
+type -> cocoaDrinkComplement
+underline -> cocoaKissExperience
+updateAnimations -> cocoaNibGarnish
+upload -> cocoaRaspberryMedley
+url -> cocoaVelvetMotif
+userID -> cocoaWeekendFestival
+validate -> coconutCenter
+value -> coconutFlakeAccent
+values -> coconutMangoMedley
+view -> coffeeCreamShell
+visible -> coldBrewTasting
+voice -> compactChallenge
+wasHidden -> completeGlaze
+
+Validation:
+- Debug simulator and Release device builds passed.
+- Upload 39, active social 26, session 35 and skeleton accessibility identity 5 checks passed.
+- All original strings, declared custom identifiers, fixed system signatures and naming provenance audited.
